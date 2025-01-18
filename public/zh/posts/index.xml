@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on DLog</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>http://localhost:1313/zh/posts/</link>
     <description>Recent content in Posts on DLog</description>
     <generator>Hugo -- 0.141.0</generator>
-    <language>en-US</language>
+    <language>zh-CN</language>
     <lastBuildDate>Fri, 17 Jan 2025 22:38:20 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/zh/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test</title>
-      <link>http://localhost:1313/posts/test/</link>
+      <title>测试</title>
+      <link>http://localhost:1313/zh/posts/test/</link>
       <pubDate>Fri, 17 Jan 2025 22:38:20 +0800</pubDate>
-      <guid>http://localhost:1313/posts/test/</guid>
-      <description></description>
+      <guid>http://localhost:1313/zh/posts/test/</guid>
+      <description>&lt;h2 id=&#34;测试&#34;&gt;测试&lt;/h2&gt;</description>
     </item>
   </channel>
 </rss>

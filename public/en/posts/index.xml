@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on DLog</title>
+    <link>http://localhost:1313/en/posts/</link>
+    <description>Recent content in Posts on DLog</description>
+    <generator>Hugo -- 0.141.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 19 Jan 2025 00:37:54 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>http://localhost:1313/en/posts/test/</link>
+      <pubDate>Sun, 19 Jan 2025 00:37:54 +0800</pubDate>
+      <guid>http://localhost:1313/en/posts/test/</guid>
+      <description>&lt;h2 id=&#34;test&#34;&gt;Test&lt;/h2&gt;</description>
+    </item>
+  </channel>
+</rss>

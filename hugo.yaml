@@ -1,4 +1,47 @@
-baseURL : "https://downmars.github.io/"
-languageCode : "en-us"
-title : "DHugo"
-theme : "PaperMod"
+baseURL: "https://downmars.github.io/"
+theme: "PaperMod"
+enableEmoji: true
+DateFormat: "2023-10-15"
+ShowShareButtons: true
+ShowCodeButtons: true
+ShowFullTextinRSS: true
+defaultTheme: dark 
+disableScrollToTop: false 
+hideMeta: false 
+hideSummary: true 
+showtoc: true 
+ShowPostNavLinks: true 
+ShowWordCount: true 
+UseHugoToc: false 
+comments: true 
+defaultContentLanguage: zh 
+defaultContentLanguageInSubdir: true 
+
+languages:
+  zh: 
+    languageCode: "zh-CN"
+    languageName: "简体中文"
+    contentDir: "content/zh"
+    weight: 1  
+    title: "DLog"
+    params: 
+      description: "测试描述"
+    menu:  
+      main: 
+        - name: "文章"
+          url: "/posts/"
+          wight: 1 
+  en: 
+    languageCode: "en-US"
+    languageName: "English"
+    contentDir: "content/en"
+    weight: 2 
+    title: "DLog"
+    params: 
+      description: "test_description"
+    menu:  
+      main: 
+        - name: "Posts"
+          url: "/posts/"
+          wight: 1 
+
