@@ -29,45 +29,13 @@
         }
 
     </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
 </noscript>
 </head>
 
-<body class="list" id="top">
+<body class="list dark" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
+    if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
     }
 
 </script>
@@ -111,11 +79,26 @@
                     <span class="active">文章</span>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost:1313/zh/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header">
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a></div>
   <h1>
     Posts
   </h1>
@@ -123,14 +106,14 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">测试
+    <h2 class="entry-hint-parent">Build_hugo_and_deploy_with_github
     </h2>
   </header>
   <div class="entry-content">
-    <p>测试</p>
+    <p></p>
   </div>
-  <footer class="entry-footer"><span title='2025-01-17 22:38:20 +0800 CST'>一月 17, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to 测试" href="http://localhost:1313/zh/posts/test/"></a>
+  <footer class="entry-footer"><span title='2025-01-19 12:33:55 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp;0 分钟&nbsp;·&nbsp;0 字&nbsp;·&nbsp;Downmars</footer>
+  <a class="entry-link" aria-label="post link to Build_hugo_and_deploy_with_github" href="http://localhost:1313/zh/posts/build_hugo_and_deploy_with_github/"></a>
 </article>
     </main>
     

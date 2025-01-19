@@ -1,47 +1,142 @@
+# 基础设置
 baseURL: "https://downmars.github.io/"
+title: "DLog"  # 添加全局标题
 theme: "PaperMod"
-enableEmoji: true
-DateFormat: "2023-10-15"
-ShowShareButtons: true
-ShowCodeButtons: true
-ShowFullTextinRSS: true
-defaultTheme: dark 
-disableScrollToTop: false 
-hideMeta: false 
-hideSummary: true 
-showtoc: true 
-ShowPostNavLinks: true 
-ShowWordCount: true 
-UseHugoToc: false 
-comments: true 
-defaultContentLanguage: zh 
-defaultContentLanguageInSubdir: true 
 
+# 功能开关
+enableEmoji: true
+enableRobotsTXT: true  # 添加搜索引擎支持
+hasCJKLanguage: true
+
+# 多语言设置
+defaultContentLanguage: zh
+defaultContentLanguageInSubdir: true
+
+# 构建选项
+buildDrafts: false
+buildFuture: false  # 添加：不构建未来日期的文章
+buildExpired: false  # 添加：不构建过期内容
+
+# 全局参数
+params:
+  # 主题设置
+  defaultTheme: dark
+  disableThemeToggle: false  # 添加：允许切换主题
+  
+  # 显示设置
+  ShowShareButtons: true
+  ShowCodeCopyButtons: true  # 修正: ShowCodeButtons -> ShowCodeCopyButtons
+  ShowReadingTime: true
+  ShowWordCount: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true  # 添加：显示面包屑导航
+  ShowToc: true
+  TocOpen: true
+  
+  # RSS 设置
+  ShowFullTextinRSS: true
+  
+  # 其他功能
+  comments: true
+  DateFormat: "2006-01-02"  # 修正：使用 Go 的时间格式
+  
+  # 搜索功能
+  fuseOpts:  # 添加：搜索配置
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/downmars"
+
+# 多语言配置
 languages:
-  zh: 
+  zh:
     languageCode: "zh-CN"
     languageName: "简体中文"
     contentDir: "content/zh"
-    weight: 1  
+    weight: 1
     title: "DLog"
-    params: 
+    params:
       description: "测试描述"
-    menu:  
-      main: 
-        - name: "文章"
+      profileMode:  # 添加：个人主页模式
+        enabled: true
+        title: "DLog"
+        subtitle: "个人博客"
+    menu:
+      main:
+        - identifier: posts  # 添加：标识符
+          name: "文章"
           url: "/posts/"
-          wight: 1 
-  en: 
+          weight: 1  # 修正: wight -> weight
+        - identifier: search
+          name: "搜索"
+          url: "/search/"
+          weight: 2
+        - identifier: tags  # 添加：标签页
+          name: "标签"
+          url: "/tags/"
+          weight: 3
+        - identifier: archives  # 添加：归档页
+          name: "归档"
+          url: "/archives/"
+          weight: 4
+
+  en:
     languageCode: "en-US"
     languageName: "English"
     contentDir: "content/en"
-    weight: 2 
+    weight: 2
     title: "DLog"
-    params: 
+    params:
       description: "test_description"
-    menu:  
-      main: 
-        - name: "Posts"
+      profileMode:
+        enabled: true
+        title: "DLog"
+        subtitle: "Personal Blog"
+    menu:
+      main:
+        - identifier: posts
+          name: "Posts"
           url: "/posts/"
-          wight: 1 
+          weight: 1
+        - identifier: search
+          name: "Search"
+          url: "/search/"
+          weight: 2
+        - identifier: tags
+          name: "Tags"
+          url: "/tags/"
+          weight: 3
+        - identifier: archives
+          name: "Archives"
+          url: "/archives/"
+          weight: 4
 
+pagination:
+  disableAliases: false
+  pagerSize: 10 
+  path: page 
+
+# 输出设置
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON  # 添加：支持搜索功能
+
+# Markdown 设置
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    style: dracula

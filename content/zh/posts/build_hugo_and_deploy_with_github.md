@@ -1,7 +1,7 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
-lastmod: {{ .Date }}
+title: "Build_hugo_and_deploy_with_github"
+date: 2025-01-19T12:33:55+08:00
+lastmod: 2025-01-19T12:33:55+08:00
 draft: false
 
 # 作者
