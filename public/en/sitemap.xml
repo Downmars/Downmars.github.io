@@ -2,21 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/en/posts/build_hugo_and_deploy_with_github/</loc>
-    <lastmod>2025-01-19T12:34:05+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/posts/build_hugo_and_deploy_with_github/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/en/posts/build_hugo_and_deploy_with_github/"
-                />
-  </url><url>
     <loc>http://localhost:1313/en/</loc>
-    <lastmod>2025-01-19T12:34:05+08:00</lastmod>
+    <lastmod>2025-01-19T13:14:47+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
@@ -29,7 +16,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/en/posts/</loc>
-    <lastmod>2025-01-19T12:34:05+08:00</lastmod>
+    <lastmod>2025-01-19T13:14:47+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
@@ -39,6 +26,32 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="http://localhost:1313/en/posts/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/posts/test/</loc>
+    <lastmod>2025-01-19T13:14:47+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/posts/test/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/posts/test/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/posts/build_hugo_and_deploy_with_github/</loc>
+    <lastmod>2025-01-19T12:34:05+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/posts/build_hugo_and_deploy_with_github/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/posts/build_hugo_and_deploy_with_github/"
                 />
   </url><url>
     <loc>http://localhost:1313/en/archives/archives/</loc>

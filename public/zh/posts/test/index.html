@@ -5,12 +5,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>测试 | DLog</title>
+<title>Test | DLog</title>
 <meta name="keywords" content="">
-<meta name="description" content="测试">
-<meta name="author" content="">
+<meta name="description" content="How to make a mkdocs?
+test
+
+Assume you have already set up your Github homepage.
+
+
+
+   Mkdocs
+
+
+
+
+要使用 MkDocs 创建并部署静态网站到 GitHub Pages（即 github.io），并利用您提供的 ci.yml 配置 GitHub Actions 进行持续集成和部署，您可以按照以下步骤操作：">
+<meta name="author" content="Downmars">
 <link rel="canonical" href="http://localhost:1313/zh/posts/test/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a3e1e8c1a8c35e5225266e4ca49b04459989479e8e6aac45441e28a37286f426.css" integrity="sha256-o&#43;HowajDXlIlJm5MpJsERZmJR56OaqxFRB4oo3KG9CY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -79,18 +91,13 @@
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/zh/search/" title="搜索">
-                    <span>搜索</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/zh/tags/" title="标签">
-                    <span>标签</span>
-                </a>
-            </li>
-            <li>
                 <a href="http://localhost:1313/zh/archives/" title="归档">
                     <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/zh/search/" title="搜索">
+                    <span>搜索</span>
                 </a>
             </li>
         </ul>
@@ -102,9 +109,9 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      测试
+      Test
     </h1>
-    <div class="post-meta"><span title='2025-01-17 22:38:20 +0800 CST'>2025-01-17</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;2 字&nbsp;|&nbsp;语言:
+    <div class="post-meta"><span title='2025-01-19 13:14:54 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;1125 字&nbsp;·&nbsp;Downmars&nbsp;|&nbsp;语言:
 <ul class="i18n_list">
     <li>
         <a href="http://localhost:1313/en/posts/test/">En</a>
@@ -112,22 +119,353 @@
 </ul>
 
 </div>
-  </header> <div class="toc">
-    <details  open>
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e6%b5%8b%e8%af%95" aria-label="测试">测试</a>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#how-to-make-a-mkdocs" aria-label="How to make a mkdocs?">How to make a mkdocs?</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%ad%a5%e9%aa%a4-1%e5%ae%89%e8%a3%85-mkdocs-%e5%92%8c%e7%9b%b8%e5%85%b3%e4%b8%bb%e9%a2%98" aria-label="步骤 1：安装 MkDocs 和相关主题">步骤 1：安装 MkDocs 和相关主题</a></li>
+                    <li>
+                        <a href="#%e6%ad%a5%e9%aa%a4-2%e5%88%9b%e5%bb%ba-mkdocs-%e9%a1%b9%e7%9b%ae" aria-label="步骤 2：创建 MkDocs 项目">步骤 2：创建 MkDocs 项目</a></li>
+                    <li>
+                        <a href="#%e6%ad%a5%e9%aa%a4-3%e9%85%8d%e7%bd%ae-mkdocsyml" aria-label="步骤 3：配置 mkdocs.yml">步骤 3：配置 <code>mkdocs.yml</code></a></li>
+                    <li>
+                        <a href="#%e6%ad%a5%e9%aa%a4-4%e7%bc%96%e5%86%99%e6%96%87%e6%a1%a3%e5%86%85%e5%ae%b9" aria-label="步骤 4：编写文档内容">步骤 4：编写文档内容</a></li>
+                    <li>
+                        <a href="#%e6%ad%a5%e9%aa%a4-5%e5%88%9d%e5%a7%8b%e5%8c%96-git-%e4%bb%93%e5%ba%93%e5%b9%b6%e6%8e%a8%e9%80%81%e5%88%b0-github" aria-label="步骤 5：初始化 Git 仓库并推送到 GitHub">步骤 5：初始化 Git 仓库并推送到 GitHub</a></li>
+                    <li>
+                        <a href="#%e6%ad%a5%e9%aa%a4-6%e5%88%9b%e5%bb%ba-github-actions-%e5%b7%a5%e4%bd%9c%e6%b5%81" aria-label="步骤 6：创建 GitHub Actions 工作流">步骤 6：创建 GitHub Actions 工作流</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%b7%a5%e4%bd%9c%e6%b5%81%e8%af%b4%e6%98%8e" aria-label="工作流说明：">工作流说明：</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%ad%a5%e9%aa%a4-7%e9%85%8d%e7%bd%ae-github-pages" aria-label="步骤 7：配置 GitHub Pages">步骤 7：配置 GitHub Pages</a></li>
+                    <li>
+                        <a href="#%e6%ad%a5%e9%aa%a4-8%e6%8e%a8%e9%80%81%e6%9b%b4%e6%94%b9%e8%a7%a6%e5%8f%91%e9%83%a8%e7%bd%b2" aria-label="步骤 8：推送更改触发部署">步骤 8：推送更改触发部署</a></li>
+                    <li>
+                        <a href="#%e9%99%84%e5%8a%a0%e6%8f%90%e7%a4%ba" aria-label="附加提示">附加提示</a>
+                    </li>
+                </ul>
                 </li>
-            </ul>
-        </div>
-    </details>
-</div>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    
+    document.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+    
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        if (elements.length > 0) {
+            
+            activeElement = elements[0];
+            const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+            document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+        }
+    
+        
+        const topLink = document.getElementById('top-link');
+        if (topLink) {
+            topLink.addEventListener('click', (event) => {
+                
+                event.preventDefault();
+    
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }, false);
+    
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+    
+    window.addEventListener('scroll', () => {
+        
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
+        
+        if (scrollPosition === 0) {
+            return;
+        }
+    
+        
+        if (elements && elements.length > 0) {
+            
+            activeElement = Array.from(elements).find((element) => {
+                if ((getOffsetTop(element) - scrollPosition) > 0 && 
+                    (getOffsetTop(element) - scrollPosition) < window.innerHeight / 2) {
+                    return element;
+                }
+            }) || activeElement;
+    
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                if (element === activeElement){
+                    tocLink.classList.add('active');
+    
+                    
+                    const tocContainer = document.querySelector('.toc .inner');
+                    const linkOffsetTop = tocLink.offsetTop;
+                    const containerHeight = tocContainer.clientHeight;
+                    const linkHeight = tocLink.clientHeight;
+    
+                    
+                    const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
+                    tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                } else {
+                    tocLink.classList.remove('active');
+                }
+            });
+        }
+    }, false);
+    
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+    
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+    
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+    
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+    
+</script>
 
-  <div class="post-content"><h2 id="测试">测试<a hidden class="anchor" aria-hidden="true" href="#测试">#</a></h2>
+
+  <div class="post-content"><h1 id="how-to-make-a-mkdocs">How to make a mkdocs?<a hidden class="anchor" aria-hidden="true" href="#how-to-make-a-mkdocs">#</a></h1>
+<p>test</p>
+<blockquote>
+<p>Assume you have already set up your Github homepage.</p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.mkdocs.org/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Mkdocs
+</a>
+
+</p>
+</blockquote>
+<p>要使用 MkDocs 创建并部署静态网站到 GitHub Pages（即 <code>github.io</code>），并利用您提供的 <code>ci.yml</code> 配置 GitHub Actions 进行持续集成和部署，您可以按照以下步骤操作：</p>
+<h2 id="步骤-1安装-mkdocs-和相关主题">步骤 1：安装 MkDocs 和相关主题<a hidden class="anchor" aria-hidden="true" href="#步骤-1安装-mkdocs-和相关主题">#</a></h2>
+<p>首先，确保您的本地环境已安装 Python 和 <code>pip</code>。然后，安装 MkDocs 及所需的主题和插件。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install mkdocs-material mkdocs-rtd-dropdown
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="步骤-2创建-mkdocs-项目">步骤 2：创建 MkDocs 项目<a hidden class="anchor" aria-hidden="true" href="#步骤-2创建-mkdocs-项目">#</a></h2>
+<p>在您的项目目录中，初始化一个新的 MkDocs 项目：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdocs new my-project
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> my-project
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这将创建一个基本的 MkDocs 目录结构。</p>
+<h2 id="步骤-3配置-mkdocsyml">步骤 3：配置 <code>mkdocs.yml</code><a hidden class="anchor" aria-hidden="true" href="#步骤-3配置-mkdocsyml">#</a></h2>
+<p>编辑生成的 <code>mkdocs.yml</code> 文件，配置主题和插件。例如：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">site_name</span>: My Project Documentation
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">theme</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">name</span>: <span style="color:#f1fa8c">&#39;material&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">palette</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">primary</span>: <span style="color:#f1fa8c">&#39;blue&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">accent</span>: <span style="color:#f1fa8c">&#39;light blue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">plugins</span>:
+</span></span><span style="display:flex;"><span>  - search
+</span></span><span style="display:flex;"><span>  - rtd-dropdown
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>确保根据您的需求调整 <code>site_name</code>、主题和插件配置。</p>
+<h2 id="步骤-4编写文档内容">步骤 4：编写文档内容<a hidden class="anchor" aria-hidden="true" href="#步骤-4编写文档内容">#</a></h2>
+<p>在 <code>docs/</code> 目录下编辑或添加 Markdown 文件，以构建您的文档内容。</p>
+<h2 id="步骤-5初始化-git-仓库并推送到-github">步骤 5：初始化 Git 仓库并推送到 GitHub<a hidden class="anchor" aria-hidden="true" href="#步骤-5初始化-git-仓库并推送到-github">#</a></h2>
+<p>如果您还没有 Git 仓库，请初始化一个并推送到 GitHub：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#f1fa8c">&#34;Initial commit&#34;</span>
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/your-username/your-repo.git
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>请将 <code>your-username</code> 和 <code>your-repo</code> 替换为您的 GitHub 用户名和仓库名称。</p>
+<h2 id="步骤-6创建-github-actions-工作流">步骤 6：创建 GitHub Actions 工作流<a hidden class="anchor" aria-hidden="true" href="#步骤-6创建-github-actions-工作流">#</a></h2>
+<p>在您的项目根目录下，创建 <code>.github/workflows/ci.yml</code> 文件，并将以下内容粘贴进去：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">name</span>: ci
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">branches</span>:
+</span></span><span style="display:flex;"><span>      - master 
+</span></span><span style="display:flex;"><span>      - main
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">permissions</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">contents</span>: write
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">runs-on</span>: ubuntu-latest
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">uses</span>: actions/checkout@v4
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">name</span>: Configure Git Credentials
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">run</span>: |<span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">          git config user.name &#34;github-actions[bot]&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">          git config user.email &#34;41898282+github-actions[bot]@users.noreply.github.com&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">uses</span>: actions/setup-python@v5
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">python-version</span>: <span style="color:#f1fa8c">&#39;3.x&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">run</span>: echo &#34;cache_id=$(date --utc &#39;+%V&#39;)&#34; &gt;&gt; $GITHUB_ENV 
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">uses</span>: actions/cache@v4
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">key</span>: mkdocs-material-${{ env.cache_id }}
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">path</span>: .cache
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">restore-keys</span>: |<span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">            mkdocs-material-</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">run</span>: pip install mkdocs-material 
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">run</span>: pip install mkdocs-rtd-dropdown
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">run</span>: mkdocs gh-deploy --force
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="工作流说明">工作流说明：<a hidden class="anchor" aria-hidden="true" href="#工作流说明">#</a></h3>
+<ol>
+<li><strong>触发条件</strong>：当推送到 <code>master</code> 或 <code>main</code> 分支时触发。</li>
+<li><strong>权限</strong>：授予 <code>contents</code> 写权限以便进行部署。</li>
+<li><strong>作业配置</strong>：
+<ul>
+<li><strong>环境</strong>：使用最新的 Ubuntu 运行环境。</li>
+<li><strong>步骤</strong>：
+<ul>
+<li><strong>检出代码</strong>：使用 <code>actions/checkout@v4</code> 检出仓库代码。</li>
+<li><strong>配置 Git 凭证</strong>：设置 Git 用户名和邮箱，以便 GitHub Actions 可以提交更改。</li>
+<li><strong>设置 Python 环境</strong>：使用 <code>actions/setup-python@v5</code> 设置 Python 3 环境。</li>
+<li><strong>设置缓存</strong>：通过当前的周数作为缓存键的一部分，使用 <code>actions/cache@v4</code> 缓存 <code>.cache</code> 目录，加快后续构建速度。</li>
+<li><strong>安装 MkDocs 及插件</strong>：安装 <code>mkdocs-material</code> 主题和 <code>mkdocs-rtd-dropdown</code> 插件。</li>
+<li><strong>部署到 GitHub Pages</strong>：使用 <code>mkdocs gh-deploy --force</code> 强制部署到 GitHub Pages。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="步骤-7配置-github-pages">步骤 7：配置 GitHub Pages<a hidden class="anchor" aria-hidden="true" href="#步骤-7配置-github-pages">#</a></h2>
+<ol>
+<li>进入您的 GitHub 仓库页面。</li>
+<li>点击 <strong>Settings（设置）</strong>。</li>
+<li>在左侧菜单中选择 <strong>Pages</strong>。</li>
+<li>在 <strong>Source</strong> 部分，选择 <code>gh-pages</code> 分支（如果 <code>mkdocs gh-deploy</code> 使用的是默认设置），然后点击 <strong>Save</strong>。</li>
+<li>GitHub 将开始部署您的 MkDocs 网站，部署完成后，您可以通过 <code>https://your-username.github.io/your-repo/</code> 访问您的静态网站。</li>
+</ol>
+<h2 id="步骤-8推送更改触发部署">步骤 8：推送更改触发部署<a hidden class="anchor" aria-hidden="true" href="#步骤-8推送更改触发部署">#</a></h2>
+<p>每当您向 <code>main</code> 或 <code>master</code> 分支推送更改时，GitHub Actions 会自动运行 <code>ci.yml</code> 工作流，构建并部署最新的文档到 GitHub Pages。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#f1fa8c">&#34;Update documentation&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="附加提示">附加提示<a hidden class="anchor" aria-hidden="true" href="#附加提示">#</a></h2>
+<ul>
+<li><strong>自定义域名</strong>：如果您有自定义域名，可以在 GitHub Pages 设置中配置。</li>
+<li><strong>持续改进</strong>：根据需要添加更多 MkDocs 插件或自定义主题配置，以增强文档功能和外观。</li>
+<li><strong>安全性</strong>：确保您的仓库是私有的（如果需要），并妥善管理访问权限。</li>
+</ul>
+<p>通过以上步骤，您应该能够成功创建并部署一个使用 MkDocs 的静态网站到 GitHub Pages，并利用 GitHub Actions 自动化部署流程。如果在过程中遇到任何问题，请检查 GitHub Actions 的日志以获取详细的错误信息，便于调试和解决问题。</p>
 
 
   </div>
@@ -135,12 +473,19 @@
   <footer class="post-footer">
     <ul class="post-tags">
     </ul>
+<nav class="paginav">
+  <a class="next" href="http://localhost:1313/zh/posts/build_hugo_and_deploy_with_github/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Build_hugo_and_deploy_with_github</span>
+  </a>
+</nav>
 
 
 <ul class="share-buttons">
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share 测试 on x"
-            href="https://x.com/intent/tweet/?text=%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f&amp;hashtags=">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Test on x"
+            href="https://x.com/intent/tweet/?text=Test&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -148,8 +493,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share 测试 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f&amp;title=%e6%b5%8b%e8%af%95&amp;summary=%e6%b5%8b%e8%af%95&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Test on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f&amp;title=Test&amp;summary=Test&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -157,8 +502,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share 测试 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f&title=%e6%b5%8b%e8%af%95">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Test on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f&title=Test">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -166,7 +511,7 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share 测试 on facebook"
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Test on facebook"
             href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
@@ -175,8 +520,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share 测试 on whatsapp"
-            href="https://api.whatsapp.com/send?text=%e6%b5%8b%e8%af%95%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Test on whatsapp"
+            href="https://api.whatsapp.com/send?text=Test%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -184,8 +529,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share 测试 on telegram"
-            href="https://telegram.me/share/url?text=%e6%b5%8b%e8%af%95&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Test on telegram"
+            href="https://telegram.me/share/url?text=Test&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -193,8 +538,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share 测试 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=%e6%b5%8b%e8%af%95&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Test on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Test&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2ftest%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path

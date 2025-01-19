@@ -6,8 +6,239 @@
     <description>Recent content on DLog</description>
     <generator>Hugo -- 0.141.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Jan 2025 12:33:55 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jan 2025 13:14:54 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>http://localhost:1313/zh/posts/test/</link>
+      <pubDate>Sun, 19 Jan 2025 13:14:54 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/test/</guid>
+      <description>&lt;h1 id=&#34;how-to-make-a-mkdocs&#34;&gt;How to make a mkdocs?&lt;/h1&gt;
+&lt;p&gt;test&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Assume you have already set up your Github homepage.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.mkdocs.org/&#34; 
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   &gt;
+   Mkdocs
+&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;要使用 MkDocs 创建并部署静态网站到 GitHub Pages（即 &lt;code&gt;github.io&lt;/code&gt;），并利用您提供的 &lt;code&gt;ci.yml&lt;/code&gt; 配置 GitHub Actions 进行持续集成和部署，您可以按照以下步骤操作：&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h1 id="how-to-make-a-mkdocs">How to make a mkdocs?</h1>
+<p>test</p>
+<blockquote>
+<p>Assume you have already set up your Github homepage.</p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.mkdocs.org/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Mkdocs
+</a>
+
+</p>
+</blockquote>
+<p>要使用 MkDocs 创建并部署静态网站到 GitHub Pages（即 <code>github.io</code>），并利用您提供的 <code>ci.yml</code> 配置 GitHub Actions 进行持续集成和部署，您可以按照以下步骤操作：</p>
+<h2 id="步骤-1安装-mkdocs-和相关主题">步骤 1：安装 MkDocs 和相关主题</h2>
+<p>首先，确保您的本地环境已安装 Python 和 <code>pip</code>。然后，安装 MkDocs 及所需的主题和插件。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install mkdocs-material mkdocs-rtd-dropdown
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="步骤-2创建-mkdocs-项目">步骤 2：创建 MkDocs 项目</h2>
+<p>在您的项目目录中，初始化一个新的 MkDocs 项目：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdocs new my-project
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> my-project
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这将创建一个基本的 MkDocs 目录结构。</p>
+<h2 id="步骤-3配置-mkdocsyml">步骤 3：配置 <code>mkdocs.yml</code></h2>
+<p>编辑生成的 <code>mkdocs.yml</code> 文件，配置主题和插件。例如：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">site_name</span>: My Project Documentation
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">theme</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">name</span>: <span style="color:#f1fa8c">&#39;material&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">palette</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">primary</span>: <span style="color:#f1fa8c">&#39;blue&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">accent</span>: <span style="color:#f1fa8c">&#39;light blue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">plugins</span>:
+</span></span><span style="display:flex;"><span>  - search
+</span></span><span style="display:flex;"><span>  - rtd-dropdown
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>确保根据您的需求调整 <code>site_name</code>、主题和插件配置。</p>
+<h2 id="步骤-4编写文档内容">步骤 4：编写文档内容</h2>
+<p>在 <code>docs/</code> 目录下编辑或添加 Markdown 文件，以构建您的文档内容。</p>
+<h2 id="步骤-5初始化-git-仓库并推送到-github">步骤 5：初始化 Git 仓库并推送到 GitHub</h2>
+<p>如果您还没有 Git 仓库，请初始化一个并推送到 GitHub：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#f1fa8c">&#34;Initial commit&#34;</span>
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/your-username/your-repo.git
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>请将 <code>your-username</code> 和 <code>your-repo</code> 替换为您的 GitHub 用户名和仓库名称。</p>
+<h2 id="步骤-6创建-github-actions-工作流">步骤 6：创建 GitHub Actions 工作流</h2>
+<p>在您的项目根目录下，创建 <code>.github/workflows/ci.yml</code> 文件，并将以下内容粘贴进去：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">name</span>: ci
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">branches</span>:
+</span></span><span style="display:flex;"><span>      - master 
+</span></span><span style="display:flex;"><span>      - main
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">permissions</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">contents</span>: write
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">runs-on</span>: ubuntu-latest
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">uses</span>: actions/checkout@v4
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">name</span>: Configure Git Credentials
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">run</span>: |<span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">          git config user.name &#34;github-actions[bot]&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">          git config user.email &#34;41898282+github-actions[bot]@users.noreply.github.com&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">uses</span>: actions/setup-python@v5
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">python-version</span>: <span style="color:#f1fa8c">&#39;3.x&#39;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">run</span>: echo &#34;cache_id=$(date --utc &#39;+%V&#39;)&#34; &gt;&gt; $GITHUB_ENV 
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">uses</span>: actions/cache@v4
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">key</span>: mkdocs-material-${{ env.cache_id }}
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">path</span>: .cache
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">restore-keys</span>: |<span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">            mkdocs-material-</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">run</span>: pip install mkdocs-material 
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">run</span>: pip install mkdocs-rtd-dropdown
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">run</span>: mkdocs gh-deploy --force
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="工作流说明">工作流说明：</h3>
+<ol>
+<li><strong>触发条件</strong>：当推送到 <code>master</code> 或 <code>main</code> 分支时触发。</li>
+<li><strong>权限</strong>：授予 <code>contents</code> 写权限以便进行部署。</li>
+<li><strong>作业配置</strong>：
+<ul>
+<li><strong>环境</strong>：使用最新的 Ubuntu 运行环境。</li>
+<li><strong>步骤</strong>：
+<ul>
+<li><strong>检出代码</strong>：使用 <code>actions/checkout@v4</code> 检出仓库代码。</li>
+<li><strong>配置 Git 凭证</strong>：设置 Git 用户名和邮箱，以便 GitHub Actions 可以提交更改。</li>
+<li><strong>设置 Python 环境</strong>：使用 <code>actions/setup-python@v5</code> 设置 Python 3 环境。</li>
+<li><strong>设置缓存</strong>：通过当前的周数作为缓存键的一部分，使用 <code>actions/cache@v4</code> 缓存 <code>.cache</code> 目录，加快后续构建速度。</li>
+<li><strong>安装 MkDocs 及插件</strong>：安装 <code>mkdocs-material</code> 主题和 <code>mkdocs-rtd-dropdown</code> 插件。</li>
+<li><strong>部署到 GitHub Pages</strong>：使用 <code>mkdocs gh-deploy --force</code> 强制部署到 GitHub Pages。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="步骤-7配置-github-pages">步骤 7：配置 GitHub Pages</h2>
+<ol>
+<li>进入您的 GitHub 仓库页面。</li>
+<li>点击 <strong>Settings（设置）</strong>。</li>
+<li>在左侧菜单中选择 <strong>Pages</strong>。</li>
+<li>在 <strong>Source</strong> 部分，选择 <code>gh-pages</code> 分支（如果 <code>mkdocs gh-deploy</code> 使用的是默认设置），然后点击 <strong>Save</strong>。</li>
+<li>GitHub 将开始部署您的 MkDocs 网站，部署完成后，您可以通过 <code>https://your-username.github.io/your-repo/</code> 访问您的静态网站。</li>
+</ol>
+<h2 id="步骤-8推送更改触发部署">步骤 8：推送更改触发部署</h2>
+<p>每当您向 <code>main</code> 或 <code>master</code> 分支推送更改时，GitHub Actions 会自动运行 <code>ci.yml</code> 工作流，构建并部署最新的文档到 GitHub Pages。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#f1fa8c">&#34;Update documentation&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="附加提示">附加提示</h2>
+<ul>
+<li><strong>自定义域名</strong>：如果您有自定义域名，可以在 GitHub Pages 设置中配置。</li>
+<li><strong>持续改进</strong>：根据需要添加更多 MkDocs 插件或自定义主题配置，以增强文档功能和外观。</li>
+<li><strong>安全性</strong>：确保您的仓库是私有的（如果需要），并妥善管理访问权限。</li>
+</ul>
+<p>通过以上步骤，您应该能够成功创建并部署一个使用 MkDocs 的静态网站到 GitHub Pages，并利用 GitHub Actions 自动化部署流程。如果在过程中遇到任何问题，请检查 GitHub Actions 的日志以获取详细的错误信息，便于调试和解决问题。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Build_hugo_and_deploy_with_github</title>
       <link>http://localhost:1313/zh/posts/build_hugo_and_deploy_with_github/</link>
