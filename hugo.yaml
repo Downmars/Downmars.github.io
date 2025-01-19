@@ -1,4 +1,3 @@
-# 基础设置
 baseURL: "https://downmars.github.io/"
 title: "DLog"  # 添加全局标题
 theme: "PaperMod"
@@ -39,7 +38,11 @@ params:
   # 其他功能
   comments: true
   DateFormat: "2006-01-02"  # 修正：使用 Go 的时间格式
-  
+  busuanzi: # 不🧄子-页面统计（https://busuanzi.ibruce.info/）
+    enable: true
+  hideFooter: true  # 禁用默认页脚
+
+  enableGitInfo: true
   # 搜索功能
   fuseOpts:  # 添加：搜索配置
     isCaseSensitive: false
@@ -53,7 +56,28 @@ params:
   socialIcons:
     - name: github
       url: "https://github.com/downmars"
-
+  # 博客网页图片
+  assets:
+    favicon: "blog.png"
+    favicon16x16: "blog.png"
+    favicon32x32: "blog.png"
+    apple_touch_icon: "blog.png"
+    safari_pinned_tab: "blog.png"
+  # 评论设置
+  giscus:
+    repo: "Downmars/Downmars.github.io"
+    repoId: "R_kgDONa-How"
+    category: "Announcements"
+    categoryId: "DIC_kwDONa-Ho84CmJrl"
+    mapping: "pathname"
+    strict: "0"
+    reactionsEnabled: "1"
+    emitMetadata: "0"
+    inputPosition: "bottom"
+    lightTheme: "light"
+    darkTheme: "dark"
+    lang: "zh-CN"
+    crossorigin: "anonymous"
 # 多语言配置
 languages:
   zh:
@@ -82,38 +106,45 @@ languages:
           name: "搜索"
           url: "/search/"
           weight: 3
-
-  en:
-    languageCode: "en-US"
-    languageName: "English"
-    contentDir: "content/en"
-    weight: 2
-    title: "DLog"
-    params:
-      description: "test_description"
-      profileMode:
-        enabled: true
-        title: "DLog"
-        subtitle: "Personal Blog"
-    menu:
-      main:
-        - identifier: posts
-          name: "Posts"
-          url: "/posts/"
-          weight: 1
-        - identifier: archives
-          name: "Archives"
-          url: "/archives/"
-          weight: 2 
-        - identifier: search
-          name: "Search"
-          url: "/search/"
-          weight: 3 
-
+  #
+  # en:
+  #   languageCode: "en-US"
+  #   languageName: "English"
+  #   contentDir: "content/en"
+  #   weight: 2
+  #   title: "DLog"
+  #   params:
+  #     description: "test_description"
+  #     profileMode:
+  #       enabled: true
+  #       title: "DLog"
+  #       subtitle: "Personal Blog"
+  #   menu:
+  #     main:
+  #       - identifier: posts
+  #         name: "Posts"
+  #         url: "/posts/"
+  #         weight: 1
+  #       - identifier: archives
+  #         name: "Archives"
+  #         url: "/archives/"
+  #         weight: 2 
+  #       - identifier: search
+  #         name: "Search"
+  #         url: "/search/"
+  #         weight: 3 
+  #
 pagination:
   disableAliases: false
   pagerSize: 10 
   path: page 
+
+frontmatter:
+  lastmod: ['lastmod', ':git', 'date', 'publishDate']
+
+dateFormat:
+  published: 2006-01-02
+  lastUpdated: 2006-01-02 15:04 MST
 
 # 输出设置
 outputs:

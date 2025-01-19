@@ -22,16 +22,15 @@ Assume you have already set up your Github homepage.
 要使用 MkDocs 创建并部署静态网站到 GitHub Pages（即 github.io），并利用您提供的 ci.yml 配置 GitHub Actions 进行持续集成和部署，您可以按照以下步骤操作：">
 <meta name="author" content="Downmars">
 <link rel="canonical" href="http://localhost:1313/zh/posts/test/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a3e1e8c1a8c35e5225266e4ca49b04459989479e8e6aac45441e28a37286f426.css" integrity="sha256-o&#43;HowajDXlIlJm5MpJsERZmJR56OaqxFRB4oo3KG9CY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.71cce87fbc17a55d6f02a63670678b8ade82e796484256b5d053d5eb06ce4c73.css" integrity="sha256-cczof7wXpV1vAqY2cGeLit6C55ZIQla10FPV6wbOTHM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/blog.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog.png">
+<link rel="mask-icon" href="http://localhost:1313/blog.png">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/test/">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/en/posts/test/">
 <noscript>
     <style>
         #theme-toggle,
@@ -40,7 +39,17 @@ Assume you have already set up your Github homepage.
         }
 
     </style>
-</noscript>
+</noscript><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta name="referrer" content="no-referrer-when-downgrade">
+<style>
+    :root {
+        --footer-height: 80px
+    }
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body class=" dark" id="top">
@@ -76,12 +85,6 @@ Assume you have already set up your Github homepage.
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/en/" title="English"
-                            aria-label="English">En</a>
-                    </li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -111,14 +114,12 @@ Assume you have already set up your Github homepage.
     <h1 class="post-title entry-hint-parent">
       Test
     </h1>
-    <div class="post-meta"><span title='2025-01-19 13:14:54 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;1125 字&nbsp;·&nbsp;Downmars&nbsp;|&nbsp;语言:
-<ul class="i18n_list">
-    <li>
-        <a href="http://localhost:1313/en/posts/test/">En</a>
-    </li>
-</ul>
+    <div class="post-meta"><span title='2025-01-19 13:14:54 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp; <span title='2025-01-19 13:14:54 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;1125 字&nbsp;·&nbsp;Downmars
 
-</div>
+<div class="meta-item">&nbsp·&nbsp
+        Reading times: <span id="busuanzi_value_page_pv">
+      </div>
+    </div>
   </header> <aside id="toc-container" class="toc-container wide">
     <div class="toc">
         <details  open>
@@ -474,6 +475,11 @@ Assume you have already set up your Github homepage.
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
+  <a class="prev" href="http://localhost:1313/zh/posts/hugo_build_1/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Hugo博客搭建_基础 😊</span>
+  </a>
   <a class="next" href="http://localhost:1313/zh/posts/build_hugo_and_deploy_with_github/">
     <span class="title">下一页 »</span>
     <br>
@@ -549,24 +555,97 @@ Assume you have already set up your Github homepage.
     </li>
 </ul>
 
-  </footer>
+  </footer><div id="tw-comment"></div>
+<script>
+    
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "light" : "dark";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "Downmars\/Downmars.github.io",
+            "data-repo-id": "R_kgDONa-How",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDONa-Ho84CmJrl",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
 </article>
     </main>
     
-<footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/zh/">DLog</a></span> · 
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
+<section class="totalcount">
+    
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    发表了0篇文章 · 
+    总计2.34k字
+</section>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+<footer class="footer">
+ 
+  <span>&copy; 2025 <a href="http://localhost:1313/zh/">DLog</a></span>
+ 
+  <span>
+    Powered by
+    <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+    <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+  </span>
+    <div>
+  <span id="busuanzi_container_site_pv">
+    All visitor <span id="busuanzi_value_site_pv"></span> times.
+  </span>
+</div>
+ </footer>
+
+
 
 <script>
     let menu = document.getElementById('menu')

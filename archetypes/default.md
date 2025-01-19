@@ -16,11 +16,11 @@ description: "" # SEO 搜索优化
 summary: ""    # 列表页展示的简短描述
 
 # 可选：权重（用于置顶文章）
-# weight: 1
+weight: null
 
 # 可选：封面图片
-# cover:
-#     image: ""
-#     alt: ""
-#     caption: ""
+cover:
+    image: ""
+    alt: ""
+    caption: ""
 ---
