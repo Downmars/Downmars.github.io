@@ -101,7 +101,12 @@ git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/Pape
 之后在hugo.yaml中添加新的一行启用新主题：
 
 ```yaml
-theme = "PaperMod"
+theme: "PaperMod"
+```
+同时为了后续的部署到`Github`我们需要在`config.toml`中添加`baseURL`配置：
+
+```yaml
+baseURL: "https://downmars.github.io“
 ```
 
 ## 新建博客
@@ -120,6 +125,71 @@ draft: true
 ```
 这个命令会在`content`目录下创建`posts`目录，并在生成`posts/test.md`，博文使用`Markdown`语法完成，我们用默认模板生成的博客是草稿状态，可以将`draft`设置为`false`，这样文章就可以发表了。
 
-我们接下来就可以使用` hugo server --disableFastRender `进行本地预览了，通过访问[ http://localhost:1313/]( http://localhost:1313/)可以在本地预览我们创建的博客了。
+我们接下来就可以使用` hugo server `进行本地预览了，通过访问[ http://localhost:1313/]( http://localhost:1313/)可以在本地预览我们创建的博客了。
 
+```bash
+hugo server --disableFastRender 
+```
+但是我们现在只能够本地预览，如果想要发布到`Github Pages`，还需要借助`Action`来完成。
+
+# Github Action自动化部署
+
+`Github Pages` 本质上是一个静态网站托管系统，你可以使用它为你的每一个仓库制作一个静态网页入口，我可以借助`Action`来完成部署界面。
+
+## 创建Github仓库 
+- `Your respository/New/Create a new repository` 创建Github仓库
+- 此处`Repository name`一定得是`[你的github账号名].github.io`，如`Downmars.github.io`，然后`[Create Repository]`即可。
+
+## 创建ci.yml文件 
+`Github`进行自动化部署需要一个`ci.yml`文件，位于`.github/workflows/ci.yaml`，步骤如下：
+```bash
+mkdir .github/workflows
+touch .github/workflows/ci.yml
+```
+
+```yaml
+name: Deploy Hugo site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:  # 添加这个权限配置
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用默认令牌
+          publish_dir: ./public
+```
+
+## 使用gh-pages部署网页
+```bash
+git remote add origin https://github.com/jianzhnie/jianzhnie.github.io.git # 将本地目录链接到远程服务器的代码仓库
+git add .
+git commit -m "WOW！"
+git push origin main
+```
+此时，我们的博客就已经部署到了`Github Pages`上了，可以通过`https://[你的github账号名].github.io`来访问你的博客了。
+
+> 我一开始创建的时候会在我的博客网址看不见我的网页，后来查询之后得知需要在`Downmars.github.io/Settings/pages/Branch` 将分支切换为`gh-pages`即可
 
