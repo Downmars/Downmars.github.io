@@ -14,7 +14,11 @@ Assume you have already set up your Github homepage.
 
 
 
-   Mkdocs
+   Mkdocs↗
+
+
+
+
 
 
 
@@ -22,12 +26,12 @@ Assume you have already set up your Github homepage.
 要使用 MkDocs 创建并部署静态网站到 GitHub Pages（即 github.io），并利用您提供的 ci.yml 配置 GitHub Actions 进行持续集成和部署，您可以按照以下步骤操作：">
 <meta name="author" content="Downmars">
 <link rel="canonical" href="http://localhost:1313/zh/posts/test/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.71cce87fbc17a55d6f02a63670678b8ade82e796484256b5d053d5eb06ce4c73.css" integrity="sha256-cczof7wXpV1vAqY2cGeLit6C55ZIQla10FPV6wbOTHM=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/blog.png">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/blog.png">
-<link rel="mask-icon" href="http://localhost:1313/blog.png">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.ac95806281c2687d10559ec0cc944a765958da6df782bcf7c0893ffae8a2d403.css" integrity="sha256-rJWAYoHCaH0QVZ7AzJRKdllY2m33grz3wIk/&#43;uii1AM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/images/blog.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/images/blog.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/images/blog.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/images/blog.png">
+<link rel="mask-icon" href="http://localhost:1313/images/blog.png">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/test/">
@@ -114,7 +118,7 @@ Assume you have already set up your Github homepage.
     <h1 class="post-title entry-hint-parent">
       Test
     </h1>
-    <div class="post-meta"><span title='2025-01-19 13:14:54 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp; <span title='2025-01-19 13:14:54 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;1125 字&nbsp;·&nbsp;Downmars
+    <div class="post-meta"><span title='2025-01-19 13:14:54 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp; <span title='2025-01-19 13:14:54 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;1131 字&nbsp;·&nbsp;Downmars
 
 <div class="meta-item">&nbsp·&nbsp
         Reading times: <span id="busuanzi_value_page_pv">
@@ -164,6 +168,91 @@ Assume you have already set up your Github homepage.
 <script>
     let activeElement;
     let elements;
+    let headerCounters = {};
+
+    
+    function resetHeaderCounters() {
+        headerCounters = {};
+    }
+
+    
+    function getHeaderNumber(element, headerLevel) {
+        
+        let prevElements = Array.from(document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]'));
+        let currentIndex = prevElements.indexOf(element);
+        let numbers = [];
+        
+        
+        Object.keys(headerCounters).forEach(level => {
+            if (parseInt(level) > headerLevel) {
+                delete headerCounters[headerLevel];
+            }
+        });
+        
+        
+        for (let i = 0; i <= currentIndex; i++) {
+            let currentElement = prevElements[i];
+            let currentLevel = parseInt(currentElement.tagName.substring(1));
+            
+            if (currentLevel <= headerLevel) {
+                
+                if (!headerCounters[currentLevel]) {
+                    headerCounters[currentLevel] = 1;
+                } else if (currentElement === element) {
+                    headerCounters[currentLevel]++;
+                }
+                
+                
+                if (currentElement === element) {
+                    for (let level = 1; level <= currentLevel; level++) {
+                        if (headerCounters[level]) {
+                            numbers.push(headerCounters[level]);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return numbers.join('.');
+    }
+
+    
+    function updateTocDisplay(element, tocLink) {
+        const headerLevel = parseInt(element.tagName.substring(1));
+        const currentNumber = getHeaderNumber(element, headerLevel);
+        
+        
+        let linkText = tocLink.textContent;
+        linkText = linkText.replace(/^\d+(\.\d+)*\s+/, '');
+        
+        
+        tocLink.textContent = `${currentNumber} ${linkText}`;
+    }
+
+    
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+
+    
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+        const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+        const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+        const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+    
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
     
     document.addEventListener('DOMContentLoaded', function (event) {
         checkTocPosition();
@@ -177,33 +266,44 @@ Assume you have already set up your Github homepage.
         }
     
         
+        if (elements && elements.length > 0) {
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                
+                if (tocLink) {
+                    updateTocDisplay(element, tocLink);
+                }
+            });
+        }
+
+        
         const topLink = document.getElementById('top-link');
         if (topLink) {
             topLink.addEventListener('click', (event) => {
-                
                 event.preventDefault();
-    
-                
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
     }, false);
+
     
     window.addEventListener('resize', function(event) {
         checkTocPosition();
     }, false);
+
     
     window.addEventListener('scroll', () => {
-        
         const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    
-        
+
         if (scrollPosition === 0) {
             return;
         }
-    
-        
+
         if (elements && elements.length > 0) {
+            
+            resetHeaderCounters();
+            
             
             activeElement = Array.from(elements).find((element) => {
                 if ((getOffsetTop(element) - scrollPosition) > 0 && 
@@ -211,54 +311,37 @@ Assume you have already set up your Github homepage.
                     return element;
                 }
             }) || activeElement;
-    
+
+            
             elements.forEach(element => {
                 const id = encodeURI(element.getAttribute('id')).toLowerCase();
                 const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
-                if (element === activeElement){
-                    tocLink.classList.add('active');
-    
+                
+                if (tocLink) {
+                    updateTocDisplay(element, tocLink);
                     
-                    const tocContainer = document.querySelector('.toc .inner');
-                    const linkOffsetTop = tocLink.offsetTop;
-                    const containerHeight = tocContainer.clientHeight;
-                    const linkHeight = tocLink.clientHeight;
+                    if (element === activeElement) {
+                        tocLink.classList.add('active');
+                        tocLink.style.textDecoration = "underline";
+                        
+                        
+                        const tocContainer = document.querySelector('.toc .inner');
+                        const linkOffsetTop = tocLink.offsetTop;
+                        const containerHeight = tocContainer.clientHeight;
+                        const linkHeight = tocLink.clientHeight;
     
-                    
-                    const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
-                    tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
-                } else {
-                    tocLink.classList.remove('active');
+                        
+                        const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
+                        tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                    } else {
+                        tocLink.classList.remove('active');
+                        tocLink.style.textDecoration = "none";
+                    }
                 }
             });
         }
     }, false);
-    
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-    
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-    
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-    
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-    
 </script>
-
 
   <div class="post-content"><h1 id="how-to-make-a-mkdocs">How to make a mkdocs?<a hidden class="anchor" aria-hidden="true" href="#how-to-make-a-mkdocs">#</a></h1>
 <p>test</p>
@@ -271,8 +354,12 @@ Assume you have already set up your Github homepage.
     
        target="_blank" rel="noopener" 
    >
-   Mkdocs
-</a>
+   Mkdocs<span class="external-link">↗</span></a>
+
+
+
+
+
 
 </p>
 </blockquote>
@@ -480,11 +567,6 @@ Assume you have already set up your Github homepage.
     <br>
     <span>Hugo博客搭建_基础 😊</span>
   </a>
-  <a class="next" href="http://localhost:1313/zh/posts/build_hugo_and_deploy_with_github/">
-    <span class="title">下一页 »</span>
-    <br>
-    <span>Build_hugo_and_deploy_with_github</span>
-  </a>
 </nav>
 
 
@@ -622,7 +704,7 @@ Assume you have already set up your Github homepage.
         
     
     发表了0篇文章 · 
-    总计3.05k字
+    总计6.80k字
 </section>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">

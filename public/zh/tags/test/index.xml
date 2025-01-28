@@ -4,15 +4,15 @@
     <title>Test on DLog</title>
     <link>http://localhost:1313/zh/tags/test/</link>
     <description>Recent content in Test on DLog</description>
-    <generator>Hugo -- 0.141.0</generator>
+    <generator>Hugo -- 0.142.0</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 19 Jan 2025 20:05:13 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/tags/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo博客搭建_基础 😊</title>
-      <link>http://localhost:1313/zh/posts/hugo_build_1/</link>
+      <link>http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/</link>
       <pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/hugo_build_1/</guid>
+      <guid>http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/</guid>
       <description>&lt;hr&gt;
 &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。&lt;/p&gt;</description>
@@ -28,8 +28,12 @@
     
        target="_blank" rel="noopener" 
    >
-   Hugo
-</a>
+   Hugo<span class="external-link">↗</span></a>
+
+
+
+
+
 
 </li>
 <li><a href="https://github.com" 
@@ -37,8 +41,12 @@
     
        target="_blank" rel="noopener" 
    >
-   Github
-</a>
+   Github<span class="external-link">↗</span></a>
+
+
+
+
+
 
 </li>
 </ul>
@@ -142,8 +150,12 @@
     
        target="_blank" rel="noopener" 
    >
-   PaperMod
-</a>
+   PaperMod<span class="external-link">↗</span></a>
+
+
+
+
+
 
 ，这是一个Star比较高的主题，简约的并且功能较为丰富。当然，你也可以自己选择主题：</p>
 <ul>
@@ -152,8 +164,12 @@
     
        target="_blank" rel="noopener" 
    >
-   https://themes.gohugo.io/
-</a>
+   https://themes.gohugo.io/<span class="external-link">↗</span></a>
+
+
+
+
+
 
 </li>
 </ul>
@@ -219,8 +235,12 @@
     
        target="_blank" rel="noopener" 
    >
-    http://localhost:1313/
-</a>
+    http://localhost:1313/<span class="external-link">↗</span></a>
+
+
+
+
+
 
 可以在本地预览我们创建的博客了。</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">

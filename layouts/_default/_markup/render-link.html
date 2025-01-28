@@ -1,8 +1,16 @@
 <a href="{{ .Destination | safeURL }}" 
-   {{ with .Title}} title="{{ . }}"{{ end }}
+   {{ with .Title }} title="{{ . }}"{{ end }}
    {{ if strings.HasPrefix .Destination "http" }} 
        target="_blank" rel="noopener" 
    {{ end }}>
    {{ .Text | safeHTML }}
+   {{- if strings.HasPrefix .Destination "http" -}}
+       <span class="external-link">↗</span>
+   {{- end -}}
 </a>
+
+<!-- {{- if (strings.HasPrefix .Destination "http") }} -->
+<!--    <img src="/images/external-link.png" class="external-icon"> -->
+<!-- {{ end }} -->
+
 

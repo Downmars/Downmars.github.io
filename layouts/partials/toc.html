@@ -76,7 +76,6 @@
                         <a href="#{{- $cleanedID -}}" aria-label="{{- $header | plainify -}}">{{- $header | safeHTML -}}</a>
                         {{- end -}}
                         {{- end -}}
-                        <!-- {{- $firstHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers 0) 1) 0)) -}} -->
                         {{- $firstHeaderLevel := $largest }}
                         {{- $lastHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers (sub (len $headers) 1)) 1) 0)) }}
                     </li>
@@ -96,90 +95,68 @@
 <script>
     let activeElement;
     let elements;
-    
-    document.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
-    
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-        if (elements.length > 0) {
-            // Make the first header active
-            activeElement = elements[0];
-            const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-            document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-        }
-    
-        // Add event listener for the "back to top" link
-        const topLink = document.getElementById('top-link');
-        if (topLink) {
-            topLink.addEventListener('click', (event) => {
-                // Prevent the default action
-                event.preventDefault();
-    
-                // Smooth scroll to the top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-    }, false);
-    
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
-    
-    window.addEventListener('scroll', () => {
-        // Get the current scroll position
-        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    
-        // Check if the scroll position is at the top of the page
-        if (scrollPosition === 0) {
-            return;
-        }
-    
-        // Ensure elements is a valid NodeList
-        if (elements && elements.length > 0) {
-            // Check if there is an object in the top half of the screen or keep the last item active
-            activeElement = Array.from(elements).find((element) => {
-                if ((getOffsetTop(element) - scrollPosition) > 0 && 
-                    (getOffsetTop(element) - scrollPosition) < window.innerHeight / 2) {
-                    return element;
-                }
-            }) || activeElement;
-    
-            elements.forEach(element => {
-                const id = encodeURI(element.getAttribute('id')).toLowerCase();
-                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
-                if (element === activeElement){
-                    tocLink.classList.add('active');
-    
-                    // Ensure the active element is in view within the .inner container
-                    const tocContainer = document.querySelector('.toc .inner');
-                    const linkOffsetTop = tocLink.offsetTop;
-                    const containerHeight = tocContainer.clientHeight;
-                    const linkHeight = tocLink.clientHeight;
-    
-                    // Calculate the scroll position to center the active link
-                    const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
-                    tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
-                } else {
-                    tocLink.classList.remove('active');
-                }
-            });
-        }
-    }, false);
-    
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-    
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-    
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
+    let headerCounters = {};
+
+    // 重置所有计数器
+    function resetHeaderCounters() {
+        headerCounters = {};
     }
-    
+
+    // 获取标题的自动编号
+    function getHeaderNumber(element, headerLevel) {
+        // 获取之前的所有标题元素
+        let prevElements = Array.from(document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]'));
+        let currentIndex = prevElements.indexOf(element);
+        let numbers = [];
+        
+        // 重置当前级别之后的计数器
+        Object.keys(headerCounters).forEach(level => {
+            if (parseInt(level) > headerLevel) {
+                delete headerCounters[headerLevel];
+            }
+        });
+        
+        // 遍历到当前元素为止的所有标题
+        for (let i = 0; i <= currentIndex; i++) {
+            let currentElement = prevElements[i];
+            let currentLevel = parseInt(currentElement.tagName.substring(1));
+            
+            if (currentLevel <= headerLevel) {
+                // 更新计数器
+                if (!headerCounters[currentLevel]) {
+                    headerCounters[currentLevel] = 1;
+                } else if (currentElement === element) {
+                    headerCounters[currentLevel]++;
+                }
+                
+                // 构建当前层级的编号
+                if (currentElement === element) {
+                    for (let level = 1; level <= currentLevel; level++) {
+                        if (headerCounters[level]) {
+                            numbers.push(headerCounters[level]);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return numbers.join('.');
+    }
+
+    // 更新目录项的显示
+    function updateTocDisplay(element, tocLink) {
+        const headerLevel = parseInt(element.tagName.substring(1));
+        const currentNumber = getHeaderNumber(element, headerLevel);
+        
+        // 移除之前可能存在的编号
+        let linkText = tocLink.textContent;
+        linkText = linkText.replace(/^\d+(\.\d+)*\s+/, '');
+        
+        // 添加新的编号
+        tocLink.textContent = `${currentNumber} ${linkText}`;
+    }
+
+    // 获取元素的顶部偏移
     function getOffsetTop(element) {
         if (!element.getClientRects().length) {
             return 0;
@@ -188,7 +165,108 @@
         let win = element.ownerDocument.defaultView;
         return rect.top + win.pageYOffset;   
     }
+
+    // 检查TOC位置
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+        const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+        const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+        const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
     
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    // 初始化时的处理
+    document.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+    
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        if (elements.length > 0) {
+            // 设置第一个标题为活动状态
+            activeElement = elements[0];
+            const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+            document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+        }
+    
+        // 初始化所有标题的编号
+        if (elements && elements.length > 0) {
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                
+                if (tocLink) {
+                    updateTocDisplay(element, tocLink);
+                }
+            });
+        }
+
+        // 添加返回顶部链接的事件监听
+        const topLink = document.getElementById('top-link');
+        if (topLink) {
+            topLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }, false);
+
+    // 窗口大小改变时的处理
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    // 滚动时的处理
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollPosition === 0) {
+            return;
+        }
+
+        if (elements && elements.length > 0) {
+            // 重置计数器
+            resetHeaderCounters();
+            
+            // 查找当前可见的标题
+            activeElement = Array.from(elements).find((element) => {
+                if ((getOffsetTop(element) - scrollPosition) > 0 && 
+                    (getOffsetTop(element) - scrollPosition) < window.innerHeight / 2) {
+                    return element;
+                }
+            }) || activeElement;
+
+            // 更新所有目录项的显示
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                
+                if (tocLink) {
+                    updateTocDisplay(element, tocLink);
+                    
+                    if (element === activeElement) {
+                        tocLink.classList.add('active');
+                        tocLink.style.textDecoration = "underline";
+                        
+                        // 确保当前激活的标题在目录中可见
+                        const tocContainer = document.querySelector('.toc .inner');
+                        const linkOffsetTop = tocLink.offsetTop;
+                        const containerHeight = tocContainer.clientHeight;
+                        const linkHeight = tocLink.clientHeight;
+    
+                        // 计算滚动位置，将当前目录项居中显示
+                        const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
+                        tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                    } else {
+                        tocLink.classList.remove('active');
+                        tocLink.style.textDecoration = "none";
+                    }
+                }
+            });
+        }
+    }, false);
 </script>
 {{- end }}
-<!-- 目录侧边栏 -->
