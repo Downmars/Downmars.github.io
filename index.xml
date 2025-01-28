@@ -1,19 +1,82 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DLog</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on DLog</description>
-    <generator>Hugo -- 0.141.0</generator>
-    <language>en-US</language>
-    <lastBuildDate>Fri, 17 Jan 2025 22:38:20 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <title></title>
+    <link>//localhost:1313/</link>
+    <description>Recent content on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 20 Jan 2025 20:42:23 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo博客搭建_配置 🚀</title>
+      <link>//localhost:1313/zh/posts/hugo_build_2/</link>
+      <pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate>
+      <guid>//localhost:1313/zh/posts/hugo_build_2/</guid>
+      <description>&lt;p&gt;在上一篇文章“&lt;a href=&#34;../hugo_build_1&#34;&gt;Hugo博客搭建_基础 😊&lt;/a&gt;”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hugo博客搭建_基础 😊</title>
+      <link>//localhost:1313/zh/posts/hugo_build_1/</link>
+      <pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate>
+      <guid>//localhost:1313/zh/posts/hugo_build_1/</guid>
+      <description>&lt;hr&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;p&gt;以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;p&gt;我最近也在将日常的工作娱乐环境转向linux，所以说选择了archlinux作为我的安装环境，之后应该会出一系列我的archlinux的配置。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;p&gt;本文涉及环境以及工具的网站：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;p&gt;我是用的是archlinux，所以直接用pacman安装：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -S hugo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完之后，可以通过以下命令查看版本：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo version&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;p&gt;通过上述命令安装hugo程序后，可以在选定的目录下通过&lt;code&gt;hugo new site $YOUR_SITE_NAME&lt;/code&gt;创建你的博客目录：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;如果不特殊申明，本文接下来的命令行操作都是在&lt;code&gt;$YOUR_SITE_NAME&lt;/code&gt;目录下进行的。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;myArch% hugo new site DHugo                      &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Congratulations! Your new Hugo site was created in /home/dm/Test/DHugo.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Just a few more steps...&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1. Change the current directory to /home/dm/Test/DHugo.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2. Create or install a theme:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   - Create a new theme with the command &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   - Or, install a theme from https://themes.gohugo.io/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3. Edit hugo.toml, setting the &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;theme&amp;#34;&lt;/span&gt; property to the theme name.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;4. Create new content with the command &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hugo new content &amp;lt;SECTIONNAME&amp;gt;/&amp;lt;FILENAME&amp;gt;.&amp;lt;FORMAT&amp;gt;&amp;#34;&lt;/span&gt;.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;5. Start the embedded web server with the command &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hugo server --buildDrafts&amp;#34;&lt;/span&gt;.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;See documentation at https://gohugo.io/.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以使用&lt;code&gt;tree&lt;/code&gt;指令对我们创建的博客目录进行查看&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Test</title>
-      <link>http://localhost:1313/posts/test/</link>
-      <pubDate>Fri, 17 Jan 2025 22:38:20 +0800</pubDate>
-      <guid>http://localhost:1313/posts/test/</guid>
+      <link>//localhost:1313/zh/posts/test/</link>
+      <pubDate>Sun, 19 Jan 2025 13:14:54 +0800</pubDate>
+      <guid>//localhost:1313/zh/posts/test/</guid>
+      <description>&lt;p&gt;test&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Assume you have already set up your Github homepage.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.mkdocs.org/&#34;&gt;Mkdocs&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;要使用 MkDocs 创建并部署静态网站到 GitHub Pages（即 &lt;code&gt;github.io&lt;/code&gt;），并利用您提供的 &lt;code&gt;ci.yml&lt;/code&gt; 配置 GitHub Actions 进行持续集成和部署，您可以按照以下步骤操作：&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;p&gt;首先，确保您的本地环境已安装 Python 和 &lt;code&gt;pip&lt;/code&gt;。然后，安装 MkDocs 及所需的主题和插件。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install mkdocs-material mkdocs-rtd-dropdown&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;p&gt;在您的项目目录中，初始化一个新的 MkDocs 项目：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdocs new my-project&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd my-project&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这将创建一个基本的 MkDocs 目录结构。&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;p&gt;编辑生成的 &lt;code&gt;mkdocs.yml&lt;/code&gt; 文件，配置主题和插件。例如：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;site_name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;My Project Documentation&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;theme&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;material&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;palette&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;primary&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;accent&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;light blue&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;plugins&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#ae81ff&#34;&gt;search&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#ae81ff&#34;&gt;rtd-dropdown&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;确保根据您的需求调整 &lt;code&gt;site_name&lt;/code&gt;、主题和插件配置。&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;p&gt;在 &lt;code&gt;docs/&lt;/code&gt; 目录下编辑或添加 Markdown 文件，以构建您的文档内容。&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;p&gt;如果您还没有 Git 仓库，请初始化一个并推送到 GitHub：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Test</title>
+      <link>//localhost:1313/en/posts/test/</link>
+      <pubDate>Sun, 19 Jan 2025 13:14:47 +0800</pubDate>
+      <guid>//localhost:1313/en/posts/test/</guid>
       <description></description>
+    </item>
+    <item>
+      <title>Build_hugo_and_deploy_with_github</title>
+      <link>//localhost:1313/en/posts/build_hugo_and_deploy_with_github/</link>
+      <pubDate>Sun, 19 Jan 2025 12:34:05 +0800</pubDate>
+      <guid>//localhost:1313/en/posts/build_hugo_and_deploy_with_github/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Build_hugo_and_deploy_with_github</title>
+      <link>//localhost:1313/zh/posts/build_hugo_and_deploy_with_github/</link>
+      <pubDate>Sun, 19 Jan 2025 12:33:55 +0800</pubDate>
+      <guid>//localhost:1313/zh/posts/build_hugo_and_deploy_with_github/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>⏱ Archives</title>
+      <link>//localhost:1313/en/archives/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/archives/archives/</guid>
+      <description>archives</description>
+    </item>
+    <item>
+      <title>⏱ 时间轴</title>
+      <link>//localhost:1313/zh/archives/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/zh/archives/archives/</guid>
+      <description>archives</description>
+    </item>
+    <item>
+      <title>Search</title>
+      <link>//localhost:1313/en/search/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/search/search/</guid>
+      <description>search</description>
+    </item>
+    <item>
+      <title>搜索</title>
+      <link>//localhost:1313/zh/search/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/zh/search/search/</guid>
+      <description>search</description>
     </item>
   </channel>
 </rss>

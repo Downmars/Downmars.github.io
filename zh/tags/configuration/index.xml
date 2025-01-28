@@ -1,0 +1,1371 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Configuration on DLog</title><link>https://downmars.github.io/zh/tags/configuration/</link><description>Recent content in Configuration on DLog</description><generator>Hugo -- 0.142.0</generator><language>zh-CN</language><lastBuildDate>Mon, 20 Jan 2025 20:42:23 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/configuration/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_配置 🚀</title><link>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</link><pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>在上一篇文章“&lt;a href="../hugo_build_1"
+>
+Hugo博客搭建_基础 😊&lt;/a>
+”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。&lt;/p>
+&lt;h1 id="基础配置文件">基础配置文件&lt;/h1>
+&lt;p>我们曾经在&lt;code>hugo.yaml&lt;/code>中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：&lt;/p></description><content:encoded><![CDATA[<h1 id="前言">前言</h1>
+<p>在上一篇文章“<a href="../hugo_build_1" 
+   
+   >
+   Hugo博客搭建_基础 😊</a>
+
+
+
+
+”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。</p>
+<h1 id="基础配置文件">基础配置文件</h1>
+<p>我们曾经在<code>hugo.yaml</code>中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">85
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># Basic Configuration (基础配置)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">baseURL</span>: <span style="color:#f1fa8c">&#34;&#34;</span>               <span style="color:#6272a4"># Site URL (网站 URL)(e.g. https://downmars.github.io/)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">title</span>: <span style="color:#f1fa8c">&#34;&#34;</span>                <span style="color:#6272a4"># Site title (网站标题)(e.g. DLog)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">theme</span>: <span style="color:#f1fa8c">&#34;&#34;</span>                <span style="color:#6272a4"># Theme name (主题名称)(e.g. PaperMod, in /themes/)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Feature Toggles (功能开关)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">enableEmoji</span>: <span style="color:#ff79c6">true</span>         <span style="color:#6272a4"># Enable emoji support (启用表情支持)(e.g. https://gohugo.io/quick-reference/emojis/#smileys--emotion)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">enableRobotsTXT</span>: <span style="color:#ff79c6">true</span>     <span style="color:#6272a4"># Enable search engine support (启用搜索引擎支持)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">hasCJKLanguage</span>: <span style="color:#ff79c6">true</span>      <span style="color:#6272a4"># Enable CJK language support (启用中日韩语言支持)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">buildDrafts</span>: <span style="color:#ff79c6">false</span>        <span style="color:#6272a4"># Build draft posts (是否构建草稿文章)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">buildFuture</span>: <span style="color:#ff79c6">false</span>        <span style="color:#6272a4"># Build future posts (是否构建未来日期文章) </span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">buildExpired</span>: <span style="color:#ff79c6">false</span>       <span style="color:#6272a4"># Build expired posts (是否构建过期文章)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Parameters Configuration (参数配置)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">params</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4"># Theme Settings (主题设置)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">defaultTheme</span>: dark      <span style="color:#6272a4"># Default theme mode (默认主题模式)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">disableThemeToggle</span>: <span style="color:#ff79c6">false</span> <span style="color:#6272a4"># Allow theme switching (允许主题切换)</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4"># Display Features (显示功能)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">ShowShareButtons</span>: <span style="color:#ff79c6">true</span>    <span style="color:#6272a4"># Show social share buttons (显示分享按钮)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">ShowCodeCopyButtons</span>: <span style="color:#ff79c6">true</span> <span style="color:#6272a4"># Show code copy buttons (显示代码复制按钮)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">ShowReadingTime</span>: <span style="color:#ff79c6">true</span>    <span style="color:#6272a4"># Show reading time estimate (显示阅读时间)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">ShowWordCount</span>: <span style="color:#ff79c6">true</span>      <span style="color:#6272a4"># Show word count (显示字数统计)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">ShowPostNavLinks</span>: <span style="color:#ff79c6">true</span>   <span style="color:#6272a4"># Show post navigation (显示文章导航)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">ShowBreadCrumbs</span>: <span style="color:#ff79c6">true</span>    <span style="color:#6272a4"># Show breadcrumb navigation (显示面包屑导航)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">ShowToc</span>: <span style="color:#ff79c6">true</span>           <span style="color:#6272a4"># Show table of contents (显示目录)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">TocOpen</span>: <span style="color:#ff79c6">true</span>          <span style="color:#6272a4"># TOC expanded by default (目录默认展开)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#6272a4"># Comment System (评论系统)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">comments</span>: <span style="color:#ff79c6">true</span>          <span style="color:#6272a4"># Enable comments (启用评论)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">giscus</span>:                <span style="color:#6272a4"># Giscus configuration (Giscus 配置)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">repo</span>: <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">repoId</span>: <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">category</span>: <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">categoryId</span>: <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">mapping</span>: <span style="color:#f1fa8c">&#34;pathname&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">strict</span>: <span style="color:#f1fa8c">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">reactionsEnabled</span>: <span style="color:#f1fa8c">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">emitMetadata</span>: <span style="color:#f1fa8c">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">inputPosition</span>: <span style="color:#f1fa8c">&#34;bottom&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lightTheme</span>: <span style="color:#f1fa8c">&#34;light&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">darkTheme</span>: <span style="color:#f1fa8c">&#34;dark&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lang</span>: <span style="color:#f1fa8c">&#34;zh-CN&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">crossorigin</span>: <span style="color:#f1fa8c">&#34;anonymous&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4"># Assets Files (资源文件)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">assets</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">favicon</span>: <span style="color:#f1fa8c">&#34;&#34;</span>          <span style="color:#6272a4"># Site favicon (网站图标)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">favicon16x16</span>: <span style="color:#f1fa8c">&#34;&#34;</span>     <span style="color:#6272a4"># Small favicon (小图标)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">favicon32x32</span>: <span style="color:#f1fa8c">&#34;&#34;</span>     <span style="color:#6272a4"># Medium favicon (中图标)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">apple_touch_icon</span>: <span style="color:#f1fa8c">&#34;&#34;</span> <span style="color:#6272a4"># iOS icon (iOS 图标)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">safari_pinned_tab</span>: <span style="color:#f1fa8c">&#34;&#34;</span> <span style="color:#6272a4"># Safari icon (Safari 图标)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Multilingual Support (多语言支持)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">languages</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">zh</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">languageCode</span>: <span style="color:#f1fa8c">&#34;zh-CN&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">languageName</span>: <span style="color:#f1fa8c">&#34;简体中文&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">contentDir</span>: <span style="color:#f1fa8c">&#34;content/zh&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">weight</span>: <span style="color:#bd93f9">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">menu</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">main</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ff79c6">identifier</span>: posts
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">name</span>: <span style="color:#f1fa8c">&#34;Posts&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">url</span>: <span style="color:#f1fa8c">&#34;/posts/&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">weight</span>: <span style="color:#bd93f9">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Output Settings (输出设置)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">outputs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">home</span>:
+</span></span><span style="display:flex;"><span>    - HTML
+</span></span><span style="display:flex;"><span>    - RSS
+</span></span><span style="display:flex;"><span>    - JSON               <span style="color:#6272a4"># Required for search (搜索功能需要)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Rendering Configuration (渲染配置)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">markup</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">goldmark</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">renderer</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">unsafe</span>: <span style="color:#ff79c6">true</span>      <span style="color:#6272a4"># Allow HTML in markdown (允许 Markdown 中的 HTML)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">highlight</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">codeFences</span>: <span style="color:#ff79c6">true</span>    <span style="color:#6272a4"># Enable code highlighting (启用代码高亮)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">guessSyntax</span>: <span style="color:#ff79c6">true</span>   <span style="color:#6272a4"># Guess code language (猜测代码语言)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lineNos</span>: <span style="color:#ff79c6">true</span>      <span style="color:#6272a4"># Show line numbers (显示行号)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">style</span>: dracula     <span style="color:#6272a4"># Code highlight theme (代码高亮主题)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="基础配置">基础配置</h2>
+<h2 id="功能开关">功能开关</h2>
+<h3 id="表情支持">表情支持</h3>
+<p>通过启用此功能，我们能够从 Github Emoji API 和 Unicode 完整表情符号列表中读取数据。博主显出极高兴的样子，将两个指头的敲着键盘，点头说，“对呀对呀！……表情有两样写法，你知道么？”</p>
+<p>Shortcode: <code>:drooling_face:</code>&#x1f924;</p>
+<p>Unicode: <code>&amp;#x1F924</code>🤤</p>
+<p>关于对应的表情和文档可以查询：</p>
+<ul>
+<li><a href="https://gohugo.io/quick-reference/emojis/#smileys--emotion" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   shortcode<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</li>
+<li><a href="https://www.unicode.org/emoji/charts/emoji-list.html" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Unicode<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</li>
+</ul>
+<h2 id="参数配置">参数配置</h2>
+<h3 id="目录配置">目录配置</h3>
+<p>对于自带的目录，只显示在文章最上面，既不能让读者随时掌握到阅读进度，也不够优雅，所以我在参考了<a href="https://www.zhouxin.space/logs/introduce-side-toc-and-reading-percentage-to-papermod/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   在PaperMod中引入侧边目录和阅读进度显示<span class="external-link">↗</span></a>
+
+
+
+
+
+
+基础上做了一些改动</p>
+<ul>
+<li>自动编号</li>
+<li>当前浏览章节下划线显示
+创建 <code>layout/partials/toc.html</code> ,</li>
+</ul>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">125
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">126
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">127
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">128
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">129
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">130
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">131
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">132
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">133
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">134
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">135
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">136
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">137
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">138
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">139
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">140
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">141
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">142
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">143
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">144
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">145
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">146
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">147
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">148
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">149
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">150
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">151
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">152
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">153
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">154
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">155
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">156
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">157
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">158
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">159
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">160
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">161
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">162
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">163
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">164
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">165
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">166
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">167
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">168
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">169
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">170
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">171
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">172
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">173
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">174
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">175
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">176
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">177
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">178
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">179
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">180
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">181
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">182
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">183
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">184
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">185
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">186
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">187
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">188
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">189
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">190
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">191
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">192
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">193
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">194
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">195
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">196
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">197
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">198
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">199
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">200
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">201
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">202
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">203
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">204
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">205
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">206
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">207
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">208
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">209
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">210
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">211
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">212
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">213
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">214
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">215
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">216
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">217
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">218
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">219
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">220
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">221
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">222
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">223
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">224
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">225
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">226
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">227
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">228
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">229
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">230
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">231
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">232
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">233
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">234
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">235
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">236
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">237
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">238
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">239
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">240
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">241
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">242
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">243
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">244
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">245
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">246
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">247
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">248
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">249
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">250
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">251
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">252
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">253
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">254
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">255
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">256
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">257
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">258
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">259
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">260
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">261
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">262
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">263
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">264
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">265
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">266
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">267
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">268
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">269
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">270
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">271
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">272
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#6272a4">&lt;!-- 目录侧边栏 --&gt;</span>
+</span></span><span style="display:flex;"><span>{{- $headers := findRE &#34;&lt;<span style="color:#ff79c6">h</span>[<span style="color:#50fa7b">1-6</span>].*?&gt;(.|\n])+?&lt;/h[1-6]&gt;&#34; .Content -}}
+</span></span><span style="display:flex;"><span>{{- $has_headers := ge (len $headers) 1 -}}
+</span></span><span style="display:flex;"><span>{{- if $has_headers -}}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">aside</span> <span style="color:#50fa7b">id</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;toc-container&#34;</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;toc-container wide&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;toc&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">details</span> {{<span style="color:#50fa7b">if</span> (.<span style="color:#50fa7b">Param</span> &#34;<span style="color:#50fa7b">TocOpen</span>&#34;) }} <span style="color:#50fa7b">open</span>{{ <span style="color:#50fa7b">end</span> }}&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#ff79c6">summary</span> <span style="color:#50fa7b">accesskey</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;c&#34;</span> <span style="color:#50fa7b">title</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;(Alt + C)&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;details&#34;</span>&gt;{{- i18n &#34;toc&#34; | default &#34;Table of Contents&#34; }}&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#ff79c6">summary</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;inner&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                {{- $largest := 6 -}}
+</span></span><span style="display:flex;"><span>                {{- range $headers -}}
+</span></span><span style="display:flex;"><span>                {{- $headerLevel := index (findRE &#34;[1-6]&#34; . 1) 0 -}}
+</span></span><span style="display:flex;"><span>                {{- $headerLevel := len (seq $headerLevel) -}}
+</span></span><span style="display:flex;"><span>                {{- if lt $headerLevel $largest -}}
+</span></span><span style="display:flex;"><span>                {{- $largest = $headerLevel -}}
+</span></span><span style="display:flex;"><span>                {{- end -}}
+</span></span><span style="display:flex;"><span>                {{- end -}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                {{- $firstHeaderLevel := len (seq (index (findRE &#34;[1-6]&#34; (index $headers 0) 1) 0)) -}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                {{- $.Scratch.Set &#34;bareul&#34; slice -}}
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#ff79c6">ul</span>&gt;
+</span></span><span style="display:flex;"><span>                    {{- range seq (sub $firstHeaderLevel $largest) -}}
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#ff79c6">ul</span>&gt;
+</span></span><span style="display:flex;"><span>                        {{- $.Scratch.Add &#34;bareul&#34; (sub (add $largest .) 1) -}}
+</span></span><span style="display:flex;"><span>                        {{- end -}}
+</span></span><span style="display:flex;"><span>                        {{- range $i, $header := $headers -}}
+</span></span><span style="display:flex;"><span>                        {{- $headerLevel := index (findRE &#34;[1-6]&#34; . 1) 0 -}}
+</span></span><span style="display:flex;"><span>                        {{- $headerLevel := len (seq $headerLevel) -}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                        {{/* get id=&#34;xyz&#34; */}}
+</span></span><span style="display:flex;"><span>                        {{- $id := index (findRE &#34;(id=\&#34;(.*?)\&#34;)&#34; $header 9) 0 }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                        {{- /* strip id=&#34;&#34; to leave xyz, no way to get regex capturing groups in hugo */ -}}
+</span></span><span style="display:flex;"><span>                        {{- $cleanedID := replace (replace $id &#34;id=\&#34;&#34; &#34;&#34;) &#34;\&#34;&#34; &#34;&#34; }}
+</span></span><span style="display:flex;"><span>                        {{- $header := replaceRE &#34;&lt;<span style="color:#ff79c6">h</span>[<span style="color:#50fa7b">1-6</span>].*?&gt;((.|\n])+?)&lt;/h[1-6]&gt;&#34; &#34;$1&#34; $header -}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                        {{- if ne $i 0 -}}
+</span></span><span style="display:flex;"><span>                        {{- $prevHeaderLevel := index (findRE &#34;[1-6]&#34; (index $headers (sub $i 1)) 1) 0 -}}
+</span></span><span style="display:flex;"><span>                        {{- $prevHeaderLevel := len (seq $prevHeaderLevel) -}}
+</span></span><span style="display:flex;"><span>                        {{- if gt $headerLevel $prevHeaderLevel -}}
+</span></span><span style="display:flex;"><span>                        {{- range seq $prevHeaderLevel (sub $headerLevel 1) -}}
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#ff79c6">ul</span>&gt;
+</span></span><span style="display:flex;"><span>                            {{/* the first should not be recorded */}}
+</span></span><span style="display:flex;"><span>                            {{- if ne $prevHeaderLevel . -}}
+</span></span><span style="display:flex;"><span>                            {{- $.Scratch.Add &#34;bareul&#34; . -}}
+</span></span><span style="display:flex;"><span>                            {{- end -}}
+</span></span><span style="display:flex;"><span>                            {{- end -}}
+</span></span><span style="display:flex;"><span>                            {{- else -}}
+</span></span><span style="display:flex;"><span>                            &lt;/<span style="color:#ff79c6">li</span>&gt;
+</span></span><span style="display:flex;"><span>                            {{- if lt $headerLevel $prevHeaderLevel -}}
+</span></span><span style="display:flex;"><span>                            {{- range seq (sub $prevHeaderLevel 1) -1 $headerLevel -}}
+</span></span><span style="display:flex;"><span>                            {{- if in ($.Scratch.Get &#34;bareul&#34;) . -}}
+</span></span><span style="display:flex;"><span>                        &lt;/<span style="color:#ff79c6">ul</span>&gt;
+</span></span><span style="display:flex;"><span>                        {{/* manually do pop item */}}
+</span></span><span style="display:flex;"><span>                        {{- $tmp := $.Scratch.Get &#34;bareul&#34; -}}
+</span></span><span style="display:flex;"><span>                        {{- $.Scratch.Delete &#34;bareul&#34; -}}
+</span></span><span style="display:flex;"><span>                        {{- $.Scratch.Set &#34;bareul&#34; slice}}
+</span></span><span style="display:flex;"><span>                        {{- range seq (sub (len $tmp) 1) -}}
+</span></span><span style="display:flex;"><span>                        {{- $.Scratch.Add &#34;bareul&#34; (index $tmp (sub . 1)) -}}
+</span></span><span style="display:flex;"><span>                        {{- end -}}
+</span></span><span style="display:flex;"><span>                        {{- else -}}
+</span></span><span style="display:flex;"><span>                    &lt;/<span style="color:#ff79c6">ul</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;/<span style="color:#ff79c6">li</span>&gt;
+</span></span><span style="display:flex;"><span>                    {{- end -}}
+</span></span><span style="display:flex;"><span>                    {{- end -}}
+</span></span><span style="display:flex;"><span>                    {{- end -}}
+</span></span><span style="display:flex;"><span>                    {{- end }}
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#ff79c6">li</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;#{{- $cleanedID -}}&#34;</span> <span style="color:#50fa7b">aria-label</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{- $header | plainify -}}&#34;</span>&gt;{{- $header | safeHTML -}}&lt;/<span style="color:#ff79c6">a</span>&gt;
+</span></span><span style="display:flex;"><span>                        {{- else }}
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#ff79c6">li</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;#{{- $cleanedID -}}&#34;</span> <span style="color:#50fa7b">aria-label</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{- $header | plainify -}}&#34;</span>&gt;{{- $header | safeHTML -}}&lt;/<span style="color:#ff79c6">a</span>&gt;
+</span></span><span style="display:flex;"><span>                        {{- end -}}
+</span></span><span style="display:flex;"><span>                        {{- end -}}
+</span></span><span style="display:flex;"><span>                        {{- $firstHeaderLevel := $largest }}
+</span></span><span style="display:flex;"><span>                        {{- $lastHeaderLevel := len (seq (index (findRE &#34;[1-6]&#34; (index $headers (sub (len $headers) 1)) 1) 0)) }}
+</span></span><span style="display:flex;"><span>                    &lt;/<span style="color:#ff79c6">li</span>&gt;
+</span></span><span style="display:flex;"><span>                    {{- range seq (sub $lastHeaderLevel $firstHeaderLevel) -}}
+</span></span><span style="display:flex;"><span>                    {{- if in ($.Scratch.Get &#34;bareul&#34;) (add . $firstHeaderLevel) }}
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#ff79c6">ul</span>&gt;
+</span></span><span style="display:flex;"><span>                {{- else }}
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#ff79c6">ul</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#ff79c6">li</span>&gt;
+</span></span><span style="display:flex;"><span>                {{- end -}}
+</span></span><span style="display:flex;"><span>                {{- end }}
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#ff79c6">ul</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#ff79c6">details</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">aside</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">let</span> activeElement;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">let</span> elements;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">let</span> headerCounters <span style="color:#ff79c6">=</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 重置所有计数器
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">function</span> resetHeaderCounters() {
+</span></span><span style="display:flex;"><span>        headerCounters <span style="color:#ff79c6">=</span> {};
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 获取标题的自动编号
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">function</span> getHeaderNumber(element, headerLevel) {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 获取之前的所有标题元素
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#8be9fd;font-style:italic">let</span> prevElements <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Array</span>.from(<span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(<span style="color:#f1fa8c">&#39;h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]&#39;</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">let</span> currentIndex <span style="color:#ff79c6">=</span> prevElements.indexOf(element);
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">let</span> numbers <span style="color:#ff79c6">=</span> [];
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 重置当前级别之后的计数器
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#8be9fd;font-style:italic">Object</span>.keys(headerCounters).forEach(level =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> (<span style="color:#8be9fd;font-style:italic">parseInt</span>(level) <span style="color:#ff79c6">&gt;</span> headerLevel) {
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">delete</span> headerCounters[headerLevel];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 遍历到当前元素为止的所有标题
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">let</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;=</span> currentIndex; i<span style="color:#ff79c6">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">let</span> currentElement <span style="color:#ff79c6">=</span> prevElements[i];
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">let</span> currentLevel <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">parseInt</span>(currentElement.tagName.substring(<span style="color:#bd93f9">1</span>));
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> (currentLevel <span style="color:#ff79c6">&lt;=</span> headerLevel) {
+</span></span><span style="display:flex;"><span>                <span style="color:#6272a4">// 更新计数器
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>headerCounters[currentLevel]) {
+</span></span><span style="display:flex;"><span>                    headerCounters[currentLevel] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span>                } <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span> (currentElement <span style="color:#ff79c6">===</span> element) {
+</span></span><span style="display:flex;"><span>                    headerCounters[currentLevel]<span style="color:#ff79c6">++</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#6272a4">// 构建当前层级的编号
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                <span style="color:#ff79c6">if</span> (currentElement <span style="color:#ff79c6">===</span> element) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">let</span> level <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; level <span style="color:#ff79c6">&lt;=</span> currentLevel; level<span style="color:#ff79c6">++</span>) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff79c6">if</span> (headerCounters[level]) {
+</span></span><span style="display:flex;"><span>                            numbers.push(headerCounters[level]);
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> numbers.join(<span style="color:#f1fa8c">&#39;.&#39;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 更新目录项的显示
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">function</span> updateTocDisplay(element, tocLink) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> headerLevel <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">parseInt</span>(element.tagName.substring(<span style="color:#bd93f9">1</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> currentNumber <span style="color:#ff79c6">=</span> getHeaderNumber(element, headerLevel);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 移除之前可能存在的编号
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#8be9fd;font-style:italic">let</span> linkText <span style="color:#ff79c6">=</span> tocLink.textContent;
+</span></span><span style="display:flex;"><span>        linkText <span style="color:#ff79c6">=</span> linkText.replace(<span style="color:#f1fa8c">/^\d+(\.\d+)*\s+/</span>, <span style="color:#f1fa8c">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 添加新的编号
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        tocLink.textContent <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">`</span><span style="color:#f1fa8c">${</span>currentNumber<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">${</span>linkText<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">`</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 获取元素的顶部偏移
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">function</span> getOffsetTop(element) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>element.getClientRects().length) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">let</span> rect <span style="color:#ff79c6">=</span> element.getBoundingClientRect();
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">let</span> win <span style="color:#ff79c6">=</span> element.ownerDocument.defaultView;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> rect.top <span style="color:#ff79c6">+</span> win.pageYOffset;   
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 检查TOC位置
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">function</span> checkTocPosition() {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> width <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.body.scrollWidth;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> main <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">parseInt</span>(getComputedStyle(<span style="color:#8be9fd;font-style:italic">document</span>.body).getPropertyValue(<span style="color:#f1fa8c">&#39;--article-width&#39;</span>), <span style="color:#bd93f9">10</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> toc <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">parseInt</span>(getComputedStyle(<span style="color:#8be9fd;font-style:italic">document</span>.body).getPropertyValue(<span style="color:#f1fa8c">&#39;--toc-width&#39;</span>), <span style="color:#bd93f9">10</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> gap <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">parseInt</span>(getComputedStyle(<span style="color:#8be9fd;font-style:italic">document</span>.body).getPropertyValue(<span style="color:#f1fa8c">&#39;--gap&#39;</span>), <span style="color:#bd93f9">10</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (width <span style="color:#ff79c6">-</span> main <span style="color:#ff79c6">-</span> (toc <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">2</span>) <span style="color:#ff79c6">-</span> (gap <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">4</span>) <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">document</span>.getElementById(<span style="color:#f1fa8c">&#34;toc-container&#34;</span>).classList.add(<span style="color:#f1fa8c">&#34;wide&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">document</span>.getElementById(<span style="color:#f1fa8c">&#34;toc-container&#34;</span>).classList.remove(<span style="color:#f1fa8c">&#34;wide&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 初始化时的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">document</span>.addEventListener(<span style="color:#f1fa8c">&#39;DOMContentLoaded&#39;</span>, <span style="color:#8be9fd;font-style:italic">function</span> (event) {
+</span></span><span style="display:flex;"><span>        checkTocPosition();
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        elements <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(<span style="color:#f1fa8c">&#39;h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (elements.length <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 设置第一个标题为活动状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            activeElement <span style="color:#ff79c6">=</span> elements[<span style="color:#bd93f9">0</span>];
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">const</span> id <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">encodeURI</span>(activeElement.getAttribute(<span style="color:#f1fa8c">&#39;id&#39;</span>)).toLowerCase();
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">`.inner ul li a[href=&#34;#</span><span style="color:#f1fa8c">${</span>id<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;]`</span>).classList.add(<span style="color:#f1fa8c">&#39;active&#39;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 初始化所有标题的编号
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">if</span> (elements <span style="color:#ff79c6">&amp;&amp;</span> elements.length <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            elements.forEach(element =&gt; {
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">const</span> id <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">encodeURI</span>(element.getAttribute(<span style="color:#f1fa8c">&#39;id&#39;</span>)).toLowerCase();
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">const</span> tocLink <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">`.inner ul li a[href=&#34;#</span><span style="color:#f1fa8c">${</span>id<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;]`</span>);
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> (tocLink) {
+</span></span><span style="display:flex;"><span>                    updateTocDisplay(element, tocLink);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 添加返回顶部链接的事件监听
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">const</span> topLink <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.getElementById(<span style="color:#f1fa8c">&#39;top-link&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (topLink) {
+</span></span><span style="display:flex;"><span>            topLink.addEventListener(<span style="color:#f1fa8c">&#39;click&#39;</span>, (event) =&gt; {
+</span></span><span style="display:flex;"><span>                event.preventDefault();
+</span></span><span style="display:flex;"><span>                <span style="color:#8be9fd;font-style:italic">window</span>.scrollTo({ top<span style="color:#ff79c6">:</span> <span style="color:#bd93f9">0</span>, behavior<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#39;smooth&#39;</span> });
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }, <span style="color:#ff79c6">false</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 窗口大小改变时的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">window</span>.addEventListener(<span style="color:#f1fa8c">&#39;resize&#39;</span>, <span style="color:#8be9fd;font-style:italic">function</span>(event) {
+</span></span><span style="display:flex;"><span>        checkTocPosition();
+</span></span><span style="display:flex;"><span>    }, <span style="color:#ff79c6">false</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 滚动时的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">window</span>.addEventListener(<span style="color:#f1fa8c">&#39;scroll&#39;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> scrollPosition <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">window</span>.pageYOffset <span style="color:#ff79c6">||</span> <span style="color:#8be9fd;font-style:italic">document</span>.documentElement.scrollTop;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (scrollPosition <span style="color:#ff79c6">===</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (elements <span style="color:#ff79c6">&amp;&amp;</span> elements.length <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 重置计数器
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            resetHeaderCounters();
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 查找当前可见的标题
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            activeElement <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Array</span>.from(elements).find((element) =&gt; {
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> ((getOffsetTop(element) <span style="color:#ff79c6">-</span> scrollPosition) <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>                    (getOffsetTop(element) <span style="color:#ff79c6">-</span> scrollPosition) <span style="color:#ff79c6">&lt;</span> <span style="color:#8be9fd;font-style:italic">window</span>.innerHeight <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff79c6">return</span> element;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }) <span style="color:#ff79c6">||</span> activeElement;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 更新所有目录项的显示
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            elements.forEach(element =&gt; {
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">const</span> id <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">encodeURI</span>(element.getAttribute(<span style="color:#f1fa8c">&#39;id&#39;</span>)).toLowerCase();
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">const</span> tocLink <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">`.inner ul li a[href=&#34;#</span><span style="color:#f1fa8c">${</span>id<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;]`</span>);
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> (tocLink) {
+</span></span><span style="display:flex;"><span>                    updateTocDisplay(element, tocLink);
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff79c6">if</span> (element <span style="color:#ff79c6">===</span> activeElement) {
+</span></span><span style="display:flex;"><span>                        tocLink.classList.add(<span style="color:#f1fa8c">&#39;active&#39;</span>);
+</span></span><span style="display:flex;"><span>                        tocLink.style.textDecoration <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;underline&#34;</span>;
+</span></span><span style="display:flex;"><span>                        
+</span></span><span style="display:flex;"><span>                        <span style="color:#6272a4">// 确保当前激活的标题在目录中可见
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                        <span style="color:#ff79c6">const</span> tocContainer <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">&#39;.toc .inner&#39;</span>);
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff79c6">const</span> linkOffsetTop <span style="color:#ff79c6">=</span> tocLink.offsetTop;
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff79c6">const</span> containerHeight <span style="color:#ff79c6">=</span> tocContainer.clientHeight;
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff79c6">const</span> linkHeight <span style="color:#ff79c6">=</span> tocLink.clientHeight;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>                        <span style="color:#6272a4">// 计算滚动位置，将当前目录项居中显示
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                        <span style="color:#ff79c6">const</span> scrollPosition <span style="color:#ff79c6">=</span> linkOffsetTop <span style="color:#ff79c6">-</span> (containerHeight <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) <span style="color:#ff79c6">+</span> (linkHeight <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>);
+</span></span><span style="display:flex;"><span>                        tocContainer.scrollTo({ top<span style="color:#ff79c6">:</span> scrollPosition, behavior<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#39;smooth&#39;</span> });
+</span></span><span style="display:flex;"><span>                    } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>                        tocLink.classList.remove(<span style="color:#f1fa8c">&#39;active&#39;</span>);
+</span></span><span style="display:flex;"><span>                        tocLink.style.textDecoration <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;none&#34;</span>;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }, <span style="color:#ff79c6">false</span>);
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>{{- end }}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建<code>assets/css/extended/toc.css</code>，根据阅读内容滚动并加粗相应标题就由其实现。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">88
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/*目录侧边栏*/</span>
+</span></span><span style="display:flex;"><span>:root {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">--nav-width</span>: <span style="color:#bd93f9">1380</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">--article-width</span>: <span style="color:#bd93f9">650</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">--toc-width</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">40</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">solid</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>border);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>entry);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border-radius</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>radius);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">0.4</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc-container</span>.<span style="color:#50fa7b">wide</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">absolute</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">100</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border-right</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">solid</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>border);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">left</span>: <span style="color:#8be9fd;font-style:italic">calc</span>((<span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>toc<span style="color:#ff79c6">-</span>width) <span style="color:#ff79c6">+</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>gap)) <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">-1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">top</span>: <span style="color:#8be9fd;font-style:italic">calc</span>(<span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>gap) <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">2</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">width</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>toc<span style="color:#ff79c6">-</span>width);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">wide</span> .<span style="color:#50fa7b">toc</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">sticky</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">top</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>gap);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border</span>: <span style="color:#ff79c6">unset</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">unset</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border-radius</span>: <span style="color:#ff79c6">unset</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">100</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">40</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc</span> <span style="color:#ff79c6">details</span> <span style="color:#ff79c6">summary</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">cursor</span>: <span style="color:#ff79c6">zoom-in</span>;
+</span></span><span style="display:flex;"><span>    margin-inline-start: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">12</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc</span> <span style="color:#ff79c6">details</span><span style="color:#ff79c6">[</span><span style="color:#ff79c6">open</span><span style="color:#ff79c6">]</span> <span style="color:#ff79c6">summary</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-weight</span>: <span style="color:#bd93f9">500</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc-container</span>.<span style="color:#50fa7b">wide</span> .<span style="color:#50fa7b">toc</span> .<span style="color:#50fa7b">inner</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">active</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">110</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-weight</span>: <span style="color:#bd93f9">600</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc</span> <span style="color:#ff79c6">ul</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">list-style-type</span>: <span style="color:#ff79c6">circle</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc</span> .<span style="color:#50fa7b">inner</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">0</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">15</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">15</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">16</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">/*目录显示高度*/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">max-height</span>: <span style="color:#bd93f9">83</span><span style="color:#8be9fd">vh</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">overflow-y</span>: <span style="color:#ff79c6">auto</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc</span> .<span style="color:#50fa7b">inner</span>::-webkit-scrollbar-thumb {  <span style="color:#6272a4">/*滚动条*/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>border);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border</span>: <span style="color:#bd93f9">7</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">solid</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>theme);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border-radius</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>radius);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc</span> <span style="color:#ff79c6">li</span> <span style="color:#ff79c6">ul</span> {
+</span></span><span style="display:flex;"><span>    margin-inline-start: <span style="color:#8be9fd;font-style:italic">calc</span>(<span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>gap) <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">0.5</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">list-style-type</span>: <span style="color:#ff79c6">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc</span> <span style="color:#ff79c6">li</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">list-style</span>: <span style="color:#ff79c6">none</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">0.95</span><span style="color:#8be9fd">rem</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">padding-bottom</span>: <span style="color:#bd93f9">5</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">toc</span> <span style="color:#ff79c6">li</span> <span style="color:#ff79c6">a</span>:hover {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>secondary);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/*目录侧边栏*/</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="评论支持">评论支持</h3>
+<p>对于评论支持，我选择了<a href="https://giscus.app/zh-CN" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Giscus<span class="external-link">↗</span></a>
+
+
+
+
+
+
+。由于本博客也是部署在Github上，在减少额外操作的同时 <code>Giscus</code> 也显得足够的优雅简单。</p>
+<p>此处操作参考了<a href="https://www.lixueduan.com/posts/blog/02-add-giscus-comment/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo 博客引入 Giscus 评论系统<span class="external-link">↗</span></a>
+
+
+
+
+
+
+。</p>
+<ol>
+<li><a href="https://giscus.app/zh-CN" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Giscus<span class="external-link">↗</span></a>
+
+
+
+
+
+
+ -&gt; 进入配置栏</li>
+<li>配置 -&gt; 仓库 -&gt; 填入仓库名，如<a href="https://github.com/Downmars/Downmars.github.io" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Downmars/Downmars.github.io<span class="external-link">↗</span></a>
+
+
+
+
+
+
+ -&gt; 若不满足条件，分别查看：对应仓库是否公开、giscus app 是否安装、 Discussions 功能在对应仓库是否启用</li>
+<li>配置 -&gt; Discussions 分类 -&gt; 选中Announcements</li>
+<li>配置 -&gt; 启用giscus -&gt; 复制相应字段到配置中</li>
+</ol>
+<p>同时需要创建 <code>layouts/partials/comments.html</code>，此处参考了<a href="https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo + PaperMod + Github Pages 搭建一个完善的个人博客(以 Windows11 为例)<span class="external-link">↗</span></a>
+
+
+
+
+
+
+。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- /* Comments area start */ -}}
+</span></span><span style="display:flex;"><span>{{- /* to add comments read =&gt; https://gohugo.io/content-management/comments/ */ -}}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">id</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;tw-comment&#34;</span>&gt;&lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 默认是暗色，根目录下的配置中的主题默认也是暗色
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">const</span> getStoredTheme <span style="color:#ff79c6">=</span> () =&gt; localStorage.getItem(<span style="color:#f1fa8c">&#34;pref-theme&#34;</span>) <span style="color:#ff79c6">===</span> <span style="color:#f1fa8c">&#34;light&#34;</span> <span style="color:#ff79c6">?</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.lightTheme }}&#34;</span> <span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.darkTheme }}&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">const</span> setGiscusTheme <span style="color:#ff79c6">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> sendMessage <span style="color:#ff79c6">=</span> (message) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">const</span> iframe <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">&#39;iframe.giscus-frame&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> (iframe) {
+</span></span><span style="display:flex;"><span>                iframe.contentWindow.postMessage({giscus<span style="color:#ff79c6">:</span> message}, <span style="color:#f1fa8c">&#39;https://giscus.app&#39;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        sendMessage({setConfig<span style="color:#ff79c6">:</span> {theme<span style="color:#ff79c6">:</span> getStoredTheme()}})
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">document</span>.addEventListener(<span style="color:#f1fa8c">&#34;DOMContentLoaded&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> giscusAttributes <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;src&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;https://giscus.app/client.js&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-repo&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.repo }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-repo-id&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.repoId }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-category&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.category }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-category-id&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.categoryId }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-mapping&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.mapping }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-strict&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.strict }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-reactions-enabled&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.reactionsEnabled }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-emit-metadata&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.emitMetadata }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-input-position&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.inputPosition }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-theme&#34;</span><span style="color:#ff79c6">:</span> getStoredTheme(),
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-lang&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;{{ .Site.Params.giscus.lang }}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;data-loading&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;lazy&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f1fa8c">&#34;crossorigin&#34;</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;anonymous&#34;</span>,
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 动态创建 giscus script
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">const</span> giscusScript <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.createElement(<span style="color:#f1fa8c">&#34;script&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">Object</span>.entries(giscusAttributes).forEach(
+</span></span><span style="display:flex;"><span>                ([key, value]) =&gt; giscusScript.setAttribute(key, value));
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">&#34;#tw-comment&#34;</span>).appendChild(giscusScript);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 页面主题变更后，变更 giscus 主题
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">const</span> themeSwitcher <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">&#34;#theme-toggle&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (themeSwitcher) {
+</span></span><span style="display:flex;"><span>            themeSwitcher.addEventListener(<span style="color:#f1fa8c">&#34;click&#34;</span>, setGiscusTheme);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">const</span> themeFloatSwitcher <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelector(<span style="color:#f1fa8c">&#34;#theme-toggle-float&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (themeFloatSwitcher) {
+</span></span><span style="display:flex;"><span>            themeFloatSwitcher.addEventListener(<span style="color:#f1fa8c">&#34;click&#34;</span>, setGiscusTheme);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{- /* Comments area end */ -}}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="网站图标">网站图标</h3>
+<p>咱们一个自己的博客肯定得需要有自己的一个网站图标，可以将图标放在<code>/static/images/</code>，如<code>favicon: &quot;/images/blog.png&quot;</code>。我在这里推荐两个网站供大家用来查找符合自己图标。</p>
+<ul>
+<li><a href="https://fontawesome.com/search" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   fontawesome<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</li>
+<li><a href="https://www.flaticon.com/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   flaticon<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</li>
+<li><a href="https://icons8.com/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   icons8<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</li>
+<li><a href="https://www.iconfinder.com/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   iconfinder<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</li>
+<li><a href="https://thenounproject.com/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Noun Project<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</li>
+</ul>
+<h2 id="多语言--界面布置">多语言 &amp; 界面布置</h2>
+<p>这部分参考来自于<a href="https://www.xianmin.org/post/2024/hugo-multilingual-blog-structure/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo 多语言博客搭建，如何优雅地管理多语言 md 内容-贤民<span class="external-link">↗</span></a>
+
+
+
+
+
+
+。</p>
+<p>我认为对于编写博客的我们来说，以时间的形式来分隔是很好的一种方式来存储以及管理我们的博客，使用统一文件命名规范<code>YYYYMMDD-title.md</code>。此外，有兴趣的可以做一下多语言的准备，即使现在没有推出多语言的打算，之后可以集中找个时间来使用<code>ai</code>工具来统一做一下。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── en
+</span></span><span style="display:flex;"><span>│   ├── archives
+</span></span><span style="display:flex;"><span>│   │   └── archives.md
+</span></span><span style="display:flex;"><span>│   ├── posts
+</span></span><span style="display:flex;"><span>│   │   └── 2025_01_19-hugo_build_1.md
+</span></span><span style="display:flex;"><span>│   └── search
+</span></span><span style="display:flex;"><span>│       └── search.md
+</span></span><span style="display:flex;"><span>└── zh
+</span></span><span style="display:flex;"><span>    ├── archives
+</span></span><span style="display:flex;"><span>    │   └── archives.md
+</span></span><span style="display:flex;"><span>    ├── posts
+</span></span><span style="display:flex;"><span>    │   ├── 2025_01_19-hugo_build_1.md
+</span></span><span style="display:flex;"><span>    │   └── 2025_01_20-hugo_build_2.md
+</span></span><span style="display:flex;"><span>    └── search
+</span></span><span style="display:flex;"><span>        └── search.md
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以参考我的示例结构，在这里我将<code>zh/</code>和<code>en/</code>作为<code>post/</code>的直接子目录，这一步需在对应的语言下添加设置对应的文档目录，如<code>contentDir: &quot;content/zh&quot;</code>。</p>
+<p>我们在此处同时需要设置页面布局，创建<code>zh/archives/archives.md</code>和<code>zh/search/search.md</code>，</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;时间轴&#34;
+</span></span><span style="display:flex;"><span>layout: &#34;archives&#34;
+</span></span><span style="display:flex;"><span>summary: archives
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;搜索&#34; # in any language you want
+</span></span><span style="display:flex;"><span>layout: &#34;search&#34; # is necessary
+</span></span><span style="display:flex;"><span>summary: &#34;search&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同时，搜索需要额外加入如下配置：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">outputs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">home</span>:
+</span></span><span style="display:flex;"><span>    - HTML
+</span></span><span style="display:flex;"><span>    - RSS
+</span></span><span style="display:flex;"><span>    - JSON               <span style="color:#6272a4"># Required for search (搜索功能需要)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接着，我们在配置文件中加入时间轴与搜索的布局即可：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># Multilingual Support (多语言支持)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">languages</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">zh</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">languageCode</span>: <span style="color:#f1fa8c">&#34;zh-CN&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">languageName</span>: <span style="color:#f1fa8c">&#34;简体中文&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">contentDir</span>: <span style="color:#f1fa8c">&#34;content/zh&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">weight</span>: <span style="color:#bd93f9">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">menu</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">main</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ff79c6">identifier</span>: posts
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">name</span>: <span style="color:#f1fa8c">&#34;Posts&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">url</span>: <span style="color:#f1fa8c">&#34;/posts/&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">weight</span>: <span style="color:#bd93f9">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></content:encoded></item></channel></rss>
