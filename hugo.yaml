@@ -38,9 +38,12 @@ params:
   # 其他功能
   comments: true
   DateFormat: "2006-01-02"  # 修正：使用 Go 的时间格式
-  busuanzi: # 不🧄子-页面统计（https://busuanzi.ibruce.info/）
-    enable: true
-  hideFooter: true  # 禁用默认页脚
+  # busuanzi: # 不🧄子-页面统计（https://busuanzi.ibruce.info/）
+  #   enable: true
+  # hideFooter: true  # 禁用默认页脚
+
+  # cover: # 点击显示全图
+  #   linkFullImages: true
 
   enableGitInfo: true
   # 搜索功能
@@ -56,13 +59,14 @@ params:
   socialIcons:
     - name: github
       url: "https://github.com/downmars"
+
   # 博客网页图片
   assets:
     favicon: "images/blog.png"
     favicon16x16: "images/blog.png"
     favicon32x32: "images/blog.png"
-    apple_touch_icon: "images/blog.png"
-    safari_pinned_tab: "images/blog.png"
+    # apple_touch_icon: "images/blog.png"
+    # safari_pinned_tab: "images/blog.png"
   # 评论设置
   giscus:
     repo: "Downmars/Downmars.github.io"
@@ -78,6 +82,11 @@ params:
     darkTheme: "dark"
     lang: "zh-CN"
     crossorigin: "anonymous"
+
+  homeInfoParams:
+    title: "欢迎来到我的博客"
+    content: "这里是我的个人博客，欢迎访问。"
+    
 # 多语言配置
 languages:
   zh:
@@ -161,5 +170,6 @@ markup:
   highlight:
     codeFences: true
     guessSyntax: true
-    lineNos: true
+    lineNos: false
     style: dracula
+    lineNumbersInTable: true

@@ -1,13 +1,5 @@
 
-<!-- Add total page and word count time -->
-<section class="totalcount">
-    {{$scratch := newScratch}}
-    {{ range (where .Site.Pages "Kind" "page" )}}
-        {{$scratch.Add "total" .WordCount}}
-    {{ end }}
-    发表了{{ len (where .Site.RegularPages "Section" "post") }}篇文章 · 
-    总计{{ div ($scratch.Get "total") 1000.0 | lang.FormatNumber 2 }}k字
-</section>
+
 
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
@@ -153,3 +145,15 @@
     });
 </script>
 {{- end }}
+
+
+<!-- Add total page and word count time -->
+<section class="totalcount">
+    {{$scratch := newScratch}}
+    {{ range (where .Site.Pages "Kind" "page" )}}
+        {{$scratch.Add "total" .WordCount}}
+    {{ end }}
+    发表了{{ len (where .Site.RegularPages "Section" "post") }}篇文章 · 
+    总计{{ div ($scratch.Get "total") 1000.0 | lang.FormatNumber 2 }}k字
+</section>
+

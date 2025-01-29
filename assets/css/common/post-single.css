@@ -1,41 +1,49 @@
+/* 页面和文章头部的样式 */ 
 .page-header,
 .post-header {
-    margin: 24px auto var(--content-gap) auto;
+    margin: 24px auto var(--content-gap) auto; /* 设置上下左右边距，使用变量控制内容间距 */ 
 }
 
+/* 文章标题样式 */ 
 .post-title {
     margin-bottom: 2px;
-    font-size: 40px;
+    font-size: 40px; /* 设置标题大小为40px */ 
 }
 
+/* 文章描述样式 */ 
 .post-description {
     margin-top: 10px;
     margin-bottom: 5px;
 }
 
+/* 文章元信息和面包屑导航样式 */ 
 .post-meta,
 .breadcrumbs {
-    color: var(--secondary);
+    color: var(--secondary); /* 使用次要颜色 */ 
     font-size: 14px;
-    display: flex;
-    flex-wrap: wrap;
+    display: flex; /* 使用弹性布局 */ 
+    flex-wrap: wrap; /* 允许换行 */ 
 }
 
+/* 国际化列表项样式 */ 
 .post-meta .i18n_list li {
     display: inline-flex;
     list-style: none;
     margin: auto 3px;
-    box-shadow: 0 1px 0 var(--secondary);
+    box-shadow: 0 1px 0 var(--secondary); /* 添加底部阴影效果 */ 
 }
 
+/* 面包屑链接样式 */ 
 .breadcrumbs a {
     font-size: 16px;
 }
 
+/* 文章内容样式 */ 
 .post-content {
-    color: var(--content);
+    color: var(--content); /* 使用内容文字颜色变量 */ 
 }
 
+/* 文章内容中各级标题的样式 */ 
 .post-content h3,
 .post-content h4,
 .post-content h5,
@@ -69,23 +77,27 @@
     font-size: 12px;
 }
 
+/* 文章内容中链接和目录链接悬停效果 */ 
 .post-content a,
 .toc a:hover {
-    box-shadow: 0 1px 0;
+    box-shadow: 0 1px 0; /* 添加下划线效果 */ 
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
 }
 
+/* 文章内容中代码链接样式 */ 
 .post-content a code {
     margin: auto 0;
     border-radius: 0;
     box-shadow: 0 -1px 0 var(--primary) inset;
 }
 
+/* 删除线样式 */ 
 .post-content del {
     text-decoration: line-through;
 }
 
+/* 列表和段落样式 */ 
 .post-content dl,
 .post-content ol,
 .post-content p,
@@ -94,45 +106,54 @@
     margin-bottom: var(--content-gap);
 }
 
+/* 有序和无序列表的缩进 */ 
 .post-content ol,
 .post-content ul {
     padding-inline-start: 20px;
 }
 
+/* 列表项样式 */ 
 .post-content li {
     margin-top: 5px;
 }
 
+/* 列表项中段落的样式 */
 .post-content li p {
     margin-bottom: 0;
 }
 
+/* 描述列表样式 */ 
 .post-content dl {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
 }
 
+/* 描述列表术语样式 */ 
 .post-content dt {
     width: 25%;
     font-weight: 700;
 }
 
+/* 描述列表描述样式 */ 
 .post-content dd {
     width: 75%;
     margin-inline-start: 0;
     padding-inline-start: 10px;
 }
 
+/* */ 
 .post-content dd ~ dd,
 .post-content dt ~ dt {
     margin-top: 10px;
 }
 
+/* 表格样式 */ 
 .post-content table {
     margin-bottom: var(--content-gap);
 }
 
+/* 表格单元格样式 */ 
 .post-content table th,
 .post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
     min-width: 80px;
@@ -141,18 +162,22 @@
     border-bottom: 1px solid var(--border);
 }
 
+/* 表格表头对齐方式*/ 
 .post-content table th {
     text-align: start;
 }
 
+/* 表格中单独的代码元素样式 */ 
 .post-content table:not(.highlighttable) td code:only-child {
     margin: auto 0;
 }
 
+/* 代码高亮表格圆角样式 */ 
 .post-content .highlight table {
     border-radius: var(--radius);
 }
 
+/* 代码块样式 */ 
 .post-content .highlight:not(table) {
     margin: 10px auto;
     background: var(--code-block-bg) !important;
@@ -160,44 +185,59 @@
     direction: ltr;
 }
 
+/* 代码圆角 */
+.post-content .highlight pre {
+    background-color: var(--theme) !important;
+    margin: 0;
+}
+
+/* 列表项中代码块的右边距 */ 
 .post-content li > .highlight {
     margin-inline-end: 0;
 }
 
+/* 无序列表中预格式化文本的左边距 */ 
 .post-content ul pre {
     margin-inline-start: calc(var(--gap) * -2);
 }
 
+/* 代码块中预格式化文本的边距 */ 
 .post-content .highlight pre {
     margin: 0;
 }
 
+/* 代码行号表格布局 */ 
 .post-content .highlighttable {
     table-layout: fixed;
 }
 
+/* 代码行号列宽度 */ 
 .post-content .highlighttable td:first-child {
     width: 40px;
 }
 
+/* 代码行号区域的内边距 */ 
 .post-content .highlighttable td .linenodiv {
     padding-inline-end: 0 !important;
 }
 
+/* 代码行号和高亮区域的底部边距 */ 
 .post-content .highlighttable td .highlight,
 .post-content .highlighttable td .linenodiv pre {
     margin-bottom: 0;
 }
 
+/* 行内代码样式 */ 
 .post-content code {
     margin: auto 4px;
     padding: 4px 6px;
     font-size: 0.78em;
     line-height: 1.5;
     background: var(--code-bg);
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
+/* 代码块中的代码样式 */ 
 .post-content pre code {
     display: grid;
     margin: auto 0;
@@ -209,12 +249,14 @@
     word-break: break-all;
 }
 
+/* 引用块样式 */ 
 .post-content blockquote {
     margin: 20px 0;
     padding: 0 14px;
     border-inline-start: 3px solid var(--primary);
 }
 
+/* 水平分割线样式 */ 
 .post-content hr {
     margin: 30px 0;
     height: 2px;
@@ -222,23 +264,28 @@
     border: 0;
 }
 
+/* iframe最大宽度限制 */ 
 .post-content iframe {
     max-width: 100%;
 }
 
+/* 图片样式 */ 
 .post-content img {
     border-radius: 4px;
     margin: 1rem 0;
 }
 
+/* 居中图片样式 */ 
 .post-content img[src*="#center"] {
     margin: 1rem auto;
 }
 
+/* 居中对齐的图片容器 */
 .post-content figure.align-center {
     text-align: center;
 }
 
+/* 图片说明文字样式 */
 .post-content figure > figcaption {
     color: var(--primary);
     font-size: 16px;
@@ -246,12 +293,14 @@
     margin: 8px 0 16px;
 }
 
+/* 图片说明文字段落样式 */
 .post-content figure > figcaption > p {
     color: var(--secondary);
     font-size: 14px;
     font-weight: normal;
 }
 
+/* 目录样式 */
 .toc {
     margin: 0 2px 40px 2px;
     border: 1px solid var(--border);
@@ -260,57 +309,69 @@
     padding: 0.4em;
 }
 
+/* 深色模式目录背景 */ 
 .dark .toc {
     background: var(--entry);
 }
 
+/* 目录折叠按钮样式 */ 
 .toc details summary {
     cursor: zoom-in;
     margin-inline-start: 10px;
     user-select: none;
 }
 
+/* 目录展开状态下的按钮样式 */
 .toc details[open] summary {
     cursor: zoom-out;
 }
 
+/* 目录详情样式 */
 .toc .details {
     display: inline;
     font-weight: 500;
 }
 
+/* 目录内部容器样式 */
 .toc .inner {
     margin: 5px 20px 0;
     padding: 0 10px;
     opacity: 0.9;
 }
 
+/* 目录嵌套列表样式 */
 .toc li ul {
     margin-inline-start: var(--gap);
 }
 
+/* 移除目录按钮焦点轮廓 */
 .toc summary:focus {
     outline: 0;
 }
 
+/* 文章底部样式 */ 
 .post-footer {
     margin-top: 56px;
 }
 
+/* 文章底部子元素间距 */ 
 .post-footer>* {
     margin-bottom: 10px;
 }
 
+/* 标签样式 */ 
 .post-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
+/* 标签列表项样式 */ 
 .post-tags li {
     display: inline-block;
 }
 
+/* 标签、分享按钮和导航共同样式 */
 .post-tags a,
 .share-buttons,
 .paginav {
@@ -319,6 +380,7 @@
     border: 1px solid var(--border);
 }
 
+/* 标签链接样式 */
 .post-tags a {
     display: block;
     padding: 0 14px;
@@ -328,11 +390,14 @@
     background: var(--code-bg);
 }
 
+/* 标签和导航链接悬停效果 */
 .post-tags a:hover,
 .paginav a:hover {
     background: var(--border);
 }
 
+
+/* 分享按钮样式 */ 
 .share-buttons {
     padding: 10px;
     display: flex;
@@ -341,15 +406,18 @@
     gap: 10px;
 }
 
+/* 分享按钮列表和链接样式 */
 .share-buttons li,
 .share-buttons a {
     display: inline-flex;
 }
 
+/* 分享按钮间距 */
 .share-buttons a:not(:last-of-type) {
     margin-inline-end: 12px;
 }
 
+/* 标题锚点悬停样式 */
 h1:hover .anchor,
 h2:hover .anchor,
 h3:hover .anchor,
@@ -363,17 +431,20 @@ h6:hover .anchor {
     user-select: none;
 }
 
+/* 页面导航样式 */ 
 .paginav {
     display: flex;
     line-height: 30px;
 }
 
+/* 导航链接样式 */ 
 .paginav a {
     padding-inline-start: 14px;
     padding-inline-end: 14px;
     border-radius: var(--radius);
 }
 
+/* 导航标题样式 */ 
 .paginav .title {
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -381,28 +452,34 @@ h6:hover .anchor {
     color: var(--secondary);
 }
 
+/* 上一页下一页区域样式 */ 
 .paginav .prev,
 .paginav .next {
     width: 50%;
 }
 
+/* 导航文本悬停效果 */
 .paginav span:hover:not(.title) {
     box-shadow: 0 1px 0;
 }
 
+/* 下一页对齐方式 */
 .paginav .next {
     margin-inline-start: auto;
     text-align: right;
 }
 
+/* RTL模式下的下一页对齐 */ 
 [dir="rtl"] .paginav .next {
     text-align: left;
 }
 
+/* 标题中SVG图标样式 */
 h1>a>svg {
     display: inline;
 }
 
+/* 文本内图片样式 */
 img.in-text {
     display: inline;
     margin: auto;

@@ -18,6 +18,9 @@ summary: ""    # 列表页展示的简短描述
 # 自定义url
 slug:
 
+# 是否被允许搜索
+searchHidden: false
+
 # 可选：权重（用于置顶文章）
 weight: null
 
