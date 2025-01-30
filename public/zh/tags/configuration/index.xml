@@ -935,7 +935,164 @@
 </span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">pre</span><span style="color:#ff79c6">,</span> <span style="color:#ff79c6">code</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-family</span>: <span style="color:#f1fa8c">&#34;LXGW WenKai Screen&#34;</span>, <span style="color:#ff79c6">sans-serif</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>]]></content:encoded>
+</span></span></code></pre></div><h2 id="知识共享协议">知识共享协议</h2>
+<blockquote>
+<p>参考于:<a href="https://www.yunyitang.me/hugo-papermod-blog/#%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E5%8D%8F%E8%AE%AE" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo+PaperMod 双语博客搭建 Home-Info+Profile Mode<span class="external-link">↗</span></a>
+
+
+
+
+
+
+、<a href="https://hugo.matrixcore.top/license/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo ʕ•ᴥ•ʔ Bear Blog<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</p>
+</blockquote>
+<p>我们在<a href="https://chooser-beta.creativecommons.org/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Creative Commons许可证<span class="external-link">↗</span></a>
+
+
+
+
+
+
+中选择使用的知识共享协议，我这里选择的是<code>CC-BY-NC-4</code>协议，并添加一个协议模组来自动呈现：</p>
+<p>首先创建文件<code>data/licenses.html</code>并添加</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># data/licenses.yml</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">CC-BY-NC-4.0</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">name</span>: <span style="color:#f1fa8c">&#34;CC BY-NC 4.0&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">url</span>: <span style="color:#f1fa8c">&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">icons</span>: <span style="color:#ff79c6">&amp;cc_icons</span>  <span style="color:#6272a4"># 锚点复用图标列表</span>
+</span></span><span style="display:flex;"><span>    - cc.svg
+</span></span><span style="display:flex;"><span>    - by.svg
+</span></span><span style="display:flex;"><span>    - nc.svg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 其他协议</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">CC-BY-SA-4.0</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">name</span>: <span style="color:#f1fa8c">&#34;CC BY-SA 4.0&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">url</span>: <span style="color:#f1fa8c">&#34;https://creativecommons.org/licenses/by-sa/4.0/&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">icons</span>: <span style="color:#ff79c6">*cc_icons</span>  <span style="color:#6272a4"># 复用图标列表</span>
+</span></span></code></pre></div><p>其次，创建文件<code>layouts/partials/license.html</code>并添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ $license := index site.Data.licenses .Params.license }}
+</span></span><span style="display:flex;"><span>{{ if $license }}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;license-declaration&#34;</span> <span style="color:#50fa7b">vocab</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://schema.org/&#34;</span> <span style="color:#50fa7b">typeof</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;CreativeWork&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  {{/* 自动检测主题模式 */}}
+</span></span><span style="display:flex;"><span>  {{ $theme := &#34;light&#34; }}
+</span></span><span style="display:flex;"><span>  {{ if or (eq .Site.Params.colorTheme &#34;dark&#34;) (in .Site.Params.colorTheme &#34;auto&#34;) }}
+</span></span><span style="display:flex;"><span>    {{ $theme = &#34;dark&#34; }}
+</span></span><span style="display:flex;"><span>  {{ end }}
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">meta</span> <span style="color:#50fa7b">property</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;name&#34;</span> <span style="color:#50fa7b">content</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ .Title }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">link</span> <span style="color:#50fa7b">property</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;copyrightHolder&#34;</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ .Site.BaseURL }}#author&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">property</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;license&#34;</span> <span style="color:#50fa7b">content</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ $license.url }}&#34;</span>&gt;本文采用&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">a</span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ $license.url }}&#34;</span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#50fa7b">target</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;_blank&#34;</span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#50fa7b">rel</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;license noopener noreferrer&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;license-badge&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#50fa7b">data-theme</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ $theme }}&#34;</span>
+</span></span><span style="display:flex;"><span>    &gt;
+</span></span><span style="display:flex;"><span>      {{ $license.name }}
+</span></span><span style="display:flex;"><span>      {{ range $icon := $license.icons }}
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">img</span> 
+</span></span><span style="display:flex;"><span>          <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://mirrors.creativecommons.org/presskit/icons/{{ $icon }}&#34;</span> 
+</span></span><span style="display:flex;"><span>          <span style="color:#50fa7b">alt</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ $icon | replaceRE `\.svg$` `` | upper }} 图标&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;license-icon&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#50fa7b">loading</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;lazy&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#50fa7b">decoding</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;async&#34;</span>
+</span></span><span style="display:flex;"><span>        &gt;
+</span></span><span style="display:flex;"><span>      {{ end }}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">a</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span></code></pre></div><p>接下来，创建文件<code>assets/extended/custom.css</code>并添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/* licenses.css */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">license-badge</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--bg-light</span>: <span style="color:#bd93f9">#f8f9fa</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--bg-dark</span>: <span style="color:#bd93f9">#2b2d32</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--text-light</span>: <span style="color:#bd93f9">#212529</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--text-dark</span>: <span style="color:#bd93f9">#f8f9fa</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">inline-flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">align-items</span>: <span style="color:#ff79c6">center</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">gap</span>: <span style="color:#bd93f9">6</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">16</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-radius</span>: <span style="color:#bd93f9">6</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">0.9</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">all</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">ease</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">/* 默认浅色主题 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>bg<span style="color:#ff79c6">-</span>light);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span><span style="color:#ff79c6">text</span><span style="color:#ff79c6">-</span>light);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">solid</span> <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0.1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">license-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">24</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">width</span>: <span style="color:#ff79c6">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">filter</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">ease</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 深色主题检测 */</span>
+</span></span><span style="display:flex;"><span>@<span style="color:#ff79c6">media</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">prefers-color-scheme</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">dark</span><span style="color:#ff79c6">)</span> {
+</span></span><span style="display:flex;"><span>  .<span style="color:#50fa7b">license-badge</span>:not<span style="color:#ff79c6">([</span><span style="color:#ff79c6">data-theme</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;light&#34;</span><span style="color:#ff79c6">])</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>bg<span style="color:#ff79c6">-</span>dark);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span><span style="color:#ff79c6">text</span><span style="color:#ff79c6">-</span>dark);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border-color</span>: <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">0.1</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    &amp; .license-icon {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">filter</span>: <span style="color:#8be9fd;font-style:italic">invert</span>(<span style="color:#bd93f9">1</span>) <span style="color:#8be9fd;font-style:italic">hue-rotate</span>(<span style="color:#bd93f9">180</span><span style="color:#8be9fd">deg</span>); <span style="color:#6272a4">/* 更自然的反色 */</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 强制深色模式 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">license-badge</span><span style="color:#ff79c6">[</span><span style="color:#ff79c6">data-theme</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;dark&#34;</span><span style="color:#ff79c6">]</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>bg<span style="color:#ff79c6">-</span>dark);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span><span style="color:#ff79c6">text</span><span style="color:#ff79c6">-</span>dark);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-color</span>: <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">0.1</span>);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  &amp; .license-icon {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">filter</span>: <span style="color:#8be9fd;font-style:italic">invert</span>(<span style="color:#bd93f9">1</span>) <span style="color:#8be9fd;font-style:italic">hue-rotate</span>(<span style="color:#bd93f9">180</span><span style="color:#8be9fd">deg</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 悬停效果 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">license-badge</span>:hover {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">translateY</span>(<span style="color:#bd93f9">-1</span><span style="color:#8be9fd">px</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">box-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span> <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0.1</span>);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  &amp;[data-theme=&#34;dark&#34;]:hover {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">box-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span> <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">0.1</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>最后，在<code>archetypes/default.md</code>中添加以下代码段即可实现一个自动添加的开源协议呈现模组。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>license: &#34;CC-BY-NC-4.0&#34;  # 你对应使用的协议
+</span></span></code></pre></div><blockquote>
+<p>但是，由于我对于前端不是很了解，黑夜模式下的样式调整未能正确实现，待解决。</p>
+</blockquote>
+]]></content:encoded>
     </item>
   </channel>
 </rss>

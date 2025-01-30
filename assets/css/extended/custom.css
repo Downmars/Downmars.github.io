@@ -16,3 +16,65 @@
     text-decoration: none;
     vertical-align: super;
 }
+
+
+/* licenses.css */
+.license-badge {
+  --bg-light: #f8f9fa;
+  --bg-dark: #2b2d32;
+  --text-light: #212529;
+  --text-dark: #f8f9fa;
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  
+  /* 默认浅色主题 */
+  background: var(--bg-light);
+  color: var(--text-light);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.license-icon {
+  height: 24px;
+  width: auto;
+  transition: filter 0.3s ease;
+}
+
+/* 深色主题检测 */
+@media (prefers-color-scheme: dark) {
+  .license-badge:not([data-theme="light"]) {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+    border-color: rgba(255,255,255,0.1);
+    
+    & .license-icon {
+      filter: invert(1) hue-rotate(180deg); /* 更自然的反色 */
+    }
+  }
+}
+
+/* 强制深色模式 */
+.license-badge[data-theme="dark"] {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  border-color: rgba(255,255,255,0.1);
+  
+  & .license-icon {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+/* 悬停效果 */
+.license-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  
+  &[data-theme="dark"]:hover {
+    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+  }
+}

@@ -1,0 +1,34 @@
+{{ $license := index site.Data.licenses .Params.license }}
+{{ if $license }}
+<div class="license-declaration" vocab="https://schema.org/" typeof="CreativeWork">
+  {{/* 自动检测主题模式 */}}
+  {{ $theme := "light" }}
+  {{ if or (eq .Site.Params.colorTheme "dark") (in .Site.Params.colorTheme "auto") }}
+    {{ $theme = "dark" }}
+  {{ end }}
+  
+  <meta property="name" content="{{ .Title }}">
+  <link property="copyrightHolder" href="{{ .Site.BaseURL }}#author" />
+  <p>
+    <span property="license" content="{{ $license.url }}">本文采用</span>
+    <a 
+      href="{{ $license.url }}" 
+      target="_blank" 
+      rel="license noopener noreferrer"
+      class="license-badge"
+      data-theme="{{ $theme }}"
+    >
+      {{ $license.name }}
+      {{ range $icon := $license.icons }}
+        <img 
+          src="https://mirrors.creativecommons.org/presskit/icons/{{ $icon }}" 
+          alt="{{ $icon | replaceRE `\.svg$` `` | upper }} 图标"
+          class="license-icon"
+          loading="lazy"
+          decoding="async"
+        >
+      {{ end }}
+    </a>
+  </p>
+</div>
+{{ end }}

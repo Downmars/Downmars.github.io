@@ -1,0 +1,14 @@
+# data/licenses.yml
+CC-BY-NC-4.0:
+  name: "CC BY-NC 4.0"
+  url: "https://creativecommons.org/licenses/by-nc/4.0/"
+  icons: &cc_icons  # 使用锚点复用图标列表
+    - cc.svg
+    - by.svg
+    - nc.svg
+
+# 其他协议示例
+CC-BY-SA-4.0:
+  name: "CC BY-SA 4.0"
+  url: "https://creativecommons.org/licenses/by-sa/4.0/"
+  icons: *cc_icons  # 复用图标列表

@@ -47,6 +47,13 @@
   </div>
   {{- end }}
 
+  {{/* 新增协议声明区块 */}}
+  {{- if .Params.license }}
+    <div class="post-license">
+      {{ partial "license.html" . }}
+    </div>
+  {{- end }}
+
   <footer class="post-footer">
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <ul class="post-tags">

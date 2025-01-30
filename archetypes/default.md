@@ -24,6 +24,8 @@ searchHidden: false
 # 可选：权重（用于置顶文章）
 weight: null
 
+license: "CC-BY-NC-4.0"  # 对应 data/licenses.yml 中的 keys
+
 # 可选：封面图片
 cover:
     image: ""
