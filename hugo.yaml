@@ -32,6 +32,10 @@ params:
   ShowToc: true
   TocOpen: true
   
+  fancybox: true
+
+  math: true
+
   # RSS 设置
   ShowFullTextinRSS: true
   
@@ -44,6 +48,8 @@ params:
 
   # cover: # 点击显示全图
   #   linkFullImages: true
+
+  showLastMod: true
 
   enableGitInfo: true
   # 搜索功能

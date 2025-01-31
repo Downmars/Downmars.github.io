@@ -14,7 +14,8 @@
 <!-- <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet"> -->
 
 <!-- https://github.com/lxgw/LxgwWenKai -->
- <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/style.css" />
+
+ <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/style.css" /> -->
 
 <!-- https://brealinhub.com/posts/%E4%B8%80%E4%BA%9B%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE/#fn:3 -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script> -->
@@ -30,4 +31,9 @@
 <!--   }); -->
 <!-- }); -->
 <!-- </script> -->
+
+{{ if or .Params.math .Site.Params.math }}
+{{- partial "mathjax.html" .}}
+{{ end }}
+
 

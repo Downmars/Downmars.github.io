@@ -96,6 +96,57 @@
 </script>
 {{- end }}
 
+<!-- {{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }} -->
+<!-- <script> -->
+<!--     document.querySelectorAll('pre > code').forEach((codeblock) => { -->
+<!--         const container = codeblock.parentNode.parentNode; -->
+<!---->
+<!--         const copybutton = document.createElement('button'); -->
+<!--         copybutton.classList.add('copy-code'); -->
+<!--         copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}'; -->
+<!---->
+<!--         function copyingDone() { -->
+<!--             copybutton.innerHTML = '{{- i18n "code_copied" | default "copied!" }}'; -->
+<!--             setTimeout(() => { -->
+<!--                 copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}'; -->
+<!--             }, 2000); -->
+<!--         } -->
+<!---->
+<!--         copybutton.addEventListener('click', (cb) => { -->
+<!--             if ('clipboard' in navigator) { -->
+<!--                 navigator.clipboard.writeText(codeblock.textContent); -->
+<!--                 copyingDone(); -->
+<!--                 return; -->
+<!--             } -->
+<!---->
+<!--             const range = document.createRange(); -->
+<!--             range.selectNodeContents(codeblock); -->
+<!--             const selection = window.getSelection(); -->
+<!--             selection.removeAllRanges(); -->
+<!--             selection.addRange(range); -->
+<!--             try { -->
+<!--                 document.execCommand('copy'); -->
+<!--                 copyingDone(); -->
+<!--             } catch (e) { }; -->
+<!--             selection.removeRange(range); -->
+<!--         }); -->
+<!---->
+<!--         if (container.classList.contains("highlight")) { -->
+<!--             container.appendChild(copybutton); -->
+<!--         } else if (container.parentNode.firstChild == container) { -->
+<!--             // td containing LineNos -->
+<!--         } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") { -->
+<!--             // table containing LineNos and code -->
+<!--             codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton); -->
+<!--         } else { -->
+<!--             // code blocks not having highlight as parent class -->
+<!--             codeblock.parentNode.appendChild(copybutton); -->
+<!--         } -->
+<!--     }); -->
+<!-- </script> -->
+<!-- {{- end }} -->
+<!---->
+
 {{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }}
 <script>
     document.querySelectorAll('pre > code').forEach((codeblock) => {
@@ -103,15 +154,36 @@
 
         const copybutton = document.createElement('button');
         copybutton.classList.add('copy-code');
-        copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}';
+        // 替换为您的复制图标
+        copybutton.innerHTML = `
+            <img src="/images/copy.svg" 
+                 alt="复制"
+                 class="copy-icon"
+                 width="16" 
+                 height="16">
+        `;
 
         function copyingDone() {
-            copybutton.innerHTML = '{{- i18n "code_copied" | default "copied!" }}';
+            // 替换为您的复制完成图标
+            copybutton.innerHTML = `
+                <img src="/images/check.svg" 
+                     alt="已复制"
+                     class="copied-icon"
+                     width="16" 
+                     height="16">
+            `;
             setTimeout(() => {
-                copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}';
+                copybutton.innerHTML = `
+                    <img src="/images/copy.svg" 
+                         alt="复制"
+                         class="copy-icon"
+                         width="16" 
+                         height="16">
+                `;
             }, 2000);
         }
 
+        // 保持原有点击事件监听器不变
         copybutton.addEventListener('click', (cb) => {
             if ('clipboard' in navigator) {
                 navigator.clipboard.writeText(codeblock.textContent);
@@ -131,6 +203,7 @@
             selection.removeRange(range);
         });
 
+        // 保持原有容器判断逻辑不变
         if (container.classList.contains("highlight")) {
             container.appendChild(copybutton);
         } else if (container.parentNode.firstChild == container) {
@@ -144,7 +217,14 @@
         }
     });
 </script>
-{{- end }}
+{{- end }} 
+
+
+{{if .Page.Site.Params.fancybox }}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+{{ end }}
 
 
 <!-- Add total page and word count time -->

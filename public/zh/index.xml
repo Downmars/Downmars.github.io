@@ -24,7 +24,114 @@
 
 ”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。&lt;/p&gt;
 &lt;h1 id=&#34;基础配置文件&#34;&gt;基础配置文件&lt;/h1&gt;
-&lt;p&gt;我们曾经在&lt;code&gt;hugo.yaml&lt;/code&gt;中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：&lt;/p&gt;</description>
+&lt;p&gt;我们曾经在&lt;code&gt;hugo.yaml&lt;/code&gt;中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：
+
+
+&lt;p&gt;&lt;details &gt;
+  &lt;summary markdown=&#34;span&#34;&gt;hugo.yaml&lt;/summary&gt;
+  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# Basic Configuration (基础配置)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;baseURL&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;               &lt;span style=&#34;color:#6272a4&#34;&gt;# Site URL (网站 URL)(e.g. https://downmars.github.io/)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;title&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;                &lt;span style=&#34;color:#6272a4&#34;&gt;# Site title (网站标题)(e.g. DLog)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;theme&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;                &lt;span style=&#34;color:#6272a4&#34;&gt;# Theme name (主题名称)(e.g. PaperMod, in /themes/)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# Feature Toggles (功能开关)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;enableEmoji&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;         &lt;span style=&#34;color:#6272a4&#34;&gt;# Enable emoji support (启用表情支持)(e.g. https://gohugo.io/quick-reference/emojis/#smileys--emotion)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;enableRobotsTXT&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;     &lt;span style=&#34;color:#6272a4&#34;&gt;# Enable search engine support (启用搜索引擎支持)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;hasCJKLanguage&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;      &lt;span style=&#34;color:#6272a4&#34;&gt;# Enable CJK language support (启用中日韩语言支持)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;buildDrafts&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;false&lt;/span&gt;        &lt;span style=&#34;color:#6272a4&#34;&gt;# Build draft posts (是否构建草稿文章)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;buildFuture&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;false&lt;/span&gt;        &lt;span style=&#34;color:#6272a4&#34;&gt;# Build future posts (是否构建未来日期文章) &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;buildExpired&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;false&lt;/span&gt;       &lt;span style=&#34;color:#6272a4&#34;&gt;# Build expired posts (是否构建过期文章)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# Parameters Configuration (参数配置)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;params&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#6272a4&#34;&gt;# Theme Settings (主题设置)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;defaultTheme&lt;/span&gt;: dark      &lt;span style=&#34;color:#6272a4&#34;&gt;# Default theme mode (默认主题模式)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;disableThemeToggle&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;false&lt;/span&gt; &lt;span style=&#34;color:#6272a4&#34;&gt;# Allow theme switching (允许主题切换)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#6272a4&#34;&gt;# Display Features (显示功能)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;ShowShareButtons&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;# Show social share buttons (显示分享按钮)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;ShowCodeCopyButtons&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#6272a4&#34;&gt;# Show code copy buttons (显示代码复制按钮)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;ShowReadingTime&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;# Show reading time estimate (显示阅读时间)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;ShowWordCount&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;      &lt;span style=&#34;color:#6272a4&#34;&gt;# Show word count (显示字数统计)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;ShowPostNavLinks&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;   &lt;span style=&#34;color:#6272a4&#34;&gt;# Show post navigation (显示文章导航)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;ShowBreadCrumbs&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;# Show breadcrumb navigation (显示面包屑导航)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;ShowToc&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;           &lt;span style=&#34;color:#6272a4&#34;&gt;# Show table of contents (显示目录)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;TocOpen&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;          &lt;span style=&#34;color:#6272a4&#34;&gt;# TOC expanded by default (目录默认展开)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;math&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;fancybox&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#6272a4&#34;&gt;# Display Images (显示图片)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#6272a4&#34;&gt;# Comment System (评论系统)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;comments&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;          &lt;span style=&#34;color:#6272a4&#34;&gt;# Enable comments (启用评论)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;giscus&lt;/span&gt;:                &lt;span style=&#34;color:#6272a4&#34;&gt;# Giscus configuration (Giscus 配置)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;repo&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;repoId&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;category&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;categoryId&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;mapping&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;pathname&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;strict&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;reactionsEnabled&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;emitMetadata&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;inputPosition&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;bottom&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;lightTheme&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;light&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;darkTheme&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;dark&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;lang&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;zh-CN&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;crossorigin&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;fuseOpts: # refer&lt;/span&gt;: https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/#%e9%85%8d%e7%bd%ae%e6%90%9c%e7%b4%a2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;isCaseSensitive&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;false&lt;/span&gt; &lt;span style=&#34;color:#6272a4&#34;&gt;# 是否大小写敏感&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;shouldSort&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#6272a4&#34;&gt;# 是否排序&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;location&lt;/span&gt;: &lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;distance&lt;/span&gt;: &lt;span style=&#34;color:#bd93f9&#34;&gt;1000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;threshold&lt;/span&gt;: &lt;span style=&#34;color:#bd93f9&#34;&gt;0.4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;minMatchCharLength&lt;/span&gt;: &lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;# limit: 10 # refer: https://www.fusejs.io/api/methods.html#search&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;keys&lt;/span&gt;: [&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;permalink&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;summary&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;includeMatches&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#6272a4&#34;&gt;# Assets Files (资源文件)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;assets&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;favicon&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;          &lt;span style=&#34;color:#6272a4&#34;&gt;# Site favicon (网站图标)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;favicon16x16&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;     &lt;span style=&#34;color:#6272a4&#34;&gt;# Small favicon (小图标)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;favicon32x32&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;     &lt;span style=&#34;color:#6272a4&#34;&gt;# Medium favicon (中图标)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;apple_touch_icon&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#6272a4&#34;&gt;# iOS icon (iOS 图标)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;safari_pinned_tab&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#6272a4&#34;&gt;# Safari icon (Safari 图标)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# Multilingual Support (多语言支持)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;languages&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;zh&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;languageCode&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;zh-CN&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;languageName&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;简体中文&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;contentDir&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;content/zh&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;weight&lt;/span&gt;: &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;menu&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ff79c6&#34;&gt;main&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ff79c6&#34;&gt;identifier&lt;/span&gt;: posts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff79c6&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Posts&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff79c6&#34;&gt;url&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;/posts/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#ff79c6&#34;&gt;weight&lt;/span&gt;: &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# Output Settings (输出设置)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;outputs&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;home&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - HTML
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - RSS
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - JSON               &lt;span style=&#34;color:#6272a4&#34;&gt;# Required for search (搜索功能需要)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# Rendering Configuration (渲染配置)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;markup&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;goldmark&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;renderer&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ff79c6&#34;&gt;unsafe&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;      &lt;span style=&#34;color:#6272a4&#34;&gt;# Allow HTML in markdown (允许 Markdown 中的 HTML)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;highlight&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;codeFences&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;# Enable code highlighting (启用代码高亮)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;guessSyntax&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;   &lt;span style=&#34;color:#6272a4&#34;&gt;# Guess code language (猜测代码语言)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;lineNos&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;      &lt;span style=&#34;color:#6272a4&#34;&gt;# Show line numbers (显示行号)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;style&lt;/span&gt;: dracula     &lt;span style=&#34;color:#6272a4&#34;&gt;# Code highlight theme (代码高亮主题)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;lineNumbersInTable&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/details&gt;&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="前言">前言</h1>
 <p>在上一篇文章“<a href="../hugo_build_1" 
    
@@ -36,8 +143,12 @@
 
 ”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。</p>
 <h1 id="基础配置文件">基础配置文件</h1>
-<p>我们曾经在<code>hugo.yaml</code>中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># Basic Configuration (基础配置)</span>
+<p>我们曾经在<code>hugo.yaml</code>中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：
+
+
+<p><details >
+  <summary markdown="span">hugo.yaml</summary>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># Basic Configuration (基础配置)</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">baseURL</span>: <span style="color:#f1fa8c">&#34;&#34;</span>               <span style="color:#6272a4"># Site URL (网站 URL)(e.g. https://downmars.github.io/)</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">title</span>: <span style="color:#f1fa8c">&#34;&#34;</span>                <span style="color:#6272a4"># Site title (网站标题)(e.g. DLog)</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">theme</span>: <span style="color:#f1fa8c">&#34;&#34;</span>                <span style="color:#6272a4"># Theme name (主题名称)(e.g. PaperMod, in /themes/)</span>
@@ -65,6 +176,10 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">ShowBreadCrumbs</span>: <span style="color:#ff79c6">true</span>    <span style="color:#6272a4"># Show breadcrumb navigation (显示面包屑导航)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">ShowToc</span>: <span style="color:#ff79c6">true</span>           <span style="color:#6272a4"># Show table of contents (显示目录)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">TocOpen</span>: <span style="color:#ff79c6">true</span>          <span style="color:#6272a4"># TOC expanded by default (目录默认展开)</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">math</span>: <span style="color:#ff79c6">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">fancybox</span>: <span style="color:#ff79c6">true</span> <span style="color:#6272a4"># Display Images (显示图片)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span> <span style="color:#6272a4"># Comment System (评论系统)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">comments</span>: <span style="color:#ff79c6">true</span>          <span style="color:#6272a4"># Enable comments (启用评论)</span>
@@ -134,7 +249,10 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lineNos</span>: <span style="color:#ff79c6">true</span>      <span style="color:#6272a4"># Show line numbers (显示行号)</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">style</span>: dracula     <span style="color:#6272a4"># Code highlight theme (代码高亮主题)</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lineNumbersInTable</span>: <span style="color:#ff79c6">true</span> 
-</span></span></code></pre></div><h2 id="基础配置">基础配置</h2>
+</span></span></code></pre></div>
+</details></p>
+
+</p>
 <h2 id="功能开关">功能开关</h2>
 <h3 id="表情支持">表情支持</h3>
 <p>通过启用此功能，我们能够从 Github Emoji API 和 Unicode 完整表情符号列表中读取数据。博主显出极高兴的样子，将两个指头的敲着键盘，点头说，“对呀对呀！……表情有两样写法，你知道么？”</p>
@@ -170,6 +288,207 @@
 </li>
 </ul>
 <h2 id="参数配置">参数配置</h2>
+<h3 id="图片放大">图片放大</h3>
+<blockquote>
+<p>参考于：<a href="https://yunpengtai.top/posts/hugo-journey/#%e5%9b%be%e7%89%87%e7%82%b9%e5%87%bb%e6%94%be%e5%a4%a7" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</p>
+</blockquote>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/plsn_3.jpg">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/plsn_3.jpg#center"
+         alt="A beautiful landscape" width="600px" height="300px"/> <figcaption>
+            Sonny_boy<p>This is a caption for the image</p>
+        </figcaption>
+</figure>
+</a>
+
+
+<p>我们使用引入<a href="http://fancybox.net/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   fancybox<span class="external-link">↗</span></a>
+
+
+
+
+
+
+来实现：</p>
+<p>在<code>layouts/shortcodes/figure.html</code>中加入：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js&#34;</span>&gt;&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">link</span> <span style="color:#50fa7b">rel</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;stylesheet&#34;</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js&#34;</span>&gt;&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">data-fancybox</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;gallery&#34;</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ .Get &#34;</span><span style="color:#50fa7b">src</span>&#34; }}&#34;&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">figure</span>{{ <span style="color:#50fa7b">if</span> <span style="color:#50fa7b">or</span> (.<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">class</span>&#34;) (<span style="color:#50fa7b">eq</span> (.<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">align</span>&#34;) &#34;<span style="color:#50fa7b">center</span>&#34;) }} <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">           {{- if eq (.Get &#34;</span><span style="color:#50fa7b">align</span>&#34;) &#34;<span style="color:#50fa7b">center</span>&#34; }}<span style="color:#50fa7b">align-center</span> {{ <span style="color:#50fa7b">end</span> }}
+</span></span><span style="display:flex;"><span>           {{<span style="color:#50fa7b">-</span> <span style="color:#50fa7b">with</span> .<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">class</span>&#34; }}{{ . }}{{<span style="color:#50fa7b">-</span> <span style="color:#50fa7b">end</span> }}&#34;
+</span></span><span style="display:flex;"><span>{{<span style="color:#50fa7b">-</span> <span style="color:#50fa7b">end</span> <span style="color:#50fa7b">-</span>}}&gt;
+</span></span><span style="display:flex;"><span>    {{- if .Get &#34;link&#34; -}}
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ .Get &#34;</span><span style="color:#50fa7b">link</span>&#34; }}&#34;{{ <span style="color:#50fa7b">with</span> .<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">target</span>&#34; }} <span style="color:#50fa7b">target</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ . }}&#34;</span>{{ <span style="color:#50fa7b">end</span> }}{{ <span style="color:#50fa7b">with</span> .<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">rel</span>&#34; }} <span style="color:#50fa7b">rel</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ . }}&#34;</span>{{ <span style="color:#50fa7b">end</span> }}&gt;
+</span></span><span style="display:flex;"><span>    {{- end }}
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">img</span> <span style="color:#50fa7b">loading</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;lazy&#34;</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ .Get &#34;</span><span style="color:#50fa7b">src</span>&#34; }}{{<span style="color:#50fa7b">-</span> <span style="color:#50fa7b">if</span> <span style="color:#50fa7b">eq</span> (.<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">align</span>&#34;) &#34;<span style="color:#50fa7b">center</span>&#34; }}#<span style="color:#50fa7b">center</span>{{<span style="color:#50fa7b">-</span> <span style="color:#50fa7b">end</span> }}&#34;
+</span></span><span style="display:flex;"><span>         {{<span style="color:#50fa7b">-</span> <span style="color:#50fa7b">if</span> <span style="color:#50fa7b">or</span> (.<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">alt</span>&#34;) (.<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">caption</span>&#34;) }}
+</span></span><span style="display:flex;"><span>         <span style="color:#50fa7b">alt</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ with .Get &#34;</span><span style="color:#50fa7b">alt</span>&#34; }}{{ . }}{{ <span style="color:#50fa7b">else</span> }}{{ .<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">caption</span>&#34; | <span style="color:#50fa7b">markdownify</span>| <span style="color:#50fa7b">plainify</span> }}{{ <span style="color:#50fa7b">end</span> }}&#34;
+</span></span><span style="display:flex;"><span>         {{<span style="color:#50fa7b">-</span> <span style="color:#50fa7b">end</span> <span style="color:#50fa7b">-</span>}}
+</span></span><span style="display:flex;"><span>         {{<span style="color:#50fa7b">-</span> <span style="color:#50fa7b">with</span> .<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">width</span>&#34; }} <span style="color:#50fa7b">width</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ . }}&#34;</span>{{ <span style="color:#50fa7b">end</span> <span style="color:#50fa7b">-</span>}}
+</span></span><span style="display:flex;"><span>         {{<span style="color:#50fa7b">-</span> <span style="color:#50fa7b">with</span> .<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">height</span>&#34; }} <span style="color:#50fa7b">height</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ . }}&#34;</span>{{ <span style="color:#50fa7b">end</span> <span style="color:#50fa7b">-</span>}}
+</span></span><span style="display:flex;"><span>    /&gt; <span style="color:#6272a4">&lt;!-- Closing img tag --&gt;</span>
+</span></span><span style="display:flex;"><span>    {{- if .Get &#34;link&#34; }}&lt;/<span style="color:#ff79c6">a</span>&gt;{{ end -}}
+</span></span><span style="display:flex;"><span>    {{- if or (or (.Get &#34;title&#34;) (.Get &#34;caption&#34;)) (.Get &#34;attr&#34;) -}}
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">figcaption</span>&gt;
+</span></span><span style="display:flex;"><span>            {{ with (.Get &#34;title&#34;) -}}
+</span></span><span style="display:flex;"><span>                {{ . }}
+</span></span><span style="display:flex;"><span>            {{- end -}}
+</span></span><span style="display:flex;"><span>            {{- if or (.Get &#34;caption&#34;) (.Get &#34;attr&#34;) -}}&lt;<span style="color:#ff79c6">p</span>&gt;
+</span></span><span style="display:flex;"><span>                {{- .Get &#34;caption&#34; | markdownify -}}
+</span></span><span style="display:flex;"><span>                {{- with .Get &#34;attrlink&#34; }}
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ . }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                {{- end -}}
+</span></span><span style="display:flex;"><span>                {{- .Get &#34;attr&#34; | markdownify -}}
+</span></span><span style="display:flex;"><span>                {{- if .Get &#34;attrlink&#34; }}&lt;/<span style="color:#ff79c6">a</span>&gt;{{ end }}&lt;/<span style="color:#ff79c6">p</span>&gt;
+</span></span><span style="display:flex;"><span>            {{- end }}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#ff79c6">figcaption</span>&gt;
+</span></span><span style="display:flex;"><span>    {{- end }}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">figure</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">a</span>&gt;
+</span></span></code></pre></div><h3 id="数学公示">数学公示</h3>
+<blockquote>
+<p>参考于：<a href="https://www.shaohanyun.top/posts/env/hugo_mathjax/#mathjax%e4%b8%8emarkdown%e7%9a%84%e8%9e%8d%e5%90%88" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo博客添加LaTeX语法支持<span class="external-link">↗</span></a>
+
+
+
+
+
+
+、<a href="https://yunpengtai.top/posts/hugo-journey/#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
+
+
+
+
+
+
+、<a href="https://yihui.org/cn/2017/04/mathjax-markdown/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   MathJax 与 Markdown 的究极融合<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</p>
+</blockquote>
+<p>上述博客中提到了相同的问题即 ”对于mathjax与markdown格式中，hugo在渲染的过程中将<code>_</code>渲染为了<code>&lt;em&gt;</code>标签，导致mathjax在渲染的时候找不到原来正确的公示“。</p>
+<p>首先，我们在<code>hugo.yaml</code>中添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">params</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">math</span>: <span style="color:#ff79c6">true</span>
+</span></span></code></pre></div><p>接着，我们在<code>layouts/partials/mathjax.html</code>中添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">type</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;text/javascript&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">async</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>MathJax.Hub.Config({
+</span></span><span style="display:flex;"><span>  tex2jax<span style="color:#ff79c6">:</span> {
+</span></span><span style="display:flex;"><span>    inlineMath<span style="color:#ff79c6">:</span> [[<span style="color:#f1fa8c">&#39;$&#39;</span>,<span style="color:#f1fa8c">&#39;$&#39;</span>], [<span style="color:#f1fa8c">&#39;\\(&#39;</span>,<span style="color:#f1fa8c">&#39;\\)&#39;</span>]],
+</span></span><span style="display:flex;"><span>    displayMath<span style="color:#ff79c6">:</span> [[<span style="color:#f1fa8c">&#39;$$&#39;</span>,<span style="color:#f1fa8c">&#39;$$&#39;</span>], [<span style="color:#f1fa8c">&#39;\[\[&#39;</span>,<span style="color:#f1fa8c">&#39;\]\]&#39;</span>]],
+</span></span><span style="display:flex;"><span>    processEscapes<span style="color:#ff79c6">:</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>    processEnvironments<span style="color:#ff79c6">:</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>    skipTags<span style="color:#ff79c6">:</span> [<span style="color:#f1fa8c">&#39;script&#39;</span>, <span style="color:#f1fa8c">&#39;noscript&#39;</span>, <span style="color:#f1fa8c">&#39;style&#39;</span>, <span style="color:#f1fa8c">&#39;textarea&#39;</span>, <span style="color:#f1fa8c">&#39;pre&#39;</span>],
+</span></span><span style="display:flex;"><span>    TeX<span style="color:#ff79c6">:</span> { equationNumbers<span style="color:#ff79c6">:</span> { autoNumber<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;AMS&#34;</span> },
+</span></span><span style="display:flex;"><span>         extensions<span style="color:#ff79c6">:</span> [<span style="color:#f1fa8c">&#34;AMSmath.js&#34;</span>, <span style="color:#f1fa8c">&#34;AMSsymbols.js&#34;</span>] }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MathJax.Hub.Queue(<span style="color:#8be9fd;font-style:italic">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// Fix &lt;code&gt; tags after MathJax finishes running. This is a
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// hack to overcome a shortcoming of Markdown. Discussion at
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// https://github.com/mojombo/jekyll/issues/199
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">var</span> all <span style="color:#ff79c6">=</span> MathJax.Hub.getAllJax(), i;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span>(i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> all.length; i <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>) {
+</span></span><span style="display:flex;"><span>        all[i].SourceElement().parentNode.className <span style="color:#ff79c6">+=</span> <span style="color:#f1fa8c">&#39; has-jax&#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span></code></pre></div><p>接着，在<code>layouts/partials/extend_footer.html</code>中添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>  (<span style="color:#8be9fd;font-style:italic">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> i, text, code, codes <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.getElementsByTagName(<span style="color:#f1fa8c">&#34;code&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> codes.length; ) {
+</span></span><span style="display:flex;"><span>      code <span style="color:#ff79c6">=</span> codes[i];
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">if</span> (code.parentNode.tagName <span style="color:#ff79c6">!==</span> <span style="color:#f1fa8c">&#34;PRE&#34;</span> <span style="color:#ff79c6">&amp;&amp;</span> code.childElementCount <span style="color:#ff79c6">===</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>        text <span style="color:#ff79c6">=</span> code.textContent;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (<span style="color:#f1fa8c">/^\$[^$]/</span>.test(text) <span style="color:#ff79c6">&amp;&amp;</span> <span style="color:#f1fa8c">/[^$]\$$/</span>.test(text)) {
+</span></span><span style="display:flex;"><span>          text <span style="color:#ff79c6">=</span> text.replace(<span style="color:#f1fa8c">/^\$/</span>, <span style="color:#f1fa8c">&#34;\\(&#34;</span>).replace(<span style="color:#f1fa8c">/\$$/</span>, <span style="color:#f1fa8c">&#34;\\)&#34;</span>);
+</span></span><span style="display:flex;"><span>          code.textContent <span style="color:#ff79c6">=</span> text;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (
+</span></span><span style="display:flex;"><span>          <span style="color:#f1fa8c">/^\\\((.|\s)+\\\)$/</span>.test(text) <span style="color:#ff79c6">||</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f1fa8c">/^\\\[(.|\s)+\\\]$/</span>.test(text) <span style="color:#ff79c6">||</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f1fa8c">/^\$(.|\s)+\$$/</span>.test(text) <span style="color:#ff79c6">||</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f1fa8c">/^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/</span>.test(text)
+</span></span><span style="display:flex;"><span>        ) {
+</span></span><span style="display:flex;"><span>          code.outerHTML <span style="color:#ff79c6">=</span> code.innerHTML; <span style="color:#6272a4">// remove &lt;code&gt;&lt;/code&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>          <span style="color:#ff79c6">continue</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      i<span style="color:#ff79c6">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  })();
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span></code></pre></div><p>最后，在<code>layouts/partials/extend_head.html</code>中添加来判断<code>hugo.yaml</code>中是否启用来决定是否渲染：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if or .Params.math .Site.Params.math }}
+</span></span><span style="display:flex;"><span>{{- partial &#34;mathjax.html&#34; .}}
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span></code></pre></div><p>本处引用的方法通过将带有公式部分使用代码block装饰起来，避免内容被修改，再将代码block去除，完整将其送给渲染工具。</p>
+<p>没做处理之前，以下代码无法渲染：</p>
+<p><code>$$ \frac{\partial E(\boldsymbol{w})}{\partial z_j} = \sum\limits_{k}\frac{\partial E(\boldsymbol{w})}{\partial y_{k}}\frac{\partial y_k}{\partial z_{j}}= \sum\limits_{k} (y_{k}- \hat{y}_{k}) w_{kj}^{(2)} \tag{5.11} $$ </code></p>
+<blockquote>
+<p>现有几个问题待解决：1、白色黑色主题字体颜色未翻转；2、字体大小没有自动渲染正确，在中间的一个步骤，使能够正常匹配主题的颜色和字体大小，但是完全渲染过后就会出现刚才提及的问题，可能的解决方法参考于<a href="https://quanquan.space/viewtopic.php?t=629" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   解决 mathjax 数学公式渲染的字体大小问题<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</p>
+</blockquote>
 <h3 id="目录配置">目录配置</h3>
 <p>对于自带的目录，只显示在文章最上面，既不能让读者随时掌握到阅读进度，也不够优雅，所以我在参考了<a href="https://www.zhouxin.space/logs/introduce-side-toc-and-reading-percentage-to-papermod/" 
    
@@ -835,7 +1154,7 @@
 </span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">weight</span>: <span style="color:#bd93f9">1</span>
 </span></span></code></pre></div><h2 id="渲染配置">渲染配置</h2>
 <h3 id="代码配置">代码配置</h3>
-<p><code>PaperMod</code>主题使用的代码高亮工具为<a href="https://github.com/alecthomas/chroma" 
+<p><del><code>PaperMod</code>主题使用的代码高亮工具为<a href="https://github.com/alecthomas/chroma" 
    
     
        target="_blank" rel="noopener" 
@@ -847,7 +1166,7 @@
 
 
 
-，可能不太聪明，但是对于我的日常使用暂时没有太大问题。</p>
+，可能不太聪明，但是对于我的日常使用暂时没有太大问题。</del> 我在后面换了个代码渲染方式。</p>
 <p><code>Chroma</code>自带的配色方案预览：<a href="https://xyproto.github.io/splash/docs/longer/all.html" 
    
     
@@ -895,9 +1214,190 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lineNos</span>: <span style="color:#ff79c6">true</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">style</span>: dracula 
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lineNumbersInTable</span>: <span style="color:#ff79c6">true</span> 
+</span></span></code></pre></div><p>我这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e4%bb%a3%e7%a0%81%e6%b8%b2%e6%9f%93" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
+
+
+
+
+
+
+的代码渲染方式，在其中选择了<a href="https://github.com/highlightjs/highlight.js/blob/main/src/styles/atom-one-light.css" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+    atom-one-dark/light<span class="external-link">↗</span></a>
+
+
+
+
+
+
+与<a href="https://github.com/highlightjs/highlight.js/blob/main/src/styles/atom-one-dark.css" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   atom-one-dark.css<span class="external-link">↗</span></a>
+
+
+
+
+
+
+。</p>
+<p>为了覆盖掉原主题对于代码渲染的设置，我们需要创建<code>assets/css/hljs/an-old-hope.min.css</code>，并且在其中复制进去黑色主题和白色主题的配置，白色主题直接复制进去皆可，黑色主题需要以以下形式进行限定：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#ff79c6">body</span>.<span style="color:#50fa7b">dark</span> {
+</span></span><span style="display:flex;"><span>  .hljs {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">color</span>: <span style="color:#bd93f9">#abb2bf</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">background</span>: <span style="color:#bd93f9">#282c34</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>接着，我们需要修改白色与黑色主题的背景色，同时由于我参考的博主使用了Consolas 和霞鹜文楷（注释的中文字体），字体可以从<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   博主的仓库<span class="external-link">↗</span></a>
+
+
+
+
+
+
+中获取。</p>
+<p>我们在<code>assets/css/extended/blank.css</code>中添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#ff79c6">font-face</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-family</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;Consolas&#34;</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">src</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">url</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;/fonts/Consolas.woff2&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">code</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-family</span>: <span style="color:#f1fa8c">&#34;Consolas&#34;</span>, <span style="color:#f1fa8c">&#34;LXGWWenKaiScreenR&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">code</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin</span>: <span style="color:#ff79c6">auto</span> <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">6</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">0.8</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">line-height</span>: <span style="color:#bd93f9">1.5</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>code<span style="color:#ff79c6">-</span>bg);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">pre</span> <span style="color:#ff79c6">code</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">block</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin</span>: <span style="color:#ff79c6">auto</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">10</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>hljs<span style="color:#ff79c6">-</span>bg) <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>content);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-radius</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>radius);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">overflow-x</span>: <span style="color:#ff79c6">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">word-break</span>: break-all;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-family</span>: <span style="color:#f1fa8c">&#34;Consolas&#34;</span>, <span style="color:#f1fa8c">&#34;LXGWWenKaiScreenR&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">15</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>并且，在<code>PaperMod</code>中的颜色变量配置<code>assets/css/core/theme-vars.css</code> 中添加配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/* 省略的内容请拷贝原先主题对应的文件 */</span>
+</span></span><span style="display:flex;"><span>:root {
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--hljs-bg</span>: <span style="color:#bd93f9">#f7f7f7</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--code-bg</span>: <span style="color:#8be9fd;font-style:italic">rgb</span>(<span style="color:#bd93f9">245</span>, <span style="color:#bd93f9">245</span>, <span style="color:#bd93f9">245</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">dark</span> {
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--hljs-bg</span>: <span style="color:#8be9fd;font-style:italic">rgb</span>(<span style="color:#bd93f9">46</span>, <span style="color:#bd93f9">46</span>, <span style="color:#bd93f9">51</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--code-bg</span>: <span style="color:#8be9fd;font-style:italic">rgb</span>(<span style="color:#bd93f9">55</span>, <span style="color:#bd93f9">56</span>, <span style="color:#bd93f9">62</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>此外，<code>PaperMod</code> 默认的代码复制键的在对应语言下是不同的文字表示复制粘贴，我觉的不够优雅，于是打算使用图标来代替。关于复制符号的配置在<code>layouts/partials/footer.html</code> 中：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>        copybutton.innerHTML = &#39;{{- i18n &#34;code_copy&#34; | default &#34;copy&#34; }}&#39;;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        function copyingDone() {
+</span></span><span style="display:flex;"><span>            copybutton.innerHTML = &#39;{{- i18n &#34;code_copied&#34; | default &#34;copied!&#34; }}&#39;;
+</span></span><span style="display:flex;"><span>            setTimeout(() =&gt; {
+</span></span><span style="display:flex;"><span>                copybutton.innerHTML = &#39;{{- i18n &#34;code_copy&#34; | default &#34;copy&#34; }}&#39;;
+</span></span><span style="display:flex;"><span>            }, 2000);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>修改为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>        copybutton.innerHTML = `
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#ff79c6">img</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/images/copy.svg&#34;</span> 
+</span></span><span style="display:flex;"><span>                 <span style="color:#50fa7b">alt</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;复制&#34;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;copy-icon&#34;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#50fa7b">width</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;16&#34;</span> 
+</span></span><span style="display:flex;"><span>                 <span style="color:#50fa7b">height</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;16&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        `;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        function copyingDone() {
+</span></span><span style="display:flex;"><span>            copybutton.innerHTML = `
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#ff79c6">img</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/images/check.svg&#34;</span> 
+</span></span><span style="display:flex;"><span>                     <span style="color:#50fa7b">alt</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;已复制&#34;</span>
+</span></span><span style="display:flex;"><span>                     <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;copied-icon&#34;</span>
+</span></span><span style="display:flex;"><span>                     <span style="color:#50fa7b">width</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;16&#34;</span> 
+</span></span><span style="display:flex;"><span>                     <span style="color:#50fa7b">height</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;16&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            `;
+</span></span><span style="display:flex;"><span>            setTimeout(() =&gt; {
+</span></span><span style="display:flex;"><span>                copybutton.innerHTML = `
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#ff79c6">img</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/images/copy.svg&#34;</span> 
+</span></span><span style="display:flex;"><span>                         <span style="color:#50fa7b">alt</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;复制&#34;</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;copy-icon&#34;</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#50fa7b">width</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;16&#34;</span> 
+</span></span><span style="display:flex;"><span>                         <span style="color:#50fa7b">height</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;16&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                `;
+</span></span><span style="display:flex;"><span>            }, 2000);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>我这里在存放的图片位于<code>static/images/</code>，大家可以选择自己的路径。由于编译为静态博客之后，<code>static/images/</code>变为<code>public/images/</code>，同时以<code>public/</code>当作根目录，所以我在代码中使用<code>/images/check.svg&amp;copy.svg</code>。</p>
+<p>接下来，我们配置复制图标样式，在<code>assets/css/extend.css</code>中添加以下代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/*copy_button*/</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">copy-code</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">transparent</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border</span>: <span style="color:#ff79c6">none</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">cursor</span>: <span style="color:#ff79c6">pointer</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">absolute</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">right</span>: <span style="color:#bd93f9">10</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">top</span>: <span style="color:#bd93f9">-2</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">copy-code</span> <span style="color:#ff79c6">img</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">opacity</span>: <span style="color:#bd93f9">0.6</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">opacity</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span>, <span style="color:#ff79c6">filter</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span>; <span style="color:#6272a4">/* 添加 filter 过渡效果 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">copy-code</span>:hover <span style="color:#ff79c6">img</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">opacity</span>: <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">filter</span>: <span style="color:#8be9fd;font-style:italic">invert</span>(<span style="color:#bd93f9">100</span><span style="color:#8be9fd">%</span>); <span style="color:#6272a4">/* 颜色翻转效果 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>我这里使用的是底色为黑色的<code>svg</code>图标，所以我这里做了反色处理。</p>
+<p>接下来我们配置代码折叠，对于过长的代码段，十分影响阅读者的感受，参考于<a href="https://yunpengtai.top/posts/hugo-journey/#%e4%bb%a3%e7%a0%81%e6%8a%98%e5%8f%a0" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
+
+
+
+
+
+
+ ，我们需要在<code>layouts/shortcodes/collapse.html</code>中加入以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if .Get &#34;summary&#34; }}
+</span></span><span style="display:flex;"><span>{{ else }}
+</span></span><span style="display:flex;"><span>{{ warnf &#34;missing value for param &#39;summary&#39;: %s&#34; .Position }}
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">p</span>&gt;&lt;<span style="color:#ff79c6">details</span> {{ <span style="color:#50fa7b">if</span> (<span style="color:#50fa7b">eq</span> (.<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">openByDefault</span>&#34;) <span style="color:#50fa7b">true</span>) }} <span style="color:#50fa7b">open</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">true</span> {{ <span style="color:#50fa7b">end</span> }}&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">summary</span> <span style="color:#50fa7b">markdown</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;span&#34;</span>&gt;{{ .Get &#34;summary&#34; | markdownify }}&lt;/<span style="color:#ff79c6">summary</span>&gt;
+</span></span><span style="display:flex;"><span>  {{ .Inner | markdownify }}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">details</span>&gt;&lt;/<span style="color:#ff79c6">p</span>&gt;
 </span></span></code></pre></div><h1 id="额外配置">额外配置</h1>
 <h2 id="字体配置">字体配置</h2>
-<p>我已经忍这个默认字体很久了，现在我们就在这里干掉他。我们在这里选择<a href="https://github.com/lxgw/LxgwWenKai?tab=readme-ov-file" 
+<p>我已经忍这个默认字体很久了，现在我们就在这里干掉他。我们在这里选择的中文是<a href="https://github.com/lxgw/LxgwWenKai?tab=readme-ov-file" 
    
     
        target="_blank" rel="noopener" 
@@ -909,12 +1409,12 @@
 
 
 
-，配置方法参考<a href="https://zhuanlan.zhihu.com/p/627444050" 
+，英文是 Apple 的字体 SF Pro Text Regular 来渲染，方法参考于： <a href="https://yunpengtai.top/posts/hugo-journey/#%e5%ad%97%e4%bd%93" 
    
     
        target="_blank" rel="noopener" 
    >
-   Hugo使用自定义字体<span class="external-link">↗</span></a>
+   Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
 
 
 
@@ -922,20 +1422,40 @@
 
 
 。</p>
-<blockquote>
-<p>本应该英文和中文分开配置字体，但是我暂时没有找到较好的方法，并且暂时显示效果还可以，就暂时搁置了。</p>
-</blockquote>
-<p>我们在<code>layouts/partials/extend_head.html</code>中加入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span> &lt;<span style="color:#ff79c6">link</span> <span style="color:#50fa7b">rel</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;stylesheet&#34;</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/style.css&#34;</span> /&gt;
-</span></span></code></pre></div><p>在<code>assets/css/extended/blank.css</code>中加入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#ff79c6">body</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-family</span>: <span style="color:#f1fa8c">&#34;LXGW WenKai Screen&#34;</span>, <span style="color:#ff79c6">sans-serif</span> <span style="color:#ff79c6">!important</span>;
+<p>在<code>assets/css/extended/blank.css</code>中加入：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#ff79c6">font-face</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-family</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;LXGWWenKaiScreenR&#34;</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">src</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">url</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;/fonts/lxgwwenkaiscreen.subset.v1.235.standard.woff2&#34;</span><span style="color:#ff79c6">);</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">pre</span><span style="color:#ff79c6">,</span> <span style="color:#ff79c6">code</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-family</span>: <span style="color:#f1fa8c">&#34;LXGW WenKai Screen&#34;</span>, <span style="color:#ff79c6">sans-serif</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* https://www.webfontfree.com/cn/download/SFProText-Regular */</span>
+</span></span><span style="display:flex;"><span>@<span style="color:#ff79c6">font-face</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-family</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;SFProText-Regular&#34;</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">src</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">url</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;/fonts/SFProText-Regular.woff2&#34;</span><span style="color:#ff79c6">);</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="知识共享协议">知识共享协议</h2>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-family</span>: <span style="color:#f1fa8c">&#34;SFProText-Regular&#34;</span>, <span style="color:#f1fa8c">&#34;LXGWWenKaiScreenR&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">16</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">line-height</span>: <span style="color:#bd93f9">1.6</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">word-break</span>: <span style="color:#ff79c6">break-word</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>theme);
+</span></span><span style="display:flex;"><span>  font-display: swap;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>字体可以从我上面提及博主的<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   github仓库<span class="external-link">↗</span></a>
+
+
+
+
+
+
+处获取。</p>
+<h2 id="知识共享协议">知识共享协议</h2>
 <blockquote>
 <p>参考于:<a href="https://www.yunyitang.me/hugo-papermod-blog/#%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E5%8D%8F%E8%AE%AE" 
    
@@ -992,7 +1512,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">url</span>: <span style="color:#f1fa8c">&#34;https://creativecommons.org/licenses/by-sa/4.0/&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">icons</span>: <span style="color:#ff79c6">*cc_icons</span>  <span style="color:#6272a4"># 复用图标列表</span>
 </span></span></code></pre></div><p>其次，创建文件<code>layouts/partials/license.html</code>并添加：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ $license := index site.Data.licenses .Params.license }}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">hr</span>&gt; <span style="color:#6272a4">&lt;!-- 添加分割线 --&gt;</span>
+</span></span><span style="display:flex;"><span>{{ $license := index site.Data.licenses .Params.license }}
 </span></span><span style="display:flex;"><span>{{ if $license }}
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;license-declaration&#34;</span> <span style="color:#50fa7b">vocab</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://schema.org/&#34;</span> <span style="color:#50fa7b">typeof</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;CreativeWork&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  {{/* 自动检测主题模式 */}}
@@ -1089,9 +1610,213 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>最后，在<code>archetypes/default.md</code>中添加以下代码段即可实现一个自动添加的开源协议呈现模组。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>license: &#34;CC-BY-NC-4.0&#34;  # 你对应使用的协议
-</span></span></code></pre></div><blockquote>
+</span></span></code></pre></div><p>呈现效果如下：</p>
+<p> 
+ <div class="post-img-view">
+ <a data-fancybox="gallery" href="/blog_images/CC-BY-NC-4.png">
+ <img src="/blog_images/CC-BY-NC-4.png" alt=""  />
+ </a>
+ </div>
+ 
+
+</p>
+<blockquote>
 <p>但是，由于我对于前端不是很了解，黑夜模式下的样式调整未能正确实现，待解决。</p>
 </blockquote>
+<h2 id="修改时间">修改时间</h2>
+<p>原本主题并没有显示「修改时间」的功能，我在这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e6%b7%bb%e5%8a%a0%e4%bf%ae%e6%94%b9%e6%97%b6%e9%97%b4" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
+
+
+
+
+
+
+。</p>
+<p>在<code>layouts/partials/post_meta.html</code>中添加以下内容，参考的博客中<code>$scratch.Add</code>错误被包裹在<code>()</code>中，并且行末还有一个多余的<code>$</code>，我在此做了修改：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- if (.Param &#34;ShowLastMod&#34;) -}}
+</span></span><span style="display:flex;"><span>    {{- if ne (.Lastmod.Format &#34;2006-01-02&#34;) (.Date.Format &#34;2006-01-02&#34;) -}}
+</span></span><span style="display:flex;"><span>        {{- $scratch.Add &#34;meta&#34; (slice (printf &#34;Updated:&amp;nbsp;%s&#34; (.Lastmod.Format (.Site.Params.dateFormat | default &#34;January 2, 2006&#34;)))) -}}
+</span></span><span style="display:flex;"><span>    {{- end -}}
+</span></span><span style="display:flex;"><span>{{- end -}}
+</span></span></code></pre></div><p>并且，在<code>hugo.yaml</code>中加入：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">params</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">showLastMod</span>: <span style="color:#ff79c6">true</span>
+</span></span></code></pre></div><p>同时，我们在<code>archetypes/default.md</code>中的配置如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34;
+</span></span><span style="display:flex;"><span>date: {{ .Date }}
+</span></span><span style="display:flex;"><span>lastmod: {{ .Date }}
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><p>等我过几天看看这个效果咋样。</p>
+<h2 id="marginnote">MarginNote</h2>
+<blockquote>
+<p>在这里十分感谢<a href="https://yunpengtai.top/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Yunpeng Tai<span class="external-link">↗</span></a>
+
+
+
+
+
+
+的博客，我从上面学习和摘选了很多内容在本文中。</p>
+</blockquote>
+<p>我们在<code>assets/extended/custom.css</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">float</span>: <span style="color:#ff79c6">right</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-right</span>: <span style="color:#bd93f9">-18</span><span style="color:#8be9fd">vw</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">40</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">max-width</span>: <span style="color:#bd93f9">200</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">counter-reset</span>: sidenote-counter;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote-number</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">counter-increment</span>: sidenote-counter;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote</span>::before {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">content</span>: <span style="color:#f1fa8c">&#34;# &#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">0.9</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-weight</span>: <span style="color:#bd93f9">700</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">red</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote-number</span>::after {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">content</span>: <span style="color:#f1fa8c">&#34;#&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">vertical-align</span>: <span style="color:#ff79c6">super</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">0.8</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-weight</span>: <span style="color:#bd93f9">700</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#bd93f9">#409dff</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote-number</span>:hover .<span style="color:#50fa7b">sidenote</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background-color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>bg);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>同时，在<code>layouts/shortcodes/sidenote.html</code>中添加以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote-number&#34;</span>&gt;&lt;<span style="color:#ff79c6">small</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote&#34;</span>&gt;{{ .Inner | markdownify }}&lt;/<span style="color:#ff79c6">small</span>&gt;&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span></code></pre></div><p>这是示例 <span class="sidenote-number"><small class="sidenote">这是示例的侧边注解</small></span>
+
+</p>
+<h2 id="盘古之白">盘古之白</h2>
+<blockquote>
+<p><a href="https://blog.xiaoquankong.ai/zh/posts/chinese-document-typesetting-specification-spacing-of-pangu/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   「盤古之白」<span class="external-link">↗</span></a>
+
+
+
+
+
+
+一文中讨论到，所有的中文字和半形的英文、數字、符號之間应该存在的空白，被漢學家稱為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。</p>
+</blockquote>
+<p>我们需要在<code>layouts/partials/extend_footer.html</code>中加入：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- $highlight := resources.Get &#34;js/pangu.min.js&#34; -}}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>  (<span style="color:#8be9fd;font-style:italic">function</span> (u, c) {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> d <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>,
+</span></span><span style="display:flex;"><span>      t <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;script&#34;</span>,
+</span></span><span style="display:flex;"><span>      o <span style="color:#ff79c6">=</span> d.createElement(t),
+</span></span><span style="display:flex;"><span>      s <span style="color:#ff79c6">=</span> d.getElementsByTagName(t)[<span style="color:#bd93f9">0</span>];
+</span></span><span style="display:flex;"><span>    o.src <span style="color:#ff79c6">=</span> u;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (c) {
+</span></span><span style="display:flex;"><span>      o.addEventListener(<span style="color:#f1fa8c">&#34;load&#34;</span>, <span style="color:#8be9fd;font-style:italic">function</span> (e) {
+</span></span><span style="display:flex;"><span>        c(e);
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    s.parentNode.insertBefore(o, s);
+</span></span><span style="display:flex;"><span>  })(<span style="color:#f1fa8c">&#34;{{ $highlight.RelPermalink }}&#34;</span>, <span style="color:#8be9fd;font-style:italic">function</span> () {
+</span></span><span style="display:flex;"><span>    pangu.spacingPage();
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span></code></pre></div><p>同时，需要创建<code>assets/js/pangu.min.js</code>，网站加载时，盘古之白自动加载，大家可以从此处下载。</p>
+<h2 id="blockquote">Blockquote</h2>
+<blockquote>
+<p>参考于：<a href="https://yunpengtai.top/posts/hugo-journey/#blockquote" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</p>
+</blockquote>
+<blockquote class="quote"><p>为什么要演奏春日影！</p></blockquote>
+
+<p>在 <code>layouts/shortcodes/quote.html</code> 加入以下内容：
+
+
+<p><details >
+  <summary markdown="span">layouts/shortcodes/quote.html</summary>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">blockquote</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;quote{{ range .Params }} {{ . }}{{ end }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {{- $content := .Inner | markdownify -}}
+</span></span><span style="display:flex;"><span>    {{- if not (strings.HasPrefix $content &#34;&lt;<span style="color:#ff79c6">p</span>&gt;&#34;) -}}
+</span></span><span style="display:flex;"><span>        {{ printf &#34;&lt;<span style="color:#ff79c6">p</span>&gt;%s&lt;/<span style="color:#ff79c6">p</span>&gt;&#34; $content | safeHTML }}
+</span></span><span style="display:flex;"><span>    {{- else -}}
+</span></span><span style="display:flex;"><span>        {{ $content }}
+</span></span><span style="display:flex;"><span>    {{- end -}}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">blockquote</span>&gt;
+</span></span></code></pre></div>
+</details></p>
+
+</p>
+<p>我们在<code>assets/css/extended/quote.css</code>中加入以下内容：</p>
+
+
+<p><details >
+  <summary markdown="span">assets/css/extended/quote.css</summary>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#ff79c6">blockquote</span>.<span style="color:#50fa7b">quote</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span> <span style="color:#ff79c6">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding-left</span>: <span style="color:#bd93f9">3</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border</span>: <span style="color:#ff79c6">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">blockquote</span>.<span style="color:#50fa7b">quote</span>::before {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">absolute</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">left</span>: <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">content</span>: <span style="color:#f1fa8c">&#34;“&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">3</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-weight</span>: <span style="color:#ff79c6">bold</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">line-height</span>: <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">blockquote</span>.<span style="color:#50fa7b">quote-copyright</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">2</span><span style="color:#8be9fd">em</span> <span style="color:#ff79c6">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding-left</span>: <span style="color:#bd93f9">3</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border</span>: <span style="color:#ff79c6">none</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background-color</span>: <span style="color:#ff79c6">aliceblue</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">blockquote</span>.<span style="color:#50fa7b">quote-copyright</span>::before {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">absolute</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">left</span>: <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">content</span>: <span style="color:#f1fa8c">&#34;“&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">3</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-weight</span>: <span style="color:#ff79c6">bold</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">line-height</span>: <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</details></p>
+
+
 ]]></content:encoded>
     </item>
     <item>

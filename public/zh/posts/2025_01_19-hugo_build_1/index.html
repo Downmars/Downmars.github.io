@@ -12,7 +12,7 @@
 以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。">
 <meta name="author" content="Downmars">
 <link rel="canonical" href="http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.10d4b691b3e24cb3e84031eafbbef786047b27a535d3eb786d8c1e83f9e7abae.css" integrity="sha256-ENS2kbPiTLPoQDHq&#43;773hgR7J6U10&#43;t4bYweg/nnq64=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.51852c3917f9bfaee4c3bef4b74b206a0cc423c3455705d0c8abebfbe1455b33.css" integrity="sha256-UYUsORf5v67kw770t0sgagzEI8NFVwXQyKvr&#43;&#43;FFWzM=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/images/blog.png">
@@ -38,7 +38,8 @@
 
 
 
- <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/style.css" />
+
+ 
 
 
 
@@ -50,6 +51,46 @@
 
 
 
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
 
 
 
@@ -126,7 +167,7 @@
     <h1 class="post-title entry-hint-parent">
       Hugo博客搭建_基础 😊
     </h1>
-    <div class="post-meta"><span title='2025-01-19 20:05:13 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp; <span title='2025-01-19 20:05:13 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp;4 分钟&nbsp;·&nbsp;1907 字&nbsp;·&nbsp;Downmars&nbsp;|&nbsp;语言:
+    <div class="post-meta"><span title='2025-01-19 20:05:13 +0800 CST'>2025-01-19</span>&nbsp;·&nbsp;4 分钟&nbsp;·&nbsp;1907 字&nbsp;·&nbsp;Downmars&nbsp;|&nbsp;语言:
 <ul class="i18n_list">
     <li>
         <a href="http://localhost:1313/en/posts/2025_01_19-hugo_build_1/">En</a>
@@ -201,7 +242,7 @@
         
         Object.keys(headerCounters).forEach(level => {
             if (parseInt(level) > headerLevel) {
-                delete headerCounters[headerLevel];
+                headerCounters[level] = 0; 
             }
         });
         
@@ -698,20 +739,47 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
-</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
+</a><script>
+  (function () {
+    var i, text, code, codes = document.getElementsByTagName("code");
+    for (i = 0; i < codes.length; ) {
+      code = codes[i];
+      if (code.parentNode.tagName !== "PRE" && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, "\\(").replace(/\$$/, "\\)");
+          code.textContent = text;
+        }
+        if (
+          /^\\\((.|\s)+\\\)$/.test(text) ||
+          /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$(.|\s)+\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)
+        ) {
+          code.outerHTML = code.innerHTML; 
+          continue;
+        }
+      }
+      i++;
+    }
+  })();
+</script><script>
+  (function (u, c) {
+    var d = document,
+      t = "script",
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener("load", function (e) {
+        c(e);
+      });
+    }
+    s.parentNode.insertBefore(o, s);
+  })("\/js\/pangu.min.js", function () {
+    pangu.spacingPage();
+  });
+</script>
 
 
 <script>
@@ -768,21 +836,93 @@
     })
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
     document.querySelectorAll('pre > code').forEach((codeblock) => {
         const container = codeblock.parentNode.parentNode;
 
         const copybutton = document.createElement('button');
         copybutton.classList.add('copy-code');
-        copybutton.innerHTML = '复制';
+        
+        copybutton.innerHTML = `
+            <img src="/images/copy.svg" 
+                 alt="复制"
+                 class="copy-icon"
+                 width="16" 
+                 height="16">
+        `;
 
         function copyingDone() {
-            copybutton.innerHTML = '已复制！';
+            
+            copybutton.innerHTML = `
+                <img src="/images/check.svg" 
+                     alt="已复制"
+                     class="copied-icon"
+                     width="16" 
+                     height="16">
+            `;
             setTimeout(() => {
-                copybutton.innerHTML = '复制';
+                copybutton.innerHTML = `
+                    <img src="/images/copy.svg" 
+                         alt="复制"
+                         class="copy-icon"
+                         width="16" 
+                         height="16">
+                `;
             }, 2000);
         }
 
+        
         copybutton.addEventListener('click', (cb) => {
             if ('clipboard' in navigator) {
                 navigator.clipboard.writeText(codeblock.textContent);
@@ -802,6 +942,7 @@
             selection.removeRange(range);
         });
 
+        
         if (container.classList.contains("highlight")) {
             container.appendChild(copybutton);
         } else if (container.parentNode.firstChild == container) {
@@ -814,7 +955,14 @@
             codeblock.parentNode.appendChild(copybutton);
         }
     });
-</script>
+</script> 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
 
 
 
@@ -830,7 +978,7 @@
         
     
     发表了0篇文章 · 
-    总计6.76k字
+    总计9.68k字
 </section>
 
 </body>

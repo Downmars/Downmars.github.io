@@ -1,22 +1,44 @@
-<!-- {{- if not (.Param "hideCustumFooter") }} -->
-<!-- <footer class="footer"> -->
-<!--   {{- if site.Copyright }} -->
-<!--   <span>{{ site.Copyright | markdownify }}</span> -->
-<!--   {{- else }} -->
-<!--   <span>&copy; {{ now.Year }} <a href="{{ "" | absLangURL }}">{{ site.Title }}</a></span> -->
-<!--   {{- end }} -->
-<!--   <span> -->
-<!--     Powered by -->
-<!--     <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> & -->
-<!--     <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a> -->
-<!--   </span> -->
-<!--   {{ if .Site.Params.busuanzi.enable -}} -->
-<!--   <div> -->
-<!--   <span id="busuanzi_container_site_pv"> -->
-<!--     All visitor <span id="busuanzi_value_site_pv"></span> times. -->
-<!--   </span> -->
-<!-- </div> -->
-<!--   {{- end -}} -->
-<!-- </footer> -->
-<!-- {{- end }} -->
+<script>
+  (function () {
+    var i, text, code, codes = document.getElementsByTagName("code");
+    for (i = 0; i < codes.length; ) {
+      code = codes[i];
+      if (code.parentNode.tagName !== "PRE" && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, "\\(").replace(/\$$/, "\\)");
+          code.textContent = text;
+        }
+        if (
+          /^\\\((.|\s)+\\\)$/.test(text) ||
+          /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$(.|\s)+\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)
+        ) {
+          code.outerHTML = code.innerHTML; // remove <code></code>
+          continue;
+        }
+      }
+      i++;
+    }
+  })();
+</script>
 
+{{- $highlight := resources.Get "js/pangu.min.js" -}}
+<script>
+  (function (u, c) {
+    var d = document,
+      t = "script",
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener("load", function (e) {
+        c(e);
+      });
+    }
+    s.parentNode.insertBefore(o, s);
+  })("{{ $highlight.RelPermalink }}", function () {
+    pangu.spacingPage();
+  });
+</script>

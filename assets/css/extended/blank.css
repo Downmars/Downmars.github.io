@@ -11,10 +11,62 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 /*    margin: 0;*/
 /*}*/
 
- body {
-     font-family: "LXGW WenKai Screen", sans-serif !important;
- }
+ /*body {*/
+ /*    font-family: "LXGW WenKai Screen", sans-serif !important;*/
+ /*}*/
+ /**/
+ /*.post-content pre, code {*/
+ /*    font-family: "LXGW WenKai Screen", sans-serif;*/
+ /*}*/
 
- .post-content pre, code {
-     font-family: "LXGW WenKai Screen", sans-serif;
- }
+
+@font-face {
+  font-family: "LXGWWenKaiScreenR";
+  src: url("/fonts/lxgwwenkaiscreen.subset.v1.235.standard.woff2");
+}
+
+/* https://www.webfontfree.com/cn/download/SFProText-Regular */
+@font-face {
+  font-family: "SFProText-Regular";
+  src: url("/fonts/SFProText-Regular.woff2");
+}
+
+body {
+  font-family: "SFProText-Regular", "LXGWWenKaiScreenR";
+  font-size: 16px;
+  line-height: 1.6;
+  word-break: break-word;
+  background: var(--theme);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Consolas";
+  src: url("/fonts/Consolas.woff2");
+}
+
+code {
+  font-family: "Consolas", "LXGWWenKaiScreenR";
+}
+
+.post-content code {
+  margin: auto 4px;
+  padding: 4px 6px;
+  font-size: 0.8em;
+  line-height: 1.5;
+  background: var(--code-bg);
+}
+
+.post-content pre code {
+  display: block;
+  margin: auto 0;
+  padding: 10px;
+  background: var(--hljs-bg) !important;
+  color: var(--content);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  word-break: break-all;
+  font-family: "Consolas", "LXGWWenKaiScreenR";
+  font-size: 15px;
+}
+

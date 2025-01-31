@@ -112,7 +112,7 @@
         // 重置当前级别之后的计数器
         Object.keys(headerCounters).forEach(level => {
             if (parseInt(level) > headerLevel) {
-                delete headerCounters[headerLevel];
+                headerCounters[level] = 0; // 改为置零而不是删除
             }
         });
         
