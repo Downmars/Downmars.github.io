@@ -77,6 +77,65 @@
     font-size: 12px;
 }
 
+/*添加文章目录编号*/
+main {
+    counter-reset: h1-cnt h2-cnt h3-cnt h4-cnt h5-cnt h6-cnt;
+}
+
+.post-content h1 {
+    counter-increment: h1-cnt;
+    counter-reset: h2-cnt h3-cnt h4-cnt h5-cnt h6-cnt; /* Reset lower levels */
+}
+
+.post-content h2 {
+    counter-increment: h2-cnt;
+    counter-reset: h3-cnt h4-cnt h5-cnt h6-cnt; /* Reset lower levels */
+}
+
+.post-content h3 {
+    counter-increment: h3-cnt;
+    counter-reset: h4-cnt h5-cnt h6-cnt; /* Reset lower levels */
+}
+
+.post-content h4 {
+    counter-increment: h4-cnt;
+    counter-reset: h5-cnt h6-cnt; /* Reset lower levels */
+}
+
+.post-content h5 {
+    counter-increment: h5-cnt;
+    counter-reset: h6-cnt; /* Reset lower levels */
+}
+
+.post-content h6 {
+    counter-increment: h6-cnt;
+}
+
+.post-content h1::before {
+    content: counter(h1-cnt) ' ';
+}
+
+.post-content h2::before {
+    content: counter(h2-cnt) ' ';
+}
+
+.post-content h3::before {
+    content: counter(h2-cnt) '.' counter(h3-cnt) ' ';
+}
+
+.post-content h4::before {
+    content: counter(h2-cnt) '.' counter(h3-cnt) '.' counter(h4-cnt) ' ';
+}
+
+.post-content h5::before {
+    content: counter(h2-cnt) '.' counter(h3-cnt) '.' counter(h4-cnt) '.' counter(h5-cnt) ' ';
+}
+
+.post-content h6::before {
+    content: counter(h2-cnt) '.' counter(h3-cnt) '.' counter(h4-cnt) '.' counter(h5-cnt) '.' counter(h6-cnt) ' ';
+}
+/*添加文章目录编号*/
+
 /* 文章内容中链接和目录链接悬停效果 */ 
 .post-content a,
 .toc a:hover {

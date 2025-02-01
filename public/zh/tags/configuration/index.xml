@@ -13,7 +13,7 @@
       <link>http://localhost:1313/zh/posts/2025_01_20-hugo_build_2/</link>
       <pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_01_20-hugo_build_2/</guid>
-      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;在上一篇文章“&lt;a href=&#34;../hugo_build_1&#34; 
    
    &gt;
@@ -23,13 +23,446 @@
 
 
 ”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。&lt;/p&gt;
-&lt;h1 id=&#34;基础配置文件&#34;&gt;基础配置文件&lt;/h1&gt;
+&lt;h2 id=&#34;基础配置文件&#34;&gt;基础配置文件&lt;/h2&gt;
 &lt;p&gt;我们曾经在&lt;code&gt;hugo.yaml&lt;/code&gt;中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：
 
 
-&lt;p&gt;&lt;details &gt;
-  &lt;summary markdown=&#34;span&#34;&gt;hugo.yaml&lt;/summary&gt;
-  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# Basic Configuration (基础配置)&lt;/span&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+&lt;p&gt;&lt;details class=&#34;custom-collapse&#34; &gt;
+  &lt;summary markdown=&#34;span&#34;&gt;
+    &lt;span&gt;hugo.yaml&lt;/span&gt;
+    &lt;span class=&#34;line-count&#34;&gt;101 lines&lt;/span&gt;
+  &lt;/summary&gt;
+  &lt;div class=&#34;content&#34;&gt;
+    &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# Basic Configuration (基础配置)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;baseURL&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;               &lt;span style=&#34;color:#6272a4&#34;&gt;# Site URL (网站 URL)(e.g. https://downmars.github.io/)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;title&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;                &lt;span style=&#34;color:#6272a4&#34;&gt;# Site title (网站标题)(e.g. DLog)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;theme&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;                &lt;span style=&#34;color:#6272a4&#34;&gt;# Theme name (主题名称)(e.g. PaperMod, in /themes/)&lt;/span&gt;
@@ -131,8 +564,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;style&lt;/span&gt;: dracula     &lt;span style=&#34;color:#6272a4&#34;&gt;# Code highlight theme (代码高亮主题)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;lineNumbersInTable&lt;/span&gt;: &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/details&gt;&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<h1 id="前言">前言</h1>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
 <p>在上一篇文章“<a href="../hugo_build_1" 
    
    >
@@ -142,13 +576,446 @@
 
 
 ”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。</p>
-<h1 id="基础配置文件">基础配置文件</h1>
+<h2 id="基础配置文件">基础配置文件</h2>
 <p>我们曾经在<code>hugo.yaml</code>中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：
 
 
-<p><details >
-  <summary markdown="span">hugo.yaml</summary>
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># Basic Configuration (基础配置)</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>hugo.yaml</span>
+    <span class="line-count">101 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># Basic Configuration (基础配置)</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">baseURL</span>: <span style="color:#f1fa8c">&#34;&#34;</span>               <span style="color:#6272a4"># Site URL (网站 URL)(e.g. https://downmars.github.io/)</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">title</span>: <span style="color:#f1fa8c">&#34;&#34;</span>                <span style="color:#6272a4"># Site title (网站标题)(e.g. DLog)</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">theme</span>: <span style="color:#f1fa8c">&#34;&#34;</span>                <span style="color:#6272a4"># Theme name (主题名称)(e.g. PaperMod, in /themes/)</span>
@@ -250,11 +1117,11 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">style</span>: dracula     <span style="color:#6272a4"># Code highlight theme (代码高亮主题)</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lineNumbersInTable</span>: <span style="color:#ff79c6">true</span> 
 </span></span></code></pre></div>
+  </div>
 </details></p>
-
 </p>
-<h2 id="功能开关">功能开关</h2>
-<h3 id="表情支持">表情支持</h3>
+<h3 id="功能开关">功能开关</h3>
+<h4 id="表情支持">表情支持</h4>
 <p>通过启用此功能，我们能够从 Github Emoji API 和 Unicode 完整表情符号列表中读取数据。博主显出极高兴的样子，将两个指头的敲着键盘，点头说，“对呀对呀！……表情有两样写法，你知道么？”</p>
 <p>Shortcode: <code>:drooling_face:</code>&#x1f924;</p>
 <p>Unicode: <code>&amp;#x1F924</code>🤤</p>
@@ -287,8 +1154,8 @@
 
 </li>
 </ul>
-<h2 id="参数配置">参数配置</h2>
-<h3 id="图片放大">图片放大</h3>
+<h3 id="参数配置">参数配置</h3>
+<h4 id="图片放大">图片放大</h4>
 <blockquote>
 <p>参考于：<a href="https://yunpengtai.top/posts/hugo-journey/#%e5%9b%be%e7%89%87%e7%82%b9%e5%87%bb%e6%94%be%e5%a4%a7" 
    
@@ -333,7 +1200,192 @@
 
 来实现：</p>
 <p>在<code>layouts/shortcodes/figure.html</code>中加入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js&#34;</span>&gt;&lt;/<span style="color:#ff79c6">script</span>&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/shortcodes/figure.html</span>
+    <span class="line-count">38 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js&#34;</span>&gt;&lt;/<span style="color:#ff79c6">script</span>&gt;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">link</span> <span style="color:#50fa7b">rel</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;stylesheet&#34;</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css&#34;</span> /&gt;
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js&#34;</span>&gt;&lt;/<span style="color:#ff79c6">script</span>&gt;
@@ -371,7 +1423,11 @@
 </span></span><span style="display:flex;"><span>    {{- end }}
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">figure</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">a</span>&gt;
-</span></span></code></pre></div><h3 id="数学公示">数学公示</h3>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h4 id="数学公示">数学公示</h4>
 <blockquote>
 <p>参考于：<a href="https://www.shaohanyun.top/posts/env/hugo_mathjax/#mathjax%e4%b8%8emarkdown%e7%9a%84%e8%9e%8d%e5%90%88" 
    
@@ -413,10 +1469,188 @@
 </blockquote>
 <p>上述博客中提到了相同的问题即 ”对于mathjax与markdown格式中，hugo在渲染的过程中将<code>_</code>渲染为了<code>&lt;em&gt;</code>标签，导致mathjax在渲染的时候找不到原来正确的公示“。</p>
 <p>首先，我们在<code>hugo.yaml</code>中添加：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">params</span>:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>hugo.yaml</span>
+    <span class="line-count">2 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">params</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">math</span>: <span style="color:#ff79c6">true</span>
-</span></span></code></pre></div><p>接着，我们在<code>layouts/partials/mathjax.html</code>中添加：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">type</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;text/javascript&#34;</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>接着，我们在<code>layouts/partials/mathjax.html</code>中添加：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/partials/mathjax.html</span>
+    <span class="line-count">25 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">type</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;text/javascript&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">async</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>MathJax.Hub.Config({
@@ -441,8 +1675,145 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>});
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
-</span></span></code></pre></div><p>接着，在<code>layouts/partials/extend_footer.html</code>中添加：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>接着，在<code>layouts/partials/extend_footer.html</code>中添加：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/partials/extend_footer.html</span>
+    <span class="line-count">25 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
 </span></span><span style="display:flex;"><span>  (<span style="color:#8be9fd;font-style:italic">function</span> () {
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> i, text, code, codes <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.getElementsByTagName(<span style="color:#f1fa8c">&#34;code&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> codes.length; ) {
@@ -467,11 +1838,64 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  })();
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
-</span></span></code></pre></div><p>最后，在<code>layouts/partials/extend_head.html</code>中添加来判断<code>hugo.yaml</code>中是否启用来决定是否渲染：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if or .Params.math .Site.Params.math }}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+最后，在<code>layouts/partials/extend_head.html</code>中添加来判断<code>hugo.yaml</code>中是否启用来决定是否渲染：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/partials/extend_head.html</span>
+    <span class="line-count">3 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if or .Params.math .Site.Params.math }}
 </span></span><span style="display:flex;"><span>{{- partial &#34;mathjax.html&#34; .}}
 </span></span><span style="display:flex;"><span>{{ end }}
-</span></span></code></pre></div><p>本处引用的方法通过将带有公式部分使用代码block装饰起来，避免内容被修改，再将代码block去除，完整将其送给渲染工具。</p>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>本处引用的方法通过将带有公式部分使用代码block装饰起来，避免内容被修改，再将代码block去除，完整将其送给渲染工具。</p>
 <p>没做处理之前，以下代码无法渲染：</p>
 <p><code>$$ \frac{\partial E(\boldsymbol{w})}{\partial z_j} = \sum\limits_{k}\frac{\partial E(\boldsymbol{w})}{\partial y_{k}}\frac{\partial y_k}{\partial z_{j}}= \sum\limits_{k} (y_{k}- \hat{y}_{k}) w_{kj}^{(2)} \tag{5.11} $$ </code></p>
 <blockquote>
@@ -489,7 +1913,7 @@
 
 </p>
 </blockquote>
-<h3 id="目录配置">目录配置</h3>
+<h4 id="目录配置">目录配置</h4>
 <p>对于自带的目录，只显示在文章最上面，既不能让读者随时掌握到阅读进度，也不够优雅，所以我在参考了<a href="https://www.zhouxin.space/logs/introduce-side-toc-and-reading-percentage-to-papermod/" 
    
     
@@ -508,7 +1932,1100 @@
 <li>当前浏览章节下划线显示
 创建 <code>layout/partials/toc.html</code> ,</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#6272a4">&lt;!-- 目录侧边栏 --&gt;</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/partials/toc.hmtl</span>
+    <span class="line-count">265 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#6272a4">&lt;!-- 目录侧边栏 --&gt;</span>
 </span></span><span style="display:flex;"><span>{{- $headers := findRE &#34;&lt;<span style="color:#ff79c6">h</span>[<span style="color:#50fa7b">1-6</span>].*?&gt;(.|\n])+?&lt;/h[1-6]&gt;&#34; .Content -}}
 </span></span><span style="display:flex;"><span>{{- $has_headers := ge (len $headers) 1 -}}
 </span></span><span style="display:flex;"><span>{{- if $has_headers -}}
@@ -612,41 +3129,34 @@
 </span></span><span style="display:flex;"><span>        headerCounters <span style="color:#ff79c6">=</span> {};
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 获取标题的自动编号
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// header计数器逻辑
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">function</span> getHeaderNumber(element, headerLevel) {
 </span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 获取之前的所有标题元素
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#8be9fd;font-style:italic">let</span> prevElements <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">Array</span>.from(<span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(<span style="color:#f1fa8c">&#39;h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]&#39;</span>));
 </span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">let</span> currentIndex <span style="color:#ff79c6">=</span> prevElements.indexOf(element);
-</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">let</span> numbers <span style="color:#ff79c6">=</span> [];
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">let</span> counters <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Array</span>(<span style="color:#bd93f9">6</span>).fill(<span style="color:#bd93f9">0</span>); <span style="color:#6272a4">// 初始化6级计数器
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#8be9fd;font-style:italic">let</span> numbers <span style="color:#ff79c6">=</span> [];
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 重置当前级别之后的计数器
-</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#8be9fd;font-style:italic">Object</span>.keys(headerCounters).forEach(level =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> (<span style="color:#8be9fd;font-style:italic">parseInt</span>(level) <span style="color:#ff79c6">&gt;</span> headerLevel) {
-</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">delete</span> headerCounters[headerLevel];
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        });
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 遍历到当前元素为止的所有标题
-</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">let</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;=</span> currentIndex; i<span style="color:#ff79c6">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">let</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;=</span> currentIndex; i<span style="color:#ff79c6">++</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">let</span> currentElement <span style="color:#ff79c6">=</span> prevElements[i];
-</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">let</span> currentLevel <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">parseInt</span>(currentElement.tagName.substring(<span style="color:#bd93f9">1</span>));
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">let</span> currentLevel <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">parseInt</span>(currentElement.tagName.substring(<span style="color:#bd93f9">1</span>)) <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>; <span style="color:#6272a4">// 转为0-based
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 重置子级计数器
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">let</span> l <span style="color:#ff79c6">=</span> currentLevel <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>; l <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">6</span>; l<span style="color:#ff79c6">++</span>) {
+</span></span><span style="display:flex;"><span>                counters[l] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> (currentLevel <span style="color:#ff79c6">&lt;=</span> headerLevel) {
-</span></span><span style="display:flex;"><span>                <span style="color:#6272a4">// 更新计数器
-</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>headerCounters[currentLevel]) {
-</span></span><span style="display:flex;"><span>                    headerCounters[currentLevel] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
-</span></span><span style="display:flex;"><span>                } <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span> (currentElement <span style="color:#ff79c6">===</span> element) {
-</span></span><span style="display:flex;"><span>                    headerCounters[currentLevel]<span style="color:#ff79c6">++</span>;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#6272a4">// 构建当前层级的编号
-</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>                <span style="color:#ff79c6">if</span> (currentElement <span style="color:#ff79c6">===</span> element) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">let</span> level <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; level <span style="color:#ff79c6">&lt;=</span> currentLevel; level<span style="color:#ff79c6">++</span>) {
-</span></span><span style="display:flex;"><span>                        <span style="color:#ff79c6">if</span> (headerCounters[level]) {
-</span></span><span style="display:flex;"><span>                            numbers.push(headerCounters[level]);
-</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 递增当前级计数器
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            counters[currentLevel]<span style="color:#ff79c6">++</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 如果是目标元素则记录编号
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">if</span> (currentElement <span style="color:#ff79c6">===</span> element) {
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd;font-style:italic">let</span> l <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; l <span style="color:#ff79c6">&lt;=</span> currentLevel; l<span style="color:#ff79c6">++</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff79c6">if</span> (counters[l] <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>                        numbers.push(counters[l]);
 </span></span><span style="display:flex;"><span>                    }
 </span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">break</span>;
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        
@@ -780,8 +3290,397 @@
 </span></span><span style="display:flex;"><span>    }, <span style="color:#ff79c6">false</span>);
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
 </span></span><span style="display:flex;"><span>{{- end }}
-</span></span></code></pre></div><p>创建<code>assets/css/extended/toc.css</code>，根据阅读内容滚动并加粗相应标题就由其实现。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/*目录侧边栏*/</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>创建<code>assets/css/extended/toc.css</code>，根据阅读内容滚动并加粗相应标题就由其实现。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/css/extended/toc.css</span>
+    <span class="line-count">88 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/*目录侧边栏*/</span>
 </span></span><span style="display:flex;"><span>:root {
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">--nav-width</span>: <span style="color:#bd93f9">1380</span><span style="color:#8be9fd">px</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">--article-width</span>: <span style="color:#bd93f9">650</span><span style="color:#8be9fd">px</span>;
@@ -869,7 +3768,11 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>secondary);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">/*目录侧边栏*/</span>
-</span></span></code></pre></div><h3 id="评论支持">评论支持</h3>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h4 id="评论支持">评论支持</h4>
 <p>对于评论支持，我选择了<a href="https://giscus.app/zh-CN" 
    
     
@@ -939,7 +3842,252 @@
 
 
 。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- /* Comments area start */ -}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/partials/comments.html</span>
+    <span class="line-count">53 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- /* Comments area start */ -}}
 </span></span><span style="display:flex;"><span>{{- /* to add comments read =&gt; https://gohugo.io/content-management/comments/ */ -}}
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">id</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;tw-comment&#34;</span>&gt;&lt;/<span style="color:#ff79c6">div</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
@@ -992,7 +4140,11 @@
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>{{- /* Comments area end */ -}}
-</span></span></code></pre></div><h3 id="网站图标">网站图标</h3>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h4 id="网站图标">网站图标</h4>
 <p>咱们一个自己的博客肯定得需要有自己的一个网站图标，可以将图标放在<code>/static/images/</code>，如<code>favicon: &quot;/images/blog.png&quot;</code>。我在这里推荐两个网站供大家用来查找符合自己图标。</p>
 <ul>
 <li><a href="https://fontawesome.com/search" 
@@ -1061,7 +4213,7 @@
 
 </li>
 </ul>
-<h2 id="多语言--界面布置">多语言 &amp; 界面布置</h2>
+<h3 id="多语言--界面布置">多语言 &amp; 界面布置</h3>
 <p>这部分参考来自于<a href="https://www.xianmin.org/post/2024/hugo-multilingual-blog-structure/" 
    
     
@@ -1076,7 +4228,104 @@
 
 。</p>
 <p>我认为对于编写博客的我们来说，以时间的形式来分隔是很好的一种方式来存储以及管理我们的博客，使用统一文件命名规范<code>YYYYMMDD-title.md</code>。此外，有兴趣的可以做一下多语言的准备，即使现在没有推出多语言的打算，之后可以集中找个时间来使用<code>ai</code>工具来统一做一下。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>tree .</span>
+    <span class="line-count">16 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
 </span></span><span style="display:flex;"><span>├── en
 </span></span><span style="display:flex;"><span>│   ├── archives
 </span></span><span style="display:flex;"><span>│   │   └── archives.md
@@ -1092,19 +4341,137 @@
 </span></span><span style="display:flex;"><span>    │   └── 2025_01_20-hugo_build_2.md
 </span></span><span style="display:flex;"><span>    └── search
 </span></span><span style="display:flex;"><span>        └── search.md
-</span></span></code></pre></div><p>可以参考我的示例结构，在这里我将<code>zh/</code>和<code>en/</code>作为<code>post/</code>的直接子目录，这一步需在对应的语言下添加设置对应的文档目录，如<code>contentDir: &quot;content/zh&quot;</code>。</p>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+可以参考我的示例结构，在这里我将<code>zh/</code>和<code>en/</code>作为<code>post/</code>的直接子目录，这一步需在对应的语言下添加设置对应的文档目录，如<code>contentDir: &quot;content/zh&quot;</code>。</p>
 <p>我们在此处同时需要设置页面布局，创建<code>zh/archives/archives.md</code>和<code>zh/search/search.md</code>，</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zh/archives/archives.md</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>title: &#34;时间轴&#34;
 </span></span><span style="display:flex;"><span>layout: &#34;archives&#34;
 </span></span><span style="display:flex;"><span>summary: archives
 </span></span><span style="display:flex;"><span>---
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zh/search/search.md</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>title: &#34;搜索&#34; # in any language you want
 </span></span><span style="display:flex;"><span>layout: &#34;search&#34; # is necessary
 </span></span><span style="display:flex;"><span>summary: &#34;search&#34;
 </span></span><span style="display:flex;"><span>---
-</span></span></code></pre></div><p>其中<code>layout</code>字段指定了这个页面使用的模板，默认使用的是<code>themes\&lt;hugo_theme&gt;\layouts\_default\archives.html&amp;search.html</code>，所以我们使用默认字段<code>search</code>和<code>archives</code>即可以让归档内容正常显示。</p>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+其中<code>layout</code>字段指定了这个页面使用的模板，默认使用的是<code>themes\&lt;hugo_theme&gt;\layouts\_default\archives.html&amp;search.html</code>，所以我们使用默认字段<code>search</code>和<code>archives</code>即可以让归档内容正常显示。</p>
 <p>同时，参考<a href="https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/#%e9%85%8d%e7%bd%ae%e6%90%9c%e7%b4%a2" 
    
     
@@ -1118,7 +4485,120 @@
 
 
 搜索需要额外加入如下配置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">params</span>:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>hugo.yaml</span>
+    <span class="line-count">20 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">params</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#6272a4"># 搜索</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">fuseOpts: # 个性化配置 refer</span>: https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/#%e9%85%8d%e7%bd%ae%e6%90%9c%e7%b4%a2
 </span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">isCaseSensitive</span>: <span style="color:#ff79c6">false</span> <span style="color:#6272a4"># 是否大小写敏感</span>
@@ -1138,8 +4618,97 @@
 </span></span><span style="display:flex;"><span>    - HTML
 </span></span><span style="display:flex;"><span>    - RSS
 </span></span><span style="display:flex;"><span>    - JSON               <span style="color:#6272a4"># Required for search (搜索功能需要)</span>
-</span></span></code></pre></div><p>接着，我们在配置文件中加入时间轴与搜索的布局即可：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># Multilingual Support (多语言支持)</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>接着，我们在配置文件中加入时间轴与搜索的布局即可：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>hugo.yaml</span>
+    <span class="line-count">13 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># Multilingual Support (多语言支持)</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">languages</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">zh</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">languageCode</span>: <span style="color:#f1fa8c">&#34;zh-CN&#34;</span>
@@ -1152,8 +4721,12 @@
 </span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">name</span>: <span style="color:#f1fa8c">&#34;Posts&#34;</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">url</span>: <span style="color:#f1fa8c">&#34;/posts/&#34;</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">weight</span>: <span style="color:#bd93f9">1</span>
-</span></span></code></pre></div><h2 id="渲染配置">渲染配置</h2>
-<h3 id="代码配置">代码配置</h3>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h3 id="渲染配置">渲染配置</h3>
+<h4 id="代码配置">代码配置</h4>
 <p><del><code>PaperMod</code>主题使用的代码高亮工具为<a href="https://github.com/alecthomas/chroma" 
    
     
@@ -1207,14 +4780,79 @@
 
 </p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">markup</span>:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>hugo.yaml</span>
+    <span class="line-count">7 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">markup</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">highlight</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">codeFences</span>: <span style="color:#ff79c6">true</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">guessSyntax</span>: <span style="color:#ff79c6">true</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lineNos</span>: <span style="color:#ff79c6">true</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">style</span>: dracula 
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">lineNumbersInTable</span>: <span style="color:#ff79c6">true</span> 
-</span></span></code></pre></div><p>我这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e4%bb%a3%e7%a0%81%e6%b8%b2%e6%9f%93" 
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>我这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e4%bb%a3%e7%a0%81%e6%b8%b2%e6%9f%93" 
    
     
        target="_blank" rel="noopener" 
@@ -1252,14 +4890,79 @@
 
 。</p>
 <p>为了覆盖掉原主题对于代码渲染的设置，我们需要创建<code>assets/css/hljs/an-old-hope.min.css</code>，并且在其中复制进去黑色主题和白色主题的配置，白色主题直接复制进去皆可，黑色主题需要以以下形式进行限定：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#ff79c6">body</span>.<span style="color:#50fa7b">dark</span> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>assets/css/hljs/an-old-hope.min.css</span>
+    <span class="line-count">7 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#ff79c6">body</span>.<span style="color:#50fa7b">dark</span> {
 </span></span><span style="display:flex;"><span>  .hljs {
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">color</span>: <span style="color:#bd93f9">#abb2bf</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">background</span>: <span style="color:#bd93f9">#282c34</span>;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">...</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>接着，我们需要修改白色与黑色主题的背景色，同时由于我参考的博主使用了Consolas 和霞鹜文楷（注释的中文字体），字体可以从<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts" 
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>接着，我们需要修改白色与黑色主题的背景色，同时由于我参考的博主使用了Consolas 和霞鹜文楷（注释的中文字体），字体可以从<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts" 
    
     
        target="_blank" rel="noopener" 
@@ -1273,7 +4976,156 @@
 
 中获取。</p>
 <p>我们在<code>assets/css/extended/blank.css</code>中添加：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#ff79c6">font-face</span> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/css/extended/blank.css</span>
+    <span class="line-count">29 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#ff79c6">font-face</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-family</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;Consolas&#34;</span><span style="color:#ff79c6">;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">src</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">url</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;/fonts/Consolas.woff2&#34;</span><span style="color:#ff79c6">);</span>
 </span></span><span style="display:flex;"><span>}
@@ -1302,8 +5154,93 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-family</span>: <span style="color:#f1fa8c">&#34;Consolas&#34;</span>, <span style="color:#f1fa8c">&#34;LXGWWenKaiScreenR&#34;</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">15</span><span style="color:#8be9fd">px</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>并且，在<code>PaperMod</code>中的颜色变量配置<code>assets/css/core/theme-vars.css</code> 中添加配置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/* 省略的内容请拷贝原先主题对应的文件 */</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>并且，在<code>PaperMod</code>中的颜色变量配置<code>assets/css/core/theme-vars.css</code> 中添加配置：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>assets/css/core/theme-vars.css</span>
+    <span class="line-count">12 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/* 省略的内容请拷贝原先主题对应的文件 */</span>
 </span></span><span style="display:flex;"><span>:root {
 </span></span><span style="display:flex;"><span>  ...
 </span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--hljs-bg</span>: <span style="color:#bd93f9">#f7f7f7</span>;
@@ -1315,8 +5252,77 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--hljs-bg</span>: <span style="color:#8be9fd;font-style:italic">rgb</span>(<span style="color:#bd93f9">46</span>, <span style="color:#bd93f9">46</span>, <span style="color:#bd93f9">51</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--code-bg</span>: <span style="color:#8be9fd;font-style:italic">rgb</span>(<span style="color:#bd93f9">55</span>, <span style="color:#bd93f9">56</span>, <span style="color:#bd93f9">62</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>此外，<code>PaperMod</code> 默认的代码复制键的在对应语言下是不同的文字表示复制粘贴，我觉的不够优雅，于是打算使用图标来代替。关于复制符号的配置在<code>layouts/partials/footer.html</code> 中：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>        copybutton.innerHTML = &#39;{{- i18n &#34;code_copy&#34; | default &#34;copy&#34; }}&#39;;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>此外，<code>PaperMod</code> 默认的代码复制键的在对应语言下是不同的文字表示复制粘贴，我觉的不够优雅，于是打算使用图标来代替。关于复制符号的配置在<code>layouts/partials/footer.html</code> 中：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/partials/footer.html</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>        copybutton.innerHTML = &#39;{{- i18n &#34;code_copy&#34; | default &#34;copy&#34; }}&#39;;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        function copyingDone() {
 </span></span><span style="display:flex;"><span>            copybutton.innerHTML = &#39;{{- i18n &#34;code_copied&#34; | default &#34;copied!&#34; }}&#39;;
@@ -1324,8 +5330,149 @@
 </span></span><span style="display:flex;"><span>                copybutton.innerHTML = &#39;{{- i18n &#34;code_copy&#34; | default &#34;copy&#34; }}&#39;;
 </span></span><span style="display:flex;"><span>            }, 2000);
 </span></span><span style="display:flex;"><span>        }
-</span></span></code></pre></div><p>修改为：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>        copybutton.innerHTML = `
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>修改为：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/partials/footer.html</span>
+    <span class="line-count">26 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>        copybutton.innerHTML = `
 </span></span><span style="display:flex;"><span>            &lt;<span style="color:#ff79c6">img</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/images/copy.svg&#34;</span> 
 </span></span><span style="display:flex;"><span>                 <span style="color:#50fa7b">alt</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;复制&#34;</span>
 </span></span><span style="display:flex;"><span>                 <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;copy-icon&#34;</span>
@@ -1351,9 +5498,126 @@
 </span></span><span style="display:flex;"><span>                `;
 </span></span><span style="display:flex;"><span>            }, 2000);
 </span></span><span style="display:flex;"><span>        }
-</span></span></code></pre></div><p>我这里在存放的图片位于<code>static/images/</code>，大家可以选择自己的路径。由于编译为静态博客之后，<code>static/images/</code>变为<code>public/images/</code>，同时以<code>public/</code>当作根目录，所以我在代码中使用<code>/images/check.svg&amp;copy.svg</code>。</p>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>我这里在存放的图片位于<code>static/images/</code>，大家可以选择自己的路径。由于编译为静态博客之后，<code>static/images/</code>变为<code>public/images/</code>，同时以<code>public/</code>当作根目录，所以我在代码中使用<code>/images/check.svg&amp;copy.svg</code>。</p>
 <p>接下来，我们配置复制图标样式，在<code>assets/css/extend.css</code>中添加以下代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/*copy_button*/</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/css/extend.css</span>
+    <span class="line-count">20 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/*copy_button*/</span>
 </span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">copy-code</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">transparent</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border</span>: <span style="color:#ff79c6">none</span>;
@@ -1373,7 +5637,11 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">opacity</span>: <span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">filter</span>: <span style="color:#8be9fd;font-style:italic">invert</span>(<span style="color:#bd93f9">100</span><span style="color:#8be9fd">%</span>); <span style="color:#6272a4">/* 颜色翻转效果 */</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>我这里使用的是底色为黑色的<code>svg</code>图标，所以我这里做了反色处理。</p>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>我这里使用的是底色为黑色的<code>svg</code>图标，所以我这里做了反色处理。</p>
 <p>接下来我们配置代码折叠，对于过长的代码段，十分影响阅读者的感受，参考于<a href="https://yunpengtai.top/posts/hugo-journey/#%e4%bb%a3%e7%a0%81%e6%8a%98%e5%8f%a0" 
    
     
@@ -1387,7 +5655,72 @@
 
 
  ，我们需要在<code>layouts/shortcodes/collapse.html</code>中加入以下内容：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if .Get &#34;summary&#34; }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/shortcodes/collapse.html</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if .Get &#34;summary&#34; }}
 </span></span><span style="display:flex;"><span>{{ else }}
 </span></span><span style="display:flex;"><span>{{ warnf &#34;missing value for param &#39;summary&#39;: %s&#34; .Position }}
 </span></span><span style="display:flex;"><span>{{ end }}
@@ -1395,8 +5728,12 @@
 </span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">summary</span> <span style="color:#50fa7b">markdown</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;span&#34;</span>&gt;{{ .Get &#34;summary&#34; | markdownify }}&lt;/<span style="color:#ff79c6">summary</span>&gt;
 </span></span><span style="display:flex;"><span>  {{ .Inner | markdownify }}
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">details</span>&gt;&lt;/<span style="color:#ff79c6">p</span>&gt;
-</span></span></code></pre></div><h1 id="额外配置">额外配置</h1>
-<h2 id="字体配置">字体配置</h2>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h2 id="额外配置">额外配置</h2>
+<h3 id="字体配置">字体配置</h3>
 <p>我已经忍这个默认字体很久了，现在我们就在这里干掉他。我们在这里选择的中文是<a href="https://github.com/lxgw/LxgwWenKai?tab=readme-ov-file" 
    
     
@@ -1423,7 +5760,116 @@
 
 。</p>
 <p>在<code>assets/css/extended/blank.css</code>中加入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#ff79c6">font-face</span> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/css/extended/blank.css</span>
+    <span class="line-count">19 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>@<span style="color:#ff79c6">font-face</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-family</span><span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;LXGWWenKaiScreenR&#34;</span><span style="color:#ff79c6">;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">src</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">url</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;/fonts/lxgwwenkaiscreen.subset.v1.235.standard.woff2&#34;</span><span style="color:#ff79c6">);</span>
 </span></span><span style="display:flex;"><span>}
@@ -1442,7 +5888,11 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>theme);
 </span></span><span style="display:flex;"><span>  font-display: swap;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>字体可以从我上面提及博主的<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts" 
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>字体可以从我上面提及博主的<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts" 
    
     
        target="_blank" rel="noopener" 
@@ -1455,7 +5905,7 @@
 
 
 处获取。</p>
-<h2 id="知识共享协议">知识共享协议</h2>
+<h3 id="知识共享协议">知识共享协议</h3>
 <blockquote>
 <p>参考于:<a href="https://www.yunyitang.me/hugo-papermod-blog/#%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E5%8D%8F%E8%AE%AE" 
    
@@ -1497,22 +5947,288 @@
 
 中选择使用的知识共享协议，我这里选择的是<code>CC-BY-NC-4</code>协议，并添加一个协议模组来自动呈现：</p>
 <p>首先创建文件<code>data/licenses.html</code>并添加</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#6272a4"># data/licenses.yml</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">CC-BY-NC-4.0</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">name</span>: <span style="color:#f1fa8c">&#34;CC BY-NC 4.0&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">url</span>: <span style="color:#f1fa8c">&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">icons</span>: <span style="color:#ff79c6">&amp;cc_icons</span>  <span style="color:#6272a4"># 锚点复用图标列表</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>data/licenses.html</span>
+    <span class="line-count">14 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span># data/licenses.yml
+</span></span><span style="display:flex;"><span>CC-BY-NC-4.0:
+</span></span><span style="display:flex;"><span>  name: &#34;CC BY-NC 4.0&#34;
+</span></span><span style="display:flex;"><span>  url: &#34;https://creativecommons.org/licenses/by-nc/4.0/&#34;
+</span></span><span style="display:flex;"><span>  icons: &amp;cc_icons  # 锚点复用图标列表
 </span></span><span style="display:flex;"><span>    - cc.svg
 </span></span><span style="display:flex;"><span>    - by.svg
 </span></span><span style="display:flex;"><span>    - nc.svg
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 其他协议</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">CC-BY-SA-4.0</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">name</span>: <span style="color:#f1fa8c">&#34;CC BY-SA 4.0&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">url</span>: <span style="color:#f1fa8c">&#34;https://creativecommons.org/licenses/by-sa/4.0/&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">icons</span>: <span style="color:#ff79c6">*cc_icons</span>  <span style="color:#6272a4"># 复用图标列表</span>
-</span></span></code></pre></div><p>其次，创建文件<code>layouts/partials/license.html</code>并添加：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">hr</span>&gt; <span style="color:#6272a4">&lt;!-- 添加分割线 --&gt;</span>
+</span></span><span style="display:flex;"><span># 其他协议
+</span></span><span style="display:flex;"><span>CC-BY-SA-4.0:
+</span></span><span style="display:flex;"><span>  name: &#34;CC BY-SA 4.0&#34;
+</span></span><span style="display:flex;"><span>  url: &#34;https://creativecommons.org/licenses/by-sa/4.0/&#34;
+</span></span><span style="display:flex;"><span>  icons: *cc_icons  # 复用图标列表
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>其次，创建文件<code>layouts/partials/license.html</code>并添加：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/partials/license.html</span>
+    <span class="line-count">35 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">hr</span>&gt; <span style="color:#6272a4">&lt;!-- 添加分割线 --&gt;</span>
 </span></span><span style="display:flex;"><span>{{ $license := index site.Data.licenses .Params.license }}
 </span></span><span style="display:flex;"><span>{{ if $license }}
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;license-declaration&#34;</span> <span style="color:#50fa7b">vocab</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://schema.org/&#34;</span> <span style="color:#50fa7b">typeof</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;CreativeWork&#34;</span>&gt;
@@ -1547,8 +6263,285 @@
 </span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">p</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">div</span>&gt;
 </span></span><span style="display:flex;"><span>{{ end }}
-</span></span></code></pre></div><p>接下来，创建文件<code>assets/extended/custom.css</code>并添加：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/* licenses.css */</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>接下来，创建文件<code>assets/extended/custom.css</code>并添加：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/extended/custom.css</span>
+    <span class="line-count">60 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/* licenses.css */</span>
 </span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">license-badge</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--bg-light</span>: <span style="color:#bd93f9">#f8f9fa</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--bg-dark</span>: <span style="color:#bd93f9">#2b2d32</span>;
@@ -1608,22 +6601,73 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">box-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span> <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">0.1</span>);
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>最后，在<code>archetypes/default.md</code>中添加以下代码段即可实现一个自动添加的开源协议呈现模组。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>license: &#34;CC-BY-NC-4.0&#34;  # 你对应使用的协议
-</span></span></code></pre></div><p>呈现效果如下：</p>
-<p> 
- <div class="post-img-view">
- <a data-fancybox="gallery" href="/blog_images/CC-BY-NC-4.png">
- <img src="/blog_images/CC-BY-NC-4.png" alt=""  />
- </a>
- </div>
- 
+</span></span></code></pre></div>
+  </div>
+</details></p>
 
-</p>
+<p>最后，在<code>archetypes/default.md</code>中添加以下代码段即可实现一个自动添加的开源协议呈现模组。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>archetypes/default.md</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>license: &#34;CC-BY-NC-4.0&#34;  # 你对应使用的协议
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>呈现效果如下：</p>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/blog_images/CC-BY-NC-4.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/blog_images/CC-BY-NC-4.png#center"
+         alt="CC-BY-NC-4"/> <figcaption>
+            CC-BY-NC-4
+        </figcaption>
+</figure>
+</a>
+
+
 <blockquote>
 <p>但是，由于我对于前端不是很了解，黑夜模式下的样式调整未能正确实现，待解决。</p>
 </blockquote>
-<h2 id="修改时间">修改时间</h2>
+<h3 id="修改时间">修改时间</h3>
 <p>原本主题并没有显示「修改时间」的功能，我在这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e6%b7%bb%e5%8a%a0%e4%bf%ae%e6%94%b9%e6%97%b6%e9%97%b4" 
    
     
@@ -1638,22 +6682,181 @@
 
 。</p>
 <p>在<code>layouts/partials/post_meta.html</code>中添加以下内容，参考的博客中<code>$scratch.Add</code>错误被包裹在<code>()</code>中，并且行末还有一个多余的<code>$</code>，我在此做了修改：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- if (.Param &#34;ShowLastMod&#34;) -}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/partials/post_meta.html</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- if (.Param &#34;ShowLastMod&#34;) -}}
 </span></span><span style="display:flex;"><span>    {{- if ne (.Lastmod.Format &#34;2006-01-02&#34;) (.Date.Format &#34;2006-01-02&#34;) -}}
 </span></span><span style="display:flex;"><span>        {{- $scratch.Add &#34;meta&#34; (slice (printf &#34;Updated:&amp;nbsp;%s&#34; (.Lastmod.Format (.Site.Params.dateFormat | default &#34;January 2, 2006&#34;)))) -}}
 </span></span><span style="display:flex;"><span>    {{- end -}}
 </span></span><span style="display:flex;"><span>{{- end -}}
-</span></span></code></pre></div><p>并且，在<code>hugo.yaml</code>中加入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">params</span>:
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>并且，在<code>hugo.yaml</code>中加入：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>hugo.yaml</span>
+    <span class="line-count">2 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">params</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">showLastMod</span>: <span style="color:#ff79c6">true</span>
-</span></span></code></pre></div><p>同时，我们在<code>archetypes/default.md</code>中的配置如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>同时，我们在<code>archetypes/default.md</code>中的配置如下：</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>archetypes/default.md</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34;
 </span></span><span style="display:flex;"><span>date: {{ .Date }}
 </span></span><span style="display:flex;"><span>lastmod: {{ .Date }}
 </span></span><span style="display:flex;"><span>---
-</span></span></code></pre></div><p>等我过几天看看这个效果咋样。</p>
-<h2 id="marginnote">MarginNote</h2>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+等我过几天看看这个效果咋样。</p>
+<h3 id="marginnote">MarginNote</h3>
 <blockquote>
 <p>在这里十分感谢<a href="https://yunpengtai.top/" 
    
@@ -1670,7 +6873,160 @@
 的博客，我从上面学习和摘选了很多内容在本文中。</p>
 </blockquote>
 <p>我们在<code>assets/extended/custom.css</code>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote</span> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/extended/custom.css</span>
+    <span class="line-count">30 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">float</span>: <span style="color:#ff79c6">right</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-right</span>: <span style="color:#bd93f9">-18</span><span style="color:#8be9fd">vw</span>;
@@ -1700,14 +7056,58 @@
 </span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote-number</span>:hover .<span style="color:#50fa7b">sidenote</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background-color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>bg);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>同时，在<code>layouts/shortcodes/sidenote.html</code>中添加以下内容：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote-number&#34;</span>&gt;&lt;<span style="color:#ff79c6">small</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote&#34;</span>&gt;{{ .Inner | markdownify }}&lt;/<span style="color:#ff79c6">small</span>&gt;&lt;/<span style="color:#ff79c6">span</span>&gt;
-</span></span></code></pre></div><p>这是示例 <span class="sidenote-number"><small class="sidenote">这是示例的侧边注解</small></span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>同时，在<code>layouts/shortcodes/sidenote.html</code>中添加以下内容：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/shortcodes/sidenote.htm</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote-number&#34;</span>&gt;&lt;<span style="color:#ff79c6">small</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote&#34;</span>&gt;{{ .Inner | markdownify }}&lt;/<span style="color:#ff79c6">small</span>&gt;&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>这是示例 <span class="sidenote-number"><small class="sidenote">这是示例的侧边注解</small></span>
 
 </p>
-<h2 id="盘古之白">盘古之白</h2>
-<blockquote>
-<p><a href="https://blog.xiaoquankong.ai/zh/posts/chinese-document-typesetting-specification-spacing-of-pangu/" 
+<h3 id="盘古之白">盘古之白</h3>
+<blockquote class="quote"><p><a href="https://blog.xiaoquankong.ai/zh/posts/chinese-document-typesetting-specification-spacing-of-pangu/" 
    
     
        target="_blank" rel="noopener" 
@@ -1719,10 +7119,115 @@
 
 
 
-一文中讨论到，所有的中文字和半形的英文、數字、符號之間应该存在的空白，被漢學家稱為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。</p>
-</blockquote>
+一文中讨论到，所有的中文字和半形的英文、數字、符號之間应该存在的空白，被漢學家稱為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。</p></blockquote>
+
 <p>我们需要在<code>layouts/partials/extend_footer.html</code>中加入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- $highlight := resources.Get &#34;js/pangu.min.js&#34; -}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/partials/extend_footer.html</span>
+    <span class="line-count">18 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- $highlight := resources.Get &#34;js/pangu.min.js&#34; -}}
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
 </span></span><span style="display:flex;"><span>  (<span style="color:#8be9fd;font-style:italic">function</span> (u, c) {
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">var</span> d <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>,
@@ -1740,8 +7245,12 @@
 </span></span><span style="display:flex;"><span>    pangu.spacingPage();
 </span></span><span style="display:flex;"><span>  });
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
-</span></span></code></pre></div><p>同时，需要创建<code>assets/js/pangu.min.js</code>，网站加载时，盘古之白自动加载，大家可以从此处下载。</p>
-<h2 id="blockquote">Blockquote</h2>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>同时，需要创建<code>assets/js/pangu.min.js</code>，网站加载时，盘古之白自动加载，大家可以从此处下载。</p>
+<h3 id="blockquote">Blockquote</h3>
 <blockquote>
 <p>参考于：<a href="https://yunpengtai.top/posts/hugo-journey/#blockquote" 
    
@@ -1762,9 +7271,70 @@
 <p>在 <code>layouts/shortcodes/quote.html</code> 加入以下内容：
 
 
-<p><details >
-  <summary markdown="span">layouts/shortcodes/quote.html</summary>
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">blockquote</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;quote{{ range .Params }} {{ . }}{{ end }}&#34;</span>&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/shortcodes/quote.html</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">blockquote</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;quote{{ range .Params }} {{ . }}{{ end }}&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>    {{- $content := .Inner | markdownify -}}
 </span></span><span style="display:flex;"><span>    {{- if not (strings.HasPrefix $content &#34;&lt;<span style="color:#ff79c6">p</span>&gt;&#34;) -}}
 </span></span><span style="display:flex;"><span>        {{ printf &#34;&lt;<span style="color:#ff79c6">p</span>&gt;%s&lt;/<span style="color:#ff79c6">p</span>&gt;&#34; $content | safeHTML }}
@@ -1773,15 +7343,172 @@
 </span></span><span style="display:flex;"><span>    {{- end -}}
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">blockquote</span>&gt;
 </span></span></code></pre></div>
+  </div>
 </details></p>
-
 </p>
 <p>我们在<code>assets/css/extended/quote.css</code>中加入以下内容：</p>
 
 
-<p><details >
-  <summary markdown="span">assets/css/extended/quote.css</summary>
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#ff79c6">blockquote</span>.<span style="color:#50fa7b">quote</span> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/css/extended/quote.css</span>
+    <span class="line-count">32 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#ff79c6">blockquote</span>.<span style="color:#50fa7b">quote</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">em</span> <span style="color:#ff79c6">auto</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding-left</span>: <span style="color:#bd93f9">3</span><span style="color:#8be9fd">em</span>;
@@ -1814,9 +7541,168 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">line-height</span>: <span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
+  </div>
 </details></p>
 
+<h3 id="shortcodes大赏">Shortcodes大赏</h3>
+<p><code>hugo</code>采用<code>markdown</code>的格式进行内容创作，但是当我们需要一些特殊功能的时候，<code>markdown</code>并不能满足我们的需求。我们在这个时候可能需要插入一些<code>html</code>代码，这对于整个<code>markdown</code>的格式与可读性都是很糟糕的。幸运的是，<code>hugo</code>给我们提供了简码(<code>Shortcodes</code>)功能，在我们准备好对应的简码模板与简码，这能够在使用简码的时候，将<code>hugo</code>自动转换为<code>html</code>语言，我们就能够使用很简码的样式来实现需要的特殊功能。</p>
+<p>关于<code>Shortcodes</code>的相关知识可以参考<a href="https://gohugo.io/templates/shortcode/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Shortcodes templates<span class="external-link">↗</span></a>
 
+
+
+
+
+
+，大家可以自行前往查看。</p>
+<h4 id="图像放大">图像放大</h4>
+<blockquote>
+<p><code>{{&lt; figure src=&quot;/path/to/image.jpg&quot; alt=&quot;A beautiful image&quot; title=&quot;Image&quot; caption=&quot;This is a caption for the image&quot; align=&quot;center&quot; width=600px height=300px &gt;}}</code></p>
+</blockquote>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/plsn_3.jpg">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/plsn_3.jpg#center"
+         alt="A beautiful landscape" width="600px" height="300px"/> <figcaption>
+            Sonny_boy<p>This is a caption for the image</p>
+        </figcaption>
+</figure>
+</a>
+
+
+<h4 id="自动折叠代码">自动折叠代码</h4>
+<blockquote>
+<p><code>{{&lt; collapse summary=&quot;test&quot; &gt;}}</code> {代码段} <code>{{&lt; /collapse &gt;}}</code></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>test</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>test
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h4 id="侧边注解">侧边注解</h4>
+<blockquote>
+<p><code>这是示例 {{&lt; sidenote &gt;}} 这是示例的侧边注解 {{&lt; /sidenote &gt;}}</code></p>
+</blockquote>
+<p>这是示例 <span class="sidenote-number"><small class="sidenote">这是示例的侧边注解</small></span>
+
+</p>
+<h4 id="引用">引用</h4>
+<blockquote>
+<p><code>{{&lt; quote &gt;}}</code> {引用段} <code>{{&lt; /quote &gt;}}</code></p>
+</blockquote>
+<blockquote class="quote"><p>为什么要演奏春日影！</p></blockquote>
+
+<h4 id="转义渲染">转义渲染</h4>
+<p>参考于：<a href="https://tin6.com/post/how-to-escape-hugo-shortcodes-within-hugo-markdown/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   如何在代码块里内嵌 HUGO 的简码 (SHORTCODES) | 消夏錄<span class="external-link">↗</span></a>
+
+
+
+
+
+
+，由于<code>Shortcodes</code>代码会被<code>hugo</code>直接转义为对应的功能，所以我们需要将<code>Shortcodes</code>的括号内加入<code>/* */</code>防止转义。我们需要在<code>markdown</code>中输入：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>{{&lt;/* myshortcode */&gt;}}
+</span></span></code></pre></div><p>渲染结果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>{{&lt; myshortcode &gt;}}
+</span></span></code></pre></div><h4 id="asciinema">Asciinema</h4>
+<blockquote>
+<p>{{&lt; asciinema ID &gt;}}</p>
+</blockquote>
+
+
+<script async id="asciicast-239367" src="https://asciinema.org/a/239367.js"></script>
+
+
+<h2 id="test">test</h2>
+<p><a href="#%e5%89%8d%e8%a8%80" 
+   
+   >
+   回到顶部</a>
+
+
+
+
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+ 鸟宿池边树，僧敲月下门
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span><span style="color:#f55">- 鸟宿池边树，僧推月下门
+</span></span></span></code></pre></div><p>test<br>
+test</p>
+<p>test</p>
+<p><a href="https://www.zhihu.com/people/jellywong" 
+    title="我的知乎，欢迎关注"
+    
+       target="_blank" rel="noopener" 
+   >
+   我的知乎<span class="external-link">↗</span></a>
+
+
+
+
+
+
+</p>
+<p>这是一个简单的脚注<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，这是另一个脚注<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>这是第一个脚注&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>这是第二脚注&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 ]]></content:encoded>
     </item>
   </channel>

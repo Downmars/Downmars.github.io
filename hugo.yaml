@@ -32,7 +32,8 @@ params:
   ShowToc: true
   TocOpen: true
   
-  fancybox: true
+  fancybox:
+    enabled: true
 
   math: true
 

@@ -12,7 +12,7 @@
 以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。">
 <meta name="author" content="Downmars">
 <link rel="canonical" href="http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.51852c3917f9bfaee4c3bef4b74b206a0cc423c3455705d0c8abebfbe1455b33.css" integrity="sha256-UYUsORf5v67kw770t0sgagzEI8NFVwXQyKvr&#43;&#43;FFWzM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e37e434fa6eae96d0725a841a2b1dbbf54e30fa758bf30a82f39d899f6ec2451.css" integrity="sha256-435DT6bq6W0HJahBorHbv1TjD6dYvzCoLznYmfbsJFE=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/images/blog.png">
@@ -237,36 +237,29 @@ code.has-jax {
         
         let prevElements = Array.from(document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]'));
         let currentIndex = prevElements.indexOf(element);
+        let counters = new Array(6).fill(0); 
         let numbers = [];
-        
-        
-        Object.keys(headerCounters).forEach(level => {
-            if (parseInt(level) > headerLevel) {
-                headerCounters[level] = 0; 
-            }
-        });
-        
         
         for (let i = 0; i <= currentIndex; i++) {
             let currentElement = prevElements[i];
-            let currentLevel = parseInt(currentElement.tagName.substring(1));
+            let currentLevel = parseInt(currentElement.tagName.substring(1)) - 1; 
             
-            if (currentLevel <= headerLevel) {
-                
-                if (!headerCounters[currentLevel]) {
-                    headerCounters[currentLevel] = 1;
-                } else if (currentElement === element) {
-                    headerCounters[currentLevel]++;
-                }
-                
-                
-                if (currentElement === element) {
-                    for (let level = 1; level <= currentLevel; level++) {
-                        if (headerCounters[level]) {
-                            numbers.push(headerCounters[level]);
-                        }
+            
+            for (let l = currentLevel + 1; l < 6; l++) {
+                counters[l] = 0;
+            }
+            
+            
+            counters[currentLevel]++;
+            
+            
+            if (currentElement === element) {
+                for (let l = 0; l <= currentLevel; l++) {
+                    if (counters[l] > 0) {
+                        numbers.push(counters[l]);
                     }
                 }
+                break;
             }
         }
         
@@ -978,7 +971,7 @@ code.has-jax {
         
     
     发表了0篇文章 · 
-    总计9.68k字
+    总计10.40k字
 </section>
 
 </body>

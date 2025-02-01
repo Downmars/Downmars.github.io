@@ -102,41 +102,34 @@
         headerCounters = {};
     }
 
-    // 获取标题的自动编号
+    // 修正后的header计数器逻辑
     function getHeaderNumber(element, headerLevel) {
         // 获取之前的所有标题元素
         let prevElements = Array.from(document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]'));
         let currentIndex = prevElements.indexOf(element);
+        let counters = new Array(6).fill(0); // 初始化6级计数器
         let numbers = [];
         
-        // 重置当前级别之后的计数器
-        Object.keys(headerCounters).forEach(level => {
-            if (parseInt(level) > headerLevel) {
-                headerCounters[level] = 0; // 改为置零而不是删除
-            }
-        });
-        
-        // 遍历到当前元素为止的所有标题
         for (let i = 0; i <= currentIndex; i++) {
             let currentElement = prevElements[i];
-            let currentLevel = parseInt(currentElement.tagName.substring(1));
+            let currentLevel = parseInt(currentElement.tagName.substring(1)) - 1; // 转为0-based
             
-            if (currentLevel <= headerLevel) {
-                // 更新计数器
-                if (!headerCounters[currentLevel]) {
-                    headerCounters[currentLevel] = 1;
-                } else if (currentElement === element) {
-                    headerCounters[currentLevel]++;
-                }
-                
-                // 构建当前层级的编号
-                if (currentElement === element) {
-                    for (let level = 1; level <= currentLevel; level++) {
-                        if (headerCounters[level]) {
-                            numbers.push(headerCounters[level]);
-                        }
+            // 重置子级计数器
+            for (let l = currentLevel + 1; l < 6; l++) {
+                counters[l] = 0;
+            }
+            
+            // 递增当前级计数器
+            counters[currentLevel]++;
+            
+            // 如果是目标元素则记录编号
+            if (currentElement === element) {
+                for (let l = 0; l <= currentLevel; l++) {
+                    if (counters[l] > 0) {
+                        numbers.push(counters[l]);
                     }
                 }
+                break;
             }
         }
         

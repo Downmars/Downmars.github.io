@@ -10,7 +10,7 @@
 <meta name="description" content="测试描述">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/zh/tags/configuration/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.51852c3917f9bfaee4c3bef4b74b206a0cc423c3455705d0c8abebfbe1455b33.css" integrity="sha256-UYUsORf5v67kw770t0sgagzEI8NFVwXQyKvr&#43;&#43;FFWzM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e37e434fa6eae96d0725a841a2b1dbbf54e30fa758bf30a82f39d899f6ec2451.css" integrity="sha256-435DT6bq6W0HJahBorHbv1TjD6dYvzCoLznYmfbsJFE=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/images/blog.png">
@@ -164,18 +164,21 @@ code.has-jax {
   </h1>
 </header>
 
-<article class="post-entry tag-entry"> 
+<article class="post-entry tag-entry">
+  <div class="post-info">
+    <header class="entry-header">
+      <h2 class="entry-hint-parent">Hugo博客搭建_配置 🚀
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>前言 在上一篇文章“ Hugo博客搭建_基础 😊 ”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。
+基础配置文件 我们曾经在hugo.yaml中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置： hugo.yaml 101 lines # Basic Configuration (基础配置) baseURL: &#34;&#34; # Site URL (网站 URL)(e.g. https://downmars.github.io/) title: &#34;&#34; # Site title (网站标题)(e.g. DLog) theme: &#34;&#34; # Theme name (主题名称)(e.g. PaperMod, in /themes/) # Feature Toggles (功能开关) enableEmoji: true # Enable emoji support (启用表情支持)(e.g. https://gohugo.io/quick-reference/emojis/#smileys--emotion) enableRobotsTXT: true # Enable search engine support (启用搜索引擎支持) hasCJKLanguage: true # Enable CJK language support (启用中日韩语言支持) buildDrafts: false # Build draft posts (是否构建草稿文章) buildFuture: false # Build future posts (是否构建未来日期文章) buildExpired: false # Build expired posts (是否构建过期文章) # Parameters Configuration (参数配置) params: # Theme Settings (主题设置) defaultTheme: dark # Default theme mode (默认主题模式) disableThemeToggle: false # Allow theme switching (允许主题切换) # Display Features (显示功能) ShowShareButtons: true # Show social share buttons (显示分享按钮) ShowCodeCopyButtons: true # Show code copy buttons (显示代码复制按钮) ShowReadingTime: true # Show reading time estimate (显示阅读时间) ShowWordCount: true # Show word count (显示字数统计) ShowPostNavLinks: true # Show post navigation (显示文章导航) ShowBreadCrumbs: true # Show breadcrumb navigation (显示面包屑导航) ShowToc: true # Show table of contents (显示目录) TocOpen: true # TOC expanded by default (目录默认展开) math: true fancybox: true # Display Images (显示图片) # Comment System (评论系统) comments: true # Enable comments (启用评论) giscus: # Giscus configuration (Giscus 配置) repo: &#34;&#34; repoId: &#34;&#34; category: &#34;&#34; categoryId: &#34;&#34; mapping: &#34;pathname&#34; strict: &#34;0&#34; reactionsEnabled: &#34;1&#34; emitMetadata: &#34;0&#34; inputPosition: &#34;bottom&#34; lightTheme: &#34;light&#34; darkTheme: &#34;dark&#34; lang: &#34;zh-CN&#34; crossorigin: &#34;anonymous&#34; fuseOpts: # refer: https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/#%e9%85%8d%e7%bd%ae%e6%90%9c%e7%b4%a2 isCaseSensitive: false # 是否大小写敏感 shouldSort: true # 是否排序 location: 0 distance: 1000 threshold: 0.4 minMatchCharLength: 0 # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search keys: [&#34;title&#34;, &#34;permalink&#34;, &#34;summary&#34;, &#34;content&#34;] includeMatches: true # Assets Files (资源文件) assets: favicon: &#34;&#34; # Site favicon (网站图标) favicon16x16: &#34;&#34; # Small favicon (小图标) favicon32x32: &#34;&#34; # Medium favicon (中图标) apple_touch_icon: &#34;&#34; # iOS icon (iOS 图标) safari_pinned_tab: &#34;&#34; # Safari icon (Safari 图标) # Multilingual Support (多语言支持) languages: zh: languageCode: &#34;zh-CN&#34; languageName: &#34;简体中文&#34; contentDir: &#34;content/zh&#34; weight: 1 menu: main: - identifier: posts name: &#34;Posts&#34; url: &#34;/posts/&#34; weight: 1 # Output Settings (输出设置) outputs: home: - HTML - RSS - JSON # Required for search (搜索功能需要) # Rendering Configuration (渲染配置) markup: goldmark: renderer: unsafe: true # Allow HTML in markdown (允许 Markdown 中的 HTML) highlight: codeFences: true # Enable code highlighting (启用代码高亮) guessSyntax: true # Guess code language (猜测代码语言) lineNos: true # Show line numbers (显示行号) style: dracula # Code highlight theme (代码高亮主题) lineNumbersInTable: true ...</p>
+    </div>
+    <footer class="entry-footer"><span title='2025-01-20 20:42:23 +0800 CST'>2025-01-20</span>&nbsp;·&nbsp;17 分钟&nbsp;·&nbsp;8489 字&nbsp;·&nbsp;Downmars</footer>
+  </div>
+   
 <figure class="entry-cover"><img loading="lazy" src="http://localhost:1313/images/plsn_1.jpg" alt="Sonny_boy">
 </figure>
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hugo博客搭建_配置 🚀
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>前言 在上一篇文章“ Hugo博客搭建_基础 😊 ”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。
-基础配置文件 我们曾经在hugo.yaml中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置： hugo.yaml # Basic Configuration (基础配置) baseURL: &#34;&#34; # Site URL (网站 URL)(e.g. https://downmars.github.io/) title: &#34;&#34; # Site title (网站标题)(e.g. DLog) theme: &#34;&#34; # Theme name (主题名称)(e.g. PaperMod, in /themes/) # Feature Toggles (功能开关) enableEmoji: true # Enable emoji support (启用表情支持)(e.g. https://gohugo.io/quick-reference/emojis/#smileys--emotion) enableRobotsTXT: true # Enable search engine support (启用搜索引擎支持) hasCJKLanguage: true # Enable CJK language support (启用中日韩语言支持) buildDrafts: false # Build draft posts (是否构建草稿文章) buildFuture: false # Build future posts (是否构建未来日期文章) buildExpired: false # Build expired posts (是否构建过期文章) # Parameters Configuration (参数配置) params: # Theme Settings (主题设置) defaultTheme: dark # Default theme mode (默认主题模式) disableThemeToggle: false # Allow theme switching (允许主题切换) # Display Features (显示功能) ShowShareButtons: true # Show social share buttons (显示分享按钮) ShowCodeCopyButtons: true # Show code copy buttons (显示代码复制按钮) ShowReadingTime: true # Show reading time estimate (显示阅读时间) ShowWordCount: true # Show word count (显示字数统计) ShowPostNavLinks: true # Show post navigation (显示文章导航) ShowBreadCrumbs: true # Show breadcrumb navigation (显示面包屑导航) ShowToc: true # Show table of contents (显示目录) TocOpen: true # TOC expanded by default (目录默认展开) math: true fancybox: true # Display Images (显示图片) # Comment System (评论系统) comments: true # Enable comments (启用评论) giscus: # Giscus configuration (Giscus 配置) repo: &#34;&#34; repoId: &#34;&#34; category: &#34;&#34; categoryId: &#34;&#34; mapping: &#34;pathname&#34; strict: &#34;0&#34; reactionsEnabled: &#34;1&#34; emitMetadata: &#34;0&#34; inputPosition: &#34;bottom&#34; lightTheme: &#34;light&#34; darkTheme: &#34;dark&#34; lang: &#34;zh-CN&#34; crossorigin: &#34;anonymous&#34; fuseOpts: # refer: https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/#%e9%85%8d%e7%bd%ae%e6%90%9c%e7%b4%a2 isCaseSensitive: false # 是否大小写敏感 shouldSort: true # 是否排序 location: 0 distance: 1000 threshold: 0.4 minMatchCharLength: 0 # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search keys: [&#34;title&#34;, &#34;permalink&#34;, &#34;summary&#34;, &#34;content&#34;] includeMatches: true # Assets Files (资源文件) assets: favicon: &#34;&#34; # Site favicon (网站图标) favicon16x16: &#34;&#34; # Small favicon (小图标) favicon32x32: &#34;&#34; # Medium favicon (中图标) apple_touch_icon: &#34;&#34; # iOS icon (iOS 图标) safari_pinned_tab: &#34;&#34; # Safari icon (Safari 图标) # Multilingual Support (多语言支持) languages: zh: languageCode: &#34;zh-CN&#34; languageName: &#34;简体中文&#34; contentDir: &#34;content/zh&#34; weight: 1 menu: main: - identifier: posts name: &#34;Posts&#34; url: &#34;/posts/&#34; weight: 1 # Output Settings (输出设置) outputs: home: - HTML - RSS - JSON # Required for search (搜索功能需要) # Rendering Configuration (渲染配置) markup: goldmark: renderer: unsafe: true # Allow HTML in markdown (允许 Markdown 中的 HTML) highlight: codeFences: true # Enable code highlighting (启用代码高亮) guessSyntax: true # Guess code language (猜测代码语言) lineNos: true # Show line numbers (显示行号) style: dracula # Code highlight theme (代码高亮主题) lineNumbersInTable: true ...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-01-20 20:42:23 +0800 CST'>2025-01-20</span>&nbsp;·&nbsp;16 分钟&nbsp;·&nbsp;7769 字&nbsp;·&nbsp;Downmars</footer>
   <a class="entry-link" aria-label="post link to Hugo博客搭建_配置 🚀" href="http://localhost:1313/zh/posts/2025_01_20-hugo_build_2/"></a>
 </article>
     </main>
@@ -315,7 +318,7 @@ code.has-jax {
         
     
     发表了0篇文章 · 
-    总计9.68k字
+    总计10.40k字
 </section>
 
 </body>

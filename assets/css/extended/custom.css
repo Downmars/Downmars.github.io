@@ -138,3 +138,88 @@ body {
   background-color: var(--sidenote-bg);
 }
 
+/*代码折叠*/
+.custom-collapse {
+    margin: 1rem 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--entry);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.custom-collapse[open] {
+    border-color: var(--secondary);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.custom-collapse summary {
+    position: relative;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary);
+    list-style: none;
+    transition: background 0.2s ease;
+    background: var(--entry);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-collapse summary::-webkit-details-marker {
+    display: none;
+}
+
+.custom-collapse summary:before {
+    content: "▶";
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+    color: var(--secondary);
+    transition: transform 0.2s ease;
+}
+
+.custom-collapse[open] summary:before {
+    content: "▼";
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.custom-collapse summary:hover {
+    background: var(--tertiary);
+}
+
+.custom-collapse .content {
+    border-top: 1px solid var(--border);
+    background: var(--code-bg);
+    animation: fadeIn 0.3s ease;
+    padding: 0;
+    position: relative;
+}
+
+.custom-collapse .content > * {
+    margin: 0rem !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 代码块样式适配 */
+.custom-collapse .content pre {
+    background: transparent !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0rem !important;
+}
+
+.line-count {
+    font-size: 0.85em;
+    color: var(--secondary);
+    font-weight: normal;
+    margin-right: 1rem;
+}

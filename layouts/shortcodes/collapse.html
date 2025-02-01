@@ -1,9 +1,41 @@
-{{ if .Get "summary" }}
-{{ else }}
-{{ warnf "missing value for param 'summary': %s" .Position }}
-{{ end }}
-<p><details {{ if (eq (.Get "openByDefault") true) }} open=true {{ end }}>
-  <summary markdown="span">{{ .Get "summary" | markdownify }}</summary>
-  {{ .Inner | markdownify }}
-</details></p>
+{{/* 参数处理逻辑 */}}
+{{ $threshold := default 15 (.Get "collapseThreshold") | int }}
+{{ $forceCollapse := eq (.Get "forceCollapse") "true" }}
+{{ $openByDefault := eq (.Get "openByDefault") "true" }}
 
+{{/* 内容处理逻辑 */}}
+{{ $rawContent := .Inner }}
+{{ $content := $rawContent | markdownify }}
+
+{{/* 精确行数计算（排除代码块标记和空行） */}}
+{{ $cleanedContent := replaceRE `(?s)<pre.*?>\n?` "" $content }}
+{{ $cleanedContent := replaceRE `(?s)</pre>\n?` "" $cleanedContent }}
+{{ $lines := split $cleanedContent "\n" }}
+{{ $lineCount := -1 }}
+{{ range $line := $lines }}
+  {{ if ne (trim $line " ") "" }}
+    {{ $lineCount = add $lineCount 1 }}
+  {{ end }}
+{{ end }}
+
+{{/* 自动折叠判断逻辑 */}}
+{{ $shouldOpen := cond $forceCollapse 
+  false 
+  (or $openByDefault (lt $lineCount $threshold)) 
+}}
+
+{{/* 错误处理 */}}
+{{ if not (.Get "summary") }}
+  {{ warnf "missing value for param 'summary': %s" .Position }}
+{{ end }}
+
+
+<p><details class="custom-collapse" {{ if $shouldOpen }}open{{ end }}>
+  <summary markdown="span">
+    <span>{{ .Get "summary" | markdownify }}</span>
+    <span class="line-count">{{ $lineCount }} lines</span>
+  </summary>
+  <div class="content">
+    {{ $content }}
+  </div>
+</details></p>
