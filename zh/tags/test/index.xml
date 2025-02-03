@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Test on DLog</title><link>https://downmars.github.io/zh/tags/test/</link><description>Recent content in Test on DLog</description><generator>Hugo -- 0.142.0</generator><language>zh-CN</language><lastBuildDate>Sun, 19 Jan 2025 20:05:13 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/test/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_基础 😊</title><link>https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/</link><pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Test on DLog</title><link>https://downmars.github.io/zh/tags/test/</link><description>Recent content in Test on DLog</description><generator>Hugo -- 0.143.0</generator><language>zh-CN</language><lastBuildDate>Sun, 19 Jan 2025 20:05:13 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/test/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_基础 😊</title><link>https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/</link><pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/</guid><description>&lt;hr>
 &lt;h1 id="前言">前言&lt;/h1>
 &lt;p>以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。&lt;/p></description><content:encoded><![CDATA[<hr>
 <h1 id="前言">前言</h1>
@@ -43,8 +43,7 @@
 </span></span></code></pre></div><h2 id="hugo初始化">Hugo初始化</h2>
 <p>通过上述命令安装hugo程序后，可以在选定的目录下通过<code>hugo new site $YOUR_SITE_NAME</code>创建你的博客目录：</p>
 <blockquote>
-<p>如果不特殊申明，本文接下来的命令行操作都是在<code>$YOUR_SITE_NAME</code>目录下进行的。</p>
-</blockquote>
+<p>如果不特殊申明，本文接下来的命令行操作都是在<code>$YOUR_SITE_NAME</code>目录下进行的。</p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>myArch% hugo new site DHugo                      
 </span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site was created in /home/dm/Test/DHugo.
 </span></span><span style="display:flex;"><span>
@@ -185,6 +184,5 @@
 </span></span><span style="display:flex;"><span>git push origin main
 </span></span></code></pre></div><p>此时，我们的博客就已经部署到了<code>Github Pages</code>上了，可以通过<code>https://[你的github账号名].github.io</code>来访问你的博客了。</p>
 <blockquote>
-<p>我一开始创建的时候会在我的博客网址看不见我的网页，后来查询之后得知需要在<code>Downmars.github.io/Settings/pages/Branch</code> 将分支切换为<code>gh-pages</code>即可</p>
-</blockquote>
+<p>我一开始创建的时候会在我的博客网址看不见我的网页，后来查询之后得知需要在<code>Downmars.github.io/Settings/pages/Branch</code> 将分支切换为<code>gh-pages</code>即可</p></blockquote>
 ]]></content:encoded></item></channel></rss>

@@ -1,121 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.142.0</generator><language>zh-CN</language><lastBuildDate>Mon, 20 Jan 2025 20:42:23 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_配置 🚀</title><link>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</link><pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
-&lt;p>在上一篇文章“&lt;a href="../hugo_build_1"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.143.0</generator><language>zh-CN</language><lastBuildDate>Mon, 20 Jan 2025 20:42:23 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_配置 🚀</title><link>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</link><pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid><description>&lt;blockquote class="quote">&lt;p>如何构建我的hugo博客-这是一个系列&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="../2025_01_19-hugo_build_1"
 >
 Hugo博客搭建_基础 😊&lt;/a>
-”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。&lt;/p>
-&lt;h2 id="基础配置文件">基础配置文件&lt;/h2>
-&lt;p>我们曾经在&lt;code>hugo.yaml&lt;/code>中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：
-&lt;p>&lt;details class="custom-collapse" >
-&lt;summary markdown="span">
-&lt;span>hugo.yaml&lt;/span>
-&lt;span class="line-count">101 lines&lt;/span>
-&lt;/summary>
-&lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># Basic Configuration (基础配置)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">baseURL&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#6272a4"># Site URL (网站 URL)(e.g. https://downmars.github.io/)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">title&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#6272a4"># Site title (网站标题)(e.g. DLog)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">theme&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#6272a4"># Theme name (主题名称)(e.g. PaperMod, in /themes/)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># Feature Toggles (功能开关)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">enableEmoji&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Enable emoji support (启用表情支持)(e.g. https://gohugo.io/quick-reference/emojis/#smileys--emotion)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">enableRobotsTXT&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Enable search engine support (启用搜索引擎支持)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">hasCJKLanguage&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Enable CJK language support (启用中日韩语言支持)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">buildDrafts&lt;/span>: &lt;span style="color:#ff79c6">false&lt;/span> &lt;span style="color:#6272a4"># Build draft posts (是否构建草稿文章)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">buildFuture&lt;/span>: &lt;span style="color:#ff79c6">false&lt;/span> &lt;span style="color:#6272a4"># Build future posts (是否构建未来日期文章) &lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">buildExpired&lt;/span>: &lt;span style="color:#ff79c6">false&lt;/span> &lt;span style="color:#6272a4"># Build expired posts (是否构建过期文章)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># Parameters Configuration (参数配置)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">params&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#6272a4"># Theme Settings (主题设置)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">defaultTheme&lt;/span>: dark &lt;span style="color:#6272a4"># Default theme mode (默认主题模式)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">disableThemeToggle&lt;/span>: &lt;span style="color:#ff79c6">false&lt;/span> &lt;span style="color:#6272a4"># Allow theme switching (允许主题切换)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#6272a4"># Display Features (显示功能)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">ShowShareButtons&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Show social share buttons (显示分享按钮)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">ShowCodeCopyButtons&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Show code copy buttons (显示代码复制按钮)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">ShowReadingTime&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Show reading time estimate (显示阅读时间)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">ShowWordCount&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Show word count (显示字数统计)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">ShowPostNavLinks&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Show post navigation (显示文章导航)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">ShowBreadCrumbs&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Show breadcrumb navigation (显示面包屑导航)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">ShowToc&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Show table of contents (显示目录)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">TocOpen&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># TOC expanded by default (目录默认展开)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">math&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">fancybox&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Display Images (显示图片)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#6272a4"># Comment System (评论系统)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">comments&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Enable comments (启用评论)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">giscus&lt;/span>: &lt;span style="color:#6272a4"># Giscus configuration (Giscus 配置)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">repo&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">repoId&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">category&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">categoryId&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">mapping&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;pathname&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">strict&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;0&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">reactionsEnabled&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;1&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">emitMetadata&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;0&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">inputPosition&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;bottom&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">lightTheme&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;light&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">darkTheme&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;dark&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">lang&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;zh-CN&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">crossorigin&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;anonymous&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">fuseOpts: # refer&lt;/span>: https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/#%e9%85%8d%e7%bd%ae%e6%90%9c%e7%b4%a2
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">isCaseSensitive&lt;/span>: &lt;span style="color:#ff79c6">false&lt;/span> &lt;span style="color:#6272a4"># 是否大小写敏感&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">shouldSort&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># 是否排序&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">location&lt;/span>: &lt;span style="color:#bd93f9">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">distance&lt;/span>: &lt;span style="color:#bd93f9">1000&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">threshold&lt;/span>: &lt;span style="color:#bd93f9">0.4&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">minMatchCharLength&lt;/span>: &lt;span style="color:#bd93f9">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#6272a4"># limit: 10 # refer: https://www.fusejs.io/api/methods.html#search&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">keys&lt;/span>: [&lt;span style="color:#f1fa8c">&amp;#34;title&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;permalink&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;summary&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;content&amp;#34;&lt;/span>]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">includeMatches&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#6272a4"># Assets Files (资源文件)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">assets&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">favicon&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#6272a4"># Site favicon (网站图标)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">favicon16x16&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#6272a4"># Small favicon (小图标)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">favicon32x32&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#6272a4"># Medium favicon (中图标)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">apple_touch_icon&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#6272a4"># iOS icon (iOS 图标)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">safari_pinned_tab&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#6272a4"># Safari icon (Safari 图标)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># Multilingual Support (多语言支持)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">languages&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">zh&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">languageCode&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;zh-CN&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">languageName&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;简体中文&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">contentDir&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;content/zh&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">weight&lt;/span>: &lt;span style="color:#bd93f9">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">menu&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">main&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff79c6">identifier&lt;/span>: posts
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">name&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;Posts&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">url&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;/posts/&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">weight&lt;/span>: &lt;span style="color:#bd93f9">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># Output Settings (输出设置)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">outputs&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">home&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - HTML
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - RSS
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - JSON &lt;span style="color:#6272a4"># Required for search (搜索功能需要)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># Rendering Configuration (渲染配置)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">markup&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">goldmark&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">renderer&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">unsafe&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Allow HTML in markdown (允许 Markdown 中的 HTML)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">highlight&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">codeFences&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Enable code highlighting (启用代码高亮)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">guessSyntax&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Guess code language (猜测代码语言)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">lineNos&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span> &lt;span style="color:#6272a4"># Show line numbers (显示行号)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">style&lt;/span>: dracula &lt;span style="color:#6272a4"># Code highlight theme (代码高亮主题)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">lineNumbersInTable&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/details>&lt;/p></description><content:encoded><![CDATA[<h2 id="前言">前言</h2>
-<p>在上一篇文章“<a href="../hugo_build_1" 
+&lt;/li>
+&lt;li>&lt;a href="."
+>
+Hugo博客搭建_配置 🚀&lt;/a>
+&amp;#x1f448; 你在这里&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>在上一篇文章“&lt;a href="../2025_01_19-hugo_build_1"
+>
+Hugo博客搭建_基础 😊&lt;/a>
+”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。&lt;/p></description><content:encoded><![CDATA[<blockquote class="quote"><p>如何构建我的hugo博客-这是一个系列</p>
+<ul>
+<li><a href="../2025_01_19-hugo_build_1" 
+   
+   >
+   Hugo博客搭建_基础 😊</a>
+
+
+
+
+</li>
+<li><a href="." 
+   
+   >
+   Hugo博客搭建_配置 🚀</a>
+
+
+
+
+&#x1f448; 你在这里</li>
+</ul></blockquote>
+
+<h2 id="前言">前言</h2>
+<p>在上一篇文章“<a href="../2025_01_19-hugo_build_1" 
    
    >
    Hugo博客搭建_基础 😊</a>
@@ -717,8 +638,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
-</p>
-</blockquote>
+</p></blockquote>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -1013,8 +933,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
-</p>
-</blockquote>
+</p></blockquote>
 <p>上述博客中提到了相同的问题即 ”对于mathjax与markdown格式中，hugo在渲染的过程中将<code>_</code>渲染为了<code>&lt;em&gt;</code>标签，导致mathjax在渲染的时候找不到原来正确的公示“。</p>
 <p>首先，我们在<code>hugo.yaml</code>中添加：</p>
 
@@ -1459,8 +1378,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
-</p>
-</blockquote>
+</p></blockquote>
 <h4 id="目录配置">目录配置</h4>
 <p>对于自带的目录，只显示在文章最上面，既不能让读者随时掌握到阅读进度，也不够优雅，所以我在参考了<a href="https://www.zhouxin.space/logs/introduce-side-toc-and-reading-percentage-to-papermod/" 
    
@@ -3320,6 +3238,337 @@ Hugo博客搭建_基础 😊&lt;/a>
   </div>
 </details></p>
 
+<p>为正文添加章节序号，参考于<a href="https://aikenh.cn/posts/%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E7%BD%AEpapermod%E4%B8%BB%E9%A2%98%E7%9A%84%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/#header-counter-%e4%b8%ba-title-%e6%b7%bb%e5%8a%a0%e7%ab%a0%e8%8a%82%e5%ba%8f%e5%8f%b7" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   初始化 &amp; 设置 PaperMod 主题的基础功能<span class="external-link">↗</span></a>
+
+
+
+
+
+
+，我们在<code>assets/css/common/post-single.css</code>中添加以下内容：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/css/common/post-single.css</span>
+    <span class="line-count">56 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#ff79c6">main</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-reset</span>: h1-cnt h2-cnt h3-cnt h4-cnt h5-cnt h6-cnt;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h1</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-increment</span>: h1-cnt;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-reset</span>: h2-cnt h3-cnt h4-cnt h5-cnt h6-cnt; <span style="color:#6272a4">/* Reset lower levels */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h2</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-increment</span>: h2-cnt;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-reset</span>: h3-cnt h4-cnt h5-cnt h6-cnt; <span style="color:#6272a4">/* Reset lower levels */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h3</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-increment</span>: h3-cnt;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-reset</span>: h4-cnt h5-cnt h6-cnt; <span style="color:#6272a4">/* Reset lower levels */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h4</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-increment</span>: h4-cnt;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-reset</span>: h5-cnt h6-cnt; <span style="color:#6272a4">/* Reset lower levels */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h5</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-increment</span>: h5-cnt;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-reset</span>: h6-cnt; <span style="color:#6272a4">/* Reset lower levels */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h6</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">counter-increment</span>: h6-cnt;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h1</span>::before {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">content</span>: <span style="color:#8be9fd;font-style:italic">counter</span>(h1<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;. &#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h2</span>::before {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">content</span>: <span style="color:#8be9fd;font-style:italic">counter</span>(h2<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;. &#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h3</span>::before {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">content</span>: <span style="color:#8be9fd;font-style:italic">counter</span>(h2<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h3<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;. &#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h4</span>::before {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">content</span>: <span style="color:#8be9fd;font-style:italic">counter</span>(h2<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h3<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h4<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;. &#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h5</span>::before {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">content</span>: <span style="color:#8be9fd;font-style:italic">counter</span>(h2<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h3<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h4<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h5<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;. &#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-content</span> <span style="color:#ff79c6">h6</span>::before {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">content</span>: <span style="color:#8be9fd;font-style:italic">counter</span>(h2<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h3<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h4<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h5<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;.&#39;</span> <span style="color:#8be9fd;font-style:italic">counter</span>(h6<span style="color:#ff79c6">-</span>cnt) <span style="color:#f1fa8c">&#39;. &#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+<br>
+同时，由于一号标题有<code>40px</code>大小，推荐从二号标题开始排序。</p>
 <h4 id="评论支持">评论支持</h4>
 <p>对于评论支持，我选择了<a href="https://giscus.app/zh-CN" 
    
@@ -4326,8 +4575,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
-</p>
-</blockquote>
+</p></blockquote>
 
 
 
@@ -5281,6 +5529,408 @@ Hugo博客搭建_基础 😊&lt;/a>
 </details></p>
 
 <h2 id="额外配置">额外配置</h2>
+<h3 id="正文宽度">正文宽度</h3>
+<p>我们复制对应目录<code>assets/css/core/theme-vars.css</code>，并修改以下行：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>assets/css/core/theme-vars.css</span>
+    <span class="line-count">2 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>root:
+</span></span><span style="display:flex;"><span>    --main-width: 740px;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<h3 id="文章封面图移至侧边">文章封面图移至侧边</h3>
+<p>当我们文章存在封面的时候，在<code>archives</code>中文章的排布中，图片占了大部分空间，十分影响我们的观感。通过参考：<a href="https://cloud.tencent.com/developer/article/1969889" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo博客文章封面图片缩小并移到侧边 | PaperMod主题<span class="external-link">↗</span></a>
+
+
+
+
+
+
+，我们可以这样配置：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/_default/list.html</span>
+    <span class="line-count">33 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>&lt;article class=&#34;{{ $class }}&#34;&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f55">-  {{- $isHidden := (.Param &#34;cover.hiddenInList&#34;) | default (.Param &#34;cover.hidden&#34;) | default false }}
+</span></span></span><span style="display:flex;"><span><span style="color:#f55">-  {{- partial &#34;cover.html&#34; (dict &#34;cxt&#34; . &#34;IsSingle&#34; false &#34;isHidden&#34; $isHidden) }}
+</span></span></span><span style="display:flex;"><span><span style="color:#f55"></span><span style="color:#50fa7b;font-weight:bold">+  &lt;div class=&#34;post-info&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>  &lt;header class=&#34;entry-header&#34;&gt;
+</span></span><span style="display:flex;"><span>    &lt;h2 class=&#34;entry-hint-parent&#34;&gt;
+</span></span><span style="display:flex;"><span>      {{- .Title }}
+</span></span><span style="display:flex;"><span>      {{- if .Draft }}
+</span></span><span style="display:flex;"><span>      &lt;span class=&#34;entry-hint&#34; title=&#34;Draft&#34;&gt;
+</span></span><span style="display:flex;"><span>        &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; height=&#34;20&#34; viewBox=&#34;0 -960 960 960&#34; fill=&#34;currentColor&#34;&gt;
+</span></span><span style="display:flex;"><span>          &lt;path
+</span></span><span style="display:flex;"><span>            d=&#34;M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z&#34; /&gt;
+</span></span><span style="display:flex;"><span>        &lt;/svg&gt;
+</span></span><span style="display:flex;"><span>      &lt;/span&gt;
+</span></span><span style="display:flex;"><span>      {{- end }}
+</span></span><span style="display:flex;"><span>    &lt;/h2&gt;
+</span></span><span style="display:flex;"><span>  &lt;/header&gt;
+</span></span><span style="display:flex;"><span>  {{- if (ne (.Param &#34;hideSummary&#34;) true) }}
+</span></span><span style="display:flex;"><span>  &lt;div class=&#34;entry-content&#34;&gt;
+</span></span><span style="display:flex;"><span>    &lt;p&gt;{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}&lt;/p&gt;
+</span></span><span style="display:flex;"><span>  &lt;/div&gt;
+</span></span><span style="display:flex;"><span>  {{- end }}
+</span></span><span style="display:flex;"><span>  {{- if not (.Param &#34;hideMeta&#34;) }}
+</span></span><span style="display:flex;"><span>  &lt;footer class=&#34;entry-footer&#34;&gt;
+</span></span><span style="display:flex;"><span>    {{- partial &#34;post_meta.html&#34; . -}}
+</span></span><span style="display:flex;"><span>  &lt;/footer&gt;
+</span></span><span style="display:flex;"><span>  {{- end }}
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  {{- $isHidden := (.Param &#34;cover.hiddenInList&#34;) | default (.Param &#34;cover.hidden&#34;) | default false }}
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  {{- partial &#34;cover.html&#34; (dict &#34;cxt&#34; . &#34;IsSingle&#34; false &#34;isHidden&#34; $isHidden) }}
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>  &lt;a class=&#34;entry-link&#34; aria-label=&#34;post link to {{ .Title | plainify }}&#34; href=&#34;{{ .Permalink }}&#34;&gt;&lt;/a&gt;
+</span></span><span style="display:flex;"><span>&lt;/article&gt;
+</span></span><span style="display:flex;"><span>{{- end }}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/css/common/post-entry.css</span>
+    <span class="line-count">20 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/* F2 make the cover in the side on blogs page */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-entry</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">flex-direction</span>: <span style="color:#ff79c6">row</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">align-items</span>: <span style="color:#ff79c6">center</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-info</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">inline-block</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">overflow</span>: <span style="color:#ff79c6">hidden</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">90</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">post-entry</span> .<span style="color:#50fa7b">entry-cover</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">overflow</span>: <span style="color:#ff79c6">hidden</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding-right</span>: <span style="color:#bd93f9">18</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">80</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">40</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-bottom</span>: <span style="color:#ff79c6">unset</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
 <h3 id="字体配置">字体配置</h3>
 <p>我已经忍这个默认字体很久了，现在我们就在这里干掉他。我们在这里选择的中文是<a href="https://github.com/lxgw/LxgwWenKai?tab=readme-ov-file" 
    
@@ -5479,8 +6129,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
-</p>
-</blockquote>
+</p></blockquote>
 <p>我们在<a href="https://chooser-beta.creativecommons.org/" 
    
     
@@ -6213,8 +6862,204 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 <blockquote>
-<p>但是，由于我对于前端不是很了解，黑夜模式下的样式调整未能正确实现，待解决。</p>
-</blockquote>
+<p>但是，由于我对于前端不是很了解，黑夜模式下的样式调整未能正确实现，待解决。</p></blockquote>
+<h3 id="超链接">超链接</h3>
+<p><code>hugo</code>的默认超链接是以当前页面打开，这对于我们的阅读体验是很糟糕的，参考于<a href="https://ivan.show/blog/2024/5e1954a8/" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   Hugo 设置外部链接用新窗口打开<span class="external-link">↗</span></a>
+
+
+
+
+
+
+，我们将外部链接使用新窗口打开并在链接后面添加一个小箭头，而本博客的内容使用当前窗口打开并不添加后缀：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/_default/_markup/render-link.html</span>
+    <span class="line-count">10 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ .Destination | safeURL }}&#34;</span> 
+</span></span><span style="display:flex;"><span>   {{ <span style="color:#50fa7b">with</span> .<span style="color:#50fa7b">Title</span> }} <span style="color:#50fa7b">title</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ . }}&#34;</span>{{ <span style="color:#50fa7b">end</span> }}
+</span></span><span style="display:flex;"><span>   {{ <span style="color:#50fa7b">if</span> <span style="color:#50fa7b">strings</span>.<span style="color:#50fa7b">HasPrefix</span> .<span style="color:#50fa7b">Destination</span> &#34;<span style="color:#50fa7b">http</span>&#34; }} 
+</span></span><span style="display:flex;"><span>       <span style="color:#50fa7b">target</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;_blank&#34;</span> <span style="color:#50fa7b">rel</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;noopener&#34;</span> 
+</span></span><span style="display:flex;"><span>   {{ <span style="color:#50fa7b">end</span> }}&gt;
+</span></span><span style="display:flex;"><span>   {{ .Text | safeHTML }}
+</span></span><span style="display:flex;"><span>   {{- if strings.HasPrefix .Destination &#34;http&#34; -}}
+</span></span><span style="display:flex;"><span>       &lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;external-link&#34;</span>&gt;↗&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span><span style="display:flex;"><span>   {{- end -}}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">a</span>&gt;  
+</span></span></code></pre></div>
+  </div>
+</details></p>
+<br>
+同时在添加小尖头样式：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>assets/extended/custom.css</span>
+    <span class="line-count">7 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#50fa7b">external-link</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">inline-block</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">margin-left</span>: <span style="color:#bd93f9">0.2</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">0.8</span><span style="color:#8be9fd">em</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">text-decoration</span>: <span style="color:#ff79c6">none</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">vertical-align</span>: <span style="color:#ff79c6">super</span>;
+</span></span><span style="display:flex;"><span>}  
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<blockquote>
+<p>外部链接：<a href="https://github.com/Downmars" 
+   
+    
+       target="_blank" rel="noopener" 
+   >
+   我的github主页<span class="external-link">↗</span></a>
+
+
+
+
+
+
+<br>
+内部链接：<a href="../2025_01_19-hugo_build_1" 
+   
+   >
+   Hugo博客搭建_基础 😊</a>
+
+
+
+
+</p></blockquote>
 <h3 id="修改时间">修改时间</h3>
 <p>原本主题并没有显示「修改时间」的功能，我在这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e6%b7%bb%e5%8a%a0%e4%bf%ae%e6%94%b9%e6%97%b6%e9%97%b4" 
    
@@ -6418,8 +7263,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
-的博客，我从上面学习和摘选了很多内容在本文中。</p>
-</blockquote>
+的博客，我从上面学习和摘选了很多内容在本文中。</p></blockquote>
 <p>我们在<code>assets/extended/custom.css</code>：</p>
 
 
@@ -6812,8 +7656,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
-</p>
-</blockquote>
+</p></blockquote>
 <blockquote class="quote"><p>为什么要演奏春日影！</p></blockquote>
 
 <p>在 <code>layouts/shortcodes/quote.html</code> 加入以下内容：
@@ -7109,8 +7952,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 ，大家可以自行前往查看。</p>
 <h4 id="图像放大">图像放大</h4>
 <blockquote>
-<p><code>{{&lt; figure src=&quot;/path/to/image.jpg&quot; alt=&quot;A beautiful image&quot; title=&quot;Image&quot; caption=&quot;This is a caption for the image&quot; align=&quot;center&quot; width=600px height=300px &gt;}}</code></p>
-</blockquote>
+<p><code>{{&lt; figure src=&quot;/path/to/image.jpg&quot; alt=&quot;A beautiful image&quot; title=&quot;Image&quot; caption=&quot;This is a caption for the image&quot; align=&quot;center&quot; width=600px height=300px &gt;}}</code></p></blockquote>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -7128,8 +7970,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 <h4 id="自动折叠代码">自动折叠代码</h4>
 <blockquote>
-<p><code>{{&lt; collapse summary=&quot;test&quot; &gt;}}</code> {代码段} <code>{{&lt; /collapse &gt;}}</code></p>
-</blockquote>
+<p><code>{{&lt; collapse summary=&quot;test&quot; &gt;}}</code> {代码段} <code>{{&lt; /collapse &gt;}}</code></p></blockquote>
 
 
 
@@ -7174,15 +8015,13 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 <h4 id="侧边注解">侧边注解</h4>
 <blockquote>
-<p><code>这是示例 {{&lt; sidenote &gt;}} 这是示例的侧边注解 {{&lt; /sidenote &gt;}}</code></p>
-</blockquote>
-<p>这是示例 <span class="sidenote-number"><small class="sidenote">这是示例的侧边注解</small></span>
+<p><code>这是示例 {{&lt; sidenote &gt;}} 这是示例的侧边注解 {{&lt; /sidenote &gt;}}</code></p></blockquote>
+<p>这是示例 <span class="sidenote-number"><small class="sidenote">这是示例的侧边注解aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</small></span>
 
 </p>
 <h4 id="引用">引用</h4>
 <blockquote>
-<p><code>{{&lt; quote &gt;}}</code> {引用段} <code>{{&lt; /quote &gt;}}</code></p>
-</blockquote>
+<p><code>{{&lt; quote &gt;}}</code> {引用段} <code>{{&lt; /quote &gt;}}</code></p></blockquote>
 <blockquote class="quote"><p>为什么要演奏春日影！</p></blockquote>
 
 <h4 id="转义渲染">转义渲染</h4>
@@ -7204,53 +8043,14 @@ Hugo博客搭建_基础 😊&lt;/a>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>{{&lt; myshortcode &gt;}}
 </span></span></code></pre></div><h4 id="asciinema">Asciinema</h4>
 <blockquote>
-<p>{{&lt; asciinema ID &gt;}}</p>
-</blockquote>
+<p>{{&lt; asciinema ID &gt;}}</p></blockquote>
 
 
 <script async id="asciicast-239367" src="https://asciinema.org/a/239367.js"></script>
 
 
-<h2 id="test">test</h2>
-<p><a href="#%e5%89%8d%e8%a8%80" 
-   
-   >
-   回到顶部</a>
-
-
-
-
-</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+ 鸟宿池边树，僧敲月下门
-</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span><span style="color:#f55">- 鸟宿池边树，僧推月下门
-</span></span></span></code></pre></div><p>test<br>
-test</p>
-<p>test</p>
-<p><a href="https://www.zhihu.com/people/jellywong" 
-    title="我的知乎，欢迎关注"
-    
-       target="_blank" rel="noopener" 
-   >
-   我的知乎<span class="external-link">↗</span></a>
-
-
-
-
-
-
-</p>
-<p>这是一个简单的脚注<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，这是另一个脚注<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>这是第一个脚注&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>这是第二脚注&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
+<h2 id="总结">总结</h2>
+<p>关于hugo的配置暂时就告一段落了，之后可能会有所增减，希望能帮助到大家。&#x1f604;</p>
 ]]></content:encoded></item><item><title>Hugo博客搭建_基础 😊</title><link>https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/</link><pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/</guid><description>&lt;hr>
 &lt;h1 id="前言">前言&lt;/h1>
 &lt;p>以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。&lt;/p></description><content:encoded><![CDATA[<hr>
@@ -7296,8 +8096,7 @@ test</p>
 </span></span></code></pre></div><h2 id="hugo初始化">Hugo初始化</h2>
 <p>通过上述命令安装hugo程序后，可以在选定的目录下通过<code>hugo new site $YOUR_SITE_NAME</code>创建你的博客目录：</p>
 <blockquote>
-<p>如果不特殊申明，本文接下来的命令行操作都是在<code>$YOUR_SITE_NAME</code>目录下进行的。</p>
-</blockquote>
+<p>如果不特殊申明，本文接下来的命令行操作都是在<code>$YOUR_SITE_NAME</code>目录下进行的。</p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>myArch% hugo new site DHugo                      
 </span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site was created in /home/dm/Test/DHugo.
 </span></span><span style="display:flex;"><span>
@@ -7438,6 +8237,5 @@ test</p>
 </span></span><span style="display:flex;"><span>git push origin main
 </span></span></code></pre></div><p>此时，我们的博客就已经部署到了<code>Github Pages</code>上了，可以通过<code>https://[你的github账号名].github.io</code>来访问你的博客了。</p>
 <blockquote>
-<p>我一开始创建的时候会在我的博客网址看不见我的网页，后来查询之后得知需要在<code>Downmars.github.io/Settings/pages/Branch</code> 将分支切换为<code>gh-pages</code>即可</p>
-</blockquote>
+<p>我一开始创建的时候会在我的博客网址看不见我的网页，后来查询之后得知需要在<code>Downmars.github.io/Settings/pages/Branch</code> 将分支切换为<code>gh-pages</code>即可</p></blockquote>
 ]]></content:encoded></item></channel></rss>
