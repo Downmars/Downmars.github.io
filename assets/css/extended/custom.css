@@ -110,9 +110,14 @@
 .sidenote {
   float: right;
   position: relative;
-  margin-right: -18vw;
+  margin-right: -20vw;
   width: 40%;
-  max-width: 200px;
+  max-width: 300px;
+  padding: 8px 16px; /* 增加内边距以便有足够空间 */
+  border: 2px solid transparent; /* 默认透明边框 */
+  border-radius: var(--radius); /* 圆角 */
+  box-shadow: 0 2px 4px var(--sidenote-shadow1); /* 默认轻微阴影 */
+  transition: all 0.3s ease; /* 增加平滑过渡效果 */
 }
 body {
   counter-reset: sidenote-counter;
@@ -136,6 +141,7 @@ body {
 }
 .sidenote-number:hover .sidenote {
   background-color: var(--sidenote-bg);
+  box-shadow: 0 4px 8px var(--sidenote-shadow2); /* 悬停时加强阴影效果 */
 }
 
 /*代码折叠*/

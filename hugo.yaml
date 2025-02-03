@@ -42,7 +42,7 @@ params:
   
   # 其他功能
   comments: true
-  DateFormat: "2006-01-02"  # 修正：使用 Go 的时间格式
+  dateFormat: "2006-01-02"  # 修正：使用 Go 的时间格式
   # busuanzi: # 不🧄子-页面统计（https://busuanzi.ibruce.info/）
   #   enable: true
   # hideFooter: true  # 禁用默认页脚
