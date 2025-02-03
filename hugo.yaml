@@ -50,7 +50,7 @@ params:
   # cover: # 点击显示全图
   #   linkFullImages: true
 
-  showLastMod: true
+  ShowLastMod: true
 
   enableGitInfo: true
   # 搜索功能
