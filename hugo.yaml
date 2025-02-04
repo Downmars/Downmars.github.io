@@ -53,6 +53,9 @@ params:
   ShowLastMod: true
 
   enableGitInfo: true
+
+  headerLayout: "island" # 使用自定义模板
+
   # 搜索功能
   fuseOpts:  # 添加：搜索配置
     isCaseSensitive: false
@@ -180,3 +183,10 @@ markup:
     lineNos: false
     style: dracula
     lineNumbersInTable: true
+
+assets:
+  disableHLJS: true # 禁用默认高亮以自定义
+  customCSS:
+    - extended/custom.css
+  customJS:
+    - header-island.js

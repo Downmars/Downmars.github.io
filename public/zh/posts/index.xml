@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on DLog</title>
-    <link>http://localhost:1313/zh/posts/</link>
+    <link>https://downmars.github.io/zh/posts/</link>
     <description>Recent content in Posts on DLog</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 21 Jan 2025 20:42:23 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo博客搭建_配置 🚀</title>
-      <link>http://localhost:1313/zh/posts/2025_01_20-hugo_build_2/</link>
+      <link>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</link>
       <pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025_01_20-hugo_build_2/</guid>
+      <guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid>
       <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;如何构建我的hugo博客-这是一个系列&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;../2025_01_19-hugo_build_1&#34; 
@@ -8101,9 +8101,9 @@
     </item>
     <item>
       <title>Hugo博客搭建_基础 😊</title>
-      <link>http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/</link>
+      <link>https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/</link>
       <pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/</guid>
+      <guid>https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/</guid>
       <description>&lt;hr&gt;
 &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。&lt;/p&gt;</description>

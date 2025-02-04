@@ -2,142 +2,132 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/en/</loc>
+    <loc>https://downmars.github.io/en/</loc>
     <lastmod>2025-01-19T20:05:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/"
+                href="https://downmars.github.io/zh/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/"
+                href="https://downmars.github.io/en/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/tags/hugo/</loc>
+    <loc>https://downmars.github.io/en/tags/hugo/</loc>
     <lastmod>2025-01-19T20:05:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/tags/hugo/"
+                href="https://downmars.github.io/zh/tags/hugo/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/tags/hugo/"
+                href="https://downmars.github.io/en/tags/hugo/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/posts/2025_01_19-hugo_build_1/</loc>
+    <loc>https://downmars.github.io/en/posts/2025_01_19-hugo_build_1/</loc>
     <lastmod>2025-01-19T20:05:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/"
+                href="https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/posts/2025_01_19-hugo_build_1/"
+                href="https://downmars.github.io/en/posts/2025_01_19-hugo_build_1/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/posts/</loc>
+    <loc>https://downmars.github.io/en/posts/</loc>
     <lastmod>2025-01-19T20:05:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/posts/"
+                href="https://downmars.github.io/zh/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/posts/"
+                href="https://downmars.github.io/en/posts/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/tags/</loc>
+    <loc>https://downmars.github.io/en/tags/</loc>
     <lastmod>2025-01-19T20:05:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/tags/"
+                href="https://downmars.github.io/zh/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/tags/"
+                href="https://downmars.github.io/en/tags/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/tags/test/</loc>
+    <loc>https://downmars.github.io/en/tags/test/</loc>
     <lastmod>2025-01-19T20:05:13+08:00</lastmod>
+  </url><url>
+    <loc>https://downmars.github.io/en/archives/archives/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/tags/test/"
+                href="https://downmars.github.io/zh/archives/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/tags/test/"
+                href="https://downmars.github.io/en/archives/archives/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/archives/archives/</loc>
+    <loc>https://downmars.github.io/en/archives/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/archives/archives/"
+                href="https://downmars.github.io/zh/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/archives/archives/"
+                href="https://downmars.github.io/en/archives/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/archives/</loc>
+    <loc>https://downmars.github.io/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/archives/"
+                href="https://downmars.github.io/zh/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/archives/"
+                href="https://downmars.github.io/en/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/categories/</loc>
+    <loc>https://downmars.github.io/en/search/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/categories/"
+                href="https://downmars.github.io/zh/search/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/categories/"
+                href="https://downmars.github.io/en/search/search/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/search/search/</loc>
+    <loc>https://downmars.github.io/en/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/search/search/"
+                href="https://downmars.github.io/zh/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/search/search/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/search/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/search/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/en/search/"
+                href="https://downmars.github.io/en/search/"
                 />
   </url>
 </urlset>

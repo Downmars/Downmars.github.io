@@ -9,6 +9,7 @@
 /*    top: -0.1em; /* 微调垂直位置 */*/
 /*}*/
 
+/*链接*/
 .external-link {
     display: inline-block;
     margin-left: 0.2em;
@@ -228,4 +229,51 @@ body {
     color: var(--secondary);
     font-weight: normal;
     margin-right: 1rem;
+}
+
+
+/*island*/
+/* 基础样式 */
+#island-header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+#menu-blur {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+}
+
+/* 标题切换动画 */
+#site-title, #page-title {
+  position: absolute;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#page-title {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.title-switched #site-title {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.title-switched #page-title {
+  opacity: 1;
+  transform: translateX(0);
 }
