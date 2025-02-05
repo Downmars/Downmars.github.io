@@ -15,67 +15,49 @@
       <guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid>
       <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;如何构建我的hugo博客-这是一个系列&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../2025_01_19-hugo_build_1&#34; 
+&lt;li&gt;&lt;a href=&#34;../2025_01_19-hugo_build_1&#34;
    
-   &gt;
+   
+   class=&#34;custom-link&#34;&gt;  
    Hugo博客搭建_基础 😊&lt;/a&gt;
-
-
-
-
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;.&#34; 
+&lt;li&gt;&lt;a href=&#34;.&#34;
    
-   &gt;
+   
+   class=&#34;custom-link&#34;&gt;  
    Hugo博客搭建_配置 🚀&lt;/a&gt;
-
-
-
-
 &amp;#x1f448; 你在这里&lt;/li&gt;
 &lt;/ul&gt;&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;在上一篇文章“&lt;a href=&#34;../2025_01_19-hugo_build_1&#34; 
+&lt;p&gt;在上一篇文章“&lt;a href=&#34;../2025_01_19-hugo_build_1&#34;
    
-   &gt;
+   
+   class=&#34;custom-link&#34;&gt;  
    Hugo博客搭建_基础 😊&lt;/a&gt;
-
-
-
-
 ”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。&lt;/p&gt;</description>
       <content:encoded><![CDATA[<blockquote class="quote"><p>如何构建我的hugo博客-这是一个系列</p>
 <ul>
-<li><a href="../2025_01_19-hugo_build_1" 
+<li><a href="../2025_01_19-hugo_build_1"
    
-   >
+   
+   class="custom-link">  
    Hugo博客搭建_基础 😊</a>
-
-
-
-
 </li>
-<li><a href="." 
+<li><a href="."
    
-   >
+   
+   class="custom-link">  
    Hugo博客搭建_配置 🚀</a>
-
-
-
-
 &#x1f448; 你在这里</li>
 </ul></blockquote>
 
 <h2 id="前言">前言</h2>
-<p>在上一篇文章“<a href="../2025_01_19-hugo_build_1" 
+<p>在上一篇文章“<a href="../2025_01_19-hugo_build_1"
    
-   >
+   
+   class="custom-link">  
    Hugo博客搭建_基础 😊</a>
-
-
-
-
 ”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。</p>
 <h2 id="基础配置文件">基础配置文件</h2>
 <p>我们曾经在<code>hugo.yaml</code>中配置本博客的一些功能，我们将会在这一部分补充和讨论剩余的配置：
@@ -628,48 +610,41 @@
 <p>Unicode: <code>&amp;#x1F924</code>🤤</p>
 <p>关于对应的表情和文档可以查询：</p>
 <ul>
-<li><a href="https://gohugo.io/quick-reference/emojis/#smileys--emotion" 
+<li><a href="https://gohugo.io/quick-reference/emojis/#smileys--emotion"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    shortcode<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </li>
-<li><a href="https://www.unicode.org/emoji/charts/emoji-list.html" 
+<li><a href="https://www.unicode.org/emoji/charts/emoji-list.html"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Unicode<span class="external-link">↗</span></a>
-
-
-
-
-
-
+</li>
+<li><a href="https://www.ruanyifeng.com/blog/2017/04/emoji.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Emoji 简介-阮一峰<span class="external-link">↗</span></a>
 </li>
 </ul>
 <h3 id="参数配置">参数配置</h3>
 <h4 id="图片放大">图片放大</h4>
 <blockquote>
-<p>参考于：<a href="https://yunpengtai.top/posts/hugo-journey/#%e5%9b%be%e7%89%87%e7%82%b9%e5%87%bb%e6%94%be%e5%a4%a7" 
+<p>参考于：<a href="https://yunpengtai.top/posts/hugo-journey/#%e5%9b%be%e7%89%87%e7%82%b9%e5%87%bb%e6%94%be%e5%a4%a7"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </p>
 </blockquote>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
@@ -687,18 +662,13 @@
 </a>
 
 
-<p>我们使用引入<a href="http://fancybox.net/" 
+<p>我们使用引入<a href="http://fancybox.net/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    fancybox<span class="external-link">↗</span></a>
-
-
-
-
-
-
 来实现：</p>
 <p>在<code>layouts/shortcodes/figure.html</code>中加入：</p>
 
@@ -930,42 +900,27 @@
 
 <h4 id="数学公示">数学公示</h4>
 <blockquote>
-<p>参考于：<a href="https://www.shaohanyun.top/posts/env/hugo_mathjax/#mathjax%e4%b8%8emarkdown%e7%9a%84%e8%9e%8d%e5%90%88" 
+<p>参考于：<a href="https://www.shaohanyun.top/posts/env/hugo_mathjax/#mathjax%e4%b8%8emarkdown%e7%9a%84%e8%9e%8d%e5%90%88"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo博客添加LaTeX语法支持<span class="external-link">↗</span></a>
-
-
-
-
-
-
-、<a href="https://yunpengtai.top/posts/hugo-journey/#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f" 
+、<a href="https://yunpengtai.top/posts/hugo-journey/#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
-
-
-
-
-
-
-、<a href="https://yihui.org/cn/2017/04/mathjax-markdown/" 
+、<a href="https://yihui.org/cn/2017/04/mathjax-markdown/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    MathJax 与 Markdown 的究极融合<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </p>
 </blockquote>
 <p>上述博客中提到了相同的问题即 ”对于mathjax与markdown格式中，hugo在渲染的过程中将<code>_</code>渲染为了<code>&lt;em&gt;</code>标签，导致mathjax在渲染的时候找不到原来正确的公示“。</p>
@@ -1400,33 +1355,23 @@
 <p>没做处理之前，以下代码无法渲染：</p>
 <p><code>$$ \frac{\partial E(\boldsymbol{w})}{\partial z_j} = \sum\limits_{k}\frac{\partial E(\boldsymbol{w})}{\partial y_{k}}\frac{\partial y_k}{\partial z_{j}}= \sum\limits_{k} (y_{k}- \hat{y}_{k}) w_{kj}^{(2)} \tag{5.11} $$ </code></p>
 <blockquote>
-<p>现有几个问题待解决：1、白色黑色主题字体颜色未翻转；2、字体大小没有自动渲染正确，在中间的一个步骤，使能够正常匹配主题的颜色和字体大小，但是完全渲染过后就会出现刚才提及的问题，可能的解决方法参考于<a href="https://quanquan.space/viewtopic.php?t=629" 
+<p>现有几个问题待解决：1、白色黑色主题字体颜色未翻转；2、字体大小没有自动渲染正确，在中间的一个步骤，使能够正常匹配主题的颜色和字体大小，但是完全渲染过后就会出现刚才提及的问题，可能的解决方法参考于<a href="https://quanquan.space/viewtopic.php?t=629"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    解决 mathjax 数学公式渲染的字体大小问题<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </p>
 </blockquote>
 <h4 id="目录配置">目录配置</h4>
-<p>对于自带的目录，只显示在文章最上面，既不能让读者随时掌握到阅读进度，也不够优雅，所以我在参考了<a href="https://www.zhouxin.space/logs/introduce-side-toc-and-reading-percentage-to-papermod/" 
+<p>对于自带的目录，只显示在文章最上面，既不能让读者随时掌握到阅读进度，也不够优雅，所以我在参考了<a href="https://www.zhouxin.space/logs/introduce-side-toc-and-reading-percentage-to-papermod/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    在PaperMod中引入侧边目录和阅读进度显示<span class="external-link">↗</span></a>
-
-
-
-
-
-
 基础上做了一些改动</p>
 <ul>
 <li>自动编号</li>
@@ -3273,18 +3218,13 @@
   </div>
 </details></p>
 
-<p>为正文添加章节序号，参考于<a href="https://aikenh.cn/posts/%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E7%BD%AEpapermod%E4%B8%BB%E9%A2%98%E7%9A%84%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/#header-counter-%e4%b8%ba-title-%e6%b7%bb%e5%8a%a0%e7%ab%a0%e8%8a%82%e5%ba%8f%e5%8f%b7" 
+<p>为正文添加章节序号，参考于<a href="https://aikenh.cn/posts/%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E7%BD%AEpapermod%E4%B8%BB%E9%A2%98%E7%9A%84%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/#header-counter-%e4%b8%ba-title-%e6%b7%bb%e5%8a%a0%e7%ab%a0%e8%8a%82%e5%ba%8f%e5%8f%b7"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    初始化 &amp; 设置 PaperMod 主题的基础功能<span class="external-link">↗</span></a>
-
-
-
-
-
-
 ，我们在<code>assets/css/common/post-single.css</code>中添加以下内容：
 
 
@@ -3605,74 +3545,49 @@
 <br>
 同时，由于一号标题有<code>40px</code>大小，推荐从二号标题开始排序。</p>
 <h4 id="评论支持">评论支持</h4>
-<p>对于评论支持，我选择了<a href="https://giscus.app/zh-CN" 
+<p>对于评论支持，我选择了<a href="https://giscus.app/zh-CN"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Giscus<span class="external-link">↗</span></a>
-
-
-
-
-
-
 。由于本博客也是部署在Github上，在减少额外操作的同时 <code>Giscus</code> 也显得足够的优雅简单。</p>
-<p>此处操作参考了<a href="https://www.lixueduan.com/posts/blog/02-add-giscus-comment/" 
+<p>此处操作参考了<a href="https://www.lixueduan.com/posts/blog/02-add-giscus-comment/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo 博客引入 Giscus 评论系统<span class="external-link">↗</span></a>
-
-
-
-
-
-
 。</p>
 <ol>
-<li><a href="https://giscus.app/zh-CN" 
+<li><a href="https://giscus.app/zh-CN"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Giscus<span class="external-link">↗</span></a>
-
-
-
-
-
-
  -&gt; 进入配置栏</li>
-<li>配置 -&gt; 仓库 -&gt; 填入仓库名，如<a href="https://github.com/Downmars/Downmars.github.io" 
+<li>配置 -&gt; 仓库 -&gt; 填入仓库名，如<a href="https://github.com/Downmars/Downmars.github.io"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Downmars/Downmars.github.io<span class="external-link">↗</span></a>
-
-
-
-
-
-
  -&gt; 若不满足条件，分别查看：对应仓库是否公开、giscus app 是否安装、 Discussions 功能在对应仓库是否启用</li>
 <li>配置 -&gt; Discussions 分类 -&gt; 选中Announcements</li>
 <li>配置 -&gt; 启用giscus -&gt; 复制相应字段到配置中</li>
 </ol>
-<p>同时需要创建 <code>layouts/partials/comments.html</code>，此处参考了<a href="https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/" 
+<p>同时需要创建 <code>layouts/partials/comments.html</code>，此处参考了<a href="https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo + PaperMod + Github Pages 搭建一个完善的个人博客(以 Windows11 为例)<span class="external-link">↗</span></a>
-
-
-
-
-
-
 。</p>
 
 
@@ -3979,85 +3894,55 @@
 <h4 id="网站图标">网站图标</h4>
 <p>咱们一个自己的博客肯定得需要有自己的一个网站图标，可以将图标放在<code>/static/images/</code>，如<code>favicon: &quot;/images/blog.png&quot;</code>。我在这里推荐两个网站供大家用来查找符合自己图标。</p>
 <ul>
-<li><a href="https://fontawesome.com/search" 
+<li><a href="https://fontawesome.com/search"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    fontawesome<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </li>
-<li><a href="https://www.flaticon.com/" 
+<li><a href="https://www.flaticon.com/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    flaticon<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </li>
-<li><a href="https://icons8.com/" 
+<li><a href="https://icons8.com/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    icons8<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </li>
-<li><a href="https://www.iconfinder.com/" 
+<li><a href="https://www.iconfinder.com/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    iconfinder<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </li>
-<li><a href="https://thenounproject.com/" 
+<li><a href="https://thenounproject.com/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Noun Project<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </li>
 </ul>
 <h3 id="多语言--界面布置">多语言 &amp; 界面布置</h3>
-<p>这部分参考来自于<a href="https://www.xianmin.org/post/2024/hugo-multilingual-blog-structure/" 
+<p>这部分参考来自于<a href="https://www.xianmin.org/post/2024/hugo-multilingual-blog-structure/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo 多语言博客搭建，如何优雅地管理多语言 md 内容-贤民<span class="external-link">↗</span></a>
-
-
-
-
-
-
 。</p>
 <p>我认为对于编写博客的我们来说，以时间的形式来分隔是很好的一种方式来存储以及管理我们的博客，使用统一文件命名规范<code>YYYYMMDD-title.md</code>。此外，有兴趣的可以做一下多语言的准备，即使现在没有推出多语言的打算，之后可以集中找个时间来使用<code>ai</code>工具来统一做一下。</p>
 <p>
@@ -4304,18 +4189,13 @@
 </details></p>
 
 其中<code>layout</code>字段指定了这个页面使用的模板，默认使用的是<code>themes\&lt;hugo_theme&gt;\layouts\_default\archives.html&amp;search.html</code>，所以我们使用默认字段<code>search</code>和<code>archives</code>即可以让归档内容正常显示。</p>
-<p>同时，参考<a href="https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/#%e9%85%8d%e7%bd%ae%e6%90%9c%e7%b4%a2" 
+<p>同时，参考<a href="https://sonnycalcr.github.io/posts/build-a-blog-using-hugo-papermod-github-pages/#%e9%85%8d%e7%bd%ae%e6%90%9c%e7%b4%a2"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo + PaperMod + Github Pages 搭建一个完善的个人博客(以 Windows11 为例)<span class="external-link">↗</span></a>
-
-
-
-
-
-
 搜索需要额外加入如下配置：</p>
 
 
@@ -4559,57 +4439,37 @@
 
 <h3 id="渲染配置">渲染配置</h3>
 <h4 id="代码配置">代码配置</h4>
-<p><del><code>PaperMod</code>主题使用的代码高亮工具为<a href="https://github.com/alecthomas/chroma" 
+<p><del><code>PaperMod</code>主题使用的代码高亮工具为<a href="https://github.com/alecthomas/chroma"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Chroma<span class="external-link">↗</span></a>
-
-
-
-
-
-
 ，可能不太聪明，但是对于我的日常使用暂时没有太大问题。</del> 我在后面换了个代码渲染方式。</p>
-<p><code>Chroma</code>自带的配色方案预览：<a href="https://xyproto.github.io/splash/docs/longer/all.html" 
+<p><code>Chroma</code>自带的配色方案预览：<a href="https://xyproto.github.io/splash/docs/longer/all.html"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    https://xyproto.github.io/splash/docs/longer/all.html<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </p>
 <blockquote>
-<p>参考于：<a href="https://blog.loikein.one/posts/2023-01-10-deep-dive-into-hugo-syntax-highlight/" 
+<p>参考于：<a href="https://blog.loikein.one/posts/2023-01-10-deep-dive-into-hugo-syntax-highlight/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    深入探究 Hugo 代码高亮<span class="external-link">↗</span></a>
-
-
-
-
-
-
-、<a href="https://tomo.dev/posts/create-hugo-theme-from-scratch/part-three/#%E4%BB%A3%E7%A0%81%E5%9D%97%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E5%8F%8A%E5%A4%8D%E5%88%B6" 
+、<a href="https://tomo.dev/posts/create-hugo-theme-from-scratch/part-three/#%E4%BB%A3%E7%A0%81%E5%9D%97%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E5%8F%8A%E5%A4%8D%E5%88%B6"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    代码块语法高亮及复制<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </p>
 </blockquote>
 
@@ -4684,42 +4544,27 @@
   </div>
 </details></p>
 
-<p>我这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e4%bb%a3%e7%a0%81%e6%b8%b2%e6%9f%93" 
+<p>我这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e4%bb%a3%e7%a0%81%e6%b8%b2%e6%9f%93"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
-
-
-
-
-
-
-的代码渲染方式，在其中选择了<a href="https://github.com/highlightjs/highlight.js/blob/main/src/styles/atom-one-light.css" 
+的代码渲染方式，在其中选择了<a href="https://github.com/highlightjs/highlight.js/blob/main/src/styles/atom-one-light.css"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
     atom-one-dark/light<span class="external-link">↗</span></a>
-
-
-
-
-
-
-与<a href="https://github.com/highlightjs/highlight.js/blob/main/src/styles/atom-one-dark.css" 
+与<a href="https://github.com/highlightjs/highlight.js/blob/main/src/styles/atom-one-dark.css"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    atom-one-dark.css<span class="external-link">↗</span></a>
-
-
-
-
-
-
 。</p>
 <p>为了覆盖掉原主题对于代码渲染的设置，我们需要创建<code>assets/css/hljs/an-old-hope.min.css</code>，并且在其中复制进去黑色主题和白色主题的配置，白色主题直接复制进去皆可，黑色主题需要以以下形式进行限定：</p>
 
@@ -4794,18 +4639,13 @@
   </div>
 </details></p>
 
-<p>接着，我们需要修改白色与黑色主题的背景色，同时由于我参考的博主使用了Consolas 和霞鹜文楷（注释的中文字体），字体可以从<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts" 
+<p>接着，我们需要修改白色与黑色主题的背景色，同时由于我参考的博主使用了Consolas 和霞鹜文楷（注释的中文字体），字体可以从<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    博主的仓库<span class="external-link">↗</span></a>
-
-
-
-
-
-
 中获取。</p>
 <p>我们在<code>assets/css/extended/blank.css</code>中添加：</p>
 
@@ -4991,7 +4831,7 @@
 </details></p>
 
 <p>并且，在<code>PaperMod</code>中的颜色变量配置<code>assets/css/core/theme-vars.css</code> 中添加配置：</p>
-
+<p>
 
 
 
@@ -5088,7 +4928,202 @@
   </div>
 </details></p>
 
-<p>此外，<code>PaperMod</code> 默认的代码复制键的在对应语言下是不同的文字表示复制粘贴，我觉的不够优雅，于是打算使用图标来代替。关于复制符号的配置在<code>layouts/partials/footer.html</code> 中：</p>
+我们还会用到<a href="https://github.com/highlightjs/highlight.js"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   highlight.js<span class="external-link">↗</span></a>
+用来添加高亮：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/_default/baseof.html</span>
+    <span class="line-count">30 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>{{- if lt hugo.Version &#34;0.125.7&#34; }}
+</span></span><span style="display:flex;"><span>{{- errorf &#34;=&gt; hugo v0.125.7 or greater is required for hugo-PaperMod to build &#34; }}
+</span></span><span style="display:flex;"><span>{{- end -}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;!DOCTYPE html&gt;
+</span></span><span style="display:flex;"><span>&lt;html lang=&#34;{{ site.Language }}&#34; dir=&#34;{{ .Language.LanguageDirection | default &#34;auto&#34; }}&#34;&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;head&gt;
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+    &lt;link rel=&#34;stylesheet&#34; href=&#34;//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>    {{- partial &#34;head.html&#34; . }}
+</span></span><span style="display:flex;"><span>&lt;/head&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;body class=&#34;
+</span></span><span style="display:flex;"><span>{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
+</span></span><span style="display:flex;"><span>{{- print &#34;list&#34; -}}
+</span></span><span style="display:flex;"><span>{{- end -}}
+</span></span><span style="display:flex;"><span>{{- if eq site.Params.defaultTheme `dark` -}}
+</span></span><span style="display:flex;"><span>{{- print &#34; dark&#34; }}
+</span></span><span style="display:flex;"><span>{{- end -}}
+</span></span><span style="display:flex;"><span>&#34; id=&#34;top&#34;&gt;
+</span></span><span style="display:flex;"><span>    {{- partialCached &#34;header.html&#34; . .Page -}}
+</span></span><span style="display:flex;"><span>    &lt;main class=&#34;main&#34;&gt;
+</span></span><span style="display:flex;"><span>        {{- block &#34;main&#34; . }}{{ end }}
+</span></span><span style="display:flex;"><span>    &lt;/main&gt;
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+    {{ partialCached &#34;footer.html&#34; . .Layout .Kind (.Param &#34;hideFooter&#34;) (.Param &#34;ShowCodeCopyButtons&#34;) -}}
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>&lt;script src=&#34;//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span style="display:flex;"><span>&lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+</span></span><span style="display:flex;"><span>&lt;/body&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/html&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+此外，<code>PaperMod</code> 默认的代码复制键的在对应语言下是不同的文字表示复制粘贴，我觉的不够优雅，于是打算使用图标来代替。关于复制符号的配置在<code>layouts/partials/footer.html</code> 中：</p>
 
 
 
@@ -5474,18 +5509,13 @@
 </details></p>
 
 <p>我这里使用的是底色为黑色的<code>svg</code>图标，所以我这里做了反色处理。</p>
-<p>接下来我们配置代码折叠，对于过长的代码段，十分影响阅读者的感受，参考于<a href="https://yunpengtai.top/posts/hugo-journey/#%e4%bb%a3%e7%a0%81%e6%8a%98%e5%8f%a0" 
+<p>接下来我们配置代码折叠，对于过长的代码段，十分影响阅读者的感受，参考于<a href="https://yunpengtai.top/posts/hugo-journey/#%e4%bb%a3%e7%a0%81%e6%8a%98%e5%8f%a0"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
-
-
-
-
-
-
  ，我们需要在<code>layouts/shortcodes/collapse.html</code>中加入以下内容：</p>
 
 
@@ -5615,18 +5645,13 @@
 </details></p>
 </p>
 <h3 id="文章封面图移至侧边">文章封面图移至侧边</h3>
-<p>当我们文章存在封面的时候，在<code>archives</code>中文章的排布中，图片占了大部分空间，十分影响我们的观感。通过参考：<a href="https://cloud.tencent.com/developer/article/1969889" 
+<p>当我们文章存在封面的时候，在<code>archives</code>中文章的排布中，图片占了大部分空间，十分影响我们的观感。通过参考：<a href="https://cloud.tencent.com/developer/article/1969889"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo博客文章封面图片缩小并移到侧边 | PaperMod主题<span class="external-link">↗</span></a>
-
-
-
-
-
-
 ，我们可以这样配置：
 
 
@@ -5968,30 +5993,20 @@
 </details></p>
 
 <h3 id="字体配置">字体配置</h3>
-<p>我已经忍这个默认字体很久了，现在我们就在这里干掉他。我们在这里选择的中文是<a href="https://github.com/lxgw/LxgwWenKai?tab=readme-ov-file" 
+<p>我已经忍这个默认字体很久了，现在我们就在这里干掉他。我们在这里选择的中文是<a href="https://github.com/lxgw/LxgwWenKai?tab=readme-ov-file"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    霞鹜文楷<span class="external-link">↗</span></a>
-
-
-
-
-
-
-，英文是 Apple 的字体 SF Pro Text Regular 来渲染，方法参考于： <a href="https://yunpengtai.top/posts/hugo-journey/#%e5%ad%97%e4%bd%93" 
+，英文是 Apple 的字体 SF Pro Text Regular 来渲染，方法参考于： <a href="https://yunpengtai.top/posts/hugo-journey/#%e5%ad%97%e4%bd%93"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
-
-
-
-
-
-
 。</p>
 <p>在<code>assets/css/extended/blank.css</code>中加入：</p>
 
@@ -6126,59 +6141,39 @@
   </div>
 </details></p>
 
-<p>字体可以从我上面提及博主的<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts" 
+<p>字体可以从我上面提及博主的<a href="https://github.com/sherlcok314159/MyPaperMod/tree/main/static/fonts"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    github仓库<span class="external-link">↗</span></a>
-
-
-
-
-
-
 处获取。</p>
 <h3 id="知识共享协议">知识共享协议</h3>
 <blockquote>
-<p>参考于:<a href="https://www.yunyitang.me/hugo-papermod-blog/#%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E5%8D%8F%E8%AE%AE" 
+<p>参考于:<a href="https://www.yunyitang.me/hugo-papermod-blog/#%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E5%8D%8F%E8%AE%AE"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo+PaperMod 双语博客搭建 Home-Info+Profile Mode<span class="external-link">↗</span></a>
-
-
-
-
-
-
-、<a href="https://hugo.matrixcore.top/license/" 
+、<a href="https://hugo.matrixcore.top/license/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo ʕ•ᴥ•ʔ Bear Blog<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </p>
 </blockquote>
-<p>我们在<a href="https://chooser-beta.creativecommons.org/" 
+<p>我们在<a href="https://chooser-beta.creativecommons.org/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Creative Commons许可证<span class="external-link">↗</span></a>
-
-
-
-
-
-
 中选择使用的知识共享协议，我这里选择的是<code>CC-BY-NC-4</code>协议，并添加一个协议模组来自动呈现：</p>
 <p>首先创建文件<code>data/licenses.html</code>并添加</p>
 
@@ -6902,18 +6897,13 @@
 <p>但是，由于我对于前端不是很了解，黑夜模式下的样式调整未能正确实现，待解决。</p>
 </blockquote>
 <h3 id="超链接">超链接</h3>
-<p><code>hugo</code>的默认超链接是以当前页面打开，这对于我们的阅读体验是很糟糕的，参考于<a href="https://ivan.show/blog/2024/5e1954a8/" 
+<p><code>hugo</code>的默认超链接是以当前页面打开，这对于我们的阅读体验是很糟糕的，参考于<a href="https://ivan.show/blog/2024/5e1954a8/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo 设置外部链接用新窗口打开<span class="external-link">↗</span></a>
-
-
-
-
-
-
 ，我们将外部链接使用新窗口打开并在链接后面添加一个小箭头，而本博客的内容使用当前窗口打开并不添加后缀：<br>
 
 
@@ -7076,42 +7066,29 @@
 </details></p>
 </p>
 <blockquote>
-<p>外部链接：<a href="https://github.com/Downmars" 
+<p>外部链接：<a href="https://github.com/Downmars"
    
     
        target="_blank" rel="noopener" 
-   >
-   我的github主页<span class="external-link">↗</span></a>
-
-
-
-
-
-
-<br>
-内部链接：<a href="../2025_01_19-hugo_build_1" 
    
-   >
+   class="custom-link">  
+   我的github主页<span class="external-link">↗</span></a>
+<br>
+内部链接：<a href="../2025_01_19-hugo_build_1"
+   
+   
+   class="custom-link">  
    Hugo博客搭建_基础 😊</a>
-
-
-
-
 </p>
 </blockquote>
 <h3 id="修改时间">修改时间</h3>
-<p>原本主题并没有显示「修改时间」的功能，我在这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e6%b7%bb%e5%8a%a0%e4%bf%ae%e6%94%b9%e6%97%b6%e9%97%b4" 
+<p>原本主题并没有显示「修改时间」的功能，我在这里参考了<a href="https://yunpengtai.top/posts/hugo-journey/#%e6%b7%bb%e5%8a%a0%e4%bf%ae%e6%94%b9%e6%97%b6%e9%97%b4"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
-
-
-
-
-
-
 。</p>
 <p>在<code>layouts/partials/post_meta.html</code>中添加以下内容，参考的博客中<code>$scratch.Add</code>错误被包裹在<code>()</code>中，并且行末还有一个多余的<code>$</code>，我在此做了修改：</p>
 
@@ -7290,18 +7267,13 @@
 等我过几天看看这个效果咋样。</p>
 <h3 id="marginnote">MarginNote</h3>
 <blockquote>
-<p>在这里十分感谢<a href="https://yunpengtai.top/" 
+<p>在这里十分感谢<a href="https://yunpengtai.top/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Yunpeng Tai<span class="external-link">↗</span></a>
-
-
-
-
-
-
 的博客，我从上面学习和摘选了很多内容在本文中。</p>
 </blockquote>
 <p>我们在<code>assets/extended/custom.css</code>：</p>
@@ -7539,18 +7511,13 @@
 
 </p>
 <h3 id="盘古之白">盘古之白</h3>
-<blockquote class="quote"><p><a href="https://blog.xiaoquankong.ai/zh/posts/chinese-document-typesetting-specification-spacing-of-pangu/" 
+<blockquote class="quote"><p><a href="https://blog.xiaoquankong.ai/zh/posts/chinese-document-typesetting-specification-spacing-of-pangu/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    「盤古之白」<span class="external-link">↗</span></a>
-
-
-
-
-
-
 一文中讨论到，所有的中文字和半形的英文、數字、符號之間应该存在的空白，被漢學家稱為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。</p></blockquote>
 
 <p>我们需要在<code>layouts/partials/extend_footer.html</code>中加入：</p>
@@ -7684,18 +7651,13 @@
 <p>同时，需要创建<code>assets/js/pangu.min.js</code>，网站加载时，盘古之白自动加载，大家可以从此处下载。</p>
 <h3 id="blockquote">Blockquote</h3>
 <blockquote>
-<p>参考于：<a href="https://yunpengtai.top/posts/hugo-journey/#blockquote" 
+<p>参考于：<a href="https://yunpengtai.top/posts/hugo-journey/#blockquote"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo PaperMod 主题精装修<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </p>
 </blockquote>
 <blockquote class="quote"><p>为什么要演奏春日影！</p></blockquote>
@@ -7978,18 +7940,13 @@
 
 <h3 id="shortcodes大赏">Shortcodes大赏</h3>
 <p><code>hugo</code>采用<code>markdown</code>的格式进行内容创作，但是当我们需要一些特殊功能的时候，<code>markdown</code>并不能满足我们的需求。我们在这个时候可能需要插入一些<code>html</code>代码，这对于整个<code>markdown</code>的格式与可读性都是很糟糕的。幸运的是，<code>hugo</code>给我们提供了简码(<code>Shortcodes</code>)功能，在我们准备好对应的简码模板与简码，这能够在使用简码的时候，将<code>hugo</code>自动转换为<code>html</code>语言，我们就能够使用很简码的样式来实现需要的特殊功能。</p>
-<p>关于<code>Shortcodes</code>的相关知识可以参考<a href="https://gohugo.io/templates/shortcode/" 
+<p>关于<code>Shortcodes</code>的相关知识可以参考<a href="https://gohugo.io/templates/shortcode/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Shortcodes templates<span class="external-link">↗</span></a>
-
-
-
-
-
-
 ，大家可以自行前往查看。</p>
 <h4 id="图像放大">图像放大</h4>
 <blockquote>
@@ -8070,18 +8027,13 @@
 <blockquote class="quote"><p>为什么要演奏春日影！</p></blockquote>
 
 <h4 id="转义渲染">转义渲染</h4>
-<p>参考于：<a href="https://tin6.com/post/how-to-escape-hugo-shortcodes-within-hugo-markdown/" 
+<p>参考于：<a href="https://tin6.com/post/how-to-escape-hugo-shortcodes-within-hugo-markdown/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    如何在代码块里内嵌 HUGO 的简码 (SHORTCODES) | 消夏錄<span class="external-link">↗</span></a>
-
-
-
-
-
-
 ，由于<code>Shortcodes</code>代码会被<code>hugo</code>直接转义为对应的功能，所以我们需要将<code>Shortcodes</code>的括号内加入<code>/* */</code>防止转义。我们需要在<code>markdown</code>中输入：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>{{&lt;/* myshortcode */&gt;}}
 </span></span></code></pre></div><p>渲染结果：</p>

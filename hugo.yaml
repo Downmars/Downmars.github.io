@@ -77,6 +77,10 @@ params:
     favicon32x32: "images/blog.png"
     # apple_touch_icon: "images/blog.png"
     # safari_pinned_tab: "images/blog.png"
+    customJS:
+      - js/header-island.js
+    customCSS:
+      - css/common/header.css # 存放上述CSS
   # 评论设置
   giscus:
     repo: "Downmars/Downmars.github.io"
@@ -184,9 +188,4 @@ markup:
     style: dracula
     lineNumbersInTable: true
 
-assets:
-  disableHLJS: true # 禁用默认高亮以自定义
-  customCSS:
-    - extended/custom.css
-  customJS:
-    - header-island.js
+

@@ -9,13 +9,31 @@
 /*    top: -0.1em; /* 微调垂直位置 */*/
 /*}*/
 
-/*链接*/
+/* 链接基础样式 */
+.custom-link {
+  position: relative;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+
+/* 原有外部链接图标样式 */
 .external-link {
-    display: inline-block;
-    margin-left: 0.2em;
-    font-size: 0.8em;
-    text-decoration: none;
-    vertical-align: super;
+  display: inline-block;
+  margin-left: 0.2em;
+  font-size: 0.8em;
+  text-decoration: none;
+  vertical-align: super;
+}
+
+/* 悬停效果 */
+.custom-link:hover {
+  outline: none; /* 移除默认轮廓 */
+  background:var(--bg-light);
+  border-radius: 5px; /* 圆角效果 */
+  box-shadow: 0 2px 4px var(--secondary); /* 默认轻微阴影 */
+  transition: all 0.3s ease; /* 增加平滑过渡效果 */
+  padding: 4px 0px; /* 增加内边距以便有足够空间 */
 }
 
 
@@ -88,8 +106,8 @@
     cursor: pointer;
     padding: 4px;
     position: absolute;
-    right: 10px;
-    top: -2px;
+    right: 8px;
+    top: -6px;
 }
 
 .copy-code img {
@@ -197,6 +215,8 @@ body {
 
 .custom-collapse summary:hover {
     background: var(--tertiary);
+    box-shadow: 0 2px 4px var(--secondary); /* 默认轻微阴影 */
+    transition: all 0.3s ease; /* 增加平滑过渡效果 */
 }
 
 .custom-collapse .content {
