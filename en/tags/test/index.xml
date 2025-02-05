@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Test on DLog</title><link>https://downmars.github.io/en/tags/test/</link><description>Recent content in Test on DLog</description><generator>Hugo -- 0.143.0</generator><language>en-US</language><lastBuildDate>Sun, 19 Jan 2025 20:05:13 +0800</lastBuildDate><atom:link href="https://downmars.github.io/en/tags/test/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_基础 😊</title><link>https://downmars.github.io/en/posts/2025_01_19-hugo_build_1/</link><pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate><guid>https://downmars.github.io/en/posts/2025_01_19-hugo_build_1/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Test on DLog</title><link>https://downmars.github.io/en/tags/test/</link><description>Recent content in Test on DLog</description><generator>Hugo -- 0.143.1</generator><language>en-US</language><lastBuildDate>Sun, 19 Jan 2025 20:05:13 +0800</lastBuildDate><atom:link href="https://downmars.github.io/en/tags/test/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_基础 😊</title><link>https://downmars.github.io/en/posts/2025_01_19-hugo_build_1/</link><pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate><guid>https://downmars.github.io/en/posts/2025_01_19-hugo_build_1/</guid><description>&lt;hr>
 &lt;h1 id="前言">前言&lt;/h1>
 &lt;p>以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。&lt;/p></description><content:encoded><![CDATA[<hr>
 <h1 id="前言">前言</h1>
@@ -7,31 +7,21 @@
 <p>我最近也在将日常的工作娱乐环境转向linux，所以说选择了archlinux作为我的安装环境，之后应该会出一系列我的archlinux的配置。<br></p>
 <p>本文涉及环境以及工具的网站：</p>
 <ul>
-<li><a href="https://gohugo.io/" 
+<li><a href="https://gohugo.io/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Hugo<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </li>
-<li><a href="https://github.com" 
+<li><a href="https://github.com"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    Github<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </li>
 </ul>
 <h1 id="hugo安装及基础配置">Hugo安装及基础配置</h1>
@@ -74,32 +64,22 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#bd93f9">9</span> directories, <span style="color:#bd93f9">2</span> files
 </span></span></code></pre></div><h2 id="配置主题">配置主题</h2>
-<p>我们在此处的主题选择<a href="https://github.com/adityatelange/hugo-PaperMod" 
+<p>我们在此处的主题选择<a href="https://github.com/adityatelange/hugo-PaperMod"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    PaperMod<span class="external-link">↗</span></a>
-
-
-
-
-
-
 ，这是一个Star比较高的主题，简约的并且功能较为丰富。当然，你也可以自己选择主题：</p>
 <ul>
-<li>官方的主题网址：<a href="https://themes.gohugo.io/" 
+<li>官方的主题网址：<a href="https://themes.gohugo.io/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
    https://themes.gohugo.io/<span class="external-link">↗</span></a>
-
-
-
-
-
-
 </li>
 </ul>
 <p>在此处，官方推荐将我们选择的主题<code>fork</code>一个到自己的账户，并使用<code>git submodule</code>进行仓库的链接，这样以便后续主题的单独维护，避免当自己对主题进行修改之后，后续版本管理和更新会与原先主题产生冲突。</p>
@@ -119,18 +99,13 @@
 </span></span><span style="display:flex;"><span>draft: true
 </span></span><span style="display:flex;"><span>---
 </span></span></code></pre></div><p>这个命令会在<code>content</code>目录下创建<code>posts</code>目录，并在生成<code>posts/test.md</code>，博文使用<code>Markdown</code>语法完成，我们用默认模板生成的博客是草稿状态，可以将<code>draft</code>设置为<code>false</code>，这样文章就可以发表了。</p>
-<p>我们接下来就可以使用<code>hugo server</code>进行本地预览了，通过访问<a href="http://localhost:1313/" 
+<p>我们接下来就可以使用<code>hugo server</code>进行本地预览了，通过访问<a href="http://localhost:1313/"
    
     
        target="_blank" rel="noopener" 
-   >
+   
+   class="custom-link">  
     http://localhost:1313/<span class="external-link">↗</span></a>
-
-
-
-
-
-
 可以在本地预览我们创建的博客了。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server --disableFastRender 
 </span></span></code></pre></div><p>但是我们现在只能够本地预览，如果想要发布到<code>Github Pages</code>，还需要借助<code>Action</code>来完成。</p>
