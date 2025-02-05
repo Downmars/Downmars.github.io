@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.143.1</generator><language>zh-CN</language><lastBuildDate>Tue, 21 Jan 2025 20:42:23 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_配置 🚀</title><link>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</link><pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid><description>&lt;blockquote class="quote">&lt;p>如何构建我的hugo博客-这是一个系列&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.143.1</generator><language>zh-CN</language><lastBuildDate>Wed, 05 Feb 2025 23:33:26 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>蛀牙</title><link>https://downmars.github.io/zh/posts/2025_02_05-tooth_decay/</link><pubDate>Wed, 05 Feb 2025 23:33:26 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_05-tooth_decay/</guid><description>&lt;h2 id="起因">起因&lt;/h2>
+&lt;p>捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。&lt;/p></description><content:encoded>&lt;h2 id="起因">起因&lt;/h2>
+&lt;p>捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。&lt;/p>
+</content:encoded></item><item><title>Hugo博客搭建_配置 🚀</title><link>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</link><pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid><description>&lt;blockquote class="quote">&lt;p>如何构建我的hugo博客-这是一个系列&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="../2025_01_19-hugo_build_1"
 class="custom-link">
@@ -7245,7 +7248,7 @@ Hugo博客搭建_基础 😊&lt;/a>
    class="custom-link">  
    Yunpeng Tai<span class="external-link">↗</span></a>
 的博客，我从上面学习和摘选了很多内容在本文中。</p></blockquote>
-<p>我们在<code>assets/extended/custom.css</code>：</p>
+<p>我在此处对于样式做了部分修改，在<code>assets/extended/custom.css</code>：<br>
 
 
 
@@ -7260,6 +7263,30 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
 
   
     
@@ -7396,15 +7423,20 @@ Hugo博客搭建_基础 😊&lt;/a>
 <p><details class="custom-collapse" >
   <summary markdown="span">
     <span>assets/extended/custom.css</span>
-    <span class="line-count">30 lines</span>
+    <span class="line-count">36 lines</span>
   </summary>
   <div class="content">
     <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">float</span>: <span style="color:#ff79c6">right</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-right</span>: <span style="color:#bd93f9">-18</span><span style="color:#8be9fd">vw</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-right</span>: <span style="color:#bd93f9">-20</span><span style="color:#8be9fd">vw</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">40</span><span style="color:#8be9fd">%</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">max-width</span>: <span style="color:#bd93f9">200</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">max-width</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">16</span><span style="color:#8be9fd">px</span>; <span style="color:#6272a4">/* 增加内边距以便有足够空间 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border</span>: <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">solid</span> <span style="color:#ff79c6">transparent</span>; <span style="color:#6272a4">/* 默认透明边框 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-radius</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>radius); <span style="color:#6272a4">/* 圆角 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">box-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>shadow1); <span style="color:#6272a4">/* 默认轻微阴影 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">all</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">ease</span>; <span style="color:#6272a4">/* 增加平滑过渡效果 */</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">body</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">counter-reset</span>: sidenote-counter;
@@ -7428,12 +7460,13 @@ Hugo博客搭建_基础 😊&lt;/a>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote-number</span>:hover .<span style="color:#50fa7b">sidenote</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background-color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>bg);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">box-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>shadow2); <span style="color:#6272a4">/* 悬停时加强阴影效果 */</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
   </div>
 </details></p>
-
-<p>同时，在<code>layouts/shortcodes/sidenote.html</code>中添加以下内容：</p>
+</p>
+<p>同时，对于<code>shortcode</code>也有相应的修改，在<code>layouts/shortcodes/sidenote.html</code>中添加以下内容：</p>
 
 
 
@@ -7457,6 +7490,165 @@ Hugo博客搭建_基础 😊&lt;/a>
     
   
 
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
 
 
 
@@ -7465,13 +7657,54 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
-<p><details class="custom-collapse" open>
+
+<p><details class="custom-collapse" >
   <summary markdown="span">
     <span>layouts/shortcodes/sidenote.htm</span>
-    <span class="line-count">1 lines</span>
+    <span class="line-count">41 lines</span>
   </summary>
   <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote-number&#34;</span>&gt;&lt;<span style="color:#ff79c6">small</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote&#34;</span>&gt;{{ .Inner | markdownify }}&lt;/<span style="color:#ff79c6">small</span>&gt;&lt;/<span style="color:#ff79c6">span</span>&gt;
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{/* 参数处理逻辑 */}}
+</span></span><span style="display:flex;"><span>{{ $threshold := default 15 (.Get &#34;collapseThreshold&#34;) | int }}
+</span></span><span style="display:flex;"><span>{{ $forceCollapse := eq (.Get &#34;forceCollapse&#34;) &#34;true&#34; }}
+</span></span><span style="display:flex;"><span>{{ $openByDefault := eq (.Get &#34;openByDefault&#34;) &#34;true&#34; }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{/* 内容处理逻辑 */}}
+</span></span><span style="display:flex;"><span>{{ $rawContent := .Inner }}
+</span></span><span style="display:flex;"><span>{{ $content := $rawContent | markdownify }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{/* 精确行数计算（排除代码块标记和空行） */}}
+</span></span><span style="display:flex;"><span>{{ $cleanedContent := replaceRE `(?s)&lt;<span style="color:#ff79c6">pre.</span>*?&gt;\n?` &#34;&#34; $content }}
+</span></span><span style="display:flex;"><span>{{ $cleanedContent := replaceRE `(?s)&lt;/<span style="color:#ff79c6">pre</span>&gt;\n?` &#34;&#34; $cleanedContent }}
+</span></span><span style="display:flex;"><span>{{ $lines := split $cleanedContent &#34;\n&#34; }}
+</span></span><span style="display:flex;"><span>{{ $lineCount := -1 }}
+</span></span><span style="display:flex;"><span>{{ range $line := $lines }}
+</span></span><span style="display:flex;"><span>  {{ if ne (trim $line &#34; &#34;) &#34;&#34; }}
+</span></span><span style="display:flex;"><span>    {{ $lineCount = add $lineCount 1 }}
+</span></span><span style="display:flex;"><span>  {{ end }}
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{/* 自动折叠判断逻辑 */}}
+</span></span><span style="display:flex;"><span>{{ $shouldOpen := cond $forceCollapse 
+</span></span><span style="display:flex;"><span>  false 
+</span></span><span style="display:flex;"><span>  (or $openByDefault (lt $lineCount $threshold)) 
+</span></span><span style="display:flex;"><span>}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{/* 错误处理 */}}
+</span></span><span style="display:flex;"><span>{{ if not (.Get &#34;summary&#34;) }}
+</span></span><span style="display:flex;"><span>  {{ warnf &#34;missing value for param &#39;summary&#39;: %s&#34; .Position }}
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">p</span>&gt;&lt;<span style="color:#ff79c6">details</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;custom-collapse&#34;</span> {{ <span style="color:#50fa7b">if</span> $<span style="color:#50fa7b">shouldOpen</span> }}<span style="color:#50fa7b">open</span>{{ <span style="color:#50fa7b">end</span> }}&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">summary</span> <span style="color:#50fa7b">markdown</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;span&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">span</span>&gt;{{ .Get &#34;summary&#34; | markdownify }}&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;line-count&#34;</span>&gt;{{ $lineCount }} lines&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">summary</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ $content }}
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">details</span>&gt;&lt;/<span style="color:#ff79c6">p</span>&gt;
 </span></span></code></pre></div>
   </div>
 </details></p>
