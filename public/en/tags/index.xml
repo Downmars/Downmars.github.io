@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on DLog</title>
-    <link>https://downmars.github.io/en/tags/</link>
+    <link>http://localhost:1313/en/tags/</link>
     <description>Recent content in Tags on DLog</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 19 Jan 2025 20:05:13 +0800</lastBuildDate>
-    <atom:link href="https://downmars.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo</title>
-      <link>https://downmars.github.io/en/tags/hugo/</link>
+      <link>http://localhost:1313/en/tags/hugo/</link>
       <pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate>
-      <guid>https://downmars.github.io/en/tags/hugo/</guid>
+      <guid>http://localhost:1313/en/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
       <title>Test</title>
-      <link>https://downmars.github.io/en/tags/test/</link>
+      <link>http://localhost:1313/en/tags/test/</link>
       <pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate>
-      <guid>https://downmars.github.io/en/tags/test/</guid>
+      <guid>http://localhost:1313/en/tags/test/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,138 +2,148 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://downmars.github.io/zh/tags/configuration/</loc>
-    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
-  </url><url>
-    <loc>https://downmars.github.io/zh/</loc>
-    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
+    <loc>http://localhost:1313/zh/categories/</loc>
+    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://downmars.github.io/en/"
+                href="http://localhost:1313/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://downmars.github.io/zh/"
+                href="http://localhost:1313/zh/categories/"
                 />
   </url><url>
-    <loc>https://downmars.github.io/zh/tags/hugo/</loc>
-    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
+    <loc>http://localhost:1313/zh/</loc>
+    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://downmars.github.io/en/tags/hugo/"
+                href="http://localhost:1313/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://downmars.github.io/zh/tags/hugo/"
+                href="http://localhost:1313/zh/"
                 />
   </url><url>
-    <loc>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</loc>
-    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
-  </url><url>
-    <loc>https://downmars.github.io/zh/posts/</loc>
-    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
+    <loc>http://localhost:1313/zh/posts/</loc>
+    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://downmars.github.io/en/posts/"
+                href="http://localhost:1313/en/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://downmars.github.io/zh/posts/"
+                href="http://localhost:1313/zh/posts/"
                 />
   </url><url>
-    <loc>https://downmars.github.io/zh/tags/</loc>
-    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
+    <loc>http://localhost:1313/zh/tags/</loc>
+    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://downmars.github.io/en/tags/"
+                href="http://localhost:1313/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://downmars.github.io/zh/tags/"
+                href="http://localhost:1313/zh/tags/"
                 />
   </url><url>
-    <loc>https://downmars.github.io/zh/tags/base/</loc>
+    <loc>http://localhost:1313/zh/tags/%E5%81%A5%E5%BA%B7/</loc>
+    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/categories/%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_02_05-tooth_decay/</loc>
+    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/configuration/</loc>
+    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/hugo/</loc>
+    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/tags/hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/tags/hugo/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_01_20-hugo_build_2/</loc>
+    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/base/</loc>
     <lastmod>2025-01-19T20:05:13+08:00</lastmod>
   </url><url>
-    <loc>https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/</loc>
+    <loc>http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/</loc>
     <lastmod>2025-01-19T20:05:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://downmars.github.io/en/posts/2025_01_19-hugo_build_1/"
+                href="http://localhost:1313/en/posts/2025_01_19-hugo_build_1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://downmars.github.io/zh/posts/2025_01_19-hugo_build_1/"
+                href="http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/"
                 />
   </url><url>
-    <loc>https://downmars.github.io/zh/archives/</loc>
+    <loc>http://localhost:1313/zh/archives/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://downmars.github.io/en/archives/"
+                href="http://localhost:1313/en/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://downmars.github.io/zh/archives/"
+                href="http://localhost:1313/zh/archives/"
                 />
   </url><url>
-    <loc>https://downmars.github.io/zh/categories/</loc>
+    <loc>http://localhost:1313/zh/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://downmars.github.io/en/categories/"
+                href="http://localhost:1313/en/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://downmars.github.io/zh/categories/"
+                href="http://localhost:1313/zh/search/"
                 />
   </url><url>
-    <loc>https://downmars.github.io/zh/search/</loc>
+    <loc>http://localhost:1313/zh/archives/archives/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://downmars.github.io/en/search/"
+                href="http://localhost:1313/en/archives/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://downmars.github.io/zh/search/"
+                href="http://localhost:1313/zh/archives/archives/"
                 />
   </url><url>
-    <loc>https://downmars.github.io/zh/archives/archives/</loc>
+    <loc>http://localhost:1313/zh/search/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://downmars.github.io/en/archives/archives/"
+                href="http://localhost:1313/en/search/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://downmars.github.io/zh/archives/archives/"
-                />
-  </url><url>
-    <loc>https://downmars.github.io/zh/search/search/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://downmars.github.io/en/search/search/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://downmars.github.io/zh/search/search/"
+                href="http://localhost:1313/zh/search/search/"
                 />
   </url>
 </urlset>
