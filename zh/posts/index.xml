@@ -1,4 +1,190 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.143.1</generator><language>zh-CN</language><lastBuildDate>Wed, 05 Feb 2025 23:33:26 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>蛀牙</title><link>https://downmars.github.io/zh/posts/2025_02_05-tooth_decay/</link><pubDate>Wed, 05 Feb 2025 23:33:26 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_05-tooth_decay/</guid><description>&lt;h2 id="起因">起因&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.143.1</generator><language>zh-CN</language><lastBuildDate>Sun, 09 Feb 2025 20:08:43 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_02_09 Ollama_deepseek_1</title><link>https://downmars.github.io/zh/posts/2025_02_09-ollama_deepseek_1/</link><pubDate>Sun, 09 Feb 2025 20:08:43 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_09-ollama_deepseek_1/</guid><description>&lt;h2 id="ollama">Ollama&lt;/h2>
+&lt;p>&lt;blockquote class="quote">&lt;p>&amp;ldquo;Get up and running with large language models locally.&amp;rdquo;&lt;/p>&lt;/blockquote>
+想必大家一定从很多地方都看到过这个一直小羊驼&amp;ndash;&lt;a href="https://github.com/ollama/ollama"
+target="_blank" rel="noopener"
+class="custom-link">
+Ollama&lt;span class="external-link">↗&lt;/span>&lt;/a>
+，正如官方仓库所言，Ollama旨在简化大语言模型(LLMs)的本地部署和使用，我们能够通过这个这个工具来实现轻松下载、运行和管理各种开源的大语言模型。&lt;/p></description><content:encoded><![CDATA[<h2 id="ollama">Ollama</h2>
+<p><blockquote class="quote"><p>&ldquo;Get up and running with large language models locally.&rdquo;</p></blockquote>
+
+想必大家一定从很多地方都看到过这个一直小羊驼&ndash;<a href="https://github.com/ollama/ollama"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Ollama<span class="external-link">↗</span></a>
+，正如官方仓库所言，Ollama旨在简化大语言模型(LLMs)的本地部署和使用，我们能够通过这个这个工具来实现轻松下载、运行和管理各种开源的大语言模型。</p>
+<ul>
+<li>Ollama支持的模型仓库：<a href="https://ollama.com/library"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   https://ollama.com/library<span class="external-link">↗</span></a>
+</li>
+</ul>
+<p>我在这里使用的是 deepseek-r1:14b，因为我的笔记本没有 GPU，但 Ollama 支持在没有 GPU 的情况下调用 CPU 来运行模型，所以也能够正常运行。</p>
+<blockquote>
+<p>注意：运行 7B 模型至少需要 8GB 内存，运行 14B 模型至少需要 16GB 内存，运行 33B 模型至少需要 32GB 内存。</p></blockquote>
+<h2 id="deepseek">DeepSeek</h2>
+<p><a href="https://www.deepseek.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   DeepSeek<span class="external-link">↗</span></a>
+<span class="sidenote-number"><small class="sidenote"><a href="https://github.com/deepseek-ai/DeepSeek-V3"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   DeepSeek-V3<span class="external-link">↗</span></a>
+是其最新的开源模型项目，完整模型为671B，<a href="https://github.com/deepseek-ai/DeepSeek-V3/blob/main/DeepSeek_V3.pdf"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   论文链接<span class="external-link">↗</span></a></small></span>
+
+（深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其模型以高性能和轻量化著称，适合学术研究、企业应用和个人开发者使用。</p>
+<h2 id="安装ollama">安装Ollama</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zsh</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S ollama  
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+]]></content:encoded></item><item><title>2025_02_07 Practice_1</title><link>https://downmars.github.io/zh/posts/2025_02_07-practice_1/</link><pubDate>Fri, 07 Feb 2025 18:10:16 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_07-practice_1/</guid><description>&lt;h2 id="实习">实习&lt;/h2>
+&lt;p>大学生活还剩下半年了，准备这半年找一个实习提升一下自己的能力&lt;span class="sidenote-number">&lt;small class="sidenote">说实话，综合现实考虑，实习不一定可行。但是我现在做一些了解和准备也未尝不可，选择参与一项开源项目可能是一个很好的选择&lt;/small>&lt;/span>
+，在这里做一个简单的记录。&lt;br>
+在这里先简单的打个草稿，我给我的预期是今年上半年找到一个机器人大公司的实习，有空余的话找一个适合的开源项目锻炼自己的能力，其次顺利进行毕业答辩，成功毕业。&lt;br>
+对于实习部分，我打算先对于目标的公司的需求做一个简单的了解，收集一些基本的信息归档。接下来，找一个合适的机会找南航老师简单的聊一聊，然后和彬哥聊聊看看有什么建议，在这期间就可以顺带着投了做准备了。&lt;/p></description><content:encoded><![CDATA[<h2 id="实习">实习</h2>
+<p>大学生活还剩下半年了，准备这半年找一个实习提升一下自己的能力<span class="sidenote-number"><small class="sidenote">说实话，综合现实考虑，实习不一定可行。但是我现在做一些了解和准备也未尝不可，选择参与一项开源项目可能是一个很好的选择</small></span>
+
+，在这里做一个简单的记录。<br>
+在这里先简单的打个草稿，我给我的预期是今年上半年找到一个机器人大公司的实习，有空余的话找一个适合的开源项目锻炼自己的能力，其次顺利进行毕业答辩，成功毕业。<br>
+对于实习部分，我打算先对于目标的公司的需求做一个简单的了解，收集一些基本的信息归档。接下来，找一个合适的机会找南航老师简单的聊一聊，然后和彬哥聊聊看看有什么建议，在这期间就可以顺带着投了做准备了。</p>
+<h2 id="意向公司">意向公司</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">公司名称</th>
+          <th style="text-align: center">岗位名称</th>
+          <th style="text-align: center">工作地点</th>
+          <th style="text-align: center">实习时长</th>
+          <th style="text-align: center">转正机会</th>
+          <th style="text-align: center">重要性</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><a href="https://www.robomaster.com/zh-CN/recruit?djifrom=rm"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   大疆<span class="external-link">↗</span></a>
+</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><a href="https://www.unitree.com/cn/position"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   宇树<span class="external-link">↗</span></a>
+</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><a href="https://www.zhipin.com/gongsi/ffd531b0cbd4133f1XN92Nm0EFU~.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   deepseeek<span class="external-link">↗</span></a>
+</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><a href="https://www.robomaster.com/zh-CN/recruit?djifrom=rm"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   云深处<span class="external-link">↗</span></a>
+</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="大疆">大疆</h2>
+<h2 id="宇树">宇树</h2>
+<h2 id="deepseek">deepseek</h2>
+<h2 id="云深处">云深处</h2>
+]]></content:encoded></item><item><title>Hugo博客搭建_主题优化 🤤</title><link>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</link><pubDate>Thu, 06 Feb 2025 19:32:05 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</guid><description/></item><item><title>蛀牙</title><link>https://downmars.github.io/zh/posts/2025_02_05-tooth_decay/</link><pubDate>Wed, 05 Feb 2025 23:33:26 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_05-tooth_decay/</guid><description>&lt;h2 id="起因">起因&lt;/h2>
 &lt;p>捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。&lt;/p></description><content:encoded>&lt;h2 id="起因">起因&lt;/h2>
 &lt;p>捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。&lt;/p>
 </content:encoded></item><item><title>Hugo博客搭建_配置 🚀</title><link>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</link><pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid><description>&lt;blockquote class="quote">&lt;p>如何构建我的hugo博客-这是一个系列&lt;/p>
@@ -11,6 +197,10 @@ Hugo博客搭建_基础 😊&lt;/a>
 class="custom-link">
 Hugo博客搭建_配置 🚀&lt;/a>
 &amp;#x1f448; 你在这里&lt;/li>
+&lt;li>&lt;a href="../2025_02_05-hugo_build_3"
+class="custom-link">
+Hugo博客搭建_主题优化 🤤&lt;/a>
+&lt;/li>
 &lt;/ul>&lt;/blockquote>
 &lt;h2 id="前言">前言&lt;/h2>
 &lt;p>在上一篇文章“&lt;a href="../2025_01_19-hugo_build_1"
@@ -30,6 +220,12 @@ Hugo博客搭建_基础 😊&lt;/a>
    class="custom-link">  
    Hugo博客搭建_配置 🚀</a>
 &#x1f448; 你在这里</li>
+<li><a href="../2025_02_05-hugo_build_3"
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_主题优化 🤤</a>
+</li>
 </ul></blockquote>
 
 <h2 id="前言">前言</h2>
@@ -631,9 +827,9 @@ Hugo博客搭建_基础 😊&lt;/a>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
-<a data-fancybox="gallery" href="/images/plsn_3.jpg">
+<a data-fancybox="gallery" href="/images/posts/2025_01_20-hugo_build_2/plsn_3.jpg">
 <figure class="align-center ">
-    <img loading="lazy" src="/images/plsn_3.jpg#center"
+    <img loading="lazy" src="/images/posts/2025_01_20-hugo_build_2/plsn_3.jpg#center"
          alt="A beautiful landscape" width="600px" height="300px"/> <figcaption>
             Sonny_boy<p>This is a caption for the image</p>
         </figcaption>
@@ -6858,9 +7054,9 @@ Hugo博客搭建_基础 😊&lt;/a>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
-<a data-fancybox="gallery" href="/blog_images/CC-BY-NC-4.png">
+<a data-fancybox="gallery" href="/images/posts/2025_01_20-hugo_build_2/CC-BY-NC-4.png">
 <figure class="align-center ">
-    <img loading="lazy" src="/blog_images/CC-BY-NC-4.png#center"
+    <img loading="lazy" src="/images/posts/2025_01_20-hugo_build_2/CC-BY-NC-4.png#center"
          alt="CC-BY-NC-4"/> <figcaption>
             CC-BY-NC-4
         </figcaption>
@@ -8157,9 +8353,9 @@ Hugo博客搭建_基础 😊&lt;/a>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
-<a data-fancybox="gallery" href="/images/plsn_3.jpg">
+<a data-fancybox="gallery" href="/images/posts/2025_01_20-hugo_build_2/plsn_3.jpg">
 <figure class="align-center ">
-    <img loading="lazy" src="/images/plsn_3.jpg#center"
+    <img loading="lazy" src="/images/posts/2025_01_20-hugo_build_2/plsn_3.jpg#center"
          alt="A beautiful landscape" width="600px" height="300px"/> <figcaption>
             Sonny_boy<p>This is a caption for the image</p>
         </figcaption>
