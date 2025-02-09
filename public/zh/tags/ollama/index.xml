@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ollama on DLog</title>
+    <link>http://localhost:1313/zh/tags/ollama/</link>
+    <description>Recent content in Ollama on DLog</description>
+    <generator>Hugo -- 0.143.1</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 09 Feb 2025 20:08:43 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/tags/ollama/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025_02_09 Ollama_deepseek_1</title>
+      <link>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</link>
+      <pubDate>Sun, 09 Feb 2025 20:08:43 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</guid>
+      <description>&lt;h2 id=&#34;ollama&#34;&gt;Ollama&lt;/h2&gt;
+&lt;p&gt;&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;&amp;ldquo;Get up and running with large language models locally.&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
+
+想必大家一定从很多地方都看到过这个一直小羊驼&amp;ndash;&lt;a href=&#34;https://github.com/ollama/ollama&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Ollama&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+，正如官方仓库所言，Ollama旨在简化大语言模型(LLMs)的本地部署和使用，我们能够通过这个这个工具来实现轻松下载、运行和管理各种开源的大语言模型。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="ollama">Ollama</h2>
+<p><blockquote class="quote"><p>&ldquo;Get up and running with large language models locally.&rdquo;</p></blockquote>
+
+想必大家一定从很多地方都看到过这个一直小羊驼&ndash;<a href="https://github.com/ollama/ollama"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Ollama<span class="external-link">↗</span></a>
+，正如官方仓库所言，Ollama旨在简化大语言模型(LLMs)的本地部署和使用，我们能够通过这个这个工具来实现轻松下载、运行和管理各种开源的大语言模型。</p>
+<ul>
+<li>Ollama支持的模型仓库：<a href="https://ollama.com/library"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   https://ollama.com/library<span class="external-link">↗</span></a>
+</li>
+</ul>
+<p>我在这里使用的是 deepseek-r1:14b，因为我的笔记本没有 GPU，但 Ollama 支持在没有 GPU 的情况下调用 CPU 来运行模型，所以也能够正常运行。</p>
+<blockquote>
+<p>注意：运行 7B 模型至少需要 8GB 内存，运行 14B 模型至少需要 16GB 内存，运行 33B 模型至少需要 32GB 内存。</p></blockquote>
+<h2 id="deepseek">DeepSeek</h2>
+<p><a href="https://www.deepseek.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   DeepSeek<span class="external-link">↗</span></a>
+<span class="sidenote-number"><small class="sidenote"><a href="https://github.com/deepseek-ai/DeepSeek-V3"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   DeepSeek-V3<span class="external-link">↗</span></a>
+是其最新的开源模型项目，完整模型为671B，<a href="https://github.com/deepseek-ai/DeepSeek-V3/blob/main/DeepSeek_V3.pdf"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   论文链接<span class="external-link">↗</span></a></small></span>
+
+（深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其模型以高性能和轻量化著称，适合学术研究、企业应用和个人开发者使用。</p>
+<h2 id="安装ollama">安装Ollama</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zsh</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S ollama  
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

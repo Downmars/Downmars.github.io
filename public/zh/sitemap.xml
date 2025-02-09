@@ -2,6 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</loc>
+    <lastmod>2025-02-09T20:08:43+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/deepseek/</loc>
+    <lastmod>2025-02-09T20:08:43+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/</loc>
+    <lastmod>2025-02-09T20:08:43+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/ollama/</loc>
+    <lastmod>2025-02-09T20:08:43+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/</loc>
+    <lastmod>2025-02-09T20:08:43+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/posts/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/</loc>
+    <lastmod>2025-02-09T20:08:43+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_02_07-practice_1/</loc>
+    <lastmod>2025-02-07T18:10:16+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/configuration/</loc>
+    <lastmod>2025-02-06T19:32:05+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/hugo/</loc>
+    <lastmod>2025-02-06T19:32:05+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/tags/hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/tags/hugo/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_02_05-hugo_build_3/</loc>
+    <lastmod>2025-02-06T19:32:05+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/zh/categories/</loc>
     <lastmod>2025-02-05T23:33:26+08:00</lastmod>
     <xhtml:link
@@ -15,45 +85,6 @@
                 href="http://localhost:1313/zh/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh/</loc>
-    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh/posts/</loc>
-    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/posts/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh/tags/</loc>
-    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/tags/"
-                />
-  </url><url>
     <loc>http://localhost:1313/zh/tags/%E5%81%A5%E5%BA%B7/</loc>
     <lastmod>2025-02-05T23:33:26+08:00</lastmod>
   </url><url>
@@ -62,22 +93,6 @@
   </url><url>
     <loc>http://localhost:1313/zh/posts/2025_02_05-tooth_decay/</loc>
     <lastmod>2025-02-05T23:33:26+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh/tags/configuration/</loc>
-    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh/tags/hugo/</loc>
-    <lastmod>2025-01-21T20:42:23+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/en/tags/hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/tags/hugo/"
-                />
   </url><url>
     <loc>http://localhost:1313/zh/posts/2025_01_20-hugo_build_2/</loc>
     <lastmod>2025-01-21T20:42:23+08:00</lastmod>
