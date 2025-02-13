@@ -1,0 +1,1 @@
+document.querySelectorAll(".admonition.collapsible").forEach(e=>{const t=e.querySelector(".admonition-header");t.addEventListener("click",()=>{e.classList.toggle("active")})})

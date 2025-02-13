@@ -1,0 +1,28 @@
+
+{{- $type := .Get "type" | default "note" -}}
+{{- $title := .Get "title" | default (humanize $type) -}}
+{{- $icon := .Get "icon" -}}
+{{- $collapsible := .Get "collapsible" | default false -}}
+
+{{/* 默认图标映射（可自定义） */}}
+{{- $defaultIcons := dict 
+  "note" "fas fa-info-circle"
+  "tip" "fas fa-lightbulb"
+  "warning" "fas fa-exclamation-triangle"
+  "danger" "fas fa-skull-crossbones"
+-}}
+{{- if not $icon -}}
+  {{- $icon = index $defaultIcons $type -}}
+{{- end -}}
+
+<div class="admonition {{ $type }} {{ if $collapsible }}collapsible{{ end }}">
+  <div class="admonition-header">
+    {{ if $icon }}<i class="{{ $icon }}"></i>{{ end }}
+    <span>{{ $title }}</span>
+    {{ if $collapsible }}<i class="toggle-icon fas fa-chevron-down"></i>{{ end }}
+  </div>
+  <div class="admonition-content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>
+

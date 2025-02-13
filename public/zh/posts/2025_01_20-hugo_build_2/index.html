@@ -27,7 +27,7 @@
 ”中，我们讲解了如何搭建一个Hugo博客，这一篇文章将会讲解如何配置Hugo博客。">
 <meta name="author" content="Downmars">
 <link rel="canonical" href="http://localhost:1313/zh/posts/2025_01_20-hugo_build_2/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.65ac862c8fc0fe808ac25a91428d0beb781749002e197e85d4bc67dc9629ef1e.css" integrity="sha256-ZayGLI/A/oCKwlqRQo0L63gXSQAuGX6F1Lxn3JYp7x4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f854212939eff61297da173aec630891f84382a38a141bead07b35ba262d1f1b.css" integrity="sha256-&#43;FQhKTnv9hKX2hc67GMIkfhDgqOKFBvq0Hs1uiYtHxs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/images/blog.png">
@@ -139,6 +139,8 @@ code.has-jax {
 
 
 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body class="" id="top">
@@ -213,7 +215,7 @@ code.has-jax {
     <h1 class="post-title entry-hint-parent">
       Hugo博客搭建_配置 🚀
     </h1>
-    <div class="post-meta"><span title='2025-01-20 20:42:23 +0800 CST'>2025-01-20</span>&nbsp;·&nbsp;Updated:&nbsp;2025-01-21&nbsp;·&nbsp;20 分钟&nbsp;·&nbsp;9897 字&nbsp;·&nbsp;Downmars
+    <div class="post-meta"><span title='2025-01-20 20:42:23 +0800 CST'>2025-01-20</span>&nbsp;·&nbsp;Updated:&nbsp;2025-01-21&nbsp;·&nbsp;22 分钟&nbsp;·&nbsp;10765 字&nbsp;·&nbsp;Downmars
 
 
     </div>
@@ -284,6 +286,8 @@ code.has-jax {
                     <li>
                         <a href="#blockquote" aria-label="Blockquote">Blockquote</a></li>
                     <li>
+                        <a href="#admonition" aria-label="Admonition">Admonition</a></li>
+                    <li>
                         <a href="#shortcodes%e5%a4%a7%e8%b5%8f" aria-label="Shortcodes大赏">Shortcodes大赏</a><ul>
                             
                     <li>
@@ -297,7 +301,9 @@ code.has-jax {
                     <li>
                         <a href="#%e8%bd%ac%e4%b9%89%e6%b8%b2%e6%9f%93" aria-label="转义渲染">转义渲染</a></li>
                     <li>
-                        <a href="#asciinema" aria-label="Asciinema">Asciinema</a></li></ul>
+                        <a href="#asciinema" aria-label="Asciinema">Asciinema</a></li>
+                    <li>
+                        <a href="#admonition-1" aria-label="Admonition">Admonition</a></li></ul>
                     </li></ul>
                     </li>
                     <li>
@@ -8608,6 +8614,888 @@ code.has-jax {
   </div>
 </details></p>
 
+<h3 id="admonition">Admonition<a hidden class="anchor" aria-hidden="true" href="#admonition">#</a></h3>
+<p><div class="admonition warning ">
+  <div class="admonition-header">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Warning</span>
+    
+  </div>
+  <div class="admonition-content">
+    注意查看博客修改时间，博客内容可能过时！
+  </div>
+</div>
+
+
+在博客中往往需要我们在一些地方给予读者额外需要注意的信息，这时候我们可以使用Admonition。我们需要添加一个支持Admonition（类似提示、警告、注意等区块）的 Shortcode:<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/shortcodes/admonition.html</span>
+    <span class="line-count">26 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- $type := .Get &#34;type&#34; | default &#34;note&#34; -}}
+</span></span><span style="display:flex;"><span>{{- $title := .Get &#34;title&#34; | default (humanize $type) -}}
+</span></span><span style="display:flex;"><span>{{- $icon := .Get &#34;icon&#34; -}}
+</span></span><span style="display:flex;"><span>{{- $collapsible := .Get &#34;collapsible&#34; | default false -}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{/* 默认图标映射（可自定义） */}}
+</span></span><span style="display:flex;"><span>{{- $defaultIcons := dict 
+</span></span><span style="display:flex;"><span>  &#34;note&#34; &#34;fas fa-info-circle&#34;
+</span></span><span style="display:flex;"><span>  &#34;tip&#34; &#34;fas fa-lightbulb&#34;
+</span></span><span style="display:flex;"><span>  &#34;warning&#34; &#34;fas fa-exclamation-triangle&#34;
+</span></span><span style="display:flex;"><span>  &#34;danger&#34; &#34;fas fa-skull-crossbones&#34;
+</span></span><span style="display:flex;"><span>-}}
+</span></span><span style="display:flex;"><span>{{- if not $icon -}}
+</span></span><span style="display:flex;"><span>  {{- $icon = index $defaultIcons $type -}}
+</span></span><span style="display:flex;"><span>{{- end -}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;admonition {{ $type }} {{ if $collapsible }}collapsible{{ end }}&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;admonition-header&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ if $icon }}&lt;<span style="color:#ff79c6">i</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{{ $icon }}&#34;</span>&gt;&lt;/<span style="color:#ff79c6">i</span>&gt;{{ end }}
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">span</span>&gt;{{ $title }}&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ if $collapsible }}&lt;<span style="color:#ff79c6">i</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;toggle-icon fas fa-chevron-down&#34;</span>&gt;&lt;/<span style="color:#ff79c6">i</span>&gt;{{ end }}
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;admonition-content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ .Inner | markdownify }}
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+同时，我们可以在为其添加css样式：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/extended/admonition.css</span>
+    <span class="line-count">75 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/* 基础变量 */</span>
+</span></span><span style="display:flex;"><span>:root {
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--admonition-border-width</span>: <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--admonition-radius</span>: <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--admonition-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">3</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">10</span><span style="color:#8be9fd">px</span> <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0.05</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">--transition-speed</span>: <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">2</span><span style="color:#8be9fd">rem</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-left</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>admonition<span style="color:#ff79c6">-</span>border<span style="color:#ff79c6">-</span>width) <span style="color:#ff79c6">solid</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-radius</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>admonition<span style="color:#ff79c6">-</span>radius);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">white</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">box-shadow</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>admonition<span style="color:#ff79c6">-</span>shadow);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">transform</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>transition<span style="color:#ff79c6">-</span>speed) <span style="color:#ff79c6">ease</span>, <span style="color:#ff79c6">box-shadow</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>transition<span style="color:#ff79c6">-</span>speed) <span style="color:#ff79c6">ease</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 悬停动画 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span>:hover {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">translateY</span>(<span style="color:#bd93f9">-2</span><span style="color:#8be9fd">px</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">box-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">6</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">15</span><span style="color:#8be9fd">px</span> <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0.1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 头部样式 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition-header</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">align-items</span>: <span style="color:#ff79c6">center</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">gap</span>: <span style="color:#bd93f9">0.8</span><span style="color:#8be9fd">rem</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">0.8</span><span style="color:#8be9fd">rem</span> <span style="color:#bd93f9">1.2</span><span style="color:#8be9fd">rem</span> <span style="color:#bd93f9">0.8</span><span style="color:#8be9fd">rem</span> <span style="color:#bd93f9">1.2</span><span style="color:#8be9fd">rem</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1.2</span><span style="color:#8be9fd">rem</span>; <span style="color:#6272a4">/* 标题字体大小 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-weight</span>: <span style="color:#bd93f9">600</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-radius</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>admonition<span style="color:#ff79c6">-</span>radius) <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>admonition<span style="color:#ff79c6">-</span>radius) <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 内容区域 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition-content</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">rem</span>; <span style="color:#6272a4">/* 内容区域字体大小 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-weight</span>: <span style="color:#ff79c6">normal</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">0</span><span style="color:#8be9fd">rem</span> <span style="color:#bd93f9">1.2</span><span style="color:#8be9fd">rem</span> <span style="color:#bd93f9">0.8</span><span style="color:#8be9fd">rem</span> <span style="color:#bd93f9">1.2</span><span style="color:#8be9fd">rem</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">line-height</span>: <span style="color:#bd93f9">1.6</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">0.8</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 类型配色（更柔和的现代色） */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span>.<span style="color:#50fa7b">note</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-color</span>: <span style="color:#bd93f9">#4A90E2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#8be9fd;font-style:italic">linear-gradient</span>(<span style="color:#ff79c6">to</span> <span style="color:#ff79c6">right</span>, <span style="color:#bd93f9">#f8fcff</span> <span style="color:#bd93f9">1</span><span style="color:#8be9fd">%</span>, <span style="color:#ff79c6">white</span> <span style="color:#bd93f9">10</span><span style="color:#8be9fd">%</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span>.<span style="color:#50fa7b">tip</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-color</span>: <span style="color:#bd93f9">#00C781</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#8be9fd;font-style:italic">linear-gradient</span>(<span style="color:#ff79c6">to</span> <span style="color:#ff79c6">right</span>, <span style="color:#bd93f9">#f2fff9</span> <span style="color:#bd93f9">1</span><span style="color:#8be9fd">%</span>, <span style="color:#ff79c6">white</span> <span style="color:#bd93f9">10</span><span style="color:#8be9fd">%</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span>.<span style="color:#50fa7b">warning</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-color</span>: <span style="color:#bd93f9">#FFB800</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#8be9fd;font-style:italic">linear-gradient</span>(<span style="color:#ff79c6">to</span> <span style="color:#ff79c6">right</span>, <span style="color:#bd93f9">#fff9e6</span> <span style="color:#bd93f9">1</span><span style="color:#8be9fd">%</span>, <span style="color:#ff79c6">white</span> <span style="color:#bd93f9">10</span><span style="color:#8be9fd">%</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span>.<span style="color:#50fa7b">danger</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-color</span>: <span style="color:#bd93f9">#FF4757</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#8be9fd;font-style:italic">linear-gradient</span>(<span style="color:#ff79c6">to</span> <span style="color:#ff79c6">right</span>, <span style="color:#bd93f9">#fff6f5</span> <span style="color:#bd93f9">1</span><span style="color:#8be9fd">%</span>, <span style="color:#ff79c6">white</span> <span style="color:#bd93f9">10</span><span style="color:#8be9fd">%</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 折叠功能 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span>.<span style="color:#50fa7b">collapsible</span> .<span style="color:#50fa7b">admonition-content</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span>.<span style="color:#50fa7b">collapsible</span>.<span style="color:#50fa7b">active</span> .<span style="color:#50fa7b">admonition-content</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">block</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span>.<span style="color:#50fa7b">collapsible</span> .<span style="color:#50fa7b">toggle-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-left</span>: <span style="color:#ff79c6">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">transform</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>transition<span style="color:#ff79c6">-</span>speed) <span style="color:#ff79c6">ease</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">admonition</span>.<span style="color:#50fa7b">collapsible</span>.<span style="color:#50fa7b">active</span> .<span style="color:#50fa7b">toggle-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">rotate</span>(<span style="color:#bd93f9">180</span><span style="color:#8be9fd">deg</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+为了添加折叠功能，我们需要为其添加JS文件：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>assets/js/admonition.js</span>
+    <span class="line-count">6 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(<span style="color:#f1fa8c">&#39;.admonition.collapsible&#39;</span>).forEach(admonition =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> header <span style="color:#ff79c6">=</span> admonition.querySelector(<span style="color:#f1fa8c">&#39;.admonition-header&#39;</span>);
+</span></span><span style="display:flex;"><span>  header.addEventListener(<span style="color:#f1fa8c">&#39;click&#39;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    admonition.classList.toggle(<span style="color:#f1fa8c">&#39;active&#39;</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+由于我们使用了<a href="https://fontawesome.com/search"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Fonts Awesome<span class="external-link">↗</span></a>
+作为我们的图标支持，还需要导入Fonts Awesome的样式文件，我们这边选择CDN导入。并且在同一文件中导入折叠的JS：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/_default/baseof.html</span>
+    <span class="line-count">35 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>{{- if lt hugo.Version &#34;0.125.7&#34; }}
+</span></span><span style="display:flex;"><span>{{- errorf &#34;=&gt; hugo v0.125.7 or greater is required for hugo-PaperMod to build &#34; }}
+</span></span><span style="display:flex;"><span>{{- end -}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;!DOCTYPE html&gt;
+</span></span><span style="display:flex;"><span>&lt;html lang=&#34;{{ site.Language }}&#34; dir=&#34;{{ .Language.LanguageDirection | default &#34;auto&#34; }}&#34;&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;head&gt;
+</span></span><span style="display:flex;"><span>    &lt;link rel=&#34;stylesheet&#34; href=&#34;{{ &#34;an-old-hope.min.css&#34; | relURL }}&#34;&gt;
+</span></span><span style="display:flex;"><span>    {{- partial &#34;head.html&#34; . }}
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+    &lt;!-- 添加 Font Awesome CDN 链接 --&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>&lt;/head&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;body class=&#34;
+</span></span><span style="display:flex;"><span>{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
+</span></span><span style="display:flex;"><span>{{- print &#34;list&#34; -}}
+</span></span><span style="display:flex;"><span>{{- end -}}
+</span></span><span style="display:flex;"><span>{{- if eq site.Params.defaultTheme `dark` -}}
+</span></span><span style="display:flex;"><span>{{- print &#34; dark&#34; }}
+</span></span><span style="display:flex;"><span>{{- end -}}
+</span></span><span style="display:flex;"><span>&#34; id=&#34;top&#34;&gt;
+</span></span><span style="display:flex;"><span>    {{- partialCached &#34;header.html&#34; . .Page -}}
+</span></span><span style="display:flex;"><span>    &lt;main class=&#34;main&#34;&gt;
+</span></span><span style="display:flex;"><span>        {{- block &#34;main&#34; . }}{{ end }}
+</span></span><span style="display:flex;"><span>    &lt;/main&gt;
+</span></span><span style="display:flex;"><span>    {{ partialCached &#34;footer.html&#34; . .Layout .Kind (.Param &#34;hideFooter&#34;) (.Param &#34;ShowCodeCopyButtons&#34;) -}}
+</span></span><span style="display:flex;"><span>&lt;script src=&#34;//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span style="display:flex;"><span>&lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+&lt;!-- admonition --&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+{{ $js := resources.Get &#34;js/admonition.js&#34; | minify | fingerprint }}
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+&lt;script src=&#34;{{ $js.RelPermalink }}&#34; defer&gt;&lt;/script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>&lt;/body&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/html&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
 <h3 id="shortcodes大赏">Shortcodes大赏<a hidden class="anchor" aria-hidden="true" href="#shortcodes大赏">#</a></h3>
 <p><code>hugo</code>采用<code>markdown</code>的格式进行内容创作，但是当我们需要一些特殊功能的时候，<code>markdown</code>并不能满足我们的需求。我们在这个时候可能需要插入一些<code>html</code>代码，这对于整个<code>markdown</code>的格式与可读性都是很糟糕的。幸运的是，<code>hugo</code>给我们提供了简码(<code>Shortcodes</code>)功能，在我们准备好对应的简码模板与简码，这能够在使用简码的时候，将<code>hugo</code>自动转换为<code>html</code>语言，我们就能够使用很简码的样式来实现需要的特殊功能。</p>
 <p>关于<code>Shortcodes</code>的相关知识可以参考<a href="https://gohugo.io/templates/shortcode/"
@@ -8706,10 +9594,65 @@ code.has-jax {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>{{&lt; myshortcode &gt;}}
 </span></span></code></pre></div><h4 id="asciinema">Asciinema<a hidden class="anchor" aria-hidden="true" href="#asciinema">#</a></h4>
 <blockquote>
-<p>{{&lt; asciinema ID &gt;}}</p></blockquote>
+<p><code>{{&lt; asciinema ID &gt;}}</code></p></blockquote>
 
 
 <script async id="asciicast-239367" src="https://asciinema.org/a/239367.js"></script>
+
+
+<h4 id="admonition-1">Admonition<a hidden class="anchor" aria-hidden="true" href="#admonition-1">#</a></h4>
+<blockquote>
+<p>{{&lt; admonition type=&ldquo;danger&rdquo; title=&ldquo;严重警告！&rdquo; collapsible=&ldquo;true&rdquo; &gt;}}<br>
+可折叠的警告区块，点击头部展开/收起<br>
+支持 <strong>Markdown</strong> 和自动图标⚡<br>
+{&lt;/* /admonition */&gt;}}</p></blockquote>
+<div class="admonition note ">
+  <div class="admonition-header">
+    <i class="fas fa-info-circle"></i>
+    <span>Note</span>
+    
+  </div>
+  <div class="admonition-content">
+    这是一个记录。
+  </div>
+</div>
+
+
+<div class="admonition tip collapsible">
+  <div class="admonition-header">
+    <i class="fas fa-lightbulb"></i>
+    <span>Tip</span>
+    <i class="toggle-icon fas fa-chevron-down"></i>
+  </div>
+  <div class="admonition-content">
+    这是一个提示!
+  </div>
+</div>
+
+
+<div class="admonition warning ">
+  <div class="admonition-header">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Warning</span>
+    
+  </div>
+  <div class="admonition-content">
+    警告警告⚠️
+  </div>
+</div>
+
+
+<div class="admonition danger collapsible">
+  <div class="admonition-header">
+    <i class="fas fa-skull-crossbones"></i>
+    <span>严重警告！</span>
+    <i class="toggle-icon fas fa-chevron-down"></i>
+  </div>
+  <div class="admonition-content">
+    可折叠的警告区块，点击头部展开/收起<br>
+支持 <strong>Markdown</strong> 和自动图标⚡
+  </div>
+</div>
 
 
 <h2 id="总结">总结<a hidden class="anchor" aria-hidden="true" href="#总结">#</a></h2>
@@ -9169,12 +10112,17 @@ code.has-jax {
     
         
     
+        
+    
     发表了0篇文章 · 
-    总计12.67k字
+    总计13.54k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
+
+
+<script src="/js/admonition.min.33aa3259ace2dcae05d7c1cebb7eddb5da4d69bc5b147e9e7a59839d96b71bc2.js" defer></script>
 </body>
 
 </html>

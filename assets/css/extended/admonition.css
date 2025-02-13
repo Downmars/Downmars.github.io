@@ -1,0 +1,77 @@
+
+/* 基础变量 */
+:root {
+  --admonition-border-width: 4px;
+  --admonition-radius: 8px;
+  --admonition-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  --transition-speed: 0.3s;
+}
+
+.admonition {
+  margin: 2rem 0;
+  border-left: var(--admonition-border-width) solid;
+  border-radius: var(--admonition-radius);
+  background: white;
+  box-shadow: var(--admonition-shadow);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+/* 悬停动画 */
+.admonition:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* 头部样式 */
+.admonition-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.2rem 0.8rem 1.2rem;
+  font-size: 1.2rem; /* 标题字体大小 */
+  font-weight: 600;
+  border-radius: var(--admonition-radius) var(--admonition-radius) 0 0;
+}
+
+/* 内容区域 */
+.admonition-content {
+  font-size: 1rem; /* 内容区域字体大小 */
+  font-weight: normal;
+  padding: 0rem 1.2rem 0.8rem 1.2rem;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.8);
+}
+
+/* 类型配色（更柔和的现代色） */
+.admonition.note {
+  border-color: #4A90E2;
+  background: linear-gradient(to right, #f8fcff 1%, white 10%);
+}
+.admonition.tip {
+  border-color: #00C781;
+  background: linear-gradient(to right, #f2fff9 1%, white 10%);
+}
+.admonition.warning {
+  border-color: #FFB800;
+  background: linear-gradient(to right, #fff9e6 1%, white 10%);
+}
+.admonition.danger {
+  border-color: #FF4757;
+  background: linear-gradient(to right, #fff6f5 1%, white 10%);
+}
+
+/* 折叠功能 */
+.admonition.collapsible .admonition-content {
+  display: none;
+}
+.admonition.collapsible.active .admonition-content {
+  display: block;
+}
+.admonition.collapsible .toggle-icon {
+  margin-left: auto;
+  transition: transform var(--transition-speed) ease;
+}
+.admonition.collapsible.active .toggle-icon {
+  transform: rotate(180deg);
+}
+
