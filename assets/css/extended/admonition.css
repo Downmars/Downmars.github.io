@@ -3,7 +3,7 @@
 :root {
   --admonition-border-width: 4px;
   --admonition-radius: 8px;
-  --admonition-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  --admonition-shadow: 0 3px 10px rgba(0,0,0,0.15);
   --transition-speed: 0.3s;
 }
 
@@ -19,7 +19,7 @@
 /* 悬停动画 */
 .admonition:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
 /* 头部样式 */
@@ -39,25 +39,25 @@
   font-weight: normal;
   padding: 0rem 1.2rem 0.8rem 1.2rem;
   line-height: 1.6;
-  color: rgba(0,0,0,0.8);
+  color: rgba(0,0,0,0.9);
 }
 
 /* 类型配色（更柔和的现代色） */
 .admonition.note {
   border-color: #4A90E2;
-  background: linear-gradient(to right, #f8fcff 1%, white 10%);
+  background: linear-gradient(to right, #f8fcff 1%, white 30%);
 }
 .admonition.tip {
   border-color: #00C781;
-  background: linear-gradient(to right, #f2fff9 1%, white 10%);
+  background: linear-gradient(to right, #f2fff9 1%, white 30%);
 }
 .admonition.warning {
   border-color: #FFB800;
-  background: linear-gradient(to right, #fff9e6 1%, white 10%);
+  background: linear-gradient(to right, #fff9e6 1%, white 30%);
 }
 .admonition.danger {
   border-color: #FF4757;
-  background: linear-gradient(to right, #fff6f5 1%, white 10%);
+  background: linear-gradient(to right, #fff6f5 1%, white 30%);
 }
 
 /* 折叠功能 */

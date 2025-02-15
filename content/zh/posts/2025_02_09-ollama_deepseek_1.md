@@ -42,6 +42,7 @@ cover:
 > 注意：运行 7B 模型至少需要 8GB 内存，运行 14B 模型至少需要 16GB 内存，运行 33B 模型至少需要 32GB 内存。  
 
 ## DeepSeek  
+{{< quote >}}"DeepSeek’s first-generation reasoning models, achieving performance comparable to OpenAI-o1 across math, code, and reasoning tasks."{{< /quote >}}
 [DeepSeek](https://www.deepseek.com/){{< sidenote >}}[DeepSeek-V3](https://github.com/deepseek-ai/DeepSeek-V3)是其最新的开源模型项目，完整模型为671B，[论文链接](https://github.com/deepseek-ai/DeepSeek-V3/blob/main/DeepSeek_V3.pdf){{< /sidenote >}}（深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其模型以高性能和轻量化著称，适合学术研究、企业应用和个人开发者使用。  
 
 ## 安装Ollama  
@@ -49,5 +50,117 @@ cover:
 ```bash  
 sudo pacman -S ollama  
 ```
-{{< /collapse >}}  
+{{< /collapse >}}
+官方推荐的方式为如下：  
+{{< collapse summary="zsh" >}}  
+```bash  
+curl -fsSL https://ollama.com/install.sh | sh  
+```
+{{< /collapse >}}
+
+## 下拉DeepSeek模型  
+Ollama现在已经将deepseek模型接入官方库中，我们只需要通过以下命令拉取模型即可：  
+{{< collapse summary="zsh" >}}  
+```bash  
+ollama pull deepseek-r1:14b
+```
+{{< /collapse >}}
+
+## 通过Ollama启动DeepSeek  
+经过上述部分，我们已经可以尝试本机运行DeepSeek了。通过以下命令启动Ollama服务：  
+{{< collapse summary="zsh" >}}  
+```bash  
+ollama server  
+```
+{{< /collapse >}}
+在启动Ollama服务过后，我们即可使用以下命令来尝试DeepSeek了：  
+{{< collapse summary="zsh" >}}  
+```bash  
+ollama run deepseek-r1:14b
+```
+{{< /collapse >}}
+运行示例如下：  
+{{< collapse summary="zsh" >}}  
+```bash  
+>>> which is greater? 9.11 or 9.9
+<think>
+First, I observe that both numbers have the same whole number part, which is 9.
+
+Next, I compare their decimal parts: 0.11 and 0.90.
+
+Since 0.11 is less than 0.90, it follows that 9.11 is less than 9.9.
+</think>
+
+To determine which number is greater between **9.11** and **9.9**, let's compare them step 
+by step.
+
+### Step 1: Understand the Numbers
+- **9.11** can be written as \(9 + \frac{11}{100}\)
+- **9.9** can be written as \(9 + \frac{9}{10}\)
+
+### Step 2: Compare the Decimal Parts
+- The decimal part of **9.11** is **0.11**
+- The decimal part of **9.9** is **0.90**
+
+Now, compare **0.11** and **0.90**:
+\[ 0.11 < 0.90 \]
+
+### Step 3: Conclusion
+Since the decimal part of **9.11** is less than that of **9.9**, it follows that:
+\[ 9.11 < 9.9 \]
+
+Therefore, **9.9** is greater than **9.11**.
+
+\[
+\boxed{9.9}
+\]
+```
+{{< /collapse >}}
+
+## Ollama Server 自启动  
+为了在开机时自启 Ollama Server，我们可以使用 systemd 来管理自动启动：  
+{{< collapse summary="zsh" >}}  
+```bash  
+sudo vim /etc/systemd/system/ollama-server.service
+```
+{{< /collapse >}}
+我们在其中填入以下内容：  
+{{< collapse summary="/etc/systemd/system/ollama-server.service" >}}  
+```bash  
+[Unit]
+Description=Ollama Server
+After=network.target
+
+[Service]
+ExecStart=ollama serve
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/home/<your home name>
+
+[Install]
+WantedBy=multi-user.target
+```
+{{< /collapse >}}
+ 创建完服务文件后，通过以下指令来完成 systemd 配置：  
+{{< collapse summary="zsh" >}}  
+```bash  
+# 重新加载 systemd 配置
+sudo systemctl daemon-reload
+
+# 下次开机后，启动开机自启
+sudo systemctl enable ollama-server.service
+
+# 立刻启动服务
+sudo systemctl start ollama-server.service
+
+# 查看服务状态
+sudo systemctl status ollama-server.service
+```
+{{< /collapse >}}
+
+## 通过Open-webui 调用本地的DeepSeek api  
+TODO
+
+
+
 

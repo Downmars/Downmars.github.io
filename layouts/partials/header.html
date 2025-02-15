@@ -39,8 +39,8 @@
 </script>
 {{- end }}
 
-<header class="header">
-    <nav class="nav">
+<header class="header" id="smart-header">
+    <nav class="nav rounded-[12px] backdrop-blur-[10px] bg-opacity-85 transition-all duration-300">
         <div class="logo">
             {{- $label_text := (site.Params.label.text | default site.Title) }}
             {{- if site.Title }}
@@ -147,3 +147,57 @@
         </ul>
     </nav>
 </header>
+
+<!---->
+<!-- <script> -->
+<!-- document.addEventListener('DOMContentLoaded', () => { -->
+<!--     const header = document.getElementById('smart-header'); -->
+<!--     const siteTitle = document.getElementById('site-title'); -->
+<!--     const pageTitle = document.getElementById('page-title'); -->
+<!--     let lastScroll = 0; -->
+<!---->
+<!--     // 滚动监听：切换标题，增加模糊效果，下划线控制 -->
+<!--     window.addEventListener('scroll', () => { -->
+<!--         const currentScroll = window.pageYOffset; -->
+<!---->
+<!--         // 1. 切换标题 -->
+<!--         if (currentScroll > 100) { -->
+<!--             siteTitle.style.display = 'none'; -->
+<!--             pageTitle.style.display = 'block'; -->
+<!--         } else { -->
+<!--             siteTitle.style.display = 'block'; -->
+<!--             pageTitle.style.display = 'none'; -->
+<!--         } -->
+<!---->
+<!--         // 2. 增加模糊效果 -->
+<!--         const blurAmount = Math.min(currentScroll / 10, 20); // 设置最大模糊值为20 -->
+<!--         header.style.backdropFilter = `blur(${blurAmount}px)`; // 根据滚动深度调整模糊效果 -->
+<!---->
+<!--         // 3. 下划线显示/隐藏 -->
+<!--         const scrollDelta = currentScroll - lastScroll; -->
+<!--         if (scrollDelta > 10 && currentScroll > 200) { -->
+<!--             header.style.borderBottom = 'none'; -->
+<!--         } else if (scrollDelta < -10) { -->
+<!--             header.style.borderBottom = '2px solid #000'; // 设置下划线样式 -->
+<!--         } -->
+<!---->
+<!--         lastScroll = currentScroll; -->
+<!--     }); -->
+<!-- }); -->
+<!-- </script> -->
+<!---->
+<!-- <style> -->
+<!-- .nav { -->
+<!--     border-radius: 12px; -->
+<!--     max-width: 1200px; -->
+<!--     width: 90%; -->
+<!--     margin: 0 auto; -->
+<!--     backdrop-filter: blur(10px); -->
+<!--     background-color: rgba(255, 255, 255, 0.85); -->
+<!--     padding: 10px; -->
+<!-- } -->
+<!---->
+<!-- header { -->
+<!--     transition: border-bottom 0.3s ease; -->
+<!-- } -->
+<!-- </style> -->

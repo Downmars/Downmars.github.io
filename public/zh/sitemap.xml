@@ -59,9 +59,6 @@
     <loc>http://localhost:1313/zh/tags/ollama/</loc>
     <lastmod>2025-02-09T20:08:43+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh/posts/2025_02_07-practice_1/</loc>
-    <lastmod>2025-02-07T18:10:16+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/zh/tags/configuration/</loc>
     <lastmod>2025-02-06T19:32:05+08:00</lastmod>
   </url><url>
@@ -80,28 +77,6 @@
   </url><url>
     <loc>http://localhost:1313/zh/posts/2025_02_05-hugo_build_3/</loc>
     <lastmod>2025-02-06T19:32:05+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh/categories/</loc>
-    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/categories/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh/tags/%E5%81%A5%E5%BA%B7/</loc>
-    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh/categories/%E6%97%A5%E5%B8%B8/</loc>
-    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh/posts/2025_02_05-tooth_decay/</loc>
-    <lastmod>2025-02-05T23:33:26+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/zh/posts/2025_01_20-hugo_build_2/</loc>
     <lastmod>2025-01-21T20:42:23+08:00</lastmod>
@@ -134,6 +109,18 @@
                 href="http://localhost:1313/zh/archives/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/categories/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/search/</loc>
     <xhtml:link
                 rel="alternate"
@@ -145,6 +132,10 @@
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/search/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/%E5%81%A5%E5%BA%B7/</loc>
+  </url><url>
+    <loc>http://localhost:1313/zh/categories/%E6%97%A5%E5%B8%B8/</loc>
   </url><url>
     <loc>http://localhost:1313/zh/archives/archives/</loc>
     <xhtml:link
