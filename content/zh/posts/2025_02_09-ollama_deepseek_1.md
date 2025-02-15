@@ -43,7 +43,7 @@ cover:
 
 ## DeepSeek  
 {{< quote >}}"DeepSeek’s first-generation reasoning models, achieving performance comparable to OpenAI-o1 across math, code, and reasoning tasks."{{< /quote >}}
-[DeepSeek](https://www.deepseek.com/){{< sidenote >}}[DeepSeek-V3](https://github.com/deepseek-ai/DeepSeek-V3)是其最新的开源模型项目，完整模型为671B，[论文链接](https://github.com/deepseek-ai/DeepSeek-V3/blob/main/DeepSeek_V3.pdf){{< /sidenote >}}（深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其模型以高性能和轻量化著称，适合学术研究、企业应用和个人开发者使用。  
+[DeepSeek](https://www.deepseek.com/){{< sidenote >}}[DeepSeek-V3](https://github.com/deepseek-ai/DeepSeek-V3)是其最新的开源模型项目，完整模型为671B，[论文链接](https://github.com/deepseek-ai/DeepSeek-V3/blob/main/DeepSeek_V3.pdf){{< /sidenote >}}（深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其中的DeepSeek-R1是其第一代推理模型，在推理任务上的表现与OpenAI-o1相当，同时为了支持研究社区，DeepSeek开源了DeepSeek-R1以及基于Qwen2.5和Llama3蒸馏出来的共记7个模型。
 
 ## 安装Ollama  
 {{< collapse summary="zsh" >}}  

@@ -80,7 +80,7 @@
    class="custom-link">  
    论文链接<span class="external-link">↗</span></a></small></span>
 
-（深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其模型以高性能和轻量化著称，适合学术研究、企业应用和个人开发者使用。</p>
+（深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其中的DeepSeek-R1是其第一代推理模型，在推理任务上的表现与OpenAI-o1相当，同时为了支持研究社区，DeepSeek开源了DeepSeek-R1以及基于Qwen2.5和Llama3蒸馏出来的共记7个模型。</p>
 <h2 id="安装ollama">安装Ollama</h2>
 <p>
 

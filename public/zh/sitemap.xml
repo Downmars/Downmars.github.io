@@ -133,10 +133,6 @@
                 href="http://localhost:1313/zh/search/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh/tags/%E5%81%A5%E5%BA%B7/</loc>
-  </url><url>
-    <loc>http://localhost:1313/zh/categories/%E6%97%A5%E5%B8%B8/</loc>
-  </url><url>
     <loc>http://localhost:1313/zh/archives/archives/</loc>
     <xhtml:link
                 rel="alternate"
