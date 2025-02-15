@@ -29,7 +29,9 @@ Ollama&lt;span class="external-link">↗&lt;/span>&lt;/a>
 <blockquote>
 <p>注意：运行 7B 模型至少需要 8GB 内存，运行 14B 模型至少需要 16GB 内存，运行 33B 模型至少需要 32GB 内存。</p></blockquote>
 <h2 id="deepseek">DeepSeek</h2>
-<p><a href="https://www.deepseek.com/"
+<p><blockquote class="quote"><p>&ldquo;DeepSeek’s first-generation reasoning models, achieving performance comparable to OpenAI-o1 across math, code, and reasoning tasks.&rdquo;</p></blockquote>
+
+<a href="https://www.deepseek.com/"
    
     
        target="_blank" rel="noopener" 
@@ -53,7 +55,7 @@ Ollama&lt;span class="external-link">↗&lt;/span>&lt;/a>
 
 （深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其模型以高性能和轻量化著称，适合学术研究、企业应用和个人开发者使用。</p>
 <h2 id="安装ollama">安装Ollama</h2>
-
+<p>
 
 
 
@@ -95,99 +97,616 @@ Ollama&lt;span class="external-link">↗&lt;/span>&lt;/a>
   </div>
 </details></p>
 
-]]></content:encoded></item><item><title>2025_02_07 Practice_1</title><link>https://downmars.github.io/zh/posts/2025_02_07-practice_1/</link><pubDate>Fri, 07 Feb 2025 18:10:16 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_07-practice_1/</guid><description>&lt;h2 id="实习">实习&lt;/h2>
-&lt;p>大学生活还剩下半年了，准备这半年找一个实习提升一下自己的能力&lt;span class="sidenote-number">&lt;small class="sidenote">说实话，综合现实考虑，实习不一定可行。但是我现在做一些了解和准备也未尝不可，选择参与一项开源项目可能是一个很好的选择&lt;/small>&lt;/span>
-，在这里做一个简单的记录。&lt;br>
-在这里先简单的打个草稿，我给我的预期是今年上半年找到一个机器人大公司的实习，有空余的话找一个适合的开源项目锻炼自己的能力，其次顺利进行毕业答辩，成功毕业。&lt;br>
-对于实习部分，我打算先对于目标的公司的需求做一个简单的了解，收集一些基本的信息归档。接下来，找一个合适的机会找南航老师简单的聊一聊，然后和彬哥聊聊看看有什么建议，在这期间就可以顺带着投了做准备了。&lt;/p></description><content:encoded><![CDATA[<h2 id="实习">实习</h2>
-<p>大学生活还剩下半年了，准备这半年找一个实习提升一下自己的能力<span class="sidenote-number"><small class="sidenote">说实话，综合现实考虑，实习不一定可行。但是我现在做一些了解和准备也未尝不可，选择参与一项开源项目可能是一个很好的选择</small></span>
+官方推荐的方式为如下：<br>
 
-，在这里做一个简单的记录。<br>
-在这里先简单的打个草稿，我给我的预期是今年上半年找到一个机器人大公司的实习，有空余的话找一个适合的开源项目锻炼自己的能力，其次顺利进行毕业答辩，成功毕业。<br>
-对于实习部分，我打算先对于目标的公司的需求做一个简单的了解，收集一些基本的信息归档。接下来，找一个合适的机会找南航老师简单的聊一聊，然后和彬哥聊聊看看有什么建议，在这期间就可以顺带着投了做准备了。</p>
-<h2 id="意向公司">意向公司</h2>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">公司名称</th>
-          <th style="text-align: center">岗位名称</th>
-          <th style="text-align: center">工作地点</th>
-          <th style="text-align: center">实习时长</th>
-          <th style="text-align: center">转正机会</th>
-          <th style="text-align: center">重要性</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center"><a href="https://www.robomaster.com/zh-CN/recruit?djifrom=rm"
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   大疆<span class="external-link">↗</span></a>
-</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><a href="https://www.unitree.com/cn/position"
-   
+  
+
+  
     
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   宇树<span class="external-link">↗</span></a>
-</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><a href="https://www.zhipin.com/gongsi/ffd531b0cbd4133f1XN92Nm0EFU~.html"
-   
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zsh</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://ollama.com/install.sh | sh  
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<h2 id="下拉deepseek模型">下拉DeepSeek模型</h2>
+<p>Ollama现在已经将deepseek模型接入官方库中，我们只需要通过以下命令拉取模型即可：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   deepseeek<span class="external-link">↗</span></a>
-</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><a href="https://www.robomaster.com/zh-CN/recruit?djifrom=rm"
-   
+  
+
+  
     
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   云深处<span class="external-link">↗</span></a>
-</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="大疆">大疆</h2>
-<h2 id="宇树">宇树</h2>
-<h2 id="deepseek">deepseek</h2>
-<h2 id="云深处">云深处</h2>
-]]></content:encoded></item><item><title>Hugo博客搭建_主题优化 🤤</title><link>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</link><pubDate>Thu, 06 Feb 2025 19:32:05 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</guid><description/></item><item><title>蛀牙</title><link>https://downmars.github.io/zh/posts/2025_02_05-tooth_decay/</link><pubDate>Wed, 05 Feb 2025 23:33:26 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_05-tooth_decay/</guid><description>&lt;h2 id="起因">起因&lt;/h2>
-&lt;p>捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。&lt;/p></description><content:encoded>&lt;h2 id="起因">起因&lt;/h2>
-&lt;p>捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。&lt;/p>
-</content:encoded></item><item><title>Hugo博客搭建_配置 🚀</title><link>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</link><pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid><description>&lt;blockquote class="quote">&lt;p>如何构建我的hugo博客-这是一个系列&lt;/p>
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zsh</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ollama pull deepseek-r1:14b
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<h2 id="通过ollama启动deepseek">通过Ollama启动DeepSeek</h2>
+<p>经过上述部分，我们已经可以尝试本机运行DeepSeek了。通过以下命令启动Ollama服务：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zsh</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ollama server  
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+在启动Ollama服务过后，我们即可使用以下命令来尝试DeepSeek了：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zsh</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ollama run deepseek-r1:14b
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+运行示例如下：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>zsh</span>
+    <span class="line-count">32 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;&gt;&gt; which is greater? 9.11 or 9.9
+</span></span><span style="display:flex;"><span>&lt;think&gt;
+</span></span><span style="display:flex;"><span>First, I observe that both numbers have the same whole number part, which is 9.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Next, I compare their decimal parts: 0.11 and 0.90.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Since 0.11 is less than 0.90, it follows that 9.11 is less than 9.9.
+</span></span><span style="display:flex;"><span>&lt;/think&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>To determine which number is greater between **9.11** and **9.9**, let&#39;s compare them step 
+</span></span><span style="display:flex;"><span>by step.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">### Step 1: Understand the Numbers</span>
+</span></span><span style="display:flex;"><span>- **9.11** can be written as <span style="color:#f1fa8c">\(</span><span style="color:#bd93f9">9</span> + <span style="color:#f1fa8c">\f</span>rac<span style="color:#ff79c6">{</span>11<span style="color:#ff79c6">}{</span>100<span style="color:#ff79c6">}</span><span style="color:#f1fa8c">\)</span>
+</span></span><span style="display:flex;"><span>- **9.9** can be written as <span style="color:#f1fa8c">\(</span><span style="color:#bd93f9">9</span> + <span style="color:#f1fa8c">\f</span>rac<span style="color:#ff79c6">{</span>9<span style="color:#ff79c6">}{</span>10<span style="color:#ff79c6">}</span><span style="color:#f1fa8c">\)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">### Step 2: Compare the Decimal Parts</span>
+</span></span><span style="display:flex;"><span>- The decimal part of **9.11** is **0.11**
+</span></span><span style="display:flex;"><span>- The decimal part of **9.9** is **0.90**
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Now, compare **0.11** and **0.90**:
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\[</span> 0.11 &lt; 0.90 <span style="color:#f1fa8c">\]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">### Step 3: Conclusion</span>
+</span></span><span style="display:flex;"><span>Since the decimal part of **9.11** is less than that of **9.9**, it follows that:
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\[</span> 9.11 &lt; 9.9 <span style="color:#f1fa8c">\]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Therefore, **9.9** is greater than **9.11**.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\[</span>
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\b</span>oxed<span style="color:#ff79c6">{</span>9.9<span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\]</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<h2 id="ollama-server-自启动">Ollama Server 自启动</h2>
+<p>为了在开机时自启 Ollama Server，我们可以使用 systemd 来管理自动启动：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zsh</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vim /etc/systemd/system/ollama-server.service
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+我们在其中填入以下内容：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/etc/systemd/system/ollama-server.service</span>
+    <span class="line-count">12 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff79c6">[</span>Unit<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Description</span><span style="color:#ff79c6">=</span>Ollama Server
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">After</span><span style="color:#ff79c6">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[</span>Service<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ExecStart</span><span style="color:#ff79c6">=</span>ollama serve
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Restart</span><span style="color:#ff79c6">=</span>on-failure
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">RestartSec</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Environment</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">HOME</span><span style="color:#ff79c6">=</span>/home/&lt;your home name&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[</span>Install<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">WantedBy</span><span style="color:#ff79c6">=</span>multi-user.target
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+创建完服务文件后，通过以下指令来完成 systemd 配置：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>zsh</span>
+    <span class="line-count">11 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载 systemd 配置</span>
+</span></span><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 下次开机后，启动开机自启</span>
+</span></span><span style="display:flex;"><span>sudo systemctl <span style="color:#8be9fd;font-style:italic">enable</span> ollama-server.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 立刻启动服务</span>
+</span></span><span style="display:flex;"><span>sudo systemctl start ollama-server.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 查看服务状态</span>
+</span></span><span style="display:flex;"><span>sudo systemctl status ollama-server.service
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<h2 id="通过open-webui-调用本地的deepseek-api">通过Open-webui 调用本地的DeepSeek api</h2>
+<p>TODO</p>
+]]></content:encoded></item><item><title>Hugo博客搭建_主题优化 🤤</title><link>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</link><pubDate>Thu, 06 Feb 2025 19:32:05 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</guid><description/></item><item><title>Hugo博客搭建_配置 🚀</title><link>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</link><pubDate>Mon, 20 Jan 2025 20:42:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_01_20-hugo_build_2/</guid><description>&lt;blockquote class="quote">&lt;p>如何构建我的hugo博客-这是一个系列&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="../2025_01_19-hugo_build_1"
 class="custom-link">
