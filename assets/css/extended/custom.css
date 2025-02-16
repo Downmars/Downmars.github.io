@@ -306,5 +306,18 @@ body {
   position: relative;
 }
 
+.entry-cover {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    overflow: hidden;        /* 防止内容溢出 */
+}
 
+.entry-cover img {
+    max-width: 100%;         /* 限制宽度不超过父容器宽度 */
+    max-height: 500px;       /* 限制最大高度 */
+    width: auto;             /* 按比例调整宽度 */
+    height: auto;            /* 按比例调整高度 */
+    object-fit: contain;     /* 保持图像的原始比例 */
+}
 
