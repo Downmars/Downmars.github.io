@@ -128,9 +128,9 @@
 
 .sidenote {
   float: right;
+  clear: right;
   position: relative;
-  margin-right: -20vw;
-  width: 40%;
+  margin-top: 1rem;
   max-width: 300px;
   padding: 8px 16px; /* 增加内边距以便有足够空间 */
   border: 2px solid transparent; /* 默认透明边框 */
@@ -138,9 +138,34 @@
   box-shadow: 0 2px 4px var(--sidenote-shadow1); /* 默认轻微阴影 */
   transition: all 0.3s ease; /* 增加平滑过渡效果 */
 }
-body {
-  counter-reset: sidenote-counter;
+
+
+/* Wide viewport */
+@media (min-width: 1400px) {
+    .sidenote {
+        float: right;
+        clear: right;
+        margin-right: -20vw;
+        text-align: left;
+
+        top: -3rem;
+        width: 20vw;
+        margin-top: 1rem;
+    }
 }
+
+/* Narrow viewport */
+@media (max-width: 1400px) {
+    .sidenote {
+        float: right;
+        text-align: left;
+
+        width: 100%;
+        margin: 1rem 0;
+        padding-left: 15%;
+    }
+}
+
 .sidenote-number {
   counter-increment: sidenote-counter;
 }
