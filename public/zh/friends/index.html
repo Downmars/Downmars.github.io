@@ -11,7 +11,7 @@
 <meta name="description" content="这是我的友链页面">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/zh/friends/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.ee616c1304795a0f0e6a025e9e5c5967bafeb23120bad34c99a5a0a14e7afd89.css" integrity="sha256-7mFsEwR5Wg8OagJenlxZZ7r&#43;sjEgutNMmaWgoU56/Yk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.57310bbf433f32dc0105c07276ca4432adf4135cd6a67e8b5eb5b6af5e1cc286.css" integrity="sha256-VzELv0M/MtwBBcBydspEMq30E1zWpn6LXrW2r14cwoY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/images/blog.png">
@@ -277,10 +277,84 @@ code.has-jax {
 </a>
 
 
+<hr>
+<h2 id="欢迎大家来访欢迎互换友链">欢迎大家来访，欢迎互换友链！</h2>
+<p>有需要互换友链的可以参考此处，可以在评论区留下你的友链：</p>
+<blockquote class="quote"><p>name=&ldquo;Downmars&rdquo;<br>
+url=&ldquo;<a href="https://downmars.github.io/zh/posts/%22"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   https://downmars.github.io/zh/posts/"<span class="external-link">↗</span></a>
+<br>
+logo=&ldquo;<a href="https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg%22"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg"<span class="external-link">↗</span></a>
+<br>
+word=&ldquo;Enjoy your life!&rdquo;</p></blockquote>
+
 
         </section>
     </article>
 </main>
+
+
+  </footer><div id="tw-comment"></div>
+<script>
+    
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "light" : "dark";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "Downmars\/Downmars.github.io",
+            "data-repo-id": "R_kgDONa-How",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDONa-Ho84CmJrl",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
+
 
     </main>
     
@@ -545,8 +619,10 @@ code.has-jax {
     
         
     
+        
     
-    总计17.82k字
+    
+    总计18.77k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>

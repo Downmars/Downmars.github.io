@@ -5,6 +5,11 @@
   --admonition-radius: 8px;
   --admonition-shadow: 0 3px 10px rgba(0,0,0,0.15);
   --transition-speed: 0.3s;
+  --admonition-note: #4A90E2;
+  --admonition-tip: #00C781;
+  --admonition-warning: #FFB800;
+  --admonition-danger: #FF4757;
+
 }
 
 .admonition {
@@ -31,6 +36,7 @@
   font-size: 1.2rem; /* 标题字体大小 */
   font-weight: 600;
   border-radius: var(--admonition-radius) var(--admonition-radius) 0 0;
+
 }
 
 /* 内容区域 */
@@ -44,19 +50,23 @@
 
 /* 类型配色（更柔和的现代色） */
 .admonition.note {
-  border-color: #4A90E2;
+  border-color: #4a90e2;
+  color: #4a90e2;
   background: linear-gradient(to right, var(--theme) 1%, var(--entry) 30%);
 }
 .admonition.tip {
   border-color: #00C781;
+  color: #00C781;
   background: linear-gradient(to right, var(--theme) 1%, var(--entry) 30%);
 }
 .admonition.warning {
   border-color: #FFB800;
+  color: #FFB800;
   background: linear-gradient(to right, var(--theme) 1%, var(--entry) 30%);
 }
 .admonition.danger {
   border-color: #FF4757;
+  color: #FF4757;
   background: linear-gradient(to right, var(--theme) 1%, var(--entry) 30%);
 }
 
