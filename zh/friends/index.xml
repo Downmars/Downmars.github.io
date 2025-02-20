@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Friends on DLog</title>
+    <link>http://localhost:1313/zh/friends/</link>
+    <description>Recent content in Friends on DLog</description>
+    <generator>Hugo -- 0.144.1</generator>
+    <language>zh-CN</language>
+    <atom:link href="http://localhost:1313/zh/friends/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>友链</title>
+      <link>http://localhost:1313/zh/friends/friends/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/friends/friends/</guid>
+      <description>这是我的友链页面</description>
+      <content:encoded><![CDATA[<a target="_blank" href=https://downmars.github.io/zh/posts/ title=Downmars class="friendurl">
+  <div class="frienddiv">
+    <div class="frienddivleft">
+      <img class="myfriend" src=https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg />
+    </div>
+    <div class="frienddivright">
+      <div class="friendname">Downmars</div>
+      <div class="friendinfo">Enjoy your life!</div>
+    </div>
+  </div>
+</a>
+
+
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

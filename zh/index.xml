@@ -11294,6 +11294,1021 @@ Hugo博客搭建_基础 😊&lt;/a>
   </div>
 </details></p>
 </p>
+<h3 id="友链">友链</h3>
+<p>友链也是博客中不得不品的一个环节，我在这里参考的是<a href="https://github.com/xyming108/sulv-hugo-papermod/blob/main/layouts/shortcodes/friend.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   sulv-hugo-papermod|xyming108<span class="external-link">↗</span></a>
+，当鼠标浮动到友链所在的位置，头像就会开始旋转并放大。首先，创建一个friend的shortcode：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/shortcodes/friends.html</span>
+    <span class="line-count">13 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{- if .IsNamedParams -}}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">target</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;_blank&#34;</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">{{</span> .<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">url</span>&#34; }} <span style="color:#50fa7b">title</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">{{</span> .<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">name</span>&#34; }} <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friendurl&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;frienddiv&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;frienddivleft&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">img</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;myfriend&#34;</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">{{</span> .<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">logo</span>&#34; }} /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;frienddivright&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friendname&#34;</span>&gt;{{- .Get &#34;name&#34; -}}&lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friendinfo&#34;</span>&gt;{{- .Get &#34;word&#34; -}}&lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">a</span>&gt;
+</span></span><span style="display:flex;"><span>{{- end }}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+这边参考的是<a href="https://yunpengtai.top/posts/hugo-journey/#shortcodes-%e4%a4%a7%e8%b5%8f"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   旋转的友链|Yunpeng Tai<span class="external-link">↗</span></a>
+，我们需要添加对应的css来美化一下。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>assets/css/extended/friends.css</span>
+    <span class="line-count">99 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#50fa7b">friendurl</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">text-decoration</span>: <span style="color:#ff79c6">none</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">black</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">box-shadow</span>: <span style="color:#ff79c6">none</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">myfriend</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">56</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">56</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-radius</span>: <span style="color:#bd93f9">50</span><span style="color:#8be9fd">%</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-top</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-left</span>: <span style="color:#bd93f9">14</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background-color</span>: <span style="color:#bd93f9">#fff</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">frienddiv</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">overflow</span>: <span style="color:#ff79c6">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">100</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">49</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">inline-block</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border-radius</span>: <span style="color:#bd93f9">5</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#ff79c6">none</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-webkit-</span><span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">all</span> <span style="color:#ff79c6">ease-out</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-moz-</span><span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">all</span> <span style="color:#ff79c6">ease-out</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-o-</span><span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">all</span> <span style="color:#ff79c6">ease-out</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">all</span> <span style="color:#ff79c6">ease-out</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">dark</span> .<span style="color:#50fa7b">frienddiv</span>:hover {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>code<span style="color:#ff79c6">-</span>bg);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">frienddiv</span>:hover {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>theme);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">transform</span> <span style="color:#bd93f9">1</span><span style="color:#8be9fd">s</span>;
+</span></span><span style="display:flex;"><span>  webkit-transform: <span style="color:#8be9fd;font-style:italic">scale</span>(<span style="color:#bd93f9">1.1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-moz-</span><span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">scale</span>(<span style="color:#bd93f9">1.2</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-ms-</span><span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">scale</span>(<span style="color:#bd93f9">1.2</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-o-</span><span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">scale</span>(<span style="color:#bd93f9">1.2</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">scale</span>(<span style="color:#bd93f9">1.1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">frienddiv</span>:hover .<span style="color:#50fa7b">frienddivleft</span> <span style="color:#ff79c6">img</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#bd93f9">0.9</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-webkit-</span><span style="color:#ff79c6">transition</span>: <span style="color:#bd93f9">0.9</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-moz-</span><span style="color:#ff79c6">transition</span>: <span style="color:#bd93f9">0.9</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-o-</span><span style="color:#ff79c6">transition</span>: <span style="color:#bd93f9">0.9</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-ms-</span><span style="color:#ff79c6">transition</span>: <span style="color:#bd93f9">0.9</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">rotate</span>(<span style="color:#bd93f9">360</span><span style="color:#8be9fd">deg</span>) <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-webkit-</span><span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">rotate</span>(<span style="color:#bd93f9">360</span><span style="color:#8be9fd">deg</span>) <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-moz-</span><span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">rotate</span>(<span style="color:#bd93f9">360</span><span style="color:#8be9fd">deg</span>) <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-o-</span><span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">rotate</span>(<span style="color:#bd93f9">360</span><span style="color:#8be9fd">deg</span>) <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-ms-</span><span style="color:#ff79c6">transform</span>: <span style="color:#8be9fd;font-style:italic">rotate</span>(<span style="color:#bd93f9">360</span><span style="color:#8be9fd">deg</span>) <span style="color:#ff79c6">!important</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">frienddivleft</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">92</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">float</span>: <span style="color:#ff79c6">left</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-right</span>: <span style="color:#bd93f9">-5</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">frienddivright</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-top</span>: <span style="color:#bd93f9">18</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-right</span>: <span style="color:#bd93f9">18</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">friendname</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">text-overflow</span>: <span style="color:#ff79c6">ellipsis</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">100</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-bottom</span>: <span style="color:#bd93f9">5</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>primary);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">friendinfo</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">text-overflow</span>: <span style="color:#ff79c6">ellipsis</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">70</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>primary);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>@<span style="color:#ff79c6">media</span> <span style="color:#ff79c6">screen</span> <span style="color:#ff79c6">and</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">max-width</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">600px</span><span style="color:#ff79c6">)</span> {
+</span></span><span style="display:flex;"><span>  .<span style="color:#50fa7b">friendinfo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">none</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  .<span style="color:#50fa7b">frienddivleft</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">84</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">margin</span>: <span style="color:#ff79c6">auto</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  .<span style="color:#50fa7b">frienddivright</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">height</span>: <span style="color:#bd93f9">100</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">margin</span>: <span style="color:#ff79c6">auto</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">flex</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">align-items</span>: <span style="color:#ff79c6">center</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">justify-content</span>: <span style="color:#ff79c6">center</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  .<span style="color:#50fa7b">friendname</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">18</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+在我们能够使用shortcode来显示友链了，我们还需要创建一个页面来放置我们的友链。<br>
+首先，需要在hugo.yaml中添加以下内容：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>hugo.yaml</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>languages:
+</span></span><span style="display:flex;"><span>  zh:
+</span></span><span style="display:flex;"><span>    menu:
+</span></span><span style="display:flex;"><span>      main:
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+        - identifier: friends
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+          name: &#34;友链&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+          url: &#34;/friends/&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+          weight: 4
+</span></span></span></code></pre></div>
+  </div>
+</details></p>
+
+其次，我们在创建对应位置的friends的导览页内容：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>bash</span>
+    <span class="line-count">2 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir content/zh/friends/
+</span></span><span style="display:flex;"><span>vim content/zh/friends/index.md  
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+在其中添加：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>content/zh/friends/index.md</span>
+    <span class="line-count">18 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;友链&#34;
+</span></span><span style="display:flex;"><span>layout: &#34;friends&#34;
+</span></span><span style="display:flex;"><span>summary: &#34;这是我的友链页面&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">target</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;_blank&#34;</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">https://downmars.github.io/zh/posts/</span> <span style="color:#50fa7b">title</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">Downmars</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friendurl&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;frienddiv&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;frienddivleft&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">img</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;myfriend&#34;</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;frienddivright&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friendname&#34;</span>&gt;Downmars&lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friendinfo&#34;</span>&gt;Enjoy your life!&lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">a</span>&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>接着，我们为这个导览页添加html样式：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/_default/friends.html</span>
+    <span class="line-count">14 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ define &#34;main&#34; }}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">main</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;main&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">article</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friend-container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">header</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;page-header&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#ff79c6">h1</span>&gt;{{ .Title }}&lt;/<span style="color:#ff79c6">h1</span>&gt;
+</span></span><span style="display:flex;"><span>            {{ with .Params.summary }}&lt;<span style="color:#ff79c6">p</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;summary&#34;</span>&gt;{{ . }}&lt;/<span style="color:#ff79c6">p</span>&gt;{{ end }}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#ff79c6">header</span>&gt;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">section</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friend-grid&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            {{ .Content }}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#ff79c6">section</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">article</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">main</span>&gt;
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>这样我们应该就可以在页面的对应位置看到我们的友链链接了。</p>
 <h3 id="shortcodes大赏">Shortcodes大赏</h3>
 <p><code>hugo</code>采用<code>markdown</code>的格式进行内容创作，但是当我们需要一些特殊功能的时候，<code>markdown</code>并不能满足我们的需求。我们在这个时候可能需要插入一些<code>html</code>代码，这对于整个<code>markdown</code>的格式与可读性都是很糟糕的。幸运的是，<code>hugo</code>给我们提供了简码(<code>Shortcodes</code>)功能，在我们准备好对应的简码模板与简码，这能够在使用简码的时候，将<code>hugo</code>自动转换为<code>html</code>语言，我们就能够使用很简码的样式来实现需要的特殊功能。</p>
 <p>关于<code>Shortcodes</code>的相关知识可以参考<a href="https://gohugo.io/templates/shortcode/"
@@ -11617,7 +12632,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 </span></span></code></pre></div><p>此时，我们的博客就已经部署到了<code>Github Pages</code>上了，可以通过<code>https://[你的github账号名].github.io</code>来访问你的博客了。</p>
 <blockquote>
 <p>我一开始创建的时候会在我的博客网址看不见我的网页，后来查询之后得知需要在<code>Downmars.github.io/Settings/pages/Branch</code> 将分支切换为<code>gh-pages</code>即可</p></blockquote>
-]]></content:encoded></item><item><title>友链</title><link>https://downmars.github.io/zh/friend/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://downmars.github.io/zh/friend/</guid><description>这是我的友链页面</description><content:encoded><![CDATA[<a target="_blank" href=https://downmars.github.io/zh/posts/ title=Downmars class="friendurl">
+]]></content:encoded></item><item><title>友链</title><link>https://downmars.github.io/zh/friends/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://downmars.github.io/zh/friends/</guid><description>这是我的友链页面</description><content:encoded><![CDATA[<a target="_blank" href=https://downmars.github.io/zh/posts/ title=Downmars class="friendurl">
   <div class="frienddiv">
     <div class="frienddivleft">
       <img class="myfriend" src=https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg />
