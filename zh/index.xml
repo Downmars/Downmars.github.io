@@ -1,4 +1,113 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.144.2</generator><language>zh-CN</language><lastBuildDate>Tue, 18 Feb 2025 18:27:58 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_02_18 Avante.nvim_with_deepseek_api</title><link>https://downmars.github.io/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</link><pubDate>Tue, 18 Feb 2025 18:27:58 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.144.2</generator><language>zh-CN</language><lastBuildDate>Thu, 20 Feb 2025 19:35:05 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_02_20 Image_Hosting_in_Github</title><link>https://downmars.github.io/zh/posts/2025_02_20-image_hosting_in_github/</link><pubDate>Thu, 20 Feb 2025 19:35:05 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_20-image_hosting_in_github/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>今天在给别人分享友链的时候，需要给别人一个头像的链接，之前把图片是全部存放到本地的，这下正好分享一下配置图床的过程。&lt;br>
+我这边使用的是&lt;a href="https://github.com/Molunerfinn/PicGo"
+target="_blank" rel="noopener"
+class="custom-link">
+PicGo&lt;span class="external-link">↗&lt;/span>&lt;/a>
+，这是一个快速将图片上传到指定的图床上并返回Markdown格式的URL链接的工具。图床我们的首选是免费的，但是现在市面上大部分的都是不可能三角形，要么可控性差，要么收费，要么速度慢。对于写代码的，首选有两个，Gitee和Github。我原先考虑到的国内访问Gitee比较容易，但是在配置完毕之后出现了对应链接无法接收到图像，看网友说应该是禁用了外链请求到Gitee，详情请见&lt;a href="https://gitee.com/terms"
+target="_blank" rel="noopener"
+class="custom-link">
+Gitee网站使用条款-仓库大小&lt;span class="external-link">↗&lt;/span>&lt;/a>
+，而且国内平台会有审核机制，所以我这边还是选择了Github来搭建我的平台，安全的同时也能够及时备份，避免遗失，不然某天博客的云端图像丢失了就不可挽回了。&lt;/p></description><content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>今天在给别人分享友链的时候，需要给别人一个头像的链接，之前把图片是全部存放到本地的，这下正好分享一下配置图床的过程。<br>
+我这边使用的是<a href="https://github.com/Molunerfinn/PicGo"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   PicGo<span class="external-link">↗</span></a>
+，这是一个快速将图片上传到指定的图床上并返回Markdown格式的URL链接的工具。图床我们的首选是免费的，但是现在市面上大部分的都是不可能三角形，要么可控性差，要么收费，要么速度慢。对于写代码的，首选有两个，Gitee和Github。我原先考虑到的国内访问Gitee比较容易，但是在配置完毕之后出现了对应链接无法接收到图像，看网友说应该是禁用了外链请求到Gitee，详情请见<a href="https://gitee.com/terms"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Gitee网站使用条款-仓库大小<span class="external-link">↗</span></a>
+，而且国内平台会有审核机制，所以我这边还是选择了Github来搭建我的平台，安全的同时也能够及时备份，避免遗失，不然某天博客的云端图像丢失了就不可挽回了。</p>
+<h2 id="创建github图床仓库">创建Github图床仓库</h2>
+<h3 id="新建仓库">新建仓库</h3>
+<ol>
+<li>登录<a href="https://github.com"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Github<span class="external-link">↗</span></a>
+并点击右上角 → 选择 &ldquo;New repository&rdquo;</li>
+<li>填写仓库信息：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">Repository name</span>: blog-images  <span style="color:#6272a4"># 推荐名称</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">Description</span>: Blog Image Hosting
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">Public/Private</span>: Public ✔️ 
+</span></span></code></pre></div></li>
+<li>点击 &ldquo;Create repository&rdquo;</li>
+</ol>
+<h3 id="生成访问令牌">生成访问令牌</h3>
+<ol>
+<li>点击右上角头像 → Settings → Developer settings → Personal access tokens → Tokens (classic)</li>
+<li>点击 &ldquo;Generate new token&rdquo; → &ldquo;Generate new token (classic)&rdquo;</li>
+<li>配置权限：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">Note</span>: PicGo-upload
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">Expiration</span>: <span style="color:#ff79c6">No</span> expiration  <span style="color:#6272a4"># 长期有效</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">Select scopes</span>:
+</span></span><span style="display:flex;"><span>  ✔️ repo (全部仓库权限)
+</span></span></code></pre></div></li>
+</ol>
+<div class="admonition warning ">
+  <div class="admonition-header">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Warning</span>
+    
+  </div>
+  <div class="admonition-content">
+    这个token只会生成后只会显示一次，需要及时复制备份。
+  </div>
+</div>
+
+
+<h2 id="配置picgo">配置PicGo</h2>
+<p>我们在<a href="https://github.com/Molunerfinn/PicGo/releases"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   PicGo仓库<span class="external-link">↗</span></a>
+选择需要的版本进行下载和安装，我这边选择的版本是2.4.0。</p>
+<h3 id="配置上传">配置上传</h3>
+<ol>
+<li>打开PicGo → 图床设置 → GitHub图床</li>
+<li>填写配置：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">图床配置名</span>: Github_images_hosting
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">设定仓库名</span>: yourname/blog-images  <span style="color:#6272a4"># 替换为实际用户名/仓库</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">设定分支名</span>: main
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">设定Token</span>: 粘贴生成的令牌
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">存储路径</span>: blog/  <span style="color:#6272a4"># 可选分类目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">自定义域名</span>:   <span style="color:#6272a4"># 我这里没有配置CDN加速，所以这里空置即可</span>
+</span></span></code></pre></div></li>
+</ol>
+<p>此时就可以使用这个工具来上传图片了，下方图片为图床返回链接测试，更多设置请查看<a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   官方文档<span class="external-link">↗</span></a>
+。</p>
+<p> 
+ <div class="post-img-view">
+ <a data-fancybox="gallery" href="https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg">
+ <img src="https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg" alt="miku"  />
+ </a>
+ </div>
+ 
+
+</p>
+<h3 id="安装插件">安装插件</h3>
+<h4 id="自动水印">自动水印</h4>
+<h4 id="自动压缩">自动压缩</h4>
+]]></content:encoded></item><item><title>2025_02_18 Avante.nvim_with_deepseek_api</title><link>https://downmars.github.io/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</link><pubDate>Tue, 18 Feb 2025 18:27:58 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>前段时间，&lt;a href="https://github.com/yetone/avante.nvim?tab=readme-ov-file"
 target="_blank" rel="noopener"
 class="custom-link">
@@ -12136,33 +12245,6 @@ Hugo博客搭建_基础 😊&lt;/a>
     
   
 
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
 
 
 
@@ -12171,35 +12253,28 @@ Hugo博客搭建_基础 😊&lt;/a>
 
 
 
-
-<p><details class="custom-collapse" >
+<p><details class="custom-collapse" open>
   <summary markdown="span">
     <span>content/zh/friends/index.md</span>
-    <span class="line-count">18 lines</span>
+    <span class="line-count">11 lines</span>
   </summary>
   <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>---
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>title: &#34;友链&#34;
 </span></span><span style="display:flex;"><span>layout: &#34;friends&#34;
 </span></span><span style="display:flex;"><span>summary: &#34;这是我的友链页面&#34;
 </span></span><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">target</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;_blank&#34;</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">https://downmars.github.io/zh/posts/</span> <span style="color:#50fa7b">title</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">Downmars</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friendurl&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;frienddiv&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;frienddivleft&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">img</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;myfriend&#34;</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg</span> /&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">div</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;frienddivright&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friendname&#34;</span>&gt;Downmars&lt;/<span style="color:#ff79c6">div</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friendinfo&#34;</span>&gt;Enjoy your life!&lt;/<span style="color:#ff79c6">div</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">div</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">div</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">a</span>&gt;
+</span></span><span style="display:flex;"><span>{{&lt;/* friend 
+</span></span><span style="display:flex;"><span>    name=&#34;Downmars&#34; 
+</span></span><span style="display:flex;"><span>    url=&#34;https://downmars.github.io/zh/posts/&#34; 
+</span></span><span style="display:flex;"><span>    logo=&#34;https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg&#34;
+</span></span><span style="display:flex;"><span>    word=&#34;Enjoy your life!&#34; 
+</span></span><span style="display:flex;"><span>*/&gt;}}
 </span></span></code></pre></div>
   </div>
 </details></p>
 </p>
+<p>这边的友链格式为：<code>{{&lt; friend name=&quot;downmars&quot; url=&quot;https://downmars.github.io/zh/posts/&quot; logo=&quot;https://raw.githubusercontent.com/downmars/images-picgo/main/img/miku.jpg&quot; word=&quot;enjoy your life!&quot; &gt;}}</code>，上述的<code>/*  */</code>是为了能够顺利转义我的shortcode而不被markdown转义为友链。</p>
 <p>接着，我们为这个导览页添加html样式：
 
 
@@ -12418,7 +12493,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 <p>{{&lt; admonition type=&ldquo;danger&rdquo; title=&ldquo;严重警告！&rdquo; collapsible=&ldquo;true&rdquo; &gt;}}<br>
 可折叠的警告区块，点击头部展开/收起<br>
 支持 <strong>Markdown</strong> 和自动图标⚡<br>
-{&lt; /admonition &gt;}}</p></blockquote>
+{{&lt; /admonition &gt;}}</p></blockquote>
 <div class="admonition note ">
   <div class="admonition-header">
     <i class="fas fa-info-circle"></i>
@@ -12644,5 +12719,27 @@ Hugo博客搭建_基础 😊&lt;/a>
   </div>
 </a>
 
+
+<hr>
+<h2 id="欢迎大家来访欢迎互换友链">欢迎大家来访，欢迎互换友链！</h2>
+<p>有需要互换友链的可以参考此处，可以在评论区留下你的友链：</p>
+<blockquote class="quote"><p>name=&ldquo;Downmars&rdquo;<br>
+url=&ldquo;<a href="https://downmars.github.io/zh/posts/%22"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   https://downmars.github.io/zh/posts/"<span class="external-link">↗</span></a>
+<br>
+logo=&ldquo;<a href="https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg%22"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg"<span class="external-link">↗</span></a>
+<br>
+word=&ldquo;Enjoy your life!&rdquo;</p></blockquote>
 
 ]]></content:encoded></item></channel></rss>
