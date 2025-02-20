@@ -164,6 +164,6 @@
                 href="http://localhost:1313/zh/search/search/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh/friend/</loc>
+    <loc>http://localhost:1313/zh/friends/</loc>
   </url>
 </urlset>

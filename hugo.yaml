@@ -130,9 +130,9 @@ languages:
           name: "搜索"
           url: "/search/"
           weight: 3
-        - identifier: friend
+        - identifier: friends
           name: "友链"
-          url: "/friend"
+          url: "/friends/"
           weight: 4
 
   en:
@@ -161,9 +161,9 @@ languages:
           name: "Search"
           url: "/search/"
           weight: 3 
-        - identifier: friend
-          name: "Friend"
-          url: "/friend"
+        - identifier: friends
+          name: "Friends"
+          url: "/friends/"
           weight: 4
 
 pagination:

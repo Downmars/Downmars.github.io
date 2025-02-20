@@ -6,11 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>404 Page not found | DLog</title>
+<title>友链 | DLog</title>
 <meta name="keywords" content="">
-<meta name="description" content="测试描述">
+<meta name="description" content="这是我的友链页面">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/zh/404.html">
+<link rel="canonical" href="http://localhost:1313/zh/friends/friends/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.ee616c1304795a0f0e6a025e9e5c5967bafeb23120bad34c99a5a0a14e7afd89.css" integrity="sha256-7mFsEwR5Wg8OagJenlxZZ7r&#43;sjEgutNMmaWgoU56/Yk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/images/blog.png">
@@ -19,8 +19,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/404.html">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/en/404.html">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/friends/friends/">
 <noscript>
     <style>
         #theme-toggle,
@@ -128,7 +127,7 @@ code.has-jax {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="list" id="top">
+<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -257,7 +256,32 @@ code.has-jax {
 
 
 <main class="main">
-<div class="not-found">404</div>
+<main class="main">
+    <article class="friend-container">
+        <header class="page-header">
+            <h1>友链</h1>
+            <p class="summary">这是我的友链页面</p>
+        </header>
+        
+        <section class="friend-grid">
+            <a target="_blank" href=https://downmars.github.io/zh/posts/ title=Downmars class="friendurl">
+  <div class="frienddiv">
+    <div class="frienddivleft">
+      <img class="myfriend" src=https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg />
+    </div>
+    <div class="frienddivright">
+      <div class="friendname">Downmars</div>
+      <div class="friendinfo">Enjoy your life!</div>
+    </div>
+  </div>
+</a>
+
+
+
+        </section>
+    </article>
+</main>
+
     </main>
     
 <footer class="footer">
@@ -372,7 +396,124 @@ code.has-jax {
 </script>
 
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        
+        copybutton.innerHTML = `
+            <img src="/images/copy.svg" 
+                 alt="复制"
+                 class="copy-icon"
+                 width="16" 
+                 height="16">
+        `;
+
+        function copyingDone() {
+            
+            copybutton.innerHTML = `
+                <img src="/images/check.svg" 
+                     alt="已复制"
+                     class="copied-icon"
+                     width="16" 
+                     height="16">
+            `;
+            setTimeout(() => {
+                copybutton.innerHTML = `
+                    <img src="/images/copy.svg" 
+                         alt="复制"
+                         class="copy-icon"
+                         width="16" 
+                         height="16">
+                `;
+            }, 2000);
+        }
+
+        
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script> 
 
 
 
@@ -405,7 +546,7 @@ code.has-jax {
         
     
     
-    总计17.82k字
+    总计17.58k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
