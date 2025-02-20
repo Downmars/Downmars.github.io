@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Nikon on DLog</title><link>https://downmars.github.io/zh/tags/nikon/</link><description>Recent content in Nikon on DLog</description><generator>Hugo -- 0.143.1</generator><language>zh-CN</language><lastBuildDate>Sun, 16 Feb 2025 20:04:56 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/nikon/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_02_16 How_to_connect_nikon_in_archlinux</title><link>https://downmars.github.io/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</link><pubDate>Sun, 16 Feb 2025 20:04:56 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Nikon on DLog</title><link>https://downmars.github.io/zh/tags/nikon/</link><description>Recent content in Nikon on DLog</description><generator>Hugo -- 0.144.2</generator><language>zh-CN</language><lastBuildDate>Sun, 16 Feb 2025 20:04:56 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/nikon/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_02_16 How_to_connect_nikon_in_archlinux</title><link>https://downmars.github.io/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</link><pubDate>Sun, 16 Feb 2025 20:04:56 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>这两天给爸妈拍了一些照片准备导出，正好在linux环境下，我于是打算研究一下如何在linux环境下传输相机的一些数据，顺便为相机记录做一个开头。&lt;/p></description><content:encoded><![CDATA[<h2 id="前言">前言</h2>
 <p>这两天给爸妈拍了一些照片准备导出，正好在linux环境下，我于是打算研究一下如何在linux环境下传输相机的一些数据，顺便为相机记录做一个开头。</p>
 <h2 id="msc-or-mtp">MSC or MTP</h2>
@@ -16,8 +16,8 @@
    
    class="custom-link">  
    MTP<span class="external-link">↗</span></a>
-(Media Transfer Protocol)协议传输照片的，但是运行<code>lsblk</code>没有出现设备，应该不是MSC；并且尝试jmtpfs尝试挂载MTP设备，运行<code>jmtpfs ~/camera</code>，并没有文件夹挂载在我自定义的相机文件夹,在我去谷歌搜索之后才大致明白了是怎么回事。<br>
-尼康系列下D700是第一款不再支持MSC的相机<span class="sidenote-number"><small class="sidenote">Cletus Lee在<a href="https://www.flickr.com/groups/1567431@N22/discuss/72157638076477643/"
+(Media Transfer Protocol)协议传输照片的，但是运行<code>lsblk</code>没有出现设备，应该不是MSC；并且尝试jmtpfs尝试挂载MTP设备，运行<code>jmtpfs ~/camera</code>，并没有文件夹挂载在我自定义的相机文件夹,在我去谷歌搜索之后才大致明白了是怎么回事。</p>
+<p>尼康系列下D700是第一款不再支持MSC的相机<span class="sidenote-number"><small class="sidenote">Cletus Lee在<a href="https://www.flickr.com/groups/1567431@N22/discuss/72157638076477643/"
    
     
        target="_blank" rel="noopener" 
@@ -26,8 +26,8 @@
    D800 is not mounted on imac 10.9<span class="external-link">↗</span></a>
 中回答到&quot;The D700 was the first Nikon DSLR that does not offer a Mass Storage mode. The camera will only show up as a MTP device. It has to be set-able as a Mass storage device in a camera setup menu. This is no longer an option for D700, D800 D4 and other more recent ly released Nikons. &quot;</small></span>
 
-，该相机只能够以MTP协议传输文件，同时以后发布的相机也不再支持在相机中将传输模式设置为MSC。<br>
-接下来我在Nikon官网的一篇文章<a href="https://www.nikonimgsupport.com/na/NSG_article?articleNo=000047387&amp;lang=en_SG"
+，该相机只能够以MTP协议传输文件，同时以后发布的相机也不再支持在相机中将传输模式设置为MSC。</p>
+<p>接下来我在Nikon官网的一篇文章<a href="https://www.nikonimgsupport.com/na/NSG_article?articleNo=000047387&amp;lang=en_SG"
    
     
        target="_blank" rel="noopener" 
@@ -75,8 +75,8 @@
    
    class="custom-link">  
    2700 款相机和媒体播放器<span class="external-link">↗</span></a>
-。<br>
-gPhoto2 运行在多个类 Unix 操作系统上，包括 Linux、FreeBSD、NetBSD、MacOS X 等。主要的 Linux 发行版（如 Debian GNU/Linux、Ubuntu、Gentoo、Fedora、openSUSE、Mandriva 等）都提供了 gPhoto。<br>
+。</p>
+<p>gPhoto2 运行在多个类 Unix 操作系统上，包括 Linux、FreeBSD、NetBSD、MacOS X 等。主要的 Linux 发行版（如 Debian GNU/Linux、Ubuntu、Gentoo、Fedora、openSUSE、Mandriva 等）都提供了 gPhoto。<br>
 我们使用以下命令下载gPhoto2：<br>
 
 
