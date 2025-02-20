@@ -4,10 +4,1070 @@
     <title>Posts on DLog</title>
     <link>http://localhost:1313/zh/posts/</link>
     <description>Recent content in Posts on DLog</description>
-    <generator>Hugo -- 0.143.1</generator>
+    <generator>Hugo -- 0.144.1</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 16 Feb 2025 20:04:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 18 Feb 2025 18:27:58 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025_02_18 Avante.nvim_with_deepseek_api</title>
+      <link>http://localhost:1313/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</link>
+      <pubDate>Tue, 18 Feb 2025 18:27:58 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;前段时间，&lt;a href=&#34;https://github.com/yetone/avante.nvim?tab=readme-ov-file&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   avante.nvim&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+插件支持了&lt;a href=&#34;https://platform.deepseek.com/usage&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   DeepSeek的API&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;截止2025年2月18日，由于官方服务器资源紧张，暂时停止API的充值服务。&lt;/small&gt;&lt;/span&gt;
+
+，这边将配置的全流程记录一下，供大家参考。&lt;/p&gt;
+&lt;h2 id=&#34;avantenvim&#34;&gt;avante.nvim&lt;/h2&gt;
+&lt;p&gt;avante.nvim是一个&lt;a href=&#34;https://neovim.io/&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Neovim&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+的插件，旨在模仿AI开发环境&lt;a href=&#34;https://www.cursor.com/&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Cursor&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+的工作模式。它给用户提供了AI驱动的代码建议，并且能够以花费最小的努力将这些建议直接应用于其源文件。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>前段时间，<a href="https://github.com/yetone/avante.nvim?tab=readme-ov-file"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   avante.nvim<span class="external-link">↗</span></a>
+插件支持了<a href="https://platform.deepseek.com/usage"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   DeepSeek的API<span class="external-link">↗</span></a>
+<span class="sidenote-number"><small class="sidenote">截止2025年2月18日，由于官方服务器资源紧张，暂时停止API的充值服务。</small></span>
+
+，这边将配置的全流程记录一下，供大家参考。</p>
+<h2 id="avantenvim">avante.nvim</h2>
+<p>avante.nvim是一个<a href="https://neovim.io/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Neovim<span class="external-link">↗</span></a>
+的插件，旨在模仿AI开发环境<a href="https://www.cursor.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Cursor<span class="external-link">↗</span></a>
+的工作模式。它给用户提供了AI驱动的代码建议，并且能够以花费最小的努力将这些建议直接应用于其源文件。</p>
+<p>由于，我这里使用的是<a href="https://github.com/LazyVim/LazyVim"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   LazyVim<span class="external-link">↗</span></a>
+来管理我的NeoVim插件配置，我们可以很方便的进行我的anate.nvim的安装。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>~/.config/nvim/lua/plugins/avante.lua</span>
+    <span class="line-count">128 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>vim.env.ANTHROPIC_API_KEY <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;sk-xxxx&#34;</span>
+</span></span><span style="display:flex;"><span>vim.env.DEEPSEEK_API_KEY <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;sk-xxxx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">return</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f1fa8c">&#34;yetone/avante.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>  event <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;VeryLazy&#34;</span>,
+</span></span><span style="display:flex;"><span>  lazy <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span>  version <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>, <span style="color:#6272a4">-- Set this to &#34;*&#34; to always pull the latest release version, or set it to false to update to the latest code changes.</span>
+</span></span><span style="display:flex;"><span>  opts <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>    provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek_r1&#34;</span>, <span style="color:#6272a4">-- 指定使用 DeepSeek 作为 provider</span>
+</span></span><span style="display:flex;"><span>    auto_suggeation_provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek&#34;</span>,
+</span></span><span style="display:flex;"><span>    vendors <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>      deepseek <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        __inherited_from <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;openai&#34;</span>,
+</span></span><span style="display:flex;"><span>        disable_tools <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        api_key_name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DEEPSEEK_API_KEY&#34;</span>,
+</span></span><span style="display:flex;"><span>        endpoint <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;https://api.deepseek.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        model <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek-coder&#34;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      deepseek_r1 <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        __inherited_from <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;openai&#34;</span>,
+</span></span><span style="display:flex;"><span>        disable_tools <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        api_key_name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DEEPSEEK_API_KEY&#34;</span>,
+</span></span><span style="display:flex;"><span>        endpoint <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;https://api.deepseek.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        model <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek-reasoner&#34;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      behaviour <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        auto_suggestions <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>, <span style="color:#6272a4">-- Experimental stage</span>
+</span></span><span style="display:flex;"><span>        auto_set_highlight_group <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        auto_set_keymaps <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        auto_apply_diff_after_generation <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        support_paste_from_clipboard <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      mappings <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">--- @class AvanteConflictMappings</span>
+</span></span><span style="display:flex;"><span>        diff <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          ours <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;co&#34;</span>,
+</span></span><span style="display:flex;"><span>          theirs <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;ct&#34;</span>,
+</span></span><span style="display:flex;"><span>          all_theirs <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;ca&#34;</span>,
+</span></span><span style="display:flex;"><span>          both <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;cb&#34;</span>,
+</span></span><span style="display:flex;"><span>          cursor <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;cc&#34;</span>,
+</span></span><span style="display:flex;"><span>          next <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;]x&#34;</span>,
+</span></span><span style="display:flex;"><span>          prev <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;[x&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        suggestion <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          accept <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;M-l&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          next <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;M-]&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          prev <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;M-[&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          dismiss <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;C-]&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        jump <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          next <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;]]&#34;</span>,
+</span></span><span style="display:flex;"><span>          prev <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;[[&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        submit <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          normal <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;CR&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          insert <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;C-s&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        sidebar <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          apply_all <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;A&#34;</span>,
+</span></span><span style="display:flex;"><span>          apply_cursor <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;a&#34;</span>,
+</span></span><span style="display:flex;"><span>          switch_windows <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;Tab&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          reverse_switch_windows <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;S-Tab&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      highlights <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">---@type AvanteConflictHighlights</span>
+</span></span><span style="display:flex;"><span>        diff <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          current <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DiffText&#34;</span>,
+</span></span><span style="display:flex;"><span>          incoming <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DiffAdd&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#6272a4">--- @class AvanteConflictUserConfig</span>
+</span></span><span style="display:flex;"><span>      diff <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        autojump <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">---@type string | fun(): any</span>
+</span></span><span style="display:flex;"><span>        list_opener <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;copen&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">--- Override the &#39;timeoutlen&#39; setting while hovering over a diff (see :help timeoutlen).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">--- Helps to avoid entering operator-pending mode with diff mappings starting with `c`.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">--- Disable by setting to -1.</span>
+</span></span><span style="display:flex;"><span>        override_timeoutlen <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">500</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      suggestion <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        debounce <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">600</span>,
+</span></span><span style="display:flex;"><span>        throttle <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">600</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`</span>
+</span></span><span style="display:flex;"><span>    build <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;make&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">-- build = &#34;powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false&#34; -- for windows</span>
+</span></span><span style="display:flex;"><span>    dependencies <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;stevearc/dressing.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;nvim-lua/plenary.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;MunifTanjim/nui.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#6272a4">--- The below dependencies are optional,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;echasnovski/mini.pick&#34;</span>, <span style="color:#6272a4">-- for file_selector provider mini.pick</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;nvim-telescope/telescope.nvim&#34;</span>, <span style="color:#6272a4">-- for file_selector provider telescope</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;hrsh7th/nvim-cmp&#34;</span>, <span style="color:#6272a4">-- autocompletion for avante commands and mentions</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;ibhagwan/fzf-lua&#34;</span>, <span style="color:#6272a4">-- for file_selector provider fzf</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;nvim-tree/nvim-web-devicons&#34;</span>, <span style="color:#6272a4">-- or echasnovski/mini.icons</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;zbirenbaum/copilot.lua&#34;</span>, <span style="color:#6272a4">-- for providers=&#39;copilot&#39;</span>
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">-- support for image pasting</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;HakonHarnes/img-clip.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>        event <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;VeryLazy&#34;</span>,
+</span></span><span style="display:flex;"><span>        opts <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#6272a4">-- recommended settings</span>
+</span></span><span style="display:flex;"><span>          default <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>            embed_image_as_base64 <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span>            prompt_for_file_name <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span>            drag_and_drop <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>              insert_mode <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">-- required for Windows users</span>
+</span></span><span style="display:flex;"><span>            use_absolute_path <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">-- Make sure to set this up properly if you have lazy=true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;MeanderingProgrammer/render-markdown.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>        opts <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          file_types <span style="color:#ff79c6">=</span> { <span style="color:#f1fa8c">&#34;markdown&#34;</span>, <span style="color:#f1fa8c">&#34;Avante&#34;</span> },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        ft <span style="color:#ff79c6">=</span> { <span style="color:#f1fa8c">&#34;markdown&#34;</span>, <span style="color:#f1fa8c">&#34;Avante&#34;</span> },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+在编写完成之后，我们使用<code>:Lazy install yetone/avante.nvim</code>来进行此插件的安装。</p>
+<p>我在这边对于auto_suggestions和chat的providers使用了不同的模型，参考于：<a href="https://github.com/yetone/avante.nvim/issues/774"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   avante.nvim#774<span class="external-link">↗</span></a>
+和<a href="https://github.com/yetone/avante.nvim/issues/1115"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   avante.nvim#1115<span class="external-link">↗</span></a>
+。</p>
+<h2 id="获取deepseek-api-key">获取DeepSeek API Key</h2>
+<h3 id="注册deepseek账户">注册DeepSeek账户</h3>
+<ul>
+<li>访问<a href="https://platform.deepseek.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   DeepSeek官网<span class="external-link">↗</span></a>
+</li>
+<li>点击&quot;Sign Up&quot;注册新账户</li>
+<li>完成邮箱验证</li>
+</ul>
+<h3 id="创建api-key">创建API Key</h3>
+<ul>
+<li>登录后进入控制台</li>
+<li>导航至&quot;API Keys&quot;页面</li>
+<li>点击&quot;Create new API Key&quot;按钮</li>
+<li>为API Key设置一个描述性名称（如&quot;nvim-avante&quot;）</li>
+<li>复制生成的API Key并妥善保存</li>
+</ul>
+<h3 id="api-key使用注意事项">API Key使用注意事项</h3>
+<ul>
+<li>API Key仅在创建时显示一次，请务必立即保存</li>
+<li>建议将API Key存储在安全的地方（如密码管理器）</li>
+<li>每个API Key都有使用限额，请合理使用</li>
+<li>如果API Key泄露，请立即删除并创建新的Key</li>
+</ul>
+<p>将你创建的DeepSeek API Key填入到上述文件开头的<code>vim.env.DEEPSEEK_API_KEY</code>即可开启你的avante.nvim之旅。<br>
+<div class="admonition tip ">
+  <div class="admonition-header">
+    <i class="fas fa-lightbulb"></i>
+    <span>Tip</span>
+    
+  </div>
+  <div class="admonition-content">
+    现在除了DeepSeek官方的API，其余家的都很稳定，打算购买第三方API的访客可以先参考下:<a href="https://m.aitntnews.com/newDetail.html?newId=11209"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   务实测试：DeepSeek 各家 API 真实速度（附：测试脚本）<span class="external-link">↗</span></a>
+。
+  </div>
+</div>
+
+</p>
+<h2 id="核心操作指南">核心操作指南</h2>
+<h3 id="快捷键映射">快捷键映射</h3>
+<p>avante.nvim 提供了丰富的快捷键操作体系，以下是主要快捷键说明：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">快捷键</th>
+          <th style="text-align: center">模式</th>
+          <th style="text-align: center">功能描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>&lt;leader&gt;aa</code></td>
+          <td style="text-align: center">普通模式</td>
+          <td style="text-align: center">打开/切换侧边栏</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>&lt;leader&gt;ar</code></td>
+          <td style="text-align: center">普通模式</td>
+          <td style="text-align: center">刷新侧边栏内容</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>&lt;leader&gt;af</code></td>
+          <td style="text-align: center">普通模式</td>
+          <td style="text-align: center">切换侧边栏焦点</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>&lt;leader&gt;ae</code></td>
+          <td style="text-align: center">普通模式</td>
+          <td style="text-align: center">编辑选中代码块</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>co</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">采用当前版本</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>ct</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">采用建议版本</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>ca</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">采用所有建议修改</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>cb</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">合并双方修改</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>cc</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">基于光标位置选择</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>]]</code></td>
+          <td style="text-align: center">结果窗口</td>
+          <td style="text-align: center">跳转到下一个代码块</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>[[</code></td>
+          <td style="text-align: center">结果窗口</td>
+          <td style="text-align: center">跳转到上一个代码块</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>使用Lazy.nvim时快捷键会自动安全绑定（不与现有快捷键冲突）</li>
+<li>可通过配置覆盖默认快捷键：</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>~/.config/nvim/lua/plugins/avante.lua</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>opts <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>  mappings <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>    diff <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>      ours <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;leader&gt;co&#34;</span>, <span style="color:#6272a4">-- 自定义采用当前版本</span>
+</span></span><span style="display:flex;"><span>      theirs <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;leader&gt;ct&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h3 id="核心命令">核心命令</h3>
+<p>avante.nvim 提供了一系列强大的命令操作：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">命令</th>
+          <th style="text-align: center">功能描述</th>
+          <th style="text-align: center">使用示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>:AvanteAsk [问题]</code></td>
+          <td style="text-align: center">向AI提问代码相关问题</td>
+          <td style="text-align: center"><code>:AvanteAsk 如何优化这个循环结构</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteChat</code></td>
+          <td style="text-align: center">开启代码库对话模式</td>
+          <td style="text-align: center"><code>:AvanteChat position=right</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteEdit</code></td>
+          <td style="text-align: center">编辑选中代码块</td>
+          <td style="text-align: center">配合视觉模式使用</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteRefresh</code></td>
+          <td style="text-align: center">刷新所有Avante窗口</td>
+          <td style="text-align: center">解决界面卡顿时使用</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteSwitchProvider</code></td>
+          <td style="text-align: center">切换AI服务提供商</td>
+          <td style="text-align: center"><code>:AvanteSwitchProvider openai</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteToggle</code></td>
+          <td style="text-align: center">开关侧边栏</td>
+          <td style="text-align: center">快速切换工作区布局</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>高级用法示例</strong>：</p>
+<ol>
+<li>带上下文的提问：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:AvanteAsk position=float 请解释这个函数的时间复杂度
+</span></span></code></pre></div><ol start="2">
+<li>代码重构工作流：</li>
+</ol>
+<ul>
+<li>选中目标代码块</li>
+<li>执行:AvanteEdit</li>
+<li>使用co/ct快捷键选择修改</li>
+<li>按 :w保存变更</li>
+</ul>
+<h2 id="笑话一则">笑话一则</h2>
+<p><a href="https://github.com/yetone/avante.nvim/issues/1011"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   avante.nvim#1011<span class="external-link">↗</span></a>
+:This was my process, and I&rsquo;m sure I&rsquo;m not the only one in this situation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>I am a software developer  
+</span></span><span style="display:flex;"><span>People are talking about AI; I have no idea how to use it  
+</span></span><span style="display:flex;"><span>Friend suggests this plugin  
+</span></span><span style="display:flex;"><span>Cool, maybe I&#39;ll learn how to use AI at work  
+</span></span><span style="display:flex;"><span>Add the plugin to my lazy.nvim config, try it out, and it asks for something called ANTHROPIC_API_KEY  
+</span></span><span style="display:flex;"><span>No idea what that is  
+</span></span><span style="display:flex;"><span>Google it  
+</span></span><span style="display:flex;"><span>Oh, looks like I need an account  
+</span></span><span style="display:flex;"><span>Create an account  
+</span></span><span style="display:flex;"><span>Find the key and add it to my .bashrc  
+</span></span><span style="display:flex;"><span>Try the plugin again  
+</span></span><span style="display:flex;"><span>I get a the response posted above  
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt; </span><span style="text-decoration:underline">&#34;make sure you have credit balance&#34;  
+</span></span></span><span style="display:flex;"><span><span style="text-decoration:underline"></span>No idea what that is  
+</span></span><span style="display:flex;"><span>Google it  
+</span></span><span style="display:flex;"><span>Apparently you have to pay for this ...?
+</span></span><span style="display:flex;"><span>Apparently I have $4.90 credit in my account
+</span></span><span style="display:flex;"><span>Seems like maybe I got $5 free to start and I&#39;ve used 10¢ of it ...?
+</span></span></code></pre></div>]]></content:encoded>
+    </item>
     <item>
       <title>2025_02_16 How_to_connect_nikon_in_archlinux</title>
       <link>http://localhost:1313/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</link>
@@ -32,8 +1092,8 @@
    
    class="custom-link">  
    MTP<span class="external-link">↗</span></a>
-(Media Transfer Protocol)协议传输照片的，但是运行<code>lsblk</code>没有出现设备，应该不是MSC；并且尝试jmtpfs尝试挂载MTP设备，运行<code>jmtpfs ~/camera</code>，并没有文件夹挂载在我自定义的相机文件夹,在我去谷歌搜索之后才大致明白了是怎么回事。<br>
-尼康系列下D700是第一款不再支持MSC的相机<span class="sidenote-number"><small class="sidenote">Cletus Lee在<a href="https://www.flickr.com/groups/1567431@N22/discuss/72157638076477643/"
+(Media Transfer Protocol)协议传输照片的，但是运行<code>lsblk</code>没有出现设备，应该不是MSC；并且尝试jmtpfs尝试挂载MTP设备，运行<code>jmtpfs ~/camera</code>，并没有文件夹挂载在我自定义的相机文件夹,在我去谷歌搜索之后才大致明白了是怎么回事。</p>
+<p>尼康系列下D700是第一款不再支持MSC的相机<span class="sidenote-number"><small class="sidenote">Cletus Lee在<a href="https://www.flickr.com/groups/1567431@N22/discuss/72157638076477643/"
    
     
        target="_blank" rel="noopener" 
@@ -42,8 +1102,8 @@
    D800 is not mounted on imac 10.9<span class="external-link">↗</span></a>
 中回答到&quot;The D700 was the first Nikon DSLR that does not offer a Mass Storage mode. The camera will only show up as a MTP device. It has to be set-able as a Mass storage device in a camera setup menu. This is no longer an option for D700, D800 D4 and other more recent ly released Nikons. &quot;</small></span>
 
-，该相机只能够以MTP协议传输文件，同时以后发布的相机也不再支持在相机中将传输模式设置为MSC。<br>
-接下来我在Nikon官网的一篇文章<a href="https://www.nikonimgsupport.com/na/NSG_article?articleNo=000047387&amp;lang=en_SG"
+，该相机只能够以MTP协议传输文件，同时以后发布的相机也不再支持在相机中将传输模式设置为MSC。</p>
+<p>接下来我在Nikon官网的一篇文章<a href="https://www.nikonimgsupport.com/na/NSG_article?articleNo=000047387&amp;lang=en_SG"
    
     
        target="_blank" rel="noopener" 
@@ -91,8 +1151,8 @@
    
    class="custom-link">  
    2700 款相机和媒体播放器<span class="external-link">↗</span></a>
-。<br>
-gPhoto2 运行在多个类 Unix 操作系统上，包括 Linux、FreeBSD、NetBSD、MacOS X 等。主要的 Linux 发行版（如 Debian GNU/Linux、Ubuntu、Gentoo、Fedora、openSUSE、Mandriva 等）都提供了 gPhoto。<br>
+。</p>
+<p>gPhoto2 运行在多个类 Unix 操作系统上，包括 Linux、FreeBSD、NetBSD、MacOS X 等。主要的 Linux 发行版（如 Debian GNU/Linux、Ubuntu、Gentoo、Fedora、openSUSE、Mandriva 等）都提供了 gPhoto。<br>
 我们使用以下命令下载gPhoto2：<br>
 
 
@@ -374,13 +1434,6 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
    The gPhoto2 Reference (the man pages)<span class="external-link">↗</span></a>
 。</p>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>2025_02_10 Open_source_1</title>
-      <link>http://localhost:1313/zh/posts/2025_02_10-open_source_1/</link>
-      <pubDate>Mon, 10 Feb 2025 20:04:47 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025_02_10-open_source_1/</guid>
-      <description></description>
     </item>
     <item>
       <title>2025_02_09 Ollama_deepseek_1</title>
@@ -6677,6 +7730,137 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
     
   
 
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
 
 
 
@@ -6685,19 +7869,53 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 
 
 
-<p><details class="custom-collapse" open>
+
+<p><details class="custom-collapse" >
   <summary markdown="span">
     <span>layouts/shortcodes/collapse.html</span>
-    <span class="line-count">8 lines</span>
+    <span class="line-count">41 lines</span>
   </summary>
   <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if .Get &#34;summary&#34; }}
-</span></span><span style="display:flex;"><span>{{ else }}
-</span></span><span style="display:flex;"><span>{{ warnf &#34;missing value for param &#39;summary&#39;: %s&#34; .Position }}
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{/* 参数处理逻辑 */}}
+</span></span><span style="display:flex;"><span>{{ $threshold := default 15 (.Get &#34;collapseThreshold&#34;) | int }}
+</span></span><span style="display:flex;"><span>{{ $forceCollapse := eq (.Get &#34;forceCollapse&#34;) &#34;true&#34; }}
+</span></span><span style="display:flex;"><span>{{ $openByDefault := eq (.Get &#34;openByDefault&#34;) &#34;true&#34; }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{/* 内容处理逻辑 */}}
+</span></span><span style="display:flex;"><span>{{ $rawContent := .Inner }}
+</span></span><span style="display:flex;"><span>{{ $content := $rawContent | markdownify }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{/* 精确行数计算（排除代码块标记和空行） */}}
+</span></span><span style="display:flex;"><span>{{ $cleanedContent := replaceRE `(?s)&lt;<span style="color:#ff79c6">pre.</span>*?&gt;\n?` &#34;&#34; $content }}
+</span></span><span style="display:flex;"><span>{{ $cleanedContent := replaceRE `(?s)&lt;/<span style="color:#ff79c6">pre</span>&gt;\n?` &#34;&#34; $cleanedContent }}
+</span></span><span style="display:flex;"><span>{{ $lines := split $cleanedContent &#34;\n&#34; }}
+</span></span><span style="display:flex;"><span>{{ $lineCount := -1 }}
+</span></span><span style="display:flex;"><span>{{ range $line := $lines }}
+</span></span><span style="display:flex;"><span>  {{ if ne (trim $line &#34; &#34;) &#34;&#34; }}
+</span></span><span style="display:flex;"><span>    {{ $lineCount = add $lineCount 1 }}
+</span></span><span style="display:flex;"><span>  {{ end }}
 </span></span><span style="display:flex;"><span>{{ end }}
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">p</span>&gt;&lt;<span style="color:#ff79c6">details</span> {{ <span style="color:#50fa7b">if</span> (<span style="color:#50fa7b">eq</span> (.<span style="color:#50fa7b">Get</span> &#34;<span style="color:#50fa7b">openByDefault</span>&#34;) <span style="color:#50fa7b">true</span>) }} <span style="color:#50fa7b">open</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">true</span> {{ <span style="color:#50fa7b">end</span> }}&gt;
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">summary</span> <span style="color:#50fa7b">markdown</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;span&#34;</span>&gt;{{ .Get &#34;summary&#34; | markdownify }}&lt;/<span style="color:#ff79c6">summary</span>&gt;
-</span></span><span style="display:flex;"><span>  {{ .Inner | markdownify }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{/* 自动折叠判断逻辑 */}}
+</span></span><span style="display:flex;"><span>{{ $shouldOpen := cond $forceCollapse 
+</span></span><span style="display:flex;"><span>  false 
+</span></span><span style="display:flex;"><span>  (or $openByDefault (lt $lineCount $threshold)) 
+</span></span><span style="display:flex;"><span>}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{/* 错误处理 */}}
+</span></span><span style="display:flex;"><span>{{ if not (.Get &#34;summary&#34;) }}
+</span></span><span style="display:flex;"><span>  {{ warnf &#34;missing value for param &#39;summary&#39;: %s&#34; .Position }}
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">p</span>&gt;&lt;<span style="color:#ff79c6">details</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;custom-collapse&#34;</span> {{ <span style="color:#50fa7b">if</span> $<span style="color:#50fa7b">shouldOpen</span> }}<span style="color:#50fa7b">open</span>{{ <span style="color:#50fa7b">end</span> }}&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">summary</span> <span style="color:#50fa7b">markdown</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;span&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">span</span>&gt;{{ .Get &#34;summary&#34; | markdownify }}&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;line-count&#34;</span>&gt;{{ $lineCount }} lines&lt;/<span style="color:#ff79c6">span</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">summary</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ $content }}
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">div</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">details</span>&gt;&lt;/<span style="color:#ff79c6">p</span>&gt;
 </span></span></code></pre></div>
   </div>
@@ -8545,6 +9763,162 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
     
   
 
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
 
 
 
@@ -8556,14 +9930,15 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 <p><details class="custom-collapse" >
   <summary markdown="span">
     <span>assets/extended/custom.css</span>
-    <span class="line-count">36 lines</span>
+    <span class="line-count">75 lines</span>
   </summary>
   <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote</span> {
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">float</span>: <span style="color:#ff79c6">right</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">clear</span>: <span style="color:#ff79c6">right</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-right</span>: <span style="color:#bd93f9">-20</span><span style="color:#8be9fd">vw</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">40</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin-top</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">rem</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">max-width</span>: <span style="color:#bd93f9">300</span><span style="color:#8be9fd">px</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">16</span><span style="color:#8be9fd">px</span>; <span style="color:#6272a4">/* 增加内边距以便有足够空间 */</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">border</span>: <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#ff79c6">solid</span> <span style="color:#ff79c6">transparent</span>; <span style="color:#6272a4">/* 默认透明边框 */</span>
@@ -8571,29 +9946,67 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">box-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>shadow1); <span style="color:#6272a4">/* 默认轻微阴影 */</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">all</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">ease</span>; <span style="color:#6272a4">/* 增加平滑过渡效果 */</span>
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">body</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">counter-reset</span>: sidenote-counter;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* Wide viewport */</span>
+</span></span><span style="display:flex;"><span>@<span style="color:#ff79c6">media</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">min-width</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">1400px</span><span style="color:#ff79c6">)</span> {
+</span></span><span style="display:flex;"><span>    .<span style="color:#50fa7b">sidenote</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">float</span>: <span style="color:#ff79c6">right</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">clear</span>: <span style="color:#ff79c6">right</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">margin-right</span>: <span style="color:#bd93f9">-20</span><span style="color:#8be9fd">vw</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">text-align</span>: <span style="color:#ff79c6">left</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">top</span>: <span style="color:#bd93f9">-3</span><span style="color:#8be9fd">rem</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">20</span><span style="color:#8be9fd">vw</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">margin-top</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">rem</span>;
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* Narrow viewport */</span>
+</span></span><span style="display:flex;"><span>@<span style="color:#ff79c6">media</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">max-width</span><span style="color:#ff79c6">:</span> <span style="color:#ff79c6">1400px</span><span style="color:#ff79c6">)</span> {
+</span></span><span style="display:flex;"><span>    .<span style="color:#50fa7b">sidenote</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">float</span>: <span style="color:#ff79c6">right</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">text-align</span>: <span style="color:#ff79c6">left</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">width</span>: <span style="color:#bd93f9">100</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">rem</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">padding-left</span>: <span style="color:#bd93f9">15</span><span style="color:#8be9fd">%</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 定义数字编号的外观 */</span>
 </span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote-number</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">counter-increment</span>: sidenote-counter;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 给每个sidenote添加#符号 */</span>
 </span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote</span>::before {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">content</span>: <span style="color:#f1fa8c">&#34;# &#34;</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">position</span>: <span style="color:#ff79c6">relative</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">0.9</span><span style="color:#8be9fd">em</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-weight</span>: <span style="color:#bd93f9">700</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">red</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">red</span>; <span style="color:#6272a4">/* 默认红色 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">all</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">ease</span>; <span style="color:#6272a4">/* 增加过渡效果 */</span>
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 给sidenote-number添加后缀# */</span>
 </span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote-number</span>::after {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">content</span>: <span style="color:#f1fa8c">&#34;#&#34;</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">vertical-align</span>: <span style="color:#ff79c6">super</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-size</span>: <span style="color:#bd93f9">0.8</span><span style="color:#8be9fd">em</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">font-weight</span>: <span style="color:#bd93f9">700</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#bd93f9">#409dff</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#bd93f9">#409dff</span>; <span style="color:#6272a4">/* 默认蓝色 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">transition</span>: <span style="color:#ff79c6">all</span> <span style="color:#bd93f9">0.3</span><span style="color:#8be9fd">s</span> <span style="color:#ff79c6">ease</span>; <span style="color:#6272a4">/* 增加过渡效果 */</span>
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 悬停时，数字#和注释的高亮效果 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote-number</span>:hover::after {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">color</span>: <span style="color:#ff79c6">red</span>; <span style="color:#6272a4">/* 悬停时改变#符号的颜色 */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">/* 悬停时，增加sidenote的背景和阴影 */</span>
 </span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">sidenote-number</span>:hover .<span style="color:#50fa7b">sidenote</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background-color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>bg);
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">box-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>shadow2); <span style="color:#6272a4">/* 悬停时加强阴影效果 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">background-color</span>: <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>bg<span style="color:#ff79c6">-</span>hover); <span style="color:#6272a4">/* 悬停时背景色变化 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">box-shadow</span>: <span style="color:#bd93f9">0</span> <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">8</span><span style="color:#8be9fd">px</span> <span style="color:#50fa7b">var</span>(<span style="color:#ff79c6">--</span>sidenote<span style="color:#ff79c6">-</span>shadow2); <span style="color:#6272a4">/* 强化阴影效果 */</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
   </div>
@@ -8623,165 +10036,6 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
     
   
 
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
 
 
 
@@ -8790,54 +10044,13 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 
 
 
-
-<p><details class="custom-collapse" >
+<p><details class="custom-collapse" open>
   <summary markdown="span">
     <span>layouts/shortcodes/sidenote.htm</span>
-    <span class="line-count">41 lines</span>
+    <span class="line-count">1 lines</span>
   </summary>
   <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{/* 参数处理逻辑 */}}
-</span></span><span style="display:flex;"><span>{{ $threshold := default 15 (.Get &#34;collapseThreshold&#34;) | int }}
-</span></span><span style="display:flex;"><span>{{ $forceCollapse := eq (.Get &#34;forceCollapse&#34;) &#34;true&#34; }}
-</span></span><span style="display:flex;"><span>{{ $openByDefault := eq (.Get &#34;openByDefault&#34;) &#34;true&#34; }}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{{/* 内容处理逻辑 */}}
-</span></span><span style="display:flex;"><span>{{ $rawContent := .Inner }}
-</span></span><span style="display:flex;"><span>{{ $content := $rawContent | markdownify }}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{{/* 精确行数计算（排除代码块标记和空行） */}}
-</span></span><span style="display:flex;"><span>{{ $cleanedContent := replaceRE `(?s)&lt;<span style="color:#ff79c6">pre.</span>*?&gt;\n?` &#34;&#34; $content }}
-</span></span><span style="display:flex;"><span>{{ $cleanedContent := replaceRE `(?s)&lt;/<span style="color:#ff79c6">pre</span>&gt;\n?` &#34;&#34; $cleanedContent }}
-</span></span><span style="display:flex;"><span>{{ $lines := split $cleanedContent &#34;\n&#34; }}
-</span></span><span style="display:flex;"><span>{{ $lineCount := -1 }}
-</span></span><span style="display:flex;"><span>{{ range $line := $lines }}
-</span></span><span style="display:flex;"><span>  {{ if ne (trim $line &#34; &#34;) &#34;&#34; }}
-</span></span><span style="display:flex;"><span>    {{ $lineCount = add $lineCount 1 }}
-</span></span><span style="display:flex;"><span>  {{ end }}
-</span></span><span style="display:flex;"><span>{{ end }}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{{/* 自动折叠判断逻辑 */}}
-</span></span><span style="display:flex;"><span>{{ $shouldOpen := cond $forceCollapse 
-</span></span><span style="display:flex;"><span>  false 
-</span></span><span style="display:flex;"><span>  (or $openByDefault (lt $lineCount $threshold)) 
-</span></span><span style="display:flex;"><span>}}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{{/* 错误处理 */}}
-</span></span><span style="display:flex;"><span>{{ if not (.Get &#34;summary&#34;) }}
-</span></span><span style="display:flex;"><span>  {{ warnf &#34;missing value for param &#39;summary&#39;: %s&#34; .Position }}
-</span></span><span style="display:flex;"><span>{{ end }}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">p</span>&gt;&lt;<span style="color:#ff79c6">details</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;custom-collapse&#34;</span> {{ <span style="color:#50fa7b">if</span> $<span style="color:#50fa7b">shouldOpen</span> }}<span style="color:#50fa7b">open</span>{{ <span style="color:#50fa7b">end</span> }}&gt;
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">summary</span> <span style="color:#50fa7b">markdown</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;span&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">span</span>&gt;{{ .Get &#34;summary&#34; | markdownify }}&lt;/<span style="color:#ff79c6">span</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;line-count&#34;</span>&gt;{{ $lineCount }} lines&lt;/<span style="color:#ff79c6">span</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">summary</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;content&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    {{ $content }}
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#ff79c6">div</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">details</span>&gt;&lt;/<span style="color:#ff79c6">p</span>&gt;
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">span</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote-number&#34;</span>&gt;&lt;<span style="color:#ff79c6">small</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;sidenote&#34;</span>&gt;{{ .Inner | markdownify }}&lt;/<span style="color:#ff79c6">small</span>&gt;&lt;/<span style="color:#ff79c6">span</span>&gt;
 </span></span></code></pre></div>
   </div>
 </details></p>
@@ -10263,7 +11476,7 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 <p>{{&lt; admonition type=&ldquo;danger&rdquo; title=&ldquo;严重警告！&rdquo; collapsible=&ldquo;true&rdquo; &gt;}}<br>
 可折叠的警告区块，点击头部展开/收起<br>
 支持 <strong>Markdown</strong> 和自动图标⚡<br>
-{&lt;/* /admonition */&gt;}}</p></blockquote>
+{&lt; /admonition &gt;}}</p></blockquote>
 <div class="admonition note ">
   <div class="admonition-header">
     <i class="fas fa-info-circle"></i>

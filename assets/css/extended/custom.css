@@ -29,9 +29,9 @@
 /* 悬停效果 */
 .custom-link:hover {
   outline: none; /* 移除默认轮廓 */
-  background:var(--bg-light);
+  background:var(--code-bg);
   border-radius: 5px; /* 圆角效果 */
-  box-shadow: 0 2px 4px var(--secondary); /* 默认轻微阴影 */
+  box-shadow: 0 2px 4px var(--sidenote-shadow2); /* 默认轻微阴影 */
   transition: all 0.3s ease; /* 增加平滑过渡效果 */
   padding: 4px 0px; /* 增加内边距以便有足够空间 */
 }
@@ -39,11 +39,6 @@
 
 /* licenses.css */
 .license-badge {
-  --bg-light: #f8f9fa;
-  --bg-dark: #2b2d32;
-  --text-light: #212529;
-  --text-dark: #f8f9fa;
-  
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -53,9 +48,9 @@
   transition: all 0.3s ease;
   
   /* 默认浅色主题 */
-  background: var(--bg-light);
-  color: var(--text-light);
-  border: 1px solid rgba(0,0,0,0.1);
+  background: var(--code-bg);
+  color: var(--content);
+  border: 1px solid rgba(0,0,0,0.5);
 }
 
 .license-icon {
@@ -126,6 +121,7 @@
 /*}*/
 
 
+
 .sidenote {
   float: right;
   clear: right;
@@ -139,7 +135,6 @@
   transition: all 0.3s ease; /* 增加平滑过渡效果 */
 }
 
-
 /* Wide viewport */
 @media (min-width: 1400px) {
     .sidenote {
@@ -147,7 +142,6 @@
         clear: right;
         margin-right: -20vw;
         text-align: left;
-
         top: -3rem;
         width: 20vw;
         margin-top: 1rem;
@@ -159,34 +153,61 @@
     .sidenote {
         float: right;
         text-align: left;
-
         width: 100%;
         margin: 1rem 0;
         padding-left: 15%;
     }
 }
 
+/* 定义数字编号的外观 */
 .sidenote-number {
   counter-increment: sidenote-counter;
+  position: relative;
 }
+
+/* 给每个sidenote添加#符号 */
 .sidenote::before {
   content: "# ";
   position: relative;
   font-size: 0.9em;
   font-weight: 700;
-  color: red;
+  color: red; /* 默认红色 */
+  transition: all 0.3s ease; /* 增加过渡效果 */
 }
+
+/* 双向悬停反馈 */
+.sidenote:hover,
+.sidenote-number:hover .sidenote,
+.sidenote:hover ~ .sidenote-number { /* 新增反向反馈 */
+    background-color: var(--sidenote-bg);
+    box-shadow: 0 4px 8px var(--sidenote-shadow2);
+    border-color: #409dff; /* 添加边框高亮 */
+}
+
+
+/* 给sidenote-number添加后缀# */
 .sidenote-number::after {
   content: "#";
   vertical-align: super;
   font-size: 0.8em;
   font-weight: 700;
-  color: #409dff;
+  color: #409dff; /* 默认蓝色 */
+  transition: all 0.3s ease; /* 增加过渡效果 */
 }
+
+/* 悬停时，数字#和注释的高亮效果 */
+.sidenote-number:hover::after {
+  color: red; /* 悬停时改变#符号的颜色 */
+
+}
+
+/* 悬停时，增加sidenote的背景和阴影 */
 .sidenote-number:hover .sidenote {
-  background-color: var(--sidenote-bg);
-  box-shadow: 0 4px 8px var(--sidenote-shadow2); /* 悬停时加强阴影效果 */
+  background-color: var(--sidenote-bg-hover); /* 悬停时背景色变化 */
+  box-shadow: 0 4px 8px var(--sidenote-shadow2); /* 强化阴影效果 */
 }
+
+
 
 /*代码折叠*/
 .custom-collapse {
@@ -340,7 +361,7 @@
 
 .entry-cover img {
     max-width: 100%;         /* 限制宽度不超过父容器宽度 */
-    max-height: 500px;       /* 限制最大高度 */
+    max-height: 300px;       /* 限制最大高度 */
     width: auto;             /* 按比例调整宽度 */
     height: auto;            /* 按比例调整高度 */
     object-fit: contain;     /* 保持图像的原始比例 */

@@ -39,6 +39,7 @@ params:
 
   # RSS 设置
   ShowFullTextinRSS: true
+  ShowRssButtonInSectionTermList: true
   
   # 其他功能
   comments: true
@@ -113,7 +114,7 @@ languages:
       description: "测试描述"
       profileMode:  # 添加：个人主页模式
         enabled: true
-        title: "DLog"
+        title: "DLog \U0001F44B"
         subtitle: "个人博客"
     menu:
       main:
@@ -129,6 +130,10 @@ languages:
           name: "搜索"
           url: "/search/"
           weight: 3
+        - identifier: friend
+          name: "友链"
+          url: "/friend"
+          weight: 4
 
   en:
     languageCode: "en-US"
@@ -156,6 +161,10 @@ languages:
           name: "Search"
           url: "/search/"
           weight: 3 
+        - identifier: friend
+          name: "Friend"
+          url: "/friend"
+          weight: 4
 
 pagination:
   disableAliases: false

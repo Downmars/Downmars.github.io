@@ -1,0 +1,15 @@
+{{ define "main" }}
+<main class="main">
+    <article class="friend-container">
+        <header class="page-header">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.summary }}<p class="summary">{{ . }}</p>{{ end }}
+        </header>
+        
+        <section class="friend-grid">
+            {{ .Content }}
+        </section>
+    </article>
+</main>
+{{ end }}
+

@@ -1,68 +1,79 @@
+/* 页脚基础样式 */
 .footer,
 .top-link {
-    font-size: 12px;
-    color: var(--secondary);
+    font-size: 12px;          /* 基础字号 */
+    color: var(--secondary);  /* 使用主题次要颜色 */
 }
 
+/* 主页脚容器样式 */
 .footer {
-    max-width: calc(var(--main-width) + var(--gap) * 2);
-    margin: auto;
-    padding: calc((var(--footer-height) - var(--gap)) / 2) var(--gap);
-    text-align: center;
-    line-height: 24px;
+    max-width: calc(var(--main-width) + var(--gap) * 2); /* 动态计算最大宽度 */
+    margin: auto;               /* 水平居中 */
+    padding: calc((var(--footer-height) - var(--gap)) / 2) var(--gap); /* 动态垂直间距 */
+    text-align: center;         /* 内容居中 */
+    line-height: 24px;          /* 行高设定 */
 }
 
+/* 页脚文本间隔控制 */
 .footer span {
-    margin-inline-start: 1px;
+    margin-inline-start: 1px;   /* 左右边距各1px */
     margin-inline-end: 1px;
 }
 
+/* 最后一个span元素防止换行 */
 .footer span:last-child {
-    white-space: nowrap;
+    white-space: nowrap;        /* 禁止文本换行 */
 }
 
+/* 页脚链接基础样式 */
 .footer a {
-    color: inherit;
-    border-bottom: 1px solid var(--secondary);
+    color: inherit;             /* 继承父级颜色 */
+    border-bottom: 1px solid var(--secondary); /* 底部边框 */
 }
 
+/* 链接悬停效果 */
 .footer a:hover {
-    border-bottom: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary); /* 悬停时改变边框颜色 */
 }
 
+/* 返回顶部按钮基础样式 */
 .top-link {
-    visibility: hidden;
-    position: fixed;
-    bottom: 60px;
-    right: 30px;
-    z-index: 99;
-    background: var(--tertiary);
-    width: 42px;
-    height: 42px;
-    padding: 12px;
-    border-radius: 64px;
-    transition: visibility 0.5s, opacity 0.8s linear;
+    visibility: hidden;         /* 默认隐藏 */
+    position: fixed;            /* 固定定位 */
+    bottom: 30px;               /* 距离底部位置 */
+    right: 30px;                /* 距离右侧位置 */
+    z-index: 99;                /* 确保在最上层 */
+    background: var(--tertiary);/* 使用第三主题色 */
+    width: 42px;                /* 固定宽度 */
+    height: 42px;               /* 固定高度 */
+    padding: 12px;              /* 内边距 */
+    border-radius: 64px;        /* 圆形按钮 */
+    transition: visibility 0.5s, opacity 0.8s linear; /* 过渡动画效果 */
 }
 
+/* 按钮阴影效果 */
 .top-link,
 .top-link svg {
-    filter: drop-shadow(0px 0px 0px var(--theme));
+    filter: drop-shadow(0px 0px 0px var(--theme)); /* 主题色投影 */
 }
 
+/* 悬停颜色变化 */
 .footer a:hover,
 .top-link:hover {
-    color: var(--primary);
+    color: var(--primary);      /* 使用主题主色 */
 }
 
+/* 移除焦点轮廓 */
 .top-link:focus,
 #theme-toggle:focus {
-    outline: 0;
+    outline: 0;                 /* 移除默认轮廓线 */
 }
 
+/* 统计信息样式 */
 .totalcount {
-    color: var(--card-text-color-secondary);
-    font-weight: normal;
-    margin-bottom: 5px;
-    text-align: center; /* 居中文本 */
-    }
+    color: var(--card-text-color-secondary); /* 次要文本颜色 */
+    font-weight: normal;        /* 常规字重 */
+    margin-bottom: 5px;         /* 底部间距 */
+    text-align: center;         /* 居中文本 */
+}
 

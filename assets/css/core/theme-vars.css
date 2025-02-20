@@ -43,13 +43,13 @@
     --code-bg: rgb(55, 56, 62);
 
   /* Theme-specific variables for sidenote */
-  --sidenote-bg: var(--theme); /* 侧注背景色 */
-  --sidenote-hover-bg: rgba(255, 255, 255, 0.1); /* 悬停时背景色 */
+  --sidenote-bg: var(--code-bg); /* 侧注背景色 */
+  --sidenote-hover-bg: var(--theme); /* 悬停时背景色 */
   --sidenote-hover-border: var(--border); /* 悬停时边框颜色 */
   --sidenote-color: var(--primary); /* 侧注数字颜色 */
   --sidenote-number-color: var(--secondary); /* 侧注编号颜色 */
-  --sidenote-shadow1: rgba(255, 255, 255, 0.1);
-  --sidenote-shadow2: rgba(255, 255, 255, 0.2);
+  --sidenote-shadow1: rgba(0, 0, 0, 0.1);
+  --sidenote-shadow2: rgba(0, 0, 0, 0.2);
 }
 
 .list {

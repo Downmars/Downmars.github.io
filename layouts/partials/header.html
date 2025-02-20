@@ -39,8 +39,8 @@
 </script>
 {{- end }}
 
-<header class="header" id="smart-header">
-    <nav class="nav rounded-[12px] backdrop-blur-[10px] bg-opacity-85 transition-all duration-300">
+<header class="header">
+    <nav class="nav">
         <div class="logo">
             {{- $label_text := (site.Params.label.text | default site.Title) }}
             {{- if site.Title }}
@@ -146,7 +146,12 @@
             {{- end }}
         </ul>
     </nav>
+
+
 </header>
+
+
+
 
 <!---->
 <!-- <script> -->

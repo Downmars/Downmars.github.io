@@ -4,10 +4,1070 @@
     <title>Deepseek on DLog</title>
     <link>http://localhost:1313/zh/tags/deepseek/</link>
     <description>Recent content in Deepseek on DLog</description>
-    <generator>Hugo -- 0.143.1</generator>
+    <generator>Hugo -- 0.144.1</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 09 Feb 2025 20:08:43 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 18 Feb 2025 18:27:58 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/tags/deepseek/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025_02_18 Avante.nvim_with_deepseek_api</title>
+      <link>http://localhost:1313/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</link>
+      <pubDate>Tue, 18 Feb 2025 18:27:58 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;前段时间，&lt;a href=&#34;https://github.com/yetone/avante.nvim?tab=readme-ov-file&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   avante.nvim&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+插件支持了&lt;a href=&#34;https://platform.deepseek.com/usage&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   DeepSeek的API&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;截止2025年2月18日，由于官方服务器资源紧张，暂时停止API的充值服务。&lt;/small&gt;&lt;/span&gt;
+
+，这边将配置的全流程记录一下，供大家参考。&lt;/p&gt;
+&lt;h2 id=&#34;avantenvim&#34;&gt;avante.nvim&lt;/h2&gt;
+&lt;p&gt;avante.nvim是一个&lt;a href=&#34;https://neovim.io/&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Neovim&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+的插件，旨在模仿AI开发环境&lt;a href=&#34;https://www.cursor.com/&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Cursor&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+的工作模式。它给用户提供了AI驱动的代码建议，并且能够以花费最小的努力将这些建议直接应用于其源文件。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>前段时间，<a href="https://github.com/yetone/avante.nvim?tab=readme-ov-file"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   avante.nvim<span class="external-link">↗</span></a>
+插件支持了<a href="https://platform.deepseek.com/usage"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   DeepSeek的API<span class="external-link">↗</span></a>
+<span class="sidenote-number"><small class="sidenote">截止2025年2月18日，由于官方服务器资源紧张，暂时停止API的充值服务。</small></span>
+
+，这边将配置的全流程记录一下，供大家参考。</p>
+<h2 id="avantenvim">avante.nvim</h2>
+<p>avante.nvim是一个<a href="https://neovim.io/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Neovim<span class="external-link">↗</span></a>
+的插件，旨在模仿AI开发环境<a href="https://www.cursor.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Cursor<span class="external-link">↗</span></a>
+的工作模式。它给用户提供了AI驱动的代码建议，并且能够以花费最小的努力将这些建议直接应用于其源文件。</p>
+<p>由于，我这里使用的是<a href="https://github.com/LazyVim/LazyVim"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   LazyVim<span class="external-link">↗</span></a>
+来管理我的NeoVim插件配置，我们可以很方便的进行我的anate.nvim的安装。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>~/.config/nvim/lua/plugins/avante.lua</span>
+    <span class="line-count">128 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>vim.env.ANTHROPIC_API_KEY <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;sk-xxxx&#34;</span>
+</span></span><span style="display:flex;"><span>vim.env.DEEPSEEK_API_KEY <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;sk-xxxx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">return</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f1fa8c">&#34;yetone/avante.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>  event <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;VeryLazy&#34;</span>,
+</span></span><span style="display:flex;"><span>  lazy <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span>  version <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>, <span style="color:#6272a4">-- Set this to &#34;*&#34; to always pull the latest release version, or set it to false to update to the latest code changes.</span>
+</span></span><span style="display:flex;"><span>  opts <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>    provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek_r1&#34;</span>, <span style="color:#6272a4">-- 指定使用 DeepSeek 作为 provider</span>
+</span></span><span style="display:flex;"><span>    auto_suggeation_provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek&#34;</span>,
+</span></span><span style="display:flex;"><span>    vendors <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>      deepseek <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        __inherited_from <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;openai&#34;</span>,
+</span></span><span style="display:flex;"><span>        disable_tools <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        api_key_name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DEEPSEEK_API_KEY&#34;</span>,
+</span></span><span style="display:flex;"><span>        endpoint <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;https://api.deepseek.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        model <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek-coder&#34;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      deepseek_r1 <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        __inherited_from <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;openai&#34;</span>,
+</span></span><span style="display:flex;"><span>        disable_tools <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        api_key_name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DEEPSEEK_API_KEY&#34;</span>,
+</span></span><span style="display:flex;"><span>        endpoint <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;https://api.deepseek.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        model <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek-reasoner&#34;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      behaviour <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        auto_suggestions <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>, <span style="color:#6272a4">-- Experimental stage</span>
+</span></span><span style="display:flex;"><span>        auto_set_highlight_group <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        auto_set_keymaps <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        auto_apply_diff_after_generation <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        support_paste_from_clipboard <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      mappings <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">--- @class AvanteConflictMappings</span>
+</span></span><span style="display:flex;"><span>        diff <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          ours <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;co&#34;</span>,
+</span></span><span style="display:flex;"><span>          theirs <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;ct&#34;</span>,
+</span></span><span style="display:flex;"><span>          all_theirs <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;ca&#34;</span>,
+</span></span><span style="display:flex;"><span>          both <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;cb&#34;</span>,
+</span></span><span style="display:flex;"><span>          cursor <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;cc&#34;</span>,
+</span></span><span style="display:flex;"><span>          next <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;]x&#34;</span>,
+</span></span><span style="display:flex;"><span>          prev <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;[x&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        suggestion <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          accept <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;M-l&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          next <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;M-]&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          prev <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;M-[&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          dismiss <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;C-]&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        jump <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          next <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;]]&#34;</span>,
+</span></span><span style="display:flex;"><span>          prev <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;[[&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        submit <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          normal <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;CR&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          insert <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;C-s&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        sidebar <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          apply_all <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;A&#34;</span>,
+</span></span><span style="display:flex;"><span>          apply_cursor <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;a&#34;</span>,
+</span></span><span style="display:flex;"><span>          switch_windows <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;Tab&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>          reverse_switch_windows <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;S-Tab&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      highlights <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">---@type AvanteConflictHighlights</span>
+</span></span><span style="display:flex;"><span>        diff <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          current <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DiffText&#34;</span>,
+</span></span><span style="display:flex;"><span>          incoming <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DiffAdd&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#6272a4">--- @class AvanteConflictUserConfig</span>
+</span></span><span style="display:flex;"><span>      diff <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        autojump <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">---@type string | fun(): any</span>
+</span></span><span style="display:flex;"><span>        list_opener <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;copen&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">--- Override the &#39;timeoutlen&#39; setting while hovering over a diff (see :help timeoutlen).</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">--- Helps to avoid entering operator-pending mode with diff mappings starting with `c`.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">--- Disable by setting to -1.</span>
+</span></span><span style="display:flex;"><span>        override_timeoutlen <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">500</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      suggestion <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>        debounce <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">600</span>,
+</span></span><span style="display:flex;"><span>        throttle <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">600</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`</span>
+</span></span><span style="display:flex;"><span>    build <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;make&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">-- build = &#34;powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false&#34; -- for windows</span>
+</span></span><span style="display:flex;"><span>    dependencies <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;stevearc/dressing.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;nvim-lua/plenary.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;MunifTanjim/nui.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#6272a4">--- The below dependencies are optional,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;echasnovski/mini.pick&#34;</span>, <span style="color:#6272a4">-- for file_selector provider mini.pick</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;nvim-telescope/telescope.nvim&#34;</span>, <span style="color:#6272a4">-- for file_selector provider telescope</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;hrsh7th/nvim-cmp&#34;</span>, <span style="color:#6272a4">-- autocompletion for avante commands and mentions</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;ibhagwan/fzf-lua&#34;</span>, <span style="color:#6272a4">-- for file_selector provider fzf</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;nvim-tree/nvim-web-devicons&#34;</span>, <span style="color:#6272a4">-- or echasnovski/mini.icons</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;zbirenbaum/copilot.lua&#34;</span>, <span style="color:#6272a4">-- for providers=&#39;copilot&#39;</span>
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">-- support for image pasting</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;HakonHarnes/img-clip.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>        event <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;VeryLazy&#34;</span>,
+</span></span><span style="display:flex;"><span>        opts <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#6272a4">-- recommended settings</span>
+</span></span><span style="display:flex;"><span>          default <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>            embed_image_as_base64 <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span>            prompt_for_file_name <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span>            drag_and_drop <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>              insert_mode <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">-- required for Windows users</span>
+</span></span><span style="display:flex;"><span>            use_absolute_path <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">-- Make sure to set this up properly if you have lazy=true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;MeanderingProgrammer/render-markdown.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>        opts <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>          file_types <span style="color:#ff79c6">=</span> { <span style="color:#f1fa8c">&#34;markdown&#34;</span>, <span style="color:#f1fa8c">&#34;Avante&#34;</span> },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        ft <span style="color:#ff79c6">=</span> { <span style="color:#f1fa8c">&#34;markdown&#34;</span>, <span style="color:#f1fa8c">&#34;Avante&#34;</span> },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+在编写完成之后，我们使用<code>:Lazy install yetone/avante.nvim</code>来进行此插件的安装。</p>
+<p>我在这边对于auto_suggestions和chat的providers使用了不同的模型，参考于：<a href="https://github.com/yetone/avante.nvim/issues/774"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   avante.nvim#774<span class="external-link">↗</span></a>
+和<a href="https://github.com/yetone/avante.nvim/issues/1115"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   avante.nvim#1115<span class="external-link">↗</span></a>
+。</p>
+<h2 id="获取deepseek-api-key">获取DeepSeek API Key</h2>
+<h3 id="注册deepseek账户">注册DeepSeek账户</h3>
+<ul>
+<li>访问<a href="https://platform.deepseek.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   DeepSeek官网<span class="external-link">↗</span></a>
+</li>
+<li>点击&quot;Sign Up&quot;注册新账户</li>
+<li>完成邮箱验证</li>
+</ul>
+<h3 id="创建api-key">创建API Key</h3>
+<ul>
+<li>登录后进入控制台</li>
+<li>导航至&quot;API Keys&quot;页面</li>
+<li>点击&quot;Create new API Key&quot;按钮</li>
+<li>为API Key设置一个描述性名称（如&quot;nvim-avante&quot;）</li>
+<li>复制生成的API Key并妥善保存</li>
+</ul>
+<h3 id="api-key使用注意事项">API Key使用注意事项</h3>
+<ul>
+<li>API Key仅在创建时显示一次，请务必立即保存</li>
+<li>建议将API Key存储在安全的地方（如密码管理器）</li>
+<li>每个API Key都有使用限额，请合理使用</li>
+<li>如果API Key泄露，请立即删除并创建新的Key</li>
+</ul>
+<p>将你创建的DeepSeek API Key填入到上述文件开头的<code>vim.env.DEEPSEEK_API_KEY</code>即可开启你的avante.nvim之旅。<br>
+<div class="admonition tip ">
+  <div class="admonition-header">
+    <i class="fas fa-lightbulb"></i>
+    <span>Tip</span>
+    
+  </div>
+  <div class="admonition-content">
+    现在除了DeepSeek官方的API，其余家的都很稳定，打算购买第三方API的访客可以先参考下:<a href="https://m.aitntnews.com/newDetail.html?newId=11209"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   务实测试：DeepSeek 各家 API 真实速度（附：测试脚本）<span class="external-link">↗</span></a>
+。
+  </div>
+</div>
+
+</p>
+<h2 id="核心操作指南">核心操作指南</h2>
+<h3 id="快捷键映射">快捷键映射</h3>
+<p>avante.nvim 提供了丰富的快捷键操作体系，以下是主要快捷键说明：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">快捷键</th>
+          <th style="text-align: center">模式</th>
+          <th style="text-align: center">功能描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>&lt;leader&gt;aa</code></td>
+          <td style="text-align: center">普通模式</td>
+          <td style="text-align: center">打开/切换侧边栏</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>&lt;leader&gt;ar</code></td>
+          <td style="text-align: center">普通模式</td>
+          <td style="text-align: center">刷新侧边栏内容</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>&lt;leader&gt;af</code></td>
+          <td style="text-align: center">普通模式</td>
+          <td style="text-align: center">切换侧边栏焦点</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>&lt;leader&gt;ae</code></td>
+          <td style="text-align: center">普通模式</td>
+          <td style="text-align: center">编辑选中代码块</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>co</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">采用当前版本</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>ct</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">采用建议版本</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>ca</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">采用所有建议修改</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>cb</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">合并双方修改</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>cc</code></td>
+          <td style="text-align: center">差异模式</td>
+          <td style="text-align: center">基于光标位置选择</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>]]</code></td>
+          <td style="text-align: center">结果窗口</td>
+          <td style="text-align: center">跳转到下一个代码块</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>[[</code></td>
+          <td style="text-align: center">结果窗口</td>
+          <td style="text-align: center">跳转到上一个代码块</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>使用Lazy.nvim时快捷键会自动安全绑定（不与现有快捷键冲突）</li>
+<li>可通过配置覆盖默认快捷键：</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>~/.config/nvim/lua/plugins/avante.lua</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>opts <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>  mappings <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>    diff <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>      ours <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;leader&gt;co&#34;</span>, <span style="color:#6272a4">-- 自定义采用当前版本</span>
+</span></span><span style="display:flex;"><span>      theirs <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&lt;leader&gt;ct&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h3 id="核心命令">核心命令</h3>
+<p>avante.nvim 提供了一系列强大的命令操作：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">命令</th>
+          <th style="text-align: center">功能描述</th>
+          <th style="text-align: center">使用示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>:AvanteAsk [问题]</code></td>
+          <td style="text-align: center">向AI提问代码相关问题</td>
+          <td style="text-align: center"><code>:AvanteAsk 如何优化这个循环结构</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteChat</code></td>
+          <td style="text-align: center">开启代码库对话模式</td>
+          <td style="text-align: center"><code>:AvanteChat position=right</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteEdit</code></td>
+          <td style="text-align: center">编辑选中代码块</td>
+          <td style="text-align: center">配合视觉模式使用</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteRefresh</code></td>
+          <td style="text-align: center">刷新所有Avante窗口</td>
+          <td style="text-align: center">解决界面卡顿时使用</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteSwitchProvider</code></td>
+          <td style="text-align: center">切换AI服务提供商</td>
+          <td style="text-align: center"><code>:AvanteSwitchProvider openai</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>:AvanteToggle</code></td>
+          <td style="text-align: center">开关侧边栏</td>
+          <td style="text-align: center">快速切换工作区布局</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>高级用法示例</strong>：</p>
+<ol>
+<li>带上下文的提问：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:AvanteAsk position=float 请解释这个函数的时间复杂度
+</span></span></code></pre></div><ol start="2">
+<li>代码重构工作流：</li>
+</ol>
+<ul>
+<li>选中目标代码块</li>
+<li>执行:AvanteEdit</li>
+<li>使用co/ct快捷键选择修改</li>
+<li>按 :w保存变更</li>
+</ul>
+<h2 id="笑话一则">笑话一则</h2>
+<p><a href="https://github.com/yetone/avante.nvim/issues/1011"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   avante.nvim#1011<span class="external-link">↗</span></a>
+:This was my process, and I&rsquo;m sure I&rsquo;m not the only one in this situation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>I am a software developer  
+</span></span><span style="display:flex;"><span>People are talking about AI; I have no idea how to use it  
+</span></span><span style="display:flex;"><span>Friend suggests this plugin  
+</span></span><span style="display:flex;"><span>Cool, maybe I&#39;ll learn how to use AI at work  
+</span></span><span style="display:flex;"><span>Add the plugin to my lazy.nvim config, try it out, and it asks for something called ANTHROPIC_API_KEY  
+</span></span><span style="display:flex;"><span>No idea what that is  
+</span></span><span style="display:flex;"><span>Google it  
+</span></span><span style="display:flex;"><span>Oh, looks like I need an account  
+</span></span><span style="display:flex;"><span>Create an account  
+</span></span><span style="display:flex;"><span>Find the key and add it to my .bashrc  
+</span></span><span style="display:flex;"><span>Try the plugin again  
+</span></span><span style="display:flex;"><span>I get a the response posted above  
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&gt; </span><span style="text-decoration:underline">&#34;make sure you have credit balance&#34;  
+</span></span></span><span style="display:flex;"><span><span style="text-decoration:underline"></span>No idea what that is  
+</span></span><span style="display:flex;"><span>Google it  
+</span></span><span style="display:flex;"><span>Apparently you have to pay for this ...?
+</span></span><span style="display:flex;"><span>Apparently I have $4.90 credit in my account
+</span></span><span style="display:flex;"><span>Seems like maybe I got $5 free to start and I&#39;ve used 10¢ of it ...?
+</span></span></code></pre></div>]]></content:encoded>
+    </item>
     <item>
       <title>2025_02_09 Ollama_deepseek_1</title>
       <link>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</link>

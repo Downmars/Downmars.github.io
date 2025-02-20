@@ -233,7 +233,7 @@
     {{ range (where .Site.Pages "Kind" "page" )}}
         {{$scratch.Add "total" .WordCount}}
     {{ end }}
-    发表了{{ len (where .Site.RegularPages "Section" "post") }}篇文章 · 
+    <!-- 发表了{{ len (where .Site.RegularPages "Section" "post") }}篇文章 ·  -->
     总计{{ div ($scratch.Get "total") 1000.0 | lang.FormatNumber 2 }}k字
 </section>
 

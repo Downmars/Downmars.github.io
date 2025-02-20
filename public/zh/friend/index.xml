@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Friends on DLog</title>
+    <link>http://localhost:1313/zh/friend/</link>
+    <description>Recent content in Friends on DLog</description>
+    <generator>Hugo -- 0.144.1</generator>
+    <language>zh-CN</language>
+    <atom:link href="http://localhost:1313/zh/friend/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>友链</title>
+      <link>http://localhost:1313/zh/friend/friend/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/friend/friend/</guid>
+      <description>这是我的友链页面</description>
+      <content:encoded><![CDATA[<a target="_blank" href=http://www.aaronsw.com/weblog/ title=Aaron&#32;Swartz class="friendurl">
+  <div class="frienddiv">
+    <div class="frienddivleft">
+      <img class="myfriend" src=https://s2.loli.net/2024/11/08/eZqIH7JXYs3iSp8.png />
+    </div>
+    <div class="frienddivright">
+      <div class="friendname">Aaron Swartz</div>
+      <div class="friendinfo">用以缅怀自由斗士 Aaron</div>
+    </div>
+  </div>
+</a>
+
+
+<a target="_blank" href=https://example.com title=John&#32;Doe class="friendurl">
+  <div class="frienddiv">
+    <div class="frienddivleft">
+      <img class="myfriend" src=https://example.com/logo.png />
+    </div>
+    <div class="frienddivright">
+      <div class="friendname">John Doe</div>
+      <div class="friendinfo">专注于前沿技术研究与落地实践</div>
+    </div>
+  </div>
+</a>
+
+
+<!-- 添加更多友链示例 -->
+<a target="_blank" href=https://openai.com title=OpenAI class="friendurl">
+  <div class="frienddiv">
+    <div class="frienddivleft">
+      <img class="myfriend" src=https://static.vecteezy.com/system/resources/previews/013/923/543/original/openai-chatgpt-logo-icon-free-png.png />
+    </div>
+    <div class="frienddivright">
+      <div class="friendname">OpenAI</div>
+      <div class="friendinfo">人工智能研究实验室</div>
+    </div>
+  </div>
+</a>
+
+
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>
