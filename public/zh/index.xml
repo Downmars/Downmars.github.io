@@ -4,10 +4,258 @@
     <title>DLog</title>
     <link>http://localhost:1313/zh/</link>
     <description>Recent content on DLog</description>
-    <generator>Hugo -- 0.144.1</generator>
+    <generator>Hugo -- 0.144.2</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 20 Feb 2025 19:35:05 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 13:02:59 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025_02_21 Using_Public_IP_to_Freely_Access_Ollama</title>
+      <link>http://localhost:1313/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</link>
+      <pubDate>Fri, 21 Feb 2025 13:02:59 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</guid>
+      <description>&lt;div class=&#34;admonition warning &#34;&gt;
+  &lt;div class=&#34;admonition-header&#34;&gt;
+    &lt;i class=&#34;fas fa-exclamation-triangle&#34;&gt;&lt;/i&gt;
+    &lt;span&gt;Warning&lt;/span&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&#34;admonition-content&#34;&gt;
+    使用这种方法时，请务必尊重服务器的隐私和使用政策，避免滥用公共资源。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;随着 DeepSeek 模型的广泛应用，越来越多的人开始在自己的服务器上运行 Ollama 平台来本地执行模型。由于 Ollama 在默认配置下不需要 API 密钥，只需要知道服务器的 IP 地址和端口，就能连接并访问正在运行的模型。因此，如果你能够找到这些暴露在公网的 Ollama 实例，就能免费使用它们。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<div class="admonition warning ">
+  <div class="admonition-header">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Warning</span>
+    
+  </div>
+  <div class="admonition-content">
+    使用这种方法时，请务必尊重服务器的隐私和使用政策，避免滥用公共资源。
+  </div>
+</div>
+
+
+<p>随着 DeepSeek 模型的广泛应用，越来越多的人开始在自己的服务器上运行 Ollama 平台来本地执行模型。由于 Ollama 在默认配置下不需要 API 密钥，只需要知道服务器的 IP 地址和端口，就能连接并访问正在运行的模型。因此，如果你能够找到这些暴露在公网的 Ollama 实例，就能免费使用它们。</p>
+<p>本文将介绍如何利用公网 IP 精准访问 Ollama 服务器，并使用其中的 AI 模型。</p>
+<h2 id="原理概述">原理概述</h2>
+<p>Ollama 是一个支持本地运行 AI 模型的平台，在默认配置下，Ollama 不需要身份验证或 API 密钥，只要知道服务器的 IP 地址和端口，就能直接连接并访问其运行的模型。随着 DeepSeek 模型的火爆，许多服务器开始运行 Ollama 来执行这些模型。</p>
+<p>通过简单的 GET 请求，你可以查看服务器上正在运行的模型，确认它们是否符合你的需求。这就使得你能够在没有任何授权的情况下，利用开放的服务器资源，进行“白嫖”。</p>
+<h2 id="实施步骤">实施步骤</h2>
+<h3 id="使用-fofa-查找-ollama-实例">使用 Fofa 查找 Ollama 实例</h3>
+<p>首先，你需要通过搜索引擎如 Fofa 来查找暴露了 Ollama 服务的公网 IP 地址。你可以使用以下搜索语句：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>app=&#34;Ollama&#34; &amp;&amp; is_domain=false
+</span></span></code></pre></div><p>这个查询帮助你定位那些运行在端口 11434 上的 Ollama 实例。这些实例通常没有做过多的访问限制，只要你知道地址，就能连接到它们。</p>
+<h3 id="导出并验证可用的服务">导出并验证可用的服务</h3>
+<p>找到目标服务器后，你可以导出相关数据，并使用批量访问脚本进行验证。你可以自己编写脚本，也可以使用 Burp Suite 等工具进行暴力破解，检查哪些服务器开放了能够使用的接口。</p>
+<h3 id="查看正在运行的模型">查看正在运行的模型</h3>
+<p>一旦成功连接到服务器，你可以通过发送 GET 请求来查看服务器上运行的模型。具体地址为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>URL:/api/ps
+</span></span></code></pre></div><p>该接口会返回服务器当前运行的所有模型的信息。如果你看到 DeepSeek 模型的名称，并且标明了参数数量（如 70B、32B），那么说明这个模型可以访问。</p>
+<h3 id="选择合适的-ai-软件进行交互">选择合适的 AI 软件进行交互</h3>
+<p>确认服务器上运行的模型后，你可以选择适合的 AI 软件来调用 Ollama 提供的 API，与模型进行交互。例如，70B 版本的模型适合处理大规模的计算任务，而 32B 版本则适合轻量级应用。</p>
+<h3 id="测试和验证模型的可用性">测试和验证模型的可用性</h3>
+<p>通过多次测试，你可以发现哪些模型可用，哪些模型由于服务器限制或负载过高可能无法访问。一般来说，70B 和 32B 是最常见的有效模型，而如 671B 等大规模模型较为罕见。</p>
+<h2 id="总结">总结</h2>
+<p>通过这一方法，你可以在没有 API 密钥的情况下，精准地连接到正在运行 Ollama 的服务器，并使用其中的 DeepSeek 模型。只要知道目标服务器的地址和端口，你就能通过简单的 GET 请求，查看并使用这些开放的 AI 模型。这种方法被称为“精准白嫖”，它依赖于大规模使用 Ollama 的服务器的暴露服务。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>2025_02_21 Gtrash_as_an_alternative_to_rm</title>
+      <link>http://localhost:1313/zh/posts/2025_02_21-gtrash_as_an_alternative_to_rm/</link>
+      <pubDate>Fri, 21 Feb 2025 09:43:20 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_21-gtrash_as_an_alternative_to_rm/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;这段时间看见了一个CLI工具&lt;a href=&#34;https://github.com/umlx5h/gtrash&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   gtrash&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+，它能够将文件移动到系统的垃圾箱之中，从而能够轻松恢复重要的文件，之前使用rm有惨痛的教训&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;如果有已经使用rm删除文件的可以看一下&lt;a href=&#34;https://www.cnblogs.com/cs-markdown10086/p/16938664.html&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Linux下用rm误删除文件的三种恢复方法&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;&lt;/small&gt;&lt;/span&gt;
+
+，索性就写一份使用教程。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>这段时间看见了一个CLI工具<a href="https://github.com/umlx5h/gtrash"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   gtrash<span class="external-link">↗</span></a>
+，它能够将文件移动到系统的垃圾箱之中，从而能够轻松恢复重要的文件，之前使用rm有惨痛的教训<span class="sidenote-number"><small class="sidenote">如果有已经使用rm删除文件的可以看一下<a href="https://www.cnblogs.com/cs-markdown10086/p/16938664.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Linux下用rm误删除文件的三种恢复方法<span class="external-link">↗</span></a></small></span>
+
+，索性就写一份使用教程。</p>
+<h2 id="安装gtrash">安装Gtrash</h2>
+<p>由于我使用的是Archlinux，我这边使用AUR进行安装：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yay -S gtrash-bin
+</span></span></code></pre></div><h2 id="使用方法">使用方法</h2>
+<h3 id="删除文件">删除文件</h3>
+<p>使用<code>put</code>指令将文件移动到垃圾箱中，删除目录时默认不需要<code>-r</code>选项。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#8be9fd;font-style:italic">cd</span> <span style="color:#ff79c6">&amp;&amp;</span> mkdir dir <span style="color:#ff79c6">&amp;&amp;</span> touch file1 file2
+</span></span><span style="display:flex;"><span>$ gtrash put dir file1 file2
+</span></span></code></pre></div><h3 id="查看垃圾箱摘要">查看垃圾箱摘要</h3>
+<p>使用 <code>summary</code> 子命令查看垃圾箱的信息，包括项目数量和总大小。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gtrash summary
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[</span>/home/user/.local/share/Trash<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span>item: <span style="color:#bd93f9">3</span>
+</span></span><span style="display:flex;"><span>size: 4.1 kB
+</span></span></code></pre></div><h3 id="查找垃圾箱中的文件">查找垃圾箱中的文件</h3>
+<p>使用 <code>find</code> 子命令列出垃圾箱中的文件。
+<code>Path</code> 字段显示文件的原始路径，而不是垃圾箱中的路径。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gtrash find
+</span></span><span style="display:flex;"><span>Date                 Path
+</span></span><span style="display:flex;"><span>2024-01-01 00:00:00  /home/user/dir
+</span></span><span style="display:flex;"><span>2024-01-01 00:00:00  /home/user/file1
+</span></span><span style="display:flex;"><span>2024-01-01 00:00:00  /home/user/file2
+</span></span></code></pre></div><p>可以通过命令行参数传递字符串查询，使用正则表达式搜索文件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gtrash find file1 dir
+</span></span><span style="display:flex;"><span>Date                 Path
+</span></span><span style="display:flex;"><span>2024-01-01 00:00:00  /home/user/dir
+</span></span><span style="display:flex;"><span>2024-01-01 00:00:00  /home/user/file1
+</span></span></code></pre></div><h3 id="恢复文件">恢复文件</h3>
+<p>有多种方法可以恢复文件。
+使用 <code>restore</code> 子命令以交互式 TUI 恢复文件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gtrash restore
+</span></span></code></pre></div><p>在 TUI 中，可以选择多个文件进行恢复。
+按 <code>?</code> 查看详细操作说明。
+使用 <code>j</code>、<code>k</code> 或方向键导航。
+按 <code>l</code>、右箭头键或空格键将文件移动到右侧表格。</p>
+<p>按 <code>Enter</code> 选择文件后，会显示所选文件列表和确认提示。
+按 <code>y</code> 确认恢复。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gtrash restore
+</span></span><span style="display:flex;"><span>Date                 Path
+</span></span><span style="display:flex;"><span>2024-01-01 00:00:00  /home/user/dir
+</span></span><span style="display:flex;"><span>2024-01-01 00:00:00  /home/user/file1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Selected <span style="color:#bd93f9">2</span> trashed files
+</span></span><span style="display:flex;"><span>Are you sure you want to restore? yes/no
+</span></span></code></pre></div><h3 id="永久删除文件">永久删除文件</h3>
+<p>使用 <code>find</code> 子命令的 <code>--rm</code> 选项永久删除垃圾箱中的文件。
+此操作不可逆，类似于 <code>rm</code>，文件无法恢复。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 删除特定文件</span>
+</span></span><span style="display:flex;"><span>$ gtrash find file1 --rm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 删除所有文件</span>
+</span></span><span style="display:flex;"><span>$ gtrash find --rm
+</span></span></code></pre></div><h2 id="工作原理">工作原理</h2>
+<p><code>gtrash</code> 遵循 FreeDesktop.org 规范。</p>
+<p>它的主要功能类似于 <code>mv</code>，但通过记录元信息并自动将文件移动到外部文件系统的垃圾箱来扩展功能。</p>
+<p>文件在主文件系统中被移动到以下路径：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 标准路径</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$HOME</span>/.local/share/Trash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 如果设置了 $XDG_DATA_HOME</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">$XDG_DATA_HOME</span>/Trash
+</span></span></code></pre></div><p>文件被移动到 <code>files</code> 目录，而元数据存储在 <code>info</code> 目录中。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gtrash put file1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 记录元信息</span>
+</span></span><span style="display:flex;"><span>$ cat ~/.local/share/Trash/info/file1.trashinfo
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[</span>Trash Info<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Path</span><span style="color:#ff79c6">=</span>/home/user/file1
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">DeletionDate</span><span style="color:#ff79c6">=</span>2024-01-01T00:00:00
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 实际文件</span>
+</span></span><span style="display:flex;"><span>$ ls ~/.local/share/Trash/files/file1
+</span></span><span style="display:flex;"><span>/home/user/.local/share/Trash/files/file1
+</span></span></code></pre></div><h2 id="常见问题">常见问题</h2>
+<h3 id="gtrash-和-rm-有什么区别"><code>gtrash</code> 和 <code>rm</code> 有什么区别？</h3>
+<p><code>rm</code> 使用 <code>unlink</code> 系统调用，文件删除后不可恢复。
+<code>gtrash</code> 使用 <code>rename</code> 系统调用，文件可以恢复。</p>
+<h3 id="可以设置-rmgtrash-put-的别名吗">可以设置 <code>rm=gtrash put</code> 的别名吗？</h3>
+<p>可以，但不推荐，因为可能会意外执行实际的 <code>rm</code> 命令。</p>
+<h3 id="使用-sudo-运行会怎样">使用 <code>sudo</code> 运行会怎样？</h3>
+<p>文件会被移动到 root 用户的垃圾箱中。</p>
+<h2 id="技巧">技巧</h2>
+<h3 id="shell-集成">Shell 集成</h3>
+<p><code>gtrash</code> 支持 <code>bash</code>、<code>zsh</code>、<code>fish</code> 的自动补全。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gtrash completion bash --help
+</span></span><span style="display:flex;"><span>gtrash completion zsh --help
+</span></span><span style="display:flex;"><span>gtrash completion fish --help
+</span></span></code></pre></div><h3 id="按大小和日期清理垃圾箱">按大小和日期清理垃圾箱</h3>
+<p>按日期清理：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 删除超过 7 天的文件</span>
+</span></span><span style="display:flex;"><span>$ gtrash prune --day <span style="color:#bd93f9">7</span>
+</span></span></code></pre></div><p>按大小清理：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 删除大于 10MB 的文件</span>
+</span></span><span style="display:flex;"><span>$ gtrash find --size-large 10mb --rm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 删除小于 1GB 的文件</span>
+</span></span><span style="display:flex;"><span>$ gtrash prune --size 5GB
+</span></span></code></pre></div><h2 id="配置">配置</h2>
+<p>某些行为可以通过设置环境变量来调整。
+参考 <a href="#%e9%85%8d%e7%bd%ae"
+   
+   
+   class="custom-link">  
+   配置文档</a>
+。</p>
+<h2 id="相关项目">相关项目</h2>
+<h3 id="使用系统垃圾箱">使用系统垃圾箱</h3>
+<ul>
+<li><a href="https://github.com/andreafrancia/trash-cli"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   trash-cli<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://github.com/oberblastmeister/trashy"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   trashy<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://github.com/rushsteve1/trash-d"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   trash-d<span class="external-link">↗</span></a>
+</li>
+</ul>
+<h3 id="不使用系统垃圾箱">不使用系统垃圾箱</h3>
+<ul>
+<li><a href="https://github.com/nivekuil/rip"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   rip<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://github.com/babarot/gomi"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   gomi<span class="external-link">↗</span></a>
+</li>
+</ul>
+<p>希望这份指南能帮助你更好地使用 <code>gtrash</code>！如果有任何问题，请参考官方文档或提交 Issue。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>2025_02_20 Image_Hosting_in_Github</title>
       <link>http://localhost:1313/zh/posts/2025_02_20-image_hosting_in_github/</link>
