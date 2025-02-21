@@ -6,14 +6,1205 @@
     <description>Recent content on DLog</description>
     <generator>Hugo -- 0.144.2</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 21 Feb 2025 13:02:59 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 20:18:25 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>2025_02_21 Using_Public_IP_to_Freely_Access_Ollama</title>
+      <title>使用grim和slurp在Wayland环境下进行屏幕截图</title>
+      <link>http://localhost:1313/zh/posts/2025_02_21-shot_with_grim_and_slurp/</link>
+      <pubDate>Fri, 21 Feb 2025 20:18:25 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_21-shot_with_grim_and_slurp/</guid>
+      <description>&lt;p&gt;本指南将帮助你在基于 Wayland 的系统（如使用 &lt;code&gt;sway&lt;/code&gt; 窗口管理器的 Arch Linux 或 Parabola GNU/Linux-libre）上，配置并使用 &lt;code&gt;grim&lt;/code&gt; 和 &lt;code&gt;slurp&lt;/code&gt; 进行屏幕截图。配置将支持区域截图与全屏截图，并集成 &lt;code&gt;waybar&lt;/code&gt; 显示截图通知。此外，截图将自动复制到剪贴板，方便你快速粘贴到其他应用中。通过快捷键，可以方便地启动截图操作，同时避免与屏幕录制快捷键的冲突。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>本指南将帮助你在基于 Wayland 的系统（如使用 <code>sway</code> 窗口管理器的 Arch Linux 或 Parabola GNU/Linux-libre）上，配置并使用 <code>grim</code> 和 <code>slurp</code> 进行屏幕截图。配置将支持区域截图与全屏截图，并集成 <code>waybar</code> 显示截图通知。此外，截图将自动复制到剪贴板，方便你快速粘贴到其他应用中。通过快捷键，可以方便地启动截图操作，同时避免与屏幕录制快捷键的冲突。</p>
+<h2 id="安装所需软件">安装所需软件</h2>
+<p>在基于 Arch 的发行版上，使用以下命令安装所需的软件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S grim slurp waybar wl-clipboard jq libnotify
+</span></span></code></pre></div><ul>
+<li><strong>grim</strong>：Wayland 屏幕截图工具，支持区域截图和全屏截图。</li>
+<li><strong>slurp</strong>：Wayland 区域选择工具，用于与 <code>grim</code> 结合选择截图区域。</li>
+<li><strong>waybar</strong>：Wayland 状态栏，用于显示截图通知。</li>
+<li><strong>wl-clipboard</strong>：Wayland 下的剪贴板工具，提供 <code>wl-copy</code> 和 <code>wl-paste</code> 命令。</li>
+<li><strong>jq</strong>：命令行 JSON 处理工具，用于解析 <code>waybar</code> 配置。</li>
+<li><strong>libnotify</strong>：发送桌面通知的工具。</li>
+</ul>
+<h2 id="创建统一的截图脚本">创建统一的截图脚本</h2>
+<p>为了简化操作，我们将合并区域截图和全屏截图脚本为一个统一的脚本 <code>screenshot.sh</code>。该脚本将根据传递的参数执行不同的截图模式，并自动将截图复制到剪贴板，同时发送桌面通知。为了避免与屏幕录制快捷键的冲突，我们将选择不同的快捷键组合。</p>
+<h3 id="脚本内容">脚本内容</h3>
+<p>将以下内容保存为 <code>~/bin/screenshot.sh</code> 并赋予执行权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff79c6">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 屏幕截图脚本：screenshot.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 支持区域截图和全屏截图</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 保存截图、复制到剪贴板并发送通知</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 配置截图保存目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">SCREENSHOT_DIR</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$HOME</span><span style="color:#f1fa8c">/Pictures/Screenshots&#34;</span>
+</span></span><span style="display:flex;"><span>mkdir -p <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$SCREENSHOT_DIR</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 生成时间戳</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">TIMESTAMP</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>date +%Y%m%d_%H%M%S<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 定义截图文件路径</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">FILE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$SCREENSHOT_DIR</span><span style="color:#f1fa8c">/screenshot_</span><span style="color:#8be9fd;font-style:italic">$TIMESTAMP</span><span style="color:#f1fa8c">.png&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 判断截图模式</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$1</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;full&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">MODE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;全屏截图&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 使用 grim 进行全屏截图</span>
+</span></span><span style="display:flex;"><span>    grim <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$FILE</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">MODE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;区域截图&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 使用 slurp 选择截图区域并使用 grim 进行截图</span>
+</span></span><span style="display:flex;"><span>    grim -g <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>slurp<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$FILE</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 检查截图是否成功</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#8be9fd;font-style:italic">$?</span> -eq <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 复制截图到剪贴板</span>
+</span></span><span style="display:flex;"><span>    wl-copy &lt; <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$FILE</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 发送截图完成通知</span>
+</span></span><span style="display:flex;"><span>    notify-send <span style="color:#f1fa8c">&#34;截图完成&#34;</span> <span style="color:#f1fa8c">&#34;已保存至: </span><span style="color:#8be9fd;font-style:italic">$FILE</span><span style="color:#f1fa8c"> 并已复制到剪贴板&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>    notify-send <span style="color:#f1fa8c">&#34;截图失败&#34;</span> <span style="color:#f1fa8c">&#34;未能成功捕获屏幕&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">exit</span> <span style="color:#bd93f9">0</span>
+</span></span></code></pre></div><h3 id="赋予执行权限">赋予执行权限</h3>
+<p>确保脚本具有执行权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x ~/bin/screenshot.sh
+</span></span></code></pre></div><h3 id="脚本说明">脚本说明</h3>
+<ul>
+<li><strong>功能</strong>：
+<ul>
+<li><strong>区域截图</strong>：不传递参数时，使用 <code>slurp</code> 选择截图区域。</li>
+<li><strong>全屏截图</strong>：传递 <code>full</code> 参数时，直接截取整个屏幕。</li>
+</ul>
+</li>
+<li><strong>截图过程</strong>：
+<ul>
+<li>使用 <code>grim</code> 进行截图。</li>
+<li>使用 <code>wl-copy</code> 将截图复制到剪贴板。</li>
+<li>使用 <code>notify-send</code> 发送桌面通知，显示截图保存路径和状态。</li>
+</ul>
+</li>
+<li><strong>保存路径</strong>：
+<ul>
+<li>截图将保存至 <code>~/Pictures/Screenshots/</code> 目录，文件名格式为 <code>screenshot_YYYYMMDD_HHMMSS.png</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="配置-waybar">配置 waybar</h2>
+<p>由于截图完成后通过 <code>notify-send</code> 发送桌面通知，因此不需要在 <code>waybar</code> 上额外显示截图通知。然而，如果你希望在 <code>waybar</code> 上显示截图缩略图或其他相关信息，可以创建一个自定义模块。以下示例仅保留空白输出，因为主要通知由 <code>notify-send</code> 处理。</p>
+<h3 id="创建自定义模块脚本可选">创建自定义模块脚本（可选）</h3>
+<p>创建 <code>screenshot_notification.sh</code> 脚本，用于检测截图是否完成并显示通知。</p>
+<p>将以下内容保存为 <code>~/.config/waybar/screenshot_notification.sh</code> 并赋予执行权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff79c6">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 截图通知脚本：screenshot_notification.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 当前示例不在 waybar 上显示任何内容</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 如果需要显示更多信息，可以在此处扩展</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;{\&#34;text\&#34;: \&#34;\&#34;, \&#34;class\&#34;: \&#34;\&#34;}&#34;</span>
+</span></span></code></pre></div><h3 id="赋予执行权限-1">赋予执行权限</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x ~/.config/waybar/screenshot_notification.sh
+</span></span></code></pre></div><h3 id="更新-waybar-配置">更新 waybar 配置</h3>
+<p>编辑 <code>~/.config/waybar/config</code>，添加自定义模块 <code>screenshot_notification</code>。假设你希望将其添加到 <code>modules-right</code> 部分。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;layer&#34;</span>: <span style="color:#f1fa8c">&#34;top&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;position&#34;</span>: <span style="color:#f1fa8c">&#34;top&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;modules-right&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;screenshot_notification&#34;</span>,
+</span></span><span style="display:flex;"><span>        /* 其他模块 */
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;custom/screenshot_notification&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;exec&#34;</span>: <span style="color:#f1fa8c">&#34;~/.config/waybar/screenshot_notification.sh&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;interval&#34;</span>: <span style="color:#bd93f9">60</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;return-type&#34;</span>: <span style="color:#f1fa8c">&#34;json&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;format&#34;</span>: <span style="color:#f1fa8c">&#34;{}&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;max-length&#34;</span>: <span style="color:#bd93f9">100</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    /* 其他配置 */
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="配置-waybar-样式可选">配置 waybar 样式（可选）</h3>
+<p>编辑 <code>~/.config/waybar/style.css</code>，为截图通知模块添加样式（当前示例不需要特定样式，因为通知由 <code>notify-send</code> 处理）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#6272a4">/* 示例：为截图标识添加样式 */</span>
+</span></span><span style="display:flex;"><span>#screenshot_notification {
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">/* 可根据需要自定义样式 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="重新加载-waybar">重新加载 waybar</h3>
+<p>保存配置后，重新加载 <code>waybar</code> 以应用更改：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pkill waybar
+</span></span><span style="display:flex;"><span>waybar &amp;
+</span></span></code></pre></div><blockquote>
+<p><strong>注意</strong>：由于截图通知通过 <code>notify-send</code> 直接发送到桌面环境的通知系统，因此 <code>waybar</code> 中的 <code>screenshot_notification</code> 模块当前未执行任何功能。你可以根据需求扩展该模块，例如显示最近的截图缩略图或其他相关信息。</p></blockquote>
+<h2 id="配置-sway-快捷键">配置 sway 快捷键</h2>
+<p>为了避免与屏幕录制快捷键冲突，我们将为截图功能选择不同的快捷键组合。以下是推荐的快捷键：</p>
+<ul>
+<li><strong>区域截图</strong>：<code>$mod+Ctrl+Shift+A</code></li>
+<li><strong>全屏截图</strong>：<code>$mod+Ctrl+Shift+F</code></li>
+</ul>
+<h3 id="编辑-sway-配置文件">编辑 sway 配置文件</h3>
+<p>打开 sway 配置文件，通常位于 <code>~/.config/sway/config</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano ~/.config/sway/config
+</span></span></code></pre></div><h3 id="添加快捷键绑定">添加快捷键绑定</h3>
+<p>在配置文件中添加以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 区域截图</span>
+</span></span><span style="display:flex;"><span>bindsym <span style="color:#8be9fd;font-style:italic">$mod</span>+Ctrl+Shift+A <span style="color:#8be9fd;font-style:italic">exec</span> ~/bin/screenshot.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 全屏截图</span>
+</span></span><span style="display:flex;"><span>bindsym <span style="color:#8be9fd;font-style:italic">$mod</span>+Ctrl+Shift+F <span style="color:#8be9fd;font-style:italic">exec</span> ~/bin/screenshot.sh full
+</span></span></code></pre></div><p><strong>说明</strong>：</p>
+<ul>
+<li><strong>区域截图</strong>：按下 <code>$mod+Ctrl+Shift+A</code> 启动区域截图。</li>
+<li><strong>全屏截图</strong>：按下 <code>$mod+Ctrl+Shift+F</code> 启动全屏截图。</li>
+</ul>
+<h3 id="重新加载-sway-配置">重新加载 sway 配置</h3>
+<p>保存配置文件后，重新加载 sway 配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>swaymsg reload
+</span></span></code></pre></div><h2 id="使用方法">使用方法</h2>
+<h3 id="区域截图">区域截图</h3>
+<ol>
+<li><strong>按下快捷键</strong>：按下 <code>$mod+Ctrl+Shift+A</code>。</li>
+<li><strong>选择截图区域</strong>：
+<ul>
+<li>鼠标将变为十字形，拖动选择要截图的区域。</li>
+<li>松开鼠标按钮后，<code>grim</code> 将自动保存截图。</li>
+</ul>
+</li>
+<li><strong>截图完成</strong>：
+<ul>
+<li>截图将保存至 <code>~/Pictures/Screenshots/</code> 目录，文件名格式为 <code>screenshot_YYYYMMDD_HHMMSS.png</code>。</li>
+<li>截图将自动复制到剪贴板。</li>
+<li>桌面通知将显示截图完成的信息。</li>
+</ul>
+</li>
+</ol>
+<h3 id="全屏截图">全屏截图</h3>
+<ol>
+<li><strong>按下快捷键</strong>：按下 <code>$mod+Ctrl+Shift+F</code>。</li>
+<li><strong>截图开始</strong>：
+<ul>
+<li><code>grim</code> 将自动截取整个屏幕，并保存截图。</li>
+</ul>
+</li>
+<li><strong>截图完成</strong>：
+<ul>
+<li>截图将保存至 <code>~/Pictures/Screenshots/</code> 目录，文件名格式为 <code>screenshot_YYYYMMDD_HHMMSS.png</code>。</li>
+<li>截图将自动复制到剪贴板。</li>
+<li>桌面通知将显示截图完成的信息。</li>
+</ul>
+</li>
+</ol>
+<h3 id="粘贴截图">粘贴截图</h3>
+<p>截图已复制到剪贴板，你可以在任何支持粘贴图像的应用中（如聊天工具、文档编辑器等）直接使用 <code>Ctrl+V</code> 或右键粘贴来插入截图。</p>
+<h2 id="管理截图文件">管理截图文件</h2>
+<p>截图文件可能会逐渐占用大量存储空间。以下是一些管理截图文件的方法：</p>
+<h3 id="自动整理截图文件">自动整理截图文件</h3>
+<p>可以使用脚本或定时任务（如 <code>cron</code> 或 <code>systemd</code> 服务）来定期整理截图文件。例如，将旧的截图移动到备份目录或删除超过一定天数的截图。</p>
+<h4 id="示例使用-cron-每周清理-30-天前的截图">示例：使用 <code>cron</code> 每周清理 30 天前的截图</h4>
+<ol>
+<li>
+<p><strong>打开 crontab 编辑器</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>crontab -e
+</span></span></code></pre></div></li>
+<li>
+<p><strong>添加以下行</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>0 3 * * 0 mkdir -p ~/Pictures/Screenshots/Backup &amp;&amp; find ~/Pictures/Screenshots -type f -name &#34;*.png&#34; -mtime +30 -exec mv {} ~/Pictures/Screenshots/Backup/ \;
+</span></span></code></pre></div><p><strong>说明</strong>：</p>
+<ul>
+<li>每周日凌晨 3 点执行。</li>
+<li>创建 <code>Backup</code> 目录（如果不存在）。</li>
+<li>将 30 天前的 <code>.png</code> 文件移动到 <code>Backup</code> 目录。</li>
+</ul>
+</li>
+</ol>
+<h3 id="手动备份">手动备份</h3>
+<p>将截图文件手动复制到外部存储设备或云存储服务，以释放本地存储空间。</p>
+<h2 id="常见问题与解决方法">常见问题与解决方法</h2>
+<h3 id="截图无保存或文件为空">截图无保存或文件为空</h3>
+<p><strong>原因</strong>：<code>grim</code> 或 <code>slurp</code> 未正确执行，可能由于权限问题或选择区域失败。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>
+<p>确保脚本具有执行权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x ~/bin/screenshot.sh
+</span></span></code></pre></div></li>
+<li>
+<p>运行脚本时检查是否有错误输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/bin/screenshot.sh
+</span></span><span style="display:flex;"><span>~/bin/screenshot.sh full
+</span></span></code></pre></div></li>
+<li>
+<p>确保 <code>slurp</code> 能正常选择区域：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>slurp
+</span></span></code></pre></div><p>如果 <code>slurp</code> 无法选择区域，检查 Wayland 会话权限或重新安装 <code>slurp</code>。</p>
+</li>
+</ul>
+<h3 id="截图保存路径错误">截图保存路径错误</h3>
+<p><strong>原因</strong>：脚本中配置的截图保存目录不存在或路径错误。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>
+<p>确保截图保存目录存在：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p ~/Pictures/Screenshots
+</span></span></code></pre></div></li>
+<li>
+<p>检查脚本中的 <code>SCREENSHOT_DIR</code> 变量是否正确设置。</p>
+</li>
+</ul>
+<h3 id="截图已复制到剪贴板但无法粘贴">截图已复制到剪贴板但无法粘贴</h3>
+<p><strong>原因</strong>：<code>wl-copy</code> 未正确执行或剪贴板工具未运行。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>
+<p>确保 <code>wl-clipboard</code> 已正确安装：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S wl-clipboard
+</span></span></code></pre></div></li>
+<li>
+<p>测试 <code>wl-copy</code> 是否正常工作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;Test&#34;</span> | wl-copy
+</span></span><span style="display:flex;"><span>wl-paste
+</span></span></code></pre></div><p>如果输出为 <code>Test</code>，则 <code>wl-copy</code> 正常工作。</p>
+</li>
+<li>
+<p>确保在 Wayland 会话中运行剪贴板工具。如果使用其他剪贴板管理器，确保它们与 <code>wl-copy</code> 兼容。</p>
+</li>
+</ul>
+<h3 id="桌面通知未显示">桌面通知未显示</h3>
+<p><strong>原因</strong>：<code>notify-send</code> 未正确安装或通知系统未配置。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>
+<p>确保 <code>libnotify</code> 已安装：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S libnotify
+</span></span></code></pre></div></li>
+<li>
+<p>测试 <code>notify-send</code> 是否正常工作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>notify-send <span style="color:#f1fa8c">&#34;测试通知&#34;</span> <span style="color:#f1fa8c">&#34;如果你能看到这条消息，notify-send 正常工作。&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>检查通知守护进程是否在运行（如 <code>mako</code>、<code>dunst</code> 等）。</p>
+</li>
+</ul>
+<h3 id="快捷键无响应">快捷键无响应</h3>
+<p><strong>原因</strong>：sway 快捷键配置错误或脚本路径不正确。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>
+<p>确保快捷键绑定正确指向脚本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bindsym <span style="color:#8be9fd;font-style:italic">$mod</span>+Ctrl+Shift+A <span style="color:#8be9fd;font-style:italic">exec</span> ~/bin/screenshot.sh
+</span></span><span style="display:flex;"><span>bindsym <span style="color:#8be9fd;font-style:italic">$mod</span>+Ctrl+Shift+F <span style="color:#8be9fd;font-style:italic">exec</span> ~/bin/screenshot.sh full
+</span></span></code></pre></div></li>
+<li>
+<p>确保脚本路径正确，并且脚本具有执行权限。</p>
+</li>
+<li>
+<p>重新加载 sway 配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>swaymsg reload
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="slurp-选择区域失败"><code>slurp</code> 选择区域失败</h3>
+<p><strong>原因</strong>：Wayland 会话权限不足或 <code>slurp</code> 安装不正确。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>
+<p>确保 <code>slurp</code> 已正确安装：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S slurp
+</span></span></code></pre></div></li>
+<li>
+<p>确保当前用户有权限访问 Wayland 会话。</p>
+</li>
+<li>
+<p>尝试单独运行 <code>slurp</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>slurp
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="脚本执行错误">脚本执行错误</h3>
+<p><strong>原因</strong>：脚本中存在语法错误或变量未正确引用。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>检查脚本是否正确复制，没有遗漏或多余的字符。</li>
+<li>确保使用的是正确的 shell（<code>#!/bin/bash</code>）。</li>
+<li>查看脚本执行时的错误输出，进行调试。</li>
+</ul>
+<h2 id="参考资源">参考资源</h2>
+<ul>
+<li><a href="https://github.com/emersion/grim"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   grim GitHub 仓库<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://github.com/emersion/slurp"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   slurp GitHub 仓库<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://swaywm.org/docs/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   sway 窗口管理器文档<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://github.com/Alexays/Waybar"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   waybar GitHub 仓库<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://github.com/bugaevc/wl-clipboard"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   wl-clipboard GitHub 仓库<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://developer.gnome.org/libnotify/stable/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   libnotify 官方文档<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://wiki.archlinux.org/title/Screenshot"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Arch Linux wiki: Screenshot<span class="external-link">↗</span></a>
+</li>
+</ul>
+<h2 id="小结">小结</h2>
+<p>通过本指南，你已成功配置了 <code>grim</code> 和 <code>slurp</code> 以在 Wayland 环境下进行高效的屏幕截图。结合 <code>waybar</code> 的截图通知显示、快捷键的启动与停止功能，以及自动复制到剪贴板的设置，截图过程变得更加便捷与直观。选择不同的快捷键组合，避免了与屏幕录制快捷键的冲突。根据个人需求，可以进一步优化截图参数，提升截图体验和图像质量。</p>
+<p>如果在配置过程中遇到任何问题或有进一步的优化需求，欢迎参考相关工具的官方文档或寻求社区支持。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>使用wf-recoder和slurp在Wayland环境下进行高效录制</title>
+      <link>http://localhost:1313/zh/posts/2025_02_21-record_with_wf_recoder_and_slurp/</link>
+      <pubDate>Fri, 21 Feb 2025 20:11:04 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_21-record_with_wf_recoder_and_slurp/</guid>
+      <description>&lt;p&gt;本指南将帮助你在基于 Wayland 的系统（如使用 sway 窗口管理器的 Arch Linux 或 Parabola GNU/Linux-libre）上，配置并使用 &lt;code&gt;wf-recorder&lt;/code&gt; 和 &lt;code&gt;slurp&lt;/code&gt; 进行屏幕录制。配置将支持区域录制与全屏录制，并包含系统音频与麦克风音频的录制。录制过程中将在 &lt;code&gt;waybar&lt;/code&gt; 上显示录制标识和时长，结束录制后将通过通知栏显示录制信息。此外，通过重复按下录制快捷键，可以实现录制的启动与停止。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>本指南将帮助你在基于 Wayland 的系统（如使用 sway 窗口管理器的 Arch Linux 或 Parabola GNU/Linux-libre）上，配置并使用 <code>wf-recorder</code> 和 <code>slurp</code> 进行屏幕录制。配置将支持区域录制与全屏录制，并包含系统音频与麦克风音频的录制。录制过程中将在 <code>waybar</code> 上显示录制标识和时长，结束录制后将通过通知栏显示录制信息。此外，通过重复按下录制快捷键，可以实现录制的启动与停止。</p>
+<h2 id="安装所需软件">安装所需软件</h2>
+<p>在基于 Arch 的发行版上，使用以下命令安装 <code>wf-recorder</code>、<code>slurp</code>、<code>ffmpeg</code>、<code>waybar</code> 以及其他必要工具：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S wf-recorder slurp ffmpeg waybar jq libnotify
+</span></span></code></pre></div><ul>
+<li><strong>wf-recorder</strong>：Wayland 屏幕录制工具。</li>
+<li><strong>slurp</strong>：Wayland 区域选择工具。</li>
+<li><strong>ffmpeg</strong>：多媒体处理工具，用于录制音频和合并视频音频。</li>
+<li><strong>waybar</strong>：Wayland 状态栏，用于显示录制状态。</li>
+<li><strong>jq</strong>：命令行 JSON 处理工具，用于解析 waybar 配置。</li>
+<li><strong>libnotify</strong>：发送桌面通知的工具。</li>
+</ul>
+<h2 id="创建录制脚本">创建录制脚本</h2>
+<p>创建一个统一的录制脚本 <code>record_toggle.sh</code>，用于启动和停止录制。此脚本将处理区域录制与全屏录制，录制系统音频与麦克风音频，并与 <code>waybar</code> 和通知集成。</p>
+<h3 id="脚本内容">脚本内容</h3>
+<p>将以下内容保存为 <code>~/bin/record_toggle.sh</code> 并赋予执行权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff79c6">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 录制脚本：record_toggle.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 支持启动和停止录制</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 录制模式：区域录制或全屏录制</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 录制系统音频与麦克风音频</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 集成 waybar 标识和录制时长显示，结束后发送通知</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 配置</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">RECORD_DIR</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$HOME</span><span style="color:#f1fa8c">/Videos&#34;</span>
+</span></span><span style="display:flex;"><span>mkdir -p <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORD_DIR</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 状态文件路径</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">RECORDING_FLAG</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/tmp/recording_flag&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">STATUS_FILE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/tmp/recording_status&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">STOP_FLAG</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/tmp/stop_recording_flag&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 检查是否正在录制</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> -f <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORDING_FLAG</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 正在录制，执行停止录制</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;停止录制中...&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 发送停止标识</span>
+</span></span><span style="display:flex;"><span>    touch <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$STOP_FLAG</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">exit</span> <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 未录制，执行启动录制</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 检查是否传递了录制模式参数</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$1</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;full&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">RECORD_GEOMETRY</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">MODE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;全屏录制&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">RECORD_GEOMETRY</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;-g \&#34;</span><span style="color:#ff79c6">$(</span>slurp<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">\&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">MODE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;区域录制&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">fi</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 生成时间戳</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">TIMESTAMP</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>date +%Y%m%d_%H%M%S<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 定义文件路径</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">VIDEO_FILE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORD_DIR</span><span style="color:#f1fa8c">/recording_</span><span style="color:#8be9fd;font-style:italic">$TIMESTAMP</span><span style="color:#f1fa8c">.mp4&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">AUDIO_FILE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORD_DIR</span><span style="color:#f1fa8c">/recording_</span><span style="color:#8be9fd;font-style:italic">$TIMESTAMP</span><span style="color:#f1fa8c">-audio.wav&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">FINAL_FILE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORD_DIR</span><span style="color:#f1fa8c">/recording_</span><span style="color:#8be9fd;font-style:italic">$TIMESTAMP</span><span style="color:#f1fa8c">-final.mp4&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 创建录制标识</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$MODE</span><span style="color:#f1fa8c">&#34;</span> &gt; <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORDING_FLAG</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 启动系统音频录制（默认音频设备）</span>
+</span></span><span style="display:flex;"><span>    ffmpeg -f pulse -i default -c:a pcm_s16le <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$AUDIO_FILE</span><span style="color:#f1fa8c">&#34;</span> &amp;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">FFMPEG_PID</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">$!</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 启动视频录制</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> -z <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORD_GEOMETRY</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+</span></span><span style="display:flex;"><span>        wf-recorder -f <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$VIDEO_FILE</span><span style="color:#f1fa8c">&#34;</span> &amp;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>        wf-recorder -g <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>slurp<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span> -f <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$VIDEO_FILE</span><span style="color:#f1fa8c">&#34;</span> &amp;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">fi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">WF_PID</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">$!</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 启动计时器，记录录制时长</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">SECONDS</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">while</span> <span style="color:#8be9fd;font-style:italic">kill</span> -0 <span style="color:#8be9fd;font-style:italic">$WF_PID</span> 2&gt;/dev/null; <span style="color:#ff79c6">do</span>
+</span></span><span style="display:flex;"><span>        sleep <span style="color:#bd93f9">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">SECONDS</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$((</span>SECONDS <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span><span style="color:#ff79c6">))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># 更新状态文件以供 waybar 显示</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$SECONDS</span><span style="color:#f1fa8c">&#34;</span> &gt; <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$STATUS_FILE</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># 检查是否存在停止标识文件</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> -f <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$STOP_FLAG</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;停止录制标识已检测到。&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">kill</span> <span style="color:#8be9fd;font-style:italic">$WF_PID</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">kill</span> <span style="color:#8be9fd;font-style:italic">$FFMPEG_PID</span>
+</span></span><span style="display:flex;"><span>            rm <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$STOP_FLAG</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd;font-style:italic">break</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">fi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">done</span> &amp;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">TIMER_PID</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">$!</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 等待录制进程结束</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">wait</span> <span style="color:#8be9fd;font-style:italic">$WF_PID</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">kill</span> <span style="color:#8be9fd;font-style:italic">$FFMPEG_PID</span> 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">kill</span> <span style="color:#8be9fd;font-style:italic">$TIMER_PID</span> 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 合并视频和音频</span>
+</span></span><span style="display:flex;"><span>    ffmpeg -i <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$VIDEO_FILE</span><span style="color:#f1fa8c">&#34;</span> -i <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$AUDIO_FILE</span><span style="color:#f1fa8c">&#34;</span> -c:v copy -c:a aac <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$FINAL_FILE</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 清理临时文件</span>
+</span></span><span style="display:flex;"><span>    rm <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$VIDEO_FILE</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$AUDIO_FILE</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>    rm <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORDING_FLAG</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>    rm <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$STATUS_FILE</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># 发送录制结束通知</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">DURATION</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span><span style="color:#8be9fd;font-style:italic">printf</span> <span style="color:#f1fa8c">&#39;%02d:%02d:%02d&#39;</span> <span style="color:#ff79c6">$((</span>SECONDS <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">3600</span><span style="color:#ff79c6">))</span> <span style="color:#ff79c6">$((</span> <span style="color:#ff79c6">(</span>SECONDS <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">3600</span><span style="color:#ff79c6">)</span> <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">60</span> <span style="color:#ff79c6">))</span> <span style="color:#ff79c6">$((</span>SECONDS <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">60</span><span style="color:#ff79c6">)))</span>
+</span></span><span style="display:flex;"><span>    notify-send <span style="color:#f1fa8c">&#34;录制结束&#34;</span> <span style="color:#f1fa8c">&#34;保存至: </span><span style="color:#8be9fd;font-style:italic">$FINAL_FILE</span><span style="color:#f1fa8c">\n时长: </span><span style="color:#8be9fd;font-style:italic">$DURATION</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">exit</span> <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">fi</span>
+</span></span></code></pre></div><h3 id="赋予执行权限">赋予执行权限</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x ~/bin/record_toggle.sh
+</span></span></code></pre></div><h3 id="脚本说明">脚本说明</h3>
+<ul>
+<li><strong>启动录制</strong>：
+<ul>
+<li><strong>区域录制</strong>：不传递参数，使用 <code>slurp</code> 选择录制区域。</li>
+<li><strong>全屏录制</strong>：传递 <code>full</code> 参数，不使用 <code>slurp</code>，直接录制全屏。</li>
+</ul>
+</li>
+<li><strong>停止录制</strong>：
+<ul>
+<li>脚本检测到录制标识文件 <code>recording_flag</code> 后，通过创建 <code>stop_recording_flag</code> 文件通知录制进程停止。</li>
+</ul>
+</li>
+<li><strong>录制过程</strong>：
+<ul>
+<li>使用 <code>wf-recorder</code> 录制视频。</li>
+<li>使用 <code>ffmpeg</code> 录制音频（系统音频与麦克风）。</li>
+<li>计时器记录录制时长，并更新 <code>status_file</code> 供 <code>waybar</code> 显示。</li>
+</ul>
+</li>
+<li><strong>结束录制</strong>：
+<ul>
+<li>合并视频和音频文件。</li>
+<li>清理临时文件。</li>
+<li>发送录制结束通知。</li>
+</ul>
+</li>
+</ul>
+<h2 id="配置-waybar">配置 waybar</h2>
+<p>在 <code>waybar</code> 上显示录制状态和时长，需要创建一个自定义模块。</p>
+<h3 id="创建自定义模块脚本">创建自定义模块脚本</h3>
+<p>创建 <code>recording.sh</code> 脚本，用于检测录制状态并输出 JSON 格式的数据供 <code>waybar</code> 使用。</p>
+<p>将以下内容保存为 <code>~/.config/waybar/recording.sh</code> 并赋予执行权限：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff79c6">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">STATUS_FILE</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/tmp/recording_status&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">RECORDING_FLAG</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/tmp/recording_flag&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> -f <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORDING_FLAG</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> -f <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$STATUS_FILE</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">SECONDS</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>cat <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$STATUS_FILE</span><span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">SECONDS</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$((</span>SECONDS <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span><span style="color:#ff79c6">))</span> <span style="color:#6272a4"># i donot know why time is two than true.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">HOURS</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$((</span>SECONDS <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">3600</span><span style="color:#ff79c6">))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">MINUTES</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$((</span> <span style="color:#ff79c6">(</span>SECONDS <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">3600</span><span style="color:#ff79c6">)</span> <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">60</span> <span style="color:#ff79c6">))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">SECS</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$((</span>SECONDS <span style="color:#ff79c6">%</span> <span style="color:#bd93f9">60</span><span style="color:#ff79c6">))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">TIME_FORMAT</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span><span style="color:#8be9fd;font-style:italic">printf</span> <span style="color:#f1fa8c">&#34;%02d:%02d:%02d&#34;</span> <span style="color:#8be9fd;font-style:italic">$HOURS</span> <span style="color:#8be9fd;font-style:italic">$MINUTES</span> <span style="color:#8be9fd;font-style:italic">$SECS</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">TIME_FORMAT</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;00:00:00&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">MODE</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>cat <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$RECORDING_FLAG</span><span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$MODE</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;全屏录制&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">MODE_ICON</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;&#34;</span>  <span style="color:#6272a4"># 全屏录制图标</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">MODE_ICON</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;&#34;</span>  <span style="color:#6272a4"># 区域录制图标</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;{\&#34;text\&#34;: \&#34;</span><span style="color:#8be9fd;font-style:italic">$MODE_ICON</span><span style="color:#f1fa8c"> Recording </span><span style="color:#8be9fd;font-style:italic">$TIME_FORMAT</span><span style="color:#f1fa8c">\&#34;, \&#34;class\&#34;: \&#34;recording\&#34;}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;{\&#34;text\&#34;: \&#34;\&#34;, \&#34;class\&#34;: \&#34;\&#34;}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">fi</span>
+</span></span></code></pre></div><h3 id="赋予执行权限-1">赋予执行权限</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x ~/.config/waybar/recording.sh
+</span></span></code></pre></div><h3 id="更新-waybar-配置">更新 waybar 配置</h3>
+<p>编辑 <code>~/.config/waybar/config</code>，添加自定义模块 <code>recording</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;layer&#34;</span>: <span style="color:#f1fa8c">&#34;top&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;position&#34;</span>: <span style="color:#f1fa8c">&#34;top&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;modules-left&#34;</span>: [<span style="color:#f1fa8c">&#34;recording&#34;</span>, /* 其他模块 */],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;custom/recording&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;exec&#34;</span>: <span style="color:#f1fa8c">&#34;~/.config/waybar/recording.sh&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;interval&#34;</span>: <span style="color:#bd93f9">1</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;return-type&#34;</span>: <span style="color:#f1fa8c">&#34;json&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;format&#34;</span>: <span style="color:#f1fa8c">&#34;{}&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;max-length&#34;</span>: <span style="color:#bd93f9">100</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    /* 其他配置 */
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="配置-waybar-样式">配置 waybar 样式</h3>
+<p>编辑 <code>~/.config/waybar/style.css</code>，为录制模块添加样式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>#recording {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">color</span>: <span style="color:#bd93f9">#FF0000</span>; <span style="color:#6272a4">/* 红色表示录制中 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">background-color</span>: <span style="color:#8be9fd;font-style:italic">rgba</span>(<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">0.5</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">padding</span>: <span style="color:#bd93f9">2</span><span style="color:#8be9fd">px</span> <span style="color:#bd93f9">6</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">border-radius</span>: <span style="color:#bd93f9">4</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">font-weight</span>: <span style="color:#ff79c6">bold</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="重新加载-waybar">重新加载 waybar</h3>
+<p>保存配置后，重新加载 <code>waybar</code> 以应用更改：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pkill waybar
+</span></span><span style="display:flex;"><span>waybar &amp;
+</span></span></code></pre></div><h2 id="配置-sway-快捷键">配置 sway 快捷键</h2>
+<p>配置 sway 快捷键，使录制脚本可以通过按键启动与停止。</p>
+<h3 id="编辑-sway-配置文件">编辑 sway 配置文件</h3>
+<p>打开 sway 配置文件，通常位于 <code>~/.config/sway/config</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano ~/.config/sway/config
+</span></span></code></pre></div><h3 id="添加快捷键绑定">添加快捷键绑定</h3>
+<p>在配置文件中添加以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 启动/停止区域录制</span>
+</span></span><span style="display:flex;"><span>bindsym <span style="color:#8be9fd;font-style:italic">$mod</span>+Shift+R <span style="color:#8be9fd;font-style:italic">exec</span> ~/bin/record_toggle.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 启动/停止全屏录制</span>
+</span></span><span style="display:flex;"><span>bindsym <span style="color:#8be9fd;font-style:italic">$mod</span>+Shift+F <span style="color:#8be9fd;font-style:italic">exec</span> ~/bin/record_toggle.sh full
+</span></span></code></pre></div><p><strong>说明</strong>：</p>
+<ul>
+<li><strong>区域录制</strong>：按下 <code>$mod+Shift+R</code> 启动或停止区域录制。</li>
+<li><strong>全屏录制</strong>：按下 <code>$mod+Shift+F</code> 启动或停止全屏录制。</li>
+</ul>
+<p>保存并关闭配置文件后，重新加载 sway 配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>swaymsg reload
+</span></span></code></pre></div><h2 id="使用方法">使用方法</h2>
+<h3 id="启动录制">启动录制</h3>
+<ul>
+<li>
+<p><strong>区域录制</strong>：</p>
+<ol>
+<li>按下快捷键 <code>$mod+Shift+R</code>。</li>
+<li>使用鼠标选择要录制的区域（由 <code>slurp</code> 提供）。</li>
+<li>录制开始，<code>waybar</code> 上将显示录制标识和时长。</li>
+</ol>
+</li>
+<li>
+<p><strong>全屏录制</strong>：</p>
+<ol>
+<li>按下快捷键 <code>$mod+Shift+F</code>。</li>
+<li>录制开始，<code>waybar</code> 上将显示录制标识和时长。</li>
+</ol>
+</li>
+</ul>
+<h3 id="停止录制">停止录制</h3>
+<ul>
+<li>再次按下相同的快捷键：
+<ul>
+<li><strong>区域录制</strong>：按下 <code>$mod+Shift+R</code> 停止录制。</li>
+<li><strong>全屏录制</strong>：按下 <code>$mod+Shift+F</code> 停止录制。</li>
+</ul>
+</li>
+</ul>
+<p>录制结束后：</p>
+<ul>
+<li><code>waybar</code> 上的录制标识将消失。</li>
+<li>桌面通知将显示录制文件的保存路径和时长。</li>
+</ul>
+<h2 id="管理录制文件">管理录制文件</h2>
+<p>录制的视频文件可能会占用大量存储空间。建议定期清理或备份录制文件。</p>
+<h3 id="自动清理旧录制文件">自动清理旧录制文件</h3>
+<p>可以使用 <code>cron</code> 或 <code>systemd</code> 定时任务，定期将旧录制文件移动到备份目录。例如，使用 <code>cron</code> 每周清理 7 天前的录制文件：</p>
+<ol>
+<li>
+<p>打开 crontab 编辑器：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>crontab -e
+</span></span></code></pre></div></li>
+<li>
+<p>添加以下行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>0 2 * * 0 mkdir -p ~/Videos/Backup &amp;&amp; find ~/Videos -type f -name &#34;*.mp4&#34; -mtime +7 -exec mv {} ~/Videos/Backup/ \;
+</span></span></code></pre></div><p><strong>说明</strong>：</p>
+<ul>
+<li>每周日凌晨 2 点执行。</li>
+<li>创建 <code>Backup</code> 目录（如果不存在）。</li>
+<li>将 7 天前的 <code>.mp4</code> 文件移动到 <code>Backup</code> 目录。</li>
+</ul>
+</li>
+</ol>
+<h3 id="手动备份">手动备份</h3>
+<p>将录制文件备份到外部存储设备或云存储服务，以释放本地存储空间。</p>
+<h2 id="常见问题与解决方法">常见问题与解决方法</h2>
+<h3 id="录制视频无声音">录制视频无声音</h3>
+<p><strong>原因</strong>：<code>wf-recorder</code> 默认不录制音频，需使用 <code>ffmpeg</code> 单独录制音频。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>确保 <code>ffmpeg</code> 正常录制音频，并在录制结束后正确合并视频与音频。</li>
+<li>检查 PulseAudio 或 PipeWire 配置，确保音频设备正确。</li>
+</ul>
+<h3 id="录制过程中卡顿或性能下降">录制过程中卡顿或性能下降</h3>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li><strong>优化编码器设置</strong>：在脚本中使用更快的编码预设，如 <code>--codec-preset fast</code>。</li>
+<li><strong>降低分辨率或帧率</strong>：选择较低的录制分辨率或帧率。</li>
+<li><strong>关闭不必要的后台应用</strong>：释放系统资源，提高录制性能。</li>
+</ul>
+<h3 id="录制文件无法播放或损坏">录制文件无法播放或损坏</h3>
+<p><strong>原因</strong>：录制过程中意外中断或编码器不兼容。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>
+<p>使用 <code>ffmpeg</code> 修复损坏的视频文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffmpeg -i corrupted.mp4 -c copy fixed.mp4
+</span></span></code></pre></div></li>
+<li>
+<p>确保录制过程中系统稳定，避免中断录制进程。</p>
+</li>
+</ul>
+<h3 id="选择区域后录制失败">选择区域后录制失败</h3>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>确保 <code>slurp</code> 正常工作，尝试单独运行 <code>slurp</code> 测试区域选择。</li>
+<li>检查权限问题，确保当前用户有权限访问 Wayland 会话和录制屏幕。</li>
+</ul>
+<h3 id="waybar-上不显示录制标识">waybar 上不显示录制标识</h3>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>确保 <code>recording.sh</code> 脚本具有执行权限。</li>
+<li>检查 <code>waybar</code> 配置文件是否正确引用自定义模块。</li>
+<li>查看 <code>waybar</code> 日志，排查脚本执行错误。</li>
+</ul>
+<h2 id="参考资源">参考资源</h2>
+<ul>
+<li><a href="https://github.com/davatorium/wf-recorder"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   wf-recorder GitHub 仓库<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://github.com/emersion/slurp"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   slurp GitHub 仓库<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://swaywm.org/docs/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   sway 窗口管理器文档<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://pipewire.org/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   PipeWire 官方文档<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://ffmpeg.org/documentation.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   FFmpeg 官方文档<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://github.com/Alexays/Waybar"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   waybar GitHub 仓库<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://linux.die.net/man/1/notify-send"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   notify-send 手册<span class="external-link">↗</span></a>
+</li>
+</ul>
+<h2 id="小结">小结</h2>
+<p>通过本指南，你已成功配置了 <code>wf-recorder</code> 和 <code>slurp</code> 以在 Wayland 环境下进行高效的屏幕录制。结合 <code>waybar</code> 的录制状态显示和快捷键的启动与停止功能，录制过程变得更加便捷与直观。根据个人需求，可以进一步优化录制参数，提升录制体验和视频质量。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>使用Rclone挂载Alist网盘</title>
+      <link>http://localhost:1313/zh/posts/2025_02_21-rclone_mount_alist/</link>
+      <pubDate>Fri, 21 Feb 2025 20:00:04 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_21-rclone_mount_alist/</guid>
+      <description>&lt;h2 id=&#34;下载-rclone&#34;&gt;下载 rclone&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# 检查 rclone 是否可以通过 Pacman 仓库安装  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -Ss rclone  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -S rclone  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;要将 &lt;strong&gt;Alist&lt;/strong&gt; 挂载到本地系统，首先需要配置 &lt;strong&gt;rclone 远程&lt;/strong&gt;。&lt;a href=&#34;https://rclone.org/webdav/&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   rclone 文档&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+ 对此进行了详细说明，或者你可以按照以下命令进行配置：&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="下载-rclone">下载 rclone</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 检查 rclone 是否可以通过 Pacman 仓库安装  
+</span></span><span style="display:flex;"><span>sudo pacman -Ss rclone  
+</span></span><span style="display:flex;"><span>sudo pacman -S rclone  
+</span></span></code></pre></div><p>要将 <strong>Alist</strong> 挂载到本地系统，首先需要配置 <strong>rclone 远程</strong>。<a href="https://rclone.org/webdav/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   rclone 文档<span class="external-link">↗</span></a>
+ 对此进行了详细说明，或者你可以按照以下命令进行配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 进入 rclone 配置界面    
+</span></span><span style="display:flex;"><span>rclone config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 选择新建远程  
+</span></span><span style="display:flex;"><span>没有找到远程，创建一个新的？
+</span></span><span style="display:flex;"><span>n) 新建远程
+</span></span><span style="display:flex;"><span>s) 设置配置密码
+</span></span><span style="display:flex;"><span>q) 退出配置
+</span></span><span style="display:flex;"><span>n/s/q&gt; n # 选择 n
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 设置远程名称  
+</span></span><span style="display:flex;"><span>name&gt; remote
+</span></span><span style="display:flex;"><span>选择要配置的存储类型。
+</span></span><span style="display:flex;"><span>从下面的选项中选择一个，或者手动输入
+</span></span><span style="display:flex;"><span>[snip]
+</span></span><span style="display:flex;"><span>XX / WebDAV
+</span></span><span style="display:flex;"><span>   \ &#34;webdav&#34;
+</span></span><span style="display:flex;"><span>[snip]
+</span></span><span style="display:flex;"><span>Storage&gt; webdav # 选择 webdav 作为远程名称  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 设置远程 URL http://your_alist_ip:port/dav
+</span></span><span style="display:flex;"><span>输入 WebDAV 服务器的 URL
+</span></span><span style="display:flex;"><span>从下面的选项中选择一个，或者手动输入
+</span></span><span style="display:flex;"><span> 1 / 连接到 example.com
+</span></span><span style="display:flex;"><span>   \ &#34;https://example.com&#34;
+</span></span><span style="display:flex;"><span>url&gt; http://127.0.0.1:5244/dav # 在此处设置 alist 地址和端口，后面加上 &#34;dav&#34;，这是 Alist 所要求的  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 选择 6  
+</span></span><span style="display:flex;"><span>你使用的 WebDAV 网站/服务/软件名称
+</span></span><span style="display:flex;"><span>从下面的选项中选择一个，或者手动输入
+</span></span><span style="display:flex;"><span> 1 / Fastmail 文件
+</span></span><span style="display:flex;"><span>   \ (fastmail)
+</span></span><span style="display:flex;"><span> 2 / Nextcloud
+</span></span><span style="display:flex;"><span>   \ (nextcloud)
+</span></span><span style="display:flex;"><span> 3 / Owncloud
+</span></span><span style="display:flex;"><span>   \ (owncloud)
+</span></span><span style="display:flex;"><span> 4 / Sharepoint Online，微软账户认证
+</span></span><span style="display:flex;"><span>   \ (sharepoint)
+</span></span><span style="display:flex;"><span> 5 / Sharepoint 使用 NTLM 认证，通常是自托管或本地部署
+</span></span><span style="display:flex;"><span>   \ (sharepoint-ntlm)
+</span></span><span style="display:flex;"><span> 6 / 其他网站/服务或软件
+</span></span><span style="display:flex;"><span>   \ (other)
+</span></span><span style="display:flex;"><span>vendor&gt; 6
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 输入远程账户信息  
+</span></span><span style="display:flex;"><span>用户名
+</span></span><span style="display:flex;"><span>user&gt; admin # 这是你的 alist 用户   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 输入远程密码  
+</span></span><span style="display:flex;"><span>密码。
+</span></span><span style="display:flex;"><span>y) 是的，输入我的密码
+</span></span><span style="display:flex;"><span>g) 生成随机密码
+</span></span><span style="display:flex;"><span>n) 否，留空此密码
+</span></span><span style="display:flex;"><span>y/g/n&gt; y # 输入 y  
+</span></span><span style="display:flex;"><span>请输入密码：# 输入密码时不可见  
+</span></span><span style="display:flex;"><span>password:
+</span></span><span style="display:flex;"><span>确认密码：# 再次输入密码
+</span></span><span style="display:flex;"><span>password:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 按回车键  
+</span></span><span style="display:flex;"><span>Bearer Token 代替用户名/密码（例如 Macaroon）
+</span></span><span style="display:flex;"><span>bearer_token&gt;
+</span></span><span style="display:flex;"><span>远程配置
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 选择默认配置  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 远程配置结果：
+</span></span><span style="display:flex;"><span>--------------------
+</span></span><span style="display:flex;"><span>[remote]
+</span></span><span style="display:flex;"><span>type = webdav
+</span></span><span style="display:flex;"><span>url = http://127.0.0.1:5244/dav
+</span></span><span style="display:flex;"><span>vendor = Other
+</span></span><span style="display:flex;"><span>user = admin
+</span></span><span style="display:flex;"><span>pass = *** ENCRYPTED ***
+</span></span><span style="display:flex;"><span>--------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 确认配置  
+</span></span><span style="display:flex;"><span>y) 是的，确认这个配置
+</span></span><span style="display:flex;"><span>e) 编辑这个远程
+</span></span><span style="display:flex;"><span>d) 删除这个远程
+</span></span><span style="display:flex;"><span>y/e/d&gt; y # 输入 y  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 输入 &#34;q&#34; 退出配置  
+</span></span></code></pre></div><h2 id="挂载到本地系统">挂载到本地系统</h2>
+<p>可以使用以下命令检查是否已成功连接，并确认 <code>alist</code> 是否已挂载：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 检查 alist 目录
+</span></span><span style="display:flex;"><span>rclone lsd alist:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 查看 alist 的文件
+</span></span><span style="display:flex;"><span>rclone ls alist:
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 将 alist 目录挂载到本地目录 /mnt/Webdev/，此命令为前台命令，运行后会被挂起。
+</span></span><span style="display:flex;"><span>rclone mount alist:/ /webdav  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 检查本地挂载位置
+</span></span><span style="display:flex;"><span>df -h  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 输出结果类似于：
+</span></span><span style="display:flex;"><span>Alist:               1.0P     0  1.0P   0% /mnt/Webdev
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 卸载本地挂载
+</span></span><span style="display:flex;"><span>fusermount -qzu /webdav  
+</span></span></code></pre></div><h2 id="设置开机自启动">设置开机自启动</h2>
+<p>你需要使用 root 权限来运行以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 编辑服务文件  
+</span></span><span style="display:flex;"><span>vim /usr/lib/systemd/system/rclone.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># /usr/lib/systemd/system/rclone.service 文件内容：
+</span></span><span style="display:flex;"><span>[Unit] 
+</span></span><span style="display:flex;"><span>Description=rclone
+</span></span><span style="display:flex;"><span>Before=network.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Service] 
+</span></span><span style="display:flex;"><span>User=root 
+</span></span><span style="display:flex;"><span>ExecStart=/usr/bin/rclone mount alist: /mnt/Webdev/  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Install] 
+</span></span><span style="display:flex;"><span>WantedBy=multi-user.target
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载系统守护进程  </span>
+</span></span><span style="display:flex;"><span>systemctl daemon<span style="color:#ff79c6">-</span>reload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 设置服务开机自启动</span>
+</span></span><span style="display:flex;"><span>systemctl enable rclone<span style="color:#ff79c6">.</span>service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 启动服务</span>
+</span></span><span style="display:flex;"><span>systemctl start rclone<span style="color:#ff79c6">.</span>service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 检查服务状态</span>
+</span></span><span style="display:flex;"><span>systemctl status rclone<span style="color:#ff79c6">.</span>service  
+</span></span></code></pre></div><h2 id="部分参考">部分参考</h2>
+<p><a href="https://willxup.top/archives/deploy-alist-and-rclone"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   https://willxup.top/archives/deploy-alist-and-rclone<span class="external-link">↗</span></a>
+</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Clash魔法配置</title>
+      <link>http://localhost:1313/zh/posts/2025_02_21-clash_magic/</link>
+      <pubDate>Fri, 21 Feb 2025 19:39:24 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_21-clash_magic/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;人在国内，安装完系统之后第一件事往往是配置一个魔法，这里参考了&lt;a href=&#34;https://blog.linioi.com/posts/clash-on-arch/&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Arch Linux Clash 安装配置记录|清絮的博客&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+。&lt;/p&gt;
+&lt;h2 id=&#34;下载-clash&#34;&gt;下载 Clash&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# 如果你使用 Arch Linux，请使用以下命令安装 Clash。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -S clash  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果你使用其他 Linux 系统，可以从 &lt;a href=&#34;https://github.com/DustinWin/clash_singbox-tools/releases/tag/Clash-Premium&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Clash&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+ 下载。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>人在国内，安装完系统之后第一件事往往是配置一个魔法，这里参考了<a href="https://blog.linioi.com/posts/clash-on-arch/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Arch Linux Clash 安装配置记录|清絮的博客<span class="external-link">↗</span></a>
+。</p>
+<h2 id="下载-clash">下载 Clash</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 如果你使用 Arch Linux，请使用以下命令安装 Clash。</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S clash  
+</span></span></code></pre></div><p>如果你使用其他 Linux 系统，可以从 <a href="https://github.com/DustinWin/clash_singbox-tools/releases/tag/Clash-Premium"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Clash<span class="external-link">↗</span></a>
+ 下载。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 将 Clash 复制到 /usr/local/bin 目录。  </span>
+</span></span><span style="display:flex;"><span>sudo cp clash /usr/local/bin/  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 授予 Clash 可执行权限。  </span>
+</span></span><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/clash  
+</span></span></code></pre></div><h2 id="配置-clash">配置 Clash</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 创建默认的 YAML 配置文件</span>
+</span></span><span style="display:flex;"><span>clash 
+</span></span></code></pre></div><p>启动 Clash 后，它会在 <code>~/.config/clash</code> 目录下生成一个默认配置文件。<code>~/.config/clash/config.yaml</code> 指的是你为 Clash 配置文件指定的目录，该目录存储你的节点和规则。你可以直接将此文件替换为你自己的配置文件。<br>
+修改配置文件后，只需重启 Clash 即可启用代理。</p>
+<h2 id="设置系统代理">设置系统代理</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 编辑 /etc/environment 文件  </span>
+</span></span><span style="display:flex;"><span>sudo vim /etc/environment
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/etc/environment</span>
+    <span class="line-count">4 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 添加网络代理设置
+</span></span><span style="display:flex;"><span>http_proxy=127.0.0.1:7890
+</span></span><span style="display:flex;"><span>https_proxy=127.0.0.1:7890
+</span></span><span style="display:flex;"><span>socks_proxy=127.0.0.1:7891
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h2 id="设置开机自启动">设置开机自启动</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 查看 Clash 的绝对路径  </span>
+</span></span><span style="display:flex;"><span>which clash  
+</span></span></code></pre></div><p>对于 Arch Linux，默认路径为 <code>/usr/bin/clash</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 创建一个文件夹来存储与 Clash 相关的文件  </span>
+</span></span><span style="display:flex;"><span>sudo mkdir -p /etc/clash
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 复制相关文件  </span>
+</span></span><span style="display:flex;"><span>sudo cp ~/.config/clash/config.yaml /etc/clash/
+</span></span><span style="display:flex;"><span>sudo cp ~/.config/clash/Country.mmdb /etc/clash/
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 编辑 /etc/systemd/system/clash.service 文件</span>
+</span></span><span style="display:flex;"><span>sudo vim /etc/systemd/system/clash.service
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/usr/lib/systemd/system/clash.service</span>
+    <span class="line-count">12 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-service" data-lang="service"><span style="display:flex;"><span><span style="color:#6272a4"># /usr/lib/systemd/system/clash.service 文件内容如下：</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Unit]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Description</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">Clash 守护进程，一个基于规则的 Go 语言代理。</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">After</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">network.target</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Service]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Type</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">simple</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Restart</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">always</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">ExecStart</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">/usr/bin/clash -d /etc/clash # 修改为你的实际路径</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Install]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">WantedBy</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">multi-user.target</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载系统守护进程  </span>
+</span></span><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 设置服务开机自启动</span>
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#8be9fd;font-style:italic">enable</span> clash.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 启动服务</span>
+</span></span><span style="display:flex;"><span>systemctl start clash.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 检查服务状态</span>
+</span></span><span style="display:flex;"><span>systemctl status clash.service  
+</span></span></code></pre></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>通过公网IP调用暴露的Ollama服务</title>
       <link>http://localhost:1313/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</link>
       <pubDate>Fri, 21 Feb 2025 13:02:59 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</guid>
-      <description>&lt;div class=&#34;admonition warning &#34;&gt;
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;如何使用ollama-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_02_09-ollama_deepseek_1&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   通过Ollama调用DeepSeek&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;.&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   通过公网IP调用暴露的Ollama服务&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
+&lt;div class=&#34;admonition warning &#34;&gt;
   &lt;div class=&#34;admonition-header&#34;&gt;
     &lt;i class=&#34;fas fa-exclamation-triangle&#34;&gt;&lt;/i&gt;
     &lt;span&gt;Warning&lt;/span&gt;
@@ -26,7 +1217,23 @@
 
 
 &lt;p&gt;随着 DeepSeek 模型的广泛应用，越来越多的人开始在自己的服务器上运行 Ollama 平台来本地执行模型。由于 Ollama 在默认配置下不需要 API 密钥，只需要知道服务器的 IP 地址和端口，就能连接并访问正在运行的模型。因此，如果你能够找到这些暴露在公网的 Ollama 实例，就能免费使用它们。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<div class="admonition warning ">
+      <content:encoded><![CDATA[<blockquote class="quote"><p>如何使用ollama-这是一个系列</p>
+<ul>
+<li><a href="../2025_02_09-ollama_deepseek_1"
+   
+   
+   class="custom-link">  
+   通过Ollama调用DeepSeek</a>
+</li>
+<li><a href="."
+   
+   
+   class="custom-link">  
+   通过公网IP调用暴露的Ollama服务</a>
+&#x1f448; 你在这里</li>
+</ul></blockquote>
+
+<div class="admonition warning ">
   <div class="admonition-header">
     <i class="fas fa-exclamation-triangle"></i>
     <span>Warning</span>
@@ -63,7 +1270,7 @@
 ]]></content:encoded>
     </item>
     <item>
-      <title>2025_02_21 Gtrash_as_an_alternative_to_rm</title>
+      <title>Gtrash作为rm的代替工具</title>
       <link>http://localhost:1313/zh/posts/2025_02_21-gtrash_as_an_alternative_to_rm/</link>
       <pubDate>Fri, 21 Feb 2025 09:43:20 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_21-gtrash_as_an_alternative_to_rm/</guid>
@@ -257,7 +1464,7 @@
 ]]></content:encoded>
     </item>
     <item>
-      <title>2025_02_20 Image_Hosting_in_Github</title>
+      <title>通过PicGo在Github上搭建图床</title>
       <link>http://localhost:1313/zh/posts/2025_02_20-image_hosting_in_github/</link>
       <pubDate>Thu, 20 Feb 2025 19:35:05 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_20-image_hosting_in_github/</guid>
@@ -380,7 +1587,7 @@
 ]]></content:encoded>
     </item>
     <item>
-      <title>2025_02_18 Avante.nvim_with_deepseek_api</title>
+      <title>使用Avante.nvim作为代码助手</title>
       <link>http://localhost:1313/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</link>
       <pubDate>Tue, 18 Feb 2025 18:27:58 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</guid>
@@ -1440,7 +2647,7 @@
 </span></span></code></pre></div>]]></content:encoded>
     </item>
     <item>
-      <title>2025_02_16 How_to_connect_nikon_in_archlinux</title>
+      <title>使用gPhoto2在Archlinux上进行Nikon相机的操控</title>
       <link>http://localhost:1313/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</link>
       <pubDate>Sun, 16 Feb 2025 20:04:56 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</guid>
@@ -1807,11 +3014,27 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 ]]></content:encoded>
     </item>
     <item>
-      <title>2025_02_09 Ollama_deepseek_1</title>
+      <title>通过Ollama调用DeepSeek</title>
       <link>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</link>
       <pubDate>Sun, 09 Feb 2025 20:08:43 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</guid>
-      <description>&lt;h2 id=&#34;ollama&#34;&gt;Ollama&lt;/h2&gt;
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;如何使用ollama-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;.&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   通过Ollama调用DeepSeek&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_02_21-using_public_ip_to_freely_access_ollama&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   通过公网IP调用暴露的Ollama服务&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;ollama&#34;&gt;Ollama&lt;/h2&gt;
 &lt;p&gt;&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;&amp;ldquo;Get up and running with large language models locally.&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
 
 想必大家一定从很多地方都看到过这个一直小羊驼&amp;ndash;&lt;a href=&#34;https://github.com/ollama/ollama&#34;
@@ -1822,7 +3045,23 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
    class=&#34;custom-link&#34;&gt;  
    Ollama&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
 ，正如官方仓库所言，Ollama旨在简化大语言模型(LLMs)的本地部署和使用，我们能够通过这个这个工具来实现轻松下载、运行和管理各种开源的大语言模型。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<h2 id="ollama">Ollama</h2>
+      <content:encoded><![CDATA[<blockquote class="quote"><p>如何使用ollama-这是一个系列</p>
+<ul>
+<li><a href="."
+   
+   
+   class="custom-link">  
+   通过Ollama调用DeepSeek</a>
+&#x1f448; 你在这里</li>
+<li><a href="../2025_02_21-using_public_ip_to_freely_access_ollama"
+   
+   
+   class="custom-link">  
+   通过公网IP调用暴露的Ollama服务</a>
+</li>
+</ul></blockquote>
+
+<h2 id="ollama">Ollama</h2>
 <p><blockquote class="quote"><p>&ldquo;Get up and running with large language models locally.&rdquo;</p></blockquote>
 
 想必大家一定从很多地方都看到过这个一直小羊驼&ndash;<a href="https://github.com/ollama/ollama"
@@ -2531,7 +3770,50 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
       <link>http://localhost:1313/zh/posts/2025_02_05-hugo_build_3/</link>
       <pubDate>Thu, 06 Feb 2025 19:32:05 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_05-hugo_build_3/</guid>
-      <description></description>
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;如何构建我的hugo博客-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_01_19-hugo_build_1&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   Hugo博客搭建_基础 😊&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_01_20-hugo_build_2&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   Hugo博客搭建_配置 🚀&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;.&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   Hugo博客搭建_主题优化 🤤&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;</description>
+      <content:encoded><![CDATA[<blockquote class="quote"><p>如何构建我的hugo博客-这是一个系列</p>
+<ul>
+<li><a href="../2025_01_19-hugo_build_1"
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_基础 😊</a>
+</li>
+<li><a href="../2025_01_20-hugo_build_2"
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_配置 🚀</a>
+</li>
+<li><a href="."
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_主题优化 🤤</a>
+&#x1f448; 你在这里</li>
+</ul></blockquote>
+
+]]></content:encoded>
     </item>
     <item>
       <title>Hugo博客搭建_配置 🚀</title>
@@ -12887,10 +14169,52 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
       <link>http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/</link>
       <pubDate>Sun, 19 Jan 2025 20:05:13 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_01_19-hugo_build_1/</guid>
-      <description>&lt;hr&gt;
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;如何构建我的hugo博客-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;.&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   Hugo博客搭建_基础 😊&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_01_20_hugo_build_2&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   Hugo博客搭建_配置 🚀&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_02_05-hugo_build_3&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   Hugo博客搭建_主题优化 🤤&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
 &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<hr>
+      <content:encoded><![CDATA[<blockquote class="quote"><p>如何构建我的hugo博客-这是一个系列</p>
+<ul>
+<li><a href="."
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_基础 😊</a>
+&#x1f448; 你在这里</li>
+<li><a href="../2025_01_20_hugo_build_2"
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_配置 🚀</a>
+</li>
+<li><a href="../2025_02_05-hugo_build_3"
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_主题优化 🤤</a>
+</li>
+</ul></blockquote>
+
 <h1 id="前言">前言</h1>
 <p>以往总是东一笔西一笔写自己的一些内容，也尝试过用MKDOCS来搭建自己的知识库，前段时间看到很多人用Hugo搭建博客，于是也想尝试一下，在这里记录一下搭建与配置的过程。</p>
 <h2 id="安装环境">安装环境</h2>

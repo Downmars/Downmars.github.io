@@ -1,5 +1,5 @@
 ---
-title: "2025_02_10 Open_source_1"
+title: "开源遐想"
 date: 2025-02-10T20:04:47+08:00
 lastmod: 2025-02-10T20:04:47+08:00
 draft: true

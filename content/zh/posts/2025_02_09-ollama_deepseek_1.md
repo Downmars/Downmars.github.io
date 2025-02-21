@@ -1,5 +1,5 @@
 ---
-title: "2025_02_09 Ollama_deepseek_1"
+title: "通过Ollama调用DeepSeek"
 date: 2025-02-09T20:08:43+08:00
 lastmod: 2025-02-09T20:08:43+08:00
 draft: false
@@ -32,6 +32,12 @@ cover:
     alt: "ollama"
     caption: ""
 ---
+
+{{< quote >}}  
+如何使用ollama-这是一个系列  
+- [通过Ollama调用DeepSeek](.):point_left: 你在这里
+- [通过公网IP调用暴露的Ollama服务](../2025_02_21-using_public_ip_to_freely_access_ollama)
+{{< /quote >}}
 
 ## Ollama  
 {{< quote >}}"Get up and running with large language models locally."{{< /quote >}}

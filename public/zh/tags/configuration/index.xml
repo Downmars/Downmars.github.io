@@ -13,7 +13,50 @@
       <link>http://localhost:1313/zh/posts/2025_02_05-hugo_build_3/</link>
       <pubDate>Thu, 06 Feb 2025 19:32:05 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_05-hugo_build_3/</guid>
-      <description></description>
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;如何构建我的hugo博客-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_01_19-hugo_build_1&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   Hugo博客搭建_基础 😊&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_01_20-hugo_build_2&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   Hugo博客搭建_配置 🚀&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;.&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   Hugo博客搭建_主题优化 🤤&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;</description>
+      <content:encoded><![CDATA[<blockquote class="quote"><p>如何构建我的hugo博客-这是一个系列</p>
+<ul>
+<li><a href="../2025_01_19-hugo_build_1"
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_基础 😊</a>
+</li>
+<li><a href="../2025_01_20-hugo_build_2"
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_配置 🚀</a>
+</li>
+<li><a href="."
+   
+   
+   class="custom-link">  
+   Hugo博客搭建_主题优化 🤤</a>
+&#x1f448; 你在这里</li>
+</ul></blockquote>
+
+]]></content:encoded>
     </item>
     <item>
       <title>Hugo博客搭建_配置 🚀</title>

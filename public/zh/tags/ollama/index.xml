@@ -9,11 +9,27 @@
     <lastBuildDate>Fri, 21 Feb 2025 13:02:59 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/tags/ollama/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>2025_02_21 Using_Public_IP_to_Freely_Access_Ollama</title>
+      <title>通过公网IP调用暴露的Ollama服务</title>
       <link>http://localhost:1313/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</link>
       <pubDate>Fri, 21 Feb 2025 13:02:59 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</guid>
-      <description>&lt;div class=&#34;admonition warning &#34;&gt;
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;如何使用ollama-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_02_09-ollama_deepseek_1&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   通过Ollama调用DeepSeek&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;.&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   通过公网IP调用暴露的Ollama服务&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
+&lt;div class=&#34;admonition warning &#34;&gt;
   &lt;div class=&#34;admonition-header&#34;&gt;
     &lt;i class=&#34;fas fa-exclamation-triangle&#34;&gt;&lt;/i&gt;
     &lt;span&gt;Warning&lt;/span&gt;
@@ -26,7 +42,23 @@
 
 
 &lt;p&gt;随着 DeepSeek 模型的广泛应用，越来越多的人开始在自己的服务器上运行 Ollama 平台来本地执行模型。由于 Ollama 在默认配置下不需要 API 密钥，只需要知道服务器的 IP 地址和端口，就能连接并访问正在运行的模型。因此，如果你能够找到这些暴露在公网的 Ollama 实例，就能免费使用它们。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<div class="admonition warning ">
+      <content:encoded><![CDATA[<blockquote class="quote"><p>如何使用ollama-这是一个系列</p>
+<ul>
+<li><a href="../2025_02_09-ollama_deepseek_1"
+   
+   
+   class="custom-link">  
+   通过Ollama调用DeepSeek</a>
+</li>
+<li><a href="."
+   
+   
+   class="custom-link">  
+   通过公网IP调用暴露的Ollama服务</a>
+&#x1f448; 你在这里</li>
+</ul></blockquote>
+
+<div class="admonition warning ">
   <div class="admonition-header">
     <i class="fas fa-exclamation-triangle"></i>
     <span>Warning</span>
@@ -63,11 +95,27 @@
 ]]></content:encoded>
     </item>
     <item>
-      <title>2025_02_09 Ollama_deepseek_1</title>
+      <title>通过Ollama调用DeepSeek</title>
       <link>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</link>
       <pubDate>Sun, 09 Feb 2025 20:08:43 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</guid>
-      <description>&lt;h2 id=&#34;ollama&#34;&gt;Ollama&lt;/h2&gt;
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;如何使用ollama-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;.&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   通过Ollama调用DeepSeek&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_02_21-using_public_ip_to_freely_access_ollama&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   通过公网IP调用暴露的Ollama服务&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;ollama&#34;&gt;Ollama&lt;/h2&gt;
 &lt;p&gt;&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;&amp;ldquo;Get up and running with large language models locally.&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
 
 想必大家一定从很多地方都看到过这个一直小羊驼&amp;ndash;&lt;a href=&#34;https://github.com/ollama/ollama&#34;
@@ -78,7 +126,23 @@
    class=&#34;custom-link&#34;&gt;  
    Ollama&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
 ，正如官方仓库所言，Ollama旨在简化大语言模型(LLMs)的本地部署和使用，我们能够通过这个这个工具来实现轻松下载、运行和管理各种开源的大语言模型。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<h2 id="ollama">Ollama</h2>
+      <content:encoded><![CDATA[<blockquote class="quote"><p>如何使用ollama-这是一个系列</p>
+<ul>
+<li><a href="."
+   
+   
+   class="custom-link">  
+   通过Ollama调用DeepSeek</a>
+&#x1f448; 你在这里</li>
+<li><a href="../2025_02_21-using_public_ip_to_freely_access_ollama"
+   
+   
+   class="custom-link">  
+   通过公网IP调用暴露的Ollama服务</a>
+</li>
+</ul></blockquote>
+
+<h2 id="ollama">Ollama</h2>
 <p><blockquote class="quote"><p>&ldquo;Get up and running with large language models locally.&rdquo;</p></blockquote>
 
 想必大家一定从很多地方都看到过这个一直小羊驼&ndash;<a href="https://github.com/ollama/ollama"

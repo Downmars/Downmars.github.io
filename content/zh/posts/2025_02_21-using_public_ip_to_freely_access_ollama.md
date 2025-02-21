@@ -1,5 +1,5 @@
 ---
-title: "2025_02_21 Using_Public_IP_to_Freely_Access_Ollama"
+title: "通过公网IP调用暴露的Ollama服务"
 date: 2025-02-21T13:02:59+08:00
 lastmod: 2025-02-21T13:02:59+08:00
 draft: false
@@ -32,6 +32,12 @@ cover:
     alt: ""
     caption: ""
 ---
+{{< quote >}}  
+如何使用ollama-这是一个系列  
+- [通过Ollama调用DeepSeek](../2025_02_09-ollama_deepseek_1)
+- [通过公网IP调用暴露的Ollama服务](.):point_left: 你在这里
+{{< /quote >}}
+
 
 {{< admonition type="warning" >}} 使用这种方法时，请务必尊重服务器的隐私和使用政策，避免滥用公共资源。{{< /admonition >}}
 

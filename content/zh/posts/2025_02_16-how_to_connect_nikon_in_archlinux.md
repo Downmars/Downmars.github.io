@@ -1,5 +1,5 @@
 ---
-title: "2025_02_16 How_to_connect_nikon_in_archlinux"
+title: "使用gPhoto2在Archlinux上进行Nikon相机的操控"
 date: 2025-02-16T20:04:56+08:00
 lastmod: 2025-02-16T20:04:56+08:00
 draft: false

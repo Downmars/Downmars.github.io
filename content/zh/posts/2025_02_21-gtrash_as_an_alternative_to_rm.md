@@ -1,5 +1,5 @@
 ---
-title: "2025_02_21 Gtrash_as_an_alternative_to_rm"
+title: "Gtrash作为rm的代替工具"
 date: 2025-02-21T09:43:20+08:00
 lastmod: 2025-02-21T09:43:20+08:00
 draft: false

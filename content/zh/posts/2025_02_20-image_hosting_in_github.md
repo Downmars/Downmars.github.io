@@ -1,5 +1,5 @@
 ---
-title: "2025_02_20 Image_Hosting_in_Github"
+title: "通过PicGo在Github上搭建图床"
 date: 2025-02-20T19:35:05+08:00
 lastmod: 2025-02-20T19:35:05+08:00
 draft: false
