@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Ollama on DLog</title><link>https://downmars.github.io/zh/tags/ollama/</link><description>Recent content in Ollama on DLog</description><generator>Hugo -- 0.144.2</generator><language>zh-CN</language><lastBuildDate>Fri, 21 Feb 2025 13:02:59 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/ollama/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_02_21 Using_Public_IP_to_Freely_Access_Ollama</title><link>https://downmars.github.io/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</link><pubDate>Fri, 21 Feb 2025 13:02:59 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</guid><description>&lt;div class="admonition warning ">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Ollama on DLog</title><link>https://downmars.github.io/zh/tags/ollama/</link><description>Recent content in Ollama on DLog</description><generator>Hugo -- 0.144.2</generator><language>zh-CN</language><lastBuildDate>Fri, 21 Feb 2025 13:02:59 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/ollama/index.xml" rel="self" type="application/rss+xml"/><item><title>通过公网IP调用暴露的Ollama服务</title><link>https://downmars.github.io/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</link><pubDate>Fri, 21 Feb 2025 13:02:59 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_21-using_public_ip_to_freely_access_ollama/</guid><description>&lt;blockquote class="quote">&lt;p>如何使用ollama-这是一个系列&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="../2025_02_09-ollama_deepseek_1"
+class="custom-link">
+通过Ollama调用DeepSeek&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="."
+class="custom-link">
+通过公网IP调用暴露的Ollama服务&lt;/a>
+&amp;#x1f448; 你在这里&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;div class="admonition warning ">
 &lt;div class="admonition-header">
 &lt;i class="fas fa-exclamation-triangle">&lt;/i>
 &lt;span>Warning&lt;/span>
@@ -7,7 +18,23 @@
 使用这种方法时，请务必尊重服务器的隐私和使用政策，避免滥用公共资源。
 &lt;/div>
 &lt;/div>
-&lt;p>随着 DeepSeek 模型的广泛应用，越来越多的人开始在自己的服务器上运行 Ollama 平台来本地执行模型。由于 Ollama 在默认配置下不需要 API 密钥，只需要知道服务器的 IP 地址和端口，就能连接并访问正在运行的模型。因此，如果你能够找到这些暴露在公网的 Ollama 实例，就能免费使用它们。&lt;/p></description><content:encoded><![CDATA[<div class="admonition warning ">
+&lt;p>随着 DeepSeek 模型的广泛应用，越来越多的人开始在自己的服务器上运行 Ollama 平台来本地执行模型。由于 Ollama 在默认配置下不需要 API 密钥，只需要知道服务器的 IP 地址和端口，就能连接并访问正在运行的模型。因此，如果你能够找到这些暴露在公网的 Ollama 实例，就能免费使用它们。&lt;/p></description><content:encoded><![CDATA[<blockquote class="quote"><p>如何使用ollama-这是一个系列</p>
+<ul>
+<li><a href="../2025_02_09-ollama_deepseek_1"
+   
+   
+   class="custom-link">  
+   通过Ollama调用DeepSeek</a>
+</li>
+<li><a href="."
+   
+   
+   class="custom-link">  
+   通过公网IP调用暴露的Ollama服务</a>
+&#x1f448; 你在这里</li>
+</ul></blockquote>
+
+<div class="admonition warning ">
   <div class="admonition-header">
     <i class="fas fa-exclamation-triangle"></i>
     <span>Warning</span>
@@ -41,13 +68,40 @@
 <p>通过多次测试，你可以发现哪些模型可用，哪些模型由于服务器限制或负载过高可能无法访问。一般来说，70B 和 32B 是最常见的有效模型，而如 671B 等大规模模型较为罕见。</p>
 <h2 id="总结">总结</h2>
 <p>通过这一方法，你可以在没有 API 密钥的情况下，精准地连接到正在运行 Ollama 的服务器，并使用其中的 DeepSeek 模型。只要知道目标服务器的地址和端口，你就能通过简单的 GET 请求，查看并使用这些开放的 AI 模型。这种方法被称为“精准白嫖”，它依赖于大规模使用 Ollama 的服务器的暴露服务。</p>
-]]></content:encoded></item><item><title>2025_02_09 Ollama_deepseek_1</title><link>https://downmars.github.io/zh/posts/2025_02_09-ollama_deepseek_1/</link><pubDate>Sun, 09 Feb 2025 20:08:43 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_09-ollama_deepseek_1/</guid><description>&lt;h2 id="ollama">Ollama&lt;/h2>
+]]></content:encoded></item><item><title>通过Ollama调用DeepSeek</title><link>https://downmars.github.io/zh/posts/2025_02_09-ollama_deepseek_1/</link><pubDate>Sun, 09 Feb 2025 20:08:43 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_09-ollama_deepseek_1/</guid><description>&lt;blockquote class="quote">&lt;p>如何使用ollama-这是一个系列&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="."
+class="custom-link">
+通过Ollama调用DeepSeek&lt;/a>
+&amp;#x1f448; 你在这里&lt;/li>
+&lt;li>&lt;a href="../2025_02_21-using_public_ip_to_freely_access_ollama"
+class="custom-link">
+通过公网IP调用暴露的Ollama服务&lt;/a>
+&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;h2 id="ollama">Ollama&lt;/h2>
 &lt;p>&lt;blockquote class="quote">&lt;p>&amp;ldquo;Get up and running with large language models locally.&amp;rdquo;&lt;/p>&lt;/blockquote>
 想必大家一定从很多地方都看到过这个一直小羊驼&amp;ndash;&lt;a href="https://github.com/ollama/ollama"
 target="_blank" rel="noopener"
 class="custom-link">
 Ollama&lt;span class="external-link">↗&lt;/span>&lt;/a>
-，正如官方仓库所言，Ollama旨在简化大语言模型(LLMs)的本地部署和使用，我们能够通过这个这个工具来实现轻松下载、运行和管理各种开源的大语言模型。&lt;/p></description><content:encoded><![CDATA[<h2 id="ollama">Ollama</h2>
+，正如官方仓库所言，Ollama旨在简化大语言模型(LLMs)的本地部署和使用，我们能够通过这个这个工具来实现轻松下载、运行和管理各种开源的大语言模型。&lt;/p></description><content:encoded><![CDATA[<blockquote class="quote"><p>如何使用ollama-这是一个系列</p>
+<ul>
+<li><a href="."
+   
+   
+   class="custom-link">  
+   通过Ollama调用DeepSeek</a>
+&#x1f448; 你在这里</li>
+<li><a href="../2025_02_21-using_public_ip_to_freely_access_ollama"
+   
+   
+   class="custom-link">  
+   通过公网IP调用暴露的Ollama服务</a>
+</li>
+</ul></blockquote>
+
+<h2 id="ollama">Ollama</h2>
 <p><blockquote class="quote"><p>&ldquo;Get up and running with large language models locally.&rdquo;</p></blockquote>
 
 想必大家一定从很多地方都看到过这个一直小羊驼&ndash;<a href="https://github.com/ollama/ollama"
