@@ -26,7 +26,7 @@ Linux下用rm误删除文件的三种恢复方法&lt;span class="external-link">
 ，索性就写一份使用教程。</p>
 <h2 id="安装gtrash">安装Gtrash</h2>
 <p>由于我使用的是Archlinux，我这边使用AUR进行安装：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yay -S gtrash-bin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ yay -S gtrash-bin
 </span></span></code></pre></div><h2 id="使用方法">使用方法</h2>
 <h3 id="删除文件">删除文件</h3>
 <p>使用<code>put</code>指令将文件移动到垃圾箱中，删除目录时默认不需要<code>-r</code>选项。</p>

@@ -3965,104 +3965,8 @@ Hugo博客搭建_基础 😊&lt;/a>
    Hugo 多语言博客搭建，如何优雅地管理多语言 md 内容-贤民<span class="external-link">↗</span></a>
 。</p>
 <p>我认为对于编写博客的我们来说，以时间的形式来分隔是很好的一种方式来存储以及管理我们的博客，使用统一文件命名规范<code>YYYYMMDD-title.md</code>。此外，有兴趣的可以做一下多语言的准备，即使现在没有推出多语言的打算，之后可以集中找个时间来使用<code>ai</code>工具来统一做一下。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" >
-  <summary markdown="span">
-    <span>tree .</span>
-    <span class="line-count">16 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree .
+</span></span><span style="display:flex;"><span>.
 </span></span><span style="display:flex;"><span>├── en
 </span></span><span style="display:flex;"><span>│   ├── archives
 </span></span><span style="display:flex;"><span>│   │   └── archives.md
@@ -4078,11 +3982,7 @@ Hugo博客搭建_基础 😊&lt;/a>
 </span></span><span style="display:flex;"><span>    │   └── 2025_01_20-hugo_build_2.md
 </span></span><span style="display:flex;"><span>    └── search
 </span></span><span style="display:flex;"><span>        └── search.md
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-可以参考我的示例结构，在这里我将<code>zh/</code>和<code>en/</code>作为<code>post/</code>的直接子目录，这一步需在对应的语言下添加设置对应的文档目录，如<code>contentDir: &quot;content/zh&quot;</code>。</p>
+</span></span></code></pre></div><p>可以参考我的示例结构，在这里我将<code>zh/</code>和<code>en/</code>作为<code>post/</code>的直接子目录，这一步需在对应的语言下添加设置对应的文档目录，如<code>contentDir: &quot;content/zh&quot;</code>。</p>
 <p>我们在此处同时需要设置页面布局，创建<code>zh/archives/archives.md</code>和<code>zh/search/search.md</code>，</p>
 
 
@@ -9954,55 +9854,10 @@ Hugo博客搭建_基础 😊&lt;/a>
   </div>
 </details></p>
 
-其次，我们在创建对应位置的friends的导览页内容：
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>bash</span>
-    <span class="line-count">2 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir content/zh/friends/
-</span></span><span style="display:flex;"><span>vim content/zh/friends/index.md  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-在其中添加：
+其次，我们在创建对应位置的friends的导览页内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir content/zh/friends/
+</span></span><span style="display:flex;"><span>$ vim content/zh/friends/index.md  
+</span></span></code></pre></div><p>在其中添加：
 
 
 
@@ -10430,14 +10285,14 @@ Hugo博客搭建_主题优化 🤤&lt;/a>
 <h1 id="hugo安装及基础配置">Hugo安装及基础配置</h1>
 <h2 id="hugo安装">Hugo安装</h2>
 <p>我是用的是archlinux，所以直接用pacman安装：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S hugo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo pacman -S hugo
 </span></span></code></pre></div><p>安装完之后，可以通过以下命令查看版本：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo version
 </span></span></code></pre></div><h2 id="hugo初始化">Hugo初始化</h2>
 <p>通过上述命令安装hugo程序后，可以在选定的目录下通过<code>hugo new site $YOUR_SITE_NAME</code>创建你的博客目录：</p>
 <blockquote>
 <p>如果不特殊申明，本文接下来的命令行操作都是在<code>$YOUR_SITE_NAME</code>目录下进行的。</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>myArch% hugo new site DHugo                      
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site DHugo                      
 </span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site was created in /home/dm/Test/DHugo.
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Just a few more steps...
@@ -10452,7 +10307,7 @@ Hugo博客搭建_主题优化 🤤&lt;/a>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>See documentation at https://gohugo.io/.
 </span></span></code></pre></div><p>可以使用<code>tree</code>指令对我们创建的博客目录进行查看</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>myArch% tree                            
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree                            
 </span></span><span style="display:flex;"><span>.
 </span></span><span style="display:flex;"><span>├── archetypes
 </span></span><span style="display:flex;"><span>│   └── default.md <span style="color:#6272a4"># 博客模板文件</span>
@@ -10487,21 +10342,122 @@ Hugo博客搭建_主题优化 🤤&lt;/a>
 </ul>
 <p>在此处，官方推荐将我们选择的主题<code>fork</code>一个到自己的账户，并使用<code>git submodule</code>进行仓库的链接，这样以便后续主题的单独维护，避免当自己对主题进行修改之后，后续版本管理和更新会与原先主题产生冲突。</p>
 <p>当然了，我并没有<code>fork</code>一个主题并进行修改，我们通常是将<code>themes/$THEME/</code>对应目录下的文件拷贝一份到我们的项目目录<code>$YOUR_SITE_NAME</code>中对应的文件夹下，相对目录需要相同，以便我们复制的文件可以覆盖他的默认配置。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
-</span></span></code></pre></div><p>之后在hugo.yaml中添加新的一行启用新主题：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">theme</span>: <span style="color:#f1fa8c">&#34;PaperMod&#34;</span>
-</span></span></code></pre></div><p>同时为了后续的部署到<code>Github</code>我们需要在<code>config.toml</code>中添加<code>baseURL</code>配置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">baseURL</span>: &#34;https://downmars.github.io“
-</span></span></code></pre></div><h2 id="新建博客">新建博客</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git init
+</span></span><span style="display:flex;"><span>$ git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+</span></span></code></pre></div><p>之后在hugo.yaml中添加新的一行启用新主题，同时为了后续的部署到<code>Github</code>我们需要在<code>config.yaml</code>中添加<code>baseURL</code>配置：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>hugo.yaml</span>
+    <span class="line-count">2 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">theme</span>: <span style="color:#f1fa8c">&#34;PaperMod&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">baseURL</span>: &#34;https://downmars.github.io“
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h2 id="新建博客">新建博客</h2>
 <p>我们可以使用<code>hugo new path/to/your.md</code>来创建你的第一个博客啦！</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new posts/test.md
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/test.md
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>posts/test.md</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>title: &#34;Test&#34;
 </span></span><span style="display:flex;"><span>date: 2022-10-21T19:00:43+08:00
 </span></span><span style="display:flex;"><span>draft: true
 </span></span><span style="display:flex;"><span>---
-</span></span></code></pre></div><p>这个命令会在<code>content</code>目录下创建<code>posts</code>目录，并在生成<code>posts/test.md</code>，博文使用<code>Markdown</code>语法完成，我们用默认模板生成的博客是草稿状态，可以将<code>draft</code>设置为<code>false</code>，这样文章就可以发表了。</p>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>这个命令会在<code>content</code>目录下创建<code>posts</code>目录，并在生成<code>posts/test.md</code>，博文使用<code>Markdown</code>语法完成，我们用默认模板生成的博客是草稿状态，可以将<code>draft</code>设置为<code>false</code>，这样文章就可以发表了。</p>
 <p>我们接下来就可以使用<code>hugo server</code>进行本地预览了，通过访问<a href="http://localhost:1313/"
    
     
@@ -10510,7 +10466,7 @@ Hugo博客搭建_主题优化 🤤&lt;/a>
    class="custom-link">  
     http://localhost:1313/<span class="external-link">↗</span></a>
 可以在本地预览我们创建的博客了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server --disableFastRender 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo server --disableFastRender 
 </span></span></code></pre></div><p>但是我们现在只能够本地预览，如果想要发布到<code>Github Pages</code>，还需要借助<code>Action</code>来完成。</p>
 <h1 id="github-action自动化部署">Github Action自动化部署</h1>
 <p><code>Github Pages</code> 本质上是一个静态网站托管系统，你可以使用它为你的每一个仓库制作一个静态网页入口，我可以借助<code>Action</code>来完成部署界面。</p>
@@ -10521,9 +10477,170 @@ Hugo博客搭建_主题优化 🤤&lt;/a>
 </ul>
 <h2 id="创建ciyml文件">创建ci.yml文件</h2>
 <p><code>Github</code>进行自动化部署需要一个<code>ci.yml</code>文件，位于<code>.github/workflows/ci.yaml</code>，步骤如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir .github/workflows
-</span></span><span style="display:flex;"><span>touch .github/workflows/ci.yml
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">name</span>: Deploy Hugo site
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir .github/workflows
+</span></span><span style="display:flex;"><span>$ touch .github/workflows/ci.yml
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>.github/workflows/ci.yml</span>
+    <span class="line-count">32 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">name</span>: Deploy Hugo site
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">on</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">push</span>:
@@ -10555,11 +10672,15 @@ Hugo博客搭建_主题优化 🤤&lt;/a>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">with</span>:
 </span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">github_token</span>: ${{ secrets.GITHUB_TOKEN }}  <span style="color:#6272a4"># 使用默认令牌</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">publish_dir</span>: ./public
-</span></span></code></pre></div><h2 id="使用gh-pages部署网页">使用gh-pages部署网页</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git remote add origin https://github.com/jianzhnie/jianzhnie.github.io.git <span style="color:#6272a4"># 将本地目录链接到远程服务器的代码仓库</span>
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#f1fa8c">&#34;WOW！&#34;</span>
-</span></span><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h2 id="使用gh-pages部署网页">使用gh-pages部署网页</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git remote add origin https://github.com/jianzhnie/jianzhnie.github.io.git <span style="color:#6272a4"># 将本地目录链接到远程服务器的代码仓库</span>
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#f1fa8c">&#34;WOW！&#34;</span>
+</span></span><span style="display:flex;"><span>$ git push origin main
 </span></span></code></pre></div><p>此时，我们的博客就已经部署到了<code>Github Pages</code>上了，可以通过<code>https://[你的github账号名].github.io</code>来访问你的博客了。</p>
 <blockquote>
 <p>我一开始创建的时候会在我的博客网址看不见我的网页，后来查询之后得知需要在<code>Downmars.github.io/Settings/pages/Branch</code> 将分支切换为<code>gh-pages</code>即可</p></blockquote>
