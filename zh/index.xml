@@ -1,4 +1,223 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.144.2</generator><language>zh-CN</language><lastBuildDate>Fri, 21 Feb 2025 20:18:25 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>使用grim和slurp在Wayland环境下进行屏幕截图</title><link>https://downmars.github.io/zh/posts/2025_02_21-shot_with_grim_and_slurp/</link><pubDate>Fri, 21 Feb 2025 20:18:25 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_21-shot_with_grim_and_slurp/</guid><description>&lt;p>本指南将帮助你在基于 Wayland 的系统（如使用 &lt;code>sway&lt;/code> 窗口管理器的 Arch Linux 或 Parabola GNU/Linux-libre）上，配置并使用 &lt;code>grim&lt;/code> 和 &lt;code>slurp&lt;/code> 进行屏幕截图。配置将支持区域截图与全屏截图，并集成 &lt;code>waybar&lt;/code> 显示截图通知。此外，截图将自动复制到剪贴板，方便你快速粘贴到其他应用中。通过快捷键，可以方便地启动截图操作，同时避免与屏幕录制快捷键的冲突。&lt;/p></description><content:encoded><![CDATA[<p>本指南将帮助你在基于 Wayland 的系统（如使用 <code>sway</code> 窗口管理器的 Arch Linux 或 Parabola GNU/Linux-libre）上，配置并使用 <code>grim</code> 和 <code>slurp</code> 进行屏幕截图。配置将支持区域截图与全屏截图，并集成 <code>waybar</code> 显示截图通知。此外，截图将自动复制到剪贴板，方便你快速粘贴到其他应用中。通过快捷键，可以方便地启动截图操作，同时避免与屏幕录制快捷键的冲突。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.144.2</generator><language>zh-CN</language><lastBuildDate>Sun, 23 Feb 2025 20:56:46 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Alist管理你的网盘</title><link>https://downmars.github.io/zh/posts/2025_02_23-use_alist_to_manage_your_cloud_drives/</link><pubDate>Sun, 23 Feb 2025 20:56:46 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_23-use_alist_to_manage_your_cloud_drives/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>在linux环境下面的时候，使用国内的一些网盘是很麻烦的事情，很多盘没有对应的linux客户端，同时在拥有多个网盘账户的用户，管理起来也是十分的麻烦。我一直使用&lt;a href="https://github.com/AlistGo/alist"
+target="_blank" rel="noopener"
+class="custom-link">
+Alist&lt;span class="external-link">↗&lt;/span>&lt;/a>
+作为管理盘工具，其&lt;a href="https://alist.nn.ci/zh/"
+target="_blank" rel="noopener"
+class="custom-link">
+wiki&lt;span class="external-link">↗&lt;/span>&lt;/a>
+能够提供足够的自定义设置以及友好的帮助，这个软件能够很好的满足我的需求。&lt;/p></description><content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>在linux环境下面的时候，使用国内的一些网盘是很麻烦的事情，很多盘没有对应的linux客户端，同时在拥有多个网盘账户的用户，管理起来也是十分的麻烦。我一直使用<a href="https://github.com/AlistGo/alist"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Alist<span class="external-link">↗</span></a>
+作为管理盘工具，其<a href="https://alist.nn.ci/zh/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   wiki<span class="external-link">↗</span></a>
+能够提供足够的自定义设置以及友好的帮助，这个软件能够很好的满足我的需求。</p>
+<ul>
+<li>统一管理多个网盘账户</li>
+<li>支持WebDAV/S3等协议访问</li>
+<li>提供统一的文件管理界面</li>
+<li>支持超过30种存储服务</li>
+</ul>
+<p>本文将会介绍如何部署和使用Alist来管理你的多个网盘账户。</p>
+<h2 id="安装alist">安装Alist</h2>
+<p>这边官方提供多种安装方式，包括一键安装、手动安装、Docker、桌面版本、源码安装，我这边展示两种安装方式：</p>
+<h3 id="一键安装">一键安装</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL <span style="color:#f1fa8c">&#34;https://alist.nn.ci/v3.sh&#34;</span> -o v3.sh <span style="color:#ff79c6">&amp;&amp;</span> bash v3.sh  
+</span></span></code></pre></div><p>默认安装在<code>/opt/alist</code>，如果自定义安装路径，需要将绝对的安装路径<code>path/to/you/alist</code>作为作为<code>bash v3.sh</code>的参数添加在后面。</p>
+<h3 id="aur安装">AUR安装</h3>
+<p>由于我使用的是Archlinux，所以AUR库中有人上传了对应的包，看了下更新时间，应该是随着Github同步更新的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yay -S alist  
+</span></span></code></pre></div><p>上述两种方法可以使用命令<code>alist</code>进行Alist的功能管理。</p>
+<h2 id="获取密码">获取密码</h2>
+<p>在Alist的安装路径运行以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 运行程序</span>
+</span></span><span style="display:flex;"><span>./alist server
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 随机生成一个密码</span>
+</span></span><span style="display:flex;"><span>./alist admin random 
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 手动设置一个密码 `NEW_PASSWORD`是指你需要设置的密码</span>
+</span></span><span style="display:flex;"><span>./alist admin <span style="color:#8be9fd;font-style:italic">set</span> NEW_PASSWORD
+</span></span></code></pre></div><p>获取密码之后，我们就可以使用默认用户名<code>admin</code>和设定的密码在<a href="http://localhost:5244"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   http://localhost:5244<span class="external-link">↗</span></a>
+进行登录。</p>
+<h2 id="主页配置">主页配置</h2>
+<p>访问 <a href="http://localhost:5244"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   http://localhost:5244<span class="external-link">↗</span></a>
+ 进入管理界面，在<code>存储</code>菜单中添加你的网盘账户：</p>
+<ol>
+<li>点击&quot;添加存储&quot;</li>
+<li>选择对应的网盘服务商（如阿里云盘、Google Drive等）</li>
+<li>填写必要的认证信息（通常需要获取API token或OAuth授权）</li>
+<li>设置挂载路径和存储策略</li>
+</ol>
+<p>我这边以百度网盘为例：</p>
+<ul>
+<li>驱动： 百度网盘</li>
+<li>挂载路径： /01_百度网盘</li>
+<li>WebDAV策略： 使用代理地址</li>
+<li>刷新令牌： xxxx</li>
+<li>客户端ID： yyyy</li>
+<li>客户端密钥： zzzz</li>
+</ul>
+<p>此处，刷新令牌可以从此处获取：<a href="https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&amp;client_id=iYCeC9g08h5vuP9UqvPHKKSVrKFXGa1v&amp;redirect_uri=https://alist.nn.ci/tool/baidu/callback&amp;scope=basic,netdisk&amp;qrcode=1"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Baidu Refresh Token Callback<span class="external-link">↗</span></a>
+。需要在打开链接之前使用网页端打开百度网盘，这样网站能够获取你的百度网盘的token。我们只需要将刷新出来的<code>refresh_token:</code>复制到我们配置中的刷新令牌位置即可获取到用户端ID和用户端密钥。<br>
+之后，我们在主页即可查看到我们配置的网盘：<br>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_02_23-use_alist_to_manage_your_cloud_drives/baidu_cloud.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_02_23-use_alist_to_manage_your_cloud_drives/baidu_cloud.png#center"
+         alt="百度网盘"/> <figcaption>
+            <p>百度网盘</p>
+        </figcaption>
+</figure>
+</a>
+
+
+如果需要配置其余网盘，可以参考<a href="https://alist.nn.ci/zh/guide/drivers/common.html#web-%E4%BB%A3%E7%90%86"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   官方文档<span class="external-link">↗</span></a>
+。</p>
+<h2 id="设置开机自启">设置开机自启</h2>
+<p>由于上述两种安装方式，已经自动配置了Service服务，所以直接使用下述的命令即可使得开机自启等操作。如果未配置开机自启，需要手动配置服务：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/usr/lib/systemd/system/alist.service</span>
+    <span class="line-count">11 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#ff79c6">[Unit]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Description</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">Alist service</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">After</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">network.target</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Service]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Type</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">simple</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">WorkingDirectory</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">/path/to/alist</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">ExecStart</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">/path/to/alist/alist server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Install]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">WantedBy</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">multi-user.target</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+然后执行以下命令进行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载系统守护进程  </span>
+</span></span><span style="display:flex;"><span>$ systemctl daemon-reload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 设置服务开机自启动</span>
+</span></span><span style="display:flex;"><span>$ systemctl <span style="color:#8be9fd;font-style:italic">enable</span> alist.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 启动服务</span>
+</span></span><span style="display:flex;"><span>$ systemctl start alist.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 检查服务状态</span>
+</span></span><span style="display:flex;"><span>$ systemctl status alist.service  
+</span></span></code></pre></div>]]></content:encoded></item><item><title>使用grim和slurp在Wayland环境下进行屏幕截图</title><link>https://downmars.github.io/zh/posts/2025_02_21-shot_with_grim_and_slurp/</link><pubDate>Fri, 21 Feb 2025 20:18:25 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_21-shot_with_grim_and_slurp/</guid><description>&lt;p>本指南将帮助你在基于 Wayland 的系统（如使用 &lt;code>sway&lt;/code> 窗口管理器的 Arch Linux 或 Parabola GNU/Linux-libre）上，配置并使用 &lt;code>grim&lt;/code> 和 &lt;code>slurp&lt;/code> 进行屏幕截图。配置将支持区域截图与全屏截图，并集成 &lt;code>waybar&lt;/code> 显示截图通知。此外，截图将自动复制到剪贴板，方便你快速粘贴到其他应用中。通过快捷键，可以方便地启动截图操作，同时避免与屏幕录制快捷键的冲突。&lt;/p></description><content:encoded><![CDATA[<p>本指南将帮助你在基于 Wayland 的系统（如使用 <code>sway</code> 窗口管理器的 Arch Linux 或 Parabola GNU/Linux-libre）上，配置并使用 <code>grim</code> 和 <code>slurp</code> 进行屏幕截图。配置将支持区域截图与全屏截图，并集成 <code>waybar</code> 显示截图通知。此外，截图将自动复制到剪贴板，方便你快速粘贴到其他应用中。通过快捷键，可以方便地启动截图操作，同时避免与屏幕录制快捷键的冲突。</p>
 <h2 id="安装所需软件">安装所需软件</h2>
 <p>在基于 Arch 的发行版上，使用以下命令安装所需的软件：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S grim slurp waybar wl-clipboard jq libnotify
@@ -759,7 +978,10 @@
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 检查 rclone 是否可以通过 Pacman 仓库安装 &lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo pacman -Ss rclone
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo pacman -S rclone
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>要将 &lt;strong>Alist&lt;/strong> 挂载到本地系统，首先需要配置 &lt;strong>rclone 远程&lt;/strong>。&lt;a href="https://rclone.org/webdav/"
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>我们在&lt;a href="../2025_02_23-use_alist_to_manage_your_cloud_drives"
+class="custom-link">
+使用Alist管理你的网盘&lt;/a>
+配置过Alist服务，要将 Alist 挂载到本地系统，首先需要配置 &lt;strong>rclone 远程&lt;/strong>。&lt;a href="https://rclone.org/webdav/"
 target="_blank" rel="noopener"
 class="custom-link">
 rclone 文档&lt;span class="external-link">↗&lt;/span>&lt;/a>
@@ -767,7 +989,12 @@ rclone 文档&lt;span class="external-link">↗&lt;/span>&lt;/a>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 检查 rclone 是否可以通过 Pacman 仓库安装  </span>
 </span></span><span style="display:flex;"><span>$ sudo pacman -Ss rclone  
 </span></span><span style="display:flex;"><span>$ sudo pacman -S rclone  
-</span></span></code></pre></div><p>要将 <strong>Alist</strong> 挂载到本地系统，首先需要配置 <strong>rclone 远程</strong>。<a href="https://rclone.org/webdav/"
+</span></span></code></pre></div><p>我们在<a href="../2025_02_23-use_alist_to_manage_your_cloud_drives"
+   
+   
+   class="custom-link">  
+   使用Alist管理你的网盘</a>
+配置过Alist服务，要将 Alist 挂载到本地系统，首先需要配置 <strong>rclone 远程</strong>。<a href="https://rclone.org/webdav/"
    
     
        target="_blank" rel="noopener" 
@@ -955,16 +1182,16 @@ rclone 文档&lt;span class="external-link">↗&lt;/span>&lt;/a>
     <span class="line-count">11 lines</span>
   </summary>
   <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-service" data-lang="service"><span style="display:flex;"><span><span style="color:#6272a4"># /usr/lib/systemd/system/rclone.service 文件内容：</span>
-</span></span><span style="display:flex;"><span>[Unit] 
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#6272a4"># /usr/lib/systemd/system/rclone.service 文件内容：</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">[Unit] </span>
 </span></span><span style="display:flex;"><span><span style="color:#50fa7b">Description</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">rclone</span>
 </span></span><span style="display:flex;"><span><span style="color:#50fa7b">Before</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">network.service</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[Service] 
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">[Service] </span>
 </span></span><span style="display:flex;"><span><span style="color:#50fa7b">User</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">root </span>
 </span></span><span style="display:flex;"><span><span style="color:#50fa7b">ExecStart</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">/usr/bin/rclone mount alist: /mnt/Webdev/  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[Install] 
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">[Install] </span>
 </span></span><span style="display:flex;"><span><span style="color:#50fa7b">WantedBy</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">multi-user.target</span>
 </span></span></code></pre></div>
   </div>
@@ -2163,6 +2390,10 @@ Cursor&lt;span class="external-link">↗&lt;/span>&lt;/a>
     
   
 
+  
+    
+  
+
 
 
 
@@ -2174,7 +2405,7 @@ Cursor&lt;span class="external-link">↗&lt;/span>&lt;/a>
 <p><details class="custom-collapse" >
   <summary markdown="span">
     <span>~/.config/nvim/lua/plugins/avante.lua</span>
-    <span class="line-count">128 lines</span>
+    <span class="line-count">129 lines</span>
   </summary>
   <div class="content">
     <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>vim.env.ANTHROPIC_API_KEY <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;sk-xxxx&#34;</span>
@@ -2194,6 +2425,7 @@ Cursor&lt;span class="external-link">↗&lt;/span>&lt;/a>
 </span></span><span style="display:flex;"><span>        api_key_name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;DEEPSEEK_API_KEY&#34;</span>,
 </span></span><span style="display:flex;"><span>        endpoint <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;https://api.deepseek.com&#34;</span>,
 </span></span><span style="display:flex;"><span>        model <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek-coder&#34;</span>,
+</span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>      },
 </span></span><span style="display:flex;"><span>      deepseek_r1 <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>        __inherited_from <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;openai&#34;</span>,
