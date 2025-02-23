@@ -787,9 +787,9 @@
       <pubDate>Fri, 21 Feb 2025 20:00:04 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_02_21-rclone_mount_alist/</guid>
       <description>&lt;h2 id=&#34;下载-rclone&#34;&gt;下载 rclone&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# 检查 rclone 是否可以通过 Pacman 仓库安装  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -Ss rclone  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -S rclone  
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# 检查 rclone 是否可以通过 Pacman 仓库安装  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo pacman -Ss rclone  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo pacman -S rclone  
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;要将 &lt;strong&gt;Alist&lt;/strong&gt; 挂载到本地系统，首先需要配置 &lt;strong&gt;rclone 远程&lt;/strong&gt;。&lt;a href=&#34;https://rclone.org/webdav/&#34;
    
     
@@ -799,9 +799,9 @@
    rclone 文档&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
  对此进行了详细说明，或者你可以按照以下命令进行配置：&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="下载-rclone">下载 rclone</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 检查 rclone 是否可以通过 Pacman 仓库安装  
-</span></span><span style="display:flex;"><span>sudo pacman -Ss rclone  
-</span></span><span style="display:flex;"><span>sudo pacman -S rclone  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 检查 rclone 是否可以通过 Pacman 仓库安装  </span>
+</span></span><span style="display:flex;"><span>$ sudo pacman -Ss rclone  
+</span></span><span style="display:flex;"><span>$ sudo pacman -S rclone  
 </span></span></code></pre></div><p>要将 <strong>Alist</strong> 挂载到本地系统，首先需要配置 <strong>rclone 远程</strong>。<a href="https://rclone.org/webdav/"
    
     
@@ -810,132 +810,212 @@
    class="custom-link">  
    rclone 文档<span class="external-link">↗</span></a>
  对此进行了详细说明，或者你可以按照以下命令进行配置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 进入 rclone 配置界面    
-</span></span><span style="display:flex;"><span>rclone config
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 进入 rclone 配置界面    </span>
+</span></span><span style="display:flex;"><span>$ rclone config
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 选择新建远程  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 选择新建远程  </span>
 </span></span><span style="display:flex;"><span>没有找到远程，创建一个新的？
-</span></span><span style="display:flex;"><span>n) 新建远程
-</span></span><span style="display:flex;"><span>s) 设置配置密码
-</span></span><span style="display:flex;"><span>q) 退出配置
-</span></span><span style="display:flex;"><span>n/s/q&gt; n # 选择 n
+</span></span><span style="display:flex;"><span>n<span style="color:#ff79c6">)</span> 新建远程
+</span></span><span style="display:flex;"><span>s<span style="color:#ff79c6">)</span> 设置配置密码
+</span></span><span style="display:flex;"><span>q<span style="color:#ff79c6">)</span> 退出配置
+</span></span><span style="display:flex;"><span>n/s/q&gt; n <span style="color:#6272a4"># 选择 n</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 设置远程名称  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 设置远程名称  </span>
 </span></span><span style="display:flex;"><span>name&gt; remote
 </span></span><span style="display:flex;"><span>选择要配置的存储类型。
 </span></span><span style="display:flex;"><span>从下面的选项中选择一个，或者手动输入
-</span></span><span style="display:flex;"><span>[snip]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[</span>snip<span style="color:#ff79c6">]</span>
 </span></span><span style="display:flex;"><span>XX / WebDAV
-</span></span><span style="display:flex;"><span>   \ &#34;webdav&#34;
-</span></span><span style="display:flex;"><span>[snip]
-</span></span><span style="display:flex;"><span>Storage&gt; webdav # 选择 webdav 作为远程名称  
+</span></span><span style="display:flex;"><span>   <span style="color:#f1fa8c">\ </span><span style="color:#f1fa8c">&#34;webdav&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[</span>snip<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span>Storage&gt; webdav <span style="color:#6272a4"># 选择 webdav 作为远程名称  </span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 设置远程 URL http://your_alist_ip:port/dav
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 设置远程 URL http://your_alist_ip:port/dav</span>
 </span></span><span style="display:flex;"><span>输入 WebDAV 服务器的 URL
 </span></span><span style="display:flex;"><span>从下面的选项中选择一个，或者手动输入
-</span></span><span style="display:flex;"><span> 1 / 连接到 example.com
-</span></span><span style="display:flex;"><span>   \ &#34;https://example.com&#34;
-</span></span><span style="display:flex;"><span>url&gt; http://127.0.0.1:5244/dav # 在此处设置 alist 地址和端口，后面加上 &#34;dav&#34;，这是 Alist 所要求的  
+</span></span><span style="display:flex;"><span> <span style="color:#bd93f9">1</span> / 连接到 example.com
+</span></span><span style="display:flex;"><span>   <span style="color:#f1fa8c">\ </span><span style="color:#f1fa8c">&#34;https://example.com&#34;</span>
+</span></span><span style="display:flex;"><span>url&gt; http://127.0.0.1:5244/dav <span style="color:#6272a4"># 在此处设置 alist 地址和端口，后面加上 &#34;dav&#34;，这是 Alist 所要求的  </span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 选择 6  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 选择 6  </span>
 </span></span><span style="display:flex;"><span>你使用的 WebDAV 网站/服务/软件名称
 </span></span><span style="display:flex;"><span>从下面的选项中选择一个，或者手动输入
-</span></span><span style="display:flex;"><span> 1 / Fastmail 文件
-</span></span><span style="display:flex;"><span>   \ (fastmail)
-</span></span><span style="display:flex;"><span> 2 / Nextcloud
-</span></span><span style="display:flex;"><span>   \ (nextcloud)
-</span></span><span style="display:flex;"><span> 3 / Owncloud
-</span></span><span style="display:flex;"><span>   \ (owncloud)
-</span></span><span style="display:flex;"><span> 4 / Sharepoint Online，微软账户认证
-</span></span><span style="display:flex;"><span>   \ (sharepoint)
-</span></span><span style="display:flex;"><span> 5 / Sharepoint 使用 NTLM 认证，通常是自托管或本地部署
-</span></span><span style="display:flex;"><span>   \ (sharepoint-ntlm)
-</span></span><span style="display:flex;"><span> 6 / 其他网站/服务或软件
-</span></span><span style="display:flex;"><span>   \ (other)
-</span></span><span style="display:flex;"><span>vendor&gt; 6
+</span></span><span style="display:flex;"><span> <span style="color:#bd93f9">1</span> / Fastmail 文件
+</span></span><span style="display:flex;"><span>   <span style="color:#f1fa8c">\ </span><span style="color:#ff79c6">(</span>fastmail<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#bd93f9">2</span> / Nextcloud
+</span></span><span style="display:flex;"><span>   <span style="color:#f1fa8c">\ </span><span style="color:#ff79c6">(</span>nextcloud<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#bd93f9">3</span> / Owncloud
+</span></span><span style="display:flex;"><span>   <span style="color:#f1fa8c">\ </span><span style="color:#ff79c6">(</span>owncloud<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#bd93f9">4</span> / Sharepoint Online，微软账户认证
+</span></span><span style="display:flex;"><span>   <span style="color:#f1fa8c">\ </span><span style="color:#ff79c6">(</span>sharepoint<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#bd93f9">5</span> / Sharepoint 使用 NTLM 认证，通常是自托管或本地部署
+</span></span><span style="display:flex;"><span>   <span style="color:#f1fa8c">\ </span><span style="color:#ff79c6">(</span>sharepoint-ntlm<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#bd93f9">6</span> / 其他网站/服务或软件
+</span></span><span style="display:flex;"><span>   <span style="color:#f1fa8c">\ </span><span style="color:#ff79c6">(</span>other<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>vendor&gt; <span style="color:#bd93f9">6</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 输入远程账户信息  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 输入远程账户信息  </span>
 </span></span><span style="display:flex;"><span>用户名
-</span></span><span style="display:flex;"><span>user&gt; admin # 这是你的 alist 用户   
+</span></span><span style="display:flex;"><span>user&gt; admin <span style="color:#6272a4"># 这是你的 alist 用户   </span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 输入远程密码  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 输入远程密码  </span>
 </span></span><span style="display:flex;"><span>密码。
-</span></span><span style="display:flex;"><span>y) 是的，输入我的密码
-</span></span><span style="display:flex;"><span>g) 生成随机密码
-</span></span><span style="display:flex;"><span>n) 否，留空此密码
-</span></span><span style="display:flex;"><span>y/g/n&gt; y # 输入 y  
+</span></span><span style="display:flex;"><span>y<span style="color:#ff79c6">)</span> 是的，输入我的密码
+</span></span><span style="display:flex;"><span>g<span style="color:#ff79c6">)</span> 生成随机密码
+</span></span><span style="display:flex;"><span>n<span style="color:#ff79c6">)</span> 否，留空此密码
+</span></span><span style="display:flex;"><span>y/g/n&gt; y <span style="color:#6272a4"># 输入 y  </span>
 </span></span><span style="display:flex;"><span>请输入密码：# 输入密码时不可见  
 </span></span><span style="display:flex;"><span>password:
 </span></span><span style="display:flex;"><span>确认密码：# 再次输入密码
 </span></span><span style="display:flex;"><span>password:
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 按回车键  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 按回车键  </span>
 </span></span><span style="display:flex;"><span>Bearer Token 代替用户名/密码（例如 Macaroon）
 </span></span><span style="display:flex;"><span>bearer_token&gt;
 </span></span><span style="display:flex;"><span>远程配置
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 选择默认配置  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 选择默认配置  </span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 远程配置结果：
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 远程配置结果：</span>
 </span></span><span style="display:flex;"><span>--------------------
-</span></span><span style="display:flex;"><span>[remote]
-</span></span><span style="display:flex;"><span>type = webdav
-</span></span><span style="display:flex;"><span>url = http://127.0.0.1:5244/dav
-</span></span><span style="display:flex;"><span>vendor = Other
-</span></span><span style="display:flex;"><span>user = admin
-</span></span><span style="display:flex;"><span>pass = *** ENCRYPTED ***
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[</span>remote<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">type</span> <span style="color:#ff79c6">=</span> webdav
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">url</span> <span style="color:#ff79c6">=</span> http://127.0.0.1:5244/dav
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">vendor</span> <span style="color:#ff79c6">=</span> Other
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">user</span> <span style="color:#ff79c6">=</span> admin
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">pass</span> <span style="color:#ff79c6">=</span> *** ENCRYPTED ***
 </span></span><span style="display:flex;"><span>--------------------
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 确认配置  
-</span></span><span style="display:flex;"><span>y) 是的，确认这个配置
-</span></span><span style="display:flex;"><span>e) 编辑这个远程
-</span></span><span style="display:flex;"><span>d) 删除这个远程
-</span></span><span style="display:flex;"><span>y/e/d&gt; y # 输入 y  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 确认配置  </span>
+</span></span><span style="display:flex;"><span>y<span style="color:#ff79c6">)</span> 是的，确认这个配置
+</span></span><span style="display:flex;"><span>e<span style="color:#ff79c6">)</span> 编辑这个远程
+</span></span><span style="display:flex;"><span>d<span style="color:#ff79c6">)</span> 删除这个远程
+</span></span><span style="display:flex;"><span>y/e/d&gt; y <span style="color:#6272a4"># 输入 y  </span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 输入 &#34;q&#34; 退出配置  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 输入 &#34;q&#34; 退出配置  </span>
 </span></span></code></pre></div><h2 id="挂载到本地系统">挂载到本地系统</h2>
 <p>可以使用以下命令检查是否已成功连接，并确认 <code>alist</code> 是否已挂载：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 检查 alist 目录
-</span></span><span style="display:flex;"><span>rclone lsd alist:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 检查 alist 目录</span>
+</span></span><span style="display:flex;"><span>$ rclone lsd alist:
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 查看 alist 的文件
-</span></span><span style="display:flex;"><span>rclone ls alist:
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 将 alist 目录挂载到本地目录 /mnt/Webdev/，此命令为前台命令，运行后会被挂起。
-</span></span><span style="display:flex;"><span>rclone mount alist:/ /webdav  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 检查本地挂载位置
-</span></span><span style="display:flex;"><span>df -h  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 查看 alist 的文件</span>
+</span></span><span style="display:flex;"><span>$ rclone ls alist:
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 将 alist 目录挂载到本地目录 /mnt/Webdev/，此命令为前台命令，运行后会被挂起。</span>
+</span></span><span style="display:flex;"><span>$ rclone mount alist:/ /webdav  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask <span style="color:#bd93f9">000</span> --use-mmap
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 检查本地挂载位置</span>
+</span></span><span style="display:flex;"><span>$ df -h  
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># 输出结果类似于：
-</span></span><span style="display:flex;"><span>Alist:               1.0P     0  1.0P   0% /mnt/Webdev
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 卸载本地挂载
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 输出结果类似于：</span>
+</span></span><span style="display:flex;"><span>Alist:               1.0P     <span style="color:#bd93f9">0</span>  1.0P   0% /mnt/Webdev
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 卸载本地挂载</span>
 </span></span><span style="display:flex;"><span>fusermount -qzu /webdav  
 </span></span></code></pre></div><h2 id="设置开机自启动">设置开机自启动</h2>
 <p>你需要使用 root 权限来运行以下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 编辑服务文件  
-</span></span><span style="display:flex;"><span>vim /usr/lib/systemd/system/rclone.service
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># /usr/lib/systemd/system/rclone.service 文件内容：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 编辑服务文件  </span>
+</span></span><span style="display:flex;"><span>$ vim /usr/lib/systemd/system/rclone.Service
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/usr/lib/systemd/system/rclone.Service</span>
+    <span class="line-count">11 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-service" data-lang="service"><span style="display:flex;"><span><span style="color:#6272a4"># /usr/lib/systemd/system/rclone.service 文件内容：</span>
 </span></span><span style="display:flex;"><span>[Unit] 
-</span></span><span style="display:flex;"><span>Description=rclone
-</span></span><span style="display:flex;"><span>Before=network.service
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Description</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">rclone</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Before</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">network.service</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[Service] 
-</span></span><span style="display:flex;"><span>User=root 
-</span></span><span style="display:flex;"><span>ExecStart=/usr/bin/rclone mount alist: /mnt/Webdev/  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">User</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">root </span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">ExecStart</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">/usr/bin/rclone mount alist: /mnt/Webdev/  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[Install] 
-</span></span><span style="display:flex;"><span>WantedBy=multi-user.target
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载系统守护进程  </span>
-</span></span><span style="display:flex;"><span>systemctl daemon<span style="color:#ff79c6">-</span>reload
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">WantedBy</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">multi-user.target</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载系统守护进程  </span>
+</span></span><span style="display:flex;"><span>$ systemctl daemon-reload
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 设置服务开机自启动</span>
-</span></span><span style="display:flex;"><span>systemctl enable rclone<span style="color:#ff79c6">.</span>service
+</span></span><span style="display:flex;"><span>$ systemctl <span style="color:#8be9fd;font-style:italic">enable</span> rclone.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 启动服务</span>
-</span></span><span style="display:flex;"><span>systemctl start rclone<span style="color:#ff79c6">.</span>service
+</span></span><span style="display:flex;"><span>$ systemctl start rclone.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 检查服务状态</span>
-</span></span><span style="display:flex;"><span>systemctl status rclone<span style="color:#ff79c6">.</span>service  
+</span></span><span style="display:flex;"><span>$ systemctl status rclone.service  
 </span></span></code></pre></div><h2 id="部分参考">部分参考</h2>
 <p><a href="https://willxup.top/archives/deploy-alist-and-rclone"
    
@@ -963,7 +1043,7 @@
 。&lt;/p&gt;
 &lt;h2 id=&#34;下载-clash&#34;&gt;下载 Clash&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# 如果你使用 Arch Linux，请使用以下命令安装 Clash。&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -S clash  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo pacman -S clash  
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果你使用其他 Linux 系统，可以从 &lt;a href=&#34;https://github.com/DustinWin/clash_singbox-tools/releases/tag/Clash-Premium&#34;
    
     
@@ -983,7 +1063,7 @@
 。</p>
 <h2 id="下载-clash">下载 Clash</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 如果你使用 Arch Linux，请使用以下命令安装 Clash。</span>
-</span></span><span style="display:flex;"><span>sudo pacman -S clash  
+</span></span><span style="display:flex;"><span>$ sudo pacman -S clash  
 </span></span></code></pre></div><p>如果你使用其他 Linux 系统，可以从 <a href="https://github.com/DustinWin/clash_singbox-tools/releases/tag/Clash-Premium"
    
     
@@ -993,18 +1073,18 @@
    Clash<span class="external-link">↗</span></a>
  下载。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 将 Clash 复制到 /usr/local/bin 目录。  </span>
-</span></span><span style="display:flex;"><span>sudo cp clash /usr/local/bin/  
+</span></span><span style="display:flex;"><span>$ sudo cp clash /usr/local/bin/  
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 授予 Clash 可执行权限。  </span>
-</span></span><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/clash  
+</span></span><span style="display:flex;"><span>$ sudo chmod +x /usr/local/bin/clash  
 </span></span></code></pre></div><h2 id="配置-clash">配置 Clash</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 创建默认的 YAML 配置文件</span>
-</span></span><span style="display:flex;"><span>clash 
+</span></span><span style="display:flex;"><span>$ clash 
 </span></span></code></pre></div><p>启动 Clash 后，它会在 <code>~/.config/clash</code> 目录下生成一个默认配置文件。<code>~/.config/clash/config.yaml</code> 指的是你为 Clash 配置文件指定的目录，该目录存储你的节点和规则。你可以直接将此文件替换为你自己的配置文件。<br>
 修改配置文件后，只需重启 Clash 即可启用代理。</p>
 <h2 id="设置系统代理">设置系统代理</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 编辑 /etc/environment 文件  </span>
-</span></span><span style="display:flex;"><span>sudo vim /etc/environment
+</span></span><span style="display:flex;"><span>$ sudo vim /etc/environment
 </span></span></code></pre></div>
 
 
@@ -1064,15 +1144,15 @@
 
 <h2 id="设置开机自启动">设置开机自启动</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 查看 Clash 的绝对路径  </span>
-</span></span><span style="display:flex;"><span>which clash  
+</span></span><span style="display:flex;"><span>$ which clash  
 </span></span></code></pre></div><p>对于 Arch Linux，默认路径为 <code>/usr/bin/clash</code>。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 创建一个文件夹来存储与 Clash 相关的文件  </span>
-</span></span><span style="display:flex;"><span>sudo mkdir -p /etc/clash
+</span></span><span style="display:flex;"><span>$ sudo mkdir -p /etc/clash
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 复制相关文件  </span>
-</span></span><span style="display:flex;"><span>sudo cp ~/.config/clash/config.yaml /etc/clash/
-</span></span><span style="display:flex;"><span>sudo cp ~/.config/clash/Country.mmdb /etc/clash/
+</span></span><span style="display:flex;"><span>$ sudo cp ~/.config/clash/config.yaml /etc/clash/
+</span></span><span style="display:flex;"><span>$ sudo cp ~/.config/clash/Country.mmdb /etc/clash/
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 编辑 /etc/systemd/system/clash.service 文件</span>
-</span></span><span style="display:flex;"><span>sudo vim /etc/systemd/system/clash.service
+</span></span><span style="display:flex;"><span>$ sudo vim /etc/systemd/system/clash.service
 </span></span></code></pre></div>
 
 
@@ -1171,16 +1251,16 @@
 </details></p>
 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载系统守护进程  </span>
-</span></span><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>$ systemctl daemon-reload
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 设置服务开机自启动</span>
-</span></span><span style="display:flex;"><span>systemctl <span style="color:#8be9fd;font-style:italic">enable</span> clash.service
+</span></span><span style="display:flex;"><span>$ systemctl <span style="color:#8be9fd;font-style:italic">enable</span> clash.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 启动服务</span>
-</span></span><span style="display:flex;"><span>systemctl start clash.service
+</span></span><span style="display:flex;"><span>$ systemctl start clash.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 检查服务状态</span>
-</span></span><span style="display:flex;"><span>systemctl status clash.service  
+</span></span><span style="display:flex;"><span>$ systemctl status clash.service  
 </span></span></code></pre></div>]]></content:encoded>
     </item>
     <item>
@@ -1310,7 +1390,7 @@
 ，索性就写一份使用教程。</p>
 <h2 id="安装gtrash">安装Gtrash</h2>
 <p>由于我使用的是Archlinux，我这边使用AUR进行安装：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yay -S gtrash-bin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ yay -S gtrash-bin
 </span></span></code></pre></div><h2 id="使用方法">使用方法</h2>
 <h3 id="删除文件">删除文件</h3>
 <p>使用<code>put</code>指令将文件移动到垃圾箱中，删除目录时默认不需要<code>-r</code>选项。</p>
@@ -2221,7 +2301,7 @@
 </span></span><span style="display:flex;"><span>  version <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>, <span style="color:#6272a4">-- Set this to &#34;*&#34; to always pull the latest release version, or set it to false to update to the latest code changes.</span>
 </span></span><span style="display:flex;"><span>  opts <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>    provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek_r1&#34;</span>, <span style="color:#6272a4">-- 指定使用 DeepSeek 作为 provider</span>
-</span></span><span style="display:flex;"><span>    auto_suggeation_provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek&#34;</span>,
+</span></span><span style="display:flex;"><span>    auto_suggestions_provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek&#34;</span>,
 </span></span><span style="display:flex;"><span>    vendors <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>      deepseek <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>        __inherited_from <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;openai&#34;</span>,
@@ -2731,279 +2811,35 @@
    2700 款相机和媒体播放器<span class="external-link">↗</span></a>
 。</p>
 <p>gPhoto2 运行在多个类 Unix 操作系统上，包括 Linux、FreeBSD、NetBSD、MacOS X 等。主要的 Linux 发行版（如 Debian GNU/Linux、Ubuntu、Gentoo、Fedora、openSUSE、Mandriva 等）都提供了 gPhoto。<br>
-我们使用以下命令下载gPhoto2：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S gphoto2  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看相机(运行前记得开机，不然我的Nikon30是读取不到的)：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">8 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 显示相机中所有文件夹的列表</span>
-</span></span><span style="display:flex;"><span>gphoto2 --list-folders
+我们使用以下命令下载gPhoto2：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo pacman -S gphoto2  
+</span></span></code></pre></div><p>gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看相机(运行前记得开机，不然我的Nikon30是读取不到的)：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 显示相机中所有文件夹的列表</span>
+</span></span><span style="display:flex;"><span>$ gphoto2 --list-folders
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 显示相机存储中所有文件</span>
-</span></span><span style="display:flex;"><span>gphoto2 --list-files
+</span></span><span style="display:flex;"><span>$ gphoto2 --list-files
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 下载相机中的所有文件</span>
-</span></span><span style="display:flex;"><span>gphoto2 --get-all-files
+</span></span><span style="display:flex;"><span>$ gphoto2 --get-all-files
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 显示相机配置信息</span>
-</span></span><span style="display:flex;"><span>gphoto2 --list-config
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-由于我的相机中设置了间隔拍摄创建新文件夹，导致多个文件夹同时传输时会出现文件名重复，可以根据文件夹路径和文件名为每个文件生成唯一的名称：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gphoto2 --get-all-files --filename<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;%F/%f&#34;</span>
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-此外，gPhoto2还提供了控制相机的功能：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">14 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 捕捉单张图片</span>
-</span></span><span style="display:flex;"><span>gphoto2 --capture-image
+</span></span><span style="display:flex;"><span>$ gphoto2 --list-config
+</span></span></code></pre></div><p>由于我的相机中设置了间隔拍摄创建新文件夹，导致多个文件夹同时传输时会出现文件名重复，可以根据文件夹路径和文件名为每个文件生成唯一的名称：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gphoto2 --get-all-files --filename<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;%F/%f&#34;</span>
+</span></span></code></pre></div><p>此外，gPhoto2还提供了控制相机的功能：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 捕捉单张图片</span>
+</span></span><span style="display:flex;"><span>$ gphoto2 --capture-image
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 捕捉视频</span>
-</span></span><span style="display:flex;"><span>gphoto2 --capture-movie<span style="color:#ff79c6">=</span>SECONDS
+</span></span><span style="display:flex;"><span>$ gphoto2 --capture-movie<span style="color:#ff79c6">=</span>SECONDS
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 使用长时间曝光（如 --bulb 模式）拍摄</span>
-</span></span><span style="display:flex;"><span>gphoto2 --bulb<span style="color:#ff79c6">=</span><span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>$ gphoto2 --bulb<span style="color:#ff79c6">=</span><span style="color:#bd93f9">10</span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 使用 --capture-preview 启用相机的实时预览功能</span>
-</span></span><span style="display:flex;"><span>gphoto2 --capture-preview
+</span></span><span style="display:flex;"><span>$ gphoto2 --capture-preview
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 使用 --show-preview 显示实时预览图像</span>
-</span></span><span style="display:flex;"><span>gphoto2 --show-preview
+</span></span><span style="display:flex;"><span>$ gphoto2 --show-preview
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 触发拍照（模拟按下快门按钮）</span>
-</span></span><span style="display:flex;"><span>gphoto2 --trigger-capture
+</span></span><span style="display:flex;"><span>$ gphoto2 --trigger-capture
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 修改相机的配置参数，例如 ISO 或曝光时间</span>
-</span></span><span style="display:flex;"><span>gphoto2 --set-config<span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">iso</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">400</span>
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-更多功能可以参考于<a href="http://www.gphoto.org/doc/manual/ref-gphoto2-cli.html#cli-examples"
+</span></span><span style="display:flex;"><span>$ gphoto2 --set-config<span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">iso</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">400</span>
+</span></span></code></pre></div><p>更多功能可以参考于<a href="http://www.gphoto.org/doc/manual/ref-gphoto2-cli.html#cli-examples"
    
     
        target="_blank" rel="noopener" 
@@ -3112,385 +2948,19 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 
 （深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其中的DeepSeek-R1是其第一代推理模型，在推理任务上的表现与OpenAI-o1相当，同时为了支持研究社区，DeepSeek开源了DeepSeek-R1以及基于Qwen2.5和Llama3蒸馏出来的共记7个模型。</p>
 <h2 id="安装ollama">安装Ollama</h2>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S ollama  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-官方推荐的方式为如下：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://ollama.com/install.sh | sh  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-</p>
-<h2 id="下拉deepseek模型">下拉DeepSeek模型</h2>
-<p>Ollama现在已经将deepseek模型接入官方库中，我们只需要通过以下命令拉取模型即可：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ollama pull deepseek-r1:14b
-</span></span></code></pre></div>
-  </div>
-</details></p>
-</p>
-<h2 id="通过ollama启动deepseek">通过Ollama启动DeepSeek</h2>
-<p>经过上述部分，我们已经可以尝试本机运行DeepSeek了。通过以下命令启动Ollama服务：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ollama server  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-在启动Ollama服务过后，我们即可使用以下命令来尝试DeepSeek了：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ollama run deepseek-r1:14b
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-运行示例如下：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" >
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">32 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;&gt;&gt; which is greater? 9.11 or 9.9
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo pacman -S ollama  
+</span></span></code></pre></div><p>官方推荐的方式为如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -fsSL https://ollama.com/install.sh | sh  
+</span></span></code></pre></div><h2 id="下拉deepseek模型">下拉DeepSeek模型</h2>
+<p>Ollama现在已经将deepseek模型接入官方库中，我们只需要通过以下命令拉取模型即可：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ollama pull deepseek-r1:14b
+</span></span></code></pre></div><h2 id="通过ollama启动deepseek">通过Ollama启动DeepSeek</h2>
+<p>经过上述部分，我们已经可以尝试本机运行DeepSeek了。通过以下命令启动Ollama服务：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ollama server  
+</span></span></code></pre></div><p>在启动Ollama服务过后，我们即可使用以下命令来尝试DeepSeek了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ollama run deepseek-r1:14b
+</span></span></code></pre></div><p>运行示例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;&gt;&gt; which is greater? 9.11 or 9.9
 </span></span><span style="display:flex;"><span>&lt;think&gt;
 </span></span><span style="display:flex;"><span>First, I observe that both numbers have the same whole number part, which is 9.
 </span></span><span style="display:flex;"><span>
@@ -3522,55 +2992,10 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 </span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\[</span>
 </span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\b</span>oxed<span style="color:#ff79c6">{</span>9.9<span style="color:#ff79c6">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\]</span>
-</span></span></code></pre></div>
-  </div>
-</details></p>
-</p>
-<h2 id="ollama-server-自启动">Ollama Server 自启动</h2>
-<p>为了在开机时自启 Ollama Server，我们可以使用 systemd 来管理自动启动：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vim /etc/systemd/system/ollama-server.service
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-我们在其中填入以下内容：<br>
+</span></span></code></pre></div><h2 id="ollama-server-自启动">Ollama Server 自启动</h2>
+<p>为了在开机时自启 Ollama Server，我们可以使用 systemd 来管理自动启动：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo vim /etc/systemd/system/ollama-server.service
+</span></span></code></pre></div><p>我们在其中填入以下内容：<br>
 
 
 
@@ -3668,100 +3093,19 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
   </div>
 </details></p>
 
-创建完服务文件后，通过以下指令来完成 systemd 配置：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">11 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载 systemd 配置</span>
-</span></span><span style="display:flex;"><span>sudo systemctl daemon-reload
+创建完服务文件后，通过以下指令来完成 systemd 配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载 systemd 配置</span>
+</span></span><span style="display:flex;"><span>$ sudo systemctl daemon-reload
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 下次开机后，启动开机自启</span>
-</span></span><span style="display:flex;"><span>sudo systemctl <span style="color:#8be9fd;font-style:italic">enable</span> ollama-server.service
+</span></span><span style="display:flex;"><span>$ sudo systemctl <span style="color:#8be9fd;font-style:italic">enable</span> ollama-server.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 立刻启动服务</span>
-</span></span><span style="display:flex;"><span>sudo systemctl start ollama-server.service
+</span></span><span style="display:flex;"><span>$ sudo systemctl start ollama-server.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 查看服务状态</span>
-</span></span><span style="display:flex;"><span>sudo systemctl status ollama-server.service
-</span></span></code></pre></div>
-  </div>
-</details></p>
-</p>
-<h2 id="通过open-webui-调用本地的deepseek-api">通过Open-webui 调用本地的DeepSeek api</h2>
+</span></span><span style="display:flex;"><span>$ sudo systemctl status ollama-server.service
+</span></span></code></pre></div><h2 id="通过open-webui-调用本地的deepseek-api">通过Open-webui 调用本地的DeepSeek api</h2>
 <p>TODO</p>
 ]]></content:encoded>
     </item>
@@ -7761,104 +7105,8 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
    Hugo 多语言博客搭建，如何优雅地管理多语言 md 内容-贤民<span class="external-link">↗</span></a>
 。</p>
 <p>我认为对于编写博客的我们来说，以时间的形式来分隔是很好的一种方式来存储以及管理我们的博客，使用统一文件命名规范<code>YYYYMMDD-title.md</code>。此外，有兴趣的可以做一下多语言的准备，即使现在没有推出多语言的打算，之后可以集中找个时间来使用<code>ai</code>工具来统一做一下。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" >
-  <summary markdown="span">
-    <span>tree .</span>
-    <span class="line-count">16 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree .
+</span></span><span style="display:flex;"><span>.
 </span></span><span style="display:flex;"><span>├── en
 </span></span><span style="display:flex;"><span>│   ├── archives
 </span></span><span style="display:flex;"><span>│   │   └── archives.md
@@ -7874,11 +7122,7 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 </span></span><span style="display:flex;"><span>    │   └── 2025_01_20-hugo_build_2.md
 </span></span><span style="display:flex;"><span>    └── search
 </span></span><span style="display:flex;"><span>        └── search.md
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-可以参考我的示例结构，在这里我将<code>zh/</code>和<code>en/</code>作为<code>post/</code>的直接子目录，这一步需在对应的语言下添加设置对应的文档目录，如<code>contentDir: &quot;content/zh&quot;</code>。</p>
+</span></span></code></pre></div><p>可以参考我的示例结构，在这里我将<code>zh/</code>和<code>en/</code>作为<code>post/</code>的直接子目录，这一步需在对应的语言下添加设置对应的文档目录，如<code>contentDir: &quot;content/zh&quot;</code>。</p>
 <p>我们在此处同时需要设置页面布局，创建<code>zh/archives/archives.md</code>和<code>zh/search/search.md</code>，</p>
 
 
@@ -13750,55 +12994,10 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
   </div>
 </details></p>
 
-其次，我们在创建对应位置的friends的导览页内容：
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>bash</span>
-    <span class="line-count">2 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir content/zh/friends/
-</span></span><span style="display:flex;"><span>vim content/zh/friends/index.md  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-在其中添加：
+其次，我们在创建对应位置的friends的导览页内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir content/zh/friends/
+</span></span><span style="display:flex;"><span>$ vim content/zh/friends/index.md  
+</span></span></code></pre></div><p>在其中添加：
 
 
 
@@ -14241,14 +13440,14 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 <h1 id="hugo安装及基础配置">Hugo安装及基础配置</h1>
 <h2 id="hugo安装">Hugo安装</h2>
 <p>我是用的是archlinux，所以直接用pacman安装：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S hugo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo pacman -S hugo
 </span></span></code></pre></div><p>安装完之后，可以通过以下命令查看版本：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo version
 </span></span></code></pre></div><h2 id="hugo初始化">Hugo初始化</h2>
 <p>通过上述命令安装hugo程序后，可以在选定的目录下通过<code>hugo new site $YOUR_SITE_NAME</code>创建你的博客目录：</p>
 <blockquote>
 <p>如果不特殊申明，本文接下来的命令行操作都是在<code>$YOUR_SITE_NAME</code>目录下进行的。</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>myArch% hugo new site DHugo                      
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site DHugo                      
 </span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site was created in /home/dm/Test/DHugo.
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Just a few more steps...
@@ -14263,7 +13462,7 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>See documentation at https://gohugo.io/.
 </span></span></code></pre></div><p>可以使用<code>tree</code>指令对我们创建的博客目录进行查看</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>myArch% tree                            
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree                            
 </span></span><span style="display:flex;"><span>.
 </span></span><span style="display:flex;"><span>├── archetypes
 </span></span><span style="display:flex;"><span>│   └── default.md <span style="color:#6272a4"># 博客模板文件</span>
@@ -14298,21 +13497,122 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 </ul>
 <p>在此处，官方推荐将我们选择的主题<code>fork</code>一个到自己的账户，并使用<code>git submodule</code>进行仓库的链接，这样以便后续主题的单独维护，避免当自己对主题进行修改之后，后续版本管理和更新会与原先主题产生冲突。</p>
 <p>当然了，我并没有<code>fork</code>一个主题并进行修改，我们通常是将<code>themes/$THEME/</code>对应目录下的文件拷贝一份到我们的项目目录<code>$YOUR_SITE_NAME</code>中对应的文件夹下，相对目录需要相同，以便我们复制的文件可以覆盖他的默认配置。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
-</span></span></code></pre></div><p>之后在hugo.yaml中添加新的一行启用新主题：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">theme</span>: <span style="color:#f1fa8c">&#34;PaperMod&#34;</span>
-</span></span></code></pre></div><p>同时为了后续的部署到<code>Github</code>我们需要在<code>config.toml</code>中添加<code>baseURL</code>配置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">baseURL</span>: &#34;https://downmars.github.io“
-</span></span></code></pre></div><h2 id="新建博客">新建博客</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git init
+</span></span><span style="display:flex;"><span>$ git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+</span></span></code></pre></div><p>之后在hugo.yaml中添加新的一行启用新主题，同时为了后续的部署到<code>Github</code>我们需要在<code>config.yaml</code>中添加<code>baseURL</code>配置：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>hugo.yaml</span>
+    <span class="line-count">2 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">theme</span>: <span style="color:#f1fa8c">&#34;PaperMod&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">baseURL</span>: &#34;https://downmars.github.io“
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h2 id="新建博客">新建博客</h2>
 <p>我们可以使用<code>hugo new path/to/your.md</code>来创建你的第一个博客啦！</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new posts/test.md
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/test.md
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>posts/test.md</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>title: &#34;Test&#34;
 </span></span><span style="display:flex;"><span>date: 2022-10-21T19:00:43+08:00
 </span></span><span style="display:flex;"><span>draft: true
 </span></span><span style="display:flex;"><span>---
-</span></span></code></pre></div><p>这个命令会在<code>content</code>目录下创建<code>posts</code>目录，并在生成<code>posts/test.md</code>，博文使用<code>Markdown</code>语法完成，我们用默认模板生成的博客是草稿状态，可以将<code>draft</code>设置为<code>false</code>，这样文章就可以发表了。</p>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>这个命令会在<code>content</code>目录下创建<code>posts</code>目录，并在生成<code>posts/test.md</code>，博文使用<code>Markdown</code>语法完成，我们用默认模板生成的博客是草稿状态，可以将<code>draft</code>设置为<code>false</code>，这样文章就可以发表了。</p>
 <p>我们接下来就可以使用<code>hugo server</code>进行本地预览了，通过访问<a href="http://localhost:1313/"
    
     
@@ -14321,7 +13621,7 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
    class="custom-link">  
     http://localhost:1313/<span class="external-link">↗</span></a>
 可以在本地预览我们创建的博客了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server --disableFastRender 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo server --disableFastRender 
 </span></span></code></pre></div><p>但是我们现在只能够本地预览，如果想要发布到<code>Github Pages</code>，还需要借助<code>Action</code>来完成。</p>
 <h1 id="github-action自动化部署">Github Action自动化部署</h1>
 <p><code>Github Pages</code> 本质上是一个静态网站托管系统，你可以使用它为你的每一个仓库制作一个静态网页入口，我可以借助<code>Action</code>来完成部署界面。</p>
@@ -14332,9 +13632,170 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 </ul>
 <h2 id="创建ciyml文件">创建ci.yml文件</h2>
 <p><code>Github</code>进行自动化部署需要一个<code>ci.yml</code>文件，位于<code>.github/workflows/ci.yaml</code>，步骤如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir .github/workflows
-</span></span><span style="display:flex;"><span>touch .github/workflows/ci.yml
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">name</span>: Deploy Hugo site
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir .github/workflows
+</span></span><span style="display:flex;"><span>$ touch .github/workflows/ci.yml
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>.github/workflows/ci.yml</span>
+    <span class="line-count">32 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">name</span>: Deploy Hugo site
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">on</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">push</span>:
@@ -14366,11 +13827,15 @@ gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看�
 </span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">with</span>:
 </span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">github_token</span>: ${{ secrets.GITHUB_TOKEN }}  <span style="color:#6272a4"># 使用默认令牌</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">publish_dir</span>: ./public
-</span></span></code></pre></div><h2 id="使用gh-pages部署网页">使用gh-pages部署网页</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git remote add origin https://github.com/jianzhnie/jianzhnie.github.io.git <span style="color:#6272a4"># 将本地目录链接到远程服务器的代码仓库</span>
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#f1fa8c">&#34;WOW！&#34;</span>
-</span></span><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h2 id="使用gh-pages部署网页">使用gh-pages部署网页</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git remote add origin https://github.com/jianzhnie/jianzhnie.github.io.git <span style="color:#6272a4"># 将本地目录链接到远程服务器的代码仓库</span>
+</span></span><span style="display:flex;"><span>$ git add .
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#f1fa8c">&#34;WOW！&#34;</span>
+</span></span><span style="display:flex;"><span>$ git push origin main
 </span></span></code></pre></div><p>此时，我们的博客就已经部署到了<code>Github Pages</code>上了，可以通过<code>https://[你的github账号名].github.io</code>来访问你的博客了。</p>
 <blockquote>
 <p>我一开始创建的时候会在我的博客网址看不见我的网页，后来查询之后得知需要在<code>Downmars.github.io/Settings/pages/Branch</code> 将分支切换为<code>gh-pages</code>即可</p></blockquote>

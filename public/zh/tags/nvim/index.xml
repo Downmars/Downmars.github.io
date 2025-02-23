@@ -643,7 +643,7 @@
 </span></span><span style="display:flex;"><span>  version <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>, <span style="color:#6272a4">-- Set this to &#34;*&#34; to always pull the latest release version, or set it to false to update to the latest code changes.</span>
 </span></span><span style="display:flex;"><span>  opts <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>    provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek_r1&#34;</span>, <span style="color:#6272a4">-- 指定使用 DeepSeek 作为 provider</span>
-</span></span><span style="display:flex;"><span>    auto_suggeation_provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek&#34;</span>,
+</span></span><span style="display:flex;"><span>    auto_suggestions_provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek&#34;</span>,
 </span></span><span style="display:flex;"><span>    vendors <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>      deepseek <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>        __inherited_from <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;openai&#34;</span>,

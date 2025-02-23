@@ -39,7 +39,7 @@ cover:
 ## 安装Gtrash  
 由于我使用的是Archlinux，我这边使用AUR进行安装：
 ```bash  
-yay -S gtrash-bin
+$ yay -S gtrash-bin
 ```
 
 ## 使用方法  

@@ -52,41 +52,30 @@ cover:
 [DeepSeek](https://www.deepseek.com/){{< sidenote >}}[DeepSeek-V3](https://github.com/deepseek-ai/DeepSeek-V3)是其最新的开源模型项目，完整模型为671B，[论文链接](https://github.com/deepseek-ai/DeepSeek-V3/blob/main/DeepSeek_V3.pdf){{< /sidenote >}}（深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其中的DeepSeek-R1是其第一代推理模型，在推理任务上的表现与OpenAI-o1相当，同时为了支持研究社区，DeepSeek开源了DeepSeek-R1以及基于Qwen2.5和Llama3蒸馏出来的共记7个模型。
 
 ## 安装Ollama  
-{{< collapse summary="zsh" >}}  
 ```bash  
-sudo pacman -S ollama  
+$ sudo pacman -S ollama  
 ```
-{{< /collapse >}}
 官方推荐的方式为如下：  
-{{< collapse summary="zsh" >}}  
 ```bash  
-curl -fsSL https://ollama.com/install.sh | sh  
+$ curl -fsSL https://ollama.com/install.sh | sh  
 ```
-{{< /collapse >}}
 
 ## 下拉DeepSeek模型  
 Ollama现在已经将deepseek模型接入官方库中，我们只需要通过以下命令拉取模型即可：  
-{{< collapse summary="zsh" >}}  
 ```bash  
-ollama pull deepseek-r1:14b
+$ ollama pull deepseek-r1:14b
 ```
-{{< /collapse >}}
 
 ## 通过Ollama启动DeepSeek  
 经过上述部分，我们已经可以尝试本机运行DeepSeek了。通过以下命令启动Ollama服务：  
-{{< collapse summary="zsh" >}}  
 ```bash  
-ollama server  
+$ ollama server  
 ```
-{{< /collapse >}}
 在启动Ollama服务过后，我们即可使用以下命令来尝试DeepSeek了：  
-{{< collapse summary="zsh" >}}  
 ```bash  
-ollama run deepseek-r1:14b
+$ ollama run deepseek-r1:14b
 ```
-{{< /collapse >}}
 运行示例如下：  
-{{< collapse summary="zsh" >}}  
 ```bash  
 >>> which is greater? 9.11 or 9.9
 <think>
@@ -121,15 +110,12 @@ Therefore, **9.9** is greater than **9.11**.
 \boxed{9.9}
 \]
 ```
-{{< /collapse >}}
 
 ## Ollama Server 自启动  
 为了在开机时自启 Ollama Server，我们可以使用 systemd 来管理自动启动：  
-{{< collapse summary="zsh" >}}  
 ```bash  
-sudo vim /etc/systemd/system/ollama-server.service
+$ sudo vim /etc/systemd/system/ollama-server.service
 ```
-{{< /collapse >}}
 我们在其中填入以下内容：  
 {{< collapse summary="/etc/systemd/system/ollama-server.service" >}}  
 ```bash  
@@ -148,21 +134,19 @@ WantedBy=multi-user.target
 ```
 {{< /collapse >}}
  创建完服务文件后，通过以下指令来完成 systemd 配置：  
-{{< collapse summary="zsh" >}}  
 ```bash  
 # 重新加载 systemd 配置
-sudo systemctl daemon-reload
+$ sudo systemctl daemon-reload
 
 # 下次开机后，启动开机自启
-sudo systemctl enable ollama-server.service
+$ sudo systemctl enable ollama-server.service
 
 # 立刻启动服务
-sudo systemctl start ollama-server.service
+$ sudo systemctl start ollama-server.service
 
 # 查看服务状态
-sudo systemctl status ollama-server.service
+$ sudo systemctl status ollama-server.service
 ```
-{{< /collapse >}}
 
 ## 通过Open-webui 调用本地的DeepSeek api  
 TODO

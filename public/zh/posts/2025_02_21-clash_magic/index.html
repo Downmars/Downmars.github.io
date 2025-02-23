@@ -14,7 +14,7 @@
 。
 下载 Clash
 # 如果你使用 Arch Linux，请使用以下命令安装 Clash。
-sudo pacman -S clash  
+$ sudo pacman -S clash  
 如果你使用其他 Linux 系统，可以从   
    Clash↗
  下载。">
@@ -272,7 +272,7 @@ code.has-jax {
     <h1 class="post-title entry-hint-parent">
       Clash魔法配置
     </h1>
-    <div class="post-meta"><span title='2025-02-21 19:39:24 +0800 CST'>2025-02-21</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;489 字&nbsp;·&nbsp;Downmars
+    <div class="post-meta"><span title='2025-02-21 19:39:24 +0800 CST'>2025-02-21</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;503 字&nbsp;·&nbsp;Downmars
 
 
     </div>
@@ -482,7 +482,7 @@ code.has-jax {
 。</p>
 <h2 id="下载-clash">下载 Clash<a hidden class="anchor" aria-hidden="true" href="#下载-clash">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 如果你使用 Arch Linux，请使用以下命令安装 Clash。</span>
-</span></span><span style="display:flex;"><span>sudo pacman -S clash  
+</span></span><span style="display:flex;"><span>$ sudo pacman -S clash  
 </span></span></code></pre></div><p>如果你使用其他 Linux 系统，可以从 <a href="https://github.com/DustinWin/clash_singbox-tools/releases/tag/Clash-Premium"
    
     
@@ -492,18 +492,18 @@ code.has-jax {
    Clash<span class="external-link">↗</span></a>
  下载。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 将 Clash 复制到 /usr/local/bin 目录。  </span>
-</span></span><span style="display:flex;"><span>sudo cp clash /usr/local/bin/  
+</span></span><span style="display:flex;"><span>$ sudo cp clash /usr/local/bin/  
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 授予 Clash 可执行权限。  </span>
-</span></span><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/clash  
+</span></span><span style="display:flex;"><span>$ sudo chmod +x /usr/local/bin/clash  
 </span></span></code></pre></div><h2 id="配置-clash">配置 Clash<a hidden class="anchor" aria-hidden="true" href="#配置-clash">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 创建默认的 YAML 配置文件</span>
-</span></span><span style="display:flex;"><span>clash 
+</span></span><span style="display:flex;"><span>$ clash 
 </span></span></code></pre></div><p>启动 Clash 后，它会在 <code>~/.config/clash</code> 目录下生成一个默认配置文件。<code>~/.config/clash/config.yaml</code> 指的是你为 Clash 配置文件指定的目录，该目录存储你的节点和规则。你可以直接将此文件替换为你自己的配置文件。<br>
 修改配置文件后，只需重启 Clash 即可启用代理。</p>
 <h2 id="设置系统代理">设置系统代理<a hidden class="anchor" aria-hidden="true" href="#设置系统代理">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 编辑 /etc/environment 文件  </span>
-</span></span><span style="display:flex;"><span>sudo vim /etc/environment
+</span></span><span style="display:flex;"><span>$ sudo vim /etc/environment
 </span></span></code></pre></div>
 
 
@@ -563,15 +563,15 @@ code.has-jax {
 
 <h2 id="设置开机自启动">设置开机自启动<a hidden class="anchor" aria-hidden="true" href="#设置开机自启动">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 查看 Clash 的绝对路径  </span>
-</span></span><span style="display:flex;"><span>which clash  
+</span></span><span style="display:flex;"><span>$ which clash  
 </span></span></code></pre></div><p>对于 Arch Linux，默认路径为 <code>/usr/bin/clash</code>。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 创建一个文件夹来存储与 Clash 相关的文件  </span>
-</span></span><span style="display:flex;"><span>sudo mkdir -p /etc/clash
+</span></span><span style="display:flex;"><span>$ sudo mkdir -p /etc/clash
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 复制相关文件  </span>
-</span></span><span style="display:flex;"><span>sudo cp ~/.config/clash/config.yaml /etc/clash/
-</span></span><span style="display:flex;"><span>sudo cp ~/.config/clash/Country.mmdb /etc/clash/
+</span></span><span style="display:flex;"><span>$ sudo cp ~/.config/clash/config.yaml /etc/clash/
+</span></span><span style="display:flex;"><span>$ sudo cp ~/.config/clash/Country.mmdb /etc/clash/
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 编辑 /etc/systemd/system/clash.service 文件</span>
-</span></span><span style="display:flex;"><span>sudo vim /etc/systemd/system/clash.service
+</span></span><span style="display:flex;"><span>$ sudo vim /etc/systemd/system/clash.service
 </span></span></code></pre></div>
 
 
@@ -670,16 +670,16 @@ code.has-jax {
 </details></p>
 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载系统守护进程  </span>
-</span></span><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>$ systemctl daemon-reload
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 设置服务开机自启动</span>
-</span></span><span style="display:flex;"><span>systemctl <span style="color:#8be9fd;font-style:italic">enable</span> clash.service
+</span></span><span style="display:flex;"><span>$ systemctl <span style="color:#8be9fd;font-style:italic">enable</span> clash.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 启动服务</span>
-</span></span><span style="display:flex;"><span>systemctl start clash.service
+</span></span><span style="display:flex;"><span>$ systemctl start clash.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 检查服务状态</span>
-</span></span><span style="display:flex;"><span>systemctl status clash.service  
+</span></span><span style="display:flex;"><span>$ systemctl status clash.service  
 </span></span></code></pre></div>
 
   </div>
@@ -1151,7 +1151,7 @@ code.has-jax {
         
     
     
-    总计28.49k字
+    总计28.52k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>

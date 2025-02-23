@@ -39,24 +39,24 @@ cover:
 
 ```bash  
 # 如果你使用 Arch Linux，请使用以下命令安装 Clash。
-sudo pacman -S clash  
+$ sudo pacman -S clash  
 ```
 
 如果你使用其他 Linux 系统，可以从 [Clash](https://github.com/DustinWin/clash_singbox-tools/releases/tag/Clash-Premium) 下载。
 
 ```bash  
 # 将 Clash 复制到 /usr/local/bin 目录。  
-sudo cp clash /usr/local/bin/  
+$ sudo cp clash /usr/local/bin/  
 
 # 授予 Clash 可执行权限。  
-sudo chmod +x /usr/local/bin/clash  
+$ sudo chmod +x /usr/local/bin/clash  
 ```
 
 ## 配置 Clash
 
 ```bash  
 # 创建默认的 YAML 配置文件
-clash 
+$ clash 
 ```
 
 启动 Clash 后，它会在 `~/.config/clash` 目录下生成一个默认配置文件。`~/.config/clash/config.yaml` 指的是你为 Clash 配置文件指定的目录，该目录存储你的节点和规则。你可以直接将此文件替换为你自己的配置文件。  
@@ -66,7 +66,7 @@ clash
 
 ```bash  
 # 编辑 /etc/environment 文件  
-sudo vim /etc/environment
+$ sudo vim /etc/environment
 ```
 {{< collapse summary="/etc/environment" >}}
 ```
@@ -81,22 +81,22 @@ socks_proxy=127.0.0.1:7891
 
 ```bash  
 # 查看 Clash 的绝对路径  
-which clash  
+$ which clash  
 ```
 
 对于 Arch Linux，默认路径为 `/usr/bin/clash`。
 
 ```bash  
 # 创建一个文件夹来存储与 Clash 相关的文件  
-sudo mkdir -p /etc/clash
+$ sudo mkdir -p /etc/clash
 # 复制相关文件  
-sudo cp ~/.config/clash/config.yaml /etc/clash/
-sudo cp ~/.config/clash/Country.mmdb /etc/clash/
+$ sudo cp ~/.config/clash/config.yaml /etc/clash/
+$ sudo cp ~/.config/clash/Country.mmdb /etc/clash/
 ```
 
 ```bash  
 # 编辑 /etc/systemd/system/clash.service 文件
-sudo vim /etc/systemd/system/clash.service
+$ sudo vim /etc/systemd/system/clash.service
 ```
 
 {{< collapse summary="/usr/lib/systemd/system/clash.service" >}}
@@ -119,15 +119,15 @@ WantedBy=multi-user.target
 
 ```bash  
 # 重新加载系统守护进程  
-systemctl daemon-reload
+$ systemctl daemon-reload
 
 # 设置服务开机自启动
-systemctl enable clash.service
+$ systemctl enable clash.service
 
 # 启动服务
-systemctl start clash.service
+$ systemctl start clash.service
 
 # 检查服务状态
-systemctl status clash.service  
+$ systemctl status clash.service  
 ```
 

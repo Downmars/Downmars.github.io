@@ -729,7 +729,7 @@
 </span></span><span style="display:flex;"><span>  version <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">false</span>, <span style="color:#6272a4">-- Set this to &#34;*&#34; to always pull the latest release version, or set it to false to update to the latest code changes.</span>
 </span></span><span style="display:flex;"><span>  opts <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>    provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek_r1&#34;</span>, <span style="color:#6272a4">-- 指定使用 DeepSeek 作为 provider</span>
-</span></span><span style="display:flex;"><span>    auto_suggeation_provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek&#34;</span>,
+</span></span><span style="display:flex;"><span>    auto_suggestions_provider <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;deepseek&#34;</span>,
 </span></span><span style="display:flex;"><span>    vendors <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>      deepseek <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>        __inherited_from <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;openai&#34;</span>,
@@ -1253,385 +1253,19 @@
 
 （深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其中的DeepSeek-R1是其第一代推理模型，在推理任务上的表现与OpenAI-o1相当，同时为了支持研究社区，DeepSeek开源了DeepSeek-R1以及基于Qwen2.5和Llama3蒸馏出来的共记7个模型。</p>
 <h2 id="安装ollama">安装Ollama</h2>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S ollama  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-官方推荐的方式为如下：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://ollama.com/install.sh | sh  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-</p>
-<h2 id="下拉deepseek模型">下拉DeepSeek模型</h2>
-<p>Ollama现在已经将deepseek模型接入官方库中，我们只需要通过以下命令拉取模型即可：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ollama pull deepseek-r1:14b
-</span></span></code></pre></div>
-  </div>
-</details></p>
-</p>
-<h2 id="通过ollama启动deepseek">通过Ollama启动DeepSeek</h2>
-<p>经过上述部分，我们已经可以尝试本机运行DeepSeek了。通过以下命令启动Ollama服务：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ollama server  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-在启动Ollama服务过后，我们即可使用以下命令来尝试DeepSeek了：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ollama run deepseek-r1:14b
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-运行示例如下：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" >
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">32 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;&gt;&gt; which is greater? 9.11 or 9.9
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo pacman -S ollama  
+</span></span></code></pre></div><p>官方推荐的方式为如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -fsSL https://ollama.com/install.sh | sh  
+</span></span></code></pre></div><h2 id="下拉deepseek模型">下拉DeepSeek模型</h2>
+<p>Ollama现在已经将deepseek模型接入官方库中，我们只需要通过以下命令拉取模型即可：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ollama pull deepseek-r1:14b
+</span></span></code></pre></div><h2 id="通过ollama启动deepseek">通过Ollama启动DeepSeek</h2>
+<p>经过上述部分，我们已经可以尝试本机运行DeepSeek了。通过以下命令启动Ollama服务：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ollama server  
+</span></span></code></pre></div><p>在启动Ollama服务过后，我们即可使用以下命令来尝试DeepSeek了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ollama run deepseek-r1:14b
+</span></span></code></pre></div><p>运行示例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;&gt;&gt; which is greater? 9.11 or 9.9
 </span></span><span style="display:flex;"><span>&lt;think&gt;
 </span></span><span style="display:flex;"><span>First, I observe that both numbers have the same whole number part, which is 9.
 </span></span><span style="display:flex;"><span>
@@ -1663,55 +1297,10 @@
 </span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\[</span>
 </span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\b</span>oxed<span style="color:#ff79c6">{</span>9.9<span style="color:#ff79c6">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f1fa8c">\]</span>
-</span></span></code></pre></div>
-  </div>
-</details></p>
-</p>
-<h2 id="ollama-server-自启动">Ollama Server 自启动</h2>
-<p>为了在开机时自启 Ollama Server，我们可以使用 systemd 来管理自动启动：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">1 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vim /etc/systemd/system/ollama-server.service
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-我们在其中填入以下内容：<br>
+</span></span></code></pre></div><h2 id="ollama-server-自启动">Ollama Server 自启动</h2>
+<p>为了在开机时自启 Ollama Server，我们可以使用 systemd 来管理自动启动：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo vim /etc/systemd/system/ollama-server.service
+</span></span></code></pre></div><p>我们在其中填入以下内容：<br>
 
 
 
@@ -1809,100 +1398,19 @@
   </div>
 </details></p>
 
-创建完服务文件后，通过以下指令来完成 systemd 配置：<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>zsh</span>
-    <span class="line-count">11 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载 systemd 配置</span>
-</span></span><span style="display:flex;"><span>sudo systemctl daemon-reload
+创建完服务文件后，通过以下指令来完成 systemd 配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 重新加载 systemd 配置</span>
+</span></span><span style="display:flex;"><span>$ sudo systemctl daemon-reload
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 下次开机后，启动开机自启</span>
-</span></span><span style="display:flex;"><span>sudo systemctl <span style="color:#8be9fd;font-style:italic">enable</span> ollama-server.service
+</span></span><span style="display:flex;"><span>$ sudo systemctl <span style="color:#8be9fd;font-style:italic">enable</span> ollama-server.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 立刻启动服务</span>
-</span></span><span style="display:flex;"><span>sudo systemctl start ollama-server.service
+</span></span><span style="display:flex;"><span>$ sudo systemctl start ollama-server.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 查看服务状态</span>
-</span></span><span style="display:flex;"><span>sudo systemctl status ollama-server.service
-</span></span></code></pre></div>
-  </div>
-</details></p>
-</p>
-<h2 id="通过open-webui-调用本地的deepseek-api">通过Open-webui 调用本地的DeepSeek api</h2>
+</span></span><span style="display:flex;"><span>$ sudo systemctl status ollama-server.service
+</span></span></code></pre></div><h2 id="通过open-webui-调用本地的deepseek-api">通过Open-webui 调用本地的DeepSeek api</h2>
 <p>TODO</p>
 ]]></content:encoded>
     </item>

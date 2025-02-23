@@ -49,49 +49,41 @@ dgaxiola在[Nikon Z doesn't mount as a drive to OS X? ](https://www.reddit.com/r
 
 gPhoto2 运行在多个类 Unix 操作系统上，包括 Linux、FreeBSD、NetBSD、MacOS X 等。主要的 Linux 发行版（如 Debian GNU/Linux、Ubuntu、Gentoo、Fedora、openSUSE、Mandriva 等）都提供了 gPhoto。  
 我们使用以下命令下载gPhoto2：  
-{{< collapse summary="zsh" >}}
 ```bash  
-sudo pacman -S gphoto2  
+$ sudo pacman -S gphoto2  
 ```
-{{< /collapse >}}
 gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看相机(运行前记得开机，不然我的Nikon30是读取不到的)：  
-{{< collapse summary="zsh" >}}
 ```bash  
 # 显示相机中所有文件夹的列表
-gphoto2 --list-folders
+$ gphoto2 --list-folders
 # 显示相机存储中所有文件
-gphoto2 --list-files
+$ gphoto2 --list-files
 # 下载相机中的所有文件
-gphoto2 --get-all-files
+$ gphoto2 --get-all-files
 # 显示相机配置信息
-gphoto2 --list-config
+$ gphoto2 --list-config
 ```
-{{< /collapse >}}
 由于我的相机中设置了间隔拍摄创建新文件夹，导致多个文件夹同时传输时会出现文件名重复，可以根据文件夹路径和文件名为每个文件生成唯一的名称：  
-{{< collapse summary="zsh" >}}
 ```bash  
-gphoto2 --get-all-files --filename="%F/%f"
+$ gphoto2 --get-all-files --filename="%F/%f"
 ```
-{{< /collapse >}}
 此外，gPhoto2还提供了控制相机的功能：  
-{{< collapse summary="zsh" >}}
 ```bash  
 # 捕捉单张图片
-gphoto2 --capture-image
+$ gphoto2 --capture-image
 # 捕捉视频
-gphoto2 --capture-movie=SECONDS
+$ gphoto2 --capture-movie=SECONDS
 # 使用长时间曝光（如 --bulb 模式）拍摄
-gphoto2 --bulb=10
+$ gphoto2 --bulb=10
 # 使用 --capture-preview 启用相机的实时预览功能
-gphoto2 --capture-preview
+$ gphoto2 --capture-preview
 # 使用 --show-preview 显示实时预览图像
-gphoto2 --show-preview
+$ gphoto2 --show-preview
 # 触发拍照（模拟按下快门按钮）
-gphoto2 --trigger-capture
+$ gphoto2 --trigger-capture
 # 修改相机的配置参数，例如 ISO 或曝光时间
-gphoto2 --set-config=iso=400
+$ gphoto2 --set-config=iso=400
 
 ```
-{{< /collapse >}}
 更多功能可以参考于[The gPhoto2 Reference (the man pages)](http://www.gphoto.org/doc/manual/ref-gphoto2-cli.html#cli-examples)。
 

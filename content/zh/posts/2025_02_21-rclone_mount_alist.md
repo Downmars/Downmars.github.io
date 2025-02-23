@@ -35,17 +35,17 @@ cover:
 
 ## 下载 rclone
 
-```
+```bash 
 # 检查 rclone 是否可以通过 Pacman 仓库安装  
-sudo pacman -Ss rclone  
-sudo pacman -S rclone  
+$ sudo pacman -Ss rclone  
+$ sudo pacman -S rclone  
 ```
 
 要将 **Alist** 挂载到本地系统，首先需要配置 **rclone 远程**。[rclone 文档](https://rclone.org/webdav/) 对此进行了详细说明，或者你可以按照以下命令进行配置：
 
-```
+```bash 
 # 进入 rclone 配置界面    
-rclone config
+$ rclone config
 
 # 选择新建远程  
 没有找到远程，创建一个新的？
@@ -133,28 +133,28 @@ y/e/d> y # 输入 y
 
 可以使用以下命令检查是否已成功连接，并确认 `alist` 是否已挂载：
 
-```
+```bash  
 # 检查 alist 目录
-rclone lsd alist:
+$ rclone lsd alist:
 
 # 查看 alist 的文件
-rclone ls alist:
+$ rclone ls alist:
 ```
 
-```
+```bash 
 # 将 alist 目录挂载到本地目录 /mnt/Webdev/，此命令为前台命令，运行后会被挂起。
-rclone mount alist:/ /webdav  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap
+$ rclone mount alist:/ /webdav  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap
 ```
 
-```
+```bash 
 # 检查本地挂载位置
-df -h  
+$ df -h  
 
 # 输出结果类似于：
 Alist:               1.0P     0  1.0P   0% /mnt/Webdev
 ```
 
-```
+```bash 
 # 卸载本地挂载
 fusermount -qzu /webdav  
 ```
@@ -163,10 +163,14 @@ fusermount -qzu /webdav
 
 你需要使用 root 权限来运行以下命令：
 
-```
+```bash  
 # 编辑服务文件  
-vim /usr/lib/systemd/system/rclone.service
+$ vim /usr/lib/systemd/system/rclone.Service
+```
 
+
+{{< collapse summary="/usr/lib/systemd/system/rclone.Service" >}}
+```service
 # /usr/lib/systemd/system/rclone.service 文件内容：
 [Unit] 
 Description=rclone
@@ -179,19 +183,20 @@ ExecStart=/usr/bin/rclone mount alist: /mnt/Webdev/  --copy-links --no-gzip-enco
 [Install] 
 WantedBy=multi-user.target
 ```
+{{< /collapse >}}
 
-```
+```bash  
 # 重新加载系统守护进程  
-systemctl daemon-reload
+$ systemctl daemon-reload
 
 # 设置服务开机自启动
-systemctl enable rclone.service
+$ systemctl enable rclone.service
 
 # 启动服务
-systemctl start rclone.service
+$ systemctl start rclone.service
 
 # 检查服务状态
-systemctl status rclone.service  
+$ systemctl status rclone.service  
 ```
 
 ## 部分参考

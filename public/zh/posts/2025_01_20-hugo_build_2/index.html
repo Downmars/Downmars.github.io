@@ -279,7 +279,7 @@ code.has-jax {
     <h1 class="post-title entry-hint-parent">
       Hugo博客搭建_配置 🚀
     </h1>
-    <div class="post-meta"><span title='2025-01-20 20:42:23 +0800 CST'>2025-01-20</span>&nbsp;·&nbsp;Updated:&nbsp;2025-01-21&nbsp;·&nbsp;24 分钟&nbsp;·&nbsp;11664 字&nbsp;·&nbsp;Downmars
+    <div class="post-meta"><span title='2025-01-20 20:42:23 +0800 CST'>2025-01-20</span>&nbsp;·&nbsp;Updated:&nbsp;2025-01-21&nbsp;·&nbsp;24 分钟&nbsp;·&nbsp;11662 字&nbsp;·&nbsp;Downmars
 
 
     </div>
@@ -4463,104 +4463,8 @@ code.has-jax {
    Hugo 多语言博客搭建，如何优雅地管理多语言 md 内容-贤民<span class="external-link">↗</span></a>
 。</p>
 <p>我认为对于编写博客的我们来说，以时间的形式来分隔是很好的一种方式来存储以及管理我们的博客，使用统一文件命名规范<code>YYYYMMDD-title.md</code>。此外，有兴趣的可以做一下多语言的准备，即使现在没有推出多语言的打算，之后可以集中找个时间来使用<code>ai</code>工具来统一做一下。</p>
-<p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" >
-  <summary markdown="span">
-    <span>tree .</span>
-    <span class="line-count">16 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree .
+</span></span><span style="display:flex;"><span>.
 </span></span><span style="display:flex;"><span>├── en
 </span></span><span style="display:flex;"><span>│   ├── archives
 </span></span><span style="display:flex;"><span>│   │   └── archives.md
@@ -4576,11 +4480,7 @@ code.has-jax {
 </span></span><span style="display:flex;"><span>    │   └── 2025_01_20-hugo_build_2.md
 </span></span><span style="display:flex;"><span>    └── search
 </span></span><span style="display:flex;"><span>        └── search.md
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-可以参考我的示例结构，在这里我将<code>zh/</code>和<code>en/</code>作为<code>post/</code>的直接子目录，这一步需在对应的语言下添加设置对应的文档目录，如<code>contentDir: &quot;content/zh&quot;</code>。</p>
+</span></span></code></pre></div><p>可以参考我的示例结构，在这里我将<code>zh/</code>和<code>en/</code>作为<code>post/</code>的直接子目录，这一步需在对应的语言下添加设置对应的文档目录，如<code>contentDir: &quot;content/zh&quot;</code>。</p>
 <p>我们在此处同时需要设置页面布局，创建<code>zh/archives/archives.md</code>和<code>zh/search/search.md</code>，</p>
 
 
@@ -10452,55 +10352,10 @@ code.has-jax {
   </div>
 </details></p>
 
-其次，我们在创建对应位置的friends的导览页内容：
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
-
-
-<p><details class="custom-collapse" open>
-  <summary markdown="span">
-    <span>bash</span>
-    <span class="line-count">2 lines</span>
-  </summary>
-  <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir content/zh/friends/
-</span></span><span style="display:flex;"><span>vim content/zh/friends/index.md  
-</span></span></code></pre></div>
-  </div>
-</details></p>
-
-在其中添加：
+其次，我们在创建对应位置的friends的导览页内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir content/zh/friends/
+</span></span><span style="display:flex;"><span>$ vim content/zh/friends/index.md  
+</span></span></code></pre></div><p>在其中添加：
 
 
 
@@ -11336,7 +11191,7 @@ code.has-jax {
         
     
     
-    总计28.49k字
+    总计28.52k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
