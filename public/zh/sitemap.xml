@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/zh/</loc>
-    <lastmod>2025-02-21T20:18:25+08:00</lastmod>
+    <lastmod>2025-02-23T20:56:46+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/zh/posts/</loc>
-    <lastmod>2025-02-21T20:18:25+08:00</lastmod>
+    <lastmod>2025-02-23T20:56:46+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -27,6 +27,9 @@
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/posts/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_02_23-use_alist_to_manage_your_cloud_drives/</loc>
+    <lastmod>2025-02-23T20:56:46+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/zh/posts/2025_02_21-shot_with_grim_and_slurp/</loc>
     <lastmod>2025-02-21T20:18:25+08:00</lastmod>

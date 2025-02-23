@@ -41,7 +41,7 @@ $ sudo pacman -Ss rclone
 $ sudo pacman -S rclone  
 ```
 
-要将 **Alist** 挂载到本地系统，首先需要配置 **rclone 远程**。[rclone 文档](https://rclone.org/webdav/) 对此进行了详细说明，或者你可以按照以下命令进行配置：
+我们在[使用Alist管理你的网盘](../2025_02_23-use_alist_to_manage_your_cloud_drives)配置过Alist服务，要将 Alist 挂载到本地系统，首先需要配置 **rclone 远程**。[rclone 文档](https://rclone.org/webdav/) 对此进行了详细说明，或者你可以按照以下命令进行配置：
 
 ```bash 
 # 进入 rclone 配置界面    
@@ -170,7 +170,7 @@ $ vim /usr/lib/systemd/system/rclone.Service
 
 
 {{< collapse summary="/usr/lib/systemd/system/rclone.Service" >}}
-```service
+```ini
 # /usr/lib/systemd/system/rclone.service 文件内容：
 [Unit] 
 Description=rclone
