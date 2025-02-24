@@ -828,6 +828,18 @@ Cursor&lt;span class="external-link">↗&lt;/span>&lt;/a>
    class="custom-link">  
    avante.nvim#1115<span class="external-link">↗</span></a>
 。</p>
+<div class="admonition warning ">
+  <div class="admonition-header">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Warning</span>
+    
+  </div>
+  <div class="admonition-content">
+    注意，如果要使用<code>auto_suggestions</code>功能，记得调整一下<code>debounce</code>和<code>throttle</code>设置，即防抖和节流，单位为ms。否则，你在写文章的后，你会发现你一天用了373w tokens，不要问我为什么知道的。
+  </div>
+</div>
+
+
 <h2 id="获取deepseek-api-key">获取DeepSeek API Key</h2>
 <h3 id="注册deepseek账户">注册DeepSeek账户</h3>
 <ul>
