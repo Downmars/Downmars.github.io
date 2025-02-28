@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Configuration on DLog</title><link>https://downmars.github.io/zh/tags/configuration/</link><description>Recent content in Configuration on DLog</description><generator>Hugo -- 0.144.2</generator><language>zh-CN</language><lastBuildDate>Thu, 06 Feb 2025 19:32:05 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/configuration/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_主题优化 🤤</title><link>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</link><pubDate>Thu, 06 Feb 2025 19:32:05 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</guid><description>&lt;blockquote class="quote">&lt;p>如何构建我的hugo博客-这是一个系列&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Configuration on DLog</title><link>https://downmars.github.io/zh/tags/configuration/</link><description>Recent content in Configuration on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Thu, 06 Feb 2025 19:32:05 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/configuration/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建_主题优化 🤤</title><link>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</link><pubDate>Thu, 06 Feb 2025 19:32:05 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_05-hugo_build_3/</guid><description>&lt;blockquote class="quote">&lt;p>如何构建我的hugo博客-这是一个系列&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="../2025_01_19-hugo_build_1"
 class="custom-link">
@@ -10060,6 +10060,501 @@ Hugo博客搭建_基础 😊&lt;/a>
 </details></p>
 </p>
 <p>这样我们应该就可以在页面的对应位置看到我们的友链链接了。</p>
+<h3 id="mermaid">Mermaid</h3>
+<p>大家如果有一些复杂的关系图，需要一些示意图、流程图的地方，那么Mermaid可能会是你需要的。我们能够以代码的格式书写我们的Mermaid图，这能够帮我们以纯文本的方式保存我们的文件内容，这对于内容的传播性、开放性和可读性都有很好的诠释。这里的创建方法参照了<a href="https://yunpengtai.top/posts/hugo-journey/#mermaid-%e5%9b%be"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Mermaid图|Yunpeng Tai<span class="external-link">↗</span></a>
+。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/_default/_markup/render-codeblock-mermaid.html</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#6272a4">&lt;!-- 因为正常写会有 ```meraid ... ``` --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">pre</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;mermaid&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>   {{- .Inner | htmlEscape | safeHTML }}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">pre</span>&gt;
+</span></span><span style="display:flex;"><span>{{ .Page.Store.Set &#34;hasMermaid&#34; true }}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/partials/mermaid.html</span>
+    <span class="line-count">66 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if .Page.Store.Get &#34;hasMermaid&#34; }}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js&#34;</span>&gt;&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> elementCode <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;.mermaid&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> loadMermaid <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span> (theme) {
+</span></span><span style="display:flex;"><span>    mermaid.initialize({ theme });
+</span></span><span style="display:flex;"><span>    mermaid.init({
+</span></span><span style="display:flex;"><span>      theme,
+</span></span><span style="display:flex;"><span>      themeVariables<span style="color:#ff79c6">:</span> { <span style="color:#6272a4">// 这里设置字体跟正文一致
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        fontFamily<span style="color:#ff79c6">:</span> [<span style="color:#f1fa8c">&#34;SFProText-Regular&#34;</span>, <span style="color:#f1fa8c">&#34;LXGWWenKaiScreenR&#34;</span>]
+</span></span><span style="display:flex;"><span>      }}, <span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(elementCode));
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> saveOriginalData <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Promise</span>((resolve, reject) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">var</span> els <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(elementCode),
+</span></span><span style="display:flex;"><span>          count <span style="color:#ff79c6">=</span> els.length;
+</span></span><span style="display:flex;"><span>        els.forEach((element) =&gt; {
+</span></span><span style="display:flex;"><span>          element.setAttribute(<span style="color:#f1fa8c">&#34;data-original-code&#34;</span>, element.innerHTML);
+</span></span><span style="display:flex;"><span>          count<span style="color:#ff79c6">--</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">if</span> (count <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            resolve();
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      } <span style="color:#ff79c6">catch</span> (error) {
+</span></span><span style="display:flex;"><span>        reject(error);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> resetProcessed <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Promise</span>((resolve, reject) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">var</span> els <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(elementCode),
+</span></span><span style="display:flex;"><span>          count <span style="color:#ff79c6">=</span> els.length;
+</span></span><span style="display:flex;"><span>        els.forEach((element) =&gt; {
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">if</span> (element.getAttribute(<span style="color:#f1fa8c">&#34;data-original-code&#34;</span>) <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">null</span>) {
+</span></span><span style="display:flex;"><span>            element.removeAttribute(<span style="color:#f1fa8c">&#34;data-processed&#34;</span>);
+</span></span><span style="display:flex;"><span>            element.innerHTML <span style="color:#ff79c6">=</span> element.getAttribute(<span style="color:#f1fa8c">&#34;data-original-code&#34;</span>);
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>          count<span style="color:#ff79c6">--</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">if</span> (count <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            resolve();
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      } <span style="color:#ff79c6">catch</span> (error) {
+</span></span><span style="display:flex;"><span>        reject(error);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  saveOriginalData().<span style="color:#ff79c6">catch</span>(console.error);
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">// 不要用 localStorage.getItem(&#34;pref-theme&#34;)，因为有些时候会为 null
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  <span style="color:#8be9fd;font-style:italic">let</span> isdark <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.body.className.includes(<span style="color:#f1fa8c">&#34;dark&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">if</span> (isdark) {
+</span></span><span style="display:flex;"><span>    resetProcessed().then(loadMermaid(<span style="color:#f1fa8c">&#34;dark&#34;</span>)).<span style="color:#ff79c6">catch</span>(console.error);
+</span></span><span style="display:flex;"><span>  } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>    resetProcessed().then(loadMermaid(<span style="color:#f1fa8c">&#34;neutral&#34;</span>)).<span style="color:#ff79c6">catch</span>(console.error);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">document</span>.getElementById(<span style="color:#f1fa8c">&#34;theme-toggle&#34;</span>).addEventListener(<span style="color:#f1fa8c">&#34;click&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    resetProcessed();
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">document</span>.body.className.includes(<span style="color:#f1fa8c">&#34;dark&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">?</span> loadMermaid(<span style="color:#f1fa8c">&#34;neutral&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">:</span> loadMermaid(<span style="color:#f1fa8c">&#34;dark&#34;</span>).<span style="color:#ff79c6">catch</span>(console.error);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/_default/single.html</span>
+    <span class="line-count">4 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>&lt;article&gt;
+</span></span><span style="display:flex;"><span>  &lt;!-- 省略上面的 --&gt;
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  {{- partial &#34;mermaid.html&#34; . }}
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>&lt;/article&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
 <h3 id="shortcodes大赏">Shortcodes大赏</h3>
 <p><code>hugo</code>采用<code>markdown</code>的格式进行内容创作，但是当我们需要一些特殊功能的时候，<code>markdown</code>并不能满足我们的需求。我们在这个时候可能需要插入一些<code>html</code>代码，这对于整个<code>markdown</code>的格式与可读性都是很糟糕的。幸运的是，<code>hugo</code>给我们提供了简码(<code>Shortcodes</code>)功能，在我们准备好对应的简码模板与简码，这能够在使用简码的时候，将<code>hugo</code>自动转换为<code>html</code>语言，我们就能够使用很简码的样式来实现需要的特殊功能。</p>
 <p>关于<code>Shortcodes</code>的相关知识可以参考<a href="https://gohugo.io/templates/shortcode/"
@@ -10219,6 +10714,13 @@ Hugo博客搭建_基础 😊&lt;/a>
 </div>
 
 
+<h4 id="mermaid-1">Mermaid</h4>
+<p>我在这边单开了一篇关于Mermaid的内容，可以参考此内容：<a href="../2025_02_28-mermaid_usage"
+   
+   
+   class="custom-link">  
+   Mermaid使用例</a>
+</p>
 <h2 id="总结">总结</h2>
 <p>关于hugo的配置暂时就告一段落了，之后可能会有所增减，希望能帮助到大家。&#x1f604;</p>
 ]]></content:encoded></item></channel></rss>
