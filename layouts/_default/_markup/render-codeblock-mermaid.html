@@ -1,0 +1,6 @@
+<!-- 因为正常写会有 ```meraid ... ``` -->
+<pre class="mermaid">
+   {{- .Inner | htmlEscape | safeHTML }}
+</pre>
+{{ .Page.Store.Set "hasMermaid" true }}
+

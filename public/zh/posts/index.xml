@@ -4,10 +4,243 @@
     <title>Posts on DLog</title>
     <link>http://localhost:1313/zh/posts/</link>
     <description>Recent content in Posts on DLog</description>
-    <generator>Hugo -- 0.144.2</generator>
+    <generator>Hugo -- 0.145.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 23 Feb 2025 20:56:46 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2025 20:01:38 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mermaid使用例</title>
+      <link>http://localhost:1313/zh/posts/2025_02_28-mermaid_usage/</link>
+      <pubDate>Fri, 28 Feb 2025 20:01:38 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_28-mermaid_usage/</guid>
+      <description>&lt;h2 id=&#34;mermaid&#34;&gt;Mermaid&lt;/h2&gt;
+&lt;p&gt;&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;Generate diagrams from markdown-like text.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;br&gt;
+&lt;a href=&#34;https://github.com/mermaid-js/mermaid&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Mermaid&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+是一种基于JavaScript的图标工具，它以Markdown启发的文本定义和渲染器来创建和修改复杂图。对于初学者，有需要的可以参考&lt;a href=&#34;https://mermaid.js.org/ecosystem/tutorials.html&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   视频教程&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+和&lt;a href=&#34;https://mermaid.js.org/intro/getting-started.html&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   初学者指南&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+。接下来我将测试一下支持的Mermaid例子。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="mermaid">Mermaid</h2>
+<p><blockquote class="quote"><p>Generate diagrams from markdown-like text.</p></blockquote>
+<br>
+<a href="https://github.com/mermaid-js/mermaid"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Mermaid<span class="external-link">↗</span></a>
+是一种基于JavaScript的图标工具，它以Markdown启发的文本定义和渲染器来创建和修改复杂图。对于初学者，有需要的可以参考<a href="https://mermaid.js.org/ecosystem/tutorials.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   视频教程<span class="external-link">↗</span></a>
+和<a href="https://mermaid.js.org/intro/getting-started.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   初学者指南<span class="external-link">↗</span></a>
+。接下来我将测试一下支持的Mermaid例子。</p>
+<h2 id="流程图flowchart">流程图(Flowchart)</h2>
+
+<pre class="mermaid">flowchart LR
+
+A[Hard] --&gt;|Text| B(Round)
+B --&gt; C{Decision}
+C --&gt;|One| D[Result 1]
+C --&gt;|Two| E[Result 2]
+</pre>
+
+
+<h2 id="序列图sequence-diagram">序列图(Sequence diagram)</h2>
+
+<pre class="mermaid">sequenceDiagram
+Alice-&gt;&gt;John: Hello John, how are you?
+loop HealthCheck
+    John-&gt;&gt;John: Fight against hypochondria
+end
+Note right of John: Rational thoughts!
+John--&gt;&gt;Alice: Great!
+John-&gt;&gt;Bob: How about you?
+Bob--&gt;&gt;John: Jolly good!
+</pre>
+
+
+<h2 id="甘特图gantt-chart">甘特图(Gantt chart)</h2>
+
+<pre class="mermaid">gantt
+    section Section
+    Completed :done,    des1, 2014-01-06,2014-01-08
+    Active        :active,  des2, 2014-01-07, 3d
+    Parallel 1   :         des3, after des1, 1d
+    Parallel 2   :         des4, after des1, 1d
+    Parallel 3   :         des5, after des3, 1d
+    Parallel 4   :         des6, after des4, 1d
+</pre>
+
+
+<h2 id="类图class-diagram">类图(Class diagram)</h2>
+
+<pre class="mermaid">classDiagram
+Class01 &lt;|-- AveryLongClass : Cool
+&lt;&lt;Interface&gt;&gt; Class01
+Class09 --&gt; C2 : Where am I?
+Class09 --* C3
+Class09 --|&gt; Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+class Class10 {
+  &lt;&lt;service&gt;&gt;
+  int id
+  size()
+}
+</pre>
+
+
+<h2 id="状态图state-diagram">状态图(State diagram)</h2>
+
+<pre class="mermaid">stateDiagram-v2
+[*] --&gt; Still
+Still --&gt; [*]
+Still --&gt; Moving
+Moving --&gt; Still
+Moving --&gt; Crash
+Crash --&gt; [*]
+</pre>
+
+
+<h2 id="饼图pie-chart">饼图(Pie chart)</h2>
+
+<pre class="mermaid">pie
+&#34;Dogs&#34; : 386
+&#34;Cats&#34; : 85.9
+&#34;Rats&#34; : 15
+</pre>
+
+
+<h2 id="节点图git-graph">节点图(Git graph)</h2>
+
+<pre class="mermaid">gitGraph
+  commit
+  commit
+  branch develop
+  checkout develop
+  commit
+  commit
+  checkout main
+  merge develop
+  commit
+  commit
+</pre>
+
+
+<h2 id="条形图bar-chart">条形图(Bar chart)</h2>
+
+<pre class="mermaid">gantt
+    title Git Issues - days since last update
+    dateFormat  X
+    axisFormat %s
+
+    section Issue19062
+    71   : 0, 71
+    section Issue19401
+    36   : 0, 36
+    section Issue193
+    34   : 0, 34
+    section Issue7441
+    9    : 0, 9
+    section Issue1300
+    5    : 0, 5
+</pre>
+
+
+<h2 id="用户旅程图user-journey-diagram">用户旅程图(User Journey diagram)</h2>
+
+<pre class="mermaid">  journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 3: Me
+</pre>
+
+
+<h2 id="c4架构图c4-diagram">C4架构图(C4 diagram)</h2>
+
+<pre class="mermaid">C4Context
+title System Context diagram for Internet Banking System
+
+Person(customerA, &#34;Banking Customer A&#34;, &#34;A customer of the bank, with personal bank accounts.&#34;)
+Person(customerB, &#34;Banking Customer B&#34;)
+Person_Ext(customerC, &#34;Banking Customer C&#34;)
+System(SystemAA, &#34;Internet Banking System&#34;, &#34;Allows customers to view information about their bank accounts, and make payments.&#34;)
+
+Person(customerD, &#34;Banking Customer D&#34;, &#34;A customer of the bank, &lt;br/&gt; with personal bank accounts.&#34;)
+
+Enterprise_Boundary(b1, &#34;BankBoundary&#34;) {
+
+  SystemDb_Ext(SystemE, &#34;Mainframe Banking System&#34;, &#34;Stores all of the core banking information about customers, accounts, transactions, etc.&#34;)
+
+  System_Boundary(b2, &#34;BankBoundary2&#34;) {
+    System(SystemA, &#34;Banking System A&#34;)
+    System(SystemB, &#34;Banking System B&#34;, &#34;A system of the bank, with personal bank accounts.&#34;)
+  }
+
+  System_Ext(SystemC, &#34;E-mail system&#34;, &#34;The internal Microsoft Exchange e-mail system.&#34;)
+  SystemDb(SystemD, &#34;Banking System D Database&#34;, &#34;A system of the bank, with personal bank accounts.&#34;)
+
+  Boundary(b3, &#34;BankBoundary3&#34;, &#34;boundary&#34;) {
+    SystemQueue(SystemF, &#34;Banking System F Queue&#34;, &#34;A system of the bank, with personal bank accounts.&#34;)
+    SystemQueue_Ext(SystemG, &#34;Banking System G Queue&#34;, &#34;A system of the bank, with personal bank accounts.&#34;)
+  }
+}
+
+BiRel(customerA, SystemAA, &#34;Uses&#34;)
+BiRel(SystemAA, SystemE, &#34;Uses&#34;)
+Rel(SystemAA, SystemC, &#34;Sends e-mails&#34;, &#34;SMTP&#34;)
+Rel(SystemC, customerA, &#34;Sends e-mails to&#34;)
+</pre>
+
+
+]]></content:encoded>
+    </item>
+    <item>
+      <title>sam2源码论文阅读_1</title>
+      <link>http://localhost:1313/zh/posts/2025_02_27-read_sam2_1/</link>
+      <pubDate>Thu, 27 Feb 2025 17:20:57 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_27-read_sam2_1/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;</description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
+]]></content:encoded>
+    </item>
     <item>
       <title>使用Alist管理你的网盘</title>
       <link>http://localhost:1313/zh/posts/2025_02_23-use_alist_to_manage_your_cloud_drives/</link>
@@ -13460,6 +13693,501 @@
 </details></p>
 </p>
 <p>这样我们应该就可以在页面的对应位置看到我们的友链链接了。</p>
+<h3 id="mermaid">Mermaid</h3>
+<p>大家如果有一些复杂的关系图，需要一些示意图、流程图的地方，那么Mermaid可能会是你需要的。我们能够以代码的格式书写我们的Mermaid图，这能够帮我们以纯文本的方式保存我们的文件内容，这对于内容的传播性、开放性和可读性都有很好的诠释。这里的创建方法参照了<a href="https://yunpengtai.top/posts/hugo-journey/#mermaid-%e5%9b%be"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Mermaid图|Yunpeng Tai<span class="external-link">↗</span></a>
+。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/_default/_markup/render-codeblock-mermaid.html</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#6272a4">&lt;!-- 因为正常写会有 ```meraid ... ``` --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">pre</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;mermaid&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>   {{- .Inner | htmlEscape | safeHTML }}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">pre</span>&gt;
+</span></span><span style="display:flex;"><span>{{ .Page.Store.Set &#34;hasMermaid&#34; true }}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>layouts/partials/mermaid.html</span>
+    <span class="line-count">66 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if .Page.Store.Get &#34;hasMermaid&#34; }}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js&#34;</span>&gt;&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> elementCode <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;.mermaid&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> loadMermaid <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span> (theme) {
+</span></span><span style="display:flex;"><span>    mermaid.initialize({ theme });
+</span></span><span style="display:flex;"><span>    mermaid.init({
+</span></span><span style="display:flex;"><span>      theme,
+</span></span><span style="display:flex;"><span>      themeVariables<span style="color:#ff79c6">:</span> { <span style="color:#6272a4">// 这里设置字体跟正文一致
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        fontFamily<span style="color:#ff79c6">:</span> [<span style="color:#f1fa8c">&#34;SFProText-Regular&#34;</span>, <span style="color:#f1fa8c">&#34;LXGWWenKaiScreenR&#34;</span>]
+</span></span><span style="display:flex;"><span>      }}, <span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(elementCode));
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> saveOriginalData <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Promise</span>((resolve, reject) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">var</span> els <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(elementCode),
+</span></span><span style="display:flex;"><span>          count <span style="color:#ff79c6">=</span> els.length;
+</span></span><span style="display:flex;"><span>        els.forEach((element) =&gt; {
+</span></span><span style="display:flex;"><span>          element.setAttribute(<span style="color:#f1fa8c">&#34;data-original-code&#34;</span>, element.innerHTML);
+</span></span><span style="display:flex;"><span>          count<span style="color:#ff79c6">--</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">if</span> (count <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            resolve();
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      } <span style="color:#ff79c6">catch</span> (error) {
+</span></span><span style="display:flex;"><span>        reject(error);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> resetProcessed <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Promise</span>((resolve, reject) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">var</span> els <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(elementCode),
+</span></span><span style="display:flex;"><span>          count <span style="color:#ff79c6">=</span> els.length;
+</span></span><span style="display:flex;"><span>        els.forEach((element) =&gt; {
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">if</span> (element.getAttribute(<span style="color:#f1fa8c">&#34;data-original-code&#34;</span>) <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">null</span>) {
+</span></span><span style="display:flex;"><span>            element.removeAttribute(<span style="color:#f1fa8c">&#34;data-processed&#34;</span>);
+</span></span><span style="display:flex;"><span>            element.innerHTML <span style="color:#ff79c6">=</span> element.getAttribute(<span style="color:#f1fa8c">&#34;data-original-code&#34;</span>);
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>          count<span style="color:#ff79c6">--</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">if</span> (count <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>            resolve();
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      } <span style="color:#ff79c6">catch</span> (error) {
+</span></span><span style="display:flex;"><span>        reject(error);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  saveOriginalData().<span style="color:#ff79c6">catch</span>(console.error);
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">// 不要用 localStorage.getItem(&#34;pref-theme&#34;)，因为有些时候会为 null
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  <span style="color:#8be9fd;font-style:italic">let</span> isdark <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.body.className.includes(<span style="color:#f1fa8c">&#34;dark&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">if</span> (isdark) {
+</span></span><span style="display:flex;"><span>    resetProcessed().then(loadMermaid(<span style="color:#f1fa8c">&#34;dark&#34;</span>)).<span style="color:#ff79c6">catch</span>(console.error);
+</span></span><span style="display:flex;"><span>  } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>    resetProcessed().then(loadMermaid(<span style="color:#f1fa8c">&#34;neutral&#34;</span>)).<span style="color:#ff79c6">catch</span>(console.error);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">document</span>.getElementById(<span style="color:#f1fa8c">&#34;theme-toggle&#34;</span>).addEventListener(<span style="color:#f1fa8c">&#34;click&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    resetProcessed();
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">document</span>.body.className.includes(<span style="color:#f1fa8c">&#34;dark&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">?</span> loadMermaid(<span style="color:#f1fa8c">&#34;neutral&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">:</span> loadMermaid(<span style="color:#f1fa8c">&#34;dark&#34;</span>).<span style="color:#ff79c6">catch</span>(console.error);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">script</span>&gt;
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>layouts/_default/single.html</span>
+    <span class="line-count">4 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>&lt;article&gt;
+</span></span><span style="display:flex;"><span>  &lt;!-- 省略上面的 --&gt;
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  {{- partial &#34;mermaid.html&#34; . }}
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>&lt;/article&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
 <h3 id="shortcodes大赏">Shortcodes大赏</h3>
 <p><code>hugo</code>采用<code>markdown</code>的格式进行内容创作，但是当我们需要一些特殊功能的时候，<code>markdown</code>并不能满足我们的需求。我们在这个时候可能需要插入一些<code>html</code>代码，这对于整个<code>markdown</code>的格式与可读性都是很糟糕的。幸运的是，<code>hugo</code>给我们提供了简码(<code>Shortcodes</code>)功能，在我们准备好对应的简码模板与简码，这能够在使用简码的时候，将<code>hugo</code>自动转换为<code>html</code>语言，我们就能够使用很简码的样式来实现需要的特殊功能。</p>
 <p>关于<code>Shortcodes</code>的相关知识可以参考<a href="https://gohugo.io/templates/shortcode/"
@@ -13619,6 +14347,13 @@
 </div>
 
 
+<h4 id="mermaid-1">Mermaid</h4>
+<p>我在这边单开了一篇关于Mermaid的内容，可以参考此内容：<a href="../2025_02_28-mermaid_usage"
+   
+   
+   class="custom-link">  
+   Mermaid使用例</a>
+</p>
 <h2 id="总结">总结</h2>
 <p>关于hugo的配置暂时就告一段落了，之后可能会有所增减，希望能帮助到大家。&#x1f604;</p>
 ]]></content:encoded>

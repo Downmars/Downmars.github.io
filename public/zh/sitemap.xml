@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/zh/</loc>
-    <lastmod>2025-02-23T20:56:46+08:00</lastmod>
+    <lastmod>2025-02-28T20:01:38+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -15,8 +15,11 @@
                 href="http://localhost:1313/zh/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_02_28-mermaid_usage/</loc>
+    <lastmod>2025-02-28T20:01:38+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/zh/posts/</loc>
-    <lastmod>2025-02-23T20:56:46+08:00</lastmod>
+    <lastmod>2025-02-28T20:01:38+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -26,6 +29,25 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/posts/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/sam2/</loc>
+    <lastmod>2025-02-27T17:20:57+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_02_27-read_sam2_1/</loc>
+    <lastmod>2025-02-27T17:20:57+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/</loc>
+    <lastmod>2025-02-27T17:20:57+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/tags/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/posts/2025_02_23-use_alist_to_manage_your_cloud_drives/</loc>
@@ -45,19 +67,6 @@
   </url><url>
     <loc>http://localhost:1313/zh/posts/2025_02_21-clash_magic/</loc>
     <lastmod>2025-02-21T19:39:24+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh/tags/</loc>
-    <lastmod>2025-02-21T19:39:24+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/tags/"
-                />
   </url><url>
     <loc>http://localhost:1313/zh/tags/deepseek/</loc>
     <lastmod>2025-02-21T13:02:59+08:00</lastmod>
@@ -96,10 +105,10 @@
     <loc>http://localhost:1313/zh/posts/2025_02_20-image_hosting_in_github/</loc>
     <lastmod>2025-02-20T19:35:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh/tags/nvim/</loc>
+    <loc>http://localhost:1313/zh/categories/nvim/</loc>
     <lastmod>2025-02-18T18:27:58+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh/categories/nvim/</loc>
+    <loc>http://localhost:1313/zh/tags/nvim/</loc>
     <lastmod>2025-02-18T18:27:58+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/zh/posts/2025_02_18-avante.nvim_with_deepseek_api/</loc>

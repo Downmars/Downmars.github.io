@@ -4,7 +4,7 @@
     <title>Categories on DLog</title>
     <link>http://localhost:1313/en/categories/</link>
     <description>Recent content in Categories on DLog</description>
-    <generator>Hugo -- 0.144.2</generator>
+    <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <atom:link href="http://localhost:1313/en/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
