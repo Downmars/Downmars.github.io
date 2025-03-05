@@ -6,8 +6,1153 @@
     <description>Recent content on DLog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 28 Feb 2025 20:01:38 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Mar 2025 15:07:21 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用QT来创建ROS的节点程序</title>
+      <link>http://localhost:1313/zh/posts/2025_03_05-qt_with_ros/</link>
+      <pubDate>Wed, 05 Mar 2025 15:07:21 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_05-qt_with_ros/</guid>
+      <description>&lt;h2 id=&#34;结构框图&#34;&gt;结构框图&lt;/h2&gt;
+
+&lt;pre class=&#34;mermaid&#34;&gt;sequenceDiagram
+    participant User
+    participant GUI
+    participant Process
+    
+    User-&amp;gt;&amp;gt;GUI: 点击&amp;#34;浏览&amp;#34;按钮
+    GUI-&amp;gt;&amp;gt;User: 显示文件选择对话框
+    User-&amp;gt;&amp;gt;GUI: 选择valid.launch
+    GUI-&amp;gt;&amp;gt;GUI: 进入FileSelected状态
+    
+    User-&amp;gt;&amp;gt;GUI: 点击&amp;#34;执行&amp;#34;按钮
+    GUI-&amp;gt;&amp;gt;Process: 启动roslaunch
+    Process--&amp;gt;&amp;gt;GUI: 进程启动成功
+    GUI-&amp;gt;&amp;gt;GUI: 进入Running状态
+    
+    loop 日志输出
+        Process--&amp;gt;&amp;gt;GUI: 实时传输标准输出
+    end
+    
+    Process--&amp;gt;&amp;gt;GUI: 进程退出(返回码0)
+    GUI-&amp;gt;&amp;gt;GUI: 进入Completed状态
+    
+    User-&amp;gt;&amp;gt;GUI: 点击&amp;#34;×&amp;#34;删除按钮
+    GUI-&amp;gt;&amp;gt;Process: 终止进程(如果运行中)
+    GUI-&amp;gt;&amp;gt;GUI: 进入Removed状态
+&lt;/pre&gt;
+
+
+&lt;h2 id=&#34;代码讲解&#34;&gt;代码讲解&lt;/h2&gt;
+&lt;p&gt;以下是基于Mermaid状态图的核心逻辑代码实现，结合状态图的关键部分进行详细说明：&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="结构框图">结构框图</h2>
+
+<pre class="mermaid">sequenceDiagram
+    participant User
+    participant GUI
+    participant Process
+    
+    User-&gt;&gt;GUI: 点击&#34;浏览&#34;按钮
+    GUI-&gt;&gt;User: 显示文件选择对话框
+    User-&gt;&gt;GUI: 选择valid.launch
+    GUI-&gt;&gt;GUI: 进入FileSelected状态
+    
+    User-&gt;&gt;GUI: 点击&#34;执行&#34;按钮
+    GUI-&gt;&gt;Process: 启动roslaunch
+    Process--&gt;&gt;GUI: 进程启动成功
+    GUI-&gt;&gt;GUI: 进入Running状态
+    
+    loop 日志输出
+        Process--&gt;&gt;GUI: 实时传输标准输出
+    end
+    
+    Process--&gt;&gt;GUI: 进程退出(返回码0)
+    GUI-&gt;&gt;GUI: 进入Completed状态
+    
+    User-&gt;&gt;GUI: 点击&#34;×&#34;删除按钮
+    GUI-&gt;&gt;Process: 终止进程(如果运行中)
+    GUI-&gt;&gt;GUI: 进入Removed状态
+</pre>
+
+
+<h2 id="代码讲解">代码讲解</h2>
+<p>以下是基于Mermaid状态图的核心逻辑代码实现，结合状态图的关键部分进行详细说明：</p>
+<h3 id="状态图关键部分与代码对应关系">状态图关键部分与代码对应关系</h3>
+<h4 id="idle-状态">Idle 状态</h4>
+<ul>
+<li><strong>描述</strong>：初始状态，未选择有效launch文件。</li>
+<li><strong>关键代码</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#6272a4">// LaunchItem构造函数
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>LaunchItem<span style="color:#ff79c6">::</span>LaunchItem(QWidget <span style="color:#ff79c6">*</span>parent) <span style="color:#ff79c6">:</span> 
+</span></span><span style="display:flex;"><span>    QWidget(parent), ui(<span style="color:#ff79c6">new</span> Ui<span style="color:#ff79c6">::</span>LaunchItem), process(<span style="color:#ff79c6">new</span> QProcess(<span style="color:#ff79c6">this</span>)) {
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    ui<span style="color:#ff79c6">-&gt;</span>setupUi(<span style="color:#ff79c6">this</span>);
+</span></span><span style="display:flex;"><span>    ui<span style="color:#ff79c6">-&gt;</span>lineEdit<span style="color:#ff79c6">-&gt;</span>clear(); <span style="color:#6272a4">// 清空路径输入框
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>clear();  <span style="color:#6272a4">// 清空输出窗口
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="fileselected-状态">FileSelected 状态</h4>
+<ul>
+<li><strong>描述</strong>：用户通过浏览按钮选择了一个有效的launch文件。</li>
+<li><strong>关键代码</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">11 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> LaunchItem<span style="color:#ff79c6">::</span>onBrowseClicked() {
+</span></span><span style="display:flex;"><span>    QString path <span style="color:#ff79c6">=</span> QFileDialog<span style="color:#ff79c6">::</span>getOpenFileName(
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">this</span>, <span style="color:#f1fa8c">&#34;选择Launch文件&#34;</span>, 
+</span></span><span style="display:flex;"><span>        QDir<span style="color:#ff79c6">::</span>homePath(), 
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ROS Launch Files (*.launch)&#34;</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>path.isEmpty()) {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>lineEdit<span style="color:#ff79c6">-&gt;</span>setText(path); <span style="color:#6272a4">// 更新路径输入框
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#6272a4">// 此时进入FileSelected状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="executing-状态">Executing 状态</h4>
+<ul>
+<li><strong>描述</strong>：用户点击“执行”按钮，尝试启动roslaunch进程。</li>
+<li><strong>关键代码</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">13 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> LaunchItem<span style="color:#ff79c6">::</span>onExecuteClicked() {
+</span></span><span style="display:flex;"><span>    QString launchPath <span style="color:#ff79c6">=</span> ui<span style="color:#ff79c6">-&gt;</span>lineEdit<span style="color:#ff79c6">-&gt;</span>text();
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (launchPath.isEmpty() <span style="color:#ff79c6">||</span> <span style="color:#ff79c6">!</span>QFile<span style="color:#ff79c6">::</span>exists(launchPath)) {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(<span style="color:#f1fa8c">&#34;错误：无效的launch文件路径&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span>; <span style="color:#6272a4">// 进入Error状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    QString cmd <span style="color:#ff79c6">=</span> QString(<span style="color:#f1fa8c">&#34;source /opt/ros/noetic/setup.bash &amp;&amp; roslaunch %1&#34;</span>)
+</span></span><span style="display:flex;"><span>                  .arg(launchPath);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    process<span style="color:#ff79c6">-&gt;</span>start(<span style="color:#f1fa8c">&#34;bash&#34;</span>, QStringList() <span style="color:#ff79c6">&lt;&lt;</span> <span style="color:#f1fa8c">&#34;-c&#34;</span> <span style="color:#ff79c6">&lt;&lt;</span> cmd);
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 进入Executing状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="running-状态">Running 状态</h4>
+<ul>
+<li><strong>描述</strong>：roslaunch进程成功启动，正在运行并输出日志。</li>
+<li><strong>关键代码</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">13 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> LaunchItem<span style="color:#ff79c6">::</span>readProcessOutput() {
+</span></span><span style="display:flex;"><span>    QString output <span style="color:#ff79c6">=</span> process<span style="color:#ff79c6">-&gt;</span>readAllStandardOutput();
+</span></span><span style="display:flex;"><span>    QString error <span style="color:#ff79c6">=</span> process<span style="color:#ff79c6">-&gt;</span>readAllStandardError();
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>output.isEmpty()) {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(output); <span style="color:#6272a4">// 实时输出标准日志
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>error.isEmpty()) {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>setTextColor(Qt<span style="color:#ff79c6">::</span>red);
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(error);  <span style="color:#6272a4">// 实时输出错误日志
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>setTextColor(Qt<span style="color:#ff79c6">::</span>black);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="completed-状态">Completed 状态</h4>
+<ul>
+<li><strong>描述</strong>：roslaunch进程正常退出（返回码0）。</li>
+<li><strong>关键代码</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">9 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>connect(process, QOverload<span style="color:#ff79c6">&lt;</span><span style="color:#8be9fd">int</span><span style="color:#ff79c6">&gt;::</span>of(<span style="color:#ff79c6">&amp;</span>QProcess<span style="color:#ff79c6">::</span>finished), [<span style="color:#ff79c6">this</span>](<span style="color:#8be9fd">int</span> exitCode) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (exitCode <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(<span style="color:#f1fa8c">&#34;进程正常退出&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 进入Completed状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(<span style="color:#f1fa8c">&#34;进程异常退出，返回码: &#34;</span> <span style="color:#ff79c6">+</span> QString<span style="color:#ff79c6">::</span>number(exitCode));
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 进入Error状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="error-状态">Error 状态</h4>
+<ul>
+<li><strong>描述</strong>：出现错误（无效路径或进程异常退出）。</li>
+<li><strong>关键代码</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">9 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> LaunchItem<span style="color:#ff79c6">::</span>onExecuteClicked() {
+</span></span><span style="display:flex;"><span>    QString launchPath <span style="color:#ff79c6">=</span> ui<span style="color:#ff79c6">-&gt;</span>lineEdit<span style="color:#ff79c6">-&gt;</span>text();
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (launchPath.isEmpty() <span style="color:#ff79c6">||</span> <span style="color:#ff79c6">!</span>QFile<span style="color:#ff79c6">::</span>exists(launchPath)) {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(<span style="color:#f1fa8c">&#34;错误：无效的launch文件路径&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 进入Error状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="removed-状态">Removed 状态</h4>
+<ul>
+<li><strong>描述</strong>：用户点击“×”按钮，删除当前LaunchItem。</li>
+<li><strong>关键代码</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/MainWindow.cpp</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> LaunchItem<span style="color:#ff79c6">::</span>removeLaunchItem(QWidget <span style="color:#ff79c6">*</span>item) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (process<span style="color:#ff79c6">-&gt;</span>state() <span style="color:#ff79c6">==</span> QProcess<span style="color:#ff79c6">::</span>Running) {
+</span></span><span style="display:flex;"><span>        process<span style="color:#ff79c6">-&gt;</span>terminate(); <span style="color:#6272a4">// 终止进程
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        process<span style="color:#ff79c6">-&gt;</span>waitForFinished(<span style="color:#bd93f9">1000</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    item<span style="color:#ff79c6">-&gt;</span>deleteLater(); <span style="color:#6272a4">// 删除UI组件
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// 进入Removed状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h3 id="状态流转的核心逻辑">状态流转的核心逻辑</h3>
+<h4 id="从-idle-到-fileselected">从 Idle 到 FileSelected</h4>
+<ul>
+<li><strong>触发条件</strong>：用户通过浏览按钮选择了一个有效的launch文件。</li>
+<li><strong>代码实现</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">7 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> LaunchItem<span style="color:#ff79c6">::</span>onBrowseClicked() {
+</span></span><span style="display:flex;"><span>    QString path <span style="color:#ff79c6">=</span> QFileDialog<span style="color:#ff79c6">::</span>getOpenFileName(...);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>path.isEmpty()) {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>lineEdit<span style="color:#ff79c6">-&gt;</span>setText(path); <span style="color:#6272a4">// 更新路径输入框
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#6272a4">// 进入FileSelected状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="从-fileselected-到-executing">从 FileSelected 到 Executing</h4>
+<ul>
+<li><strong>触发条件</strong>：用户点击“执行”按钮。</li>
+<li><strong>代码实现</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">9 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> LaunchItem<span style="color:#ff79c6">::</span>onExecuteClicked() {
+</span></span><span style="display:flex;"><span>    QString launchPath <span style="color:#ff79c6">=</span> ui<span style="color:#ff79c6">-&gt;</span>lineEdit<span style="color:#ff79c6">-&gt;</span>text();
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (launchPath.isEmpty() <span style="color:#ff79c6">||</span> <span style="color:#ff79c6">!</span>QFile<span style="color:#ff79c6">::</span>exists(launchPath)) {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(<span style="color:#f1fa8c">&#34;错误：无效的launch文件路径&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span>; <span style="color:#6272a4">// 进入Error状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    }
+</span></span><span style="display:flex;"><span>    process<span style="color:#ff79c6">-&gt;</span>start(<span style="color:#f1fa8c">&#34;bash&#34;</span>, QStringList() <span style="color:#ff79c6">&lt;&lt;</span> <span style="color:#f1fa8c">&#34;-c&#34;</span> <span style="color:#ff79c6">&lt;&lt;</span> cmd);
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 进入Executing状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="从-executing-到-running">从 Executing 到 Running</h4>
+<ul>
+<li><strong>触发条件</strong>：roslaunch进程成功启动。</li>
+<li><strong>代码实现</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">4 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>connect(process, <span style="color:#ff79c6">&amp;</span>QProcess<span style="color:#ff79c6">::</span>started, [<span style="color:#ff79c6">this</span>] {
+</span></span><span style="display:flex;"><span>    ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(<span style="color:#f1fa8c">&#34;进程已启动&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 进入Running状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>});
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="从-running-到-completederror">从 Running 到 Completed/Error</h4>
+<ul>
+<li><strong>触发条件</strong>：进程退出（正常或异常）。</li>
+<li><strong>代码实现</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">9 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>connect(process, QOverload<span style="color:#ff79c6">&lt;</span><span style="color:#8be9fd">int</span><span style="color:#ff79c6">&gt;::</span>of(<span style="color:#ff79c6">&amp;</span>QProcess<span style="color:#ff79c6">::</span>finished), [<span style="color:#ff79c6">this</span>](<span style="color:#8be9fd">int</span> exitCode) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (exitCode <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(<span style="color:#f1fa8c">&#34;进程正常退出&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 进入Completed状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>        ui<span style="color:#ff79c6">-&gt;</span>textEdit<span style="color:#ff79c6">-&gt;</span>append(<span style="color:#f1fa8c">&#34;进程异常退出，返回码: &#34;</span> <span style="color:#ff79c6">+</span> QString<span style="color:#ff79c6">::</span>number(exitCode));
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 进入Error状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h4 id="从任何状态到-removed">从任何状态到 Removed</h4>
+<ul>
+<li><strong>触发条件</strong>：用户点击“×”按钮。</li>
+<li><strong>代码实现</strong>：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>src/LaunchItem.cpp</span>
+    <span class="line-count">4 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>connect(ui<span style="color:#ff79c6">-&gt;</span>btnRemove, <span style="color:#ff79c6">&amp;</span>QPushButton<span style="color:#ff79c6">::</span>clicked, [<span style="color:#ff79c6">this</span>] {
+</span></span><span style="display:flex;"><span>    emit <span style="color:#50fa7b">removeRequested</span>(); <span style="color:#6272a4">// 通知主窗口删除当前item
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// 进入Removed状态
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>});
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</li>
+</ul>
+<h3 id="核心逻辑总结">核心逻辑总结</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>状态</strong></th>
+          <th><strong>触发条件</strong></th>
+          <th><strong>关键代码</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Idle</td>
+          <td>初始化</td>
+          <td><code>ui-&gt;lineEdit-&gt;clear(); ui-&gt;textEdit-&gt;clear();</code></td>
+      </tr>
+      <tr>
+          <td>FileSelected</td>
+          <td>用户选择有效launch文件</td>
+          <td><code>ui-&gt;lineEdit-&gt;setText(path);</code></td>
+      </tr>
+      <tr>
+          <td>Executing</td>
+          <td>用户点击“执行”按钮</td>
+          <td><code>process-&gt;start(&quot;bash&quot;, QStringList() &lt;&lt; &quot;-c&quot; &lt;&lt; cmd);</code></td>
+      </tr>
+      <tr>
+          <td>Running</td>
+          <td>进程成功启动</td>
+          <td><code>connect(process, &amp;QProcess::started, [this] { ... });</code></td>
+      </tr>
+      <tr>
+          <td>Completed</td>
+          <td>进程正常退出（返回码0）</td>
+          <td><code>connect(process, QOverload&lt;int&gt;::of(&amp;QProcess::finished), [this](int code) { ... });</code></td>
+      </tr>
+      <tr>
+          <td>Error</td>
+          <td>无效路径或进程异常退出</td>
+          <td><code>ui-&gt;textEdit-&gt;append(&quot;错误：无效的launch文件路径&quot;);</code></td>
+      </tr>
+      <tr>
+          <td>Removed</td>
+          <td>用户点击“×”按钮</td>
+          <td><code>item-&gt;deleteLater();</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>通过以上代码和状态流转的对应关系，可以清晰地理解整个系统的核心逻辑。如果需要进一步扩展功能（如批量执行、状态持久化等），可以基于此框架进行开发。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Mermaid使用例</title>
       <link>http://localhost:1313/zh/posts/2025_02_28-mermaid_usage/</link>
@@ -4398,6 +5543,13 @@ Rel(SystemC, customerA, &#34;Sends e-mails to&#34;)
 ]]></content:encoded>
     </item>
     <item>
+      <title>开源遐想</title>
+      <link>http://localhost:1313/zh/posts/2025_02_10-open_source_1/</link>
+      <pubDate>Mon, 10 Feb 2025 20:04:47 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_10-open_source_1/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>通过Ollama调用DeepSeek</title>
       <link>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</link>
       <pubDate>Sun, 09 Feb 2025 20:08:43 +0800</pubDate>
@@ -4658,6 +5810,104 @@ Rel(SystemC, customerA, &#34;Sends e-mails to&#34;)
 ]]></content:encoded>
     </item>
     <item>
+      <title>2025_02_07 Practice_1</title>
+      <link>http://localhost:1313/zh/posts/2025_02_07-practice_1/</link>
+      <pubDate>Fri, 07 Feb 2025 18:10:16 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_07-practice_1/</guid>
+      <description>&lt;h2 id=&#34;实习&#34;&gt;实习&lt;/h2&gt;
+&lt;p&gt;大学生活还剩下半年了，准备这半年找一个实习提升一下自己的能力&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;说实话，综合现实考虑，实习不一定可行。但是我现在做一些了解和准备也未尝不可，选择参与一项开源项目可能是一个很好的选择&lt;/small&gt;&lt;/span&gt;
+
+，在这里做一个简单的记录。&lt;br&gt;
+在这里先简单的打个草稿，我给我的预期是今年上半年找到一个机器人大公司的实习，有空余的话找一个适合的开源项目锻炼自己的能力，其次顺利进行毕业答辩，成功毕业。&lt;br&gt;
+对于实习部分，我打算先对于目标的公司的需求做一个简单的了解，收集一些基本的信息归档。接下来，找一个合适的机会找南航老师简单的聊一聊，然后和彬哥聊聊看看有什么建议，在这期间就可以顺带着投了做准备了。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="实习">实习</h2>
+<p>大学生活还剩下半年了，准备这半年找一个实习提升一下自己的能力<span class="sidenote-number"><small class="sidenote">说实话，综合现实考虑，实习不一定可行。但是我现在做一些了解和准备也未尝不可，选择参与一项开源项目可能是一个很好的选择</small></span>
+
+，在这里做一个简单的记录。<br>
+在这里先简单的打个草稿，我给我的预期是今年上半年找到一个机器人大公司的实习，有空余的话找一个适合的开源项目锻炼自己的能力，其次顺利进行毕业答辩，成功毕业。<br>
+对于实习部分，我打算先对于目标的公司的需求做一个简单的了解，收集一些基本的信息归档。接下来，找一个合适的机会找南航老师简单的聊一聊，然后和彬哥聊聊看看有什么建议，在这期间就可以顺带着投了做准备了。</p>
+<h2 id="意向公司">意向公司</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">公司名称</th>
+          <th style="text-align: center">岗位名称</th>
+          <th style="text-align: center">工作地点</th>
+          <th style="text-align: center">实习时长</th>
+          <th style="text-align: center">转正机会</th>
+          <th style="text-align: center">重要性</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><a href="https://www.robomaster.com/zh-CN/recruit?djifrom=rm"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   大疆<span class="external-link">↗</span></a>
+</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><a href="https://www.unitree.com/cn/position"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   宇树<span class="external-link">↗</span></a>
+</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><a href="https://www.zhipin.com/gongsi/ffd531b0cbd4133f1XN92Nm0EFU~.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   deepseeek<span class="external-link">↗</span></a>
+</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><a href="https://www.robomaster.com/zh-CN/recruit?djifrom=rm"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   云深处<span class="external-link">↗</span></a>
+</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="大疆">大疆</h2>
+<h2 id="宇树">宇树</h2>
+<h2 id="deepseek">deepseek</h2>
+<h2 id="云深处">云深处</h2>
+]]></content:encoded>
+    </item>
+    <item>
       <title>Hugo博客搭建_主题优化 🤤</title>
       <link>http://localhost:1313/zh/posts/2025_02_05-hugo_build_3/</link>
       <pubDate>Thu, 06 Feb 2025 19:32:05 +0800</pubDate>
@@ -4705,6 +5955,17 @@ Rel(SystemC, customerA, &#34;Sends e-mails to&#34;)
 &#x1f448; 你在这里</li>
 </ul></blockquote>
 
+]]></content:encoded>
+    </item>
+    <item>
+      <title>蛀牙</title>
+      <link>http://localhost:1313/zh/posts/2025_02_05-tooth_decay/</link>
+      <pubDate>Wed, 05 Feb 2025 23:33:26 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_02_05-tooth_decay/</guid>
+      <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
+&lt;p&gt;捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="起因">起因</h2>
+<p>捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。</p>
 ]]></content:encoded>
     </item>
     <item>

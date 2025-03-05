@@ -275,6 +275,22 @@ code.has-jax {
 <article class="post-entry">
   <div class="post-info">
     <header class="entry-header">
+      <h2 class="entry-hint-parent">使用QT来创建ROS的节点程序
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>结构框图 sequenceDiagram participant User participant GUI participant Process User-&gt;&gt;GUI: 点击&#34;浏览&#34;按钮 GUI-&gt;&gt;User: 显示文件选择对话框 User-&gt;&gt;GUI: 选择valid.launch GUI-&gt;&gt;GUI: 进入FileSelected状态 User-&gt;&gt;GUI: 点击&#34;执行&#34;按钮 GUI-&gt;&gt;Process: 启动roslaunch Process--&gt;&gt;GUI: 进程启动成功 GUI-&gt;&gt;GUI: 进入Running状态 loop 日志输出 Process--&gt;&gt;GUI: 实时传输标准输出 end Process--&gt;&gt;GUI: 进程退出(返回码0) GUI-&gt;&gt;GUI: 进入Completed状态 User-&gt;&gt;GUI: 点击&#34;×&#34;删除按钮 GUI-&gt;&gt;Process: 终止进程(如果运行中) GUI-&gt;&gt;GUI: 进入Removed状态 代码讲解 以下是基于Mermaid状态图的核心逻辑代码实现，结合状态图的关键部分进行详细说明：
+...</p>
+    </div>
+    <footer class="entry-footer"><span title='2025-03-05 15:07:21 +0800 CST'>2025-03-05</span>&nbsp;·&nbsp;4 分钟&nbsp;·&nbsp;1805 字&nbsp;·&nbsp;Downmars</footer>
+  </div>
+   
+  <a class="entry-link" aria-label="post link to 使用QT来创建ROS的节点程序" href="http://localhost:1313/zh/posts/2025_03_05-qt_with_ros/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info">
+    <header class="entry-header">
       <h2 class="entry-hint-parent">Mermaid使用例
       </h2>
     </header>
@@ -418,23 +434,6 @@ Mermaid↗ 是一种基于JavaScript的图标工具，它以Markdown启发的文
   </div>
    
   <a class="entry-link" aria-label="post link to Gtrash作为rm的代替工具" href="http://localhost:1313/zh/posts/2025_02_21-gtrash_as_an_alternative_to_rm/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info">
-    <header class="entry-header">
-      <h2 class="entry-hint-parent">通过PicGo在Github上搭建图床
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>前言 今天在给别人分享友链的时候，需要给别人一个头像的链接，之前把图片是全部存放到本地的，这下正好分享一下配置图床的过程。
-我这边使用的是 PicGo↗ ，这是一个快速将图片上传到指定的图床上并返回Markdown格式的URL链接的工具。图床我们的首选是免费的，但是现在市面上大部分的都是不可能三角形，要么可控性差，要么收费，要么速度慢。对于写代码的，首选有两个，Gitee和Github。我原先考虑到的国内访问Gitee比较容易，但是在配置完毕之后出现了对应链接无法接收到图像，看网友说应该是禁用了外链请求到Gitee，详情请见 Gitee网站使用条款-仓库大小↗ ，而且国内平台会有审核机制，所以我这边还是选择了Github来搭建我的平台，安全的同时也能够及时备份，避免遗失，不然某天博客的云端图像丢失了就不可挽回了。
-...</p>
-    </div>
-    <footer class="entry-footer"><span title='2025-02-20 19:35:05 +0800 CST'>2025-02-20</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;734 字&nbsp;·&nbsp;Downmars</footer>
-  </div>
-   
-  <a class="entry-link" aria-label="post link to 通过PicGo在Github上搭建图床" href="http://localhost:1313/zh/posts/2025_02_20-image_hosting_in_github/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
@@ -608,8 +607,16 @@ Mermaid↗ 是一种基于JavaScript的图标工具，它以Markdown启发的文
     
         
     
+        
     
-    总计31.38k字
+        
+    
+        
+    
+        
+    
+    
+    总计33.62k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
