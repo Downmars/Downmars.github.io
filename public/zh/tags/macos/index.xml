@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Macos on DLog</title>
+    <link>http://localhost:1313/zh/tags/macos/</link>
+    <description>Recent content in Macos on DLog</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 23 Mar 2025 14:32:53 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macos plist 配置</title>
+      <link>http://localhost:1313/zh/posts/2025_03_23-macos_plist/</link>
+      <pubDate>Sun, 23 Mar 2025 14:32:53 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_23-macos_plist/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;在 macOS 系统中，launchd 是管理系统和用户后台任务（即守护进程 Daemons 与代理进程 Agents）的核心机制。想要在 macOS 上创建或管理定时任务、服务程序或后台脚本，理解 launchd 和其对应的 .plist 配置文件是必不可少的。
+&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;本文内容参考于&lt;a href=&#34;https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Creating Launch Daemons and Agents&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;&lt;/small&gt;&lt;/span&gt;
+
+&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>在 macOS 系统中，launchd 是管理系统和用户后台任务（即守护进程 Daemons 与代理进程 Agents）的核心机制。想要在 macOS 上创建或管理定时任务、服务程序或后台脚本，理解 launchd 和其对应的 .plist 配置文件是必不可少的。
+<span class="sidenote-number"><small class="sidenote">本文内容参考于<a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Creating Launch Daemons and Agents<span class="external-link">↗</span></a></small></span>
+
+</p>
+<h2 id="为什呢使用launchd">为什呢使用launchd</h2>
+<p>相比传统方式（如 cron、inetd），launchd 提供了更现代和统一的方式来启动和管理进程，优势包括：</p>
+<ul>
+<li>支持按需启动（On-Demand）：节省系统资源；</li>
+<li>无需处理依赖顺序：launchd 会自动协调启动顺序；</li>
+<li>统一配置入口：通过标准化的 .plist 文件配置任务；</li>
+<li>简化权限处理：系统层任务由 launchd（以 root 身份）启动后传递资源给子进程；</li>
+<li>支持多种触发方式：时间、文件变动、目录状态、Socket 等。</li>
+</ul>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>
