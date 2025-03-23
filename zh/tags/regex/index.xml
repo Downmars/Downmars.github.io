@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Regex on DLog</title><link>https://downmars.github.io/zh/tags/regex/</link><description>Recent content in Regex on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Wed, 19 Mar 2025 21:25:45 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/regex/index.xml" rel="self" type="application/rss+xml"/><item><title>正则表达式</title><link>https://downmars.github.io/zh/posts/2025_03_19-regex/</link><pubDate>Wed, 19 Mar 2025 21:25:45 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_19-regex/</guid><description>&lt;blockquote class="quote">&lt;p>正则表达式（英语：regular expression，常简写为regex、regexp或RE），又称规律表达式、正则表示式、正则表示法、规则表达式、常规表示法，是计算机科学概念，用简单字符串来描述、匹配文中全部匹配指定格式的字符串，现在很多文本编辑器都支持用正则表达式搜索、取代匹配指定格式的字符串。&lt;/p></description><content:encoded><![CDATA[<blockquote class="quote"><p>正则表达式（英语：regular expression，常简写为regex、regexp或RE），又称规律表达式、正则表示式、正则表示法、规则表达式、常规表示法，是计算机科学概念，用简单字符串来描述、匹配文中全部匹配指定格式的字符串，现在很多文本编辑器都支持用正则表达式搜索、取代匹配指定格式的字符串。</p></blockquote>
+
+<h2 id="译名问题">译名问题</h2>
+<p>描述字符串规律的表达式原应顺理成章称为规律表达式（pattern expression／rule expression），但却叫成有欠准确的regular expression，导致现在有多种中译名，如将regular译成规律、规则、正规、正则或常规，将expression译成表达式、表示式、表示法或表达式等。</p>
+<h2 id="pcre">PCRE</h2>
+<p>在大多数开源工具或者编辑器中，默认支持的正则表达式通常是<a href="https://www.pcre.org/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   PCRE<span class="external-link">↗</span></a>
+(Perl-Compatible Regular Expressions)或者其简化版本，其语法强大、兼容性好，通常适用于文本处理。  <span class="sidenote-number"><small class="sidenote">本篇内容均来源于<a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   维基百科-正则表达式<span class="external-link">↗</span></a></small></span>
+
+</p>
+<h3 id="基础字符与匹配位置">基础字符与匹配位置</h3>
+<table>
+  <thead>
+      <tr>
+          <th>字符</th>
+          <th>描述</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>\</code></td>
+          <td>转义字符</td>
+          <td><code>\.</code> 匹配一个点 <code>.</code>，<code>\\</code> 匹配反斜杠</td>
+      </tr>
+      <tr>
+          <td><code>^</code></td>
+          <td>匹配字符串开头</td>
+          <td><code>^abc</code> 匹配以 <code>abc</code> 开头的字符串</td>
+      </tr>
+      <tr>
+          <td><code>$</code></td>
+          <td>匹配字符串结尾</td>
+          <td><code>abc$</code> 匹配以 <code>abc</code> 结尾的字符串</td>
+      </tr>
+      <tr>
+          <td><code>.</code></td>
+          <td>匹配除换行外的任意字符</td>
+          <td><code>a.b</code> 匹配 <code>aab</code>, <code>acb</code>, 不匹配 <code>a\nb</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="重复匹配量词">重复匹配（量词）</h3>
+<table>
+  <thead>
+      <tr>
+          <th>字符</th>
+          <th>描述</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>*</code></td>
+          <td>匹配零次或多次</td>
+          <td><code>lo*l</code> 匹配 <code>ll</code>, <code>lol</code>, <code>lool</code>, <code>loooool</code></td>
+      </tr>
+      <tr>
+          <td><code>+</code></td>
+          <td>匹配一次或多次</td>
+          <td><code>lo+l</code> 匹配 <code>lol</code>, <code>lool</code>，不匹配 <code>ll</code></td>
+      </tr>
+      <tr>
+          <td><code>?</code></td>
+          <td>匹配零次或一次</td>
+          <td><code>do(es)?</code> 匹配 <code>do</code> 或 <code>does</code></td>
+      </tr>
+      <tr>
+          <td><code>{n}</code></td>
+          <td>匹配n次</td>
+          <td><code>a{3}</code> 匹配 <code>aaa</code></td>
+      </tr>
+      <tr>
+          <td><code>{n,}</code></td>
+          <td>匹配至少n次</td>
+          <td><code>a{2,}</code> 匹配 <code>aa</code>, <code>aaa</code>, <code>aaaa</code></td>
+      </tr>
+      <tr>
+          <td><code>{n,m}</code></td>
+          <td>匹配n到m次</td>
+          <td><code>a{2,4}</code> 匹配 <code>aa</code>, <code>aaa</code>, <code>aaaa</code></td>
+      </tr>
+      <tr>
+          <td><code>*?</code> <code>+?</code> <code>??</code></td>
+          <td>非贪婪匹配</td>
+          <td><code>&lt;.*?&gt;</code> 匹配最短标签，如 <code>&lt;div&gt;</code> 而不是 <code>&lt;div&gt;content&lt;/div&gt;</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="分组与引用">分组与引用</h3>
+<table>
+  <thead>
+      <tr>
+          <th>字符</th>
+          <th>描述</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>(abc)</code></td>
+          <td>捕获分组</td>
+          <td><code>(abc)+</code> 匹配 <code>abcabc</code></td>
+      </tr>
+      <tr>
+          <td><code>(?:abc)</code></td>
+          <td>非捕获分组</td>
+          <td><code>(?:abc)+</code> 也匹配 <code>abcabc</code>，但不捕获</td>
+      </tr>
+      <tr>
+          <td><code>\1</code>, <code>\2</code>&hellip;</td>
+          <td>向后引用</td>
+          <td><code>(a)\1</code> 匹配 <code>aa</code>，<code>(.)\1</code> 匹配两个相同字符</td>
+      </tr>
+      <tr>
+          <td><code>(?&lt;name&gt;...)</code></td>
+          <td>命名分组</td>
+          <td><code>(?&lt;word&gt;\w+)</code> 捕获一个单词</td>
+      </tr>
+      <tr>
+          <td><code>\k&lt;name&gt;</code></td>
+          <td>命名引用</td>
+          <td><code>(?&lt;d&gt;\d)\k&lt;d&gt;</code> 匹配两个相同数字，如 <code>33</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="断言不消费字符">断言（不消费字符）</h3>
+<table>
+  <thead>
+      <tr>
+          <th>字符</th>
+          <th>描述</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>(?=abc)</code></td>
+          <td>正向肯定预查</td>
+          <td><code>\w+(?=ing\b)</code> 匹配 <code>sing</code> 中的 <code>sing</code>（去掉ing）</td>
+      </tr>
+      <tr>
+          <td><code>(?!abc)</code></td>
+          <td>正向否定预查</td>
+          <td><code>\w+(?!ing\b)</code> 匹配不以 <code>ing</code> 结尾的单词</td>
+      </tr>
+      <tr>
+          <td><code>(?&lt;=abc)</code></td>
+          <td>反向肯定预查</td>
+          <td><code>(?&lt;=abc)\w+</code> 匹配 <code>abcXYZ</code> 中的 <code>XYZ</code></td>
+      </tr>
+      <tr>
+          <td><code>(?&lt;!abc)</code></td>
+          <td>反向否定预查</td>
+          <td><code>(?&lt;!abc)\w+</code> 匹配不在 <code>abc</code> 后的单词</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="选择与字符集">选择与字符集</h3>
+<table>
+  <thead>
+      <tr>
+          <th>字符</th>
+          <th>描述</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>x|y</code></td>
+          <td>匹配 x 或 y</td>
+          <td><code>cat|dog</code> 匹配 <code>cat</code> 或 <code>dog</code></td>
+      </tr>
+      <tr>
+          <td><code>[abc]</code></td>
+          <td>匹配 a 或 b 或 c</td>
+          <td>匹配 <code>a</code>, <code>b</code> 或 <code>c</code> 中的任意一个</td>
+      </tr>
+      <tr>
+          <td><code>[^abc]</code></td>
+          <td>非字符集</td>
+          <td>匹配除 <code>a</code>, <code>b</code>, <code>c</code> 外的任意字符</td>
+      </tr>
+      <tr>
+          <td><code>[a-z]</code></td>
+          <td>范围匹配</td>
+          <td>匹配所有小写字母</td>
+      </tr>
+      <tr>
+          <td><code>[^a-z]</code></td>
+          <td>非范围匹配</td>
+          <td>匹配非小写字母的字符</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="常用转义字符">常用转义字符</h3>
+<table>
+  <thead>
+      <tr>
+          <th>字符</th>
+          <th>描述</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>\d</code></td>
+          <td>数字字符 <code>[0-9]</code></td>
+          <td><code>\d+</code> 匹配数字，如 <code>123</code></td>
+      </tr>
+      <tr>
+          <td><code>\D</code></td>
+          <td>非数字字符</td>
+          <td><code>\D+</code> 匹配字母或符号，如 <code>abc!</code></td>
+      </tr>
+      <tr>
+          <td><code>\w</code></td>
+          <td>单词字符（含汉字）</td>
+          <td><code>\w+</code> 匹配 <code>abc123_汉</code></td>
+      </tr>
+      <tr>
+          <td><code>\W</code></td>
+          <td>非单词字符</td>
+          <td>匹配空格、标点等</td>
+      </tr>
+      <tr>
+          <td><code>\s</code></td>
+          <td>空白字符</td>
+          <td>匹配空格、<code>\t</code>, <code>\n</code> 等</td>
+      </tr>
+      <tr>
+          <td><code>\S</code></td>
+          <td>非空白字符</td>
+          <td>匹配任何非空格字符</td>
+      </tr>
+      <tr>
+          <td><code>\t</code></td>
+          <td>制表符</td>
+          <td>匹配 <code>Tab</code></td>
+      </tr>
+      <tr>
+          <td><code>\n</code></td>
+          <td>换行符</td>
+          <td>匹配换行</td>
+      </tr>
+      <tr>
+          <td><code>\r</code></td>
+          <td>回车符</td>
+          <td>匹配回车</td>
+      </tr>
+      <tr>
+          <td><code>\f</code></td>
+          <td>换页符</td>
+          <td>匹配打印页结束符</td>
+      </tr>
+      <tr>
+          <td><code>\v</code></td>
+          <td>垂直制表符</td>
+          <td>很少见，匹配 <code>\x0b</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="编码与进阶引用">编码与进阶引用</h3>
+<table>
+  <thead>
+      <tr>
+          <th>字符</th>
+          <th>描述</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>\xnn</code></td>
+          <td>十六进制字符</td>
+          <td><code>\x41</code> 匹配 <code>A</code></td>
+      </tr>
+      <tr>
+          <td><code>\uXXXX</code></td>
+          <td>Unicode字符</td>
+          <td><code>\u00A9</code> 匹配 <code>©</code></td>
+      </tr>
+      <tr>
+          <td><code>\0</code>~<code>\777</code></td>
+          <td>八进制字符</td>
+          <td><code>\040</code> 匹配空格（十进制32）</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="其他特殊用法">其他特殊用法</h3>
+<table>
+  <thead>
+      <tr>
+          <th>字符</th>
+          <th>描述</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>\b</code></td>
+          <td>单词边界</td>
+          <td><code>\bhi\b</code> 匹配独立单词 <code>hi</code></td>
+      </tr>
+      <tr>
+          <td><code>\B</code></td>
+          <td>非单词边界</td>
+          <td><code>\Bhi\B</code> 匹配 <code>behind</code> 中的 <code>hi</code></td>
+      </tr>
+      <tr>
+          <td><code>\cX</code></td>
+          <td>控制字符</td>
+          <td><code>\cM</code> 匹配回车符（Ctrl+M）</td>
+      </tr>
+  </tbody>
+</table>
+]]></content:encoded></item></channel></rss>
