@@ -6,14 +6,402 @@
     <description>Recent content on DLog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 23 Mar 2025 14:32:53 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Mar 2025 10:19:20 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>2025_03_23 Macos_plist</title>
+      <title>使用Duti管理macos的默认程序</title>
+      <link>http://localhost:1313/zh/posts/2025_03_24-duti_change_the_default_handler/</link>
+      <pubDate>Mon, 24 Mar 2025 10:19:20 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_24-duti_change_the_default_handler/</guid>
+      <description>&lt;p&gt;macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 &lt;strong&gt;duti&lt;/strong&gt; 是一个高效的选择。&lt;/p&gt;
+&lt;h2 id=&#34;什么是-duti&#34;&gt;什么是 duti？&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;duti&lt;/code&gt;（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 &lt;code&gt;duti&lt;/code&gt;，你可以设置特定文件类型、URL 协议等的默认打开方式。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 <strong>duti</strong> 是一个高效的选择。</p>
+<h2 id="什么是-duti">什么是 duti？</h2>
+<p><code>duti</code>（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 <code>duti</code>，你可以设置特定文件类型、URL 协议等的默认打开方式。</p>
+<p>GitHub 地址：<a href="https://github.com/moretension/duti"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   https://github.com/moretension/duti<span class="external-link">↗</span></a>
+</p>
+<h2 id="安装-duti">安装 duti</h2>
+<p>首先确保已安装 Homebrew，如果没有可以先运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/bin/bash -c <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
+</span></span></code></pre></div><p>然后使用以下命令安装 duti：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install duti
+</span></span></code></pre></div><h2 id="使用duti设置默认应用程序">使用duti设置默认应用程序</h2>
+<h3 id="获取应用程序的-bundle-identifier">获取应用程序的 Bundle Identifier</h3>
+<p>在设置默认应用前，需要知道目标应用的 Bundle Identifier。可使用以下命令获取：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mdls -name kMDItemCFBundleIdentifier -r /Applications/应用程序名称.app
+</span></span></code></pre></div><p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mdls -name kMDItemCFBundleIdentifier -r /Applications/Sublime<span style="color:#f1fa8c">\ </span>Text.app
+</span></span></code></pre></div><p>输出示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>com.sublimetext.3
+</span></span></code></pre></div><h3 id="获取文件类型的-uti">获取文件类型的 UTI</h3>
+<p>UTI（Uniform Type Identifier）用于标识文件类型。使用以下命令可获取：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mdls -name kMDItemContentType -r 文件路径
+</span></span></code></pre></div><p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mdls -name kMDItemContentType -r example.md
+</span></span></code></pre></div><p>输出示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net.daringfireball.markdown
+</span></span></code></pre></div><h3 id="使用-duti-设置默认应用程序">使用 duti 设置默认应用程序</h3>
+<p>设置命令格式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s &lt;BundleID&gt; &lt;UTI或扩展名&gt; all
+</span></span></code></pre></div><p>示例：将 .md 文件默认设置为 Sublime Text 打开：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.sublimetext.3 net.daringfireball.markdown all
+</span></span></code></pre></div><p>示例：将 .txt 文件默认使用 Sublime Text 打开：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.sublimetext.3 .txt all
+</span></span></code></pre></div><p>批量设置默认应用程序<br>
+可以创建配置文件批量设置，示例如下：</p>
+<ol>
+<li>创建设置文件（如 ~/.duti）：</li>
+</ol>
+<p>com.sublimetext.3    public.plain-text    all
+com.sublimetext.3    public.python-script all
+com.sublimetext.3    net.daringfireball.markdown all</p>
+<ol start="2">
+<li>加载配置：</li>
+</ol>
+<p>duti ~/.duti</p>
+<p>其他功能示例
+•	设置 HTML 默认由 Safari 打开：</p>
+<p>duti -s com.apple.Safari public.html all</p>
+<pre><code>•	使用 echo 管道设置 Word 文档默认打开方式：
+</code></pre>
+<p>echo &lsquo;com.apple.TextEdit   com.microsoft.word.doc all&rsquo; | duti</p>
+<pre><code>•	设置 Finder 为默认 FTP 处理器：
+</code></pre>
+<p>duti -s com.apple.Finder ftp</p>
+<pre><code>•	查询某文件扩展的默认应用：
+</code></pre>
+<p>duti -x jpg</p>
+<p>输出示例：</p>
+<p>Preview
+/Applications/Preview.app
+com.apple.Preview</p>
+<p>小贴士
+•	若遇到 duti 无法生效，可尝试重启 Finder 或注销再登录
+•	.duti 文件可用于快速迁移默认应用配置
+•	推荐与 mdls 命令结合使用，提高效率</p>
+<p>duti 是一个轻量却强大的工具，能帮助我们更精细地管理 macOS 系统中的默认程序关联。无论是开发者、写作者，还是折腾派用户，都值得试试这个工具来简化日常操作。</p>
+<p>原项目由 Andrew Mortensen 创建，发布于 2008 年，现已开源至 GitHub 并持续可用。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Macos plist 配置</title>
       <link>http://localhost:1313/zh/posts/2025_03_23-macos_plist/</link>
       <pubDate>Sun, 23 Mar 2025 14:32:53 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_03_23-macos_plist/</guid>
-      <description></description>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;在 macOS 系统中，launchd 是管理系统和用户后台任务（即守护进程 Daemons 与代理进程 Agents）的核心机制。想要在 macOS 上创建或管理定时任务、服务程序或后台脚本，理解 launchd 和其对应的 .plist 配置文件是必不可少的。
+&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;本文内容参考于&lt;a href=&#34;https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Creating Launch Daemons and Agents&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;&lt;/small&gt;&lt;/span&gt;
+
+&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>在 macOS 系统中，launchd 是管理系统和用户后台任务（即守护进程 Daemons 与代理进程 Agents）的核心机制。想要在 macOS 上创建或管理定时任务、服务程序或后台脚本，理解 launchd 和其对应的 .plist 配置文件是必不可少的。
+<span class="sidenote-number"><small class="sidenote">本文内容参考于<a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Creating Launch Daemons and Agents<span class="external-link">↗</span></a></small></span>
+
+</p>
+<h2 id="为什呢使用launchd">为什呢使用launchd</h2>
+<p>相比传统方式（如 cron、inetd），launchd 提供了更现代和统一的方式来启动和管理进程，优势包括：</p>
+<ul>
+<li>支持按需启动（On-Demand）：节省系统资源；</li>
+<li>无需处理依赖顺序：launchd 会自动协调启动顺序；</li>
+<li>统一配置入口：通过标准化的 .plist 文件配置任务；</li>
+<li>简化权限处理：系统层任务由 launchd（以 root 身份）启动后传递资源给子进程；</li>
+<li>支持多种触发方式：时间、文件变动、目录状态、Socket 等。</li>
+</ul>
+<h2 id="launchdaemons-vs-launchagents">LaunchDaemons vs LaunchAgents</h2>
+<ul>
+<li>LaunchDaemons：系统级守护进程（/Library/System/LaunchDaemons），在无用户登录时也能运行。</li>
+<li>LaunchAgents：用户级代理进程（/Library/LaunchAgents 或 ~/Library/LaunchAgents），需要用户登录后才会运行。</li>
+</ul>
+<h2 id="plist-文件结构与关键字段">plist 文件结构与关键字段</h2>
+<p>.plist 文件是以 XML 格式编写的，以下是几个关键字段：</p>
+<table>
+  <thead>
+      <tr>
+          <th>Key</th>
+          <th>作用说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Label</code></td>
+          <td>唯一标识任务（必须）</td>
+      </tr>
+      <tr>
+          <td><code>ProgramArguments</code></td>
+          <td>启动命令和参数（必须）</td>
+      </tr>
+      <tr>
+          <td><code>KeepAlive</code></td>
+          <td>是否持续运行（默认为 false）</td>
+      </tr>
+      <tr>
+          <td><code>StartInterval</code></td>
+          <td>每隔多少秒执行一次任务</td>
+      </tr>
+      <tr>
+          <td><code>StartCalendarInterval</code></td>
+          <td>类似 cron 的定时机制（如每月 7 日 13:45）</td>
+      </tr>
+      <tr>
+          <td><code>WatchPaths</code></td>
+          <td>监听指定路径的变动</td>
+      </tr>
+      <tr>
+          <td><code>QueueDirectories</code></td>
+          <td>监听目录非空触发运行</td>
+      </tr>
+      <tr>
+          <td><code>StandardOutPath</code> / <code>StandardErrorPath</code></td>
+          <td>输出日志路径</td>
+      </tr>
+      <tr>
+          <td><code>Sockets</code></td>
+          <td>声明监听的端口（支持 TCP/UDP）</td>
+      </tr>
+      <tr>
+          <td><code>inetdCompatibility</code></td>
+          <td>模拟旧的 inetd 行为</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="hello-world">Hello World</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/Library/LaunchDaemons/com.example.hello.plist</span>
+    <span class="line-count">13 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;plist version=&#34;1.0&#34;&gt;
+</span></span><span style="display:flex;"><span>&lt;dict&gt;
+</span></span><span style="display:flex;"><span>    &lt;key&gt;Label&lt;/key&gt;
+</span></span><span style="display:flex;"><span>    &lt;string&gt;com.example.hello&lt;/string&gt;
+</span></span><span style="display:flex;"><span>    &lt;key&gt;ProgramArguments&lt;/key&gt;
+</span></span><span style="display:flex;"><span>    &lt;array&gt;
+</span></span><span style="display:flex;"><span>        &lt;string&gt;hello&lt;/string&gt;
+</span></span><span style="display:flex;"><span>        &lt;string&gt;world&lt;/string&gt;
+</span></span><span style="display:flex;"><span>    &lt;/array&gt;
+</span></span><span style="display:flex;"><span>    &lt;key&gt;KeepAlive&lt;/key&gt;
+</span></span><span style="display:flex;"><span>    &lt;true/&gt;
+</span></span><span style="display:flex;"><span>&lt;/dict&gt;
+</span></span><span style="display:flex;"><span>&lt;/plist&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h3 id="每-5-分钟执行一次">每 5 分钟执行一次</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/Library/LaunchDaemons/com.example.hello.plist</span>
+    <span class="line-count">2 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;key&gt;StartInterval&lt;/key&gt;
+</span></span><span style="display:flex;"><span>&lt;integer&gt;300&lt;/integer&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h3 id="监听某文件变化">监听某文件变化</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/Library/LaunchDaemons/com.example.hello.plist</span>
+    <span class="line-count">4 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;key&gt;WatchPaths&lt;/key&gt;
+</span></span><span style="display:flex;"><span>&lt;array&gt;
+</span></span><span style="display:flex;"><span>    &lt;string&gt;/etc/hostconfig&lt;/string&gt;
+</span></span><span style="display:flex;"><span>&lt;/array&gt;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h2 id="如何加载与管理plist">如何加载与管理plist</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 加载任务</span>
+</span></span><span style="display:flex;"><span>sudo launchctl load /Library/LaunchDaemons/com.example.hello.plist
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 卸载任务</span>
+</span></span><span style="display:flex;"><span>sudo launchctl unload /Library/LaunchDaemons/com.example.hello.plist
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 查看任务状态</span>
+</span></span><span style="display:flex;"><span>launchctl list | grep com.example.hello
+</span></span></code></pre></div>]]></content:encoded>
     </item>
     <item>
       <title>OpenHarmony移植到STM32H743系列</title>
