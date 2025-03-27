@@ -6,27 +6,759 @@
     <description>Recent content on DLog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 24 Mar 2025 10:19:20 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 27 Mar 2025 20:10:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>使用Duti管理macos的默认程序</title>
-      <link>http://localhost:1313/zh/posts/2025_03_24-duti_change_the_default_handler/</link>
-      <pubDate>Mon, 24 Mar 2025 10:19:20 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025_03_24-duti_change_the_default_handler/</guid>
-      <description>&lt;p&gt;macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 &lt;strong&gt;duti&lt;/strong&gt; 是一个高效的选择。&lt;/p&gt;
-&lt;h2 id=&#34;什么是-duti&#34;&gt;什么是 duti？&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;duti&lt;/code&gt;（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 &lt;code&gt;duti&lt;/code&gt;，你可以设置特定文件类型、URL 协议等的默认打开方式。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 <strong>duti</strong> 是一个高效的选择。</p>
-<h2 id="什么是-duti">什么是 duti？</h2>
-<p><code>duti</code>（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 <code>duti</code>，你可以设置特定文件类型、URL 协议等的默认打开方式。</p>
-<p>GitHub 地址：<a href="https://github.com/moretension/duti"
+      <title>2025_03_27 Openharmony_transplant_overview</title>
+      <link>http://localhost:1313/zh/posts/2025_03_27-openharmony_transplant_overview/</link>
+      <pubDate>Thu, 27 Mar 2025 20:10:00 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_27-openharmony_transplant_overview/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>2025_03_27 Openharmony_porting_minichip_overview</title>
+      <link>http://localhost:1313/zh/posts/2025_03_27-openharmony_porting_minichip_overview/</link>
+      <pubDate>Thu, 27 Mar 2025 12:14:29 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_27-openharmony_porting_minichip_overview/</guid>
+      <description>&lt;p&gt;本篇内容源自&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   porting-minichip-overview&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;此参考文档适用于OpenHarmony LTS 3.0.1及之前版本的轻量系统的适配，即对于我现在的5.0.3版本可能会有一定的差别，但是大体上是可以参考的。&lt;/small&gt;&lt;/span&gt;
+
+和&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-stm32f407-on-minisystem-eth.md&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   轻量系统STM32F407芯片移植案例&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md"
    
     
        target="_blank" rel="noopener" 
    
    class="custom-link">  
-   https://github.com/moretension/duti<span class="external-link">↗</span></a>
+   porting-minichip-overview<span class="external-link">↗</span></a>
+<span class="sidenote-number"><small class="sidenote">此参考文档适用于OpenHarmony LTS 3.0.1及之前版本的轻量系统的适配，即对于我现在的5.0.3版本可能会有一定的差别，但是大体上是可以参考的。</small></span>
+
+和<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-stm32f407-on-minisystem-eth.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   轻量系统STM32F407芯片移植案例<span class="external-link">↗</span></a>
+。</p>
+<h2 id="适配流程">适配流程</h2>
+
+<pre class="mermaid">flowchart TD
+
+    A[移植准备] --&gt; A1[编译环境搭建；&lt;br&gt;获取源码；&lt;br&gt;编译框架搭建。]
+    B[移植内核] --&gt; B1[移植芯片架构；&lt;br&gt;移植芯片厂商SDK；&lt;br&gt;添加内核子系统。]
+    C[移植子系统] --&gt; C1[移植启动子系统；]
+    C --&gt; C2[移植文件子系统]
+    C --&gt; C3[移植安全子系统]
+    C --&gt; C4[移植通信子系统]
+    C --&gt; C5[移植外设驱动子系统]
+    C --&gt; C6[配置其他子系统]
+    D[移植验证] --&gt; D1[OpenHarmony兼容性测试；&lt;br&gt;厂商SDK功能性测试。]
+</pre>
+
+
+<h2 id="准备流程">准备流程</h2>
+<h3 id="适配工具及其环境">适配工具及其环境</h3>
+<ul>
+<li><a href="https://gitee.com/link?target=https%3A%2F%2Fwww.st.com%2Fen%2Fdevelopment-tools%2Fstm32cubemx.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   STM32CubeMX<span class="external-link">↗</span></a>
+：用于生成STM32H743的Makefile工程</li>
+<li>Ubuntu 20.04：推荐环境</li>
+<li><a href="https://gitee.com/openharmony/device_board_talkweb/blob/master/niobe407/docs/software/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91.md#6%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   arm-none-eabi-gcc<span class="external-link">↗</span></a>
+：编译工具链，支持Cortex-M7</li>
+<li><a href="https://www.putty.org/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   PuTTY<span class="external-link">↗</span></a>
+：串口工具，用于调试输出信息</li>
+</ul>
+<h3 id="基础配置参数设置">基础配置参数设置</h3>
+<p>通过stm32cubemx工具生成STM32H743IIT6芯片的Makefile工程，在此给出如下配置建议：</p>
+<ul>
+<li>芯片型号：STM32H743IIT6</li>
+<li>SYSCLK 设置：480MHz</li>
+<li>配置调试串口（如 USART1）</li>
+<li>Toolchain 设置为 Makefile</li>
+</ul>
+<p>生成对应的工程目录文件结构为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>├── Core
+</span></span><span style="display:flex;"><span>│   ├── Inc
+</span></span><span style="display:flex;"><span>│   │    ├── main.h
+</span></span><span style="display:flex;"><span>│   │    ├── stm32h7xx_hal_conf.h
+</span></span><span style="display:flex;"><span>│   │    ├── stm32h7xx_it.h
+</span></span><span style="display:flex;"><span>│   │    ├── usart.h
+</span></span><span style="display:flex;"><span>│   │    └── ...
+</span></span><span style="display:flex;"><span>│   └── Src
+</span></span><span style="display:flex;"><span>│        ├── main.c                --- 主函数
+</span></span><span style="display:flex;"><span>│        ├── stm32h7xx_hal_msp.c   --- HAL库弱函数配置文件
+</span></span><span style="display:flex;"><span>│        ├── stm32h7xx_it.c        --- 中断回调函数文件
+</span></span><span style="display:flex;"><span>│        ├── system_stm32h7xx.c    --- 系统
+</span></span><span style="display:flex;"><span>│        ├── usart.c               --- 串口
+</span></span><span style="display:flex;"><span>│        └── ...  
+</span></span><span style="display:flex;"><span>├── Drivers
+</span></span><span style="display:flex;"><span>│   ├── CMSIS                      --- CMSIS接口
+</span></span><span style="display:flex;"><span>│   └── STM32H7xx_HAL_Driver       --- HAL库驱动
+</span></span><span style="display:flex;"><span>├── Makefile                       --- Makefile编译
+</span></span><span style="display:flex;"><span>├── STM32H743xxx_FLASH.ld         --- 链接文件
+</span></span><span style="display:flex;"><span>├── startup_stm32h743xx.s          --- 启动文件
+</span></span><span style="display:flex;"><span>└── stm32h743_output.ioc           --- stm32cubemx工程文件
+</span></span></code></pre></div><h3 id="验证生成的makefile工程">验证生成的Makefile工程</h3>
+<p>将生成的工程文件拷贝到Ubuntu环境下，进入工程项目执行我们上述安装的make指令编译：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>arm-none-eabi-gcc <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/main.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_it.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_msp.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_tim.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_tim_ex.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_uart.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_rcc.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_rcc_ex.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_flash.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_flash_ex.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_gpio.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_dma.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_dma_ex.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_pwr.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_pwr_ex.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_cortex.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/stm32h7xx_hal_exti.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/system_stm32h7xx.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  build/startup_stm32h743xx.o <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  -mcpu<span style="color:#ff79c6">=</span>cortex-m7 -mthumb -mfpu<span style="color:#ff79c6">=</span>fpv5-d16 -mfloat-abi<span style="color:#ff79c6">=</span>hard <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  -specs<span style="color:#ff79c6">=</span>nano.specs <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  -TSTM32H743ZITx_FLASH.ld <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  -lc -lm -lnosys <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  -Wl,-Map<span style="color:#ff79c6">=</span>build/stm32h743_output.map,--cref <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  -Wl,--gc-sections <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  -o build/stm32h743_output.elf
+</span></span></code></pre></div><p>后处理编译命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>arm-none-eabi-size build/stm32h743_output.elf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>arm-none-eabi-objcopy -O ihex build/stm32h743_output.elf build/stm32h743_output.hex
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>arm-none-eabi-objcopy -O binary -S build/stm32h743_output.elf build/stm32h743_output.bin
+</span></span></code></pre></div><ul>
+<li>.elf 是可执行文件</li>
+<li>.hex 是可用于部分烧录器的格式</li>
+<li>.bin 是常用于的裸二进制烧录文件</li>
+</ul>
+<h3 id="配置printf到串口的输出">配置printf到串口的输出</h3>
+<p>为了验证开发版能够成功运行我们刚才编写的代码，我们可以在main()函数中添加以下的串口调试输出：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>Core/Src/main.c</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;hello world!!</span><span style="color:#f1fa8c">\r\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span></code></pre></div>
+  </div>
+</details></p>
 </p>
+<p>由于STM32的printf()默认不会输出到串口，需要重定向输出：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/usr/arm-none-eabi/include/stdio.h</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-h" data-lang="h"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">_write</span>(<span style="color:#8be9fd">int</span> fd, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>ptr, <span style="color:#8be9fd">int</span> len)
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#50fa7b">HAL_UART_Transmit</span>(<span style="color:#ff79c6">&amp;</span>huart1, (<span style="color:#8be9fd">uint8_t</span> <span style="color:#ff79c6">*</span>)ptr, len, <span style="color:#bd93f9">0xFFFF</span>); 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>重新编译代码，可以烧录至开发版中验证。</p>
+<h2 id="openharmony编译构建">Openharmony编译构建</h2>
+<h3 id="构建芯片适配与产品样例目录">构建芯片适配与产品样例目录</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>device/
+</span></span><span style="display:flex;"><span>├── board/
+</span></span><span style="display:flex;"><span>│   └── your_company/
+</span></span><span style="display:flex;"><span>│       └── your_board_h743/
+</span></span><span style="display:flex;"><span>│           └── liteos_m/        <span style="color:#6272a4"># H743 工程代码放这里</span>
+</span></span><span style="display:flex;"><span>├── soc/
+</span></span><span style="display:flex;"><span>│   └── st/
+</span></span><span style="display:flex;"><span>│       └── stm32h7xx/
+</span></span><span style="display:flex;"><span>│           └── sdk/             <span style="color:#6272a4"># HAL Drivers、CMSIS 放这里</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vendor/
+</span></span><span style="display:flex;"><span>└── your_company/
+</span></span><span style="display:flex;"><span>    └── your_board_h743/
+</span></span><span style="display:flex;"><span>        └── config.json          <span style="color:#6272a4"># 产品配置文件</span>
+</span></span></code></pre></div><p>获取对应的版本的<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   OpenHarmony源码<span class="external-link">↗</span></a>
+，创建上述对应文件夹。</p>
+<h3 id="配置预编译支持">配置预编译支持</h3>
+<h4 id="修改configjson">修改config.json</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>vendor/your_company/your_board_h743/config.json</span>
+    <span class="line-count">10 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;product_name&#34;</span>: <span style="color:#f1fa8c">&#34;your_board_h743&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;mini&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;version&#34;</span>: <span style="color:#f1fa8c">&#34;3.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;device_company&#34;</span>: <span style="color:#f1fa8c">&#34;your_company&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;board&#34;</span>: <span style="color:#f1fa8c">&#34;your_board_h743&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;kernel_type&#34;</span>: <span style="color:#f1fa8c">&#34;liteos_m&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;kernel_version&#34;</span>: <span style="color:#f1fa8c">&#34;3.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;subsystems&#34;</span>: []
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h4 id="修改configgni">修改config.gni</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>device/board/your_company/your_board_h743/liteos_m/config.gni</span>
+    <span class="line-count">16 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>kernel_type <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;liteos_m&#34;</span>
+</span></span><span style="display:flex;"><span>kernel_version <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;3.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>board_cpu <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;cortex-m7&#34;</span>
+</span></span><span style="display:flex;"><span>board_toolchain <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;arm-none-eabi-gcc&#34;</span>
+</span></span><span style="display:flex;"><span>use_board_toolchain <span style="color:#ff79c6">=</span> true
+</span></span><span style="display:flex;"><span>board_toolchain_prefix <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;arm-none-eabi-&#34;</span>
+</span></span><span style="display:flex;"><span>board_toolchain_type <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;gcc&#34;</span>
+</span></span><span style="display:flex;"><span>board_opt_flags <span style="color:#ff79c6">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-mcpu=cortex-m7&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-mthumb&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-mfpu=fpv5-d16&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-mfloat-abi=hard&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>board_cflags <span style="color:#ff79c6">=</span> [ <span style="color:#f1fa8c">&#34;-Og&#34;</span>, <span style="color:#f1fa8c">&#34;-Wall&#34;</span>, <span style="color:#f1fa8c">&#34;-DSTM32H743xx&#34;</span> ] <span style="color:#ff79c6">+</span> board_opt_flags
+</span></span><span style="display:flex;"><span>board_asmflags <span style="color:#ff79c6">=</span> board_cflags
+</span></span><span style="display:flex;"><span>board_ld_flags <span style="color:#ff79c6">=</span> board_opt_flags
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h4 id="验证hb">验证hb</h4>
+<p>可以通过以下指令进行变量查看：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hb <span style="color:#8be9fd;font-style:italic">set</span>    <span style="color:#6272a4"># 查看可用产品编译选项  </span>
+</span></span><span style="display:flex;"><span>hb env    <span style="color:#6272a4"># 查看选择的预编译环境变量  </span>
+</span></span></code></pre></div><p><code>hb</code>是OpenHarmony为了方便开发者进行代码构建编译，提供的python脚本工具，其源码就在<code>//build/lite</code>仓库目录下。在执行<code>hb set</code>命令时，脚本会遍历<code>//vendor/&lt;product_company&gt;/&lt;product_name&gt;</code>目录下的<code>config.json</code>，给出可选产品编译选项。<br>
+在config.json文件中，<code>product_name</code>表示产品名，<code>device_company</code>和<code>board</code>用于关联出<code>//device/board/&lt;device_company&gt;/&lt;board&gt;</code>目录，匹配该目录下的<code>&lt;any_dir_name&gt;/config.gni</code>文件，其中<code>&lt;any_dir_name&gt;</code>目录名可以是任意名称，但建议将其命名为适配内核名称（如：liteos_m、liteos_a、linux）。<br>
+hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>kernel_type</code>和<code>kernel_version</code>字段与<code>vendor/&lt;device_company&gt;</code>下<code>config.json</code>文件中的字段进行匹配，从而确定参与编译的<code>config.gni</code>文件。</p>
+<p>至此，预编译适配完成，但工程还不能执行hb build进行编译，还需要准备好后续的LiteOS-M内核移植。</p>
+<h2 id="内核移植">内核移植</h2>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>2025_03_27 Openharmony_source</title>
+      <link>http://localhost:1313/zh/posts/2025_03_27-openharmony_source/</link>
+      <pubDate>Thu, 27 Mar 2025 10:44:04 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_27-openharmony_source/</guid>
+      <description>&lt;p&gt;本篇内容源自&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   获取源码&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;前提准备&#34;&gt;前提准备&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;注册码云 Gitee 账号&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;添加 SSH 公钥&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;登录 Gitee，在设置中添加你的 SSH 公钥。&lt;/li&gt;
+&lt;li&gt;参考：&lt;a href=&#34;https://gitee.com/help/articles/4181&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   获取密钥&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安装 Git 和 Git LFS&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.name &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;yourname&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.email &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;your-email-address&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global credential.helper store
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;安装 repo 工具&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir ~/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chmod a+x ~/bin/repo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;配置环境变量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vim ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PATH&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;~/bin:&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$PATH&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;source&lt;/span&gt; ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;获取主干代码&#34;&gt;获取主干代码&lt;/h2&gt;
+&lt;p&gt;OpenHarmony 主干分支（master）包含最新特性代码，适合开发测试使用。&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;Master主干为开发分支，开发者可以通过拉取最新仓库获取新特性，开发版本源码较为稳定，为定期发布的稳定版本，获取方式参考&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/release-notes/Readme.md&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   Release Notes&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+。&lt;/small&gt;&lt;/span&gt;
+
+&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   获取源码<span class="external-link">↗</span></a>
+</p>
+<h2 id="前提准备">前提准备</h2>
+<ol>
+<li><strong>注册码云 Gitee 账号</strong></li>
+<li><strong>添加 SSH 公钥</strong>
+<ul>
+<li>登录 Gitee，在设置中添加你的 SSH 公钥。</li>
+<li>参考：<a href="https://gitee.com/help/articles/4181"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   获取密钥<span class="external-link">↗</span></a>
+</li>
+</ul>
+</li>
+<li><strong>安装 Git 和 Git LFS</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config --global user.name <span style="color:#f1fa8c">&#34;yourname&#34;</span>
+</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#f1fa8c">&#34;your-email-address&#34;</span>
+</span></span><span style="display:flex;"><span>git config --global credential.helper store
+</span></span></code></pre></div><ol start="4">
+<li>安装 repo 工具</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir ~/bin
+</span></span><span style="display:flex;"><span>curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo
+</span></span><span style="display:flex;"><span>chmod a+x ~/bin/repo
+</span></span><span style="display:flex;"><span>pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
+</span></span></code></pre></div><ol start="5">
+<li>配置环境变量</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim ~/.bashrc
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">export</span> <span style="color:#8be9fd;font-style:italic">PATH</span><span style="color:#ff79c6">=</span>~/bin:<span style="color:#8be9fd;font-style:italic">$PATH</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">source</span> ~/.bashrc
+</span></span></code></pre></div><h2 id="获取主干代码">获取主干代码</h2>
+<p>OpenHarmony 主干分支（master）包含最新特性代码，适合开发测试使用。<span class="sidenote-number"><small class="sidenote">Master主干为开发分支，开发者可以通过拉取最新仓库获取新特性，开发版本源码较为稳定，为定期发布的稳定版本，获取方式参考<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/release-notes/Readme.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Release Notes<span class="external-link">↗</span></a>
+。</small></span>
+
+</p>
+<p>推荐方式：使用 SSH 拉取（需添加公钥）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>repo init -u git@gitee.com:openharmony/manifest.git -b master --no-repo-verify
+</span></span><span style="display:flex;"><span>repo sync -c
+</span></span><span style="display:flex;"><span>repo forall -c <span style="color:#f1fa8c">&#39;git lfs pull&#39;</span>
+</span></span></code></pre></div><p>备用方式：使用 HTTPS 拉取</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>repo init -u https://gitee.com/openharmony/manifest.git -b master --no-repo-verify
+</span></span><span style="display:flex;"><span>repo sync -c
+</span></span><span style="display:flex;"><span>repo forall -c <span style="color:#f1fa8c">&#39;git lfs pull&#39;</span>
+</span></span></code></pre></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>2025_03_27 Openharmony_glossary</title>
+      <link>http://localhost:1313/zh/posts/2025_03_27-openharmony_glossary/</link>
+      <pubDate>Thu, 27 Mar 2025 10:26:38 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_27-openharmony_glossary/</guid>
+      <description>&lt;p&gt;本篇内容源自&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/glossary.md&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   术语&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;a&#34;&gt;A&lt;/h2&gt;
+&lt;h3 id=&#34;abc文件&#34;&gt;abc文件&lt;/h3&gt;
+&lt;p&gt;方舟字节码（ArkCompiler Bytecode）文件，是 ArkCompiler 编译工具链以源代码为输入生成的中间产物，后缀为 &lt;code&gt;.abc&lt;/code&gt;，发布时打包进 &lt;code&gt;.hap&lt;/code&gt; 文件中。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/glossary.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   术语<span class="external-link">↗</span></a>
+</p>
+<h2 id="a">A</h2>
+<h3 id="abc文件">abc文件</h3>
+<p>方舟字节码（ArkCompiler Bytecode）文件，是 ArkCompiler 编译工具链以源代码为输入生成的中间产物，后缀为 <code>.abc</code>，发布时打包进 <code>.hap</code> 文件中。</p>
+<h3 id="applinking">AppLinking</h3>
+<p>基于操作系统的 DeepLink/URL Scheme 提供的用户增长服务，支持直达内容、安装跳转、安全认证。</p>
+<h3 id="arkcompiler">ArkCompiler</h3>
+<p>方舟编译器，OpenHarmony 的核心编译运行平台，支持多语言编译和运行，面向多设备、多平台。</p>
+<h3 id="arkts">ArkTS</h3>
+<p>基于 TypeScript 扩展的应用开发语言，支持声明式UI、状态管理，适用于 OpenHarmony 应用开发。</p>
+<h3 id="arkui">ArkUI</h3>
+<p>原生 UI 框架，支持跨设备的高性能 UI 开发，构建统一 UI 架构。</p>
+<h2 id="b">B</h2>
+<h3 id="bms">BMS</h3>
+<p>Bundle Manager Service，包管理服务。</p>
+<h2 id="c">C</h2>
+<h3 id="ces">CES</h3>
+<p>Common Event Service，公共事件服务，负责事件的发布、订阅和退订。</p>
+<h2 id="d">D</h2>
+<h3 id="dms">DMS</h3>
+<p>Distributed Management Service，分布式管理服务。</p>
+<h2 id="e">E</h2>
+<h3 id="extensionability">ExtensionAbility</h3>
+<p>Stage 模型中的组件类型，提供特定场景的扩展能力，如输入法、卡片等。</p>
+<h2 id="f">F</h2>
+<h3 id="fa">FA</h3>
+<p>Feature Ability，FA 模型中代表带 UI 的交互组件。</p>
+<h3 id="fa模型">FA模型</h3>
+<p>早期应用模型（API 8 及之前），现推荐使用 Stage 模型。</p>
+<h2 id="h">H</h2>
+<h3 id="hap">HAP</h3>
+<p>Harmony Ability Package，应用安装包，后缀为 <code>.hap</code>。</p>
+<h3 id="hcs">HCS</h3>
+<p>HDF Configuration Source，用于硬件驱动配置的 key-value 配置语言。</p>
+<h3 id="hc-gen">HC-GEN</h3>
+<p>HCS 配置生成工具，将配置文件转为可读格式。</p>
+<h3 id="hdf">HDF</h3>
+<p>Hardware Driver Foundation，硬件驱动基础框架，支持统一驱动开发与管理。</p>
+<h3 id="hypium">Hypium</h3>
+<p>OpenHarmony 自动化测试框架，目标为“超自动化测试”。</p>
+<h2 id="i">I</h2>
+<h3 id="idn">IDN</h3>
+<p>Intelligent Distributed Networking，分布式组网能力模块，管理设备连接状态与事件通知。</p>
+<h2 id="m">M</h2>
+<h3 id="module">Module</h3>
+<p>应用模块，每个模块有独立的 <code>module.json5</code> 配置。包括 Entry、Feature、HSP、HAR 等。</p>
+<h2 id="p">P</h2>
+<h3 id="pa">PA</h3>
+<p>Particle Ability，无界面组件，通常为后台服务或数据访问能力提供支持。</p>
+<h2 id="s">S</h2>
+<h3 id="service-widget服务卡片">Service Widget（服务卡片）</h3>
+<p>桌面快捷卡片，支持服务直达与快捷交互。</p>
+<h3 id="stage模型">Stage模型</h3>
+<p>从 API 9 起引入的新应用模型，支持 UIAbility、ExtensionAbility 等组件类型。</p>
+<h3 id="super-virtual-device超级虚拟终端">Super Virtual Device（超级虚拟终端）</h3>
+<p>通过分布式技术整合多个设备能力，统一调度使用。</p>
+<h3 id="syscapsystem-capability">SysCap（System Capability）</h3>
+<p>系统能力标识符，用于描述系统中的某一功能，如蓝牙、WiFi、NFC 等。</p>
+<h3 id="system-type系统类型">System Type（系统类型）</h3>
+<ul>
+<li><strong>Mini System</strong>：面向 MCU 设备，内存 ≥ 128 KiB。适用于传感器、连接模组等。</li>
+<li><strong>Small System</strong>：面向 Cortex-A 等处理器，内存 ≥ 1 MiB。适用于摄像头、路由器等。</li>
+<li><strong>Standard System</strong>：面向高性能 Cortex-A 设备，内存 ≥ 128 MiB。适用于平板、冰箱屏等富设备。</li>
+</ul>
+<h2 id="u">U</h2>
+<h3 id="uiability">UIAbility</h3>
+<p>Stage 模型中代表含 UI 的组件，主要用于与用户交互。</p>
+<p>本术语表仅供参考，如需完整内容请查阅 <a href="https://gitee.com/openharmony/docs"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   OpenHarmony官方文档<span class="external-link">↗</span></a>
+。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>使用Duti管理macos的默认程序</title>
+      <link>http://localhost:1313/zh/posts/2025_03_24-duti_change_the_default_handler/</link>
+      <pubDate>Mon, 24 Mar 2025 10:19:20 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_24-duti_change_the_default_handler/</guid>
+      <description>&lt;p&gt;macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 &lt;strong&gt;duti&lt;/strong&gt; 是一个高效的选择。&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;原项目由 Andrew Mortensen 创建，发布于 2008 年，现已开源至 GitHub 并持续可用。&lt;/small&gt;&lt;/span&gt;
+
+&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 <strong>duti</strong> 是一个高效的选择。<span class="sidenote-number"><small class="sidenote">原项目由 Andrew Mortensen 创建，发布于 2008 年，现已开源至 GitHub 并持续可用。</small></span>
+
+</p>
+<h2 id="什么是-duti">什么是 duti？</h2>
+<p><a href="%28https://github.com/moretension/duti%29"
+   
+   
+   class="custom-link">  
+   duti</a>
+（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 <code>duti</code>，你可以设置特定文件类型、URL 协议等的默认打开方式。</p>
 <h2 id="安装-duti">安装 duti</h2>
 <p>首先确保已安装 Homebrew，如果没有可以先运行：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/bin/bash -c <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
@@ -54,41 +786,32 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.sublimetext.3 net.daringfireball.markdown all
 </span></span></code></pre></div><p>示例：将 .txt 文件默认使用 Sublime Text 打开：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.sublimetext.3 .txt all
-</span></span></code></pre></div><p>批量设置默认应用程序<br>
-可以创建配置文件批量设置，示例如下：</p>
-<ol>
-<li>创建设置文件（如 ~/.duti）：</li>
-</ol>
+</span></span></code></pre></div><h3 id="批量设置默认应用程序">批量设置默认应用程序</h3>
+<p>可以创建配置文件批量设置，示例如下：</p>
+<h4 id="创建设置文件如-duti">创建设置文件（如 ~/.duti）：</h4>
 <p>com.sublimetext.3    public.plain-text    all
 com.sublimetext.3    public.python-script all
 com.sublimetext.3    net.daringfireball.markdown all</p>
-<ol start="2">
-<li>加载配置：</li>
-</ol>
+<h4 id="加载配置">加载配置：</h4>
 <p>duti ~/.duti</p>
-<p>其他功能示例
-•	设置 HTML 默认由 Safari 打开：</p>
-<p>duti -s com.apple.Safari public.html all</p>
-<pre><code>•	使用 echo 管道设置 Word 文档默认打开方式：
-</code></pre>
-<p>echo &lsquo;com.apple.TextEdit   com.microsoft.word.doc all&rsquo; | duti</p>
-<pre><code>•	设置 Finder 为默认 FTP 处理器：
-</code></pre>
-<p>duti -s com.apple.Finder ftp</p>
-<pre><code>•	查询某文件扩展的默认应用：
-</code></pre>
-<p>duti -x jpg</p>
-<p>输出示例：</p>
-<p>Preview
-/Applications/Preview.app
-com.apple.Preview</p>
-<p>小贴士
-•	若遇到 duti 无法生效，可尝试重启 Finder 或注销再登录
-•	.duti 文件可用于快速迁移默认应用配置
-•	推荐与 mdls 命令结合使用，提高效率</p>
-<p>duti 是一个轻量却强大的工具，能帮助我们更精细地管理 macOS 系统中的默认程序关联。无论是开发者、写作者，还是折腾派用户，都值得试试这个工具来简化日常操作。</p>
-<p>原项目由 Andrew Mortensen 创建，发布于 2008 年，现已开源至 GitHub 并持续可用。</p>
-]]></content:encoded>
+<p>其他功能示例</p>
+<ul>
+<li>设置 HTML 默认由 Safari 打开：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.apple.Safari public.html all
+</span></span></code></pre></div><ul>
+<li>使用 echo 管道设置 Word 文档默认打开方式：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;com.apple.TextEdit   com.microsoft.word.doc all&#39;</span> | duti
+</span></span></code></pre></div><ul>
+<li>设置 Finder 为默认 FTP 处理器：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.apple.Finder ftp
+</span></span></code></pre></div><ul>
+<li>查询某文件扩展的默认应用：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -x jpg
+</span></span></code></pre></div>]]></content:encoded>
     </item>
     <item>
       <title>Macos plist 配置</title>
@@ -404,11 +1127,579 @@ com.apple.Preview</p>
 </span></span></code></pre></div>]]></content:encoded>
     </item>
     <item>
-      <title>OpenHarmony移植到STM32H743系列</title>
+      <title>OpenHarmony移植到STM32H743系列_1</title>
       <link>http://localhost:1313/zh/posts/2025_03_19-openharmony_with_stm32h743/</link>
       <pubDate>Fri, 21 Mar 2025 16:52:33 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_03_19-openharmony_with_stm32h743/</guid>
-      <description></description>
+      <description>&lt;p&gt;本篇指南依照&lt;a href=&#34;https://gitee.com/openharmony/docs&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   OpenHarmony/docs&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+进行整理。&lt;/p&gt;
+&lt;h2 id=&#34;系统类型&#34;&gt;系统类型&lt;/h2&gt;
+&lt;p&gt;OpenHarmony是一款面向全场景的开源分布式操作系统，支持128KiB到xGiB RAM 资源的设备上运行系统组件，我们选择的STM32H743的参数为ARM Cortex-M7 内核，主频为 480MHz，2048K的Flash，以及1024KB的SRAM。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>本篇指南依照<a href="https://gitee.com/openharmony/docs"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   OpenHarmony/docs<span class="external-link">↗</span></a>
+进行整理。</p>
+<h2 id="系统类型">系统类型</h2>
+<p>OpenHarmony是一款面向全场景的开源分布式操作系统，支持128KiB到xGiB RAM 资源的设备上运行系统组件，我们选择的STM32H743的参数为ARM Cortex-M7 内核，主频为 480MHz，2048K的Flash，以及1024KB的SRAM。</p>
+<table>
+  <thead>
+      <tr>
+          <th>系统类型</th>
+          <th>面向处理器</th>
+          <th>最小内存需求</th>
+          <th>主要特性描述</th>
+          <th>典型应用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>轻量系统</td>
+          <td>MCU 类（如 Arm Cortex-M、RISC-V 32 位）</td>
+          <td>128 KiB</td>
+          <td>支持轻量级网络协议、图形框架、IOT 总线组件等</td>
+          <td>智能家居模组、传感器设备、穿戴设备</td>
+      </tr>
+      <tr>
+          <td>小型系统</td>
+          <td>应用处理器（如 Arm Cortex-A）</td>
+          <td>1 MiB</td>
+          <td>提供更高安全性、标准图形框架、多媒体编解码能力</td>
+          <td>IP Camera、电子猫眼、路由器、行车记录仪</td>
+      </tr>
+      <tr>
+          <td>标准系统</td>
+          <td>应用处理器（如 Arm Cortex-A）</td>
+          <td>128 MiB</td>
+          <td>提供 3D GPU、硬件合成、丰富控件与动效、完整应用框架</td>
+          <td>高端冰箱显示屏</td>
+      </tr>
+  </tbody>
+</table>
+<p>我们根据H743的内存，选择轻量系统作为我们的移植对象。</p>
+<h2 id="文档导读">文档导读</h2>
+<table>
+  <thead>
+      <tr>
+          <th>学习路径</th>
+          <th>开发者业务</th>
+          <th>相关文档</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>了解OpenHarmony</td>
+          <td>整体认知OpenHarmony</td>
+          <td><a href="https://gitee.com/openharmony"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   OpenHarmony概述<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/glossary.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   术语<span class="external-link">↗</span></a>
+</td>
+      </tr>
+      <tr>
+          <td>获取开发资源</td>
+          <td>准备开发前相关资源</td>
+          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   获取源码<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/gettools-acquire.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   获取工具<span class="external-link">↗</span></a>
+</td>
+      </tr>
+      <tr>
+          <td>快速入门</td>
+          <td>快速熟悉OpenHarmony环境搭建、编译、烧录、调测、运行</td>
+          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/Readme-CN.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   快速入门<span class="external-link">↗</span></a>
+</td>
+      </tr>
+      <tr>
+          <td>基础能力使用</td>
+          <td>使用OpenHarmony提供的基础能力</td>
+          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/kernel/kernel-mini-overview.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   轻量系统内核开发指南<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/kernel/kernel-small-overview.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   小型系统内核开发指南<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/driver/driver-overview-foundation.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   驱动开发指南<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-build-all.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   子系统开发指南<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/security/security-guidelines-overall.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   安全指南<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/security/security-privacy-protection.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   隐私保护<span class="external-link">↗</span></a>
+</td>
+      </tr>
+      <tr>
+          <td>进阶开发</td>
+          <td>结合系统能力开发智能设备</td>
+          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/guide/device-wlan-led-control.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   WLAN连接类产品<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/guide/device-camera-control-overview.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   带屏摄像头类产品<span class="external-link">↗</span></a>
+</td>
+      </tr>
+      <tr>
+          <td>移植适配</td>
+          <td>针对特定芯片、三方库适配与案例</td>
+          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   轻量系统芯片移植指导<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-smallchip-prepare-needs.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   小型系统芯片移植指导<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-thirdparty-overview.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   轻量和小型系统三方库移植指导<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-bes2600w-on-minisystem-display-demo.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   恒玄芯片带屏案例<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-asr582x-combo-demo.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   ASR芯片Combo案例<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-cst85f01-combo-demo.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   芯海CST85案例<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-stm32f407-on-minisystem-eth.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   STM32F407案例<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-w800-combo-demo.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   W800芯片案例<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-stm32mp15xx-on-smallsystem.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   STM32MP1案例<span class="external-link">↗</span></a>
+</td>
+      </tr>
+      <tr>
+          <td>贡献组件</td>
+          <td>为OpenHarmony贡献功能组件</td>
+          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/hpm-part/hpm-part-about.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   HPM Part 介绍<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/hpm-part/hpm-part-development.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   开发指导<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/hpm-part/hpm-part-reference.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   参考资料<span class="external-link">↗</span></a>
+</td>
+      </tr>
+      <tr>
+          <td>参考</td>
+          <td>常见问题解答、接口与API参考</td>
+          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/faqs/faqs-overview.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   常见问题<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/reference/hdi-apis/Readme-CN.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   HDI接口参考<span class="external-link">↗</span></a>
+；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/reference/kernel/cmsis/Readme-CN.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   CMSIS API参考<span class="external-link">↗</span></a>
+</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="开发板资源介绍">开发板资源介绍</h2>
+<ul>
+<li><a href="https://www.st.com/resource/en/datasheet/stm32h743bi.pdf"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   STM32H743 Datasheet<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://www.st.com.cn/zh/microcontrollers-microprocessors/stm32h743-753/documentation.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   STM32H743 相关PDF文档<span class="external-link">↗</span></a>
+<br>
+本次开发研究使用了<a href="https://detail.tmall.com/item.htm?id=600354257295&amp;price=496.32&amp;sourceType=item&amp;sourceType=item&amp;suid=f45e5949-e2eb-459c-adf2-ffc89227162d&amp;ut_sk=1.ZRjfR17S8FoDAFUQZlWe2AfX_21646297_1743000889040.Copy.ShareGlobalNavigation_1&amp;un=7b55bf7e1f44167240204c14877effdf&amp;share_crt_v=1&amp;un_site=0&amp;spm=a2159r.13376460.0.0&amp;tbSocialPopKey=shareItem&amp;sp_tk=VHVNU2V1REIyazE%3D&amp;cpp=1&amp;shareurl=true&amp;short_name=h.62AlQ8AmOJCk5nZ&amp;bxsign=scdf3c4Mxv62f_moO1lKHPSU4Izu9z4qmBhx0CNzqWLNv5d87b7KJpUYIe_uwxCStIvgKKz5tc-GmHRbaP4jpLs9X34lPpZ3DWoaZxlVcMNxz5CWBActv9FVXFOrSvVNyofhBN95E-b9UcnRvj2nRLRCA&amp;tk=TuMSeuDB2k1%20MF168&amp;app=firefox"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   野火 STM32H743及其及其底板<span class="external-link">↗</span></a>
+。</li>
+</ul>
+<p><script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_03_19-openharmony_with_stm32h743/h743.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_03_19-openharmony_with_stm32h743/h743.png#center"
+         alt="test" width="400px" height="300px"/> <figcaption>
+            H743V2 核心板硬件资源图
+        </figcaption>
+</figure>
+</a>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_03_19-openharmony_with_stm32h743/board.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_03_19-openharmony_with_stm32h743/board.png#center"
+         alt="test" width="400px" height="300px"/> <figcaption>
+            底板硬件资源图
+        </figcaption>
+</figure>
+</a>
+
+</p>
+<p>下面是开发版的规格：</p>
+<table>
+  <thead>
+      <tr>
+          <th>项目</th>
+          <th>规格说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>尺寸</td>
+          <td>55×55mm（核心板），200×130.5mm（底板）</td>
+      </tr>
+      <tr>
+          <td>PCB</td>
+          <td>核心板 4 层，底板 2 层，黑色沉金</td>
+      </tr>
+      <tr>
+          <td>核心板接口</td>
+          <td>BTB 接口，兼容 F429、F767 和 H743 V2 核心板</td>
+      </tr>
+      <tr>
+          <td>RTC</td>
+          <td>1 个 CR1220 电池座</td>
+      </tr>
+      <tr>
+          <td>电源输入</td>
+          <td>USB 5V、DC 6–12V、针脚 5V</td>
+      </tr>
+      <tr>
+          <td>电源输出</td>
+          <td>AMS1086CD-3.3，输出 3.3V 和 5V</td>
+      </tr>
+      <tr>
+          <td>USB 转串口</td>
+          <td>1 路 CH340，Mini USB 接口</td>
+      </tr>
+      <tr>
+          <td>USB Device</td>
+          <td>1 路 Micro USB 接口</td>
+      </tr>
+      <tr>
+          <td>USB Host</td>
+          <td>1 路 USB Type-A 接口（支持U盘）</td>
+      </tr>
+      <tr>
+          <td>JTAG</td>
+          <td>支持 DAP/JLINK/ULINK2/STLINK/ARM-OB 等仿真器</td>
+      </tr>
+      <tr>
+          <td>SWD</td>
+          <td>同上</td>
+      </tr>
+      <tr>
+          <td>SPI FLASH</td>
+          <td>W25Q256，32MB（在核心板上）</td>
+      </tr>
+      <tr>
+          <td>EEPROM</td>
+          <td>AT24C02，256B（在核心板上）</td>
+      </tr>
+      <tr>
+          <td>SD 卡</td>
+          <td>Micro SD 卡座（SDIO），支持 ≤32GB</td>
+      </tr>
+      <tr>
+          <td>LED</td>
+          <td>RGB LED（共阳）、电源 LED、WiFi 电源指示 LED</td>
+      </tr>
+      <tr>
+          <td>按键</td>
+          <td>1 个复位键，2 个用户按键</td>
+      </tr>
+      <tr>
+          <td>电容按键</td>
+          <td>1 个 CTSU 电容按键</td>
+      </tr>
+      <tr>
+          <td>蜂鸣器</td>
+          <td>1 个有源蜂鸣器</td>
+      </tr>
+      <tr>
+          <td>电位器</td>
+          <td>1 个 1K 电位器</td>
+      </tr>
+      <tr>
+          <td>液晶接口</td>
+          <td>38Pin 插座，2.54mm 间距，支持 RGB565/888，兼容野火 4.3/5/7 寸电容屏</td>
+      </tr>
+      <tr>
+          <td>摄像头接口</td>
+          <td>支持 OV2640/5640（DCMI）</td>
+      </tr>
+      <tr>
+          <td>蓝牙模块接口</td>
+          <td>支持外接 HC05</td>
+      </tr>
+      <tr>
+          <td>无线模块接口</td>
+          <td>支持外接 NRF24L01（2.4G）</td>
+      </tr>
+      <tr>
+          <td>WIFI</td>
+          <td>底板集成 AP6181（SDIO 接口）</td>
+      </tr>
+      <tr>
+          <td>以太网</td>
+          <td>底板集成 LAN8720A（PHY-ETH-RMII 接口）</td>
+      </tr>
+      <tr>
+          <td>温湿度传感器接口</td>
+          <td>支持 DHT11、DS18B20 模块</td>
+      </tr>
+      <tr>
+          <td>红外接收</td>
+          <td>HS0038 红外头</td>
+      </tr>
+      <tr>
+          <td>MP3 音频模块</td>
+          <td>WM8978（I2S 接口）</td>
+      </tr>
+      <tr>
+          <td>外扩 SDRAM</td>
+          <td>W9825G6，32MB，16bit（核心板）</td>
+      </tr>
+      <tr>
+          <td>外扩 NAND FLASH</td>
+          <td>W29N01GVSIAA，128MB（核心板）</td>
+      </tr>
+      <tr>
+          <td>CAN 接口</td>
+          <td>2 个，TJA1042T/3，含 120Ω 终端电阻</td>
+      </tr>
+      <tr>
+          <td>RS485 接口</td>
+          <td>2 个，SP3485E，含 120Ω 终端电阻</td>
+      </tr>
+      <tr>
+          <td>RS232 接口</td>
+          <td>1 个 DB9 母头，1 个 DB9 公头，芯片为 MAX3232</td>
+      </tr>
+      <tr>
+          <td>EBF 接口</td>
+          <td>1 个，适配 GPS、蓝牙、OLED 模块</td>
+      </tr>
+      <tr>
+          <td>咪头</td>
+          <td>1 个录音咪头</td>
+      </tr>
+      <tr>
+          <td>音频输出接口</td>
+          <td>1 个 3.5mm 立体音频输出接口（PHONE）</td>
+      </tr>
+      <tr>
+          <td>录音输入接口</td>
+          <td>1 个 3.5mm 立体录音输入接口（LINE IN）</td>
+      </tr>
+      <tr>
+          <td>DC 电源接口</td>
+          <td>1 个，5.5mm × 2.1mm</td>
+      </tr>
+      <tr>
+          <td>三合一传感器</td>
+          <td>AP3216C（光、距离、环境）</td>
+      </tr>
+      <tr>
+          <td>六轴传感器</td>
+          <td>MPU6050</td>
+      </tr>
+      <tr>
+          <td>喇叭插座</td>
+          <td>PH2.0 母头 2P</td>
+      </tr>
+      <tr>
+          <td>螺母柱</td>
+          <td>M3 × 5.56 × (L5 + 1.53)</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="开发版本">开发版本</h2>
+<p>我现在使用的是开源社区发布的<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/release-notes/OpenHarmony-v5.0.3-release.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   OpenHarmony-v5.0.3-Release<span class="external-link">↗</span></a>
+。</p>
+<h2 id="论坛">论坛</h2>
+<p>这边顺便提及一下可用的论坛：</p>
+<ul>
+<li><a href="https://forums.openharmony.cn/portal.php"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   鸿蒙论坛<span class="external-link">↗</span></a>
+</li>
+<li><a href="https://www.firebbs.cn/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   野火论坛<span class="external-link">↗</span></a>
+</li>
+</ul>
+]]></content:encoded>
     </item>
     <item>
       <title>正则表达式</title>

@@ -13,20 +13,19 @@
       <link>http://localhost:1313/zh/posts/2025_03_24-duti_change_the_default_handler/</link>
       <pubDate>Mon, 24 Mar 2025 10:19:20 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_03_24-duti_change_the_default_handler/</guid>
-      <description>&lt;p&gt;macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 &lt;strong&gt;duti&lt;/strong&gt; 是一个高效的选择。&lt;/p&gt;
-&lt;h2 id=&#34;什么是-duti&#34;&gt;什么是 duti？&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;duti&lt;/code&gt;（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 &lt;code&gt;duti&lt;/code&gt;，你可以设置特定文件类型、URL 协议等的默认打开方式。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 <strong>duti</strong> 是一个高效的选择。</p>
+      <description>&lt;p&gt;macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 &lt;strong&gt;duti&lt;/strong&gt; 是一个高效的选择。&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;原项目由 Andrew Mortensen 创建，发布于 2008 年，现已开源至 GitHub 并持续可用。&lt;/small&gt;&lt;/span&gt;
+
+&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 <strong>duti</strong> 是一个高效的选择。<span class="sidenote-number"><small class="sidenote">原项目由 Andrew Mortensen 创建，发布于 2008 年，现已开源至 GitHub 并持续可用。</small></span>
+
+</p>
 <h2 id="什么是-duti">什么是 duti？</h2>
-<p><code>duti</code>（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 <code>duti</code>，你可以设置特定文件类型、URL 协议等的默认打开方式。</p>
-<p>GitHub 地址：<a href="https://github.com/moretension/duti"
+<p><a href="%28https://github.com/moretension/duti%29"
    
-    
-       target="_blank" rel="noopener" 
    
    class="custom-link">  
-   https://github.com/moretension/duti<span class="external-link">↗</span></a>
-</p>
+   duti</a>
+（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 <code>duti</code>，你可以设置特定文件类型、URL 协议等的默认打开方式。</p>
 <h2 id="安装-duti">安装 duti</h2>
 <p>首先确保已安装 Homebrew，如果没有可以先运行：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/bin/bash -c <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
@@ -54,41 +53,32 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.sublimetext.3 net.daringfireball.markdown all
 </span></span></code></pre></div><p>示例：将 .txt 文件默认使用 Sublime Text 打开：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.sublimetext.3 .txt all
-</span></span></code></pre></div><p>批量设置默认应用程序<br>
-可以创建配置文件批量设置，示例如下：</p>
-<ol>
-<li>创建设置文件（如 ~/.duti）：</li>
-</ol>
+</span></span></code></pre></div><h3 id="批量设置默认应用程序">批量设置默认应用程序</h3>
+<p>可以创建配置文件批量设置，示例如下：</p>
+<h4 id="创建设置文件如-duti">创建设置文件（如 ~/.duti）：</h4>
 <p>com.sublimetext.3    public.plain-text    all
 com.sublimetext.3    public.python-script all
 com.sublimetext.3    net.daringfireball.markdown all</p>
-<ol start="2">
-<li>加载配置：</li>
-</ol>
+<h4 id="加载配置">加载配置：</h4>
 <p>duti ~/.duti</p>
-<p>其他功能示例
-•	设置 HTML 默认由 Safari 打开：</p>
-<p>duti -s com.apple.Safari public.html all</p>
-<pre><code>•	使用 echo 管道设置 Word 文档默认打开方式：
-</code></pre>
-<p>echo &lsquo;com.apple.TextEdit   com.microsoft.word.doc all&rsquo; | duti</p>
-<pre><code>•	设置 Finder 为默认 FTP 处理器：
-</code></pre>
-<p>duti -s com.apple.Finder ftp</p>
-<pre><code>•	查询某文件扩展的默认应用：
-</code></pre>
-<p>duti -x jpg</p>
-<p>输出示例：</p>
-<p>Preview
-/Applications/Preview.app
-com.apple.Preview</p>
-<p>小贴士
-•	若遇到 duti 无法生效，可尝试重启 Finder 或注销再登录
-•	.duti 文件可用于快速迁移默认应用配置
-•	推荐与 mdls 命令结合使用，提高效率</p>
-<p>duti 是一个轻量却强大的工具，能帮助我们更精细地管理 macOS 系统中的默认程序关联。无论是开发者、写作者，还是折腾派用户，都值得试试这个工具来简化日常操作。</p>
-<p>原项目由 Andrew Mortensen 创建，发布于 2008 年，现已开源至 GitHub 并持续可用。</p>
-]]></content:encoded>
+<p>其他功能示例</p>
+<ul>
+<li>设置 HTML 默认由 Safari 打开：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.apple.Safari public.html all
+</span></span></code></pre></div><ul>
+<li>使用 echo 管道设置 Word 文档默认打开方式：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;com.apple.TextEdit   com.microsoft.word.doc all&#39;</span> | duti
+</span></span></code></pre></div><ul>
+<li>设置 Finder 为默认 FTP 处理器：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -s com.apple.Finder ftp
+</span></span></code></pre></div><ul>
+<li>查询某文件扩展的默认应用：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>duti -x jpg
+</span></span></code></pre></div>]]></content:encoded>
     </item>
   </channel>
 </rss>

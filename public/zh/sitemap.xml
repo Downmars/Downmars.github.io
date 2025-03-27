@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/zh/posts/2025_03_27-openharmony_transplant_overview/</loc>
+    <lastmod>2025-03-27T20:10:00+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/zh/</loc>
-    <lastmod>2025-03-24T10:19:20+08:00</lastmod>
+    <lastmod>2025-03-27T20:10:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -15,14 +18,8 @@
                 href="http://localhost:1313/zh/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh/tags/duti/</loc>
-    <lastmod>2025-03-24T10:19:20+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh/tags/macos/</loc>
-    <lastmod>2025-03-24T10:19:20+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/zh/posts/</loc>
-    <lastmod>2025-03-24T10:19:20+08:00</lastmod>
+    <lastmod>2025-03-27T20:10:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -33,6 +30,21 @@
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/posts/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_03_27-openharmony_porting_minichip_overview/</loc>
+    <lastmod>2025-03-27T12:14:29+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_03_27-openharmony_source/</loc>
+    <lastmod>2025-03-27T10:44:04+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/2025_03_27-openharmony_glossary/</loc>
+    <lastmod>2025-03-27T10:26:38+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/duti/</loc>
+    <lastmod>2025-03-24T10:19:20+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/macos/</loc>
+    <lastmod>2025-03-24T10:19:20+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/zh/tags/</loc>
     <lastmod>2025-03-24T10:19:20+08:00</lastmod>
