@@ -572,43 +572,7 @@ class="custom-link">
 获取源码&lt;span class="external-link">↗&lt;/span>&lt;/a>
 &lt;/p>
 &lt;h2 id="前提准备">前提准备&lt;/h2>
-&lt;ol>
-&lt;li>&lt;strong>注册码云 Gitee 账号&lt;/strong>&lt;/li>
-&lt;li>&lt;strong>添加 SSH 公钥&lt;/strong>
-&lt;ul>
-&lt;li>登录 Gitee，在设置中添加你的 SSH 公钥。&lt;/li>
-&lt;li>参考：&lt;a href="https://gitee.com/help/articles/4181"
-target="_blank" rel="noopener"
-class="custom-link">
-获取密钥&lt;span class="external-link">↗&lt;/span>&lt;/a>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>安装 Git 和 Git LFS&lt;/strong>&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git config --global user.name &lt;span style="color:#f1fa8c">&amp;#34;yourname&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git config --global user.email &lt;span style="color:#f1fa8c">&amp;#34;your-email-address&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git config --global credential.helper store
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
-&lt;li>安装 repo 工具&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir ~/bin
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chmod a+x ~/bin/repo
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="5">
-&lt;li>配置环境变量&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vim ~/.bashrc
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">export&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">PATH&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>~/bin:&lt;span style="color:#8be9fd;font-style:italic">$PATH&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">source&lt;/span> ~/.bashrc
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="获取主干代码">获取主干代码&lt;/h2>
-&lt;p>OpenHarmony 主干分支（master）包含最新特性代码，适合开发测试使用。&lt;span class="sidenote-number">&lt;small class="sidenote">Master主干为开发分支，开发者可以通过拉取最新仓库获取新特性，开发版本源码较为稳定，为定期发布的稳定版本，获取方式参考&lt;a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/release-notes/Readme.md"
-target="_blank" rel="noopener"
-class="custom-link">
-Release Notes&lt;span class="external-link">↗&lt;/span>&lt;/a>
-。&lt;/small>&lt;/span>
-&lt;/p></description><content:encoded><![CDATA[<blockquote class="quote"><p>OpenHarmony移植到STM32H743系列-这是一个系列</p>
+&lt;p>我这里的环境是Archlinux x86_64 linux 6.13.8，python版本为3.13.2，由于我Ubuntu早就卸载了，所以这边我拿Archlinux进行尝试。&lt;/p></description><content:encoded><![CDATA[<blockquote class="quote"><p>OpenHarmony移植到STM32H743系列-这是一个系列</p>
 <ul>
 <li><a href="../2025_03_19-openharmony_with_stm32h743"
    
@@ -645,39 +609,32 @@ Release Notes&lt;span class="external-link">↗&lt;/span>&lt;/a>
    获取源码<span class="external-link">↗</span></a>
 </p>
 <h2 id="前提准备">前提准备</h2>
-<ol>
-<li><strong>注册码云 Gitee 账号</strong></li>
-<li><strong>添加 SSH 公钥</strong>
-<ul>
-<li>登录 Gitee，在设置中添加你的 SSH 公钥。</li>
-<li>参考：<a href="https://gitee.com/help/articles/4181"
+<p>我这里的环境是Archlinux x86_64 linux 6.13.8，python版本为3.13.2，由于我Ubuntu早就卸载了，所以这边我拿Archlinux进行尝试。</p>
+<h2 id="安装配置hb">安装配置hb</h2>
+<p>由于Archlinux从Python 3.11 开始默认启用了名为 <code>externally-managed-environment</code> 的特性，不再建议使用 <code>pip</code> 在系统环境中直接安装第三方 Python 包，以避免破坏系统环境。<br>
+我这这边选择使用conda进行环境的隔离。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n ohos <span style="color:#8be9fd;font-style:italic">python</span><span style="color:#ff79c6">=</span>3.13
+</span></span><span style="display:flex;"><span>conda activate ohos
+</span></span><span style="display:flex;"><span>pip install jinja2 ohos-build<span style="color:#ff79c6">==</span>0.4.6 -i https://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
+</span></span></code></pre></div><h2 id="安装repo工具">安装repo工具</h2>
+<p>这边使用官方脚本进行<a href="https://gitee.com/oschina/repo/"
    
     
        target="_blank" rel="noopener" 
    
    class="custom-link">  
-   获取密钥<span class="external-link">↗</span></a>
-</li>
-</ul>
-</li>
-<li><strong>安装 Git 和 Git LFS</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config --global user.name <span style="color:#f1fa8c">&#34;yourname&#34;</span>
-</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#f1fa8c">&#34;your-email-address&#34;</span>
-</span></span><span style="display:flex;"><span>git config --global credential.helper store
-</span></span></code></pre></div><ol start="4">
-<li>安装 repo 工具</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir ~/bin
-</span></span><span style="display:flex;"><span>curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo
-</span></span><span style="display:flex;"><span>chmod a+x ~/bin/repo
-</span></span><span style="display:flex;"><span>pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
-</span></span></code></pre></div><ol start="5">
-<li>配置环境变量</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim ~/.bashrc
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">export</span> <span style="color:#8be9fd;font-style:italic">PATH</span><span style="color:#ff79c6">=</span>~/bin:<span style="color:#8be9fd;font-style:italic">$PATH</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">source</span> ~/.bashrc
+   repo<span class="external-link">↗</span></a>
+的下载和拉取：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o /usr/local/bin/repo
+</span></span><span style="display:flex;"><span>sudo chmod a+x /usr/local/bin/repo
+</span></span></code></pre></div><p>我这边的终端输出为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>myArch% repo --version 
+</span></span><span style="display:flex;"><span>repo launcher version 2.8
+</span></span><span style="display:flex;"><span>       <span style="color:#ff79c6">(</span>from /usr/local/bin/repo<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>git 2.49.0
+</span></span><span style="display:flex;"><span>Python 3.13.2 <span style="color:#ff79c6">(</span>main, Feb  <span style="color:#bd93f9">5</span> 2025, 08:05:21<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">[</span>GCC 14.2.1 20250128<span style="color:#ff79c6">]</span>
+</span></span><span style="display:flex;"><span>OS Linux 6.13.8-arch1-1 <span style="color:#ff79c6">(</span><span style="color:#6272a4">#1 SMP PREEMPT_DYNAMIC Sun, 23 Mar 2025 17:17:30 +0000)</span>
+</span></span><span style="display:flex;"><span>CPU x86_64 <span style="color:#ff79c6">(</span>unknown<span style="color:#ff79c6">)</span>
 </span></span></code></pre></div><h2 id="获取主干代码">获取主干代码</h2>
 <p>OpenHarmony 主干分支（master）包含最新特性代码，适合开发测试使用。<span class="sidenote-number"><small class="sidenote">Master主干为开发分支，开发者可以通过拉取最新仓库获取新特性，开发版本源码较为稳定，为定期发布的稳定版本，获取方式参考<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/release-notes/Readme.md"
    
@@ -689,14 +646,104 @@ Release Notes&lt;span class="external-link">↗&lt;/span>&lt;/a>
 。</small></span>
 
 </p>
-<p>推荐方式：使用 SSH 拉取（需添加公钥）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>repo init -u git@gitee.com:openharmony/manifest.git -b master --no-repo-verify
+<p>我这边使用的是轻量型设备对应的源码，所以使用以下指令进行拉取：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>repo init -u https://gitee.com/openharmony/manifest.git -b OpenHarmony-5.0.3-Release --no-repo-verify -g ohos:mini
 </span></span><span style="display:flex;"><span>repo sync -c
 </span></span><span style="display:flex;"><span>repo forall -c <span style="color:#f1fa8c">&#39;git lfs pull&#39;</span>
-</span></span></code></pre></div><p>备用方式：使用 HTTPS 拉取</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>repo init -u https://gitee.com/openharmony/manifest.git -b master --no-repo-verify
-</span></span><span style="display:flex;"><span>repo sync -c
-</span></span><span style="display:flex;"><span>repo forall -c <span style="color:#f1fa8c">&#39;git lfs pull&#39;</span>
+</span></span></code></pre></div><div class="admonition warning collapsible">
+  <div class="admonition-header">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Warning</span>
+    <i class="toggle-icon fas fa-chevron-down"></i>
+  </div>
+  <div class="admonition-content">
+    <p>如果提示</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Skipping object checkout, Git LFS is not installed <span style="color:#ff79c6">for</span> this repository.
+</span></span><span style="display:flex;"><span>Consider installing it with <span style="color:#f1fa8c">&#39;git lfs install&#39;</span>.
+</span></span></code></pre></div><p>这表示你的系统上缺少了 Git LFS（Large File Storage），导致一些大文件无法被下载，需要手动安装：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S git-lfs
+</span></span><span style="display:flex;"><span>git lfs install  <span style="color:#6272a4"># 安装过后执行一次初始化命令</span>
+</span></span><span style="display:flex;"><span>repo forall -c <span style="color:#f1fa8c">&#39;git lfs pull&#39;</span> <span style="color:#6272a4"># 回到代码仓库重新拉取  </span>
+</span></span></code></pre></div>
+  </div>
+</div>
+
+
+<p>为了支持按照不同类型下载代码，OpenHarmony为每个代码仓定义了以下类别：</p>
+<table>
+  <thead>
+      <tr>
+          <th>分类</th>
+          <th>分类说明</th>
+          <th>group</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>轻量系统仓</strong></td>
+          <td>适用于轻量系统的代码仓</td>
+          <td>ohos:mini</td>
+      </tr>
+      <tr>
+          <td><strong>小型系统仓</strong></td>
+          <td>适用于小型系统的代码仓</td>
+          <td>ohos:small</td>
+      </tr>
+      <tr>
+          <td><strong>标准系统仓</strong></td>
+          <td>适用于标准系统的代码仓</td>
+          <td>ohos:standard</td>
+      </tr>
+      <tr>
+          <td>系统组件仓</td>
+          <td>标准系统中与硬件无关的代码仓，构建产物都部署在/system目录下。</td>
+          <td>ohos:system</td>
+      </tr>
+      <tr>
+          <td>芯片组件仓</td>
+          <td>标准系统中与芯片或硬件相关的仓，构建产物部署在/vendor或/chipset目录下。</td>
+          <td>ohos:chipset</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="安装交叉编译链">安装交叉编译链</h2>
+<p>原先<a href="https://gitee.com/openharmony/device_board_talkweb/blob/master/niobe407/docs/software/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91.md#6%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   开发环境搭建-安装交叉编译工具链<span class="external-link">↗</span></a>
+使用的是10.3版本的gcc-arm-none-eabi，会导致出现以下报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>non constant or forward reference address expression <span style="color:#ff79c6">for</span> section .ARM.extab
+</span></span></code></pre></div><p>在<code>STM32H743XX_FLASH.ld</code>中对应行数有这么一句话：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  .ARM.extab (READONLY) : /* The &#34;READONLY&#34; keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
+</span></span></code></pre></div><p>可以得知我们现在有两种方法：</p>
+<ol>
+<li>升级ARM GCC 11或者以上版本：从<a href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   ARM GNU Toolchain<span class="external-link">↗</span></a>
+下载最新版本，如11.x或者更高版本。</li>
+<li>推荐删除 (READONLY) 字段即可。<br>
+我这里选择的是第一种方法。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p ~/download <span style="color:#ff79c6">&amp;&amp;</span> <span style="color:#8be9fd;font-style:italic">cd</span> ~/download
+</span></span><span style="display:flex;"><span>wget https://developer.arm.com/-/media/Files/downloads/gnu/12.3.rel1/binrel/arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-eabi.tar.xz
+</span></span><span style="display:flex;"><span>sudo tar -xJvf arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-eabi.tar.xz -C /opt/
+</span></span><span style="display:flex;"><span>vim ~/.zshrc
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">export</span> <span style="color:#8be9fd;font-style:italic">PATH</span><span style="color:#ff79c6">=</span>/opt/arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-eabi/bin:<span style="color:#8be9fd;font-style:italic">$PATH</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">source</span> ~/.zshrc
+</span></span></code></pre></div><p>按照上述步骤安装完成过后可以查看版本验证：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>myArch% arm-none-eabi-gcc --version
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>arm-none-eabi-gcc <span style="color:#ff79c6">(</span>Arm GNU Toolchain 12.3.Rel1 <span style="color:#ff79c6">(</span>Build arm-12.35<span style="color:#ff79c6">))</span> 12.3.1 <span style="color:#bd93f9">20230626</span>
+</span></span><span style="display:flex;"><span>Copyright <span style="color:#ff79c6">(</span>C<span style="color:#ff79c6">)</span> <span style="color:#bd93f9">2022</span> Free Software Foundation, Inc.
+</span></span><span style="display:flex;"><span>This is free software; see the <span style="color:#8be9fd;font-style:italic">source</span> <span style="color:#ff79c6">for</span> copying conditions.  There is NO
+</span></span><span style="display:flex;"><span>warranty; not even <span style="color:#ff79c6">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 </span></span></code></pre></div>]]></content:encoded></item><item><title>OpenHarmony移植到STM32H743系列_术语含义</title><link>https://downmars.github.io/zh/posts/2025_03_27-openharmony_glossary/</link><pubDate>Thu, 27 Mar 2025 10:26:38 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_27-openharmony_glossary/</guid><description>&lt;blockquote class="quote">&lt;p>OpenHarmony移植到STM32H743系列-这是一个系列&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="../2025_03_19-openharmony_with_stm32h743"
