@@ -6,21 +6,62 @@
     <description>Recent content in Posts on DLog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 27 Mar 2025 20:10:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Mar 2025 16:52:59 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>2025_03_27 Openharmony_transplant_overview</title>
-      <link>http://localhost:1313/zh/posts/2025_03_27-openharmony_transplant_overview/</link>
-      <pubDate>Thu, 27 Mar 2025 20:10:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025_03_27-openharmony_transplant_overview/</guid>
-      <description></description>
+      <title>2025_02_29 Git_clone_and_pull_between_different_devices</title>
+      <link>http://localhost:1313/zh/posts/2025_03_28-git_clone_and_pull_between_different_devices/</link>
+      <pubDate>Fri, 28 Mar 2025 16:52:59 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_28-git_clone_and_pull_between_different_devices/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;由于我游转于linux和mac设备之间，我需要将博客实时保持同步，我这边先写一篇博客关于手动拉取博客内容。我这边的假设是我每次写完博客之后都会手动上传，也就是只有一端的设备上的文章是最新的，不存在内容冲突的情况，之后如果遇到其他情况，会新增相关内容。有机会设置一下自动上传和自动下载同步，感觉这一部分有服务器之后会更好操作一些，但是现在的价格不是很友好，看看过段时间有没有好的车。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>由于我游转于linux和mac设备之间，我需要将博客实时保持同步，我这边先写一篇博客关于手动拉取博客内容。我这边的假设是我每次写完博客之后都会手动上传，也就是只有一端的设备上的文章是最新的，不存在内容冲突的情况，之后如果遇到其他情况，会新增相关内容。有机会设置一下自动上传和自动下载同步，感觉这一部分有服务器之后会更好操作一些，但是现在的价格不是很友好，看看过段时间有没有好的车。</p>
+<h2 id="推送代码">推送代码</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> your_mac_dir  
+</span></span><span style="display:flex;"><span>git add .  
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#f1fa8c">&#34;xxxx&#34;</span>  
+</span></span><span style="display:flex;"><span>git push  origin main  
+</span></span></code></pre></div><h2 id="更新代码">更新代码</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> your_linux_dir  
+</span></span><span style="display:flex;"><span>git fetch --all  <span style="color:#6272a4"># 从远程仓库拉取所有分支和标签的最新信息，但是不会修改本地代码</span>
+</span></span><span style="display:flex;"><span>git reset --hard origin/main  <span style="color:#6272a4"># 强制将本地分支代码完全覆盖为远程分支origin/main上的代码状态</span>
+</span></span></code></pre></div>]]></content:encoded>
     </item>
     <item>
-      <title>2025_03_27 Openharmony_porting_minichip_overview</title>
+      <title>OpenHarmony移植到STM32H743系列_移植验证</title>
       <link>http://localhost:1313/zh/posts/2025_03_27-openharmony_porting_minichip_overview/</link>
       <pubDate>Thu, 27 Mar 2025 12:14:29 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_03_27-openharmony_porting_minichip_overview/</guid>
-      <description>&lt;p&gt;本篇内容源自&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md&#34;
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;OpenHarmony移植到STM32H743系列-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_19-openharmony_with_stm32h743&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   资源预览&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_glossary&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   术语含义&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_source&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   源码拉取&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_porting_minichip_overview&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   移植验证&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;本篇内容源自&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md&#34;
    
     
        target=&#34;_blank&#34; rel=&#34;noopener&#34; 
@@ -37,7 +78,35 @@
    class=&#34;custom-link&#34;&gt;  
    轻量系统STM32F407芯片移植案例&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
 。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md"
+      <content:encoded><![CDATA[<blockquote class="quote"><p>OpenHarmony移植到STM32H743系列-这是一个系列</p>
+<ul>
+<li><a href="../2025_03_19-openharmony_with_stm32h743"
+   
+   
+   class="custom-link">  
+   资源预览</a>
+</li>
+<li><a href="../2025_03_27-openharmony_glossary"
+   
+   
+   class="custom-link">  
+   术语含义</a>
+</li>
+<li><a href="../2025_03_27-openharmony_source"
+   
+   
+   class="custom-link">  
+   源码拉取</a>
+</li>
+<li><a href="../2025_03_27-openharmony_porting_minichip_overview"
+   
+   
+   class="custom-link">  
+   移植验证</a>
+&#x1f448; 你在这里</li>
+</ul></blockquote>
+
+<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md"
    
     
        target="_blank" rel="noopener" 
@@ -521,11 +590,39 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
 ]]></content:encoded>
     </item>
     <item>
-      <title>2025_03_27 Openharmony_source</title>
+      <title>OpenHarmony移植到STM32H743系列_源码拉取</title>
       <link>http://localhost:1313/zh/posts/2025_03_27-openharmony_source/</link>
       <pubDate>Thu, 27 Mar 2025 10:44:04 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_03_27-openharmony_source/</guid>
-      <description>&lt;p&gt;本篇内容源自&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md&#34;
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;OpenHarmony移植到STM32H743系列-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_19-openharmony_with_stm32h743&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   资源预览&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_glossary&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   术语含义&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_source&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   源码拉取&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_porting_minichip_overview&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   移植验证&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;本篇内容源自&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md&#34;
    
     
        target=&#34;_blank&#34; rel=&#34;noopener&#34; 
@@ -578,7 +675,35 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
 。&lt;/small&gt;&lt;/span&gt;
 
 &lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md"
+      <content:encoded><![CDATA[<blockquote class="quote"><p>OpenHarmony移植到STM32H743系列-这是一个系列</p>
+<ul>
+<li><a href="../2025_03_19-openharmony_with_stm32h743"
+   
+   
+   class="custom-link">  
+   资源预览</a>
+</li>
+<li><a href="../2025_03_27-openharmony_glossary"
+   
+   
+   class="custom-link">  
+   术语含义</a>
+</li>
+<li><a href="../2025_03_27-openharmony_source"
+   
+   
+   class="custom-link">  
+   源码拉取</a>
+&#x1f448; 你在这里</li>
+<li><a href="../2025_03_27-openharmony_porting_minichip_overview"
+   
+   
+   class="custom-link">  
+   移植验证</a>
+</li>
+</ul></blockquote>
+
+<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md"
    
     
        target="_blank" rel="noopener" 
@@ -642,11 +767,39 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
 </span></span></code></pre></div>]]></content:encoded>
     </item>
     <item>
-      <title>2025_03_27 Openharmony_glossary</title>
+      <title>OpenHarmony移植到STM32H743系列_术语含义</title>
       <link>http://localhost:1313/zh/posts/2025_03_27-openharmony_glossary/</link>
       <pubDate>Thu, 27 Mar 2025 10:26:38 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_03_27-openharmony_glossary/</guid>
-      <description>&lt;p&gt;本篇内容源自&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/glossary.md&#34;
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;OpenHarmony移植到STM32H743系列-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_19-openharmony_with_stm32h743&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   资源预览&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_glossary&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   术语含义&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_source&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   源码拉取&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_porting_minichip_overview&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   移植验证&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;本篇内容源自&lt;a href=&#34;https://gitee.com/openharmony/docs/blob/master/zh-cn/glossary.md&#34;
    
     
        target=&#34;_blank&#34; rel=&#34;noopener&#34; 
@@ -657,7 +810,35 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
 &lt;h2 id=&#34;a&#34;&gt;A&lt;/h2&gt;
 &lt;h3 id=&#34;abc文件&#34;&gt;abc文件&lt;/h3&gt;
 &lt;p&gt;方舟字节码（ArkCompiler Bytecode）文件，是 ArkCompiler 编译工具链以源代码为输入生成的中间产物，后缀为 &lt;code&gt;.abc&lt;/code&gt;，发布时打包进 &lt;code&gt;.hap&lt;/code&gt; 文件中。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/glossary.md"
+      <content:encoded><![CDATA[<blockquote class="quote"><p>OpenHarmony移植到STM32H743系列-这是一个系列</p>
+<ul>
+<li><a href="../2025_03_19-openharmony_with_stm32h743"
+   
+   
+   class="custom-link">  
+   资源预览</a>
+</li>
+<li><a href="../2025_03_27-openharmony_glossary"
+   
+   
+   class="custom-link">  
+   术语含义</a>
+&#x1f448; 你在这里</li>
+<li><a href="../2025_03_27-openharmony_source"
+   
+   
+   class="custom-link">  
+   源码拉取</a>
+</li>
+<li><a href="../2025_03_27-openharmony_porting_minichip_overview"
+   
+   
+   class="custom-link">  
+   移植验证</a>
+</li>
+</ul></blockquote>
+
+<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/glossary.md"
    
     
        target="_blank" rel="noopener" 
@@ -1127,11 +1308,39 @@ com.sublimetext.3    net.daringfireball.markdown all</p>
 </span></span></code></pre></div>]]></content:encoded>
     </item>
     <item>
-      <title>OpenHarmony移植到STM32H743系列_1</title>
+      <title>OpenHarmony移植到STM32H743系列_资源预览</title>
       <link>http://localhost:1313/zh/posts/2025_03_19-openharmony_with_stm32h743/</link>
       <pubDate>Fri, 21 Mar 2025 16:52:33 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_03_19-openharmony_with_stm32h743/</guid>
-      <description>&lt;p&gt;本篇指南依照&lt;a href=&#34;https://gitee.com/openharmony/docs&#34;
+      <description>&lt;blockquote class=&#34;quote&#34;&gt;&lt;p&gt;OpenHarmony移植到STM32H743系列-这是一个系列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_19-openharmony_with_stm32h743&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   资源预览&lt;/a&gt;
+&amp;#x1f448; 你在这里&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_glossary&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   术语含义&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_source&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   源码拉取&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../2025_03_27-openharmony_porting_minichip_overview&#34;
+   
+   
+   class=&#34;custom-link&#34;&gt;  
+   移植验证&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;本篇指南依照&lt;a href=&#34;https://gitee.com/openharmony/docs&#34;
    
     
        target=&#34;_blank&#34; rel=&#34;noopener&#34; 
@@ -1141,7 +1350,35 @@ com.sublimetext.3    net.daringfireball.markdown all</p>
 进行整理。&lt;/p&gt;
 &lt;h2 id=&#34;系统类型&#34;&gt;系统类型&lt;/h2&gt;
 &lt;p&gt;OpenHarmony是一款面向全场景的开源分布式操作系统，支持128KiB到xGiB RAM 资源的设备上运行系统组件，我们选择的STM32H743的参数为ARM Cortex-M7 内核，主频为 480MHz，2048K的Flash，以及1024KB的SRAM。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>本篇指南依照<a href="https://gitee.com/openharmony/docs"
+      <content:encoded><![CDATA[<blockquote class="quote"><p>OpenHarmony移植到STM32H743系列-这是一个系列</p>
+<ul>
+<li><a href="../2025_03_19-openharmony_with_stm32h743"
+   
+   
+   class="custom-link">  
+   资源预览</a>
+&#x1f448; 你在这里</li>
+<li><a href="../2025_03_27-openharmony_glossary"
+   
+   
+   class="custom-link">  
+   术语含义</a>
+</li>
+<li><a href="../2025_03_27-openharmony_source"
+   
+   
+   class="custom-link">  
+   源码拉取</a>
+</li>
+<li><a href="../2025_03_27-openharmony_porting_minichip_overview"
+   
+   
+   class="custom-link">  
+   移植验证</a>
+</li>
+</ul></blockquote>
+
+<p>本篇指南依照<a href="https://gitee.com/openharmony/docs"
    
     
        target="_blank" rel="noopener" 
@@ -7571,13 +7808,6 @@ Rel(SystemC, customerA, &#34;Sends e-mails to&#34;)
 ]]></content:encoded>
     </item>
     <item>
-      <title>开源遐想</title>
-      <link>http://localhost:1313/zh/posts/2025_02_10-open_source_1/</link>
-      <pubDate>Mon, 10 Feb 2025 20:04:47 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025_02_10-open_source_1/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>通过Ollama调用DeepSeek</title>
       <link>http://localhost:1313/zh/posts/2025_02_09-ollama_deepseek_1/</link>
       <pubDate>Sun, 09 Feb 2025 20:08:43 +0800</pubDate>
@@ -7838,104 +8068,6 @@ Rel(SystemC, customerA, &#34;Sends e-mails to&#34;)
 ]]></content:encoded>
     </item>
     <item>
-      <title>2025_02_07 Practice_1</title>
-      <link>http://localhost:1313/zh/posts/2025_02_07-practice_1/</link>
-      <pubDate>Fri, 07 Feb 2025 18:10:16 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025_02_07-practice_1/</guid>
-      <description>&lt;h2 id=&#34;实习&#34;&gt;实习&lt;/h2&gt;
-&lt;p&gt;大学生活还剩下半年了，准备这半年找一个实习提升一下自己的能力&lt;span class=&#34;sidenote-number&#34;&gt;&lt;small class=&#34;sidenote&#34;&gt;说实话，综合现实考虑，实习不一定可行。但是我现在做一些了解和准备也未尝不可，选择参与一项开源项目可能是一个很好的选择&lt;/small&gt;&lt;/span&gt;
-
-，在这里做一个简单的记录。&lt;br&gt;
-在这里先简单的打个草稿，我给我的预期是今年上半年找到一个机器人大公司的实习，有空余的话找一个适合的开源项目锻炼自己的能力，其次顺利进行毕业答辩，成功毕业。&lt;br&gt;
-对于实习部分，我打算先对于目标的公司的需求做一个简单的了解，收集一些基本的信息归档。接下来，找一个合适的机会找南航老师简单的聊一聊，然后和彬哥聊聊看看有什么建议，在这期间就可以顺带着投了做准备了。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<h2 id="实习">实习</h2>
-<p>大学生活还剩下半年了，准备这半年找一个实习提升一下自己的能力<span class="sidenote-number"><small class="sidenote">说实话，综合现实考虑，实习不一定可行。但是我现在做一些了解和准备也未尝不可，选择参与一项开源项目可能是一个很好的选择</small></span>
-
-，在这里做一个简单的记录。<br>
-在这里先简单的打个草稿，我给我的预期是今年上半年找到一个机器人大公司的实习，有空余的话找一个适合的开源项目锻炼自己的能力，其次顺利进行毕业答辩，成功毕业。<br>
-对于实习部分，我打算先对于目标的公司的需求做一个简单的了解，收集一些基本的信息归档。接下来，找一个合适的机会找南航老师简单的聊一聊，然后和彬哥聊聊看看有什么建议，在这期间就可以顺带着投了做准备了。</p>
-<h2 id="意向公司">意向公司</h2>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">公司名称</th>
-          <th style="text-align: center">岗位名称</th>
-          <th style="text-align: center">工作地点</th>
-          <th style="text-align: center">实习时长</th>
-          <th style="text-align: center">转正机会</th>
-          <th style="text-align: center">重要性</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center"><a href="https://www.robomaster.com/zh-CN/recruit?djifrom=rm"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   大疆<span class="external-link">↗</span></a>
-</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><a href="https://www.unitree.com/cn/position"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   宇树<span class="external-link">↗</span></a>
-</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><a href="https://www.zhipin.com/gongsi/ffd531b0cbd4133f1XN92Nm0EFU~.html"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   deepseeek<span class="external-link">↗</span></a>
-</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><a href="https://www.robomaster.com/zh-CN/recruit?djifrom=rm"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   云深处<span class="external-link">↗</span></a>
-</td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-          <td style="text-align: center"></td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="大疆">大疆</h2>
-<h2 id="宇树">宇树</h2>
-<h2 id="deepseek">deepseek</h2>
-<h2 id="云深处">云深处</h2>
-]]></content:encoded>
-    </item>
-    <item>
       <title>Hugo博客搭建_主题优化 🤤</title>
       <link>http://localhost:1313/zh/posts/2025_02_05-hugo_build_3/</link>
       <pubDate>Thu, 06 Feb 2025 19:32:05 +0800</pubDate>
@@ -7983,17 +8115,6 @@ Rel(SystemC, customerA, &#34;Sends e-mails to&#34;)
 &#x1f448; 你在这里</li>
 </ul></blockquote>
 
-]]></content:encoded>
-    </item>
-    <item>
-      <title>蛀牙</title>
-      <link>http://localhost:1313/zh/posts/2025_02_05-tooth_decay/</link>
-      <pubDate>Wed, 05 Feb 2025 23:33:26 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/2025_02_05-tooth_decay/</guid>
-      <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
-&lt;p&gt;捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<h2 id="起因">起因</h2>
-<p>捏妈妈第，从去年10月份开始牙齿开始痛，最开始也不以为意，到后面继续痛以为是智齿，刚才去找了照镜子，一看上牙齿有一个洞，悔不当初啊。遂打算明天去医院检查一番，看看蛀牙到了什么程度，顺便做个记录。</p>
 ]]></content:encoded>
     </item>
     <item>
