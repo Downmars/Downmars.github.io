@@ -98,43 +98,13 @@ flowchart TD
 ### 验证生成的Makefile工程  
 将生成的工程文件拷贝到Ubuntu环境下，进入工程项目执行我们上述安装的make指令编译：
 ```bash  
-arm-none-eabi-gcc \
-  build/main.o \
-  build/stm32h7xx_it.o \
-  build/stm32h7xx_hal_msp.o \
-  build/stm32h7xx_hal_tim.o \
-  build/stm32h7xx_hal_tim_ex.o \
-  build/stm32h7xx_hal_uart.o \
-  build/stm32h7xx_hal_rcc.o \
-  build/stm32h7xx_hal_rcc_ex.o \
-  build/stm32h7xx_hal_flash.o \
-  build/stm32h7xx_hal_flash_ex.o \
-  build/stm32h7xx_hal_gpio.o \
-  build/stm32h7xx_hal_dma.o \
-  build/stm32h7xx_hal_dma_ex.o \
-  build/stm32h7xx_hal_pwr.o \
-  build/stm32h7xx_hal_pwr_ex.o \
-  build/stm32h7xx_hal_cortex.o \
-  build/stm32h7xx_hal.o \
-  build/stm32h7xx_hal_exti.o \
-  build/system_stm32h7xx.o \
-  build/startup_stm32h743xx.o \
-  -mcpu=cortex-m7 -mthumb -mfpu=fpv5-d16 -mfloat-abi=hard \
-  -specs=nano.specs \
-  -TSTM32H743ZITx_FLASH.ld \
-  -lc -lm -lnosys \
-  -Wl,-Map=build/stm32h743_output.map,--cref \
-  -Wl,--gc-sections \
-  -o build/stm32h743_output.elf
+make  
 ```
-后处理编译命令：
+如果需要重新编译，提前调用此命令即可：
 ```bash  
-arm-none-eabi-size build/stm32h743_output.elf
-
-arm-none-eabi-objcopy -O ihex build/stm32h743_output.elf build/stm32h743_output.hex
-
-arm-none-eabi-objcopy -O binary -S build/stm32h743_output.elf build/stm32h743_output.bin
+make clean    # 等效于rm -fR build                                
 ```
+这个指令会调用Makefile文件中的编译命令，和教程中的手动执行的`arm-none-eabi-gcc`是完全一致的。
 - .elf 是可执行文件  
 - .hex 是可用于部分烧录器的格式  
 - .bin 是常用于的裸二进制烧录文件  
