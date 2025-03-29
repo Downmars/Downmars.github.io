@@ -74,7 +74,7 @@ Info : Listening on port 3333 for gdb connections
 由于我们[前文](../2025_03_27-openharmony_porting_minichip_overview/#验证生成的makefile工程)中已经烧录完成了固件，如`build/stm32h743.hex`。进入到我们的固件根目录下运行以下指令：  
 ```bash  
 openocd -f interface/cmsis-dap.cfg -f target/stm32h7x.cfg \
-        -c "program build/stm32h743.hex verify reset exit"
+        -c "program build/STM32H743.hex verify reset exit"
 ```
 - `verify` 验证烧录成功与否
 - `reset` 烧录完成自动重启MCU
