@@ -6,8 +6,21 @@
     <description>Recent content in Posts on DLog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 29 Mar 2025 15:14:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 30 Mar 2025 16:18:23 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025_03_30 Problems_with_transplant</title>
+      <link>http://localhost:1313/zh/posts/2025_03_30-problems_with_transplant/</link>
+      <pubDate>Sun, 30 Mar 2025 16:18:23 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_03_30-problems_with_transplant/</guid>
+      <description>&lt;h2 id=&#34;官方亮灯例程无法正确使用&#34;&gt;官方亮灯例程无法正确使用&lt;/h2&gt;
+&lt;p&gt;2025_03_30&lt;br&gt;
+我这边使用官方的亮灯例程&amp;lt; 12-GPIO输出-使用固件点亮LED灯 &amp;gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用</h2>
+<p>2025_03_30<br>
+我这边使用官方的亮灯例程&lt; 12-GPIO输出-使用固件点亮LED灯 &gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>2025_02_29 Dap_download</title>
       <link>http://localhost:1313/zh/posts/2025_03_29-dap_download/</link>
@@ -82,7 +95,7 @@
    前文</a>
 中已经烧录完成了固件，如<code>build/stm32h743.hex</code>。进入到我们的固件根目录下运行以下指令：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openocd -f interface/cmsis-dap.cfg -f target/stm32h7x.cfg <span style="color:#f1fa8c">\
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>        -c <span style="color:#f1fa8c">&#34;program build/stm32h743.hex verify reset exit&#34;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>        -c <span style="color:#f1fa8c">&#34;program build/STM32H743.hex verify reset exit&#34;</span>
 </span></span></code></pre></div><ul>
 <li><code>verify</code> 验证烧录成功与否</li>
 <li><code>reset</code> 烧录完成自动重启MCU</li>
