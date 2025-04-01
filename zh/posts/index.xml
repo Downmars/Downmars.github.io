@@ -1,8 +1,860 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 30 Mar 2025 16:18:23 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_03_30 Problems_with_transplant</title><link>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</link><pubDate>Sun, 30 Mar 2025 16:18:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</guid><description>&lt;h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Tue, 01 Apr 2025 14:57:19 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_04_01 Openharmony_Kernel_porting</title><link>https://downmars.github.io/zh/posts/2025_04_01-openharmony_kernel_porting/</link><pubDate>Tue, 01 Apr 2025 14:57:19 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_04_01-openharmony_kernel_porting/</guid><description>&lt;blockquote class="quote">&lt;p>OpenHarmony移植到STM32H743系列-这是一个系列&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="../2025_03_19-openharmony_with_stm32h743"
+class="custom-link">
+资源预览&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="../2025_03_27-openharmony_glossary"
+class="custom-link">
+术语含义&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="../2025_03_27-openharmony_source"
+class="custom-link">
+源码拉取&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="../2025_03_27-openharmony_porting_minichip_overview"
+class="custom-link">
+移植验证&lt;/a>
+&lt;/li>
+&lt;li>&lt;a href="../2025_04_01-openharmony_Kernel_porting"
+class="custom-link">
+内核移植&lt;/a>
+&amp;#x1f448; 你在这里&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;p>本篇内容源自&lt;a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md"
+target="_blank" rel="noopener"
+class="custom-link">
+porting-minichip-overview&lt;span class="external-link">↗&lt;/span>&lt;/a>
+&lt;span class="sidenote-number">&lt;small class="sidenote">此参考文档适用于OpenHarmony LTS 3.0.1及之前版本的轻量系统的适配，即对于我现在的5.0.3版本可能会有一定的差别，但是大体上是可以参考的。&lt;/small>&lt;/span>
+和&lt;a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-stm32f407-on-minisystem-eth.md"
+target="_blank" rel="noopener"
+class="custom-link">
+轻量系统STM32F407芯片移植案例&lt;span class="external-link">↗&lt;/span>&lt;/a>
+。&lt;/p></description><content:encoded><![CDATA[<blockquote class="quote"><p>OpenHarmony移植到STM32H743系列-这是一个系列</p>
+<ul>
+<li><a href="../2025_03_19-openharmony_with_stm32h743"
+   
+   
+   class="custom-link">  
+   资源预览</a>
+</li>
+<li><a href="../2025_03_27-openharmony_glossary"
+   
+   
+   class="custom-link">  
+   术语含义</a>
+</li>
+<li><a href="../2025_03_27-openharmony_source"
+   
+   
+   class="custom-link">  
+   源码拉取</a>
+</li>
+<li><a href="../2025_03_27-openharmony_porting_minichip_overview"
+   
+   
+   class="custom-link">  
+   移植验证</a>
+</li>
+<li><a href="../2025_04_01-openharmony_Kernel_porting"
+   
+   
+   class="custom-link">  
+   内核移植</a>
+&#x1f448; 你在这里</li>
+</ul></blockquote>
+
+<p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   porting-minichip-overview<span class="external-link">↗</span></a>
+<span class="sidenote-number"><small class="sidenote">此参考文档适用于OpenHarmony LTS 3.0.1及之前版本的轻量系统的适配，即对于我现在的5.0.3版本可能会有一定的差别，但是大体上是可以参考的。</small></span>
+
+和<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-stm32f407-on-minisystem-eth.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   轻量系统STM32F407芯片移植案例<span class="external-link">↗</span></a>
+。</p>
+<h2 id="内核移植">内核移植</h2>
+<p>内核移植需要完成<code>LiteOS-M Kconfig</code>适配、<code>gn</code>的编译构建和内核启动最小适配。</p>
+<h3 id="kconfig文件适配">Kconfig文件适配</h3>
+<h4 id="创建-board-层结构">创建 board 层结构</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> ~/path/to/openharmony_project
+</span></span><span style="display:flex;"><span>mkdir -p device/board/embfire/
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> device/board/embfire/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 创建 embfire 下的 Kconfig 入口文件</span>
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.boards
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.defconfig.boards
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.shields
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 创建开发板目录和子文件</span>
+</span></span><span style="display:flex;"><span>mkdir -p challenger_h743v2/liteos_m
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> challenger_h743v2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.board
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.defconfig.board
+</span></span><span style="display:flex;"><span>touch liteos_m_3.0.0/config.gni
+</span></span></code></pre></div><h4 id="创建-soc-层结构">创建 soc 层结构</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> ~/path/to/openharmony_project
+</span></span><span style="display:flex;"><span>mkdir -p device/soc/st
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> device/soc/st
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.defconfig
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.series
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.soc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p stm32h7xx
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> stm32h7xx
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.defconfig.series
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.defconfig.stm32h7xx
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.series
+</span></span><span style="display:flex;"><span>touch Kconfig.liteos_m.soc
+</span></span></code></pre></div><h4 id="文件内容模板">文件内容模板</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/Kconfig.liteos_m.boards</span>
+    <span class="line-count">3 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if SOC_STM32H743
+</span></span><span style="display:flex;"><span>    orsource &#34;challenger_h743v2/Kconfig.liteos_m.board&#34;
+</span></span><span style="display:flex;"><span>endif
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/Kconfig.liteos_m.defconfig.boards</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>orsource &#34;*/Kconfig.liteos_m.defconfig.board&#34;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/Kconfig.liteos_m.shields</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 可留空或根据需要添加内容
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/Kconfig.liteos_m.board</span>
+    <span class="line-count">3 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>menuconfig BOARD_CHALLENGER_H743V2
+</span></span><span style="display:flex;"><span>    bool &#34;Select board Challenger H743V2&#34;
+</span></span><span style="display:flex;"><span>    depends on SOC_STM32H743
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/Kconfig.liteos_m.defconfig.board</span>
+    <span class="line-count">3 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if BOARD_CHALLENGER_H743V2
+</span></span><span style="display:flex;"><span>    # 默认配置选项写在这里
+</span></span><span style="display:flex;"><span>endif
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/liteos_m_3.0.0/config.gni</span>
+    <span class="line-count">3 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>ohos_kernel_type = &#34;liteos_m&#34;
+</span></span><span style="display:flex;"><span>ohos_kernel_version = &#34;3.0.0&#34;
+</span></span><span style="display:flex;"><span>board_name = &#34;challenger_h743v2&#34;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/Kconfig.liteos_m.defconfig</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>rsource &#34;*/Kconfig.liteos_m.defconfig.series&#34;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/Kconfig.liteos_m.series</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>rsource &#34;*/Kconfig.liteos_m.series&#34;
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/Kconfig.liteos_m.soc</span>
+    <span class="line-count">9 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>config SOC_COMPANY_STMICROELECTRONICS
+</span></span><span style="display:flex;"><span>    bool
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>if SOC_COMPANY_STMICROELECTRONICS
+</span></span><span style="display:flex;"><span>config SOC_COMPANY
+</span></span><span style="display:flex;"><span>    string
+</span></span><span style="display:flex;"><span>    default &#34;st&#34;
+</span></span><span style="display:flex;"><span>rsource &#34;*/Kconfig.liteos_m.soc&#34;
+</span></span><span style="display:flex;"><span>endif
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/stm32h7xx/Kconfig.liteos_m.series</span>
+    <span class="line-count">7 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>config SOC_SERIES_STM32H7xx
+</span></span><span style="display:flex;"><span>    bool &#34;STMicroelectronics STM32H7xx series&#34;
+</span></span><span style="display:flex;"><span>    select ARCH_ARM
+</span></span><span style="display:flex;"><span>    select SOC_COMPANY_STMICROELECTRONICS
+</span></span><span style="display:flex;"><span>    select CPU_CORTEX_M7
+</span></span><span style="display:flex;"><span>    help
+</span></span><span style="display:flex;"><span>        Enable support for STMicroelectronics STM32H7xx series
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/stm32h7xx/Kconfig.liteos_m.soc</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>choice
+</span></span><span style="display:flex;"><span>    prompt &#34;STMicroelectronics STM32H7xx SoC&#34;
+</span></span><span style="display:flex;"><span>    depends on SOC_SERIES_STM32H7xx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config SOC_STM32H743
+</span></span><span style="display:flex;"><span>    bool &#34;SoC STM32H743&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>endchoice
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/stm32h7xx/Kconfig.liteos_m.defconfig.series</span>
+    <span class="line-count">6 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if SOC_SERIES_STM32H7xx
+</span></span><span style="display:flex;"><span>rsource &#34;Kconfig.liteos_m.defconfig.stm32h7xx&#34;
+</span></span><span style="display:flex;"><span>config SOC_SERIES
+</span></span><span style="display:flex;"><span>    string
+</span></span><span style="display:flex;"><span>    default &#34;stm32h7xx&#34;
+</span></span><span style="display:flex;"><span>endif
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/stm32h7xx/Kconfig.liteos_m.defconfig.stm32h7xx</span>
+    <span class="line-count">4 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>config SOC
+</span></span><span style="display:flex;"><span>    string
+</span></span><span style="display:flex;"><span>    default &#34;stm32h7xx&#34;
+</span></span><span style="display:flex;"><span>    depends on SOC_STM32H743
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+]]></content:encoded></item><item><title>2025_03_30 Problems_with_transplant</title><link>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</link><pubDate>Sun, 30 Mar 2025 16:18:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</guid><description>&lt;h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用&lt;/h2>
 &lt;p>2025_03_30&lt;br>
-我这边使用官方的亮灯例程&amp;lt; 12-GPIO输出-使用固件点亮LED灯 &amp;gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。&lt;/p></description><content:encoded><![CDATA[<h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用</h2>
+Q: 我这边使用官方的亮灯例程&amp;lt; 12-GPIO输出-使用固件点亮LED灯 &amp;gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。&lt;br>
+A: 麻了，例程给我的是错误的，是STM32H743IIH6，而我使用的是STM32H743XIH6，并且我并没有仔细查看开发版引脚区别，导致配置错误。&lt;/p></description><content:encoded><![CDATA[<h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用</h2>
 <p>2025_03_30<br>
-我这边使用官方的亮灯例程&lt; 12-GPIO输出-使用固件点亮LED灯 &gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。</p>
+Q: 我这边使用官方的亮灯例程&lt; 12-GPIO输出-使用固件点亮LED灯 &gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。<br>
+A: 麻了，例程给我的是错误的，是STM32H743IIH6，而我使用的是STM32H743XIH6，并且我并没有仔细查看开发版引脚区别，导致配置错误。</p>
 ]]></content:encoded></item><item><title>2025_02_29 Dap_download</title><link>https://downmars.github.io/zh/posts/2025_03_29-dap_download/</link><pubDate>Sat, 29 Mar 2025 15:14:00 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_29-dap_download/</guid><description>&lt;h2 id="cmsis-dap">CMSIS-DAP&lt;/h2>
 &lt;p>我这里使用的是DAP下载器进行烧录的，这种调试器使用的是&lt;a href="https://arm-software.github.io/CMSIS_5/DAP/html/index.html"
 target="_blank" rel="noopener"
@@ -110,6 +962,10 @@ class="custom-link">
 class="custom-link">
 移植验证&lt;/a>
 &amp;#x1f448; 你在这里&lt;/li>
+&lt;li>&lt;a href="../2025_04_01-openharmony_Kernel_porting"
+class="custom-link">
+内核移植&lt;/a>
+&lt;/li>
 &lt;/ul>&lt;/blockquote>
 &lt;p>本篇内容源自&lt;a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md"
 target="_blank" rel="noopener"
@@ -146,6 +1002,12 @@ class="custom-link">
    class="custom-link">  
    移植验证</a>
 &#x1f448; 你在这里</li>
+<li><a href="../2025_04_01-openharmony_Kernel_porting"
+   
+   
+   class="custom-link">  
+   内核移植</a>
+</li>
 </ul></blockquote>
 
 <p>本篇内容源自<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md"
@@ -359,6 +1221,20 @@ class="custom-link">
 </details></p>
 </p>
 <p>重新编译代码，可以烧录至开发版中验证。</p>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_03_27-openharmony_porting_minichip_overview/usart1_output.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_03_27-openharmony_porting_minichip_overview/usart1_output.png#center" width="800px" height="450px"/> <figcaption>
+            usart1_output
+        </figcaption>
+</figure>
+</a>
+
+
 <h2 id="openharmony编译构建">Openharmony编译构建</h2>
 <h3 id="构建芯片适配与产品样例目录">构建芯片适配与产品样例目录</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>device/
@@ -617,6 +1493,10 @@ class="custom-link">
 class="custom-link">
 移植验证&lt;/a>
 &lt;/li>
+&lt;li>&lt;a href="../2025_04_01-openharmony_Kernel_porting"
+class="custom-link">
+内核移植&lt;/a>
+&lt;/li>
 &lt;/ul>&lt;/blockquote>
 &lt;p>本篇内容源自&lt;a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md"
 target="_blank" rel="noopener"
@@ -649,6 +1529,12 @@ class="custom-link">
    
    class="custom-link">  
    移植验证</a>
+</li>
+<li><a href="../2025_04_01-openharmony_Kernel_porting"
+   
+   
+   class="custom-link">  
+   内核移植</a>
 </li>
 </ul></blockquote>
 
@@ -814,6 +1700,10 @@ class="custom-link">
 class="custom-link">
 移植验证&lt;/a>
 &lt;/li>
+&lt;li>&lt;a href="../2025_04_01-openharmony_Kernel_porting"
+class="custom-link">
+内核移植&lt;/a>
+&lt;/li>
 &lt;/ul>&lt;/blockquote>
 &lt;p>本篇内容源自&lt;a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/glossary.md"
 target="_blank" rel="noopener"
@@ -847,6 +1737,12 @@ class="custom-link">
    
    class="custom-link">  
    移植验证</a>
+</li>
+<li><a href="../2025_04_01-openharmony_Kernel_porting"
+   
+   
+   class="custom-link">  
+   内核移植</a>
 </li>
 </ul></blockquote>
 
@@ -1314,6 +2210,10 @@ class="custom-link">
 class="custom-link">
 移植验证&lt;/a>
 &lt;/li>
+&lt;li>&lt;a href="../2025_04_01-openharmony_Kernel_porting"
+class="custom-link">
+内核移植&lt;/a>
+&lt;/li>
 &lt;/ul>&lt;/blockquote>
 &lt;p>本篇指南依照&lt;a href="https://gitee.com/openharmony/docs"
 target="_blank" rel="noopener"
@@ -1346,6 +2246,12 @@ OpenHarmony/docs&lt;span class="external-link">↗&lt;/span>&lt;/a>
    
    class="custom-link">  
    移植验证</a>
+</li>
+<li><a href="../2025_04_01-openharmony_Kernel_porting"
+   
+   
+   class="custom-link">  
+   内核移植</a>
 </li>
 </ul></blockquote>
 
