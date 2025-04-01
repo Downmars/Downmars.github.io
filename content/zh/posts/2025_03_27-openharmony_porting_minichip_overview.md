@@ -39,6 +39,7 @@ OpenHarmony移植到STM32H743系列-这是一个系列
 - [术语含义](../2025_03_27-openharmony_glossary)
 - [源码拉取](../2025_03_27-openharmony_source)
 - [移植验证](../2025_03_27-openharmony_porting_minichip_overview):point_left: 你在这里
+- [内核移植](../2025_04_01-openharmony_Kernel_porting)
 {{< /quote >}}
 
 本篇内容源自[porting-minichip-overview](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md){{< sidenote >}}此参考文档适用于OpenHarmony LTS 3.0.1及之前版本的轻量系统的适配，即对于我现在的5.0.3版本可能会有一定的差别，但是大体上是可以参考的。{{< /sidenote >}}和[轻量系统STM32F407芯片移植案例](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-stm32f407-on-minisystem-eth.md)。
@@ -130,6 +131,7 @@ int _write(int fd, char *ptr, int len)
 
 重新编译代码，可以烧录至开发版中验证。  
 
+{{< figure src="/images/posts/2025_03_27-openharmony_porting_minichip_overview/usart1_output.png" alt="" title="usart1_output" caption="" align="center" width=800px height=450px >}}
 
 ## Openharmony编译构建  
 ### 构建芯片适配与产品样例目录  

@@ -39,6 +39,7 @@ OpenHarmony移植到STM32H743系列-这是一个系列
 - [术语含义](../2025_03_27-openharmony_glossary)
 - [源码拉取](../2025_03_27-openharmony_source):point_left: 你在这里
 - [移植验证](../2025_03_27-openharmony_porting_minichip_overview)
+- [内核移植](../2025_04_01-openharmony_Kernel_porting)
 {{< /quote >}}
 
 本篇内容源自[获取源码](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md)
