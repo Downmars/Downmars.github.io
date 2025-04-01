@@ -39,7 +39,7 @@ OpenHarmony移植到STM32H743系列-这是一个系列
 - [术语含义](../2025_03_27-openharmony_glossary)
 - [源码拉取](../2025_03_27-openharmony_source):point_left: 你在这里
 - [移植验证](../2025_03_27-openharmony_porting_minichip_overview)
-- [内核移植](../2025_04_01-openharmony_Kernel_porting)
+- [内核移植](../2025_04_01-openharmony_kernel_porting)
 {{< /quote >}}
 
 本篇内容源自[获取源码](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md)
@@ -49,14 +49,23 @@ OpenHarmony移植到STM32H743系列-这是一个系列
 我这里的环境是Archlinux x86_64 linux 6.13.8，python版本为3.13.2，由于我Ubuntu早就卸载了，所以这边我拿Archlinux进行尝试。  
 
 ## 安装配置hb  
-由于Archlinux从Python 3.11 开始默认启用了名为 `externally-managed-environment` 的特性，不再建议使用 `pip` 在系统环境中直接安装第三方 Python 包，以避免破坏系统环境。  
-我这这边选择使用conda进行环境的隔离。  
+由于Archlinux从Python 3.13 开始默认启用了名为 `externally-managed-environment` 的特性，不再建议使用 `pip` 在系统环境中直接安装第三方 Python 包，以避免破坏系统环境。  
+我这这边选择使用conda创建一个py39的环境，如果选择更新的环境，后续的包可能会有冲突。  
 ```bash  
-conda create -n ohos python=3.13
+conda create -n ohos python=3.9
 conda activate ohos
 pip install jinja2 ohos-build==0.4.6 -i https://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
 
 ```
+现在的hb包有一段时间没有维护了，似乎`hb env` 工具出现问题，导致涉及到这条指令工具都无法运行，如`make menuconfig`。我们通过查看`/kernel/liteos_m/Makefile`的第38行，可以看到：
+{{< collapse summary="/kernel/liteos_m/Makefile" >}}
+```md  
+$(foreach line,$(shell hb env | sed 's/\[OHOS INFO\]/ohos/g;s/ /_/g;s/:_/=/g' || true),$(eval $(line)))
+```
+{{< /collapse >}}
+参考教程：[带你熟悉鸿蒙轻内核Kconfig使用指南](https://developer.huawei.com/consumer/cn/forum/topic/0202760853720230022)的内容，这段内容是使用`foreach`命令和`sed`命令循环处理`hb env`输出的每一行，转换为`makefile`的变量形式，提供给之后的指令使用。
+第一行中使用了`hb env`指令，该指令返回错误，导致无法运行。
+
 ## 安装repo工具
 这边使用官方脚本进行[repo](https://gitee.com/oschina/repo/)的下载和拉取：  
 ```bash  

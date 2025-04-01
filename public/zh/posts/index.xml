@@ -39,7 +39,7 @@
    class=&#34;custom-link&#34;&gt;  
    移植验证&lt;/a&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_Kernel_porting&#34;
+&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_kernel_porting&#34;
    
    
    class=&#34;custom-link&#34;&gt;  
@@ -90,7 +90,7 @@
    class="custom-link">  
    移植验证</a>
 </li>
-<li><a href="../2025_04_01-openharmony_Kernel_porting"
+<li><a href="../2025_04_01-openharmony_kernel_porting"
    
    
    class="custom-link">  
@@ -1038,7 +1038,7 @@ A: 麻了，例程给我的是错误的，是STM32H743IIH6，而我使用的是S
    class=&#34;custom-link&#34;&gt;  
    移植验证&lt;/a&gt;
 &amp;#x1f448; 你在这里&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_Kernel_porting&#34;
+&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_kernel_porting&#34;
    
    
    class=&#34;custom-link&#34;&gt;  
@@ -1089,7 +1089,7 @@ A: 麻了，例程给我的是错误的，是STM32H743IIH6，而我使用的是S
    class="custom-link">  
    移植验证</a>
 &#x1f448; 你在这里</li>
-<li><a href="../2025_04_01-openharmony_Kernel_porting"
+<li><a href="../2025_04_01-openharmony_kernel_porting"
    
    
    class="custom-link">  
@@ -1595,7 +1595,7 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
    class=&#34;custom-link&#34;&gt;  
    移植验证&lt;/a&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_Kernel_porting&#34;
+&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_kernel_porting&#34;
    
    
    class=&#34;custom-link&#34;&gt;  
@@ -1639,7 +1639,7 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
    class="custom-link">  
    移植验证</a>
 </li>
-<li><a href="../2025_04_01-openharmony_Kernel_porting"
+<li><a href="../2025_04_01-openharmony_kernel_porting"
    
    
    class="custom-link">  
@@ -1658,12 +1658,64 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
 <h2 id="前提准备">前提准备</h2>
 <p>我这里的环境是Archlinux x86_64 linux 6.13.8，python版本为3.13.2，由于我Ubuntu早就卸载了，所以这边我拿Archlinux进行尝试。</p>
 <h2 id="安装配置hb">安装配置hb</h2>
-<p>由于Archlinux从Python 3.11 开始默认启用了名为 <code>externally-managed-environment</code> 的特性，不再建议使用 <code>pip</code> 在系统环境中直接安装第三方 Python 包，以避免破坏系统环境。<br>
-我这这边选择使用conda进行环境的隔离。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n ohos <span style="color:#8be9fd;font-style:italic">python</span><span style="color:#ff79c6">=</span>3.13
+<p>由于Archlinux从Python 3.13 开始默认启用了名为 <code>externally-managed-environment</code> 的特性，不再建议使用 <code>pip</code> 在系统环境中直接安装第三方 Python 包，以避免破坏系统环境。<br>
+我这这边选择使用conda创建一个py39的环境，如果选择更新的环境，后续的包可能会有冲突。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n ohos <span style="color:#8be9fd;font-style:italic">python</span><span style="color:#ff79c6">=</span>3.9
 </span></span><span style="display:flex;"><span>conda activate ohos
 </span></span><span style="display:flex;"><span>pip install jinja2 ohos-build<span style="color:#ff79c6">==</span>0.4.6 -i https://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
-</span></span></code></pre></div><h2 id="安装repo工具">安装repo工具</h2>
+</span></span></code></pre></div><p>现在的hb包有一段时间没有维护了，似乎<code>hb env</code> 工具出现问题，导致涉及到这条指令工具都无法运行，如<code>make menuconfig</code>。我们通过查看<code>/kernel/liteos_m/Makefile</code>的第38行，可以看到：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/kernel/liteos_m/Makefile</span>
+    <span class="line-count">1 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>$(foreach line,$(shell hb env | sed &#39;s/\[OHOS INFO\]/ohos/g;s/ /_/g;s/:_/=/g&#39; || true),$(eval $(line)))
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+参考教程：<a href="https://developer.huawei.com/consumer/cn/forum/topic/0202760853720230022"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   带你熟悉鸿蒙轻内核Kconfig使用指南<span class="external-link">↗</span></a>
+的内容，这段内容是使用<code>foreach</code>命令和<code>sed</code>命令循环处理<code>hb env</code>输出的每一行，转换为<code>makefile</code>的变量形式，提供给之后的指令使用。
+第一行中使用了<code>hb env</code>指令，该指令返回错误，导致无法运行。</p>
+<h2 id="安装repo工具">安装repo工具</h2>
 <p>这边使用官方脚本进行<a href="https://gitee.com/oschina/repo/"
    
     
@@ -1824,7 +1876,7 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
    class=&#34;custom-link&#34;&gt;  
    移植验证&lt;/a&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_Kernel_porting&#34;
+&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_kernel_porting&#34;
    
    
    class=&#34;custom-link&#34;&gt;  
@@ -1869,7 +1921,7 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
    class="custom-link">  
    移植验证</a>
 </li>
-<li><a href="../2025_04_01-openharmony_Kernel_porting"
+<li><a href="../2025_04_01-openharmony_kernel_porting"
    
    
    class="custom-link">  
@@ -2377,7 +2429,7 @@ com.sublimetext.3    net.daringfireball.markdown all</p>
    class=&#34;custom-link&#34;&gt;  
    移植验证&lt;/a&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_Kernel_porting&#34;
+&lt;li&gt;&lt;a href=&#34;../2025_04_01-openharmony_kernel_porting&#34;
    
    
    class=&#34;custom-link&#34;&gt;  
@@ -2421,7 +2473,7 @@ com.sublimetext.3    net.daringfireball.markdown all</p>
    class="custom-link">  
    移植验证</a>
 </li>
-<li><a href="../2025_04_01-openharmony_Kernel_porting"
+<li><a href="../2025_04_01-openharmony_kernel_porting"
    
    
    class="custom-link">  
