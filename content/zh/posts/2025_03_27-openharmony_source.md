@@ -63,6 +63,80 @@ pip install jinja2 ohos-build==0.4.6 -i https://mirrors.aliyun.com/pypi/simple -
 $(foreach line,$(shell hb env | sed 's/\[OHOS INFO\]/ohos/g;s/ /_/g;s/:_/=/g' || true),$(eval $(line)))
 ```
 {{< /collapse >}}
+实际上，我看查看一下`hb env`指令的内容可知，其输出类似：
+```bash  
+ohos_root_path=/home/zhushy/openharmony
+ohos_board=v200zr
+ohos_kernel=liteos_m
+ohos_product=iotlink_demo
+ohos_product_path=/home/zhushy/openharmony/vendor/bestechnic/iotlink_demo
+ohos_device_path=/home/zhushy/openharmony/device/board/fnlink/v200zr/liteos_m
+ohos_device_company=fnlink
+```
+而我们在进行`hb set`指令过后，会在`out/ohos_config.json`下生成选择过后对应的参数文件，如：
+{{< collapse summary="out/ohos_config.json" >}}
+```json  
+{
+  "root_path": "/home/dm/Projects/openharmony_project/test_1",
+  "board": "challenger_h743v2",
+  "kernel": "liteos_m",
+  "product": "challenger_h743v2",
+  "product_path": "/home/dm/Projects/openharmony_project/test_1/vendor/embfire/challenger_h743v2",
+  "device_path": "/home/dm/Projects/openharmony_project/test_1/device/board/embfire/challenger_h743v2/liteos_m",
+  "device_company": "embfire",
+  "os_level": "mini",
+  "version": "3.0",
+  "patch_cache": null,
+  "product_json": "/home/dm/Projects/openharmony_project/test_1/vendor/embfire/challenger_h743v2/config.json",
+  "component_type": "",
+  "product_config_path": "/home/dm/Projects/openharmony_project/test_1/vendor/embfire/challenger_h743v2",
+  "target_cpu": null,
+  "target_os": null,
+  "out_path": "/home/dm/Projects/openharmony_project/test_1/out/challenger_h743v2/challenger_h743v2",
+  "subsystem_config_json": "build/subsystem_config.json",
+  "device_config_path": "/home/dm/Projects/openharmony_project/test_1/device/board/embfire/challenger_h743v2/liteos_m",
+  "support_cpu": null,
+  "precise_branch": null,
+  "compile_config": null
+}
+```
+{{< /collapse >}}
+而`make menuconfig`指令执行的是`kernel/liteos_m`目录下的Makefile，所以我们只需要对其稍作修改即可使其正常运行：  
+{{< collapse summary="kernel/liteos_m/Makefile" >}}
+```diff  
+# 获取当前 Makefile 的根目录
+LITEOSTOPDIR := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+ROOT_DIR := $(dir $(dir $(LITEOSTOPDIR)))
+
+# 确保路径拼接正确
+CONFIG_JSON_PATH := $(ROOT_DIR)out/ohos_config.json  
+
+# 打印调试信息
+$(info LITEOSTOPDIR: $(LITEOSTOPDIR))
+$(info ROOT_DIR: $(ROOT_DIR))
+$(info CONFIG_JSON_PATH: $(CONFIG_JSON_PATH))
+
+# 从 JSON 中解析变量
+ohos_root_path := $(shell jq -r '.root_path' $(CONFIG_JSON_PATH))
+ohos_board := $(shell jq -r '.board' $(CONFIG_JSON_PATH))
+ohos_kernel := $(shell jq -r '.kernel' $(CONFIG_JSON_PATH))
+ohos_product := $(shell jq -r '.product' $(CONFIG_JSON_PATH))
+ohos_product_path := $(shell jq -r '.product_path' $(CONFIG_JSON_PATH))
+ohos_device_path := $(shell jq -r '.device_path' $(CONFIG_JSON_PATH))
+ohos_device_company := $(shell jq -r '.device_company' $(CONFIG_JSON_PATH))
+
+# 导出变量
+export ohos_root_path
+export ohos_board
+export ohos_kernel
+export ohos_product
+export ohos_product_path
+export ohos_device_path
+export ohos_device_company
+
+```
+{{< /collapse >}}
+现在即可正常运行。
 参考教程：[带你熟悉鸿蒙轻内核Kconfig使用指南](https://developer.huawei.com/consumer/cn/forum/topic/0202760853720230022)的内容，这段内容是使用`foreach`命令和`sed`命令循环处理`hb env`输出的每一行，转换为`makefile`的变量形式，提供给之后的指令使用。
 第一行中使用了`hb env`指令，该指令返回错误，导致无法运行。
 

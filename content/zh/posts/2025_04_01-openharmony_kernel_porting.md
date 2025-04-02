@@ -201,3 +201,5 @@ config SOC
 ```
 {{< /collapse >}}
 
+接下来可以在`kernel/liteos_m`目录下执行`make menuconfig`{{< sidenote >}}如果执行出错，可能是因为`hb env`的问题导致，可以查看[安装配置hb](../2025_03_27-openharmony_source/#安装配置hb){{< /sidenote >}}，实际上执行的是其目录下的`Makefile`，其中使得能够对`Platform/SoC Series`进行选择。结果将自动保存在`$(PRODUCT_PATH)/kernel_configs/debug.config`，下次执行`make menuconfig`时会导出保存的结果。
+

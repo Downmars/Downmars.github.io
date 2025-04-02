@@ -882,6 +882,13 @@
   </div>
 </details></p>
 
+<p>接下来可以在<code>kernel/liteos_m</code>目录下执行<code>make menuconfig</code><span class="sidenote-number"><small class="sidenote">如果执行出错，可能是因为<code>hb env</code>的问题导致，可以查看<a href="../2025_03_27-openharmony_source/#%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%aehb"
+   
+   
+   class="custom-link">  
+   安装配置hb</a></small></span>
+
+，实际上执行的是其目录下的<code>Makefile</code>，其中使得能够对<code>Platform/SoC Series</code>进行选择。结果将自动保存在<code>$(PRODUCT_PATH)/kernel_configs/debug.config</code>，下次执行<code>make menuconfig</code>时会导出保存的结果。</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -1706,6 +1713,351 @@ hb命令如果匹配到了多个<code>config.gni</code>，会将其中的<code>k
   </div>
 </details></p>
 
+实际上，我看查看一下<code>hb env</code>指令的内容可知，其输出类似：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ohos_root_path</span><span style="color:#ff79c6">=</span>/home/zhushy/openharmony
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ohos_board</span><span style="color:#ff79c6">=</span>v200zr
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ohos_kernel</span><span style="color:#ff79c6">=</span>liteos_m
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ohos_product</span><span style="color:#ff79c6">=</span>iotlink_demo
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ohos_product_path</span><span style="color:#ff79c6">=</span>/home/zhushy/openharmony/vendor/bestechnic/iotlink_demo
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ohos_device_path</span><span style="color:#ff79c6">=</span>/home/zhushy/openharmony/device/board/fnlink/v200zr/liteos_m
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ohos_device_company</span><span style="color:#ff79c6">=</span>fnlink
+</span></span></code></pre></div><p>而我们在进行<code>hb set</code>指令过后，会在<code>out/ohos_config.json</code>下生成选择过后对应的参数文件，如：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>out/ohos_config.json</span>
+    <span class="line-count">23 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;root_path&#34;</span>: <span style="color:#f1fa8c">&#34;/home/dm/Projects/openharmony_project/test_1&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;board&#34;</span>: <span style="color:#f1fa8c">&#34;challenger_h743v2&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;kernel&#34;</span>: <span style="color:#f1fa8c">&#34;liteos_m&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;product&#34;</span>: <span style="color:#f1fa8c">&#34;challenger_h743v2&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;product_path&#34;</span>: <span style="color:#f1fa8c">&#34;/home/dm/Projects/openharmony_project/test_1/vendor/embfire/challenger_h743v2&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;device_path&#34;</span>: <span style="color:#f1fa8c">&#34;/home/dm/Projects/openharmony_project/test_1/device/board/embfire/challenger_h743v2/liteos_m&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;device_company&#34;</span>: <span style="color:#f1fa8c">&#34;embfire&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;os_level&#34;</span>: <span style="color:#f1fa8c">&#34;mini&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;version&#34;</span>: <span style="color:#f1fa8c">&#34;3.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;patch_cache&#34;</span>: <span style="color:#ff79c6">null</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;product_json&#34;</span>: <span style="color:#f1fa8c">&#34;/home/dm/Projects/openharmony_project/test_1/vendor/embfire/challenger_h743v2/config.json&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;component_type&#34;</span>: <span style="color:#f1fa8c">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;product_config_path&#34;</span>: <span style="color:#f1fa8c">&#34;/home/dm/Projects/openharmony_project/test_1/vendor/embfire/challenger_h743v2&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;target_cpu&#34;</span>: <span style="color:#ff79c6">null</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;target_os&#34;</span>: <span style="color:#ff79c6">null</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;out_path&#34;</span>: <span style="color:#f1fa8c">&#34;/home/dm/Projects/openharmony_project/test_1/out/challenger_h743v2/challenger_h743v2&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;subsystem_config_json&#34;</span>: <span style="color:#f1fa8c">&#34;build/subsystem_config.json&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;device_config_path&#34;</span>: <span style="color:#f1fa8c">&#34;/home/dm/Projects/openharmony_project/test_1/device/board/embfire/challenger_h743v2/liteos_m&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;support_cpu&#34;</span>: <span style="color:#ff79c6">null</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;precise_branch&#34;</span>: <span style="color:#ff79c6">null</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;compile_config&#34;</span>: <span style="color:#ff79c6">null</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+而<code>make menuconfig</code>指令执行的是<code>kernel/liteos_m</code>目录下的Makefile，所以我们只需要对其稍作修改即可使其正常运行：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>kernel/liteos_m/Makefile</span>
+    <span class="line-count">29 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span># 获取当前 Makefile 的根目录
+</span></span><span style="display:flex;"><span>LITEOSTOPDIR := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+</span></span><span style="display:flex;"><span>ROOT_DIR := $(dir $(dir $(LITEOSTOPDIR)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 确保路径拼接正确
+</span></span><span style="display:flex;"><span>CONFIG_JSON_PATH := $(ROOT_DIR)out/ohos_config.json  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 打印调试信息
+</span></span><span style="display:flex;"><span>$(info LITEOSTOPDIR: $(LITEOSTOPDIR))
+</span></span><span style="display:flex;"><span>$(info ROOT_DIR: $(ROOT_DIR))
+</span></span><span style="display:flex;"><span>$(info CONFIG_JSON_PATH: $(CONFIG_JSON_PATH))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 从 JSON 中解析变量
+</span></span><span style="display:flex;"><span>ohos_root_path := $(shell jq -r &#39;.root_path&#39; $(CONFIG_JSON_PATH))
+</span></span><span style="display:flex;"><span>ohos_board := $(shell jq -r &#39;.board&#39; $(CONFIG_JSON_PATH))
+</span></span><span style="display:flex;"><span>ohos_kernel := $(shell jq -r &#39;.kernel&#39; $(CONFIG_JSON_PATH))
+</span></span><span style="display:flex;"><span>ohos_product := $(shell jq -r &#39;.product&#39; $(CONFIG_JSON_PATH))
+</span></span><span style="display:flex;"><span>ohos_product_path := $(shell jq -r &#39;.product_path&#39; $(CONFIG_JSON_PATH))
+</span></span><span style="display:flex;"><span>ohos_device_path := $(shell jq -r &#39;.device_path&#39; $(CONFIG_JSON_PATH))
+</span></span><span style="display:flex;"><span>ohos_device_company := $(shell jq -r &#39;.device_company&#39; $(CONFIG_JSON_PATH))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 导出变量
+</span></span><span style="display:flex;"><span>export ohos_root_path
+</span></span><span style="display:flex;"><span>export ohos_board
+</span></span><span style="display:flex;"><span>export ohos_kernel
+</span></span><span style="display:flex;"><span>export ohos_product
+</span></span><span style="display:flex;"><span>export ohos_product_path
+</span></span><span style="display:flex;"><span>export ohos_device_path
+</span></span><span style="display:flex;"><span>export ohos_device_company
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+现在即可正常运行。
 参考教程：<a href="https://developer.huawei.com/consumer/cn/forum/topic/0202760853720230022"
    
     

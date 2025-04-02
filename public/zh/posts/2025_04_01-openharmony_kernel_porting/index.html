@@ -288,7 +288,7 @@ code.has-jax {
     <h1 class="post-title entry-hint-parent">
       2025_04_01 Openharmony_Kernel_porting
     </h1>
-    <div class="post-meta"><span title='2025-04-01 14:57:19 +0800 CST'>2025-04-01</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;495 字&nbsp;·&nbsp;Downmars
+    <div class="post-meta"><span title='2025-04-01 14:57:19 +0800 CST'>2025-04-01</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;700 字&nbsp;·&nbsp;Downmars
 
 
     </div>
@@ -1311,6 +1311,13 @@ code.has-jax {
   </div>
 </details></p>
 
+<p>接下来可以在<code>kernel/liteos_m</code>目录下执行<code>make menuconfig</code><span class="sidenote-number"><small class="sidenote">如果执行出错，可能是因为<code>hb env</code>的问题导致，可以查看<a href="../2025_03_27-openharmony_source/#%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%aehb"
+   
+   
+   class="custom-link">  
+   安装配置hb</a></small></span>
+
+，实际上执行的是其目录下的<code>Makefile</code>，其中使得能够对<code>Platform/SoC Series</code>进行选择。结果将自动保存在<code>$(PRODUCT_PATH)/kernel_configs/debug.config</code>，下次执行<code>make menuconfig</code>时会导出保存的结果。</p>
 
 
   </div>
@@ -1808,7 +1815,7 @@ code.has-jax {
         
     
     
-    总计43.51k字
+    总计44.06k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
