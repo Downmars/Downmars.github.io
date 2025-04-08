@@ -203,3 +203,223 @@ config SOC
 
 接下来可以在`kernel/liteos_m`目录下执行`make menuconfig`{{< sidenote >}}如果执行出错，可能是因为`hb env`的问题导致，可以查看[安装配置hb](../2025_03_27-openharmony_source/#安装配置hb){{< /sidenote >}}，实际上执行的是其目录下的`Makefile`，其中使得能够对`Platform/SoC Series`进行选择。结果将自动保存在`$(PRODUCT_PATH)/kernel_configs/debug.config`，下次执行`make menuconfig`时会导出保存的结果。
 
+## BUILD.gn文件适配
+在`kernel/liteos_m/BUILD.gn`中，可以看到，通过`deps`指定了`Board`和`SoC`的编译入口：
+{{< collapse summary="kernel/liteos_m/BUILD.gn" >}}
+```gn
+deps += [ "//device/board/$device_company" ]            --- 对应//device/board/talkweb目录。
+deps += [ "//device/soc/$LOSCFG_SOC_COMPANY" ]          --- 对应//device/soc/st目录。
+```
+{{< /collapse >}}
+
+在`device/board/talkweb/BUILD.gn`中，创建并新增内容如下：
+
+{{< collapse summary="device/board/talkweb/BUILD.gn" >}}
+```gn
+if (ohos_kernel_type == "liteos_m") {
+    import("//kernel/liteos_m/liteos.gni")
+    module_name = get_path_info(rebase_path("."), "name")
+    module_group(module_name) {
+        modules = [ "challenger_h743v2" ]
+    }
+}
+```
+{{< /collapse >}}
+
+在`challenger_h743v2`目录下创建`BUILD.gn`，为了方便管理，将目录名作为模块名：
+
+{{< collapse summary="device/board/embfire/challenger_h743v2/BUILD.gn" >}}
+```gn
+import("//kernel/liteos_m/liteos.gni")
+module_name = get_path_info(rebase_path("."), "name")
+module_group(module_name) {
+    modules = [ 
+        "liteos_m",
+    ]
+}
+```
+{{< /collapse >}}
+
+将`stm32cubemx`生成的示例工程`Core`目录内的文件、`startup_stm32h743xx.s`启动文件和`startup_stm32h743xx_FLASH.ld`链接文件拷贝至`device/board/embfire/challenger_h743v2/liteos_m/`目录下，并在该目录下创建`BUILD.gn`，添加如下内容：
+
+{{< collapse summary="device/board/talkweb/niobe407/liteos_m/BUILD.gn" >}}
+```gn
+import("//kernel/liteos_m/liteos.gni")
+module_name = get_path_info(rebase_path("."), "name")
+kernel_module(module_name) {
+    sources = [
+        "startup_stm32h743xx.s",
+        "Src/main.c",
+        "Src/stm32h7xx_hal_msp.c",
+        "Src/stm32h7xx_it.c",
+        "Src/system_stm32h7xx.c",
+    ]
+    include_dirs = [ 
+        "Inc",
+    ]
+}
+
+config("public") {
+    ldflags = [
+        "-Wl,-T" + rebase_path("STM32H743xx_FLASH.ld"),
+        "-Wl,-u_printf_float",
+    ]
+    libs = [
+        "c",
+        "m",
+        "nosys",
+    ]
+}
+```
+{{< /collapse >}}
+
+在`make menuconfig`中配置`(Top) → Compat → Choose libc implementation`，选择`newlibc`。
+
+{{< collapse summary="device/soc/st/BUILD.gn" >}}
+```gn
+
+import("//kernel/liteos_m/liteos.gni")
+module_name = "stm32h7xx_sdk"
+kernel_module(module_name) {
+  asmflags = board_asmflags
+  sources = [
+    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c",
+    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c",
+    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c",
+    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c",
+    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c",
+    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c",
+    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c",
+    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c",
+    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c",
+  ]
+}
+#指定全局头文件搜索路径
+config("public") {
+    include_dirs = [
+        "Drivers/STM32H7xx_HAL_Driver/Inc",
+        "Drivers/CMSIS/Device/ST/STM32H7xx/Include",
+    ]
+}
+```
+{{< /collapse >}}
+
+## config.gni文件适配
+在预编译阶段，在`device/board/embfire/challenger_h743v2/liteos_m`目录下创建了一个`config.gni`文件，它其实就是`gn`脚本的头文件，可以理解为工程构建的全局配置文件。主要配置了CPU型号、交叉编译工具链及全局编译、链接参数等重要信息：
+{{< collapse summary="device/board/embfire/challenger_h743v2/liteos_m/config.gni" >}}
+```gn
+# Kernel type, e.g. "linux", "liteos_a", "liteos_m".
+kernel_type = "liteos_m"
+
+# Kernel version.
+kernel_version = "3.0.0"
+
+# Board CPU type, e.g. "cortex-a7", "riscv32".
+board_cpu = "cortex-m7"
+
+# Board arch, e.g.  "armv7-a", "rv32imac".
+board_arch = ""
+
+# Toolchain name used for system compiling.
+# E.g. gcc-arm-none-eabi, arm-linux-harmonyeabi-gcc, ohos-clang,  riscv32-unknown-elf.
+# Note: The default toolchain is "ohos-clang". It's not mandatory if you use the default toolchain.
+board_toolchain = "arm-none-eabi-gcc"
+
+use_board_toolchain = true
+
+# The toolchain path installed, it's not mandatory if you have added toolchain path to your ~/.bashrc.
+board_toolchain_path = ""
+
+# Compiler prefix.
+board_toolchain_prefix = "arm-none-eabi-"
+
+# Compiler type, "gcc" or "clang".
+board_toolchain_type = "gcc"
+
+#Debug compiler optimization level options
+board_opt_flags = [
+    "-mcpu=cortex-m7",   # 指定为 Cortex-M7 架构
+    "-mthumb",            # 启用 thumb 指令集
+    "-mfpu=fpv5-d16",     # 为 Cortex-M7 使用 fpv5 浮点单元
+    "-mfloat-abi=hard",   # 使用硬件浮点运算
+]
+
+# Board related common compile flags.
+board_cflags = [
+    "-Og",
+    "-Wall",
+    "-fdata-sections",
+    "-ffunction-sections",
+    "-DSTM32H743xx",
+]
+
+board_cflags += board_opt_flags
+
+board_asmflags = [
+    "-Og",
+    "-Wall",
+    "-fdata-sections",
+    "-ffunction-sections",
+]
+board_asmflags += board_opt_flags
+
+board_cxx_flags = board_cflags
+
+board_ld_flags = board_opt_flags
+
+# Board related headfiles search path.
+board_include_dirs = [ "//utils/native/lite/include" ]
+
+# Board adapter dir for OHOS components.
+board_adapter_dir = ""
+
+```
+{{< /collapse >}}
+
+## 内核子系统适配
+
+在`vendor/embfire/challenger_h743v2/config.json`文件中添加内核子系统及相关配置,如下所示：
+
+{{< collapse summary="vendor/embfire/challenger_h743v2/config.json" >}}
+```json
+{
+  "product_name": "challenger_h743v2",
+  "type": "mini", 
+  "version": "3.0",
+  "device_company": "embfire",
+  "board": "challenger_h743v2",
+  "kernel_type": "liteos_m",
+  "kernel_version": "3.0.0",
+  "subsystems": [ 
+    {
+          "subsystem": "kernel",
+          "components": [
+              {
+                  "component": "liteos_m"
+              }
+          ]
+      }
+  ],
+  "product_adapter_dir": "",
+  "third_party_dir": "//third_party" 
+}
+```
+{{< /collapse >}}
+
+## target_config.h文件适配
+
+在`kernel/liteos_m/kernel/include/los_config.h`文件中，有包含一个名为`target_config.h`的头文件，如果没有这个头文件，则会编译出错，由于我暂时不知道这个文件放在哪里，所以就暂时放下，后面遇到问题再说。
+
+{{< collapse summary="device/qemu/arm_mps2_an386/liteos_m/board/target_config.h" >}}
+```c
+#ifndef _TARGET_CONFIG_H
+#define _TARGET_CONFIG_H
+
+#define LOSCFG_BASE_CORE_TICK_RESPONSE_MAX                  0xFFFFFFUL
+#include "stm32f4xx.h"			//包含了stm32f4平台大量的宏定义。
+
+#endif
+```
+{{< /collapse >}}
+
+其中宏定义LOSCFG_BASE_CORE_TICK_RESPONSE_MAX是直接参考的//device/qemu/arm_mps2_an386/liteos_m/board/target_config.h文件中的配置，//device/qemu/arm_mps2_an386是cortex-m4的虚拟机工程，后续适配可以直接参考，在此不做深入讲解。

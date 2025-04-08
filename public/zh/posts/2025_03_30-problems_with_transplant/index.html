@@ -9,8 +9,9 @@
 <title>2025_03_30 Problems_with_transplant | DLog</title>
 <meta name="keywords" content="">
 <meta name="description" content="官方亮灯例程无法正确使用
-2025_03_30
+2025_03_29
 Q: 我这边使用官方的亮灯例程&lt; 12-GPIO输出-使用固件点亮LED灯 &gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。
+2025_03_30
 A: 麻了，例程给我的是错误的，是STM32H743IIH6，而我使用的是STM32H743XIH6，并且我并没有仔细查看开发版引脚区别，导致配置错误。">
 <meta name="author" content="Downmars">
 <link rel="canonical" href="http://localhost:1313/zh/posts/2025_03_30-problems_with_transplant/">
@@ -266,7 +267,7 @@ code.has-jax {
     <h1 class="post-title entry-hint-parent">
       2025_03_30 Problems_with_transplant
     </h1>
-    <div class="post-meta"><span title='2025-03-30 16:18:23 +0800 CST'>2025-03-30</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;159 字&nbsp;·&nbsp;Downmars
+    <div class="post-meta"><span title='2025-03-30 16:18:23 +0800 CST'>2025-03-30</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;1431 字&nbsp;·&nbsp;Downmars
 
 
     </div>
@@ -279,7 +280,11 @@ code.has-jax {
 
             <div class="inner"><ul>
                     <li>
-                        <a href="#%e5%ae%98%e6%96%b9%e4%ba%ae%e7%81%af%e4%be%8b%e7%a8%8b%e6%97%a0%e6%b3%95%e6%ad%a3%e7%a1%ae%e4%bd%bf%e7%94%a8" aria-label="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用</a>
+                        <a href="#%e5%ae%98%e6%96%b9%e4%ba%ae%e7%81%af%e4%be%8b%e7%a8%8b%e6%97%a0%e6%b3%95%e6%ad%a3%e7%a1%ae%e4%bd%bf%e7%94%a8" aria-label="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用</a></li>
+                    <li>
+                        <a href="#hb-env-%e6%8a%a5%e9%94%99" aria-label="hb env 报错">hb env 报错</a></li>
+                    <li>
+                        <a href="#hb-build--find-component-xxx-failed-please-check-it-in-xxxpartsjson" aria-label="hb build : find component xxx failed, please check it in xxx/parts.json">hb build : find component xxx failed, please check it in xxx/parts.json</a>
                     </li>
                 </ul>
             </div>
@@ -458,9 +463,25 @@ code.has-jax {
 </script>
 
   <div class="post-content"><h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用<a hidden class="anchor" aria-hidden="true" href="#官方亮灯例程无法正确使用">#</a></h2>
-<p>2025_03_30<br>
+<p>2025_03_29<br>
 Q: 我这边使用官方的亮灯例程&lt; 12-GPIO输出-使用固件点亮LED灯 &gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。<br>
+2025_03_30
 A: 麻了，例程给我的是错误的，是STM32H743IIH6，而我使用的是STM32H743XIH6，并且我并没有仔细查看开发版引脚区别，导致配置错误。</p>
+<h2 id="hb-env-报错">hb env 报错<a hidden class="anchor" aria-hidden="true" href="#hb-env-报错">#</a></h2>
+<p>2025_04_01<br>
+Q: hb env输出报错，error类型未知。
+2025_04_02<br>
+A: 解析hb env 功能的作用，将配置名单换方式导入，成功解决，可参照：<a href="../2025_03_27-openharmony_source/#%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%aehb"
+   
+   
+   class="custom-link">  
+   安装配置hb</a>
+ 。</p>
+<h2 id="hb-build--find-component-xxx-failed-please-check-it-in-xxxpartsjson">hb build : find component xxx failed, please check it in xxx/parts.json<a hidden class="anchor" aria-hidden="true" href="#hb-build--find-component-xxx-failed-please-check-it-in-xxxpartsjson">#</a></h2>
+<p>2025_04_03<br>
+Q: 报错内容为<code>Exception: find component init_lite failed, please check it in /home/dm/Projects/openharmony_project/test_1/out/preloader/neptune_iotlink_demo/parts.json.</code>，追根溯源是<code>openharmony_project/test_1/build/hb/util/loader/load_ohos_build.py</code>中的<code>compare_subsystem_and_component</code>函数中会将<code>parts.json</code>解析为相应的字典，来和自带的<code>build/subsystem_compoents_whitelist.json</code>和<code>build/compile_standard_whitelist.json</code>内容进行匹配，很显然白名单里没有我们的芯片内容，所以还会和<code>/out/challenger_h743v2/challenger_h743v2/build_configs/parts_info/part_subsystem.json</code>进行匹配，如果找到该组件或其覆盖版本，并且子系统名称匹配或相等，则认为组件有效。但是并没有找到就会报错，我需要明天查看一下<code>part_subsystem.json</code>文件是如何生成的。</p>
+<p>2025_04_08<br>
+A: 经过测试，应该是在<code>part_subsystem.json</code>中存在<code>product_{product_name}</code>和<code>device_{device_name}</code>这两个键的，比如我这里就应该是<code>product_challenger_h743v2</code>和<code>device_challenger_h743v2</code>，但是实际上我在生成的<code>part_subsystem.json</code>中找不到，于是和<code>parts.json</code>中的键值对应不上，导致了出现的错误。对于<code>part_subsystem.json</code>我们可以看到在文件<code>./build/hb/util/loader/load_ohos_build.py</code>中搜寻<code>process_parts_info(parts_config_dict, parts_info_output_path, skip_partlist_check)</code>函数，大致扫一下我们可以知道这个函数通过检查<code>parts_config_dict</code>字典中是否存在键<code>parts_info</code>，如果存在则获取对应的值<code>parts_info</code>，该值通常是一个包含零件信息的字典，将这个字典的键值输出到新生成的<code>part_subsystem.json</code>中。继续看下去，可以在<code>get_parts_info</code>函数中看到是如何使用<code>process_parts_info</code>的，我们可以看到在我们根据教程使用，会缺少创建<code>device/board/emfire/challenger_h743v2/ohos.build</code>和<code>vendor/emfire/challenger_h743v2/ohos.build</code>，我们可以按照提供的示例创建类似的文件即可避免错误。</p>
 
 
   </div>
@@ -963,7 +984,7 @@ A: 麻了，例程给我的是错误的，是STM32H743IIH6，而我使用的是S
         
     
     
-    总计44.06k字
+    总计46.73k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>

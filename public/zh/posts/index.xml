@@ -889,6 +889,1105 @@
    安装配置hb</a></small></span>
 
 ，实际上执行的是其目录下的<code>Makefile</code>，其中使得能够对<code>Platform/SoC Series</code>进行选择。结果将自动保存在<code>$(PRODUCT_PATH)/kernel_configs/debug.config</code>，下次执行<code>make menuconfig</code>时会导出保存的结果。</p>
+<h2 id="buildgn文件适配">BUILD.gn文件适配</h2>
+<p>在<code>kernel/liteos_m/BUILD.gn</code>中，可以看到，通过<code>deps</code>指定了<code>Board</code>和<code>SoC</code>的编译入口：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>kernel/liteos_m/BUILD.gn</span>
+    <span class="line-count">2 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>deps += [ &#34;//device/board/$device_company&#34; ]            --- 对应//device/board/talkweb目录。
+</span></span><span style="display:flex;"><span>deps += [ &#34;//device/soc/$LOSCFG_SOC_COMPANY&#34; ]          --- 对应//device/soc/st目录。
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>在<code>device/board/talkweb/BUILD.gn</code>中，创建并新增内容如下：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/talkweb/BUILD.gn</span>
+    <span class="line-count">7 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if (ohos_kernel_type == &#34;liteos_m&#34;) {
+</span></span><span style="display:flex;"><span>    import(&#34;//kernel/liteos_m/liteos.gni&#34;)
+</span></span><span style="display:flex;"><span>    module_name = get_path_info(rebase_path(&#34;.&#34;), &#34;name&#34;)
+</span></span><span style="display:flex;"><span>    module_group(module_name) {
+</span></span><span style="display:flex;"><span>        modules = [ &#34;challenger_h743v2&#34; ]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>在<code>challenger_h743v2</code>目录下创建<code>BUILD.gn</code>，为了方便管理，将目录名作为模块名：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/BUILD.gn</span>
+    <span class="line-count">7 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>import(&#34;//kernel/liteos_m/liteos.gni&#34;)
+</span></span><span style="display:flex;"><span>module_name = get_path_info(rebase_path(&#34;.&#34;), &#34;name&#34;)
+</span></span><span style="display:flex;"><span>module_group(module_name) {
+</span></span><span style="display:flex;"><span>    modules = [ 
+</span></span><span style="display:flex;"><span>        &#34;liteos_m&#34;,
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>将<code>stm32cubemx</code>生成的示例工程<code>Core</code>目录内的文件、<code>startup_stm32h743xx.s</code>启动文件和<code>startup_stm32h743xx_FLASH.ld</code>链接文件拷贝至<code>device/board/embfire/challenger_h743v2/liteos_m/</code>目录下，并在该目录下创建<code>BUILD.gn</code>，添加如下内容：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>device/board/talkweb/niobe407/liteos_m/BUILD.gn</span>
+    <span class="line-count">26 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>import(&#34;//kernel/liteos_m/liteos.gni&#34;)
+</span></span><span style="display:flex;"><span>module_name = get_path_info(rebase_path(&#34;.&#34;), &#34;name&#34;)
+</span></span><span style="display:flex;"><span>kernel_module(module_name) {
+</span></span><span style="display:flex;"><span>    sources = [
+</span></span><span style="display:flex;"><span>        &#34;startup_stm32h743xx.s&#34;,
+</span></span><span style="display:flex;"><span>        &#34;Src/main.c&#34;,
+</span></span><span style="display:flex;"><span>        &#34;Src/stm32h7xx_hal_msp.c&#34;,
+</span></span><span style="display:flex;"><span>        &#34;Src/stm32h7xx_it.c&#34;,
+</span></span><span style="display:flex;"><span>        &#34;Src/system_stm32h7xx.c&#34;,
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    include_dirs = [ 
+</span></span><span style="display:flex;"><span>        &#34;Inc&#34;,
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config(&#34;public&#34;) {
+</span></span><span style="display:flex;"><span>    ldflags = [
+</span></span><span style="display:flex;"><span>        &#34;-Wl,-T&#34; + rebase_path(&#34;STM32H743xx_FLASH.ld&#34;),
+</span></span><span style="display:flex;"><span>        &#34;-Wl,-u_printf_float&#34;,
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    libs = [
+</span></span><span style="display:flex;"><span>        &#34;c&#34;,
+</span></span><span style="display:flex;"><span>        &#34;m&#34;,
+</span></span><span style="display:flex;"><span>        &#34;nosys&#34;,
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>在<code>make menuconfig</code>中配置<code>(Top) → Compat → Choose libc implementation</code>，选择<code>newlibc</code>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>device/soc/st/BUILD.gn</span>
+    <span class="line-count">24 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>import(&#34;//kernel/liteos_m/liteos.gni&#34;)
+</span></span><span style="display:flex;"><span>module_name = &#34;stm32h7xx_sdk&#34;
+</span></span><span style="display:flex;"><span>kernel_module(module_name) {
+</span></span><span style="display:flex;"><span>  asmflags = board_asmflags
+</span></span><span style="display:flex;"><span>  sources = [
+</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c&#34;,
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>#指定全局头文件搜索路径
+</span></span><span style="display:flex;"><span>config(&#34;public&#34;) {
+</span></span><span style="display:flex;"><span>    include_dirs = [
+</span></span><span style="display:flex;"><span>        &#34;Drivers/STM32H7xx_HAL_Driver/Inc&#34;,
+</span></span><span style="display:flex;"><span>        &#34;Drivers/CMSIS/Device/ST/STM32H7xx/Include&#34;,
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h2 id="configgni文件适配">config.gni文件适配</h2>
+<p>在预编译阶段，在<code>device/board/embfire/challenger_h743v2/liteos_m</code>目录下创建了一个<code>config.gni</code>文件，它其实就是<code>gn</code>脚本的头文件，可以理解为工程构建的全局配置文件。主要配置了CPU型号、交叉编译工具链及全局编译、链接参数等重要信息：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/liteos_m/config.gni</span>
+    <span class="line-count">64 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#6272a4"># Kernel type, e.g. &#34;linux&#34;, &#34;liteos_a&#34;, &#34;liteos_m&#34;.</span>
+</span></span><span style="display:flex;"><span>kernel_type <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;liteos_m&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Kernel version.</span>
+</span></span><span style="display:flex;"><span>kernel_version <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;3.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Board CPU type, e.g. &#34;cortex-a7&#34;, &#34;riscv32&#34;.</span>
+</span></span><span style="display:flex;"><span>board_cpu <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;cortex-m7&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Board arch, e.g.  &#34;armv7-a&#34;, &#34;rv32imac&#34;.</span>
+</span></span><span style="display:flex;"><span>board_arch <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Toolchain name used for system compiling.</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># E.g. gcc-arm-none-eabi, arm-linux-harmonyeabi-gcc, ohos-clang,  riscv32-unknown-elf.</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Note: The default toolchain is &#34;ohos-clang&#34;. It&#39;s not mandatory if you use the default toolchain.</span>
+</span></span><span style="display:flex;"><span>board_toolchain <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;arm-none-eabi-gcc&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>use_board_toolchain <span style="color:#ff79c6">=</span> true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># The toolchain path installed, it&#39;s not mandatory if you have added toolchain path to your ~/.bashrc.</span>
+</span></span><span style="display:flex;"><span>board_toolchain_path <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Compiler prefix.</span>
+</span></span><span style="display:flex;"><span>board_toolchain_prefix <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;arm-none-eabi-&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Compiler type, &#34;gcc&#34; or &#34;clang&#34;.</span>
+</span></span><span style="display:flex;"><span>board_toolchain_type <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;gcc&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#Debug compiler optimization level options</span>
+</span></span><span style="display:flex;"><span>board_opt_flags <span style="color:#ff79c6">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-mcpu=cortex-m7&#34;</span>,   <span style="color:#6272a4"># 指定为 Cortex-M7 架构</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-mthumb&#34;</span>,            <span style="color:#6272a4"># 启用 thumb 指令集</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-mfpu=fpv5-d16&#34;</span>,     <span style="color:#6272a4"># 为 Cortex-M7 使用 fpv5 浮点单元</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-mfloat-abi=hard&#34;</span>,   <span style="color:#6272a4"># 使用硬件浮点运算</span>
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Board related common compile flags.</span>
+</span></span><span style="display:flex;"><span>board_cflags <span style="color:#ff79c6">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-Og&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-Wall&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-fdata-sections&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-ffunction-sections&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-DSTM32H743xx&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>board_cflags <span style="color:#ff79c6">+=</span> board_opt_flags
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>board_asmflags <span style="color:#ff79c6">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-Og&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-Wall&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-fdata-sections&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;-ffunction-sections&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>board_asmflags <span style="color:#ff79c6">+=</span> board_opt_flags
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>board_cxx_flags <span style="color:#ff79c6">=</span> board_cflags
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>board_ld_flags <span style="color:#ff79c6">=</span> board_opt_flags
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Board related headfiles search path.</span>
+</span></span><span style="display:flex;"><span>board_include_dirs <span style="color:#ff79c6">=</span> [ <span style="color:#f1fa8c">&#34;//utils/native/lite/include&#34;</span> ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Board adapter dir for OHOS components.</span>
+</span></span><span style="display:flex;"><span>board_adapter_dir <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<h2 id="内核子系统适配">内核子系统适配</h2>
+<p>在<code>vendor/embfire/challenger_h743v2/config.json</code>文件中添加内核子系统及相关配置,如下所示：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>vendor/embfire/challenger_h743v2/config.json</span>
+    <span class="line-count">21 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;product_name&#34;</span>: <span style="color:#f1fa8c">&#34;challenger_h743v2&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;type&#34;</span>: <span style="color:#f1fa8c">&#34;mini&#34;</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;version&#34;</span>: <span style="color:#f1fa8c">&#34;3.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;device_company&#34;</span>: <span style="color:#f1fa8c">&#34;embfire&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;board&#34;</span>: <span style="color:#f1fa8c">&#34;challenger_h743v2&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;kernel_type&#34;</span>: <span style="color:#f1fa8c">&#34;liteos_m&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;kernel_version&#34;</span>: <span style="color:#f1fa8c">&#34;3.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;subsystems&#34;</span>: [ 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">&#34;subsystem&#34;</span>: <span style="color:#f1fa8c">&#34;kernel&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">&#34;components&#34;</span>: [
+</span></span><span style="display:flex;"><span>              {
+</span></span><span style="display:flex;"><span>                  <span style="color:#ff79c6">&#34;component&#34;</span>: <span style="color:#f1fa8c">&#34;liteos_m&#34;</span>
+</span></span><span style="display:flex;"><span>              }
+</span></span><span style="display:flex;"><span>          ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;product_adapter_dir&#34;</span>: <span style="color:#f1fa8c">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;third_party_dir&#34;</span>: <span style="color:#f1fa8c">&#34;//third_party&#34;</span> 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h2 id="target_configh文件适配">target_config.h文件适配</h2>
+<p>在<code>kernel/liteos_m/kernel/include/los_config.h</code>文件中，有包含一个名为<code>target_config.h</code>的头文件，如果没有这个头文件，则会编译出错，由于我暂时不知道这个文件放在哪里，所以就暂时放下，后面遇到问题再说。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/qemu/arm_mps2_an386/liteos_m/board/target_config.h</span>
+    <span class="line-count">7 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#ifndef _TARGET_CONFIG_H
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define _TARGET_CONFIG_H
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define LOSCFG_BASE_CORE_TICK_RESPONSE_MAX                  0xFFFFFFUL
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&#34;stm32f4xx.h&#34;			//包含了stm32f4平台大量的宏定义。</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#endif
+</span></span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>其中宏定义LOSCFG_BASE_CORE_TICK_RESPONSE_MAX是直接参考的//device/qemu/arm_mps2_an386/liteos_m/board/target_config.h文件中的配置，//device/qemu/arm_mps2_an386是cortex-m4的虚拟机工程，后续适配可以直接参考，在此不做深入讲解。</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -897,13 +1996,30 @@
       <pubDate>Sun, 30 Mar 2025 16:18:23 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_03_30-problems_with_transplant/</guid>
       <description>&lt;h2 id=&#34;官方亮灯例程无法正确使用&#34;&gt;官方亮灯例程无法正确使用&lt;/h2&gt;
-&lt;p&gt;2025_03_30&lt;br&gt;
+&lt;p&gt;2025_03_29&lt;br&gt;
 Q: 我这边使用官方的亮灯例程&amp;lt; 12-GPIO输出-使用固件点亮LED灯 &amp;gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。&lt;br&gt;
+2025_03_30
 A: 麻了，例程给我的是错误的，是STM32H743IIH6，而我使用的是STM32H743XIH6，并且我并没有仔细查看开发版引脚区别，导致配置错误。&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用</h2>
-<p>2025_03_30<br>
+<p>2025_03_29<br>
 Q: 我这边使用官方的亮灯例程&lt; 12-GPIO输出-使用固件点亮LED灯 &gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。<br>
+2025_03_30
 A: 麻了，例程给我的是错误的，是STM32H743IIH6，而我使用的是STM32H743XIH6，并且我并没有仔细查看开发版引脚区别，导致配置错误。</p>
+<h2 id="hb-env-报错">hb env 报错</h2>
+<p>2025_04_01<br>
+Q: hb env输出报错，error类型未知。
+2025_04_02<br>
+A: 解析hb env 功能的作用，将配置名单换方式导入，成功解决，可参照：<a href="../2025_03_27-openharmony_source/#%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%aehb"
+   
+   
+   class="custom-link">  
+   安装配置hb</a>
+ 。</p>
+<h2 id="hb-build--find-component-xxx-failed-please-check-it-in-xxxpartsjson">hb build : find component xxx failed, please check it in xxx/parts.json</h2>
+<p>2025_04_03<br>
+Q: 报错内容为<code>Exception: find component init_lite failed, please check it in /home/dm/Projects/openharmony_project/test_1/out/preloader/neptune_iotlink_demo/parts.json.</code>，追根溯源是<code>openharmony_project/test_1/build/hb/util/loader/load_ohos_build.py</code>中的<code>compare_subsystem_and_component</code>函数中会将<code>parts.json</code>解析为相应的字典，来和自带的<code>build/subsystem_compoents_whitelist.json</code>和<code>build/compile_standard_whitelist.json</code>内容进行匹配，很显然白名单里没有我们的芯片内容，所以还会和<code>/out/challenger_h743v2/challenger_h743v2/build_configs/parts_info/part_subsystem.json</code>进行匹配，如果找到该组件或其覆盖版本，并且子系统名称匹配或相等，则认为组件有效。但是并没有找到就会报错，我需要明天查看一下<code>part_subsystem.json</code>文件是如何生成的。</p>
+<p>2025_04_08<br>
+A: 经过测试，应该是在<code>part_subsystem.json</code>中存在<code>product_{product_name}</code>和<code>device_{device_name}</code>这两个键的，比如我这里就应该是<code>product_challenger_h743v2</code>和<code>device_challenger_h743v2</code>，但是实际上我在生成的<code>part_subsystem.json</code>中找不到，于是和<code>parts.json</code>中的键值对应不上，导致了出现的错误。对于<code>part_subsystem.json</code>我们可以看到在文件<code>./build/hb/util/loader/load_ohos_build.py</code>中搜寻<code>process_parts_info(parts_config_dict, parts_info_output_path, skip_partlist_check)</code>函数，大致扫一下我们可以知道这个函数通过检查<code>parts_config_dict</code>字典中是否存在键<code>parts_info</code>，如果存在则获取对应的值<code>parts_info</code>，该值通常是一个包含零件信息的字典，将这个字典的键值输出到新生成的<code>part_subsystem.json</code>中。继续看下去，可以在<code>get_parts_info</code>函数中看到是如何使用<code>process_parts_info</code>的，我们可以看到在我们根据教程使用，会缺少创建<code>device/board/emfire/challenger_h743v2/ohos.build</code>和<code>vendor/emfire/challenger_h743v2/ohos.build</code>，我们可以按照提供的示例创建类似的文件即可避免错误。</p>
 ]]></content:encoded>
     </item>
     <item>
