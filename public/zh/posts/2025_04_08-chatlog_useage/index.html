@@ -6,34 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>OpenHarmony移植到STM32H743系列_资源预览 | DLog</title>
+<title>2025_04_08 Chatlog_useage | DLog</title>
 <meta name="keywords" content="">
-<meta name="description" content="OpenHarmony移植到STM32H743系列-这是一个系列
-
-  
-   资源预览
-&#x1f448; 你在这里
-  
-   术语含义
-
-  
-   源码拉取
-
-  
-   移植验证
-
-  
-   内核移植
-
-
-
-本篇指南依照  
-   OpenHarmony/docs↗
-进行整理。
-系统类型
-OpenHarmony是一款面向全场景的开源分布式操作系统，支持128KiB到xGiB RAM 资源的设备上运行系统组件，我们选择的STM32H743的参数为ARM Cortex-M7 内核，主频为 480MHz，2048K的Flash，以及1024KB的SRAM。">
+<meta name="description" content="前言
+前段时间买了一台mac mini，但是由于苹果的储存是金子做的，我就使用了外置硬盘来进行大文件的储存。我打算等到一年保修期过后进行扩容操作，在此期间，我使用ntfs格式的一块移动硬盘作为外置尿袋。由于苹果使用的是Apfs格式的硬盘方式，现在网上使用的一些开源方案我测试并未成功，所以这边使用了  
+   NTFS for Mac↗
+进行硬盘的挂载，但是AppStore中的“大于1G软件下载到外置的硬盘中”的选项因为我挂载的还是ntfs格式的方法，无法识别到。同时网络上在监控器中寻找安装包的位置方法我也未曾成功，所以暂时搁置了。
+微信等聊天软件的数据占用往往会很大，我就一直没有安装，直到我昨天看到一篇文章  
+   给你的Macbook硬盘省点空间：将微信等APP彻底安装到移动硬盘↗
+，我动了下载微信的心思，同时一个开源软件  
+   chatlog↗
+坚定了我的想法。这是一个可以从微信或者QQ中获取聊天数据，并且支持MCP协议，可以和市面上的AI助手结合来搭建自己的消息库。">
 <meta name="author" content="Downmars">
-<link rel="canonical" href="http://localhost:1313/zh/posts/2025_03_19-openharmony_with_stm32h743/">
+<link rel="canonical" href="http://localhost:1313/zh/posts/2025_04_08-chatlog_useage/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.57310bbf433f32dc0105c07276ca4432adf4135cd6a67e8b5eb5b6af5e1cc286.css" integrity="sha256-VzELv0M/MtwBBcBydspEMq30E1zWpn6LXrW2r14cwoY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/images/blog.png">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/images/blog.png">
@@ -42,7 +27,7 @@ OpenHarmony是一款面向全场景的开源分布式操作系统，支持128KiB
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/2025_03_19-openharmony_with_stm32h743/">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/2025_04_08-chatlog_useage/">
 <noscript>
     <style>
         #theme-toggle,
@@ -284,9 +269,9 @@ code.has-jax {
   <header class="post-header">
     <div class="breadcrumbs"><a href="http://localhost:1313/zh/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      OpenHarmony移植到STM32H743系列_资源预览
+      2025_04_08 Chatlog_useage
     </h1>
-    <div class="post-meta"><span title='2025-03-21 16:52:33 +0800 CST'>2025-03-21</span>&nbsp;·&nbsp;4 分钟&nbsp;·&nbsp;1825 字&nbsp;·&nbsp;Downmars
+    <div class="post-meta"><span title='2025-04-08 21:27:06 +0800 CST'>2025-04-08</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;855 字&nbsp;·&nbsp;Downmars
 
 
     </div>
@@ -299,15 +284,17 @@ code.has-jax {
 
             <div class="inner"><ul>
                     <li>
-                        <a href="#%e7%b3%bb%e7%bb%9f%e7%b1%bb%e5%9e%8b" aria-label="系统类型">系统类型</a></li>
+                        <a href="#%e5%89%8d%e8%a8%80" aria-label="前言">前言</a></li>
                     <li>
-                        <a href="#%e6%96%87%e6%a1%a3%e5%af%bc%e8%af%bb" aria-label="文档导读">文档导读</a></li>
+                        <a href="#%e7%a7%bb%e6%a4%8d%e5%be%ae%e4%bf%a1%e6%95%b0%e6%8d%ae" aria-label="移植微信数据">移植微信数据</a></li>
                     <li>
-                        <a href="#%e5%bc%80%e5%8f%91%e6%9d%bf%e8%b5%84%e6%ba%90%e4%bb%8b%e7%bb%8d" aria-label="开发板资源介绍">开发板资源介绍</a></li>
+                        <a href="#%e5%ae%89%e8%a3%85-chatlog" aria-label="安装 chatlog">安装 chatlog</a></li>
                     <li>
-                        <a href="#%e5%bc%80%e5%8f%91%e7%89%88%e6%9c%ac" aria-label="开发版本">开发版本</a></li>
+                        <a href="#%e5%85%b3%e9%97%adsip" aria-label="关闭SIP">关闭SIP</a></li>
                     <li>
-                        <a href="#%e8%ae%ba%e5%9d%9b" aria-label="论坛">论坛</a>
+                        <a href="#%e9%85%8d%e7%bd%ae-chatlog" aria-label="配置 chatlog">配置 chatlog</a></li>
+                    <li>
+                        <a href="#%e6%8e%a5%e5%85%a5-mcp" aria-label="接入 MCP">接入 MCP</a>
                     </li>
                 </ul>
             </div>
@@ -485,598 +472,122 @@ code.has-jax {
     }, false);
 </script>
 
-  <div class="post-content"><blockquote class="quote"><p>OpenHarmony移植到STM32H743系列-这是一个系列</p>
-<ul>
-<li><a href="../2025_03_19-openharmony_with_stm32h743"
-   
-   
-   class="custom-link">  
-   资源预览</a>
-&#x1f448; 你在这里</li>
-<li><a href="../2025_03_27-openharmony_glossary"
-   
-   
-   class="custom-link">  
-   术语含义</a>
-</li>
-<li><a href="../2025_03_27-openharmony_source"
-   
-   
-   class="custom-link">  
-   源码拉取</a>
-</li>
-<li><a href="../2025_03_27-openharmony_porting_minichip_overview"
-   
-   
-   class="custom-link">  
-   移植验证</a>
-</li>
-<li><a href="../2025_04_01-openharmony_kernel_porting"
-   
-   
-   class="custom-link">  
-   内核移植</a>
-</li>
-</ul></blockquote>
-
-<p>本篇指南依照<a href="https://gitee.com/openharmony/docs"
+  <div class="post-content"><h2 id="前言">前言<a hidden class="anchor" aria-hidden="true" href="#前言">#</a></h2>
+<p>前段时间买了一台mac mini，但是由于苹果的储存是金子做的，我就使用了外置硬盘来进行大文件的储存。我打算等到一年保修期过后进行扩容操作，在此期间，我使用<code>ntfs</code>格式的一块移动硬盘作为外置尿袋。由于苹果使用的是<code>Apfs</code>格式的硬盘方式，现在网上使用的一些开源方案我测试并未成功，所以这边使用了<a href="https://www.paragon-software.com/home/ntfs-mac/#"
    
     
        target="_blank" rel="noopener" 
    
    class="custom-link">  
-   OpenHarmony/docs<span class="external-link">↗</span></a>
-进行整理。</p>
-<h2 id="系统类型">系统类型<a hidden class="anchor" aria-hidden="true" href="#系统类型">#</a></h2>
-<p>OpenHarmony是一款面向全场景的开源分布式操作系统，支持128KiB到xGiB RAM 资源的设备上运行系统组件，我们选择的STM32H743的参数为ARM Cortex-M7 内核，主频为 480MHz，2048K的Flash，以及1024KB的SRAM。</p>
-<table>
-  <thead>
-      <tr>
-          <th>系统类型</th>
-          <th>面向处理器</th>
-          <th>最小内存需求</th>
-          <th>主要特性描述</th>
-          <th>典型应用场景</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>轻量系统</td>
-          <td>MCU 类（如 Arm Cortex-M、RISC-V 32 位）</td>
-          <td>128 KiB</td>
-          <td>支持轻量级网络协议、图形框架、IOT 总线组件等</td>
-          <td>智能家居模组、传感器设备、穿戴设备</td>
-      </tr>
-      <tr>
-          <td>小型系统</td>
-          <td>应用处理器（如 Arm Cortex-A）</td>
-          <td>1 MiB</td>
-          <td>提供更高安全性、标准图形框架、多媒体编解码能力</td>
-          <td>IP Camera、电子猫眼、路由器、行车记录仪</td>
-      </tr>
-      <tr>
-          <td>标准系统</td>
-          <td>应用处理器（如 Arm Cortex-A）</td>
-          <td>128 MiB</td>
-          <td>提供 3D GPU、硬件合成、丰富控件与动效、完整应用框架</td>
-          <td>高端冰箱显示屏</td>
-      </tr>
-  </tbody>
-</table>
-<p>我们根据H743的内存，选择轻量系统作为我们的移植对象。</p>
-<h2 id="文档导读">文档导读<a hidden class="anchor" aria-hidden="true" href="#文档导读">#</a></h2>
-<table>
-  <thead>
-      <tr>
-          <th>学习路径</th>
-          <th>开发者业务</th>
-          <th>相关文档</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>了解OpenHarmony</td>
-          <td>整体认知OpenHarmony</td>
-          <td><a href="https://gitee.com/openharmony"
+   NTFS for Mac<span class="external-link">↗</span></a>
+进行硬盘的挂载，但是<code>AppStore</code>中的“大于1G软件下载到外置的硬盘中”的选项因为我挂载的还是<code>ntfs</code>格式的方法，无法识别到。同时网络上在监控器中寻找安装包的位置方法我也未曾成功，所以暂时搁置了。<br>
+微信等聊天软件的数据占用往往会很大，我就一直没有安装，直到我昨天看到一篇文章<a href="https://dysonfreeman.netlify.app/posts/%E5%B0%86app%E5%AE%89%E8%A3%85%E5%9C%A8%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E4%B8%8A/"
    
     
        target="_blank" rel="noopener" 
    
    class="custom-link">  
-   OpenHarmony概述<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/glossary.md"
+   给你的Macbook硬盘省点空间：将微信等APP彻底安装到移动硬盘<span class="external-link">↗</span></a>
+，我动了下载微信的心思，同时一个开源软件<a href="https://github.com/sjzar/chatlog"
    
     
        target="_blank" rel="noopener" 
    
    class="custom-link">  
-   术语<span class="external-link">↗</span></a>
-</td>
-      </tr>
-      <tr>
-          <td>获取开发资源</td>
-          <td>准备开发前相关资源</td>
-          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   获取源码<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/gettools-acquire.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   获取工具<span class="external-link">↗</span></a>
-</td>
-      </tr>
-      <tr>
-          <td>快速入门</td>
-          <td>快速熟悉OpenHarmony环境搭建、编译、烧录、调测、运行</td>
-          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/Readme-CN.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   快速入门<span class="external-link">↗</span></a>
-</td>
-      </tr>
-      <tr>
-          <td>基础能力使用</td>
-          <td>使用OpenHarmony提供的基础能力</td>
-          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/kernel/kernel-mini-overview.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   轻量系统内核开发指南<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/kernel/kernel-small-overview.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   小型系统内核开发指南<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/driver/driver-overview-foundation.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   驱动开发指南<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-build-all.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   子系统开发指南<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/security/security-guidelines-overall.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   安全指南<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/security/security-privacy-protection.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   隐私保护<span class="external-link">↗</span></a>
-</td>
-      </tr>
-      <tr>
-          <td>进阶开发</td>
-          <td>结合系统能力开发智能设备</td>
-          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/guide/device-wlan-led-control.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   WLAN连接类产品<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/guide/device-camera-control-overview.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   带屏摄像头类产品<span class="external-link">↗</span></a>
-</td>
-      </tr>
-      <tr>
-          <td>移植适配</td>
-          <td>针对特定芯片、三方库适配与案例</td>
-          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-overview.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   轻量系统芯片移植指导<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-smallchip-prepare-needs.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   小型系统芯片移植指导<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-thirdparty-overview.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   轻量和小型系统三方库移植指导<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-bes2600w-on-minisystem-display-demo.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   恒玄芯片带屏案例<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-asr582x-combo-demo.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   ASR芯片Combo案例<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-cst85f01-combo-demo.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   芯海CST85案例<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-stm32f407-on-minisystem-eth.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   STM32F407案例<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-w800-combo-demo.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   W800芯片案例<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-stm32mp15xx-on-smallsystem.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   STM32MP1案例<span class="external-link">↗</span></a>
-</td>
-      </tr>
-      <tr>
-          <td>贡献组件</td>
-          <td>为OpenHarmony贡献功能组件</td>
-          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/hpm-part/hpm-part-about.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   HPM Part 介绍<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/hpm-part/hpm-part-development.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   开发指导<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/hpm-part/hpm-part-reference.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   参考资料<span class="external-link">↗</span></a>
-</td>
-      </tr>
-      <tr>
-          <td>参考</td>
-          <td>常见问题解答、接口与API参考</td>
-          <td><a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/faqs/faqs-overview.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   常见问题<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/reference/hdi-apis/Readme-CN.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   HDI接口参考<span class="external-link">↗</span></a>
-；<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/reference/kernel/cmsis/Readme-CN.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   CMSIS API参考<span class="external-link">↗</span></a>
-</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="开发板资源介绍">开发板资源介绍<a hidden class="anchor" aria-hidden="true" href="#开发板资源介绍">#</a></h2>
-<ul>
-<li><a href="https://www.st.com/resource/en/datasheet/stm32h743bi.pdf"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   STM32H743 Datasheet<span class="external-link">↗</span></a>
-</li>
-<li><a href="https://www.st.com.cn/zh/microcontrollers-microprocessors/stm32h743-753/documentation.html"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   STM32H743 相关PDF文档<span class="external-link">↗</span></a>
-<br>
-本次开发研究使用了<a href="https://detail.tmall.com/item.htm?id=600354257295&amp;price=496.32&amp;sourceType=item&amp;sourceType=item&amp;suid=f45e5949-e2eb-459c-adf2-ffc89227162d&amp;ut_sk=1.ZRjfR17S8FoDAFUQZlWe2AfX_21646297_1743000889040.Copy.ShareGlobalNavigation_1&amp;un=7b55bf7e1f44167240204c14877effdf&amp;share_crt_v=1&amp;un_site=0&amp;spm=a2159r.13376460.0.0&amp;tbSocialPopKey=shareItem&amp;sp_tk=VHVNU2V1REIyazE%3D&amp;cpp=1&amp;shareurl=true&amp;short_name=h.62AlQ8AmOJCk5nZ&amp;bxsign=scdf3c4Mxv62f_moO1lKHPSU4Izu9z4qmBhx0CNzqWLNv5d87b7KJpUYIe_uwxCStIvgKKz5tc-GmHRbaP4jpLs9X34lPpZ3DWoaZxlVcMNxz5CWBActv9FVXFOrSvVNyofhBN95E-b9UcnRvj2nRLRCA&amp;tk=TuMSeuDB2k1%20MF168&amp;app=firefox"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   野火 STM32H743及其及其底板<span class="external-link">↗</span></a>
-。</li>
-</ul>
-<p><script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
-<a data-fancybox="gallery" href="/images/posts/2025_03_19-openharmony_with_stm32h743/h743.png">
-<figure class="align-center ">
-    <img loading="lazy" src="/images/posts/2025_03_19-openharmony_with_stm32h743/h743.png#center"
-         alt="test" width="400px" height="300px"/> <figcaption>
-            H743V2 核心板硬件资源图
-        </figcaption>
-</figure>
-</a>
-
-
+   chatlog<span class="external-link">↗</span></a>
+坚定了我的想法。这是一个可以从微信或者QQ中获取聊天数据，并且支持MCP协议，可以和市面上的AI助手结合来搭建自己的消息库。</p>
+<h2 id="移植微信数据">移植微信数据<a hidden class="anchor" aria-hidden="true" href="#移植微信数据">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mv -r ~/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9 /Volume/path/to/your/wechatdata  
+</span></span><span style="display:flex;"><span>ln -s /Volume/path/to/your/wechatdata/2.0b4.0.9 ~/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9  
+</span></span><span style="display:flex;"><span>sudo codesign --sign - --force --deep /Applications/WeChat.app
+</span></span></code></pre></div><h2 id="安装-chatlog">安装 chatlog<a hidden class="anchor" aria-hidden="true" href="#安装-chatlog">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install go 
+</span></span><span style="display:flex;"><span>brew install llvm  
+</span></span><span style="display:flex;"><span>go install github.com/sjzar/chatlog@latest
+</span></span></code></pre></div><p>上述分别是安装<code>go</code>，安装<code>lldb</code>，安装<code>chatlog</code>。</p>
+<h2 id="关闭sip">关闭SIP<a hidden class="anchor" aria-hidden="true" href="#关闭sip">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 1. 进入恢复模式</span>
+</span></span><span style="display:flex;"><span>  Apple Intel Mac: 关机后，按住 Command + R 键开机，直到出现苹果标志和进度条。
+</span></span><span style="display:flex;"><span>  Apple Silicon Mac: 关机后，按住开机键不松开，直到出现苹果标志和进度条。
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 2. 打开终端</span>
+</span></span><span style="display:flex;"><span>  选项 - 实用工具 - 终端
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 3. 关闭 SIP</span>
+</span></span><span style="display:flex;"><span>  输入以下命令关闭 SIP：
+</span></span><span style="display:flex;"><span>  csrutil disable
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 4. 重启系统</span>
+</span></span></code></pre></div><p>仅获取数据密钥步骤需要关闭 SIP；获取数据密钥后即可重新打开 SIP，不影响解密数据和 HTTP 服务的运行。</p>
+<h2 id="配置-chatlog">配置 chatlog<a hidden class="anchor" aria-hidden="true" href="#配置-chatlog">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> /Users/dowmars/go/bin/chatlog
+</span></span></code></pre></div><p>使用以上指令开启<code>go</code>安装的<code>chatlog</code>。</p>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
-<a data-fancybox="gallery" href="/images/posts/2025_03_19-openharmony_with_stm32h743/board.png">
+<a data-fancybox="gallery" href="/images/posts/2025_04_08-chatlog_useage/chatlog.png">
 <figure class="align-center ">
-    <img loading="lazy" src="/images/posts/2025_03_19-openharmony_with_stm32h743/board.png#center"
-         alt="test" width="400px" height="300px"/> <figcaption>
-            底板硬件资源图
+    <img loading="lazy" src="/images/posts/2025_04_08-chatlog_useage/chatlog.png#center"
+         alt="test"/> <figcaption>
+            chatlog界面
         </figcaption>
 </figure>
 </a>
 
-</p>
-<p>下面是开发版的规格：</p>
-<table>
-  <thead>
-      <tr>
-          <th>项目</th>
-          <th>规格说明</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>尺寸</td>
-          <td>55×55mm（核心板），200×130.5mm（底板）</td>
-      </tr>
-      <tr>
-          <td>PCB</td>
-          <td>核心板 4 层，底板 2 层，黑色沉金</td>
-      </tr>
-      <tr>
-          <td>核心板接口</td>
-          <td>BTB 接口，兼容 F429、F767 和 H743 V2 核心板</td>
-      </tr>
-      <tr>
-          <td>RTC</td>
-          <td>1 个 CR1220 电池座</td>
-      </tr>
-      <tr>
-          <td>电源输入</td>
-          <td>USB 5V、DC 6–12V、针脚 5V</td>
-      </tr>
-      <tr>
-          <td>电源输出</td>
-          <td>AMS1086CD-3.3，输出 3.3V 和 5V</td>
-      </tr>
-      <tr>
-          <td>USB 转串口</td>
-          <td>1 路 CH340，Mini USB 接口</td>
-      </tr>
-      <tr>
-          <td>USB Device</td>
-          <td>1 路 Micro USB 接口</td>
-      </tr>
-      <tr>
-          <td>USB Host</td>
-          <td>1 路 USB Type-A 接口（支持U盘）</td>
-      </tr>
-      <tr>
-          <td>JTAG</td>
-          <td>支持 DAP/JLINK/ULINK2/STLINK/ARM-OB 等仿真器</td>
-      </tr>
-      <tr>
-          <td>SWD</td>
-          <td>同上</td>
-      </tr>
-      <tr>
-          <td>SPI FLASH</td>
-          <td>W25Q256，32MB（在核心板上）</td>
-      </tr>
-      <tr>
-          <td>EEPROM</td>
-          <td>AT24C02，256B（在核心板上）</td>
-      </tr>
-      <tr>
-          <td>SD 卡</td>
-          <td>Micro SD 卡座（SDIO），支持 ≤32GB</td>
-      </tr>
-      <tr>
-          <td>LED</td>
-          <td>RGB LED（共阳）、电源 LED、WiFi 电源指示 LED</td>
-      </tr>
-      <tr>
-          <td>按键</td>
-          <td>1 个复位键，2 个用户按键</td>
-      </tr>
-      <tr>
-          <td>电容按键</td>
-          <td>1 个 CTSU 电容按键</td>
-      </tr>
-      <tr>
-          <td>蜂鸣器</td>
-          <td>1 个有源蜂鸣器</td>
-      </tr>
-      <tr>
-          <td>电位器</td>
-          <td>1 个 1K 电位器</td>
-      </tr>
-      <tr>
-          <td>液晶接口</td>
-          <td>38Pin 插座，2.54mm 间距，支持 RGB565/888，兼容野火 4.3/5/7 寸电容屏</td>
-      </tr>
-      <tr>
-          <td>摄像头接口</td>
-          <td>支持 OV2640/5640（DCMI）</td>
-      </tr>
-      <tr>
-          <td>蓝牙模块接口</td>
-          <td>支持外接 HC05</td>
-      </tr>
-      <tr>
-          <td>无线模块接口</td>
-          <td>支持外接 NRF24L01（2.4G）</td>
-      </tr>
-      <tr>
-          <td>WIFI</td>
-          <td>底板集成 AP6181（SDIO 接口）</td>
-      </tr>
-      <tr>
-          <td>以太网</td>
-          <td>底板集成 LAN8720A（PHY-ETH-RMII 接口）</td>
-      </tr>
-      <tr>
-          <td>温湿度传感器接口</td>
-          <td>支持 DHT11、DS18B20 模块</td>
-      </tr>
-      <tr>
-          <td>红外接收</td>
-          <td>HS0038 红外头</td>
-      </tr>
-      <tr>
-          <td>MP3 音频模块</td>
-          <td>WM8978（I2S 接口）</td>
-      </tr>
-      <tr>
-          <td>外扩 SDRAM</td>
-          <td>W9825G6，32MB，16bit（核心板）</td>
-      </tr>
-      <tr>
-          <td>外扩 NAND FLASH</td>
-          <td>W29N01GVSIAA，128MB（核心板）</td>
-      </tr>
-      <tr>
-          <td>CAN 接口</td>
-          <td>2 个，TJA1042T/3，含 120Ω 终端电阻</td>
-      </tr>
-      <tr>
-          <td>RS485 接口</td>
-          <td>2 个，SP3485E，含 120Ω 终端电阻</td>
-      </tr>
-      <tr>
-          <td>RS232 接口</td>
-          <td>1 个 DB9 母头，1 个 DB9 公头，芯片为 MAX3232</td>
-      </tr>
-      <tr>
-          <td>EBF 接口</td>
-          <td>1 个，适配 GPS、蓝牙、OLED 模块</td>
-      </tr>
-      <tr>
-          <td>咪头</td>
-          <td>1 个录音咪头</td>
-      </tr>
-      <tr>
-          <td>音频输出接口</td>
-          <td>1 个 3.5mm 立体音频输出接口（PHONE）</td>
-      </tr>
-      <tr>
-          <td>录音输入接口</td>
-          <td>1 个 3.5mm 立体录音输入接口（LINE IN）</td>
-      </tr>
-      <tr>
-          <td>DC 电源接口</td>
-          <td>1 个，5.5mm × 2.1mm</td>
-      </tr>
-      <tr>
-          <td>三合一传感器</td>
-          <td>AP3216C（光、距离、环境）</td>
-      </tr>
-      <tr>
-          <td>六轴传感器</td>
-          <td>MPU6050</td>
-      </tr>
-      <tr>
-          <td>喇叭插座</td>
-          <td>PH2.0 母头 2P</td>
-      </tr>
-      <tr>
-          <td>螺母柱</td>
-          <td>M3 × 5.56 × (L5 + 1.53)</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="开发版本">开发版本<a hidden class="anchor" aria-hidden="true" href="#开发版本">#</a></h2>
-<p>我现在使用的是开源社区发布的<a href="https://gitee.com/openharmony/docs/blob/master/zh-cn/release-notes/OpenHarmony-v5.0.3-release.md"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   OpenHarmony-v5.0.3-Release<span class="external-link">↗</span></a>
-。</p>
-<h2 id="论坛">论坛<a hidden class="anchor" aria-hidden="true" href="#论坛">#</a></h2>
-<p>这边顺便提及一下可用的论坛：</p>
+
+<p>依次执行对应的命令即可最后开启HTTP服务供外部访问，端口为<code>http://127.0.0.1:5030</code>。</p>
+<h2 id="接入-mcp">接入 MCP<a hidden class="anchor" aria-hidden="true" href="#接入-mcp">#</a></h2>
+<p>支持 MCP SSE 协议，启动 HTTP 服务后，通过 SSE Endpoint 访问服务：<br>
+提供了 4 个 tool 用于与 AI 助手集成：</p>
 <ul>
-<li><a href="https://forums.openharmony.cn/portal.php"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   鸿蒙论坛<span class="external-link">↗</span></a>
-</li>
-<li><a href="https://www.firebbs.cn/"
-   
-    
-       target="_blank" rel="noopener" 
-   
-   class="custom-link">  
-   野火论坛<span class="external-link">↗</span></a>
-</li>
+<li><code>chatlog</code>: 查询聊天记录</li>
+<li><code>query_contact</code>: 查询联系人</li>
+<li><code>query_chat_room</code>: 查询群聊</li>
+<li><code>query_recent_chat</code>: 查询最近会话</li>
 </ul>
+<p>以<a href="https://github.com/CherryHQ/cherry-studio"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   CherryStudio<span class="external-link">↗</span></a>
+为例：</p>
+<ol>
+<li>设置 - MCP服务器 - 添加服务器</li>
+<li>名称<code>自定义</code> - 类型<code>see</code> - URL<code>http://127.0.0.1:5030/sse</code></li>
+<li>右上角保存 - 开启按键</li>
+</ol>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_04_08-chatlog_useage/cherrystudio_mcp.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_04_08-chatlog_useage/cherrystudio_mcp.png#center"
+         alt="test"/> <figcaption>
+            cherrystudio_mcp
+        </figcaption>
+</figure>
+</a>
+
+
+<p>即可使用了。</p>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_04_08-chatlog_useage/useage.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_04_08-chatlog_useage/useage.png#center"
+         alt="test"/> <figcaption>
+            使用事例
+        </figcaption>
+</figure>
+</a>
+
+
 
 
   </div>
@@ -1091,7 +602,7 @@ code.has-jax {
   
   
   
-  <meta property="name" content="OpenHarmony移植到STM32H743系列_资源预览">
+  <meta property="name" content="2025_04_08 Chatlog_useage">
   <link property="copyrightHolder" href="http://localhost:1313/#author" />
   <p>
     <span property="license" content="https://creativecommons.org/licenses/by-nc/4.0/">本文采用</span>
@@ -1139,23 +650,18 @@ code.has-jax {
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/zh/posts/2025_03_23-macos_plist/">
-    <span class="title">« 上一页</span>
-    <br>
-    <span>Macos plist 配置</span>
-  </a>
-  <a class="next" href="http://localhost:1313/zh/posts/2025_03_19-regex/">
+  <a class="next" href="http://localhost:1313/zh/posts/2025_04_01-openharmony_kernel_porting/">
     <span class="title">下一页 »</span>
     <br>
-    <span>正则表达式</span>
+    <span>OpenHarmony移植到STM32H743系列_内核移植</span>
   </a>
 </nav>
 
 
 <ul class="share-buttons">
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OpenHarmony移植到STM32H743系列_资源预览 on x"
-            href="https://x.com/intent/tweet/?text=OpenHarmony%e7%a7%bb%e6%a4%8d%e5%88%b0STM32H743%e7%b3%bb%e5%88%97_%e8%b5%84%e6%ba%90%e9%a2%84%e8%a7%88&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_03_19-openharmony_with_stm32h743%2f&amp;hashtags=">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 2025_04_08 Chatlog_useage on x"
+            href="https://x.com/intent/tweet/?text=2025_04_08%20Chatlog_useage&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_04_08-chatlog_useage%2f&amp;hashtags=">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -1163,8 +669,8 @@ code.has-jax {
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OpenHarmony移植到STM32H743系列_资源预览 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_03_19-openharmony_with_stm32h743%2f&amp;title=OpenHarmony%e7%a7%bb%e6%a4%8d%e5%88%b0STM32H743%e7%b3%bb%e5%88%97_%e8%b5%84%e6%ba%90%e9%a2%84%e8%a7%88&amp;summary=OpenHarmony%e7%a7%bb%e6%a4%8d%e5%88%b0STM32H743%e7%b3%bb%e5%88%97_%e8%b5%84%e6%ba%90%e9%a2%84%e8%a7%88&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_03_19-openharmony_with_stm32h743%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 2025_04_08 Chatlog_useage on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_04_08-chatlog_useage%2f&amp;title=2025_04_08%20Chatlog_useage&amp;summary=2025_04_08%20Chatlog_useage&amp;source=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_04_08-chatlog_useage%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -1172,8 +678,8 @@ code.has-jax {
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OpenHarmony移植到STM32H743系列_资源预览 on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_03_19-openharmony_with_stm32h743%2f&title=OpenHarmony%e7%a7%bb%e6%a4%8d%e5%88%b0STM32H743%e7%b3%bb%e5%88%97_%e8%b5%84%e6%ba%90%e9%a2%84%e8%a7%88">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 2025_04_08 Chatlog_useage on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_04_08-chatlog_useage%2f&title=2025_04_08%20Chatlog_useage">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -1181,8 +687,8 @@ code.has-jax {
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OpenHarmony移植到STM32H743系列_资源预览 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_03_19-openharmony_with_stm32h743%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 2025_04_08 Chatlog_useage on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_04_08-chatlog_useage%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -1190,8 +696,8 @@ code.has-jax {
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OpenHarmony移植到STM32H743系列_资源预览 on whatsapp"
-            href="https://api.whatsapp.com/send?text=OpenHarmony%e7%a7%bb%e6%a4%8d%e5%88%b0STM32H743%e7%b3%bb%e5%88%97_%e8%b5%84%e6%ba%90%e9%a2%84%e8%a7%88%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_03_19-openharmony_with_stm32h743%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 2025_04_08 Chatlog_useage on whatsapp"
+            href="https://api.whatsapp.com/send?text=2025_04_08%20Chatlog_useage%20-%20http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_04_08-chatlog_useage%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -1199,8 +705,8 @@ code.has-jax {
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OpenHarmony移植到STM32H743系列_资源预览 on telegram"
-            href="https://telegram.me/share/url?text=OpenHarmony%e7%a7%bb%e6%a4%8d%e5%88%b0STM32H743%e7%b3%bb%e5%88%97_%e8%b5%84%e6%ba%90%e9%a2%84%e8%a7%88&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_03_19-openharmony_with_stm32h743%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 2025_04_08 Chatlog_useage on telegram"
+            href="https://telegram.me/share/url?text=2025_04_08%20Chatlog_useage&amp;url=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_04_08-chatlog_useage%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -1208,8 +714,8 @@ code.has-jax {
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OpenHarmony移植到STM32H743系列_资源预览 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=OpenHarmony%e7%a7%bb%e6%a4%8d%e5%88%b0STM32H743%e7%b3%bb%e5%88%97_%e8%b5%84%e6%ba%90%e9%a2%84%e8%a7%88&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_03_19-openharmony_with_stm32h743%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 2025_04_08 Chatlog_useage on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=2025_04_08%20Chatlog_useage&u=http%3a%2f%2flocalhost%3a1313%2fzh%2fposts%2f2025_04_08-chatlog_useage%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -1587,7 +1093,7 @@ code.has-jax {
         
     
     
-    总计47.83k字
+    总计48.02k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>

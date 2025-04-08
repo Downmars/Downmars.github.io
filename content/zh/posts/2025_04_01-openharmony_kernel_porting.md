@@ -1,5 +1,5 @@
 ---
-title: "2025_04_01 Openharmony_Kernel_porting"
+title: "OpenHarmony移植到STM32H743系列_内核移植"
 date: 2025-04-01T14:57:19+08:00
 lastmod: 2025-04-01T14:57:19+08:00
 draft: false
