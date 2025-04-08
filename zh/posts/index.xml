@@ -1,4 +1,134 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Tue, 01 Apr 2025 14:57:19 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_04_01 Openharmony_Kernel_porting</title><link>https://downmars.github.io/zh/posts/2025_04_01-openharmony_kernel_porting/</link><pubDate>Tue, 01 Apr 2025 14:57:19 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_04_01-openharmony_kernel_porting/</guid><description>&lt;blockquote class="quote">&lt;p>OpenHarmony移植到STM32H743系列-这是一个系列&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Tue, 08 Apr 2025 21:27:06 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_04_08 Chatlog_useage</title><link>https://downmars.github.io/zh/posts/2025_04_08-chatlog_useage/</link><pubDate>Tue, 08 Apr 2025 21:27:06 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_04_08-chatlog_useage/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>前段时间买了一台mac mini，但是由于苹果的储存是金子做的，我就使用了外置硬盘来进行大文件的储存。我打算等到一年保修期过后进行扩容操作，在此期间，我使用&lt;code>ntfs&lt;/code>格式的一块移动硬盘作为外置尿袋。由于苹果使用的是&lt;code>Apfs&lt;/code>格式的硬盘方式，现在网上使用的一些开源方案我测试并未成功，所以这边使用了&lt;a href="https://www.paragon-software.com/home/ntfs-mac/#"
+target="_blank" rel="noopener"
+class="custom-link">
+NTFS for Mac&lt;span class="external-link">↗&lt;/span>&lt;/a>
+进行硬盘的挂载，但是&lt;code>AppStore&lt;/code>中的“大于1G软件下载到外置的硬盘中”的选项因为我挂载的还是&lt;code>ntfs&lt;/code>格式的方法，无法识别到。同时网络上在监控器中寻找安装包的位置方法我也未曾成功，所以暂时搁置了。&lt;br>
+微信等聊天软件的数据占用往往会很大，我就一直没有安装，直到我昨天看到一篇文章&lt;a href="https://dysonfreeman.netlify.app/posts/%E5%B0%86app%E5%AE%89%E8%A3%85%E5%9C%A8%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E4%B8%8A/"
+target="_blank" rel="noopener"
+class="custom-link">
+给你的Macbook硬盘省点空间：将微信等APP彻底安装到移动硬盘&lt;span class="external-link">↗&lt;/span>&lt;/a>
+，我动了下载微信的心思，同时一个开源软件&lt;a href="https://github.com/sjzar/chatlog"
+target="_blank" rel="noopener"
+class="custom-link">
+chatlog&lt;span class="external-link">↗&lt;/span>&lt;/a>
+坚定了我的想法。这是一个可以从微信或者QQ中获取聊天数据，并且支持MCP协议，可以和市面上的AI助手结合来搭建自己的消息库。&lt;/p></description><content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>前段时间买了一台mac mini，但是由于苹果的储存是金子做的，我就使用了外置硬盘来进行大文件的储存。我打算等到一年保修期过后进行扩容操作，在此期间，我使用<code>ntfs</code>格式的一块移动硬盘作为外置尿袋。由于苹果使用的是<code>Apfs</code>格式的硬盘方式，现在网上使用的一些开源方案我测试并未成功，所以这边使用了<a href="https://www.paragon-software.com/home/ntfs-mac/#"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   NTFS for Mac<span class="external-link">↗</span></a>
+进行硬盘的挂载，但是<code>AppStore</code>中的“大于1G软件下载到外置的硬盘中”的选项因为我挂载的还是<code>ntfs</code>格式的方法，无法识别到。同时网络上在监控器中寻找安装包的位置方法我也未曾成功，所以暂时搁置了。<br>
+微信等聊天软件的数据占用往往会很大，我就一直没有安装，直到我昨天看到一篇文章<a href="https://dysonfreeman.netlify.app/posts/%E5%B0%86app%E5%AE%89%E8%A3%85%E5%9C%A8%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E4%B8%8A/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   给你的Macbook硬盘省点空间：将微信等APP彻底安装到移动硬盘<span class="external-link">↗</span></a>
+，我动了下载微信的心思，同时一个开源软件<a href="https://github.com/sjzar/chatlog"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   chatlog<span class="external-link">↗</span></a>
+坚定了我的想法。这是一个可以从微信或者QQ中获取聊天数据，并且支持MCP协议，可以和市面上的AI助手结合来搭建自己的消息库。</p>
+<h2 id="移植微信数据">移植微信数据</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mv -r ~/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9 /Volume/path/to/your/wechatdata  
+</span></span><span style="display:flex;"><span>ln -s /Volume/path/to/your/wechatdata/2.0b4.0.9 ~/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9  
+</span></span><span style="display:flex;"><span>sudo codesign --sign - --force --deep /Applications/WeChat.app
+</span></span></code></pre></div><h2 id="安装-chatlog">安装 chatlog</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install go 
+</span></span><span style="display:flex;"><span>brew install llvm  
+</span></span><span style="display:flex;"><span>go install github.com/sjzar/chatlog@latest
+</span></span></code></pre></div><p>上述分别是安装<code>go</code>，安装<code>lldb</code>，安装<code>chatlog</code>。</p>
+<h2 id="关闭sip">关闭SIP</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 1. 进入恢复模式</span>
+</span></span><span style="display:flex;"><span>  Apple Intel Mac: 关机后，按住 Command + R 键开机，直到出现苹果标志和进度条。
+</span></span><span style="display:flex;"><span>  Apple Silicon Mac: 关机后，按住开机键不松开，直到出现苹果标志和进度条。
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 2. 打开终端</span>
+</span></span><span style="display:flex;"><span>  选项 - 实用工具 - 终端
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 3. 关闭 SIP</span>
+</span></span><span style="display:flex;"><span>  输入以下命令关闭 SIP：
+</span></span><span style="display:flex;"><span>  csrutil disable
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 4. 重启系统</span>
+</span></span></code></pre></div><p>仅获取数据密钥步骤需要关闭 SIP；获取数据密钥后即可重新打开 SIP，不影响解密数据和 HTTP 服务的运行。</p>
+<h2 id="配置-chatlog">配置 chatlog</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> /Users/dowmars/go/bin/chatlog
+</span></span></code></pre></div><p>使用以上指令开启<code>go</code>安装的<code>chatlog</code>。</p>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_04_08-chatlog_useage/chatlog.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_04_08-chatlog_useage/chatlog.png#center"
+         alt="test"/> <figcaption>
+            chatlog界面
+        </figcaption>
+</figure>
+</a>
+
+
+<p>依次执行对应的命令即可最后开启HTTP服务供外部访问，端口为<code>http://127.0.0.1:5030</code>。</p>
+<h2 id="接入-mcp">接入 MCP</h2>
+<p>支持 MCP SSE 协议，启动 HTTP 服务后，通过 SSE Endpoint 访问服务：<br>
+提供了 4 个 tool 用于与 AI 助手集成：</p>
+<ul>
+<li><code>chatlog</code>: 查询聊天记录</li>
+<li><code>query_contact</code>: 查询联系人</li>
+<li><code>query_chat_room</code>: 查询群聊</li>
+<li><code>query_recent_chat</code>: 查询最近会话</li>
+</ul>
+<p>以<a href="https://github.com/CherryHQ/cherry-studio"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   CherryStudio<span class="external-link">↗</span></a>
+为例：</p>
+<ol>
+<li>设置 - MCP服务器 - 添加服务器</li>
+<li>名称<code>自定义</code> - 类型<code>see</code> - URL<code>http://127.0.0.1:5030/sse</code></li>
+<li>右上角保存 - 开启按键</li>
+</ol>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_04_08-chatlog_useage/cherrystudio_mcp.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_04_08-chatlog_useage/cherrystudio_mcp.png#center"
+         alt="test"/> <figcaption>
+            cherrystudio_mcp
+        </figcaption>
+</figure>
+</a>
+
+
+<p>即可使用了。</p>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_04_08-chatlog_useage/useage.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_04_08-chatlog_useage/useage.png#center"
+         alt="test"/> <figcaption>
+            使用事例
+        </figcaption>
+</figure>
+</a>
+
+
+]]></content:encoded></item><item><title>OpenHarmony移植到STM32H743系列_内核移植</title><link>https://downmars.github.io/zh/posts/2025_04_01-openharmony_kernel_porting/</link><pubDate>Tue, 01 Apr 2025 14:57:19 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_04_01-openharmony_kernel_porting/</guid><description>&lt;blockquote class="quote">&lt;p>OpenHarmony移植到STM32H743系列-这是一个系列&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="../2025_03_19-openharmony_with_stm32h743"
 class="custom-link">
