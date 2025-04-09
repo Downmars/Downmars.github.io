@@ -6,10 +6,84 @@
     <description>Recent content on DLog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 08 Apr 2025 21:27:06 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 09 Apr 2025 23:16:31 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>2025_04_08 Chatlog_useage</title>
+      <title>MarkItDown-万物2Markdown</title>
+      <link>http://localhost:1313/zh/posts/2025_04_08-markitdown/</link>
+      <pubDate>Wed, 09 Apr 2025 23:16:31 +0800</pubDate>
+      <guid>http://localhost:1313/zh/posts/2025_04_08-markitdown/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;之前一段时间为了整理论文，使用过一些开源的&lt;code&gt;pdf2md&lt;/code&gt;的工具，但是大部分用起来都有一种寸止的感觉，昨天正好看到一个微软的开源PY工具&lt;a href=&#34;https://github.com/microsoft/markitdown&#34;
+   
+    
+       target=&#34;_blank&#34; rel=&#34;noopener&#34; 
+   
+   class=&#34;custom-link&#34;&gt;  
+   MarkItDown&lt;span class=&#34;external-link&#34;&gt;↗&lt;/span&gt;&lt;/a&gt;
+，其能够将各种文件转换为&lt;code&gt;Markdown&lt;/code&gt;格式。这样就可以将各种文件以一种统一的方法整合起来，并输出到下游。&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>之前一段时间为了整理论文，使用过一些开源的<code>pdf2md</code>的工具，但是大部分用起来都有一种寸止的感觉，昨天正好看到一个微软的开源PY工具<a href="https://github.com/microsoft/markitdown"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   MarkItDown<span class="external-link">↗</span></a>
+，其能够将各种文件转换为<code>Markdown</code>格式。这样就可以将各种文件以一种统一的方法整合起来，并输出到下游。</p>
+<h2 id="为什么是markdown">为什么是Markdown？</h2>
+<p><code>Markdown</code>是一种非常接近纯文本，有着标记或者格式最少，但是仍然提供了一种表达文件结构的方法。现在主流的<code>LLM</code>，如<code>OpenAI</code>的<code>GPT4o</code>，往往会将<code>Markdown</code>格式作为其默认的输出，这表明在训练的过程中已经接受了大量的使用<code>Markdown</code>格式的数据，并能够很好的理解它。</p>
+<h2 id="安装-markitdown">安装 MarkItDown</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># pip 安装  </span>
+</span></span><span style="display:flex;"><span>pip install <span style="color:#f1fa8c">&#39;markitdown[all]&#39;</span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 源码安装  </span>
+</span></span><span style="display:flex;"><span>git clone git@github.com:microsoft/markitdown.git
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> markitdown
+</span></span><span style="display:flex;"><span>pip install -e packages/markitdown<span style="color:#ff79c6">[</span>all<span style="color:#ff79c6">]</span>
+</span></span></code></pre></div><p>MarkItDown 具有用于激活各种文件格式的可选依赖项。在本文档的前面,我们安装了所有可选的依赖项。<code>[all]</code>选项。但是,您也可以单独安装它们以进行更多控制。例如:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pip install markitdown<span style="color:#ff79c6">[</span>pdf, docx, pptx<span style="color:#ff79c6">]</span>
+</span></span></code></pre></div><p>将只安装 PDF、DOCX 和 PPTX 文件的依赖项。</p>
+<p>目前,以下可选依赖项可用:</p>
+<ul>
+<li><code>[all]</code>安装所有可选依赖项</li>
+<li><code>[pptx]</code>安装PowerPoint文件的依赖项</li>
+<li><code>[docx]</code>安装 Word 文件的依赖项</li>
+<li><code>[xlsx]</code>安装 Excel 文件的依赖项</li>
+<li><code>[xls]</code>为较旧的 Excel 文件安装依赖项</li>
+<li><code>[pdf]</code>为 PDF 文件安装依赖项</li>
+<li><code>[outlook]</code>为 Outlook 消息安装依赖项</li>
+<li><code>[az-doc-intel]</code>安装 Azure 文档智能的依赖项</li>
+<li><code>[audio-transcription]</code>安装用于 wav 和 mp3 文件音频转录的依赖项</li>
+<li><code>[youtube-transcription]</code>安装用于获取 YouTube 视频转录的依赖项</li>
+</ul>
+<h2 id="使用例">使用例</h2>
+<p>支持转换源格式：</p>
+<ul>
+<li>PDF</li>
+<li>PowerPoint</li>
+<li>Word</li>
+<li>Excel</li>
+<li>图片(EXIF元数据和OCR)</li>
+<li>音频(EXIF元数据和语音转录)</li>
+<li>HTML</li>
+<li>文本格式(CSV，JSON，XML)</li>
+<li>ZIP文件(遍历内容)</li>
+<li>YouTube URL</li>
+<li>EPub</li>
+</ul>
+<p>&hellip; 以及更多</p>
+<p>以最常用的<code>PDF</code>文件为例，可以使用以下指令进行使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 使用 &gt; 输出到md文件  </span>
+</span></span><span style="display:flex;"><span>markitdown path-to-file.pdf &gt; document.md  
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 使用 -o 输出到md文件  </span>
+</span></span><span style="display:flex;"><span>markitdown path-to-file.pdf -o document.md
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 使用管道将文件输入到工具  </span>
+</span></span><span style="display:flex;"><span>cat path-to-file.pdf | markitdown  
+</span></span></code></pre></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>Chatlog MCP 数据获取</title>
       <link>http://localhost:1313/zh/posts/2025_04_08-chatlog_useage/</link>
       <pubDate>Tue, 08 Apr 2025 21:27:06 +0800</pubDate>
       <guid>http://localhost:1313/zh/posts/2025_04_08-chatlog_useage/</guid>

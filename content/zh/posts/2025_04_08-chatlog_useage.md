@@ -1,5 +1,5 @@
 ---
-title: "2025_04_08 Chatlog_useage"
+title: "Chatlog MCP 数据获取"
 date: 2025-04-08T21:27:06+08:00
 lastmod: 2025-04-08T21:27:06+08:00
 draft: false
