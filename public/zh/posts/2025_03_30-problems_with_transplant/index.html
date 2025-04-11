@@ -267,7 +267,7 @@ code.has-jax {
     <h1 class="post-title entry-hint-parent">
       2025_03_30 Problems_with_transplant
     </h1>
-    <div class="post-meta"><span title='2025-03-30 16:18:23 +0800 CST'>2025-03-30</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;1431 字&nbsp;·&nbsp;Downmars
+    <div class="post-meta"><span title='2025-03-30 16:18:23 +0800 CST'>2025-03-30</span>&nbsp;·&nbsp;4 分钟&nbsp;·&nbsp;1688 字&nbsp;·&nbsp;Downmars
 
 
     </div>
@@ -482,6 +482,8 @@ A: 解析hb env 功能的作用，将配置名单换方式导入，成功解决�
 Q: 报错内容为<code>Exception: find component init_lite failed, please check it in /home/dm/Projects/openharmony_project/test_1/out/preloader/neptune_iotlink_demo/parts.json.</code>，追根溯源是<code>openharmony_project/test_1/build/hb/util/loader/load_ohos_build.py</code>中的<code>compare_subsystem_and_component</code>函数中会将<code>parts.json</code>解析为相应的字典，来和自带的<code>build/subsystem_compoents_whitelist.json</code>和<code>build/compile_standard_whitelist.json</code>内容进行匹配，很显然白名单里没有我们的芯片内容，所以还会和<code>/out/challenger_h743v2/challenger_h743v2/build_configs/parts_info/part_subsystem.json</code>进行匹配，如果找到该组件或其覆盖版本，并且子系统名称匹配或相等，则认为组件有效。但是并没有找到就会报错，我需要明天查看一下<code>part_subsystem.json</code>文件是如何生成的。</p>
 <p>2025_04_08<br>
 A: 经过测试，应该是在<code>part_subsystem.json</code>中存在<code>product_{product_name}</code>和<code>device_{device_name}</code>这两个键的，比如我这里就应该是<code>product_challenger_h743v2</code>和<code>device_challenger_h743v2</code>，但是实际上我在生成的<code>part_subsystem.json</code>中找不到，于是和<code>parts.json</code>中的键值对应不上，导致了出现的错误。对于<code>part_subsystem.json</code>我们可以看到在文件<code>./build/hb/util/loader/load_ohos_build.py</code>中搜寻<code>process_parts_info(parts_config_dict, parts_info_output_path, skip_partlist_check)</code>函数，大致扫一下我们可以知道这个函数通过检查<code>parts_config_dict</code>字典中是否存在键<code>parts_info</code>，如果存在则获取对应的值<code>parts_info</code>，该值通常是一个包含零件信息的字典，将这个字典的键值输出到新生成的<code>part_subsystem.json</code>中。继续看下去，可以在<code>get_parts_info</code>函数中看到是如何使用<code>process_parts_info</code>的，我们可以看到在我们根据教程使用，会缺少创建<code>device/board/emfire/challenger_h743v2/ohos.build</code>和<code>vendor/emfire/challenger_h743v2/ohos.build</code>，我们可以按照提供的示例创建类似的文件即可避免错误。</p>
+<p>2025_04_11<br>
+A: 经过测试，在进行编译的过程中，出现了位于<code>device/soc/st/stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/</code>的代码找不到 <code>stm32h7xx_hal_conf.h</code> 和 <code>target_config.h</code>头 文件，寻找了一下，在<code>./device/board/embfire/challenger_h743v2/liteos_m/Inc/stm32h7xx_hal_conf.h</code>和<code>./device/soc/st/target_config.h</code>存在对应文件，应该是链接的问题，需要看一下是错误代码连接到什么位置。</p>
 
 
   </div>
@@ -987,14 +989,8 @@ A: 经过测试，应该是在<code>part_subsystem.json</code>中存在<code>pro
     
         
     
-        
     
-        
-    
-        
-    
-    
-    总计48.02k字
+    总计48.77k字
 </section>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>

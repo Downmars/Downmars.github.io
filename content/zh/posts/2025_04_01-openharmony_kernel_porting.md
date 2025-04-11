@@ -277,28 +277,27 @@ config("public") {
 
 {{< collapse summary="device/soc/st/BUILD.gn" >}}
 ```gn
-
 import("//kernel/liteos_m/liteos.gni")
 module_name = "stm32h7xx_sdk"
 kernel_module(module_name) {
   asmflags = board_asmflags
   sources = [
-    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c",
-    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c",
-    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c",
-    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c",
-    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c",
-    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c",
-    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c",
-    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c",
-    "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c",
+    "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c",
+    "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c",
+    "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c",
+    "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c",
+    "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c",
+    "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c",
+    "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c",
+    "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c",
+    "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c",
   ]
 }
 #指定全局头文件搜索路径
 config("public") {
     include_dirs = [
-        "Drivers/STM32H7xx_HAL_Driver/Inc",
-        "Drivers/CMSIS/Device/ST/STM32H7xx/Include",
+        "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Inc",
+        "stm32h7xx/sdk/Drivers/CMSIS/Device/ST/STM32H7xx/Include",
     ]
 }
 ```
@@ -406,9 +405,19 @@ board_adapter_dir = ""
 ```
 {{< /collapse >}}
 
+在`vendor/embfire/challenger_h743v2/BUILD.gn`中添加以下内容：  
+{{< collapse summary="vendor/embfire/challenger_h743v2/BUILD.gn" >}}
+```gn  
+group("challenger_h743v2") {
+}
+```
+{{< /collapse >}}
+
 ## target_config.h文件适配
 
-在`kernel/liteos_m/kernel/include/los_config.h`文件中，有包含一个名为`target_config.h`的头文件，如果没有这个头文件，则会编译出错，由于我暂时不知道这个文件放在哪里，所以就暂时放下，后面遇到问题再说。
+根据[内核基础适配](https://gitee.com/openharmony/docs/blob/7f33887819c652d79f580c0578e69d35563d49b4/zh-cn/device-dev/porting/porting-chip-kernel-adjustment.md)，`liteos_m`的完整配置能力及默认配置在`kernel/liteos_m/kernel/include/los_config.h`定义，该头文件中的配置项可以根据不同的单板进行裁剪配置。  
+如果针对这些配置项需要进行不同的板级配置，则可将对应的配置项直接定义到对应单板的device/xxxx/target_config.h文件中，其他未定义的配置项，采用los_config.h中的默认值。
+
 
 {{< collapse summary="device/qemu/arm_mps2_an386/liteos_m/board/target_config.h" >}}
 ```c

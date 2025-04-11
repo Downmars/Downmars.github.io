@@ -1,5 +1,5 @@
 ---
-title: "2025_02_29 Git_clone_and_pull_between_different_devices"
+title: "多端Git拉取同步"
 date: 2025-03-28T16:52:59+08:00
 lastmod: 2025-03-28T16:52:59+08:00
 draft: false
