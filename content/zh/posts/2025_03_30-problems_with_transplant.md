@@ -1,5 +1,5 @@
 ---
-title: "2025_03_30 Problems_with_transplant"
+title: "移植问题"
 date: 2025-03-30T16:18:23+08:00
 lastmod: 2025-03-30T16:18:23+08:00
 draft: false
