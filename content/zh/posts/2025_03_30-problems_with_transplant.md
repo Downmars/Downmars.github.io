@@ -52,5 +52,6 @@ Q: 报错内容为`Exception: find component init_lite failed, please check it i
 2025_04_08  
 A: 经过测试，应该是在`part_subsystem.json`中存在`product_{product_name}`和`device_{device_name}`这两个键的，比如我这里就应该是`product_challenger_h743v2`和`device_challenger_h743v2`，但是实际上我在生成的`part_subsystem.json`中找不到，于是和`parts.json`中的键值对应不上，导致了出现的错误。对于`part_subsystem.json`我们可以看到在文件`./build/hb/util/loader/load_ohos_build.py`中搜寻`process_parts_info(parts_config_dict, parts_info_output_path, skip_partlist_check)`函数，大致扫一下我们可以知道这个函数通过检查`parts_config_dict`字典中是否存在键`parts_info`，如果存在则获取对应的值`parts_info`，该值通常是一个包含零件信息的字典，将这个字典的键值输出到新生成的`part_subsystem.json`中。继续看下去，可以在`get_parts_info`函数中看到是如何使用`process_parts_info`的，我们可以看到在我们根据教程使用，会缺少创建`device/board/emfire/challenger_h743v2/ohos.build`和`vendor/emfire/challenger_h743v2/ohos.build`，我们可以按照提供的示例创建类似的文件即可避免错误。  
 
+## fatal error: target_config.h: No such file or directory
 2025_04_11  
 A: 经过测试，在进行编译的过程中，出现了位于`device/soc/st/stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/`的代码找不到 `stm32h7xx_hal_conf.h` 和 `target_config.h`头 文件，寻找了一下，在`./device/board/embfire/challenger_h743v2/liteos_m/Inc/stm32h7xx_hal_conf.h`和`./device/soc/st/target_config.h`存在对应文件，应该是链接的问题，需要看一下是错误代码连接到什么位置。
