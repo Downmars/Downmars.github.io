@@ -1523,10 +1523,6 @@ class="custom-link">
     
   
 
-  
-    
-  
-
 
 
 
@@ -1538,31 +1534,30 @@ class="custom-link">
 <p><details class="custom-collapse" >
   <summary markdown="span">
     <span>device/soc/st/BUILD.gn</span>
-    <span class="line-count">24 lines</span>
+    <span class="line-count">23 lines</span>
   </summary>
   <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>import(&#34;//kernel/liteos_m/liteos.gni&#34;)
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>import(&#34;//kernel/liteos_m/liteos.gni&#34;)
 </span></span><span style="display:flex;"><span>module_name = &#34;stm32h7xx_sdk&#34;
 </span></span><span style="display:flex;"><span>kernel_module(module_name) {
 </span></span><span style="display:flex;"><span>  asmflags = board_asmflags
 </span></span><span style="display:flex;"><span>  sources = [
-</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c&#34;,
-</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c&#34;,
-</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c&#34;,
-</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c&#34;,
-</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c&#34;,
-</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c&#34;,
-</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c&#34;,
-</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c&#34;,
-</span></span><span style="display:flex;"><span>    &#34;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c&#34;,
+</span></span><span style="display:flex;"><span>    &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c&#34;,
 </span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>#指定全局头文件搜索路径
 </span></span><span style="display:flex;"><span>config(&#34;public&#34;) {
 </span></span><span style="display:flex;"><span>    include_dirs = [
-</span></span><span style="display:flex;"><span>        &#34;Drivers/STM32H7xx_HAL_Driver/Inc&#34;,
-</span></span><span style="display:flex;"><span>        &#34;Drivers/CMSIS/Device/ST/STM32H7xx/Include&#34;,
+</span></span><span style="display:flex;"><span>        &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Inc&#34;,
+</span></span><span style="display:flex;"><span>        &#34;stm32h7xx/sdk/Drivers/CMSIS/Device/ST/STM32H7xx/Include&#34;,
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
@@ -2072,8 +2067,64 @@ class="custom-link">
   </div>
 </details></p>
 
+<p>在<code>vendor/embfire/challenger_h743v2/BUILD.gn</code>中添加以下内容：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>vendor/embfire/challenger_h743v2/BUILD.gn</span>
+    <span class="line-count">2 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>group(&#34;challenger_h743v2&#34;) {
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
 <h2 id="target_configh文件适配">target_config.h文件适配</h2>
-<p>在<code>kernel/liteos_m/kernel/include/los_config.h</code>文件中，有包含一个名为<code>target_config.h</code>的头文件，如果没有这个头文件，则会编译出错，由于我暂时不知道这个文件放在哪里，所以就暂时放下，后面遇到问题再说。</p>
+<p>根据<a href="https://gitee.com/openharmony/docs/blob/7f33887819c652d79f580c0578e69d35563d49b4/zh-cn/device-dev/porting/porting-chip-kernel-adjustment.md"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   内核基础适配<span class="external-link">↗</span></a>
+，<code>liteos_m</code>的完整配置能力及默认配置在<code>kernel/liteos_m/kernel/include/los_config.h</code>定义，该头文件中的配置项可以根据不同的单板进行裁剪配置。<br>
+如果针对这些配置项需要进行不同的板级配置，则可将对应的配置项直接定义到对应单板的device/xxxx/target_config.h文件中，其他未定义的配置项，采用los_config.h中的默认值。</p>
 
 
 
@@ -2147,7 +2198,7 @@ class="custom-link">
 </details></p>
 
 <p>其中宏定义LOSCFG_BASE_CORE_TICK_RESPONSE_MAX是直接参考的//device/qemu/arm_mps2_an386/liteos_m/board/target_config.h文件中的配置，//device/qemu/arm_mps2_an386是cortex-m4的虚拟机工程，后续适配可以直接参考，在此不做深入讲解。</p>
-]]></content:encoded></item><item><title>2025_03_30 Problems_with_transplant</title><link>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</link><pubDate>Sun, 30 Mar 2025 16:18:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</guid><description>&lt;h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用&lt;/h2>
+]]></content:encoded></item><item><title>移植问题</title><link>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</link><pubDate>Sun, 30 Mar 2025 16:18:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</guid><description>&lt;h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用&lt;/h2>
 &lt;p>2025_03_29&lt;br>
 Q: 我这边使用官方的亮灯例程&amp;lt; 12-GPIO输出-使用固件点亮LED灯 &amp;gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。&lt;br>
 2025_03_30
@@ -2171,6 +2222,8 @@ A: 解析hb env 功能的作用，将配置名单换方式导入，成功解决�
 Q: 报错内容为<code>Exception: find component init_lite failed, please check it in /home/dm/Projects/openharmony_project/test_1/out/preloader/neptune_iotlink_demo/parts.json.</code>，追根溯源是<code>openharmony_project/test_1/build/hb/util/loader/load_ohos_build.py</code>中的<code>compare_subsystem_and_component</code>函数中会将<code>parts.json</code>解析为相应的字典，来和自带的<code>build/subsystem_compoents_whitelist.json</code>和<code>build/compile_standard_whitelist.json</code>内容进行匹配，很显然白名单里没有我们的芯片内容，所以还会和<code>/out/challenger_h743v2/challenger_h743v2/build_configs/parts_info/part_subsystem.json</code>进行匹配，如果找到该组件或其覆盖版本，并且子系统名称匹配或相等，则认为组件有效。但是并没有找到就会报错，我需要明天查看一下<code>part_subsystem.json</code>文件是如何生成的。</p>
 <p>2025_04_08<br>
 A: 经过测试，应该是在<code>part_subsystem.json</code>中存在<code>product_{product_name}</code>和<code>device_{device_name}</code>这两个键的，比如我这里就应该是<code>product_challenger_h743v2</code>和<code>device_challenger_h743v2</code>，但是实际上我在生成的<code>part_subsystem.json</code>中找不到，于是和<code>parts.json</code>中的键值对应不上，导致了出现的错误。对于<code>part_subsystem.json</code>我们可以看到在文件<code>./build/hb/util/loader/load_ohos_build.py</code>中搜寻<code>process_parts_info(parts_config_dict, parts_info_output_path, skip_partlist_check)</code>函数，大致扫一下我们可以知道这个函数通过检查<code>parts_config_dict</code>字典中是否存在键<code>parts_info</code>，如果存在则获取对应的值<code>parts_info</code>，该值通常是一个包含零件信息的字典，将这个字典的键值输出到新生成的<code>part_subsystem.json</code>中。继续看下去，可以在<code>get_parts_info</code>函数中看到是如何使用<code>process_parts_info</code>的，我们可以看到在我们根据教程使用，会缺少创建<code>device/board/emfire/challenger_h743v2/ohos.build</code>和<code>vendor/emfire/challenger_h743v2/ohos.build</code>，我们可以按照提供的示例创建类似的文件即可避免错误。</p>
+<p>2025_04_11<br>
+A: 经过测试，在进行编译的过程中，出现了位于<code>device/soc/st/stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/</code>的代码找不到 <code>stm32h7xx_hal_conf.h</code> 和 <code>target_config.h</code>头 文件，寻找了一下，在<code>./device/board/embfire/challenger_h743v2/liteos_m/Inc/stm32h7xx_hal_conf.h</code>和<code>./device/soc/st/target_config.h</code>存在对应文件，应该是链接的问题，需要看一下是错误代码连接到什么位置。</p>
 ]]></content:encoded></item><item><title>2025_02_29 Dap_download</title><link>https://downmars.github.io/zh/posts/2025_03_29-dap_download/</link><pubDate>Sat, 29 Mar 2025 15:14:00 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_29-dap_download/</guid><description>&lt;h2 id="cmsis-dap">CMSIS-DAP&lt;/h2>
 &lt;p>我这里使用的是DAP下载器进行烧录的，这种调试器使用的是&lt;a href="https://arm-software.github.io/CMSIS_5/DAP/html/index.html"
 target="_blank" rel="noopener"
@@ -2248,7 +2301,7 @@ class="custom-link">
 </span></span><span style="display:flex;"><span>** Verified OK **
 </span></span><span style="display:flex;"><span>** Resetting Target **
 </span></span><span style="display:flex;"><span>shutdown <span style="color:#8be9fd;font-style:italic">command</span> invoked
-</span></span></code></pre></div>]]></content:encoded></item><item><title>2025_02_29 Git_clone_and_pull_between_different_devices</title><link>https://downmars.github.io/zh/posts/2025_03_28-git_clone_and_pull_between_different_devices/</link><pubDate>Fri, 28 Mar 2025 16:52:59 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_28-git_clone_and_pull_between_different_devices/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+</span></span></code></pre></div>]]></content:encoded></item><item><title>多端Git拉取同步</title><link>https://downmars.github.io/zh/posts/2025_03_28-git_clone_and_pull_between_different_devices/</link><pubDate>Fri, 28 Mar 2025 16:52:59 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_28-git_clone_and_pull_between_different_devices/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>由于我游转于linux和mac设备之间，我需要将博客实时保持同步，我这边先写一篇博客关于手动拉取博客内容。我这边的假设是我每次写完博客之后都会手动上传，也就是只有一端的设备上的文章是最新的，不存在内容冲突的情况，之后如果遇到其他情况，会新增相关内容。有机会设置一下自动上传和自动下载同步，感觉这一部分有服务器之后会更好操作一些，但是现在的价格不是很友好，看看过段时间有没有好的车。&lt;/p></description><content:encoded><![CDATA[<h2 id="前言">前言</h2>
 <p>由于我游转于linux和mac设备之间，我需要将博客实时保持同步，我这边先写一篇博客关于手动拉取博客内容。我这边的假设是我每次写完博客之后都会手动上传，也就是只有一端的设备上的文章是最新的，不存在内容冲突的情况，之后如果遇到其他情况，会新增相关内容。有机会设置一下自动上传和自动下载同步，感觉这一部分有服务器之后会更好操作一些，但是现在的价格不是很友好，看看过段时间有没有好的车。</p>
 <h2 id="推送代码">推送代码</h2>
