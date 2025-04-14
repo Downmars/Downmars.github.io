@@ -2182,7 +2182,7 @@ class="custom-link">
 
 <p><details class="custom-collapse" open>
   <summary markdown="span">
-    <span>device/qemu/arm_mps2_an386/liteos_m/board/target_config.h</span>
+    <span>device/soc/st/target_config.h</span>
     <span class="line-count">7 lines</span>
   </summary>
   <div class="content">
@@ -2197,7 +2197,22 @@ class="custom-link">
   </div>
 </details></p>
 
-<p>其中宏定义LOSCFG_BASE_CORE_TICK_RESPONSE_MAX是直接参考的//device/qemu/arm_mps2_an386/liteos_m/board/target_config.h文件中的配置，//device/qemu/arm_mps2_an386是cortex-m4的虚拟机工程，后续适配可以直接参考，在此不做深入讲解。</p>
+<p>接下来执行<code>./build.sh --product-name challenger_h743v2 --no-prebuilt-sdk</code>即可进行编译。</p>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_04_01-openharmony_kernel_porting/porting_ok.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_04_01-openharmony_kernel_porting/porting_ok.png#center"
+         alt="test"/> <figcaption>
+            编译成功
+        </figcaption>
+</figure>
+</a>
+
+
 ]]></content:encoded></item><item><title>移植问题</title><link>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</link><pubDate>Sun, 30 Mar 2025 16:18:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</guid><description>&lt;h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用&lt;/h2>
 &lt;p>2025_03_29&lt;br>
 Q: 我这边使用官方的亮灯例程&amp;lt; 12-GPIO输出-使用固件点亮LED灯 &amp;gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。&lt;br>
@@ -2224,7 +2239,151 @@ Q: 报错内容为<code>Exception: find component init_lite failed, please check
 A: 经过测试，应该是在<code>part_subsystem.json</code>中存在<code>product_{product_name}</code>和<code>device_{device_name}</code>这两个键的，比如我这里就应该是<code>product_challenger_h743v2</code>和<code>device_challenger_h743v2</code>，但是实际上我在生成的<code>part_subsystem.json</code>中找不到，于是和<code>parts.json</code>中的键值对应不上，导致了出现的错误。对于<code>part_subsystem.json</code>我们可以看到在文件<code>./build/hb/util/loader/load_ohos_build.py</code>中搜寻<code>process_parts_info(parts_config_dict, parts_info_output_path, skip_partlist_check)</code>函数，大致扫一下我们可以知道这个函数通过检查<code>parts_config_dict</code>字典中是否存在键<code>parts_info</code>，如果存在则获取对应的值<code>parts_info</code>，该值通常是一个包含零件信息的字典，将这个字典的键值输出到新生成的<code>part_subsystem.json</code>中。继续看下去，可以在<code>get_parts_info</code>函数中看到是如何使用<code>process_parts_info</code>的，我们可以看到在我们根据教程使用，会缺少创建<code>device/board/emfire/challenger_h743v2/ohos.build</code>和<code>vendor/emfire/challenger_h743v2/ohos.build</code>，我们可以按照提供的示例创建类似的文件即可避免错误。</p>
 <h2 id="fatal-error-target_configh-no-such-file-or-directory">fatal error: target_config.h: No such file or directory</h2>
 <p>2025_04_11<br>
-A: 经过测试，在进行编译的过程中，出现了位于<code>device/soc/st/stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/</code>的代码找不到 <code>stm32h7xx_hal_conf.h</code> 和 <code>target_config.h</code>头 文件，寻找了一下，在<code>./device/board/embfire/challenger_h743v2/liteos_m/Inc/stm32h7xx_hal_conf.h</code>和<code>./device/soc/st/target_config.h</code>存在对应文件，应该是链接的问题，需要看一下是错误代码连接到什么位置。</p>
+Q: 经过测试，在进行编译的过程中，出现了位于<code>device/soc/st/stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/</code>的代码找不到 <code>stm32h7xx_hal_conf.h</code> 和 <code>target_config.h</code>头 文件，寻找了一下，在<code>./device/board/embfire/challenger_h743v2/liteos_m/Inc/stm32h7xx_hal_conf.h</code>和<code>./device/soc/st/target_config.h</code>存在对应文件，应该是链接的问题，需要看一下是错误代码连接到什么位置。</p>
+<p>2025_04_14<br>
+A: 查看一下终端输出的内容中报错内容<code>[OHOS ERROR] ccache arm-none-eabi-gcc -I {path}</code>中存在<code>device/soc/st/BUILD.gn</code>中定义的全局头文件路径，<code>../../../device/soc/st/stm32h7xx/sdk/Drivers/CMSIS/Device/ST/STM32H7xx/Include</code>和<code>../../../device/board/embfire/challenger_h743v2/liteos_m/Inc</code>，并没有存在我们<code>stm32h7xx_hal_conf.h</code>和<code>target_config.h</code>的文件路径，但是<code>device/board/embfire/challenger_h743v2/liteos_m/BUILD.gn</code>中明明已经包括了这个模块的路径，但是在上面的编译路径中并没有找到，所以我们需要将这两个文件的路径添加到全局文件路径搜索中。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/BUILD.gn</span>
+    <span class="line-count">7 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>config(&#34;public&#34;) {
+</span></span><span style="display:flex;"><span>    include_dirs = [
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+      &#34;../../../device/board/embfire/challenger_h743v2/liteos_m/inc&#34;,  # 添加缺失的路径
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+      &#34;../../../device/soc/st/&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<h2 id="undefined-reference-to-hal_xxx">undefined reference to `HAL_xxx'</h2>
+<p>2025_04_14<br>
+Q&amp;A: 具体报错情况为链接器<code>ld</code>发现在<code>liteos_m.main.o</code>目标文件中发现如<code>SystemClock_Config</code>函数存在未定义的引用，这个函数属于STM32H7xx的电源管理部分，通常存在于<code>stm32h7xx_hal_pwr_ex.c</code>中，所以我们将<code>stm32h7xx_hal_pwr_ex.c</code>文件路径添加到对应的<code>BUILD.gn</code>中即可。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/BUILD.gn</span>
+    <span class="line-count">6 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>kernel_module(module_name) {
+</span></span><span style="display:flex;"><span>  asmflags = board_asmflags
+</span></span><span style="display:flex;"><span>  sources = [
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+   &#34;stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
 ]]></content:encoded></item><item><title>2025_02_29 Dap_download</title><link>https://downmars.github.io/zh/posts/2025_03_29-dap_download/</link><pubDate>Sat, 29 Mar 2025 15:14:00 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_29-dap_download/</guid><description>&lt;h2 id="cmsis-dap">CMSIS-DAP&lt;/h2>
 &lt;p>我这里使用的是DAP下载器进行烧录的，这种调试器使用的是&lt;a href="https://arm-software.github.io/CMSIS_5/DAP/html/index.html"
 target="_blank" rel="noopener"
