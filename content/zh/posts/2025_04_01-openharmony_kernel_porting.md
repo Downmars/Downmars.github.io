@@ -419,7 +419,7 @@ group("challenger_h743v2") {
 如果针对这些配置项需要进行不同的板级配置，则可将对应的配置项直接定义到对应单板的device/xxxx/target_config.h文件中，其他未定义的配置项，采用los_config.h中的默认值。
 
 
-{{< collapse summary="device/qemu/arm_mps2_an386/liteos_m/board/target_config.h" >}}
+{{< collapse summary="device/soc/st/target_config.h" >}}
 ```c
 #ifndef _TARGET_CONFIG_H
 #define _TARGET_CONFIG_H
@@ -431,4 +431,7 @@ group("challenger_h743v2") {
 ```
 {{< /collapse >}}
 
-其中宏定义LOSCFG_BASE_CORE_TICK_RESPONSE_MAX是直接参考的//device/qemu/arm_mps2_an386/liteos_m/board/target_config.h文件中的配置，//device/qemu/arm_mps2_an386是cortex-m4的虚拟机工程，后续适配可以直接参考，在此不做深入讲解。
+接下来执行`./build.sh --product-name challenger_h743v2 --no-prebuilt-sdk`即可进行编译。  
+
+{{< figure src="/images/posts/2025_04_01-openharmony_kernel_porting/porting_ok.png" alt="test" title="编译成功" caption="" align="center" >}}
+

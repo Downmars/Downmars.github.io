@@ -54,4 +54,32 @@ A: 经过测试，应该是在`part_subsystem.json`中存在`product_{product_na
 
 ## fatal error: target_config.h: No such file or directory
 2025_04_11  
-A: 经过测试，在进行编译的过程中，出现了位于`device/soc/st/stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/`的代码找不到 `stm32h7xx_hal_conf.h` 和 `target_config.h`头 文件，寻找了一下，在`./device/board/embfire/challenger_h743v2/liteos_m/Inc/stm32h7xx_hal_conf.h`和`./device/soc/st/target_config.h`存在对应文件，应该是链接的问题，需要看一下是错误代码连接到什么位置。
+Q: 经过测试，在进行编译的过程中，出现了位于`device/soc/st/stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/`的代码找不到 `stm32h7xx_hal_conf.h` 和 `target_config.h`头 文件，寻找了一下，在`./device/board/embfire/challenger_h743v2/liteos_m/Inc/stm32h7xx_hal_conf.h`和`./device/soc/st/target_config.h`存在对应文件，应该是链接的问题，需要看一下是错误代码连接到什么位置。
+
+2025_04_14  
+A: 查看一下终端输出的内容中报错内容`[OHOS ERROR] ccache arm-none-eabi-gcc -I {path}`中存在`device/soc/st/BUILD.gn`中定义的全局头文件路径，`../../../device/soc/st/stm32h7xx/sdk/Drivers/CMSIS/Device/ST/STM32H7xx/Include`和`../../../device/board/embfire/challenger_h743v2/liteos_m/Inc`，并没有存在我们`stm32h7xx_hal_conf.h`和`target_config.h`的文件路径，但是`device/board/embfire/challenger_h743v2/liteos_m/BUILD.gn`中明明已经包括了这个模块的路径，但是在上面的编译路径中并没有找到，所以我们需要将这两个文件的路径添加到全局文件路径搜索中。  
+{{< collapse summary="device/soc/st/BUILD.gn" >}}
+```diff  
+config("public") {
+    include_dirs = [
++      "../../../device/board/embfire/challenger_h743v2/liteos_m/inc",  # 添加缺失的路径
++      "../../../device/soc/st/",
+
+    ]
+}
+```
+{{< /collapse >}}
+
+## undefined reference to `HAL_xxx'  
+2025_04_14  
+Q&A: 具体报错情况为链接器`ld`发现在`liteos_m.main.o`目标文件中发现如`SystemClock_Config`函数存在未定义的引用，这个函数属于STM32H7xx的电源管理部分，通常存在于`stm32h7xx_hal_pwr_ex.c`中，所以我们将`stm32h7xx_hal_pwr_ex.c`文件路径添加到对应的`BUILD.gn`中即可。  
+{{< collapse summary="device/soc/st/BUILD.gn" >}}  
+```diff  
+kernel_module(module_name) {
+  asmflags = board_asmflags
+  sources = [
++   "stm32h7xx/sdk/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c",
+  ]
+}
+```
+{{< /collapse >}}
