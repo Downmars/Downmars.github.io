@@ -431,7 +431,14 @@ group("challenger_h743v2") {
 ```
 {{< /collapse >}}
 
-接下来执行`./build.sh --product-name challenger_h743v2 --no-prebuilt-sdk`即可进行编译。  
+## 编译烧录验证
+接下来执行`./build.sh --product-name challenger_h743v2 --no-prebuilt-sdk`即可进行编译生成`OHOS_Image.bin`。
 
 {{< figure src="/images/posts/2025_04_01-openharmony_kernel_porting/porting_ok.png" alt="test" title="编译成功" caption="" align="center" >}}
+
+再使用`openocd`进行镜像的烧录并看到串口输出。  
+
+{{< figure src="/images/posts/2025_04_01-openharmony_kernel_porting/openocd_out.png" alt="test" title="烧录输出" caption="" align="center" >}}
+
+{{< figure src="/images/posts/2025_04_01-openharmony_kernel_porting/uart_out.png" alt="test" title="串口输出" caption="" align="center" >}}
 
