@@ -442,3 +442,144 @@ group("challenger_h743v2") {
 
 {{< figure src="/images/posts/2025_04_01-openharmony_kernel_porting/uart_out.png" alt="test" title="串口输出" caption="" align="center" >}}
 
+## 内核启动适配  
+
+### 为liteos_m分配内存，适配内存分配函数
+    
+在文件`kernel/liteos_m/kernel/src/mm/los_memory.c`中，`OsMemSystemInit`函数通过`LOS_MemInit`进行了内存初始化。可以看到几个比较关键的宏需要我们指定，我们将其添加到`target_config.h`中：  
+{{< collapse summary="device/soc/st/target_config.h" >}}
+```h
+extern unsigned int __los_heap_addr_start__;
+extern unsigned int __los_heap_addr_end__;
+#define LOSCFG_SYS_EXTERNAL_HEAP 1
+#define LOSCFG_SYS_HEAP_ADDR ((void *)&__los_heap_addr_start__)
+#define LOSCFG_SYS_HEAP_SIZE (((unsigned long)&__los_heap_addr_end__) - ((unsigned long)&__los_heap_addr_start__))
+```
+{{< /collapse >}}
+
+其中，`__los_heap_addr_start__`与`__los_heap_addr_end__`变量在`STM32F407IGTx_FLASH.ld`链接文件中被定义, 将`_user_heap_stack`花括号内内容修改为：
+{{< collapse summary="device/board/embfire/challenger_h743v2/liteos_m/STM32H743XX_FLASH.ld" >}}
+```ld 
+._user_heap_stack :
+{
+    . = ALIGN(0x40);
+    __los_heap_addr_start__ = .;
+    __los_heap_addr_end__ = ORIGIN(RAM) + LENGTH(RAM);
+} >RAM
+```
+{{< /collapse >}}
+
+除此之外，我们还需要适配内存分配函数，由于内核中已经对`_malloc_r`等内存分配函数进行了实现，在此我们采用包装函数的方式来适配，用内核中的内存分配函数替换标准库中的内存分配函数即可，在`device/board/embfire/challenger_h743v2/liteos_m/config.gni`中`board_ld_flags`链接参数变量修改为：
+{{< collapse summary="device/board/embfire/challenger_h743v2/liteos_m/config.gni" >}}
+```diff
++board_ld_flags = [
++  "-Wl,--wrap=_calloc_r",
++  "-Wl,--wrap=_malloc_r",
++  "-Wl,--wrap=_realloc_r",
++  "-Wl,--wrap=_reallocf_r",
++  "-Wl,--wrap=_free_r",
++  "-Wl,--wrap=_memalign_r",
++  "-Wl,--wrap=_malloc_usable_size_r",
++]
++board_ld_flags += board_opt_flags
+-board_ld_flags = board_opt_flags
+
+```
+{{< /collapse >}}
+    
+### 适配printf打印
+为了方便后续调试，第一步需要先适配printf函数。而printf的函数适配可大可小，在此只做简单适配，具体实现可以参考其它各开发板源码。  
+在`main.c`同级目录下创建`dprintf.c`文件，文件内容如下：
+{{< collapse summary="device/board/embfire/challenger_h743v2/liteos_m/Src/dprintf.c" >}}
+```cpp
+#include <stdarg.h>
+#include "los_interrupt.h"
+#include <stdio.h>
+
+extern UART_HandleTypeDef huart1;
+    
+INT32 UartPutc(INT32 ch, VOID *file)
+{
+    char RL = '\r';
+    if (ch =='\n') {
+        HAL_UART_Transmit(&huart1, &RL, 1, 0xFFFF);
+    }
+    return HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+}
+    
+static void dputs(char const *s, int (*pFputc)(int n, FILE *cookie), void *cookie)
+{
+    unsigned int intSave;
+
+    intSave = LOS_IntLock();
+    while (*s) {
+        pFputc(*s++, cookie);
+    }
+    LOS_IntRestore(intSave);
+}
+    
+int oh_printf(char const  *fmt, ...)
+{
+    char buf[1024] = { 0 };
+    va_list ap;
+    va_start(ap, fmt);
+    int len = vsnprintf_s(buf, sizeof(buf), 1024 - 1, fmt, ap);
+    va_end(ap);
+    if (len > 0) {
+        dputs(buf, UartPutc, 0);
+    } else {
+        dputs("printf error!\n", UartPutc, 0);
+    }
+    return len;
+}
+```
+{{< /collapse >}}
+我们需要将`printf`换个名字，因为会和标准库中的`printf`冲突导致编译报错。  
+同时为了调用这个函数，编写一个`h`文件。  
+{{< collapse summary="device/board/embfire/challenger_h743v2/liteos_m/Inc/dprintf.h" >}}  
+```
+#ifndef DPRINTF_H
+#define DPRINTF_H
+
+#include <stdio.h>
+
+int oh_dprintf(const char *fmt, ...);
+
+#endif /* DPRINTF_H */
+
+```
+{{< /collapse >}}
+
+我们现在可以将我们编写的`oh_printf`函数加入到主函数中测试：  
+{{< collapse summary="device/board/embfire/challenger_h743v2/liteos_m/Src/main.c" >}}
+```diff  
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+#include <stdio.h>
++#include "dprintf.h"  // 引入 dprintf 的头文件
+/* Private includes ----------------------------------------------------------*/
+
+int main(void)  
+//初始化代码  
+while(1)  
+{
++    HAL_Delay(1000);
++    oh_dprintf("LED is toggled, message sent over UART\n");
+}
+```
+{{< /collapse >}}
+
+将`dprintf.c`文件加入`BUILD.gn`编译脚本，参与编译。  
+{{< collapse summary="device/board/embfire/challenger_h743v2/liteos_m/BUILD.gn" >}}
+```diff  
+kernel_module(module_name) {
+    sources = [
++        "Src/dprintf.c",
+    ]
+}
+```
+{{< /collapse >}}
+
+在串口初始化之后使用`oh_printf`函数打印，测试是否适配成功。
+
+{{< figure src="/images/posts/2025_04_01-openharmony_kernel_porting/oh_printf.png" alt="test" title="oh_printf测试" caption="" align="center" >}}
