@@ -2319,6 +2319,733 @@ class="custom-link">
 </a>
 
 
+<h2 id="内核启动适配">内核启动适配</h2>
+<h3 id="为liteos_m分配内存适配内存分配函数">为liteos_m分配内存，适配内存分配函数</h3>
+<p>在文件<code>kernel/liteos_m/kernel/src/mm/los_memory.c</code>中，<code>OsMemSystemInit</code>函数通过<code>LOS_MemInit</code>进行了内存初始化。可以看到几个比较关键的宏需要我们指定，我们将其添加到<code>target_config.h</code>中：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/soc/st/target_config.h</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-h" data-lang="h"><span style="display:flex;"><span><span style="color:#ff79c6">extern</span> <span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> __los_heap_addr_start__;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">extern</span> <span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> __los_heap_addr_end__;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define LOSCFG_SYS_EXTERNAL_HEAP 1
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define LOSCFG_SYS_HEAP_ADDR ((void *)&amp;__los_heap_addr_start__)
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define LOSCFG_SYS_HEAP_SIZE (((unsigned long)&amp;__los_heap_addr_end__) - ((unsigned long)&amp;__los_heap_addr_start__))
+</span></span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>其中，<code>__los_heap_addr_start__</code>与<code>__los_heap_addr_end__</code>变量在<code>STM32F407IGTx_FLASH.ld</code>链接文件中被定义, 将<code>_user_heap_stack</code>花括号内内容修改为：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/liteos_m/STM32H743XX_FLASH.ld</span>
+    <span class="line-count">6 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>._user_heap_stack :
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    . = ALIGN(0x40);
+</span></span><span style="display:flex;"><span>    __los_heap_addr_start__ = .;
+</span></span><span style="display:flex;"><span>    __los_heap_addr_end__ = ORIGIN(RAM) + LENGTH(RAM);
+</span></span><span style="display:flex;"><span>} &gt;RAM
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>除此之外，我们还需要适配内存分配函数，由于内核中已经对<code>_malloc_r</code>等内存分配函数进行了实现，在此我们采用包装函数的方式来适配，用内核中的内存分配函数替换标准库中的内存分配函数即可，在<code>device/board/embfire/challenger_h743v2/liteos_m/config.gni</code>中<code>board_ld_flags</code>链接参数变量修改为：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/liteos_m/config.gni</span>
+    <span class="line-count">11 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+board_ld_flags = [
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  &#34;-Wl,--wrap=_calloc_r&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  &#34;-Wl,--wrap=_malloc_r&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  &#34;-Wl,--wrap=_realloc_r&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  &#34;-Wl,--wrap=_reallocf_r&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  &#34;-Wl,--wrap=_free_r&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  &#34;-Wl,--wrap=_memalign_r&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+  &#34;-Wl,--wrap=_malloc_usable_size_r&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+]
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+board_ld_flags += board_opt_flags
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span><span style="color:#f55">-board_ld_flags = board_opt_flags
+</span></span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<h3 id="适配printf打印">适配printf打印</h3>
+<p>为了方便后续调试，第一步需要先适配printf函数。而printf的函数适配可大可小，在此只做简单适配，具体实现可以参考其它各开发板源码。<br>
+在<code>main.c</code>同级目录下创建<code>dprintf.c</code>文件，文件内容如下：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/liteos_m/Src/dprintf.c</span>
+    <span class="line-count">40 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdarg.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&#34;los_interrupt.h&#34;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">extern</span> UART_HandleTypeDef huart1;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>INT32 <span style="color:#50fa7b">UartPutc</span>(INT32 ch, VOID <span style="color:#ff79c6">*</span>file)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> RL <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;\r&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (ch <span style="color:#ff79c6">==</span><span style="color:#f1fa8c">&#39;\n&#39;</span>) {
+</span></span><span style="display:flex;"><span>        HAL_UART_Transmit(<span style="color:#ff79c6">&amp;</span>huart1, <span style="color:#ff79c6">&amp;</span>RL, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">0xFFFF</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> HAL_UART_Transmit(<span style="color:#ff79c6">&amp;</span>huart1, (<span style="color:#8be9fd">uint8_t</span> <span style="color:#ff79c6">*</span>)<span style="color:#ff79c6">&amp;</span>ch, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">0xFFFF</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">dputs</span>(<span style="color:#8be9fd">char</span> <span style="color:#ff79c6">const</span> <span style="color:#ff79c6">*</span>s, <span style="color:#8be9fd">int</span> (<span style="color:#ff79c6">*</span>pFputc)(<span style="color:#8be9fd">int</span> n, FILE <span style="color:#ff79c6">*</span>cookie), <span style="color:#8be9fd">void</span> <span style="color:#ff79c6">*</span>cookie)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">unsigned</span> <span style="color:#8be9fd">int</span> intSave;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    intSave <span style="color:#ff79c6">=</span> LOS_IntLock();
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">while</span> (<span style="color:#ff79c6">*</span>s) {
+</span></span><span style="display:flex;"><span>        pFputc(<span style="color:#ff79c6">*</span>s<span style="color:#ff79c6">++</span>, cookie);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    LOS_IntRestore(intSave);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">oh_printf</span>(<span style="color:#8be9fd">char</span> <span style="color:#ff79c6">const</span>  <span style="color:#ff79c6">*</span>fmt, ...)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> buf[<span style="color:#bd93f9">1024</span>] <span style="color:#ff79c6">=</span> { <span style="color:#bd93f9">0</span> };
+</span></span><span style="display:flex;"><span>    va_list ap;
+</span></span><span style="display:flex;"><span>    va_start(ap, fmt);
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> len <span style="color:#ff79c6">=</span> vsnprintf_s(buf, <span style="color:#ff79c6">sizeof</span>(buf), <span style="color:#bd93f9">1024</span> <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>, fmt, ap);
+</span></span><span style="display:flex;"><span>    va_end(ap);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (len <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>        dputs(buf, UartPutc, <span style="color:#bd93f9">0</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>        dputs(<span style="color:#f1fa8c">&#34;printf error!</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, UartPutc, <span style="color:#bd93f9">0</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> len;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+我们需要将<code>printf</code>换个名字，因为会和标准库中的<code>printf</code>冲突导致编译报错。<br>
+同时为了调用这个函数，编写一个<code>h</code>文件。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/liteos_m/Inc/dprintf.h</span>
+    <span class="line-count">8 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#6272a4">#ifndef DPRINTF_H</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#define DPRINTF_H</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#include &lt;stdio.h&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>int oh_dprintf(<span style="color:#ff79c6">const</span> char <span style="color:#ff79c6">*</span>fmt, <span style="color:#ff79c6">...</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#endif /* DPRINTF_H */</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>我们现在可以将我们编写的<code>oh_printf</code>函数加入到主函数中测试：<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/liteos_m/Src/main.c</span>
+    <span class="line-count">13 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>/* Includes ------------------------------------------------------------------*/
+</span></span><span style="display:flex;"><span>#include &#34;main.h&#34;
+</span></span><span style="display:flex;"><span>#include &lt;stdio.h&gt;
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+#include &#34;dprintf.h&#34;  // 引入 dprintf 的头文件
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>/* Private includes ----------------------------------------------------------*/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>int main(void)  
+</span></span><span style="display:flex;"><span>//初始化代码  
+</span></span><span style="display:flex;"><span>while(1)  
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+    HAL_Delay(1000);
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+    oh_dprintf(&#34;LED is toggled, message sent over UART\n&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>将<code>dprintf.c</code>文件加入<code>BUILD.gn</code>编译脚本，参与编译。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>device/board/embfire/challenger_h743v2/liteos_m/BUILD.gn</span>
+    <span class="line-count">5 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>kernel_module(module_name) {
+</span></span><span style="display:flex;"><span>    sources = [
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold">+        &#34;Src/dprintf.c&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#50fa7b;font-weight:bold"></span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+</p>
+<p>在串口初始化之后使用<code>oh_printf</code>函数打印，测试是否适配成功。</p>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_04_01-openharmony_kernel_porting/oh_printf.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_04_01-openharmony_kernel_porting/oh_printf.png#center"
+         alt="test"/> <figcaption>
+            oh_printf测试
+        </figcaption>
+</figure>
+</a>
+
+
 ]]></content:encoded></item><item><title>移植问题</title><link>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</link><pubDate>Sun, 30 Mar 2025 16:18:23 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_03_30-problems_with_transplant/</guid><description>&lt;h2 id="官方亮灯例程无法正确使用">官方亮灯例程无法正确使用&lt;/h2>
 &lt;p>2025_03_29&lt;br>
 Q: 我这边使用官方的亮灯例程&amp;lt; 12-GPIO输出-使用固件点亮LED灯 &amp;gt;，并未对例程进行修改，但是烧录进开发板之后并没有任何输出显示。&lt;br>
