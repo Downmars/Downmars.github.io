@@ -1,4 +1,78 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Wed, 09 Apr 2025 23:16:31 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>MarkItDown-万物2Markdown</title><link>https://downmars.github.io/zh/posts/2025_04_08-markitdown/</link><pubDate>Wed, 09 Apr 2025 23:16:31 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_04_08-markitdown/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Tue, 15 Apr 2025 15:56:21 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenHarmony移植到STM32H743系列_Openocd</title><link>https://downmars.github.io/zh/posts/2025_04_15-openharmony_openocd/</link><pubDate>Tue, 15 Apr 2025 15:56:21 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_04_15-openharmony_openocd/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>我这边是在&lt;code>linux&lt;/code>工作环境下，所以我这边使用开源工具&lt;a href="https://openocd.org/"
+target="_blank" rel="noopener"
+class="custom-link">
+openocd&lt;span class="external-link">↗&lt;/span>&lt;/a>
+进行代码的烧录，在&lt;code>archlinux&lt;/code>环境下使用以下命令进行工具的下载：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo pacman -S openocd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="烧录指令">烧录指令&lt;/h2>
+&lt;p>根据官方内容，我们可以使用以下指令进行文件的烧录：&lt;/p></description><content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>我这边是在<code>linux</code>工作环境下，所以我这边使用开源工具<a href="https://openocd.org/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   openocd<span class="external-link">↗</span></a>
+进行代码的烧录，在<code>archlinux</code>环境下使用以下命令进行工具的下载：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S openocd  
+</span></span></code></pre></div><h2 id="烧录指令">烧录指令</h2>
+<p>根据官方内容，我们可以使用以下指令进行文件的烧录：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openocd -f interface/cmsis-dap.cfg -f target/stm32h7x.cfg <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>        -c <span style="color:#f1fa8c">&#34;program out/challenger_h743v2/challenger_h743v2/OHOS_Image.bin 0x08000000 verify reset exit&#34;</span>
+</span></span></code></pre></div><p>这段命令是使用 <strong>OpenOCD</strong> (Open On-Chip Debugger) 工具来编程和调试 STM32H7 系列的微控制器。我们逐部分解释这个命令的各个内容：</p>
+<h3 id="命令分解">命令分解</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openocd -f interface/cmsis-dap.cfg -f target/stm32h7x.cfg <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>        -c <span style="color:#f1fa8c">&#34;program out/challenger_h743v2/challenger_h743v2/OHOS_Image.bin 0x08000000 verify reset exit&#34;</span>
+</span></span></code></pre></div><ul>
+<li>
+<p><strong><code>openocd</code></strong>：</p>
+<ul>
+<li>这是执行 OpenOCD 程序的命令。OpenOCD 是一个开源的调试工具，支持多种调试接口，可以用来与目标微控制器进行通信，进行烧录、调试等操作。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>-f interface/cmsis-dap.cfg</code></strong>：</p>
+<ul>
+<li>这个参数指定了 OpenOCD 使用的接口配置文件。在这里，选择的是 CMSIS-DAP 调试器，它是 ARM 官方标准接口，通常用于连接调试器和目标设备。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>-f target/stm32h7x.cfg</code></strong>：</p>
+<ul>
+<li>这个参数指定了目标设备的配置文件，<code>stm32h7x.cfg</code> 是针对 STM32H7 系列微控制器的配置文件，包含了有关硬件特性（如时钟设置、芯片特性等）的详细信息。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>-c &quot;program out/challenger_h743v2/challenger_h743v2/OHOS_Image.bin 0x08000000 verify reset exit&quot;</code></strong>：</p>
+<ul>
+<li><strong><code>-c</code></strong>：用于执行一个 OpenOCD 命令。</li>
+<li><strong><code>program out/challenger_h743v2/challenger_h743v2/OHOS_Image.bin 0x08000000</code></strong>：
+<ul>
+<li><code>program</code> 命令用来将一个二进制文件（此处为 <code>OHOS_Image.bin</code>）烧录到目标设备的指定地址（这里是 <code>0x08000000</code>）。</li>
+</ul>
+</li>
+<li><strong><code>verify</code></strong>：
+<ul>
+<li>这个选项表示在烧录完成后进行验证，即检查烧录的数据是否与目标地址的内容一致。</li>
+</ul>
+</li>
+<li><strong><code>reset</code></strong>：
+<ul>
+<li>烧录完成并验证之后，执行目标设备的重置命令。</li>
+</ul>
+</li>
+<li><strong><code>exit</code></strong>：
+<ul>
+<li>最后，执行完所有操作后，退出 OpenOCD 程序。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>这条命令的目的是通过 CMSIS-DAP 调试器，使用 OpenOCD 工具将 <code>OHOS_Image.bin</code> 文件烧录到 STM32H7 微控制器的内存地址 <code>0x08000000</code>，并在烧录完成后进行验证、重启设备，并退出程序。</p>
+<p>由于板子的原因，我需要在下载程序前按下复位键，大约1s之后可以松开即可成功烧录。</p>
+]]></content:encoded></item><item><title>MarkItDown-万物2Markdown</title><link>https://downmars.github.io/zh/posts/2025_04_08-markitdown/</link><pubDate>Wed, 09 Apr 2025 23:16:31 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_04_08-markitdown/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>之前一段时间为了整理论文，使用过一些开源的&lt;code>pdf2md&lt;/code>的工具，但是大部分用起来都有一种寸止的感觉，昨天正好看到一个微软的开源PY工具&lt;a href="https://github.com/microsoft/markitdown"
 target="_blank" rel="noopener"
 class="custom-link">
@@ -2197,7 +2271,8 @@ class="custom-link">
   </div>
 </details></p>
 
-<p>接下来执行<code>./build.sh --product-name challenger_h743v2 --no-prebuilt-sdk</code>即可进行编译。</p>
+<h2 id="编译烧录验证">编译烧录验证</h2>
+<p>接下来执行<code>./build.sh --product-name challenger_h743v2 --no-prebuilt-sdk</code>即可进行编译生成<code>OHOS_Image.bin</code>。</p>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -2208,6 +2283,37 @@ class="custom-link">
     <img loading="lazy" src="/images/posts/2025_04_01-openharmony_kernel_porting/porting_ok.png#center"
          alt="test"/> <figcaption>
             编译成功
+        </figcaption>
+</figure>
+</a>
+
+
+<p>再使用<code>openocd</code>进行镜像的烧录并看到串口输出。</p>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_04_01-openharmony_kernel_porting/openocd_out.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_04_01-openharmony_kernel_porting/openocd_out.png#center"
+         alt="test"/> <figcaption>
+            烧录输出
+        </figcaption>
+</figure>
+</a>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<a data-fancybox="gallery" href="/images/posts/2025_04_01-openharmony_kernel_porting/uart_out.png">
+<figure class="align-center ">
+    <img loading="lazy" src="/images/posts/2025_04_01-openharmony_kernel_porting/uart_out.png#center"
+         alt="test"/> <figcaption>
+            串口输出
         </figcaption>
 </figure>
 </a>
