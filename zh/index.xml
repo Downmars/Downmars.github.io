@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Thu, 24 Apr 2025 19:28:37 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_04_24 Sam2_paper</title><link>https://downmars.github.io/zh/posts/2025_04_24-sam2_paper/</link><pubDate>Thu, 24 Apr 2025 19:28:37 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_04_24-sam2_paper/</guid><description>&lt;h2 id="引言">引言&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sat, 19 Jul 2025 23:21:24 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>通过ADB在Mac和Android之间传输数据</title><link>https://downmars.github.io/zh/posts/2025_07_19-mac_android_with_adb/</link><pubDate>Sat, 19 Jul 2025 23:21:24 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_19-mac_android_with_adb/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>我前段时间去日本的时候，将部分照片存在了我的安卓手机中，等我回来将照片存进我的Mac的时候出现了一些小问题，直接是用数据线连接是无法直接访问安卓手机内部的文件的。为了传输几十G的照片，使用一些局域网传输的工具显然不太合适，所以我选择使用了ADB（Android Debug Bridge）命令行工具，这是一个用于开发者通过命令行与Android设备交互的常用工具。&lt;/p></description><content:encoded><![CDATA[<h2 id="前言">前言</h2>
+<p>我前段时间去日本的时候，将部分照片存在了我的安卓手机中，等我回来将照片存进我的Mac的时候出现了一些小问题，直接是用数据线连接是无法直接访问安卓手机内部的文件的。为了传输几十G的照片，使用一些局域网传输的工具显然不太合适，所以我选择使用了ADB（Android Debug Bridge）命令行工具，这是一个用于开发者通过命令行与Android设备交互的常用工具。</p>
+<h2 id="usb调试">USB调试</h2>
+<p>每个不同的品牌的安卓手机有着各自的开启USB调试功能的步骤，大家可以在设置中搜索对应的关键词即可，我在这里不做过多的赘述。</p>
+<h2 id="安装方式">安装方式</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install android-platform-tools
+</span></span></code></pre></div><p>安装完ADB之后，安卓手机开启USB调试，并通过数据线将安卓手机和Mac连接起来，然后使用以下指令即可查看连接到的安卓机相关信息了。</p>
+<h2 id="基础连接指令">基础连接指令</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 查看连接的设备</span>
+</span></span><span style="display:flex;"><span>adb devices
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 连接到特定设备（如果有多个设备）</span>
+</span></span><span style="display:flex;"><span>adb -s &lt;device_id&gt; &lt;command&gt;
+</span></span></code></pre></div><h2 id="从mac传输文件到android">从Mac传输文件到Android</h2>
+<p>通常你的个人文件会储存在根目录的<code>/sdcard</code>下面。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 传输单个文件</span>
+</span></span><span style="display:flex;"><span>adb push /path/to/local/file.jpg /sdcard/Pictures/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 传输整个文件夹</span>
+</span></span><span style="display:flex;"><span>adb push /path/to/local/folder/ /sdcard/Download/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 传输到特定应用目录</span>
+</span></span><span style="display:flex;"><span>adb push /path/to/file.pdf /sdcard/Android/data/com.example.app/files/
+</span></span></code></pre></div><h2 id="从android传输文件到mac">从Android传输文件到Mac</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 下载单个文件</span>
+</span></span><span style="display:flex;"><span>adb pull /sdcard/Pictures/photo.jpg /Users/username/Desktop/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 下载整个文件夹</span>
+</span></span><span style="display:flex;"><span>adb pull /sdcard/DCIM/Camera/ /Users/username/Pictures/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 下载到当前目录</span>
+</span></span><span style="display:flex;"><span>adb pull /sdcard/Download/file.pdf ./
+</span></span></code></pre></div><h2 id="小技巧">小技巧</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 查看Android设备存储结构</span>
+</span></span><span style="display:flex;"><span>adb shell ls /sdcard/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 查看特定目录内容</span>
+</span></span><span style="display:flex;"><span>adb shell ls -la /sdcard/Pictures/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 创建目录</span>
+</span></span><span style="display:flex;"><span>adb shell mkdir /sdcard/NewFolder/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 删除文件</span>
+</span></span><span style="display:flex;"><span>adb shell rm /sdcard/file.txt
+</span></span></code></pre></div>]]></content:encoded></item><item><title>2025_04_24 Sam2_paper</title><link>https://downmars.github.io/zh/posts/2025_04_24-sam2_paper/</link><pubDate>Thu, 24 Apr 2025 19:28:37 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_04_24-sam2_paper/</guid><description>&lt;h2 id="引言">引言&lt;/h2>
 &lt;h3 id="研究背景及意义">研究背景及意义&lt;/h3>
 &lt;p>近年来，无人机（UAV）技术迅速发展，凭借其机动灵活和高空视野优势，被广泛应用于应急救援、设施巡检、安防监控等任务场景。在这些复杂环境中，无人机需要对周围环境进行全面感知与理解，以保障任务的安全高效执行。这要求无人机具备实时的视觉感知能力，包括对全局场景的语义分割以及对关键目标的检测与追踪。全局语义分割提供逐像素的语义信息，使无人机能够分辨不同类别的地物（如道路、建筑、人员等），为路径规划和决策提供依据；目标检测与追踪则使无人机可以发现并持续锁定感兴趣的目标（如遇险人员、可疑物体），实现精细化的监视与搜救。这要求无人机具备实时的视觉感知能力，包括对全局场景的语义分割以及对关键目标的检测与追踪。全局语义分割提供逐像素的语义信息，使无人机能够分辨不同类别的地物（如道路、建筑、人员等），为路径规划和决策提供依据；目标检测与追踪则使无人机可以发现并持续锁定感兴趣的目标（如遇险人员、可疑物体），实现精细化的监视与搜救。其中，语义分割作为关键手段，被广泛用于无人机视角下场景的理解和关键目标的识别，满足多种典型应用需求。&lt;/p></description><content:encoded><![CDATA[<h2 id="引言">引言</h2>
 <h3 id="研究背景及意义">研究背景及意义</h3>
