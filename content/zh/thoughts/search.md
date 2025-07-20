@@ -1,9 +1,9 @@
 ---
-title: "寻章句" # in any language you want
-layout: "search" # is necessary
+title: "翻案集" # in any language you want
+layout: "thoughts" # is necessary
 # url: "/archive"
 # description: "Description for Search"
-summary: "search"
+summary: "thoughts"
 # placeholder: "搜索框内的默认显示"
 ---
 

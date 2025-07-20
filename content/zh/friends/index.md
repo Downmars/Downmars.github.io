@@ -1,6 +1,6 @@
 
 ---
-title: "友链"
+title: "江湖录"
 layout: "friends"
 summary: "这是我的友链页面"
 ---
