@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sat, 19 Jul 2025 23:21:24 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>通过ADB在Mac和Android之间传输数据</title><link>https://downmars.github.io/zh/posts/2025_07_19-mac_android_with_adb/</link><pubDate>Sat, 19 Jul 2025 23:21:24 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_19-mac_android_with_adb/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 20 Jul 2025 15:33:16 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>如何活得更久</title><link>https://downmars.github.io/zh/posts/2025_07_20-how_to_live_longer/</link><pubDate>Sun, 20 Jul 2025 15:33:16 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_20-how_to_live_longer/</guid><description>&lt;p>参考Github项目：&lt;a href="https://github.com/geekan/HowToLiveLonger"
+target="_blank" rel="noopener"
+class="custom-link">
+延寿指南&lt;span class="external-link">↗&lt;/span>&lt;/a>
+。&lt;/p>
+&lt;p>这是一个很有意思的GitHub项目，它以&amp;quot;全因死亡率&amp;quot;(ACM)作为核心指标，并附带了具体的学术文献的支撑，以量化的风险比例(如-47% ACM、+23% ACM)来表达效果。作为一个数据驱动量化的指标来分析生活，虽然不能完全照搬，但是能够给我们提供一个很有意思的思考框架——如何基于科学证据来优化生活方式。&lt;/p></description><content:encoded><![CDATA[<p>参考Github项目：<a href="https://github.com/geekan/HowToLiveLonger"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   延寿指南<span class="external-link">↗</span></a>
+。</p>
+<p>这是一个很有意思的GitHub项目，它以&quot;全因死亡率&quot;(ACM)作为核心指标，并附带了具体的学术文献的支撑，以量化的风险比例(如-47% ACM、+23% ACM)来表达效果。作为一个数据驱动量化的指标来分析生活，虽然不能完全照搬，但是能够给我们提供一个很有意思的思考框架——如何基于科学证据来优化生活方式。</p>
+<p>同时，有一个<a href="https://github.com/geekan/HowToLiveLonger/issues/107"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   issue - 单一论文引用并不能形成有力的饮食推荐依据，推荐《中国居民膳食指南》<span class="external-link">↗</span></a>
+提出了很关键的一个意见：从饮食角度研究的论文常有相互矛盾的结论，但如果仅仅根据这些论文就形成直接的饮食建议是不合理的。针对于中国人群的饮食习惯，我认为<a href="http://dg.cnsoc.org/newslist_0402_1.htm"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   中国居民膳食指南2022<span class="external-link">↗</span></a>
+是一个同样值得参考角度。</p>
+]]></content:encoded></item><item><title>通过ADB在Mac和Android之间传输数据</title><link>https://downmars.github.io/zh/posts/2025_07_19-mac_android_with_adb/</link><pubDate>Sat, 19 Jul 2025 23:21:24 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_19-mac_android_with_adb/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>我前段时间去日本的时候，将部分照片存在了我的安卓手机中，等我回来将照片存进我的Mac的时候出现了一些小问题，直接是用数据线连接是无法直接访问安卓手机内部的文件的。为了传输几十G的照片，使用一些局域网传输的工具显然不太合适，所以我选择使用了ADB（Android Debug Bridge）命令行工具，这是一个用于开发者通过命令行与Android设备交互的常用工具。&lt;/p></description><content:encoded><![CDATA[<h2 id="前言">前言</h2>
 <p>我前段时间去日本的时候，将部分照片存在了我的安卓手机中，等我回来将照片存进我的Mac的时候出现了一些小问题，直接是用数据线连接是无法直接访问安卓手机内部的文件的。为了传输几十G的照片，使用一些局域网传输的工具显然不太合适，所以我选择使用了ADB（Android Debug Bridge）命令行工具，这是一个用于开发者通过命令行与Android设备交互的常用工具。</p>
 <h2 id="usb调试">USB调试</h2>
