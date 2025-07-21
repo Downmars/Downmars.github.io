@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 21 Jul 2025 17:06:57 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>关于是否将Mac mini替换为MacBookacBook Air的考量</title><link>https://downmars.github.io/zh/posts/2025_07_21-macmini_or_macbookair/</link><pubDate>Mon, 21 Jul 2025 17:06:57 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_21-macmini_or_macbookair/</guid><description>&lt;p>最近在考量是否需要将Mac mini替换为MacBook Air，但是经过一番考量，发现自己并没有真正的使用场景。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 21 Jul 2025 20:51:25 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>开源背叛Alist以及新的替代OpenList</title><link>https://downmars.github.io/zh/posts/2025_07_21-the_open-source_betrayal_of_alist_and_the_new_alternative_openlist/</link><pubDate>Mon, 21 Jul 2025 20:51:25 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_21-the_open-source_betrayal_of_alist_and_the_new_alternative_openlist/</guid><description>&lt;p>我在之前的博客中也介绍过&lt;a href="../2025_02_23-use_alist_to_manage_your_cloud_drives"
+class="custom-link">
+Alist相关的使用&lt;/a>
+，曾经作为一个广受欢迎的多平台开源云存储整合项目，由于其支持多种格式云存储统一管理的功能，在开源社区中吸引了众多的支持者。&lt;/p></description><content:encoded><![CDATA[<p>我在之前的博客中也介绍过<a href="../2025_02_23-use_alist_to_manage_your_cloud_drives"
+   
+   
+   class="custom-link">  
+   Alist相关的使用</a>
+，曾经作为一个广受欢迎的多平台开源云存储整合项目，由于其支持多种格式云存储统一管理的功能，在开源社区中吸引了众多的支持者。</p>
+<h2 id="事情起因">事情起因</h2>
+<p>2025年6月，AList项目被曝光已被原开发者 <a href="https://github.com/Xhofe"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Xhofe<span class="external-link">↗</span></a>
+悄然出售给贵州不够科技公司（BugoTech），整个交易未提前告知社区，引发开源圈震动。<br>
+同时在出售后，新公司接管后同样出现争议操作：包括在 PR 中添加上传用户设备信息的可疑代码、删除原作者信息、大幅商业化（如加 VIP 群、换域名）等，导致用户担忧隐私泄露和“供应链投毒”。<br>
+不够科技本身也有收购其他开源项目后引发权限和闭源争议的“黑历史”，这在进一步加剧了社区对其不信任。<br>
+社区对 Xhofe 的行为既有理解其个人付出的同情，也有对其“暗箱操作”的强烈指责，认为这背叛了开源精神。<br>
+在这种情况下，大量用户选择自救，涌现了 <a href="https://github.com/OpenListTeam/OpenList/tree/main"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   OpenList<span class="external-link">↗</span></a>
+ 等分叉项目，移除风险代码并重建透明机制，替代方案迅速获得支持。</p>
+<h2 id="后续">后续</h2>
+<p>OpenList作为一个社区Alist的分支，其安装部署方式与后者基本相同，所以我们这里就不过多赘述。<br>
+作为一个从曾经的Alist项目中分支出来的开源项目，我们也希望能有更多有能力的小伙伴参与到OpenList中，贡献自己的一份力量！</p>
+]]></content:encoded></item><item><title>关于是否将Mac mini替换为MacBookacBook Air的考量</title><link>https://downmars.github.io/zh/posts/2025_07_21-macmini_or_macbookair/</link><pubDate>Mon, 21 Jul 2025 17:06:57 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_21-macmini_or_macbookair/</guid><description>&lt;p>最近在考量是否需要将Mac mini替换为MacBook Air，但是经过一番考量，发现自己并没有真正的使用场景。&lt;/p>
 &lt;h2 id="摄影后期的考量">摄影后期的考量&lt;/h2>
 &lt;h3 id="旅行摄影">旅行摄影&lt;/h3>
 &lt;p>从旅游摄影角度来看，我真的需要当天拍完就立即后期吗？答案是否定的。在日本旅游的那几天，我明显感受到一整天的行程下来已经很累了，根本没有心情做其他事情。旅游一天后还要修图，这实在太蠢了。&lt;/p></description><content:encoded><![CDATA[<p>最近在考量是否需要将Mac mini替换为MacBook Air，但是经过一番考量，发现自己并没有真正的使用场景。</p>
