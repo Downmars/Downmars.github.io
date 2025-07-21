@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 20 Jul 2025 15:33:16 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>如何活得更久</title><link>https://downmars.github.io/zh/posts/2025_07_20-how_to_live_longer/</link><pubDate>Sun, 20 Jul 2025 15:33:16 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_20-how_to_live_longer/</guid><description>&lt;p>参考Github项目：&lt;a href="https://github.com/geekan/HowToLiveLonger"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 21 Jul 2025 17:06:57 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>关于是否将Mac mini替换为MacBookacBook Air的考量</title><link>https://downmars.github.io/zh/posts/2025_07_21-macmini_or_macbookair/</link><pubDate>Mon, 21 Jul 2025 17:06:57 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_21-macmini_or_macbookair/</guid><description>&lt;p>最近在考量是否需要将Mac mini替换为MacBook Air，但是经过一番考量，发现自己并没有真正的使用场景。&lt;/p>
+&lt;h2 id="摄影后期的考量">摄影后期的考量&lt;/h2>
+&lt;h3 id="旅行摄影">旅行摄影&lt;/h3>
+&lt;p>从旅游摄影角度来看，我真的需要当天拍完就立即后期吗？答案是否定的。在日本旅游的那几天，我明显感受到一整天的行程下来已经很累了，根本没有心情做其他事情。旅游一天后还要修图，这实在太蠢了。&lt;/p></description><content:encoded><![CDATA[<p>最近在考量是否需要将Mac mini替换为MacBook Air，但是经过一番考量，发现自己并没有真正的使用场景。</p>
+<h2 id="摄影后期的考量">摄影后期的考量</h2>
+<h3 id="旅行摄影">旅行摄影</h3>
+<p>从旅游摄影角度来看，我真的需要当天拍完就立即后期吗？答案是否定的。在日本旅游的那几天，我明显感受到一整天的行程下来已经很累了，根本没有心情做其他事情。旅游一天后还要修图，这实在太蠢了。</p>
+<h3 id="人像摄影">人像摄影</h3>
+<p>如果是人物摄影，比如漫展现场修图出片，拿着MBA现场修图实在太&quot;龟男&quot;了，也很愚蠢。就像香酥蛋糕那套流程，点几个按键就能出图，用MBA来修图既没效率，也无法享受修图的过程。</p>
+<h2 id="移动办公的必要性质疑">移动办公的必要性质疑</h2>
+<p>对于即将到来的研究生生活，我仔细想了想，并没有意识到有什么场景需要用到Mac的移动办公功能。更重要的是，由于涉及军工方面的研究，MBA的便携性反而成了最不重要的特点——我根本不能随身携带这台笔记本。显然，我暂时没有遇到需要MBA最关键的便携性特点的使用场景。</p>
+<h2 id="ar眼镜方案的可行性分析">AR眼镜方案的可行性分析</h2>
+<p>我曾幻想过使用XReal One进行轻量化AR眼镜虚拟大屏随身办公，但这并没有实际的使用场景。而且：</p>
+<ul>
+<li>XReal One似乎要推出新一代Two了</li>
+<li>5k的价格实在太贵</li>
+<li>这原本是配合Mac mini的幻想场景，但可行性和实用性都太低</li>
+<li>散热和供电都是问题<br>
+MBA虽然可以作为实用性更高但可玩性更低的替代方案，但综合考虑下来，我确实没有合适的使用场景。</li>
+</ul>
+<h2 id="现有设备配置的考量">现有设备配置的考量</h2>
+<p>目前我的环境下，Mac最好还是放在宿舍里，这就需要在宿舍配置一整套外设设备。我确实有这些设备，但只有一套，所以笔记本只能&quot;轻装上阵&quot;。<br>
+如果换了笔记本能够解放外设设备，放在工位上确实能提升工作效率，但问题是：</p>
+<ul>
+<li>我的显示器连接笔记本时亮度不够，有些暗，不如笔记本屏幕方便</li>
+<li>从Mac mini换到MBA，需要加几百块钱，却要损失16GB内存和2个核心</li>
+</ul>
+<h2 id="系统迁移的考虑">系统迁移的考虑</h2>
+<p>如果短时间内不换设备，我可能能找到完美的系统转移方法，也可能找不到。找不到的话，转移系统的沉没成本就比较大，但我相信应该能找到解决方案。<br>
+经过这番思考，我发现自己对MBA的需求更多是基于想象而非实际场景。在没有明确使用需求的情况下，还是应该理性消费，把钱花在刀刃上。</p>
+]]></content:encoded></item><item><title>如何活得更久</title><link>https://downmars.github.io/zh/posts/2025_07_20-how_to_live_longer/</link><pubDate>Sun, 20 Jul 2025 15:33:16 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_20-how_to_live_longer/</guid><description>&lt;p>参考Github项目：&lt;a href="https://github.com/geekan/HowToLiveLonger"
 target="_blank" rel="noopener"
 class="custom-link">
 延寿指南&lt;span class="external-link">↗&lt;/span>&lt;/a>
