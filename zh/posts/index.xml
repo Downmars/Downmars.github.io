@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 28 Jul 2025 08:52:51 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Vial初探</title><link>https://downmars.github.io/zh/posts/2025_07_28-vial/</link><pubDate>Mon, 28 Jul 2025 08:52:51 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_28-vial/</guid><description>&lt;p>前段时间，在网络上看到一款比较迷你、造型又比较精致的CNC直列48键键盘Cornix，遂动心购买。由于是不完全的小配列，所以说需要借助到一款&lt;a href="https://get.vial.today/"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 28 Jul 2025 16:55:15 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>这样写Git Commit Message也许会更好</title><link>https://downmars.github.io/zh/posts/2025_07_28-how_to_write_git_commit_message/</link><pubDate>Mon, 28 Jul 2025 16:55:15 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_28-how_to_write_git_commit_message/</guid><description>&lt;p>我在写博客中的过程中，我往往会对于一篇博客进行多次的增添与修改，我一直苦恼于这次修改后如何添加Commit Message。就在刚才的又一次提交中，我想我应该规范下我的Commit Message的规范了，遂写下这一篇文章。&lt;/p></description><content:encoded><![CDATA[<p>我在写博客中的过程中，我往往会对于一篇博客进行多次的增添与修改，我一直苦恼于这次修改后如何添加Commit Message。就在刚才的又一次提交中，我想我应该规范下我的Commit Message的规范了，遂写下这一篇文章。</p>
+<p>本文大量参考了<a href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+    Git Commit Message 這樣寫會更好，替專案引入規範與範例<span class="external-link">↗</span></a>
+。</p>
+<h2 id="commit-message-规范">Commit Message 规范</h2>
+]]></content:encoded></item><item><title>Vial初探</title><link>https://downmars.github.io/zh/posts/2025_07_28-vial/</link><pubDate>Mon, 28 Jul 2025 08:52:51 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_28-vial/</guid><description>&lt;p>前段时间，在网络上看到一款比较迷你、造型又比较精致的CNC直列48键键盘Cornix，遂动心购买。由于是不完全的小配列，所以说需要借助到一款&lt;a href="https://get.vial.today/"
 target="_blank" rel="noopener"
 class="custom-link">
 Vial&lt;span class="external-link">↗&lt;/span>&lt;/a>
