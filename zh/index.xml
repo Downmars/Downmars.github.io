@@ -1,4 +1,528 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 28 Jul 2025 16:55:15 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>这样写Git Commit Message也许会更好</title><link>https://downmars.github.io/zh/posts/2025_07_28-how_to_write_git_commit_message/</link><pubDate>Mon, 28 Jul 2025 16:55:15 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_28-how_to_write_git_commit_message/</guid><description>&lt;p>我在写博客中的过程中，我往往会对于一篇博客进行多次的增添与修改，我一直苦恼于这次修改后如何添加Commit Message。就在刚才的又一次提交中，我想我应该规范下我的Commit Message的规范了，遂写下这一篇文章。&lt;/p></description><content:encoded><![CDATA[<p>我在写博客中的过程中，我往往会对于一篇博客进行多次的增添与修改，我一直苦恼于这次修改后如何添加Commit Message。就在刚才的又一次提交中，我想我应该规范下我的Commit Message的规范了，遂写下这一篇文章。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Tue, 29 Jul 2025 15:41:59 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>我是否需要nvim插件</title><link>https://downmars.github.io/zh/posts/2025_07_29-do_i_need_neovim_plugins/</link><pubDate>Tue, 29 Jul 2025 15:41:59 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_29-do_i_need_neovim_plugins/</guid><description>&lt;p>今天在尝试寻找一个程序问题的时候，想到了我是不是可以在nvim上添加一个调试的插件，我在搜索的过程中发现一篇有意思的讨论&lt;a href="https://www.reddit.com/r/neovim/comments/1cwxlnf/how_many_of_you_use_a_debugger_with_nvim/?show=original"
+target="_blank" rel="noopener"
+class="custom-link">
+how many of you use a debugger with nvim&lt;span class="external-link">↗&lt;/span>&lt;/a>
+。题主在讨论中说到了“我在使用 VS Code 时从未设置或使用过调试器，并且一直觉得调试器可能有用却也可能麻烦，所以我现在在考虑是否值得在迁移到 Neovim 后去研究它的调试功能”。&lt;/p></description><content:encoded><![CDATA[<p>今天在尝试寻找一个程序问题的时候，想到了我是不是可以在nvim上添加一个调试的插件，我在搜索的过程中发现一篇有意思的讨论<a href="https://www.reddit.com/r/neovim/comments/1cwxlnf/how_many_of_you_use_a_debugger_with_nvim/?show=original"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   how many of you use a debugger with nvim<span class="external-link">↗</span></a>
+。题主在讨论中说到了“我在使用 VS Code 时从未设置或使用过调试器，并且一直觉得调试器可能有用却也可能麻烦，所以我现在在考虑是否值得在迁移到 Neovim 后去研究它的调试功能”。</p>
+<h2 id="讨论焦点">讨论焦点</h2>
+<p>对于这篇帖子的讨论观点主要分为以下几种：</p>
+<ul>
+<li>“Print永远滴神”： 有大约五分之一的人认为调试器太慢、太复杂，反而print显得直接明了，不少人声称甚至在几十万行的项目中只依靠print来完成程序的调试。</li>
+<li>“调试器无所不能”： 断点、变量可视化、单步执行、状态回溯、运行时修改对象……这些都是 print 难以替代的功能，特别是在调试复杂状态机或大型类系统时。</li>
+<li>“Neovim的调试器体验差”： 不是不想用，而是用得太痛苦。DAP 配置繁琐、UI 不友好、调试流程割裂，甚至还会导致程序行为变化。最后，还是回归 VS Code、IntelliJ 或 Xcode。</li>
+<li>“Unix哲学派”： 这部分人认为 Neovim 作为一个纯粹的文本编辑器，不需要调试功能，这些额外功能就交给别的工具来实现。</li>
+</ul>
+<h2 id="我为什么选择使用neovim">我为什么选择使用Neovim</h2>
+<p>我愿意使用Neovim的原因可以分为以下几点：</p>
+<ul>
+<li>这是一种键盘友好的文本编辑器。</li>
+<li>能够高度定制化你的需求，尽管有一定的门槛，但是经过调整之后能够找到适合自己的输入体验。</li>
+<li>高度一致化的输入体验，经过一定的插件整合，我能够在同一种输入体验下完成尽可能多的输入环境需求，而不是无限制得引入重量级的IDE。</li>
+</ul>
+<h2 id="高度定制化的neovim是否背叛了unix哲学">高度定制化的Neovim是否背叛了Unix哲学</h2>
+<p>在给<a href="../2025_07_29-do_i_need_neovim_plugins/#%e8%ae%a8%e8%ae%ba%e7%84%a6%e7%82%b9"
+   
+   
+   class="custom-link">  
+   讨论焦点</a>
+一节中的“Unix哲学派”命名的时候，我顺便去搜寻了下人们对于Neovim的Unix哲学的看法，确实发现了一些很有意思的内容。<br>
+<a href="https://snare.dev/musings/the-book-of-neo/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   The Book of Neo<span class="external-link">↗</span></a>
+的作者模仿<a href="https://www.ewtn.com/catholicism/library/ten-commandments-10336"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   《摩西十戒》<span class="external-link">↗</span></a>
+写下了《NeoLORD 的十条诫命》，以下是关于其内容的翻译供大家一乐。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>NeoLORD 的十条诫命</span>
+    <span class="line-count">80 lines</span>
+  </summary>
+  <div class="content">
+    <p><strong>1.</strong>
+<strong>Thou shalt abide by the philosophy of my right hand: “Thou shalt do one thing, and do it well.”</strong>
+The <code>$EDITOR</code> is a craft, created to create. It is the crafter of crafters. Do not fall into the traps of the cursèd devil which shall not be named, and do more than is intended.
+<strong>I am the NeoLORD.</strong></p>
+<p><strong>汝当遵循吾右手的哲学：“汝当专一其事，精其所精。”</strong>
+<code>$EDITOR</code> 乃神圣之工艺，生来为创造而生，是工匠中的工匠。切勿堕入那不可名状之魔的陷阱——贪多务广，违背初衷。
+<strong>我乃 NeoLORD。</strong></p>
+<hr>
+<p><strong>2.</strong>
+<strong>Thou shalt not use editors other than the venerable Neovim;</strong>
+for I the NeoLORD am a jealous God, and will destroy all that create with no regard to their true creator.
+<strong>I am the NeoLORD.</strong></p>
+<p><strong>汝不可使用 Neovim 之外之编辑器。</strong>
+因为我，NeoLORD，是妒忌之神，凡无视真正创造者而妄作他器者，必遭我之毁灭，永堕 IDE 之牢笼。
+<strong>我乃 NeoLORD。</strong></p>
+<hr>
+<p><strong>3.</strong>
+<strong>Thou shalt abstain from usage of VimScript in favor of Lua.</strong>
+The venerable VimScript will be kept alive, since he is still useful, but beware; old wineskins will break eventually.
+<strong>I am the NeoLORD.</strong></p>
+<p><strong>汝当弃用 VimScript，转而皈依 Lua。</strong>
+虽古老之 VimScript 尚存其用，然陈酒袋终将破裂。吾已赐汝新皮囊，汝当谨慎斟酌。
+<strong>我乃 NeoLORD。</strong></p>
+<hr>
+<p><strong>4.</strong>
+<strong>Thou shalt make the fullest use of the tools that the NeoLORD has graciously provided to you.</strong>
+Give LSP and Treesitter their due homage.
+<strong>I am the NeoLORD.</strong></p>
+<p><strong>汝当善用吾所赐之神圣工具。</strong>
+当向 LSP 与 Treesitter 献上敬意。此为圣礼，不容懈怠。
+<strong>我乃 NeoLORD。</strong></p>
+<hr>
+<p><strong>5.</strong>
+<strong>Honor plugin maintainers with the utmost respect.</strong>
+They are not subject to your fleeting whims, and are free to do as they please with the fruits of their labor. Must a conflict arise, thou shalt resolve thy disagreements through civil discussion. Take care, and wield the mighty fork with caution.
+<strong>I am the NeoLORD.</strong></p>
+<p><strong>汝当敬重插件的造物者。</strong>
+他们非汝一时之所欲可左右，其劳作之果，亦不为尔独享。若有争端，汝当理性交涉；必要时，方可挥动那威力巨大的 fork，然须慎之又慎。
+<strong>我乃 NeoLORD。</strong></p>
+<hr>
+<p><strong>6.</strong>
+<strong>Beware the temptresses of useless plugins.</strong>
+Do not let them sour your desire to create.
+<strong>I am the NeoLORD.</strong></p>
+<p><strong>当警惕虚妄插件之诱惑。</strong>
+切勿让它们腐蚀汝创造之心志，陷入配置地狱之苦。
+<strong>我乃 NeoLORD。</strong></p>
+<hr>
+<p><strong>7.</strong>
+<strong>Thou shalt respect Vim and its contributions to the world,</strong>
+and upstream any applicable patches, for the spirit of Bram shall live forever and ever.
+<strong>I am the NeoLORD.</strong></p>
+<p><strong>汝当尊重 Vim 及其对世界之贡献。</strong>
+若能回馈补丁于其上游，更当尽力为之。因为 Bram 的灵魂将与代码同在，直到永远。
+<strong>我乃 NeoLORD。</strong></p>
+<hr>
+<p><strong>8.</strong>
+<strong>Thou shalt not act in sloth, lest you perish in the bottomless pits of the lazy Inferno.</strong>
+The NeoLORD your God is not a lazy God; thou shalt instead weave thy configurations by hand.
+For the lazy folk are unable to partake in the NeoLORD’s wisdom, and their fingers will rot from confusion.
+<strong>I am the NeoLORD.</strong></p>
+<p><strong>懒惰者必将堕入无底之惰狱。</strong>
+NeoLORD 并非懒神，汝亦不可依赖懒人配置如 LazyVim。
+汝当亲手编织 config，方得其真谛。否则汝之指，将因混乱而枯萎。
+<strong>我乃 NeoLORD。</strong></p>
+<hr>
+<p><strong>9.</strong>
+<strong>Thou shalt not blaspheme against the spirit of modality,</strong>
+for whoever disowns the other modes in favor of insert-only mode shall never be forgiven until they repent of their ways.</p>
+<p><strong>汝不可亵渎“模式”的圣灵。</strong>
+唯用插入模式者，若不悔改，永不得赦。
+汝当尊崇 Normal 与 Visual，因其蕴藏强大之力。</p>
+<hr>
+<p><strong>10.</strong>
+<strong>Do not distress over the transgressions of the ignorant,</strong>
+for everyone is a sinner in the NeoLORD’s presence.
+Instead, lead them towards repentance and the narrow gate of change.
+<strong>I am the NeoLORD.</strong></p>
+<p><strong>勿因无知者之愚行而动怒。</strong>
+因所有人在 NeoLORD 面前皆为罪人。引导他们悔改，引他们走向“变更”之窄门。
+<strong>我乃 NeoLORD。</strong></p>
+
+  </div>
+</details></p>
+</p>
+<p>这些戒令虽然夸张滑稽，但是能够看出Neovim社区的一种价值观：<strong>自由、克制、纯粹、可组合、可配置但不强求整合。</strong></p>
+<p>Reddit上关于<a href="https://www.reddit.com/r/neovim/comments/1jhio51/the_book_of_neo_a_satirical_ten_commandments_for/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   The Book of Neo<span class="external-link">↗</span></a>
+的讨论也很有意思，大家可以自行前往观看。<br>
+<blockquote class="quote"><p>Do one thing, and do it well. Don&rsquo;t be like Emacs.</p></blockquote>
+<br>
+&ldquo;intercaetera&quot;如此提出了这个<a href="https://www.reddit.com/r/neovim/comments/1jhio51/comment/mj8eys5/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   观点<span class="external-link">↗</span></a>
+。<br>
+“做一件事，做好它。别学Emacs。”<br>
+这话其实很讽刺——<br>
+考虑到现在有那么多 Neovim 插件，基本上是用 Lua 重写了 Linux/Unix 的各种小工具。
+相比 10 年前的 Vim，Neovim 实际上已经大概成了 Emacs 的 75%。</p>
+<p><blockquote class="quote"><p>Write programs that do one thing and do it well.</p></blockquote>
+<br>
+&ldquo;someboddy&quot;在下面进行了<a href="https://www.reddit.com/r/neovim/comments/1jhio51/comment/mjb8xo7/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   反驳<span class="external-link">↗</span></a>
+。<br>
+“写程序要做到一件事，并把它做好。”<br>
+但现在人们经常省略“写程序”这部分，结果把整句话的意思搞错了。“做一件事”应该是针对程序本身而言；而不是拿来限制用户或用户的系统组合行为。</p>
+]]></content:encoded></item><item><title>这样写Git Commit Message也许会更好</title><link>https://downmars.github.io/zh/posts/2025_07_28-how_to_write_git_commit_message/</link><pubDate>Mon, 28 Jul 2025 16:55:15 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_28-how_to_write_git_commit_message/</guid><description>&lt;p>我在写博客中的过程中，我往往会对于一篇博客进行多次的增添与修改，我一直苦恼于这次修改后如何添加Commit Message。就在刚才的又一次提交中，我想我应该规范下我的Commit Message的规范了，遂写下这一篇文章。&lt;/p></description><content:encoded><![CDATA[<p>我在写博客中的过程中，我往往会对于一篇博客进行多次的增添与修改，我一直苦恼于这次修改后如何添加Commit Message。就在刚才的又一次提交中，我想我应该规范下我的Commit Message的规范了，遂写下这一篇文章。</p>
 <p>本文大量参考了<a href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html"
    
     
@@ -49,6 +573,13 @@ Vial&lt;span class="external-link">↗&lt;/span>&lt;/a>
 <h3 id="isojis">ISO/JIS</h3>
 <h3 id="layers">Layers</h3>
 <p>层是Vial中很重要的一个概念，层能够根据当前层改变整个键盘的功能，我们通常会将字母位、触发键放在基础层（layer 0），其他关键功能放在功能层（layer 1），这只是惯例，实际上你可以根据你的习惯进行任意的调整。</p>
+<h3 id="blocks">blocks</h3>
+<p>为了满足我的需求我将我的修饰键分为了以下的三大布局：</p>
+<ul>
+<li>左手小拇指区：Tab LShift</li>
+<li>左手大拇指区：LAlt LCtrl</li>
+<li>右手大拇指区：RGui</li>
+</ul>
 ]]></content:encoded></item><item><title>开源背叛Alist以及新的替代OpenList</title><link>https://downmars.github.io/zh/posts/2025_07_21-the_open-source_betrayal_of_alist_and_the_new_alternative_openlist/</link><pubDate>Mon, 21 Jul 2025 20:51:25 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_21-the_open-source_betrayal_of_alist_and_the_new_alternative_openlist/</guid><description>&lt;p>我在之前的博客中也介绍过&lt;a href="../2025_02_23-use_alist_to_manage_your_cloud_drives"
 class="custom-link">
 Alist相关的使用&lt;/a>
