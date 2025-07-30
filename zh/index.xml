@@ -16,7 +16,7 @@ how many of you use a debugger with nvim&lt;span class="external-link">↗&lt;/s
 <li>“Print永远滴神”： 有大约五分之一的人认为调试器太慢、太复杂，反而print显得直接明了，不少人声称甚至在几十万行的项目中只依靠print来完成程序的调试。</li>
 <li>“调试器无所不能”： 断点、变量可视化、单步执行、状态回溯、运行时修改对象……这些都是 print 难以替代的功能，特别是在调试复杂状态机或大型类系统时。</li>
 <li>“Neovim的调试器体验差”： 不是不想用，而是用得太痛苦。DAP 配置繁琐、UI 不友好、调试流程割裂，甚至还会导致程序行为变化。最后，还是回归 VS Code、IntelliJ 或 Xcode。</li>
-<li>“Unix哲学派”： 这部分人认为 Neovim 作为一个纯粹的文本编辑器，不需要调试功能，这些额外功能就交给别的工具来实现。</li>
+<li>“UNIX哲学派”： 这部分人认为 Neovim 作为一个纯粹的文本编辑器，不需要调试功能，这些额外功能就交给别的工具来实现。</li>
 </ul>
 <h2 id="我为什么选择使用neovim">我为什么选择使用Neovim</h2>
 <p>我愿意使用Neovim的原因可以分为以下几点：</p>
@@ -31,7 +31,7 @@ how many of you use a debugger with nvim&lt;span class="external-link">↗&lt;/s
    
    class="custom-link">  
    讨论焦点</a>
-一节中的“Unix哲学派”命名的时候，我顺便去搜寻了下人们对于Neovim的Unix哲学的看法，确实发现了一些很有意思的内容。<br>
+一节中的“UNIX哲学派”命名的时候，我顺便去搜寻了下人们对于Neovim的UNIX哲学的看法，确实发现了一些很有意思的内容。<br>
 <a href="https://snare.dev/musings/the-book-of-neo/"
    
     
@@ -496,9 +496,9 @@ Instead, lead them towards repentance and the narrow gate of change.
    class="custom-link">  
    The Book of Neo<span class="external-link">↗</span></a>
 的讨论也很有意思，大家可以自行前往观看。<br>
-<blockquote class="quote"><p>Do one thing, and do it well. Don&rsquo;t be like Emacs.</p></blockquote>
-<br>
-&ldquo;intercaetera&quot;如此提出了这个<a href="https://www.reddit.com/r/neovim/comments/1jhio51/comment/mj8eys5/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button"
+<blockquote class="quote"><p><strong>Do one thing, and do it well. Don&rsquo;t be like Emacs.</strong></p></blockquote>
+
+这话其实很讽刺，在他看来Neovim在越来越像Emacs，这完全是对UNIX哲学的背叛与讽刺。<span class="sidenote-number"><small class="sidenote">&ldquo;intercaetera&quot;如此提出了这个<a href="https://www.reddit.com/r/neovim/comments/1jhio51/comment/mj8eys5/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button"
    
     
        target="_blank" rel="noopener" 
@@ -506,13 +506,16 @@ Instead, lead them towards repentance and the narrow gate of change.
    class="custom-link">  
    观点<span class="external-link">↗</span></a>
 。<br>
-“做一件事，做好它。别学Emacs。”<br>
-这话其实很讽刺——<br>
+“做一件事，做好它。别学Emacs。”</small></span>
+
+。
 考虑到现在有那么多 Neovim 插件，基本上是用 Lua 重写了 Linux/Unix 的各种小工具。
-相比 10 年前的 Vim，Neovim 实际上已经大概成了 Emacs 的 75%。</p>
-<p><blockquote class="quote"><p>Write programs that do one thing and do it well.</p></blockquote>
-<br>
-&ldquo;someboddy&quot;在下面进行了<a href="https://www.reddit.com/r/neovim/comments/1jhio51/comment/mjb8xo7/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button"
+相比 10 年前的 Vim，Neovim 实际上已经大概成了 Emacs 的 75%。<br>
+或许&quot;intercaetera&quot;认为插件越多，越复杂，就越偏离 UNIX 哲学提倡的“做一件事，做好它”的理念。但我认为如果有一天Neovim背叛了UNIX精神，不是因为他能够做很多事情，而是它的功能被绑定在一起，无法解耦。<br>
+真正违背 UNIX 精神的，是“opinionated projects”，它们会对用户说：“你必须按我预想的方式使用我”，比如说某些Neovim发行版（LazyVim）、某些全能插件一次性绑定多个行为等。这才是用户自由的障碍。而“插件”本身，其实正是 Neovim 保留 UNIX 式模块化理念的体现。</p>
+<p><blockquote class="quote"><p><strong>Write programs that do one thing and do it well.</strong></p></blockquote>
+
+但现在人们经常省略“写程序”这部分，结果把整句话的意思搞错了<span class="sidenote-number"><small class="sidenote">&ldquo;someboddy&quot;在下面进行了<a href="https://www.reddit.com/r/neovim/comments/1jhio51/comment/mjb8xo7/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button"
    
     
        target="_blank" rel="noopener" 
@@ -520,8 +523,17 @@ Instead, lead them towards repentance and the narrow gate of change.
    class="custom-link">  
    反驳<span class="external-link">↗</span></a>
 。<br>
-“写程序要做到一件事，并把它做好。”<br>
-但现在人们经常省略“写程序”这部分，结果把整句话的意思搞错了。“做一件事”应该是针对程序本身而言；而不是拿来限制用户或用户的系统组合行为。</p>
+“写程序就是做一件事，并把它做好。”</small></span>
+
+。“做一件事”应该是针对程序本身而言；而不是拿来限制用户或用户的系统组合行为。<br>
+Neovim的Lua插件也是一种程序，它至少在自己的范围内做到了职责单一、组合自如。从某种程度上来说，人本身也是一个可以处理很多事情的系统&ndash;因为其由很多各自注重做一件事的组件组成，人们可以按照自己的需求来完善与
+配置出各种途径的Neovim。<br>
+UNIX 哲学的核心不是极简主义，而是用户赋能。用户不应该因为开发者没有预见到他的使用方式就被卡住——他应当始终能够调整自己的工具链，完成自己的目标。
+所以我认为即使你的Neovim的配置很复杂，只要在配置的时候能够明确自己的需求，这也不违反UNIX哲学，能被组合、能被替换、能被打断才是 UNIX 精神的关键。</p>
+<h2 id="所以问题不在插件而在设计哲学">所以，问题不在插件，而在设计哲学</h2>
+<p>我相信，大多数人选择 Neovim 就是因为它 既足够轻量，也允许你精细地组合自己的工作流。调试插件、UI 扩展甚至音乐播放功能，只要它们遵守“做一件事”的边界、让用户自己控制组合方式，那它们就完全合理，甚至是 UNIX 哲学最好的继承者。
+<blockquote class="quote"><p><strong>插件不是 Neovim 的背叛，而是它作为自由编辑器的证明。</strong></p></blockquote>
+</p>
 ]]></content:encoded></item><item><title>这样写Git Commit Message也许会更好</title><link>https://downmars.github.io/zh/posts/2025_07_28-how_to_write_git_commit_message/</link><pubDate>Mon, 28 Jul 2025 16:55:15 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_28-how_to_write_git_commit_message/</guid><description>&lt;p>我在写博客中的过程中，我往往会对于一篇博客进行多次的增添与修改，我一直苦恼于这次修改后如何添加Commit Message。就在刚才的又一次提交中，我想我应该规范下我的Commit Message的规范了，遂写下这一篇文章。&lt;/p></description><content:encoded><![CDATA[<p>我在写博客中的过程中，我往往会对于一篇博客进行多次的增添与修改，我一直苦恼于这次修改后如何添加Commit Message。就在刚才的又一次提交中，我想我应该规范下我的Commit Message的规范了，遂写下这一篇文章。</p>
 <p>本文大量参考了<a href="https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html"
    
