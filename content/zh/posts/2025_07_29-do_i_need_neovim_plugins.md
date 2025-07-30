@@ -41,7 +41,7 @@ cover:
 - “Print永远滴神”： 有大约五分之一的人认为调试器太慢、太复杂，反而print显得直接明了，不少人声称甚至在几十万行的项目中只依靠print来完成程序的调试。  
 - “调试器无所不能”： 断点、变量可视化、单步执行、状态回溯、运行时修改对象……这些都是 print 难以替代的功能，特别是在调试复杂状态机或大型类系统时。  
 - “Neovim的调试器体验差”： 不是不想用，而是用得太痛苦。DAP 配置繁琐、UI 不友好、调试流程割裂，甚至还会导致程序行为变化。最后，还是回归 VS Code、IntelliJ 或 Xcode。  
-- “Unix哲学派”： 这部分人认为 Neovim 作为一个纯粹的文本编辑器，不需要调试功能，这些额外功能就交给别的工具来实现。  
+- “UNIX哲学派”： 这部分人认为 Neovim 作为一个纯粹的文本编辑器，不需要调试功能，这些额外功能就交给别的工具来实现。  
 
 ## 我为什么选择使用Neovim  
 
@@ -52,7 +52,7 @@ cover:
 
 ## 高度定制化的Neovim是否背叛了Unix哲学  
 
-在给[讨论焦点](../2025_07_29-do_i_need_neovim_plugins/#讨论焦点)一节中的“Unix哲学派”命名的时候，我顺便去搜寻了下人们对于Neovim的Unix哲学的看法，确实发现了一些很有意思的内容。  
+在给[讨论焦点](../2025_07_29-do_i_need_neovim_plugins/#讨论焦点)一节中的“UNIX哲学派”命名的时候，我顺便去搜寻了下人们对于Neovim的UNIX哲学的看法，确实发现了一些很有意思的内容。  
 [The Book of Neo](https://snare.dev/musings/the-book-of-neo/)的作者模仿[《摩西十戒》](https://www.ewtn.com/catholicism/library/ten-commandments-10336)写下了《NeoLORD 的十条诫命》，以下是关于其内容的翻译供大家一乐。  
 {{< collapse summary="NeoLORD 的十条诫命" >}}
 
@@ -171,15 +171,22 @@ Instead, lead them towards repentance and the narrow gate of change.
 这些戒令虽然夸张滑稽，但是能够看出Neovim社区的一种价值观：**自由、克制、纯粹、可组合、可配置但不强求整合。**
 
 Reddit上关于[The Book of Neo](https://www.reddit.com/r/neovim/comments/1jhio51/the_book_of_neo_a_satirical_ten_commandments_for/)的讨论也很有意思，大家可以自行前往观看。  
-{{< quote >}}Do one thing, and do it well. Don't be like Emacs.{{< /quote >}}  
-"intercaetera"如此提出了这个[观点](https://www.reddit.com/r/neovim/comments/1jhio51/comment/mj8eys5/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)。  
-“做一件事，做好它。别学Emacs。”  
-这话其实很讽刺——  
+{{< quote >}}**Do one thing, and do it well. Don't be like Emacs.**{{< /quote >}}
+这话其实很讽刺，在他看来Neovim在越来越像Emacs，这完全是对UNIX哲学的背叛与讽刺。{{< sidenote >}}"intercaetera"如此提出了这个[观点](https://www.reddit.com/r/neovim/comments/1jhio51/comment/mj8eys5/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)。  
+“做一件事，做好它。别学Emacs。”  {{< /sidenote >}}。
 考虑到现在有那么多 Neovim 插件，基本上是用 Lua 重写了 Linux/Unix 的各种小工具。
 相比 10 年前的 Vim，Neovim 实际上已经大概成了 Emacs 的 75%。  
+或许"intercaetera"认为插件越多，越复杂，就越偏离 UNIX 哲学提倡的“做一件事，做好它”的理念。但我认为如果有一天Neovim背叛了UNIX精神，不是因为他能够做很多事情，而是它的功能被绑定在一起，无法解耦。  
+真正违背 UNIX 精神的，是“opinionated projects”，它们会对用户说：“你必须按我预想的方式使用我”，比如说某些Neovim发行版（LazyVim）、某些全能插件一次性绑定多个行为等。这才是用户自由的障碍。而“插件”本身，其实正是 Neovim 保留 UNIX 式模块化理念的体现。
 
-{{< quote >}}Write programs that do one thing and do it well. {{< /quote >}}  
-"someboddy"在下面进行了[反驳](https://www.reddit.com/r/neovim/comments/1jhio51/comment/mjb8xo7/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)。  
-“写程序要做到一件事，并把它做好。”  
-但现在人们经常省略“写程序”这部分，结果把整句话的意思搞错了。“做一件事”应该是针对程序本身而言；而不是拿来限制用户或用户的系统组合行为。
+{{< quote >}}**Write programs that do one thing and do it well.**{{< /quote >}}
+但现在人们经常省略“写程序”这部分，结果把整句话的意思搞错了{{< sidenote >}}"someboddy"在下面进行了[反驳](https://www.reddit.com/r/neovim/comments/1jhio51/comment/mjb8xo7/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)。  
+“写程序就是做一件事，并把它做好。”  {{< /sidenote >}}。“做一件事”应该是针对程序本身而言；而不是拿来限制用户或用户的系统组合行为。  
+Neovim的Lua插件也是一种程序，它至少在自己的范围内做到了职责单一、组合自如。从某种程度上来说，人本身也是一个可以处理很多事情的系统--因为其由很多各自注重做一件事的组件组成，人们可以按照自己的需求来完善与
+配置出各种途径的Neovim。  
+UNIX 哲学的核心不是极简主义，而是用户赋能。用户不应该因为开发者没有预见到他的使用方式就被卡住——他应当始终能够调整自己的工具链，完成自己的目标。
+所以我认为即使你的Neovim的配置很复杂，只要在配置的时候能够明确自己的需求，这也不违反UNIX哲学，能被组合、能被替换、能被打断才是 UNIX 精神的关键。  
 
+## 所以，问题不在插件，而在设计哲学  
+我相信，大多数人选择 Neovim 就是因为它 既足够轻量，也允许你精细地组合自己的工作流。调试插件、UI 扩展甚至音乐播放功能，只要它们遵守“做一件事”的边界、让用户自己控制组合方式，那它们就完全合理，甚至是 UNIX 哲学最好的继承者。
+{{< quote >}}**插件不是 Neovim 的背叛，而是它作为自由编辑器的证明。**{{< /quote >}}
