@@ -201,3 +201,6 @@ $ systemctl status rclone.service
 
 ## 部分参考
 [https://willxup.top/archives/deploy-alist-and-rclone](https://willxup.top/archives/deploy-alist-and-rclone)
+
+## 上传文件
+现在有一个问题，rclone会将本地文件缓存一份到本地的缓存地址，这会导致占用大量的本地磁盘空间，并且显示的上传同步速度和实际的速度不符合，我需要尝试再上传文件的时候直接上传到云端，并且不影响我浏览云端文件的时候，本地的目录或者部分文件的临时缓存。
