@@ -10477,6 +10477,8 @@ rclone 文档&lt;span class="external-link">↗&lt;/span>&lt;/a>
    class="custom-link">  
    https://willxup.top/archives/deploy-alist-and-rclone<span class="external-link">↗</span></a>
 </p>
+<h2 id="上传文件">上传文件</h2>
+<p>现在有一个问题，rclone会将本地文件缓存一份到本地的缓存地址，这会导致占用大量的本地磁盘空间，并且显示的上传同步速度和实际的速度不符合，我需要尝试再上传文件的时候直接上传到云端，并且不影响我浏览云端文件的时候，本地的目录或者部分文件的临时缓存。</p>
 ]]></content:encoded></item><item><title>Clash魔法配置</title><link>https://downmars.github.io/zh/posts/2025_02_21-clash_magic/</link><pubDate>Fri, 21 Feb 2025 19:39:24 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_21-clash_magic/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>人在国内，安装完系统之后第一件事往往是配置一个魔法，这里参考了&lt;a href="https://blog.linioi.com/posts/clash-on-arch/"
 target="_blank" rel="noopener"
