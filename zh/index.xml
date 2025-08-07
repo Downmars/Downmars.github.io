@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Wed, 06 Aug 2025 10:53:31 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_08_06 Stm32h7_serial_port_dma_driver_principle</title><link>https://downmars.github.io/zh/posts/2025_08_06-stm32h7_serial_port_dma_driver_principle/</link><pubDate>Wed, 06 Aug 2025 10:53:31 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_08_06-stm32h7_serial_port_dma_driver_principle/</guid><description>&lt;h2 id="todo">TODO&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Wed, 06 Aug 2025 10:53:31 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>STM32H7之串口DMA驱动原理</title><link>https://downmars.github.io/zh/posts/2025_08_06-stm32h7_serial_port_dma_driver_principle/</link><pubDate>Wed, 06 Aug 2025 10:53:31 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_08_06-stm32h7_serial_port_dma_driver_principle/</guid><description>&lt;h2 id="todo">TODO&lt;/h2>
 &lt;p>&lt;a href="https://chatgpt.com/share/6892c3d9-0290-800d-b03a-f2cd23619f65"
 target="_blank" rel="noopener"
 class="custom-link">
 gpt answer&lt;span class="external-link">↗&lt;/span>&lt;/a>
-&lt;/p></description><content:encoded><![CDATA[<h2 id="todo">TODO</h2>
+&lt;/p>
+&lt;h2 id="dma-定义">DMA 定义&lt;/h2>
+&lt;p>DMA，全程Direct Memory Access，即直接储存器访问。DMA的作用就是实现数据的直接传输，从而去掉了传统数据传输需要CPU寄存器参与的环节，大大节省了CPU资源的消耗。此过程主要涉及四种情况的数据传输，本质上都是数据从内存的某一区域传输到内存的另一区域&lt;span class="sidenote-number">&lt;small class="sidenote">外设的数据寄存器本质上就是内存的一个存储单元&lt;/small>&lt;/span>
+。四种数据的传输情况为:&lt;/p></description><content:encoded><![CDATA[<h2 id="todo">TODO</h2>
 <p><a href="https://chatgpt.com/share/6892c3d9-0290-800d-b03a-f2cd23619f65"
    
     
@@ -12,6 +15,16 @@ gpt answer&lt;span class="external-link">↗&lt;/span>&lt;/a>
    class="custom-link">  
    gpt answer<span class="external-link">↗</span></a>
 </p>
+<h2 id="dma-定义">DMA 定义</h2>
+<p>DMA，全程Direct Memory Access，即直接储存器访问。DMA的作用就是实现数据的直接传输，从而去掉了传统数据传输需要CPU寄存器参与的环节，大大节省了CPU资源的消耗。此过程主要涉及四种情况的数据传输，本质上都是数据从内存的某一区域传输到内存的另一区域<span class="sidenote-number"><small class="sidenote">外设的数据寄存器本质上就是内存的一个存储单元</small></span>
+
+。四种数据的传输情况为:</p>
+<ul>
+<li>外设 &ndash;&gt;内存</li>
+<li>内存 &ndash;&gt;外设</li>
+<li>内存 &ndash;&gt;内存</li>
+<li>外设 &ndash;&gt;外设</li>
+</ul>
 ]]></content:encoded></item><item><title>我是否需要nvim插件</title><link>https://downmars.github.io/zh/posts/2025_07_29-do_i_need_neovim_plugins/</link><pubDate>Tue, 29 Jul 2025 15:41:59 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_29-do_i_need_neovim_plugins/</guid><description>&lt;p>今天在尝试寻找一个程序问题的时候，想到了我是不是可以在nvim上添加一个调试的插件，我在搜索的过程中发现一篇有意思的讨论&lt;a href="https://www.reddit.com/r/neovim/comments/1cwxlnf/how_many_of_you_use_a_debugger_with_nvim/?show=original"
 target="_blank" rel="noopener"
 class="custom-link">
