@@ -1,5 +1,5 @@
 ---
-title: "2025_08_06 Stm32h7_serial_port_dma_driver_principle"
+title: "STM32H7之串口DMA驱动原理"
 date: 2025-08-06T10:53:31+08:00
 lastmod: 2025-08-06T10:53:31+08:00
 draft: false
@@ -35,3 +35,10 @@ cover:
 
 ## TODO  
 [gpt answer](https://chatgpt.com/share/6892c3d9-0290-800d-b03a-f2cd23619f65)
+
+## DMA 定义  
+DMA，全程Direct Memory Access，即直接储存器访问。DMA的作用就是实现数据的直接传输，从而去掉了传统数据传输需要CPU寄存器参与的环节，大大节省了CPU资源的消耗。此过程主要涉及四种情况的数据传输，本质上都是数据从内存的某一区域传输到内存的另一区域{{< sidenote >}}外设的数据寄存器本质上就是内存的一个存储单元{{< /sidenote >}}。四种数据的传输情况为:  
+- 外设 -->内存  
+- 内存 -->外设  
+- 内存 -->内存  
+- 外设 -->外设  
