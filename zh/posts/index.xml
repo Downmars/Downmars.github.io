@@ -1,4 +1,434 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Wed, 06 Aug 2025 10:53:31 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>STM32H7之串口DMA驱动原理</title><link>https://downmars.github.io/zh/posts/2025_08_06-stm32h7_serial_port_dma_driver_principle/</link><pubDate>Wed, 06 Aug 2025 10:53:31 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_08_06-stm32h7_serial_port_dma_driver_principle/</guid><description>&lt;h2 id="todo">TODO&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Thu, 07 Aug 2025 17:13:55 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>ZH-3408 Modbus 命令码与关键参数配置速查手册</title><link>https://downmars.github.io/zh/posts/2025_08_07-zh3408_modbus_document_instructions_for_use/</link><pubDate>Thu, 07 Aug 2025 17:13:55 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_08_07-zh3408_modbus_document_instructions_for_use/</guid><description>&lt;h2 id="modbus-基本命令">Modbus 基本命令&lt;/h2>
+&lt;h3 id="0x03--查询从设备寄存器内容">&lt;code>0x03&lt;/code> &amp;ndash; 查询从设备寄存器内容&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: center">主设备发送报文&lt;/th>
+&lt;th style="text-align: center">从设备地址范围&lt;/th>
+&lt;th style="text-align: center">功能码&lt;/th>
+&lt;th style="text-align: center">起始寄存器地址&lt;/th>
+&lt;th style="text-align: center">寄存器个数&lt;/th>
+&lt;th style="text-align: center">CRC校验码&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: center">/&lt;/td>
+&lt;td style="text-align: center">&lt;code>0x01&lt;/code> - &lt;code>0xFF&lt;/code> (&lt;code>1&lt;/code> 字节)&lt;/td>
+&lt;td style="text-align: center">&lt;code>0x03&lt;/code> (&lt;code>1&lt;/code> 字节)&lt;/td>
+&lt;td style="text-align: center">(&lt;code>2&lt;/code> 字节)&lt;/td>
+&lt;td style="text-align: center">(&lt;code>2&lt;/code> 字节)&lt;/td>
+&lt;td style="text-align: center">(&lt;code>2&lt;/code> 字节)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: center">主设备接受报文&lt;/th>
+&lt;th style="text-align: center">从设备地址范围&lt;/th>
+&lt;th style="text-align: center">功能码&lt;/th>
+&lt;th style="text-align: center">数据区字节数&lt;/th>
+&lt;th style="text-align: center">数据区&lt;/th>
+&lt;th style="text-align: center">CRC校验码&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: center">/&lt;/td>
+&lt;td style="text-align: center">&lt;code>0x01&lt;/code> - &lt;code>0xFF&lt;/code> (&lt;code>1&lt;/code> 字节)&lt;/td>
+&lt;td style="text-align: center">&lt;code>0x03&lt;/code> (&lt;code>1&lt;/code> 字节)&lt;/td>
+&lt;td style="text-align: center">&lt;code>2&lt;/code> * 寄存器个数 (&lt;code>1&lt;/code> 字节)&lt;/td>
+&lt;td style="text-align: center">寄存器内容 (&lt;code>2&lt;/code> * 寄存器个数字节)&lt;/td>
+&lt;td style="text-align: center">(&lt;code>2&lt;/code> 字节)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="例子-读所有数据发送命令举例">例子： 读所有数据发送命令举例&lt;/h4>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: center">主设备发送报文&lt;/th>
+&lt;th style="text-align: center">从设备地址范围&lt;/th>
+&lt;th style="text-align: center">功能码&lt;/th>
+&lt;th style="text-align: center">起始寄存器地址&lt;/th>
+&lt;th style="text-align: center">寄存器个数&lt;/th>
+&lt;th style="text-align: center">CRC校验码&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: center">/&lt;/td>
+&lt;td style="text-align: center">&lt;code>01&lt;/code>&lt;/td>
+&lt;td style="text-align: center">&lt;code>03&lt;/code>&lt;/td>
+&lt;td style="text-align: center">&lt;code>00 00&lt;/code>&lt;/td>
+&lt;td style="text-align: center">&lt;code>00 47&lt;/code>&lt;/td>
+&lt;td style="text-align: center">&lt;code>xx xx&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>说明： 从寄存器 &lt;code>0&lt;/code> 开始，连续读 &lt;code>72&lt;/code> (&lt;code>0x47&lt;/code>) 个寄存器数据，每一路数据占用一路寄存器。&lt;/p></description><content:encoded><![CDATA[<h2 id="modbus-基本命令">Modbus 基本命令</h2>
+<h3 id="0x03--查询从设备寄存器内容"><code>0x03</code> &ndash; 查询从设备寄存器内容</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">主设备发送报文</th>
+          <th style="text-align: center">从设备地址范围</th>
+          <th style="text-align: center">功能码</th>
+          <th style="text-align: center">起始寄存器地址</th>
+          <th style="text-align: center">寄存器个数</th>
+          <th style="text-align: center">CRC校验码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">/</td>
+          <td style="text-align: center"><code>0x01</code> - <code>0xFF</code> (<code>1</code> 字节)</td>
+          <td style="text-align: center"><code>0x03</code> (<code>1</code> 字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">主设备接受报文</th>
+          <th style="text-align: center">从设备地址范围</th>
+          <th style="text-align: center">功能码</th>
+          <th style="text-align: center">数据区字节数</th>
+          <th style="text-align: center">数据区</th>
+          <th style="text-align: center">CRC校验码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">/</td>
+          <td style="text-align: center"><code>0x01</code> - <code>0xFF</code> (<code>1</code> 字节)</td>
+          <td style="text-align: center"><code>0x03</code> (<code>1</code> 字节)</td>
+          <td style="text-align: center"><code>2</code> * 寄存器个数 (<code>1</code> 字节)</td>
+          <td style="text-align: center">寄存器内容 (<code>2</code> * 寄存器个数字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="例子-读所有数据发送命令举例">例子： 读所有数据发送命令举例</h4>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">主设备发送报文</th>
+          <th style="text-align: center">从设备地址范围</th>
+          <th style="text-align: center">功能码</th>
+          <th style="text-align: center">起始寄存器地址</th>
+          <th style="text-align: center">寄存器个数</th>
+          <th style="text-align: center">CRC校验码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">/</td>
+          <td style="text-align: center"><code>01</code></td>
+          <td style="text-align: center"><code>03</code></td>
+          <td style="text-align: center"><code>00 00</code></td>
+          <td style="text-align: center"><code>00 47</code></td>
+          <td style="text-align: center"><code>xx xx</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>说明： 从寄存器 <code>0</code> 开始，连续读 <code>72</code> (<code>0x47</code>) 个寄存器数据，每一路数据占用一路寄存器。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">主设备接受报文</th>
+          <th style="text-align: center">从设备地址范围</th>
+          <th style="text-align: center">功能码</th>
+          <th style="text-align: center">数据区字节数</th>
+          <th style="text-align: center">数据区</th>
+          <th style="text-align: center">CRC校验码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">/</td>
+          <td style="text-align: center"><code>01</code></td>
+          <td style="text-align: center"><code>03</code></td>
+          <td style="text-align: center"><code>8E</code></td>
+          <td style="text-align: center"><code>12 56 27 01 11 EC</code> &hellip;.. (16 进制 <code>2</code> 个字节为一个参数，返回 <code>142</code> 个字节数据 <code>72</code> 个参数)</td>
+          <td style="text-align: center"><code>XX XX</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>说明： 数据区总共有 <code>16</code> 组数据，<code>32</code> 个字节，每组数据为 <code>2</code> 个字节，高字节在前低字节在后；CRC 校验码要根据实际数据得出；如下为举例，其它所有参数依此类推。</p>
+<p>其中： 数据区 <code>1256H</code> 代表数据 <code>4694</code>；如电压量程为 <code>30V</code>，即实际电压 = <code>4694 / 10000 * 30 = 4694 * 0.003 = 14.082V</code>；
+<code>2701H</code> 代表数据 <code>10001</code>；如电压量程为 <code>30V</code>，即实际电压 = <code>10001 / 10000 * 30 = 10001 * 0.003 = 30.003V</code>。</p>
+<h3 id="0x06--对从设备单个寄存器置数"><code>0x06</code> &ndash; 对从设备单个寄存器置数</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">主设备发送报文</th>
+          <th style="text-align: center">从设备地址范围</th>
+          <th style="text-align: center">功能码</th>
+          <th style="text-align: center">起始寄存器地址</th>
+          <th style="text-align: center">寄存器个数</th>
+          <th style="text-align: center">CRC校验码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">/</td>
+          <td style="text-align: center"><code>0x01</code> - <code>0xFF</code> (<code>1</code> 字节)</td>
+          <td style="text-align: center"><code>0x06</code> (<code>1</code> 字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">主设备接受报文</th>
+          <th style="text-align: center">从设备地址范围</th>
+          <th style="text-align: center">功能码</th>
+          <th style="text-align: center">数据区字节数</th>
+          <th style="text-align: center">数据区</th>
+          <th style="text-align: center">CRC校验码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">/</td>
+          <td style="text-align: center"><code>0x01</code> - <code>0xFF</code> (<code>1</code> 字节)</td>
+          <td style="text-align: center"><code>0x06</code> (<code>1</code> 字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+          <td style="text-align: center">(<code>2</code> 字节)</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="例子-修改采样率命令举例">例子： 修改采样率命令举例</h4>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">主设备发送报文</th>
+          <th style="text-align: center">从设备地址范围</th>
+          <th style="text-align: center">功能码</th>
+          <th style="text-align: center">寄存器地址</th>
+          <th style="text-align: center">写入的数据</th>
+          <th style="text-align: center">CRC校验码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">/</td>
+          <td style="text-align: center"><code>01</code></td>
+          <td style="text-align: center"><code>06</code></td>
+          <td style="text-align: center"><code>00 EF</code></td>
+          <td style="text-align: center"><code>00 09</code></td>
+          <td style="text-align: center"><code>xx xx</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>说明： <code>00EFH</code> 地址对应的寄存器内容为采样率，<code>0009</code> 是 <code>50ksps</code> 采样率对应的代码值。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">主设备接受报文</th>
+          <th style="text-align: center">从设备地址范围</th>
+          <th style="text-align: center">功能码</th>
+          <th style="text-align: center">寄存器地址</th>
+          <th style="text-align: center">写入的数据</th>
+          <th style="text-align: center">CRC校验码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">/</td>
+          <td style="text-align: center"><code>01</code></td>
+          <td style="text-align: center"><code>06</code></td>
+          <td style="text-align: center"><code>00 EF</code></td>
+          <td style="text-align: center"><code>00 09</code></td>
+          <td style="text-align: center"><code>xx xx</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>说明： 返回值与主设备发送报文相同。</p>
+<h2 id="采样率指标">采样率指标</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">采样率</th>
+          <th style="text-align: center">采样点</th>
+          <th style="text-align: center">采样方式</th>
+          <th style="text-align: center">采样率代码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>100sps</code></td>
+          <td style="text-align: center"><code>512</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0000</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>500sps</code></td>
+          <td style="text-align: center"><code>512</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0001</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>1ksps</code></td>
+          <td style="text-align: center"><code>1024</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0002</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>2ksps</code></td>
+          <td style="text-align: center"><code>1024</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0003</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>4ksps</code></td>
+          <td style="text-align: center"><code>1024</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0004</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>5ksps</code></td>
+          <td style="text-align: center"><code>1024</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0005</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>10ksps</code></td>
+          <td style="text-align: center"><code>2048</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0006</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>20ksps</code></td>
+          <td style="text-align: center"><code>4096</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0007</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>40ksps</code></td>
+          <td style="text-align: center"><code>4096</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0008</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>50ksps</code></td>
+          <td style="text-align: center"><code>4096</code></td>
+          <td style="text-align: center">同步采样</td>
+          <td style="text-align: center"><code>0009</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>100ksps</code></td>
+          <td style="text-align: center"><code>16384</code></td>
+          <td style="text-align: center">轮询采样</td>
+          <td style="text-align: center"><code>0010</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>150ksps</code></td>
+          <td style="text-align: center"><code>16384</code></td>
+          <td style="text-align: center">轮询采样</td>
+          <td style="text-align: center"><code>0011</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="寄存器参数说明">寄存器参数说明</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">寄存器地址 (括号内为十进制)</th>
+          <th style="text-align: center">寄存器内容</th>
+          <th style="text-align: center">数据类型</th>
+          <th style="text-align: center">数据长度</th>
+          <th>数据说明 (DATA 为从模块读出的数据)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>0000</code>-<code>0007H</code> (<code>0</code>-<code>7</code>)</td>
+          <td style="text-align: center">1-8 路有效值</td>
+          <td style="text-align: center">只读</td>
+          <td style="text-align: center"><code>16</code> 位</td>
+          <td>无符号，值 = <code>DATA * 量程 / 10000</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>0018</code>-<code>001FH</code> (<code>24</code>-<code>31</code>)</td>
+          <td style="text-align: center">1-8 路频率</td>
+          <td style="text-align: center">只读</td>
+          <td style="text-align: center"><code>16</code> 位</td>
+          <td>无符号整数，分辨率单位由 <code>00EBH</code>(<code>235</code>) 寄存器设置；最大值 <code>65535</code> 表示数据超范围溢出。注意 <code>00EFH</code>(<code>239</code>) 采样率设置寄存器要大于输入频率才能准确测量：<br>值=<code>DATA / 100</code>（分辨率 0.01Hz）<br>值=<code>DATA / 10</code>（分辨率 0.1Hz，出厂默认）<br>值=<code>DATA</code>（分辨率 1Hz）<br>值=<code>DATA * 10</code>（分辨率 10Hz）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>0040</code>-<code>0047H</code> (<code>64</code>-<code>71</code>)</td>
+          <td style="text-align: center">1-8 路占空比</td>
+          <td style="text-align: center">只读</td>
+          <td style="text-align: center"><code>16</code> 位</td>
+          <td>无符号，值 = <code>DATA / 100</code>（单位 %，频率大于 <code>15kHz</code> 误差超过 1%，频率越高误差越大不保证精度）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>0048</code>-<code>0057H</code> (<code>72</code>-<code>87</code>)</td>
+          <td style="text-align: center">1-8 路脉宽最大值</td>
+          <td style="text-align: center">只读</td>
+          <td style="text-align: center"><code>32</code> 位</td>
+          <td>无符号，值 = <code>DATA / 10</code>（分辨率 0.1μs）（具有最大值记录功能，读取后清零）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>00FEH</code>(<code>254</code>)</td>
+          <td style="text-align: center">采样点数</td>
+          <td style="text-align: center">只读</td>
+          <td style="text-align: center"><code>16</code> 位</td>
+          <td>总采样点数，不同采样率采样点数不同，参见<a href="../2025_08_07-zh3408_modbus_document_instructions_for_use#%e9%87%87%e6%a0%b7%e7%8e%87%e6%8c%87%e6%a0%87"
+   
+   
+   class="custom-link">  
+   采样率指标表</a>
+</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>00E5H</code>(<code>229</code>)</td>
+          <td style="text-align: center">网口地址</td>
+          <td style="text-align: center"><code>1</code></td>
+          <td style="text-align: center">读/写</td>
+          <td><code>1</code>-<code>250</code>（默认 <code>1</code>，<code>255</code> 为广播地址）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>00E6H</code>(<code>230</code>)</td>
+          <td style="text-align: center">网口波特率</td>
+          <td style="text-align: center"><code>1</code></td>
+          <td style="text-align: center">读/写</td>
+          <td>默认 <code>115200bps</code>（可改为 <code>230400</code> / <code>256000</code> / <code>460800</code> / <code>921600</code> bps）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>00E9H</code>(<code>233</code>)</td>
+          <td style="text-align: center">更新时间设置</td>
+          <td style="text-align: center"><code>1</code></td>
+          <td style="text-align: center">读/写</td>
+          <td><code>0</code>: 正常时间（缺省采样点）<br><code>1</code>: 时间减半（采样点减半）<br><code>2</code>: 四分之一时间（采样点减至四分之一）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>00EBH</code>(<code>235</code>)</td>
+          <td style="text-align: center">频率分辨率设置</td>
+          <td style="text-align: center"><code>1</code></td>
+          <td style="text-align: center">读/写</td>
+          <td><code>0</code>: 0.01Hz<br><code>1</code>: 0.1Hz（缺省）<br><code>2</code>: 1Hz<br><code>3</code>: 10Hz（针对 <code>0018H</code>-<code>001FH</code> 频率数据寄存器）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>00EFH</code>(<code>239</code>)</td>
+          <td style="text-align: center">采样率</td>
+          <td style="text-align: center"><code>1</code></td>
+          <td style="text-align: center">读/写</td>
+          <td><code>0</code>: 100sps<br><code>1</code>: 500sps<br><code>2</code>: 1ksps<br><code>3</code>: 2ksps<br><code>4</code>: 4ksps<br><code>5</code>: 5ksps<br><code>6</code>: 10ksps<br><code>7</code>: 20ksps（缺省）<br><code>8</code>: 40ksps<br><code>9</code>: 50ksps<br><code>10</code>: 100ksps（波形触发记录功能无效）<br><code>11</code>: 150ksps（波形触发记录功能无效）<br>（过采样原理：采样率根据实际输入的频率范围来选择，采样率越高，采到的干扰信号越多）</td>
+      </tr>
+  </tbody>
+</table>
+]]></content:encoded></item><item><title>STM32H7之串口DMA驱动原理</title><link>https://downmars.github.io/zh/posts/2025_08_06-stm32h7_serial_port_dma_driver_principle/</link><pubDate>Wed, 06 Aug 2025 10:53:31 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_08_06-stm32h7_serial_port_dma_driver_principle/</guid><description>&lt;h2 id="todo">TODO&lt;/h2>
 &lt;p>&lt;a href="https://chatgpt.com/share/6892c3d9-0290-800d-b03a-f2cd23619f65"
 target="_blank" rel="noopener"
 class="custom-link">
