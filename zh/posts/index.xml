@@ -454,6 +454,20 @@ gpt answer&lt;span class="external-link">↗&lt;/span>&lt;/a>
 在早期的STM32F1系列中，比如有0-7路共八路DMA通道。其中每一路通道可以响应多个外设的请求，但是每一路通道每一次只能响应一个外设的请求。如果遇到了两个外设事件同时需要申请相同的DMA传输通道就麻烦了。<br>
 所以说，后来STM32F4系列采用了和F1写列不同的DMA结构，DMA的请求表分为了Channel和Stream通道，我这时候就能够在选择同一个channel的同时，选择不同的stream来同时分配DMA通道。但是由于一一对应的关系，我某个外设的请求只能申请到Channel0的Steam1和2，而不能申请到别的DMA通道。这样就可能遇到一件事情，当我某一个通道十分繁忙的时候，另一个通道十分空闲。<br>
 所以这时候，就出现了DMAMUX。</p>
+<h2 id="usart原理">USART原理</h2>
+<p>USART（Universal Synchronous/Asynchronous Receiver/Transmitter，通用同步/异步收发器）是 MCU 内部的一个硬件外设，用来进行串行通信。<br>
+我们常用的是异步模式，发送端在每帧数据前后自动添加 起始位 (Start bit) 和 停止位 (Stop bit)，用来标记帧的开始和结束，常用格式为：<br>
+<code>1 Start bit + 8 Data bits + [Parity bit] + 1 Stop bit</code><br>
+这种异步通信方式不需要时钟线，我们靠约定好的波特率保证发送端和接收端采样对齐。</p>
+<h2 id="usart收发方式">USART收发方式</h2>
+<h3 id="轮询阻塞">轮询（阻塞）</h3>
+<p>轮询方式，顾名思义，CPU需要不断检查发送缓冲标志位，直到可以写下一个字节。比如我们使用9600bps的波特率，1字节（10bit，包含起始/停止位）需要大约1ms才能够发完，在发送完成前，CPU一直会被卡在循环中。</p>
+<h3 id="中断非阻塞">中断（非阻塞）</h3>
+<p>每当USART发送完一个字节，标志位触发中断，并把下一个字节写入寄存器。如上述的9600波特率，CPU平时可以做别的事情，我们只需要每隔1ms左右进一次中断写寄存器。</p>
+<h3 id="dma">DMA</h3>
+<p>DMA方式会将自动从内存搬运数据到USART寄存器，硬件负责逐字转发，在此期间，CPU完全不用管，只需要DMA完成中断。</p>
+<h2 id="dma驱动usart方式">DMA驱动USART方式</h2>
+<p>我现在需要通过DMA收发方式来替换USART的驱动，将所有的设置通过结构体变量做好通用化设计，之后通过将板上的两个USART连接起来进行收发测试。</p>
 ]]></content:encoded></item><item><title>我是否需要nvim插件</title><link>https://downmars.github.io/zh/posts/2025_07_29-do_i_need_neovim_plugins/</link><pubDate>Tue, 29 Jul 2025 15:41:59 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_07_29-do_i_need_neovim_plugins/</guid><description>&lt;p>今天在尝试寻找一个程序问题的时候，想到了我是不是可以在nvim上添加一个调试的插件，我在搜索的过程中发现一篇有意思的讨论&lt;a href="https://www.reddit.com/r/neovim/comments/1cwxlnf/how_many_of_you_use_a_debugger_with_nvim/?show=original"
 target="_blank" rel="noopener"
 class="custom-link">
