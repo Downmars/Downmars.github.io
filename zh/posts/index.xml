@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Thu, 21 Aug 2025 18:03:33 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_08_21 Microcontroller_literacy_taking_stm32h7_as_an_example</title><link>https://downmars.github.io/zh/posts/2025_08_21-microcontroller_literacy_taking_stm32h7_as_an_example/</link><pubDate>Thu, 21 Aug 2025 18:03:33 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_08_21-microcontroller_literacy_taking_stm32h7_as_an_example/</guid><description>&lt;p>这段时间在尝试用DMA来运输串口数据，回去翻数据手册，发现好多术语都忘记的差不多了，现在对于学习中遇到的问题做一个记录。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Aug 2025 18:00:56 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_08_25 Dma_and_cache_consistency</title><link>https://downmars.github.io/zh/posts/2025_08_25-dma_and_cache_consistency/</link><pubDate>Mon, 25 Aug 2025 18:00:56 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_08_25-dma_and_cache_consistency/</guid><description>&lt;p>今天在写驱动的时候，涉及到DMA和Cache的一致性问题，对于其中的一些疑惑做了记录。&lt;/p>
+&lt;h2 id="dma和cpu访问路径">DMA和CPU访问路径&lt;/h2>
+&lt;ul>
+&lt;li>CPU访问内存的时候，通常先访问cache（L1/L2），只有cache不命中的时候才回去访问主存（SRAM/DDR）。&lt;/li>
+&lt;li>DMA控制器访问内存的时候，一般是直接通过总线访问主存，不经过CPU的cache。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-md" data-lang="md">&lt;span style="display:flex;">&lt;span>CPU → DMA → 设备（CPU写数据给外设）:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>------------------------------------
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [CPU寄存器/程序]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ▼
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [CPU Cache] (CPU写数据 → 可能停留在cache里)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (Clean Cache: 写回内存，保证DMA可见) ← 传输前执行
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ▼
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [内存RAM] ← DMA要读这里
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ▼
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [DMA总线]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ▼
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [外设设备] (UART/SPI/网卡等)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-md" data-lang="md">&lt;span style="display:flex;">&lt;span>设备 → DMA → CPU（外设写数据给CPU）:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>------------------------------------
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [外设设备] (ADC/网卡等)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ▼
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [DMA总线]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ▼
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [内存RAM] ← DMA写入数据
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (Cache可能仍保存旧数据)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (Invalidate Cache: 标记无效，下次CPU从内存取) ← 传输后执行
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ▼
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [CPU Cache]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ▼
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [CPU寄存器/程序]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description><content:encoded><![CDATA[<p>今天在写驱动的时候，涉及到DMA和Cache的一致性问题，对于其中的一些疑惑做了记录。</p>
+<h2 id="dma和cpu访问路径">DMA和CPU访问路径</h2>
+<ul>
+<li>CPU访问内存的时候，通常先访问cache（L1/L2），只有cache不命中的时候才回去访问主存（SRAM/DDR）。</li>
+<li>DMA控制器访问内存的时候，一般是直接通过总线访问主存，不经过CPU的cache。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>CPU → DMA → 设备（CPU写数据给外设）:  
+</span></span><span style="display:flex;"><span>------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    [CPU寄存器/程序]  
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           ▼
+</span></span><span style="display:flex;"><span>      [CPU Cache]   (CPU写数据 → 可能停留在cache里)
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>     (Clean Cache: 写回内存，保证DMA可见)  ←  传输前执行
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           ▼
+</span></span><span style="display:flex;"><span>        [内存RAM]  ← DMA要读这里
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           ▼
+</span></span><span style="display:flex;"><span>        [DMA总线] 
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           ▼
+</span></span><span style="display:flex;"><span>        [外设设备]  (UART/SPI/网卡等)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>设备 → DMA → CPU（外设写数据给CPU）:
+</span></span><span style="display:flex;"><span>------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       [外设设备]  (ADC/网卡等)
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           ▼
+</span></span><span style="display:flex;"><span>        [DMA总线] 
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           ▼
+</span></span><span style="display:flex;"><span>        [内存RAM]  ← DMA写入数据
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>     (Cache可能仍保存旧数据) 
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>     (Invalidate Cache: 标记无效，下次CPU从内存取)  ← 传输后执行
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           ▼
+</span></span><span style="display:flex;"><span>      [CPU Cache]
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           ▼
+</span></span><span style="display:flex;"><span>    [CPU寄存器/程序]  
+</span></span></code></pre></div>]]></content:encoded></item><item><title>2025_08_21 Microcontroller_literacy_taking_stm32h7_as_an_example</title><link>https://downmars.github.io/zh/posts/2025_08_21-microcontroller_literacy_taking_stm32h7_as_an_example/</link><pubDate>Thu, 21 Aug 2025 18:03:33 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_08_21-microcontroller_literacy_taking_stm32h7_as_an_example/</guid><description>&lt;p>这段时间在尝试用DMA来运输串口数据，回去翻数据手册，发现好多术语都忘记的差不多了，现在对于学习中遇到的问题做一个记录。&lt;/p>
 &lt;h2 id="mdmadmabdma">MDMA、DMA、BDMA&lt;/h2>
 &lt;h3 id="mdma-master-dma">MDMA (Master DMA)&lt;/h3>
 &lt;p>主DMA控制器，专门为大规模内存数据搬运和外设高速数据传输设计，通常用于SDRAM、LCD、GPU、图像处理、以太网大数据搬运。&lt;/p></description><content:encoded><![CDATA[<p>这段时间在尝试用DMA来运输串口数据，回去翻数据手册，发现好多术语都忘记的差不多了，现在对于学习中遇到的问题做一个记录。</p>
