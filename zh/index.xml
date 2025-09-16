@@ -3,8 +3,9 @@
 &lt;p>A: 根据原有目标工程的宏定义，替换修改驱动包的宏定义。&lt;/p></description><content:encoded><![CDATA[<p>今天在移植我写好的底层DMA驱动包到目标工程的时候，主要遇到了以下的几个问题。</p>
 <h2 id="q-避免符号冲突">Q: 避免符号冲突</h2>
 <p>A: 根据原有目标工程的宏定义，替换修改驱动包的宏定义。</p>
-<h2 id="r-我的发送端dma驱动的uart能够实现条件触发进入发送逻辑">R: 我的发送端DMA驱动的UART能够实现条件触发进入发送逻辑</h2>
-<h2 id="r-在初始化的阶段能够通过统一的逻辑实现dma驱动uart和普通uart">R: 在初始化的阶段能够通过统一的逻辑实现DMA驱动UART和普通UART</h2>
+<h2 id="r-我的发送端dma驱动的uart能够实现条件触发进入发送逻辑确保好一定的发送缓冲区大小在尽量不堵塞的情况下能够实现最大的发送速率">R: 我的发送端DMA驱动的UART能够实现条件触发进入发送逻辑，确保好一定的发送缓冲区大小，在尽量不堵塞的情况下能够实现最大的发送速率</h2>
+<h2 id="r-我的接收端dma驱动的uart能够实现实时待命一旦接收缓冲区有数据就搬运到接受端内存中">R: 我的接收端DMA驱动的UART能够实现实时待命，一旦接收缓冲区有数据，就搬运到接受端内存中</h2>
+<h2 id="r-在初始化的阶段能够通过统一的逻辑实现dma驱动uart和普通uart能够自主选择是否使用dma">R: 在初始化的阶段能够通过统一的逻辑实现DMA驱动UART和普通UART，能够自主选择是否使用DMA</h2>
 ]]></content:encoded></item><item><title>2025_08_25 Dma_and_cache_consistency</title><link>https://downmars.github.io/zh/posts/2025_08_25-dma_and_cache_consistency/</link><pubDate>Mon, 25 Aug 2025 18:00:56 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_08_25-dma_and_cache_consistency/</guid><description>&lt;p>今天在写驱动的时候，涉及到DMA和Cache的一致性问题，对于其中的一些疑惑做了记录。&lt;/p>
 &lt;h2 id="dma和cpu访问路径">DMA和CPU访问路径&lt;/h2>
 &lt;ul>
