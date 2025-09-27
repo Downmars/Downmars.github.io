@@ -10,6 +10,77 @@
 <p>DMA持续把数据从接受寄存器RDR搬运到内存的环形缓冲区，当总线空闲的时候，UART触发IDLE line中断，CPU只需要查看NDTR的新数据指针就可以知道刚才发送来了哪些数据，并切通过中断触发的用户回调来完成数据的处理。</p>
 <h3 id="tx-dma-normal--环形tx缓冲">TX: DMA Normal + 环形TX缓冲</h3>
 <p>应用层将要发送的数据写入软件维护的 内存环形 TX 缓冲区，并更新 head 指针。如果 DMA 空闲，驱动会挑选环形缓冲中一段 连续数据块（tail → head 或 tail → buffer_end），启动一次 DMA Normal 模式传输。DMA 自动将这一段内存逐字节搬运到 USARTx-&gt;TDR，由硬件时序发出。当传输完成时，触发 DMA TC（传输完成）中断。在中断回调中：推进 tail 指针，标记这段数据已经发完；如果环形缓冲中还有剩余数据，再次启动下一次 DMA，知道没有新数据接入。</p>
+<h2 id="rx-uds_write">RX: UDS_Write</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#8be9fd">size_t</span> <span style="color:#50fa7b">UDS_Write</span>(<span style="color:#8be9fd">uds_t</span><span style="color:#ff79c6">*</span> h, <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">uint8_t</span><span style="color:#ff79c6">*</span> data, <span style="color:#8be9fd">size_t</span> len){
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span>(<span style="color:#ff79c6">!</span>h <span style="color:#ff79c6">||</span> <span style="color:#ff79c6">!</span>len) <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">size_t</span> written <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">while</span>(written <span style="color:#ff79c6">&lt;</span> len){
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">size_t</span> head <span style="color:#ff79c6">=</span> h<span style="color:#ff79c6">-&gt;</span>tx_head;
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">size_t</span> tail <span style="color:#ff79c6">=</span> h<span style="color:#ff79c6">-&gt;</span>tx_tail;
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">size_t</span> free_space <span style="color:#ff79c6">=</span> (tail <span style="color:#ff79c6">+</span> UDS_TX_BUF_SIZE <span style="color:#ff79c6">-</span> head <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>) <span style="color:#ff79c6">%</span> UDS_TX_BUF_SIZE;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span>(free_space <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 没空间：尝试触发一次 DMA 发送，不行就退出
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">if</span>(<span style="color:#50fa7b">_tx_try_kick</span>(h) <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) <span style="color:#ff79c6">break</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">continue</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">size_t</span> chunk <span style="color:#ff79c6">=</span> len <span style="color:#ff79c6">-</span> written;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span>(chunk <span style="color:#ff79c6">&gt;</span> free_space) chunk <span style="color:#ff79c6">=</span> free_space;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 写入环形
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#8be9fd">size_t</span> endspace <span style="color:#ff79c6">=</span> UDS_TX_BUF_SIZE <span style="color:#ff79c6">-</span> head;
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">size_t</span> c1 <span style="color:#ff79c6">=</span> (chunk <span style="color:#ff79c6">&lt;</span> endspace) <span style="color:#ff79c6">?</span> <span style="color:#8be9fd;font-style:italic">chunk</span> : endspace;
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">memcpy</span>(<span style="color:#ff79c6">&amp;</span>h<span style="color:#ff79c6">-&gt;</span>tx_buf[head], <span style="color:#ff79c6">&amp;</span>data[written], c1);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span>(chunk <span style="color:#ff79c6">&gt;</span> c1){
+</span></span><span style="display:flex;"><span>            <span style="color:#50fa7b">memcpy</span>(<span style="color:#ff79c6">&amp;</span>h<span style="color:#ff79c6">-&gt;</span>tx_buf[<span style="color:#bd93f9">0</span>], <span style="color:#ff79c6">&amp;</span>data[written <span style="color:#ff79c6">+</span> c1], chunk <span style="color:#ff79c6">-</span> c1);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">__disable_irq</span>();
+</span></span><span style="display:flex;"><span>        h<span style="color:#ff79c6">-&gt;</span>tx_head <span style="color:#ff79c6">=</span> (head <span style="color:#ff79c6">+</span> chunk) <span style="color:#ff79c6">%</span> UDS_TX_BUF_SIZE;
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">__enable_irq</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        written <span style="color:#ff79c6">+=</span> chunk;
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">_tx_try_kick</span>(h);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> written;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>首先，调用 <code>UDS_Write()</code> 会把应用层要发送的数据写进环形 TX 缓冲区。</p>
+<ul>
+<li>写之前先检查缓冲区是否有空闲：通过 <code>head</code> 和 <code>tail</code> 计算空闲空间。</li>
+<li>如果缓冲区满了，会尝试调用 <code>_tx_try_kick()</code> 启动 DMA 把旧数据送出去，为新数据腾出空间；若 DMA 仍在忙，就暂时退出（非阻塞）。</li>
+</ul>
+<p>写入缓冲区的过程：</p>
+<ul>
+<li>如果 <code>head &gt; tail</code>，说明缓冲区剩余空间是连续的，直接写入即可。</li>
+<li>如果 <code>head &lt; tail</code>，缓冲区尾部到末尾是一段连续空间，先写这一段，如果数据还没写完，再从缓冲区起始地址写剩余部分。</li>
+<li>最后更新 <code>head</code> 指针（指向下一个空闲位置），此时数据已经安全放入环形缓冲。</li>
+</ul>
+<p>接下来 <code>_tx_try_kick()</code> 会检查 DMA 是否空闲：</p>
+<ul>
+<li>若 DMA 不忙，取出 <strong>一段连续的数据</strong>（从 <code>tail</code> 开始，长度可能是 <code>head - tail</code>，或者到缓冲末尾的一段 <code>BUF_SIZE - tail</code>）。</li>
+<li>把这段地址和长度交给 <code>HAL_UART_Transmit_DMA()</code>。</li>
+<li>在启动之前需要做 <code>dcache_clean()</code>（仅 H7 开启 D-Cache 时需要），保证 DMA 读到的是内存中最新的数据。</li>
+<li>然后置位 <code>tx_dma_busy = true</code>，并保存 <code>tx_dma_len = len</code> 以便回调里推进 <code>tail</code>。</li>
+</ul>
+<p>当 DMA 把这一段数据搬运完毕，会触发 <strong>DMA 传输完成中断</strong>：</p>
+<ul>
+<li>
+<p>在 <code>HAL_UART_TxCpltCallback()</code> 里，用之前保存的 <code>tx_dma_len</code> 推进 <code>tail</code> 指针。</p>
+</li>
+<li>
+<p>清除 <code>tx_dma_busy</code>，并尝试再次调用 <code>_tx_try_kick()</code>：</p>
+<ul>
+<li>如果缓冲里还有数据，立即发下一段；</li>
+<li>如果缓冲已空，就可以触发 <code>on_tx_done</code> 通知应用层。</li>
+</ul>
+</li>
+</ul>
+<p>这样，整个环形 TX 缓冲和 DMA Normal 模式就结合起来了：</p>
+<ul>
+<li>应用层只管不断往环里写数据（非阻塞）；</li>
+<li>DMA 负责一次次批量搬运；</li>
+<li>CPU 只需在回调中推进指针并调度下一段，大大降低了中断频率和 CPU 占用率。</li>
+</ul>
 ]]></content:encoded></item><item><title>2025_09_15 How_to_resolve_conflicts_between_self_build_packages_and_old_projects</title><link>https://downmars.github.io/zh/posts/2025_09_15-how_to_resolve_conflicts_between_self_build_packages_and_old_projects/</link><pubDate>Mon, 15 Sep 2025 16:54:26 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_09_15-how_to_resolve_conflicts_between_self_build_packages_and_old_projects/</guid><description>&lt;p>今天在移植我写好的底层DMA驱动包到目标工程的时候，主要遇到了以下的几个问题。&lt;/p>
 &lt;h2 id="q-避免符号冲突">Q: 避免符号冲突&lt;/h2>
 &lt;p>A: 根据原有目标工程的宏定义，替换修改驱动包的宏定义。&lt;/p></description><content:encoded><![CDATA[<p>今天在移植我写好的底层DMA驱动包到目标工程的时候，主要遇到了以下的几个问题。</p>
