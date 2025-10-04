@@ -1,4 +1,109 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Tue, 16 Sep 2025 17:04:56 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_09_16 Register_method_and_hal_method_to_complete_interrupt_serial_port_processing</title><link>https://downmars.github.io/zh/posts/2025_09_16-register_method_and_hal_method_to_complete_interrupt_serial_port_processing/</link><pubDate>Tue, 16 Sep 2025 17:04:56 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_09_16-register_method_and_hal_method_to_complete_interrupt_serial_port_processing/</guid><description>&lt;p>我们现在通过DMA的方式来进行UART的数据搬运，所以对应的中断响应函数也需要重新编写。接下来我会简要的解释一下更改DMA前后中断响应函数的原理和实现方式。&lt;/p></description><content:encoded><![CDATA[<p>我们现在通过DMA的方式来进行UART的数据搬运，所以对应的中断响应函数也需要重新编写。接下来我会简要的解释一下更改DMA前后中断响应函数的原理和实现方式。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 05 Oct 2025 00:14:10 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_10_05 How_to_lose_weight_reasonably</title><link>https://downmars.github.io/zh/posts/2025_10_05-how_to_lose_weight_reasonably/</link><pubDate>Sun, 05 Oct 2025 00:14:10 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_10_05-how_to_lose_weight_reasonably/</guid><description>&lt;p>这次国庆回家又被父母说太胖了~，最近也买了自行车，前都花了，还是真得动起来啊。大概总结一下在减肥过车过程中需要注意的点。&lt;/p>
+&lt;h2 id="饮食问题">饮食问题&lt;/h2>
+&lt;h3 id="热量赤字">热量赤字&lt;/h3>
+&lt;p>减肥的核心是制造能量赤字，当你消耗的热量大于你摄入的热量的时候，你的体脂就会下降了。&lt;br>
+男性维持体重的基础代谢量为
+$$ BMR≈66+(13.7×体重kg)+(5×身高cm)−(6.8×年龄) $$&lt;br>
+按照我现在的个人参数来计算，23岁，80kg，178cm，计算出的BMR约为1800kcal，如果我每天都运动的话，日常活动系数可以达到1.55，那么我的维持热量为2800kcal/day，我预计每天骑行20km，那么我运动消耗大致600kcal/day，所以我每天的总消耗为3400kcal。&lt;br>
+如果我想要减肥，我每天需要制造1000kcal的热量缺口，所以我每日的摄入目标为2400kcal。&lt;/p></description><content:encoded><![CDATA[<p>这次国庆回家又被父母说太胖了~，最近也买了自行车，前都花了，还是真得动起来啊。大概总结一下在减肥过车过程中需要注意的点。</p>
+<h2 id="饮食问题">饮食问题</h2>
+<h3 id="热量赤字">热量赤字</h3>
+<p>减肥的核心是制造能量赤字，当你消耗的热量大于你摄入的热量的时候，你的体脂就会下降了。<br>
+男性维持体重的基础代谢量为
+$$ BMR≈66+(13.7×体重kg)+(5×身高cm)−(6.8×年龄) $$<br>
+按照我现在的个人参数来计算，23岁，80kg，178cm，计算出的BMR约为1800kcal，如果我每天都运动的话，日常活动系数可以达到1.55，那么我的维持热量为2800kcal/day，我预计每天骑行20km，那么我运动消耗大致600kcal/day，所以我每天的总消耗为3400kcal。<br>
+如果我想要减肥，我每天需要制造1000kcal的热量缺口，所以我每日的摄入目标为2400kcal。</p>
+<h3 id="营养比例">营养比例</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">营养素</th>
+          <th style="text-align: center">占比</th>
+          <th style="text-align: center">每日摄入量</th>
+          <th style="text-align: center">食物示例</th>
+          <th style="text-align: center">食物对应营养含量（约值）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>蛋白质</strong></td>
+          <td style="text-align: center">25%</td>
+          <td style="text-align: center">140 g</td>
+          <td style="text-align: center">鸡胸肉 150 g<br>鸡蛋 2 个 (100 g)<br>牛肉 100 g<br>鱼肉 100 g<br>虾仁 100 g<br>豆腐 100 g<br>牛奶 250 ml<br>豆浆 250 ml</td>
+          <td style="text-align: center">鸡胸肉 150 g ≈ 35 g ≈ 165 kcal<br>鸡蛋 2 个 ≈ 12 g ≈ 140 kcal<br>牛肉 100 g ≈ 26 g ≈ 200 kcal<br>鱼肉 100 g ≈ 22 g ≈ 110 kcal<br>虾仁 100 g ≈ 20 g ≈ 100 kcal<br>豆腐 100 g ≈ 8 g ≈ 80 kcal<br>牛奶 250 ml ≈ 8 g ≈ 120 kcal<br>豆浆 250 ml ≈ 7 g ≈ 90 kcal</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>碳水化合物</strong></td>
+          <td style="text-align: center">50%</td>
+          <td style="text-align: center">280 g</td>
+          <td style="text-align: center">白米饭 100 g<br>红薯 100 g<br>燕麦 40 g<br>全麦面 100 g<br>玉米 100 g<br>土豆 100 g<br>水果 150 g</td>
+          <td style="text-align: center">白米饭 100 g ≈ 30 g ≈ 130 kcal<br>红薯 100 g ≈ 20 g ≈ 85 kcal<br>燕麦 40 g ≈ 25 g ≈ 150 kcal<br>全麦面 100 g ≈ 60 g ≈ 250 kcal<br>玉米 100 g ≈ 22 g ≈ 100 kcal<br>土豆 100 g ≈ 18 g ≈ 80 kcal<br>水果 150 g ≈ 20 g ≈ 80 kcal</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>脂肪</strong></td>
+          <td style="text-align: center">25%</td>
+          <td style="text-align: center">60 g</td>
+          <td style="text-align: center">橄榄油 10 g<br>坚果 15 g<br>牛油果 50 g<br>芝麻 10 g<br>鱼油 5 g<br>三文鱼 100 g<br>蛋黄 1 个 (20 g)</td>
+          <td style="text-align: center">橄榄油 10 g ≈ 10 g ≈ 90 kcal<br>坚果 15 g ≈ 9 g ≈ 85 kcal<br>牛油果 50 g ≈ 7 g ≈ 70 kcal<br>芝麻 10 g ≈ 5 g ≈ 45 kcal<br>鱼油 5 g ≈ 5 g ≈ 45 kcal<br>三文鱼 100 g ≈ 13 g ≈ 200 kcal<br>蛋黄 1 个 ≈ 5 g ≈ 60 kcal</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="每餐能量分配">每餐能量分配</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">餐别</th>
+          <th style="text-align: center">占全天热量比例</th>
+          <th style="text-align: center">总热量 (kcal)</th>
+          <th style="text-align: center">蛋白质 (g / kcal)</th>
+          <th style="text-align: center">碳水 (g / kcal)</th>
+          <th style="text-align: center">脂肪 (g / kcal)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>早餐</strong></td>
+          <td style="text-align: center">20 %</td>
+          <td style="text-align: center"><strong>480 kcal</strong></td>
+          <td style="text-align: center">30 g ≈ 120 kcal</td>
+          <td style="text-align: center">55 g ≈ 220 kcal</td>
+          <td style="text-align: center">15 g ≈ 140 kcal</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>午餐</strong></td>
+          <td style="text-align: center">40 %</td>
+          <td style="text-align: center"><strong>960 kcal</strong></td>
+          <td style="text-align: center">60 g ≈ 240 kcal</td>
+          <td style="text-align: center">120 g ≈ 480 kcal</td>
+          <td style="text-align: center">26 g ≈ 240 kcal</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>骑行前</strong></td>
+          <td style="text-align: center">10 %</td>
+          <td style="text-align: center"><strong>240 kcal</strong></td>
+          <td style="text-align: center">8 g ≈ 30 kcal</td>
+          <td style="text-align: center">45 g ≈ 180 kcal</td>
+          <td style="text-align: center">3 g ≈ 30 kcal</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>晚餐（骑行后）</strong></td>
+          <td style="text-align: center">30 %</td>
+          <td style="text-align: center"><strong>720 kcal</strong></td>
+          <td style="text-align: center">52 g ≈ 210 kcal</td>
+          <td style="text-align: center">80 g ≈ 320 kcal</td>
+          <td style="text-align: center">18 g ≈ 190 kcal</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>合计</strong></td>
+          <td style="text-align: center">100 %</td>
+          <td style="text-align: center"><strong>2400 kcal</strong></td>
+          <td style="text-align: center"><strong>150 g ≈ 600 kcal</strong></td>
+          <td style="text-align: center"><strong>300 g ≈ 1200 kcal</strong></td>
+          <td style="text-align: center"><strong>62 g ≈ 560 kcal</strong></td>
+      </tr>
+  </tbody>
+</table>
+]]></content:encoded></item><item><title>2025_09_16 Register_method_and_hal_method_to_complete_interrupt_serial_port_processing</title><link>https://downmars.github.io/zh/posts/2025_09_16-register_method_and_hal_method_to_complete_interrupt_serial_port_processing/</link><pubDate>Tue, 16 Sep 2025 17:04:56 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_09_16-register_method_and_hal_method_to_complete_interrupt_serial_port_processing/</guid><description>&lt;p>我们现在通过DMA的方式来进行UART的数据搬运，所以对应的中断响应函数也需要重新编写。接下来我会简要的解释一下更改DMA前后中断响应函数的原理和实现方式。&lt;/p></description><content:encoded><![CDATA[<p>我们现在通过DMA的方式来进行UART的数据搬运，所以对应的中断响应函数也需要重新编写。接下来我会简要的解释一下更改DMA前后中断响应函数的原理和实现方式。</p>
 <h2 id="纯寄存器搬运">纯寄存器搬运</h2>
 <h3 id="rx">RX</h3>
 <p>每来一个字节，串口外设置位 RXNE 标志 → 触发一次中断 → CPU 进入 Uartx_IRQ → 读取 RDR → 存到软件 FIFO。</p>
