@@ -1,4 +1,95 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 06 Oct 2025 23:08:04 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_10_06 Weight_loss_diary</title><link>https://downmars.github.io/zh/posts/2025_10_06-weight_loss_diary/</link><pubDate>Mon, 06 Oct 2025 23:08:04 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_10_06-weight_loss_diary/</guid><description>&lt;p>之前做了一份骑行减脂的饮食指南，在这边另开一篇记录一下这段时间的饮食以及体重变化。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Thu, 16 Oct 2025 00:38:04 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>修复arch更新引起的grub引导破坏和内核损坏</title><link>https://downmars.github.io/zh/posts/2025_10_16-fix_grub_boot_corruption_and_kernel_corruption_caused_by_arch_update/</link><pubDate>Thu, 16 Oct 2025 00:38:04 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_10_16-fix_grub_boot_corruption_and_kernel_corruption_caused_by_arch_update/</guid><description>&lt;p>前几天更新archlinux系统，重启之后无法正常进入启动引导界面，这边记录一下如何进行修复。&lt;/p>
+&lt;h2 id="grub引导修复与内核修复">grub引导修复与内核修复&lt;/h2>
+&lt;p>根据&lt;a href="https://bbs.archlinux.org/viewtopic.php?id=257358"
+target="_blank" rel="noopener"
+class="custom-link">
+&amp;ldquo;Minimal bash-like line editing&amp;rdquo; in GRUB when booting&lt;span class="external-link">↗&lt;/span>&lt;/a>
+中指出，开机只掉到 GRUB 的“Minimal BASH-like line editing…”说明了GRUB无法找到它的配置文件，GRUB无法从FAT分区加载Linux内核。&lt;br>
+我们现在必须要使用Live USB启动Arch系统，再chroot进入修复GRUB。&lt;/p></description><content:encoded><![CDATA[<p>前几天更新archlinux系统，重启之后无法正常进入启动引导界面，这边记录一下如何进行修复。</p>
+<h2 id="grub引导修复与内核修复">grub引导修复与内核修复</h2>
+<p>根据<a href="https://bbs.archlinux.org/viewtopic.php?id=257358"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+    &ldquo;Minimal bash-like line editing&rdquo; in GRUB when booting<span class="external-link">↗</span></a>
+中指出，开机只掉到 GRUB 的“Minimal BASH-like line editing…”说明了GRUB无法找到它的配置文件，GRUB无法从FAT分区加载Linux内核。<br>
+我们现在必须要使用Live USB启动Arch系统，再chroot进入修复GRUB。</p>
+<h3 id="创建arch-linux-live-usb">创建Arch linux live USB</h3>
+<p>我们可以从<a href="https://archlinux.org/download/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Arch Linux Downloads<span class="external-link">↗</span></a>
+中下载最新的ISO镜像，之后使用一个闲置U盘通过如<a href="https://rufus.ie/zh/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Rufus<span class="external-link">↗</span></a>
+创建自己的Arch live盘。</p>
+<p>接下来修改自己的启动优先级进入U盘里的live环境。</p>
+<h3 id="确认arch-安装的分区">确认Arch 安装的分区</h3>
+<p>我们需要从确认我们安装的Arch分配的磁盘和分区是什么，可以通过以下指令查看：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lsblk -f  
+</span></span></code></pre></div><p>通常会有以下输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nvme0n1p1 vfat  EFI
+</span></span><span style="display:flex;"><span>nvme0n1p2 swap
+</span></span><span style="display:flex;"><span>nvme0n1p3 btrfs ArchRoot
+</span></span></code></pre></div><p>这通常代表了你创建系统时分配的EFI分区，Btrfs根分区。</p>
+<h3 id="挂载分区">挂载分区</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># 挂载根分区</span>
+</span></span><span style="display:flex;"><span>mount -t btrfs -o <span style="color:#8be9fd;font-style:italic">subvol</span><span style="color:#ff79c6">=</span>@home,compress<span style="color:#ff79c6">=</span>zstd /dev/nvme0n1p3 /mnt 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 挂载EFI(boot)分区  </span>
+</span></span><span style="display:flex;"><span>mount /dev/nvme0n1p1 /mnt/boot 
+</span></span></code></pre></div><h3 id="内核修复">内核修复</h3>
+<div class="admonition note ">
+  <div class="admonition-header">
+    <i class="fas fa-info-circle"></i>
+    <span>“提示”</span>
+    
+  </div>
+  <div class="admonition-content">
+    如果没有内核修复的需求可跳过这一小节
+  </div>
+</div>
+
+
+<p>在我原先修复完GRUB引导后，进入Arch系统后出现无法正确读取内核文件，估计是更新系统的同时，系统内核并未正常跟新，内核文件损坏：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Loading initial ramdisk ...
+</span></span><span style="display:flex;"><span>error: you need to load the kernel first.
+</span></span></code></pre></div><p>根据<a href="https://bbs.archlinux.org/viewtopic.php?id=250845"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Grub says i need to load kernel first<span class="external-link">↗</span></a>
+可知，我们需要重新安装它：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S linux
+</span></span></code></pre></div><p>如果在安装的过程中出现了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>xxx: Read-only file system
+</span></span><span style="display:flex;"><span>error: <span style="color:#8be9fd;font-style:italic">command</span> failed to execute correctly
+</span></span></code></pre></div><p>可能是之前更新失败中断导致的自动分区保护，我们需要清脏标志位</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>fsck.vfat -a -v /dev/nvme0n1p1
+</span></span></code></pre></div><p>结果中如果出现以下字段则代表了成功清除标志位</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Dirty bit is <span style="color:#8be9fd;font-style:italic">set</span>   
+</span></span></code></pre></div><h3 id="进入chroot系统并重新生成引导文件">进入chroot系统并重新生成引导文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>arch-chroot /mnt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>grub-install --target<span style="color:#ff79c6">=</span>x86_64-efi --efi-directory<span style="color:#ff79c6">=</span>/efi --bootloader-id<span style="color:#ff79c6">=</span>GRUB
+</span></span><span style="display:flex;"><span>grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></div><h3 id="退出重启">退出重启</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">exit</span>  
+</span></span><span style="display:flex;"><span>umount -R /mnt  
+</span></span><span style="display:flex;"><span>reboot
+</span></span></code></pre></div><p>接下来拔掉U盘，便可以正常使用了。</p>
+]]></content:encoded></item><item><title>2025_10_06 Weight_loss_diary</title><link>https://downmars.github.io/zh/posts/2025_10_06-weight_loss_diary/</link><pubDate>Mon, 06 Oct 2025 23:08:04 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_10_06-weight_loss_diary/</guid><description>&lt;p>之前做了一份骑行减脂的饮食指南，在这边另开一篇记录一下这段时间的饮食以及体重变化。&lt;/p>
 &lt;h2 id="第一周">第一周&lt;/h2>
 &lt;h3 id="2025-10-06">2025-10-06&lt;/h3>
 &lt;p>&lt;strong>早餐&lt;/strong>：牛奶 250 ml，燕麦 40 g，香蕉 1 根&lt;br>
