@@ -1,4 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 26 Oct 2025 01:12:29 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_10_16 Try_to_port_my_archlinux_on_xiaomi_pad_5</title><link>https://downmars.github.io/zh/posts/2025_10_16-try_to_port_my_archlinux_on_xiaomi_pad_5/</link><pubDate>Sun, 26 Oct 2025 01:12:29 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_10_16-try_to_port_my_archlinux_on_xiaomi_pad_5/</guid><description>&lt;p>我在更新macOS Tahoe 26的时候，整体的液态玻璃效果太抽象了，完全一变以前的简约风格，存在感太强了，和我原来的黑白简约风格很违和。同时由于我之前做的一些ntfs适配，梯子适配的东西全部不能用了，细想之下，我直接把mac出了。&lt;br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 16 Nov 2025 17:41:01 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_11_16 Build_a_personal_website</title><link>https://downmars.github.io/zh/posts/2025_11_16-build_a_personal_website/</link><pubDate>Sun, 16 Nov 2025 17:41:01 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_11_16-build_a_personal_website/</guid><description>&lt;p>我现在的博客部署在&lt;a href="github.io"
+class="custom-link">
+github.io&lt;/a>
+上，一直想要在个人网站上搭建自己的博客以及部署一些有意思的项目，这次趁双十一购入了服务器与域名，这里做一个简单的记录。&lt;/p>
+&lt;h2 id="一台可用的vps">一台可用的VPS&lt;/h2>
+&lt;p>你可以在任意VPS提供商上购买所需要的服务器，比如说我这边是用的是&lt;a href="https://www.google.com/url?sa=t&amp;amp;source=web&amp;amp;rct=j&amp;amp;opi=89978449&amp;amp;url=https://www.racknerd.com/&amp;amp;ved=2ahUKEwj9rN3guvaQAxU3m68BHZHhF5kQFnoECD0QAQ&amp;amp;usg=AOvVaw1f3G5tQVYCJRLV5V-s0O-I"
+target="_blank" rel="noopener"
+class="custom-link">
+RackNerd&lt;span class="external-link">↗&lt;/span>&lt;/a>
+，正好赶上双11优惠，花费了70块弄了一个低配的KVM小机子，用作轻量级服务。1vCPU, 1G内存, 20G硬盘空间，3T/月的带宽，虽说配置比较低，但是很适合配置轻量级服务器与学习作用。&lt;/p></description><content:encoded><![CDATA[<p>我现在的博客部署在<a href="github.io"
+   
+   
+   class="custom-link">  
+   github.io</a>
+上，一直想要在个人网站上搭建自己的博客以及部署一些有意思的项目，这次趁双十一购入了服务器与域名，这里做一个简单的记录。</p>
+<h2 id="一台可用的vps">一台可用的VPS</h2>
+<p>你可以在任意VPS提供商上购买所需要的服务器，比如说我这边是用的是<a href="https://www.google.com/url?sa=t&amp;source=web&amp;rct=j&amp;opi=89978449&amp;url=https://www.racknerd.com/&amp;ved=2ahUKEwj9rN3guvaQAxU3m68BHZHhF5kQFnoECD0QAQ&amp;usg=AOvVaw1f3G5tQVYCJRLV5V-s0O-I"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   RackNerd<span class="external-link">↗</span></a>
+，正好赶上双11优惠，花费了70块弄了一个低配的KVM小机子，用作轻量级服务。1vCPU, 1G内存, 20G硬盘空间，3T/月的带宽，虽说配置比较低，但是很适合配置轻量级服务器与学习作用。</p>
+<p>反正就是权衡一下自己的需求，按照性能、稳定性、性价比来选择自己的服务器选型，大家可以自行去网上寻找关于各家VPS的测评。</p>
+<p>我这边购买了RackNerd的服务器遇到了很奇怪的问题。在登录验证邮件中的IP 地址和登录进控制台实际显示的IP 地址不一致，最后是控制台实际显示的IP 地址是正确地址，通过控制台显示的IP能够正常登录。</p>
+<h2 id="一个可用的域名">一个可用的域名</h2>
+<p>你同样可以在任意的顶级域名提供商上购买你所中意的域名，我们一般选择<code>.com</code>后缀的域名，具体关于域名选择的讨论可以看<a href="https://news.ycombinator.com/item?id=14458349"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Ask HN: Which domain extension would you choose for your personal site?<span class="external-link">↗</span></a>
+。<br>
+我这里选择的是<a href="https://www.spaceship.com/zh/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   SpaceShip<span class="external-link">↗</span></a>
+上购买我的域名，在哪一家购买域名都可以，基本上就是看价格谁家便宜，我这里购买了<a href="downmars.com"
+   
+   
+   class="custom-link">  
+   downmars.com</a>
+。</p>
+<h2 id="dns解析">DNS解析</h2>
+<p>DNS（Domain Name System）域名系统可以告诉网络你的域名关联再哪个服务器上面，我这边选择了<a href="https://dash.cloudflare.com/profile/authentication"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Cloudflare<span class="external-link">↗</span></a>
+。它除了帮忙提供DNS解析之外，还能够提供安全流量代理、CDN解析等内容。</p>
+<p>我们再Cloudflare上添加需要管理的域名，选择免费套餐即可，在记录中添加：</p>
+<ul>
+<li>Type: A, Name: @, Content: 你的IP地址</li>
+<li>Type: CNAME, Name: www, Content: 你的域名<br>
+这两个分别是将访问的域名联系上服务器的IP与将www自动跳转到主域名。</li>
+</ul>
+<p>到此，我们设置服务器、域名与DNS解析部分的设置就已经基本完成了，接下来我们就可以在服务器上部署我的所需要的服务了。</p>
+]]></content:encoded></item><item><title>2025_10_16 Try_to_port_my_archlinux_on_xiaomi_pad_5</title><link>https://downmars.github.io/zh/posts/2025_10_16-try_to_port_my_archlinux_on_xiaomi_pad_5/</link><pubDate>Sun, 26 Oct 2025 01:12:29 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_10_16-try_to_port_my_archlinux_on_xiaomi_pad_5/</guid><description>&lt;p>我在更新macOS Tahoe 26的时候，整体的液态玻璃效果太抽象了，完全一变以前的简约风格，存在感太强了，和我原来的黑白简约风格很违和。同时由于我之前做的一些ntfs适配，梯子适配的东西全部不能用了，细想之下，我直接把mac出了。&lt;br>
 那么现在我的宿舍桌面就没有主机使用了，考虑到可玩性，我尝试寻找一些能够支持linux的、功耗低、迷你的设备。我考虑了一些类树莓派，但是这种小型的设备，算力支持太低了，而且可能会遇到一些莫名其妙的设备问题，我想要更多的享受linux的生活而不是将时间花费在无止境的维修设备上。同时单纯地嵌入式设备太丑陋了，不像一个合格的产品使用，以及这只是主机，我还需要花费精力给他添加一个显示屏还有多出的线，总之就是各种不方便。&lt;br>
 这时候我将视线投向了微软的surface系列产品，但是我还是遇到了很多的不合适的点。首先是surface新产品太贵了，而旧款式的产品充满了旧时代的审美和旧时代的配置。很难想象一个平板电脑二合一的产品有着能够停的下理想的黑边和十分明显了直角边框。其次就是，他的键盘我不是很需要，我很讨厌传统键盘的方向键设计，以及冗余的全键位设计，以及最不能容忍度半高方向键（这也是我没有买mac book的一部分原因）。&lt;br>
 现在我将实现投向了平板电脑。我去搜索了一下，看到了一款合适的设备，小米平板5。于是我从闲鱼上买了一个成色还可以的板子。&lt;/p></description><content:encoded><![CDATA[<p>我在更新macOS Tahoe 26的时候，整体的液态玻璃效果太抽象了，完全一变以前的简约风格，存在感太强了，和我原来的黑白简约风格很违和。同时由于我之前做的一些ntfs适配，梯子适配的东西全部不能用了，细想之下，我直接把mac出了。<br>
