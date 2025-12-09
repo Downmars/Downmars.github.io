@@ -1,4 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 16 Nov 2025 17:41:01 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_11_16 Build_a_personal_website</title><link>https://downmars.github.io/zh/posts/2025_11_16-build_a_personal_website/</link><pubDate>Sun, 16 Nov 2025 17:41:01 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_11_16-build_a_personal_website/</guid><description>&lt;p>我现在的博客部署在&lt;a href="github.io"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Tue, 09 Dec 2025 22:27:02 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025_12_09 Clone_your_archlinux</title><link>https://downmars.github.io/zh/posts/2025_12_09-clone_your_archlinux/</link><pubDate>Tue, 09 Dec 2025 22:27:02 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_12_09-clone_your_archlinux/</guid><description>&lt;p>前段时间，我朋友入手了5090（可恶的有钱人），将淘汰下来的主机出手给了我，由于附带的卡是5070 12g，虽然说显存不够大，但是还是想要体验一下N卡的本地模型的乐趣，所以就接手了。于是，我面临了一个问题，我如何将我现有的archlinux配置克隆到新主机上。&lt;/p></description><content:encoded><![CDATA[<p>前段时间，我朋友入手了5090（可恶的有钱人），将淘汰下来的主机出手给了我，由于附带的卡是5070 12g，虽然说显存不够大，但是还是想要体验一下N卡的本地模型的乐趣，所以就接手了。于是，我面临了一个问题，我如何将我现有的archlinux配置克隆到新主机上。</p>
+<h2 id="全盘克隆-or-配置文件克隆">全盘克隆 or 配置文件克隆</h2>
+<p>现在我面临一个问题，我就是是选择全盘将系统克隆过去，还是只是克隆一些配置文件。前一种方案的好处即全盘克隆可以原封不动实现系统迁徙，并且立即能用；但是存在以下一系列问题，如会携带旧系统大量的垃圾文件，对于不同硬件适配可能产生冲突，就像把旧电脑的主板焊到新机箱使用，维护难度很大。后一种好处有可以在移植的时候思考哪些是我们迁移的时候必要的文件，最小化克隆，对于不同的硬件场景我们也可以很好的进行适配，比如说我们需要将现有的配置移植到arm平台的archlinux，同时不会携带一些旧文件，不适用的驱动等。前一种有如<a href="https://wiki.archlinuxcn.org/wiki/Dd"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   dd<span class="external-link">↗</span></a>
+，<a href="https://clonezilla.org/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   clonezilla<span class="external-link">↗</span></a>
+，<a href="https://wiki.archlinuxcn.org/wiki/Rsync"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   rsync<span class="external-link">↗</span></a>
+；后一种我们选择使用<a href="https://wiki.archlinux.org/title/Dotfiles"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   dotfiles<span class="external-link">↗</span></a>
+。<br>
+很显然，我们会选择dotfiles作为我们的克隆系统方案，尽管他麻烦一点:)。</p>
+<h2 id="步骤">步骤</h2>
+]]></content:encoded></item><item><title>2025_11_16 Build_a_personal_website</title><link>https://downmars.github.io/zh/posts/2025_11_16-build_a_personal_website/</link><pubDate>Sun, 16 Nov 2025 17:41:01 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_11_16-build_a_personal_website/</guid><description>&lt;p>我现在的博客部署在&lt;a href="github.io"
 class="custom-link">
 github.io&lt;/a>
 上，一直想要在个人网站上搭建自己的博客以及部署一些有意思的项目，这次趁双十一购入了服务器与域名，这里做一个简单的记录。&lt;/p>
