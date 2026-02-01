@@ -48,10 +48,12 @@ PS: 高并发数据处理需要多核，低并发但计算密集需求，如图�
 |并发量小，主要提供展示功能|需要处理缓存一定量数据信息|数据量较大，需要将大量数据加载到内存以确保快速访问|对于内存带宽和容量有极高的要求，处理高并发数据流或者内存密集型计算|
 
 ### 磁盘  
+| NVMe | SATA | HDD |
+|:---:|:---:|:---|
+| 数据库、搜索、缓存、消息队列、高并发服务、CI 构建、容器密集、AI 数据读取/写入频繁 | 系统盘、日志不重的业务、一般 Web 服务、轻量数据库 | 归档、冷数据、备份、媒体库、对象存储型业务|
 
-
-
+### 碎碎念
+对大部分日常使用的人来说，往往价格才是我们最先考虑的事情，尽可能达到最大性价比。一般国外服务器推荐[搬瓦工](https://bandwagonhost.com/order/ecommerce/Los%20Angeles/USCA_9)、[RackNerd](https://www.racknerd.com/)的一些优惠套餐，可以关注一些电报群、论坛以获得最新的优惠信息，国内的一般可以选择[阿里云](https://www.aliyun.com/benefit/select/ecs?utm_content=se_1021771606&gclid=Cj0KCQiAkPzLBhD4ARIsAGfah8hNJ4y3WLd_LWJo4ZNTg-sSKnkUZtisuWYmrqhHglF6Tbbz0ETOouwaAngCEALw_wcB)的学生优惠，大概68一年，也可以整一个香港的服务器。
 
 ## 你想做什么？
-我们选型需要明确你的需求是什么，然后按照需求来选购不同配置的服务器，除非你真的钱不差花。
 
