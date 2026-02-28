@@ -1,4 +1,120 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 01 Feb 2026 16:22:28 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2026_02_01 Build_a_streaming_server</title><link>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</link><pubDate>Sun, 01 Feb 2026 16:22:28 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</guid><description>&lt;h2 id="网络检测">网络检测&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 09 Feb 2026 15:30:35 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2026_02_09 Comfyui</title><link>https://downmars.github.io/zh/posts/2026_02_09-comfyui/</link><pubDate>Mon, 09 Feb 2026 15:30:35 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_02_09-comfyui/</guid><description>&lt;h2 id="comfyui">Comfyui&lt;/h2>
+&lt;p>前段时间玩了一玩&lt;a href="https://github.com/Comfy-Org/ComfyUI"
+target="_blank" rel="noopener"
+class="custom-link">
+Comfyui&lt;span class="external-link">↗&lt;/span>&lt;/a>
+，只能说很好用，很好玩，这边简单介绍一下其中内容。&lt;br>
+Tips: 我在使用之前还想着对Comfyui做一些大刀阔斧的修改，现在看来不是那么简单。&lt;/p></description><content:encoded><![CDATA[<h2 id="comfyui">Comfyui</h2>
+<p>前段时间玩了一玩<a href="https://github.com/Comfy-Org/ComfyUI"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Comfyui<span class="external-link">↗</span></a>
+，只能说很好用，很好玩，这边简单介绍一下其中内容。<br>
+Tips: 我在使用之前还想着对Comfyui做一些大刀阔斧的修改，现在看来不是那么简单。</p>
+<h2 id="lora">lora</h2>
+<p>LoRA(LOW-Rank Adaptation)是用来给模型做低成本微调的方法：在冻结预训练模型的初始权重的前提下，在一些关键的线性层上加入一个低秩的可训练量，通过训练这部分增量参数，使得模型适配新任务与风格。<br>
+在Comfyui中，我们可以将多个LoRA串联使用叠加出独特的效果，如使用水墨画风的LoRA，叠加2B角色的LoRA，叠加职场OL的服装LoRA，通过合适的提示词给出，就能够得到我们想要的效果。当然了，越多的LoRA叠加越容易风格冲突，结构崩坏，色彩漂移等结果，所以需要我们适当选择并调整权重来控制效果。</p>
+<h2 id="todo-训练lora">TODO 训练LoRA</h2>
+]]></content:encoded></item><item><title>2026_02_09 2025_summary</title><link>https://downmars.github.io/zh/posts/2026_02_09-2025_summary/</link><pubDate>Mon, 09 Feb 2026 11:40:19 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_02_09-2025_summary/</guid><description>&lt;h2 id="学习工作">学习工作&lt;/h2>
+&lt;p>去年是上研究生的第一年，准确来说应该是第半年。上研究生所做什么方向很大可能就决定了以后的就业方向，虽然没有达到预期的结果，本来想做一些关于大模型，人工智能方面的前沿知识，但是还算是合适我，现在再做一些飞控的整体设计方面，偏向于嵌入式，软硬件等方面，也算的上感兴趣的，至于那些前沿方面的知识学习就当作自己的课余消遣，也未尝不可。&lt;/p></description><content:encoded><![CDATA[<h2 id="学习工作">学习工作</h2>
+<p>去年是上研究生的第一年，准确来说应该是第半年。上研究生所做什么方向很大可能就决定了以后的就业方向，虽然没有达到预期的结果，本来想做一些关于大模型，人工智能方面的前沿知识，但是还算是合适我，现在再做一些飞控的整体设计方面，偏向于嵌入式，软硬件等方面，也算的上感兴趣的，至于那些前沿方面的知识学习就当作自己的课余消遣，也未尝不可。</p>
+<h2 id="兴趣项目">兴趣项目</h2>
+<p>总而言之，去年做了很多有意思的事情，也有很多没做完，这里简单梳理一下。</p>
+<h3 id="3d打印">3D打印</h3>
+<p>年初的时候用实验室的打印机做了很多有意思的东西，这边拎一个有意思值得记住的。<br>
+<a href="https://www.multiboard.io/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Multiboard<span class="external-link">↗</span></a>
+，这是一套多功能洞洞板的组合，免费部分包括了一些基础尺寸的洞洞板组合，一些洞洞板配套的组件。官方中对自定义尺寸洞洞板，以及一些功能组件做了收费，有兴趣的可以支持一下官方。不过在<a href="https://makerworld.com/en/search/models?keyword=Multiboard"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   MakerWord<span class="external-link">↗</span></a>
+中有一些社区分享的模块组件，大部分都可平替官方的功能，实在不行用一些建模软件进行自行创作。<br>
+不过，我对这个洞洞板模块其实有部分不满意的，相比于市面上常见的如宜家洞洞板的组件不兼容，这就使得市面上的现有组件的适配性几乎为0；但是又因为是3D打印的组件，有了一些其他的好处：如有一个3D打印机以及一个有想法的脑子就可以制作所有内容，不需要拘泥于现有的配件（也配对不上）；其次就是3D打印的洞洞板组件有完全的可拓展性，可以用多块标准尺寸的基础板通过连接件拼接起来，用多少，画多少。<br>
+现在由于没钱，没地方，各方面原因，嫖一嫖别人的3D打印机用一用，之后自己住了整一个好好玩玩呀，所见所及，都能做。（更多可能是制造垃圾啊哈哈）</p>
+<h3 id="个人博客">个人博客</h3>
+<p>说起来，现在写文章的博客使用<a href="https://github.com/gohugoio/hugo"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Hugo<span class="external-link">↗</span></a>
+搭建的，在这上面记录了一年来发生的一些值得记下的事情。包括了如何解构自己（如何搭建一个博客），一些实用工具，一些想法，一些工作等等。当初构建博客的时候大概完成了80%的功能，比如博客整体黑白简约风格样式的搭建，一些如加载照片、特殊样式文字，剩下的20%功能如搜索功能、主页样式，标签索引分类，简化shortcodes等都还没有做，还有后续使用体验的优化，很大一部分都是因为懒（）。<br>
+很多时候，可能就一个月几个博客的水平，质量也参差不齐。生活中有很多值得纪念的东西，但是可能是因为从小到大文字水品就不佳，很多内容想说说不出来，说出来展现效果又很差，也有可能是懒，有些就是随手记录，并没有搭建一个高质量的博客网站。或许我可以加一个栏目，类似于朋友圈的功能，这上面就可以加一些我的碎碎念，很多碎碎念没必要独立写成一篇博客，又有很多碎碎念暂时不值得写成一篇博客，但是以后可以做一些拓展，总之这是一个需要加上的功能。<br>
+我不想在现在的博客上面继续雕花了，很多东西牵一发而动全身，涉及到我以前的博客内容的展现，所以说有机会就重构一版博客吧，顺便可以将网站考虑不部署在github上，选择用我的网站上部署。</p>
+<h3 id="个人服务器">个人服务器</h3>
+<p>在今年我买了两个服务器，一个是位于San Jose, CA的<a href="https://www.racknerd.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   RackNerd<span class="external-link">↗</span></a>
+的一个10刀的服务器，1G内存，20G的储存以及每个月3T的带宽；一个位于南京的<a href="https://www.aliyun.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   阿里云服务器<span class="external-link">↗</span></a>
+，2G内存，2核CPU，40G的储存，峰值带宽200M，第一年仅需68元，可谓是物美价廉，我这个服务器2026年5月22日到期。<br>
+服务器本身没有特别的，对我最重要的是服务器自带的公网IP，有了它我们就能在互联网的任何地方访问到的服务器。放假的时候，我也打电话尝试申请过公网IP，但是没有成功&hellip;所以说这个交给以后的我来做吧，现在先只能用用服务器。
+我们可以在自己的服务器上搭建很多有意思的服务，完全由自己掌控，去中心化，隐私也能得到一定程度上的保护。比如说Bitwarden密码管理，Frp中转服务器，RSSHub订阅，待做事项等等。<br>
+你再使用服务器的时候，需要购买域名做好反代以便访问与隐私保护，我这边在<a href="https://www.spaceship.com.au/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   SpaceShip<span class="external-link">↗</span></a>
+上购买的<a href="downmars.com"
+   
+   
+   class="custom-link">  
+   域名</a>
+。但是由于我对这网络部分知识了解的不是很多，也没有太多的时间来学习，所以暂时一些的操作都是按照AI给我的提示去做的，对于其中的一些隐患还不明确，需要多多注意。</p>
+<h3 id="rss">RSS</h3>
+<p>一开始用的是Folo当作我的RSS客户端，但是之后这个软件就收费了，非会员就基本无法使用，所以就趁早溜比较好。我这边打算用<a href="https://github.com/miniflux/v2"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Miniflux<span class="external-link">↗</span></a>
+作为RSS客户端，<a href="https://github.com/electh/nextflux?tab=readme-ov-file"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Nextflux<span class="external-link">↗</span></a>
+作为套皮美化客户端，<a href="https://github.com/DIYgod/RSSHub"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   RSSHub<span class="external-link">↗</span></a>
+作为RSS订阅源，这个可以尽早纳入实施范畴。</p>
+<h3 id="运动计划">运动计划</h3>
+<p>本是十分完美的骑行减肥计划，可惜遇到冬天的阴霾&hellip;所以春天到了，我们需要重启运动计划了，每天骑行20km？如果没有去外场的话就按照这个来，同时每天的饮食需要控制，沙县似乎是一个很好的选择。<br>
+至于之后去外场了，每天也只能跑步了，加油尝试吧，跳绳或许也可以。</p>
+<h3 id="数据储存">数据储存</h3>
+<p>2025年因为AI市场的原因，几大存储大厂都被预定完了产量，存储和内存的价格翻了几番。当然了，和我影响不太大，我手头上的存储设备应该也够用了，大概有6-7T的固态，20T的机械。对于其中存储的个人数据，照片，影视以及各种杂项如何存储是一个很重要的问题。<br>
+最好的选择是组一台NAS，然后在云端做好备份，同时这个NAS还能够搭建一个影视系统。但是由于没有公网IP，同时学校的存储条件不可控，不太支持我做一个NAS系统，这边就退而求其次，重要个人数据以及一些拍摄的照片做本地和云端双备份，一些网络资源就只做云端备份。我选择了115盘作为我的云盘备份，毕竟800元8年40T，令人夸张的价格，只要不跑路，就是赚的。<br>
+刚到手只是用CD2做了挂载在本地并rsync做了简单的现有数据云端备份，但是之后的一些定期备份以及一些功能封装的实现需要好好规划一下。</p>
+]]></content:encoded></item><item><title>2026_02_01 Build_a_streaming_server</title><link>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</link><pubDate>Sun, 01 Feb 2026 16:22:28 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</guid><description>&lt;h2 id="网络检测">网络检测&lt;/h2>
 &lt;h3 id="带宽">带宽&lt;/h3>
 &lt;p>对于串流被控端需要有足够的上行带宽，例如4K 60FPS一般需要50Mbps，如果要排除一些网络不稳定状态，可能还需要有1/3的冗余带宽；同理，对于串流控制端需要有足够的下行带宽，也需要大致50Mbps。我们这里可以用&lt;a href="https://www.speedtest.net/"
 target="_blank" rel="noopener"
