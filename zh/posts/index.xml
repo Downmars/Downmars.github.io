@@ -1,4 +1,805 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 09 Feb 2026 15:30:35 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2026_02_09 Comfyui</title><link>https://downmars.github.io/zh/posts/2026_02_09-comfyui/</link><pubDate>Mon, 09 Feb 2026 15:30:35 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_02_09-comfyui/</guid><description>&lt;h2 id="comfyui">Comfyui&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on DLog</title><link>https://downmars.github.io/zh/posts/</link><description>Recent content in Posts on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 15 Mar 2026 20:27:08 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2026_03_15 RSS</title><link>https://downmars.github.io/zh/posts/2026_03_15-rss/</link><pubDate>Sun, 15 Mar 2026 20:27:08 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_03_15-rss/</guid><description>&lt;h2 id="为什么搭建自己的-rss-系统的">为什么搭建自己的 RSS 系统的&lt;/h2>
+&lt;p>一开始我用的是 &lt;a href="https://github.com/RSSNext/Folo"
+target="_blank" rel="noopener"
+class="custom-link">
+Folo&lt;span class="external-link">↗&lt;/span>&lt;/a>
+当作 RSS 客户端。它的界面和体验其实都不错，作为日常阅读工具也足够顺手。但后来这个软件逐渐走向付费，非会员基本已经很难正常使用。对我来说，RSS 这种东西本来就应该是一个长期、稳定、可掌控的信息输入系统，如果核心入口被商业策略卡住，那迟早会变成隐患。&lt;br>
+所以我决定尽早迁移，把自己的 RSS 系统重新搭起来。&lt;br>
+不要把自己的信息输入系统完全绑死在某一个客户端上。如果只是把 RSS 当成一个“看资讯的软件”，那客户端体验当然最重要；但如果把 RSS 看成一个长期的信息基础设施，那事情就不一样了。&lt;br>
+这次我的目标很明确：前端体验要好，后端要稳定，订阅源要尽可能可扩展，而且尽量掌握在自己手里。&lt;br>
+作为一个完整的RSS系统，我们需要支持订阅源可迁移，例如OPML导入导出；前后端解耦，并支持自托管；还需要有可拓展的订阅源，能够补足非原生RSS数据来源。&lt;br>
+在我比较下我打算使用&lt;a href="https://github.com/miniflux/v2"
+target="_blank" rel="noopener"
+class="custom-link">
+Miniflux&lt;span class="external-link">↗&lt;/span>&lt;/a>
+做后端，&lt;a href="https://github.com/electh/nextflux"
+target="_blank" rel="noopener"
+class="custom-link">
+Nextflux&lt;span class="external-link">↗&lt;/span>&lt;/a>
+做前端，&lt;a href="https://github.com/DIYgod/RSSHub"
+target="_blank" rel="noopener"
+class="custom-link">
+RSSHub&lt;span class="external-link">↗&lt;/span>&lt;/a>
+提供非官方的RSS补充源。&lt;/p></description><content:encoded><![CDATA[<h2 id="为什么搭建自己的-rss-系统的">为什么搭建自己的 RSS 系统的</h2>
+<p>一开始我用的是 <a href="https://github.com/RSSNext/Folo"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Folo<span class="external-link">↗</span></a>
+ 当作 RSS 客户端。它的界面和体验其实都不错，作为日常阅读工具也足够顺手。但后来这个软件逐渐走向付费，非会员基本已经很难正常使用。对我来说，RSS 这种东西本来就应该是一个长期、稳定、可掌控的信息输入系统，如果核心入口被商业策略卡住，那迟早会变成隐患。<br>
+所以我决定尽早迁移，把自己的 RSS 系统重新搭起来。<br>
+不要把自己的信息输入系统完全绑死在某一个客户端上。如果只是把 RSS 当成一个“看资讯的软件”，那客户端体验当然最重要；但如果把 RSS 看成一个长期的信息基础设施，那事情就不一样了。<br>
+这次我的目标很明确：前端体验要好，后端要稳定，订阅源要尽可能可扩展，而且尽量掌握在自己手里。<br>
+作为一个完整的RSS系统，我们需要支持订阅源可迁移，例如OPML导入导出；前后端解耦，并支持自托管；还需要有可拓展的订阅源，能够补足非原生RSS数据来源。<br>
+在我比较下我打算使用<a href="https://github.com/miniflux/v2"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Miniflux<span class="external-link">↗</span></a>
+做后端，<a href="https://github.com/electh/nextflux"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Nextflux<span class="external-link">↗</span></a>
+做前端，<a href="https://github.com/DIYgod/RSSHub"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   RSSHub<span class="external-link">↗</span></a>
+提供非官方的RSS补充源。</p>
+<h2 id="方案实施">方案实施</h2>
+<p>一开始我原本想用 Caddy 来处理域名和 HTTPS，但是我服务器上已经部署了Bitwarden，占用了80和443端口，这个时候不能让Caddy占用端口,否则现有服务会冲突。<br>
+最后的实现逻辑为保留主机上的Nginx，并让Nginx统一接管所有的域名，Docker中Miniflux、Nextflux、RSSHub只监听127.0.0.1的本地端口，并通过Nginx反向代理到这些本地端口。<br>
+同时我的域名分配为：<a href="https://read.downmars.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Nextflux 阅读界面<span class="external-link">↗</span></a>
+，<a href="https://miniflux.downmars.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Miniflux 后台管理<span class="external-link">↗</span></a>
+，<a href="https://rsshub.downmars.com/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   RSSHub 路由服务<span class="external-link">↗</span></a>
+。</p>
+<h3 id="目录结构">目录结构</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p ~/rss-stack/data/<span style="color:#ff79c6">{</span>postgres,redis<span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> ~/rss-stack
+</span></span></code></pre></div><p>最后的目录结构大致如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rss-stack/
+</span></span><span style="display:flex;"><span>├── compose.yaml
+</span></span><span style="display:flex;"><span>├── .env
+</span></span><span style="display:flex;"><span>└── data/
+</span></span><span style="display:flex;"><span>    ├── postgres/
+</span></span><span style="display:flex;"><span>    └── redis/
+</span></span></code></pre></div><h3 id="设置境变量env">设置境变量.env</h3>
+<p>Miniflux 需要数据库密码、管理员账号密码，以及自己的外部访问地址。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &gt; .env <span style="color:#f1fa8c">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">MINIFLUX_DB_PASSWORD=your_db_password_here
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">MINIFLUX_ADMIN_USERNAME=admin
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">MINIFLUX_ADMIN_PASSWORD=your_admin_password_here
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">MINIFLUX_BASE_URL=https://miniflux.downmars.com
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">EOF</span>
+</span></span></code></pre></div><p>需要注意的点是，<code>MINIFLUX_DB_PASSWORD</code>是 PostgreSQL 数据库密码，不是网页登录密码；<code>MINIFLUX_BASE_URL</code> 必须是 Miniflux 的真实外部访问地址。</p>
+<h3 id="编写composeyaml">编写compose.yaml</h3>
+<p>因为宿主机的 80/443 已经由 Nginx 占用，所以这里不能再让容器直接对外暴露 Web 端口，而是只绑定到本机回环地址。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>compose.yaml</span>
+    <span class="line-count">74 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">db</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: postgres:17-alpine
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">container_name</span>: miniflux-db
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">POSTGRES_USER</span>: miniflux
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">POSTGRES_PASSWORD</span>: ${MINIFLUX_DB_PASSWORD}
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">POSTGRES_DB</span>: miniflux
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">volumes</span>:
+</span></span><span style="display:flex;"><span>      - ./data/postgres:/var/lib/postgresql/data
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">healthcheck</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">test</span>: [<span style="color:#f1fa8c">&#34;CMD-SHELL&#34;</span>, <span style="color:#f1fa8c">&#34;pg_isready -U miniflux -d miniflux&#34;</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">interval</span>: 10s
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">timeout</span>: 5s
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">retries</span>: <span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: unless-stopped
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">miniflux</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: miniflux/miniflux:2.2.17
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">container_name</span>: miniflux
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">depends_on</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">db</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">condition</span>: service_healthy
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">DATABASE_URL</span>: postgres://miniflux:${MINIFLUX_DB_PASSWORD}@db/miniflux?sslmode=disable
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">RUN_MIGRATIONS</span>: <span style="color:#f1fa8c">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">CREATE_ADMIN</span>: <span style="color:#f1fa8c">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">ADMIN_USERNAME</span>: ${MINIFLUX_ADMIN_USERNAME}
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">ADMIN_PASSWORD</span>: ${MINIFLUX_ADMIN_PASSWORD}
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">BASE_URL</span>: ${MINIFLUX_BASE_URL}
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f1fa8c">&#34;127.0.0.1:18080:8080&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">healthcheck</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">test</span>: [<span style="color:#f1fa8c">&#34;CMD&#34;</span>, <span style="color:#f1fa8c">&#34;/usr/bin/miniflux&#34;</span>, <span style="color:#f1fa8c">&#34;-healthcheck&#34;</span>, <span style="color:#f1fa8c">&#34;auto&#34;</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">interval</span>: 10s
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">timeout</span>: 5s
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">retries</span>: <span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: unless-stopped
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">nextflux</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: electh/nextflux:latest
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">container_name</span>: nextflux
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">depends_on</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">miniflux</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">condition</span>: service_healthy
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f1fa8c">&#34;127.0.0.1:13000:3000&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: unless-stopped
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">redis</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: redis:7-alpine
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">container_name</span>: rsshub-redis
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">volumes</span>:
+</span></span><span style="display:flex;"><span>      - ./data/redis:/data
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">healthcheck</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">test</span>: [<span style="color:#f1fa8c">&#34;CMD&#34;</span>, <span style="color:#f1fa8c">&#34;redis-cli&#34;</span>, <span style="color:#f1fa8c">&#34;ping&#34;</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">interval</span>: 10s
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">timeout</span>: 5s
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">retries</span>: <span style="color:#bd93f9">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: unless-stopped
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">rsshub</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: diygod/rsshub:latest
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">container_name</span>: rsshub
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">depends_on</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">redis</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">condition</span>: service_healthy
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">NODE_ENV</span>: production
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">CACHE_TYPE</span>: redis
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">REDIS_URL</span>: redis://redis:6379/
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f1fa8c">&#34;127.0.0.1:11200:1200&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: unless-stopped
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<code>miniflux</code>绑定到<code>127.0.0.1:18080</code>；<code>nextflux</code>绑定到<code>127.0.0.1:13000</code>；<code>rsshub</code>绑定到<code>127.0.0.1:11200</code>。也就是说，这三个服务都只在宿主机本机可访问，外部公网不能直接打到容器，而必须通过 Nginx 代理。</p>
+<h3 id="启动容器">启动容器</h3>
+<p>如果系统支持 docker compose，可以直接：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose up -d
+</span></span><span style="display:flex;"><span>docker compose ps  
+</span></span></code></pre></div><p>启动之后，可以用下面的方式确认服务是否正常起来：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -I http://127.0.0.1:13000
+</span></span><span style="display:flex;"><span>curl -I http://127.0.0.1:18080
+</span></span><span style="display:flex;"><span>curl -I http://127.0.0.1:11200
+</span></span></code></pre></div><p>如果能看到 HTTP 响应，就说明容器层已经没有问题了。</p>
+<h3 id="配置-nginx-反向代理">配置 Nginx 反向代理</h3>
+<p>接下来由宿主机 Nginx 接管域名，再代理到这些本地端口。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /etc/nginx/sites-available/rss-stack
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>/etc/nginx/sites-available/rss-stack</span>
+    <span class="line-count">44 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">read.downmars.com</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_pass</span> <span style="color:#f1fa8c">http://127.0.0.1:13000</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">Host</span> <span style="color:#8be9fd;font-style:italic">$host</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Real-IP</span> <span style="color:#8be9fd;font-style:italic">$remote_addr</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Forwarded-For</span> <span style="color:#8be9fd;font-style:italic">$proxy_add_x_forwarded_for</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Forwarded-Proto</span> <span style="color:#8be9fd;font-style:italic">$scheme</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">miniflux.downmars.com</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_pass</span> <span style="color:#f1fa8c">http://127.0.0.1:18080</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">Host</span> <span style="color:#8be9fd;font-style:italic">$host</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Real-IP</span> <span style="color:#8be9fd;font-style:italic">$remote_addr</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Forwarded-For</span> <span style="color:#8be9fd;font-style:italic">$proxy_add_x_forwarded_for</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Forwarded-Proto</span> <span style="color:#8be9fd;font-style:italic">$scheme</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">rsshub.downmars.com</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_pass</span> <span style="color:#f1fa8c">http://127.0.0.1:11200</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">Host</span> <span style="color:#8be9fd;font-style:italic">$host</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Real-IP</span> <span style="color:#8be9fd;font-style:italic">$remote_addr</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Forwarded-For</span> <span style="color:#8be9fd;font-style:italic">$proxy_add_x_forwarded_for</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Forwarded-Proto</span> <span style="color:#8be9fd;font-style:italic">$scheme</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">downmars.com</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">301</span> <span style="color:#f1fa8c">http://read.downmars.com</span><span style="color:#8be9fd;font-style:italic">$request_uri</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<p>之后启用配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ln -s /etc/nginx/sites-available/rss-stack /etc/nginx/sites-enabled/rss-stack
+</span></span><span style="display:flex;"><span>nginx -t
+</span></span><span style="display:flex;"><span>systemctl reload nginx
+</span></span></code></pre></div><h3 id="配置-https">配置 HTTPS</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>certbot --nginx -d read.downmars.com -d miniflux.downmars.com -d rsshub.downmars.com -d downmars.com
+</span></span></code></pre></div><p>申请完证书后，Nginx 会自动补上 HTTPS 配置。<br>
+同时需要在服务器的代理界面上添加对应的域名启用，之后就可以在对应的网页访问服务了。</p>
+<h3 id="初始化-miniflux">初始化 Miniflux</h3>
+<p>Miniflux 后台起来之后，先登录后台创建 API Key。<br>
+进入<code>Setting</code>-&gt;<code>API Keys</code>-&gt;<code>Create a new API key</code><br>
+然后在 Nextflux 里填Server URL：<code>https://miniflux.downmars.com</code>，API Token：刚创建的 API Key，这样就可以正常使用RSS服务了。</p>
+<h2 id="分类这件事">分类这件事</h2>
+<p>系统搭建好了之后，另有一个很重要的事情，RSS源该怎么分类？<br>
+如果花很多时间涉及体系，最后的维护成本高于阅读本身。<br>
+分类服务于阅读本身，而不是服务于分类本身。<br>
+我现在主要分为<code>资讯观察</code>、<code>闲日杂谈</code>、<code>耳边电台</code>和<code>创作频道</code>，分别是一些资讯平台的热点事件、社区动态等；高质量博客的内容、长篇随笔等；偏博客与音频内容；以及视频创作者。<br>
+如果没有特殊的原因，不会对分组有太多的修改。RSS系统最怕的不是混乱，而是维护成本过高导致自己懒得用。</p>
+<h2 id="为什么想要用rss">为什么想要用RSS</h2>
+<p>现在没有很多完整的时间来慢慢梳理最近发生了什么我关注的资讯，而且很多不同资讯来自于不同的平台，整理和梳理的成本很大。同时，为了娱乐解闷，很多时候视频平台推什么你看什么，社交平台决定你刷到什么，很容易把人的注意力粉碎到无止境的娱乐中。<br>
+用RSS不是为了更热闹的沉浸娱乐中，而是为了更安静、更可控、更连续捕获到自己所需要的东西。</p>
+]]></content:encoded></item><item><title>2026_02_09 Comfyui</title><link>https://downmars.github.io/zh/posts/2026_02_09-comfyui/</link><pubDate>Mon, 09 Feb 2026 15:30:35 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_02_09-comfyui/</guid><description>&lt;h2 id="comfyui">Comfyui&lt;/h2>
 &lt;p>前段时间玩了一玩&lt;a href="https://github.com/Comfy-Org/ComfyUI"
 target="_blank" rel="noopener"
 class="custom-link">
@@ -109,11 +910,40 @@ Tips: 我在使用之前还想着对Comfyui做一些大刀阔斧的修改，现�
 作为RSS订阅源，这个可以尽早纳入实施范畴。</p>
 <h3 id="运动计划">运动计划</h3>
 <p>本是十分完美的骑行减肥计划，可惜遇到冬天的阴霾&hellip;所以春天到了，我们需要重启运动计划了，每天骑行20km？如果没有去外场的话就按照这个来，同时每天的饮食需要控制，沙县似乎是一个很好的选择。<br>
-至于之后去外场了，每天也只能跑步了，加油尝试吧，跳绳或许也可以。</p>
+至于之后去外场了，每天也只能跑步了，加油尝试吧，跳绳或许也可以。<br>
+现在温度高了，不太适合户外滑雪，都是泥沙，我只能考虑拖迟或者室内滑雪了，但是附近也没有滑雪场，总之延后考虑。<br>
+之前买了自行车，然是我可能还是更加喜欢瓜车或者折叠车类型，之后有机会尝试更新设备，现在每天应该可以多骑骑车，暑假看看有没有机会去环太湖骑行？不过体力上来了就好说。</p>
 <h3 id="数据储存">数据储存</h3>
 <p>2025年因为AI市场的原因，几大存储大厂都被预定完了产量，存储和内存的价格翻了几番。当然了，和我影响不太大，我手头上的存储设备应该也够用了，大概有6-7T的固态，20T的机械。对于其中存储的个人数据，照片，影视以及各种杂项如何存储是一个很重要的问题。<br>
 最好的选择是组一台NAS，然后在云端做好备份，同时这个NAS还能够搭建一个影视系统。但是由于没有公网IP，同时学校的存储条件不可控，不太支持我做一个NAS系统，这边就退而求其次，重要个人数据以及一些拍摄的照片做本地和云端双备份，一些网络资源就只做云端备份。我选择了115盘作为我的云盘备份，毕竟800元8年40T，令人夸张的价格，只要不跑路，就是赚的。<br>
 刚到手只是用CD2做了挂载在本地并rsync做了简单的现有数据云端备份，但是之后的一些定期备份以及一些功能封装的实现需要好好规划一下。</p>
+<h3 id="拍摄计划">拍摄计划</h3>
+<p>之前买的相机已经放了很久了，刚买的时候一个月能够拍摄几组照片，但是往后一年只能拍摄几组照片了，真是越来越懒了（）。拍摄是很享受的事情，但是往往止步于自己的想法中，很多时候缺少了去周边走走的决心。觉得太近都去过了，没有能够吸引自己的美景；觉得太远了，时间和金钱不支持我享受拍摄。<br>
+自己手里都有很多设备支持我去拍人像，不管是镜头，灯具，只是缺少一个推动自己前进的决心。</p>
+<h3 id="linux">linux</h3>
+<p>现在用的是<a href="https://archlinux.org/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Archlinux<span class="external-link">↗</span></a>
+，这是一个灵活且轻量的Linux发行版。并且使用了<a href="https://hypr.land/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Hyprland<span class="external-link">↗</span></a>
+作为他的桌面合成器，这是基于<a href="https://hypr.land/"
+   
+    
+       target="_blank" rel="noopener" 
+   
+   class="custom-link">  
+   Wayland<span class="external-link">↗</span></a>
+开发的，作为X11的替代品。<br>
+我最开始构建我的</p>
 ]]></content:encoded></item><item><title>2026_02_01 Build_a_streaming_server</title><link>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</link><pubDate>Sun, 01 Feb 2026 16:22:28 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</guid><description>&lt;h2 id="网络检测">网络检测&lt;/h2>
 &lt;h3 id="带宽">带宽&lt;/h3>
 &lt;p>对于串流被控端需要有足够的上行带宽，例如4K 60FPS一般需要50Mbps，如果要排除一些网络不稳定状态，可能还需要有1/3的冗余带宽；同理，对于串流控制端需要有足够的下行带宽，也需要大致50Mbps。我们这里可以用&lt;a href="https://www.speedtest.net/"
