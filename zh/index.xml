@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 15 Mar 2026 20:27:08 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>2026_03_15 RSS</title><link>https://downmars.github.io/zh/posts/2026_03_15-rss/</link><pubDate>Sun, 15 Mar 2026 20:27:08 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_03_15-rss/</guid><description>&lt;h2 id="为什么搭建自己的-rss-系统的">为什么搭建自己的 RSS 系统的&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DLog</title><link>https://downmars.github.io/zh/</link><description>Recent content on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 16 Mar 2026 21:30:28 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>2026_03_15 RSS</title><link>https://downmars.github.io/zh/posts/2026_03_15-rss/</link><pubDate>Sun, 15 Mar 2026 20:27:08 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_03_15-rss/</guid><description>&lt;h2 id="为什么搭建自己的-rss-系统的">为什么搭建自己的 RSS 系统的&lt;/h2>
 &lt;p>一开始我用的是 &lt;a href="https://github.com/RSSNext/Folo"
 target="_blank" rel="noopener"
 class="custom-link">
@@ -944,13 +944,48 @@ Tips: 我在使用之前还想着对Comfyui做一些大刀阔斧的修改，现�
    Wayland<span class="external-link">↗</span></a>
 开发的，作为X11的替代品。<br>
 我最开始构建我的</p>
-]]></content:encoded></item><item><title>2026_02_01 Build_a_streaming_server</title><link>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</link><pubDate>Sun, 01 Feb 2026 16:22:28 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</guid><description>&lt;h2 id="网络检测">网络检测&lt;/h2>
+]]></content:encoded></item><item><title>使用 FRP + Sunshine + Moonlight 搭建远程串流服务</title><link>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</link><pubDate>Sun, 01 Feb 2026 16:22:28 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2026_02_01-build_a_streaming_server/</guid><description>&lt;div class="admonition “tip” collapsible">
+&lt;div class="admonition-header">
+&lt;span>“更新说明（2026-03-16）”&lt;/span>
+&lt;i class="toggle-icon fas fa-chevron-down">&lt;/i>
+&lt;/div>
+&lt;div class="admonition-content">
+&lt;blockquote>
+&lt;p>本文已根据实际部署与排障过程进行修订，主要更新内容包括：&lt;/p>
+&lt;ol>
+&lt;li>修正 FRP 服务端/客户端配置说明；&lt;/li>
+&lt;li>补充 Sunshine 自定义端口族与多客户端并存的配置逻辑；&lt;/li>
+&lt;li>新增 Moonlight &lt;code>certificate mismatch&lt;/code>、&lt;code>unexpected end of stream&lt;/code>、端口检测异常等问题的排查说明；&lt;/li>
+&lt;li>修正部分端口开放与服务暴露建议。&lt;/li>
+&lt;/ol>&lt;/blockquote>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="网络检测">网络检测&lt;/h2>
 &lt;h3 id="带宽">带宽&lt;/h3>
 &lt;p>对于串流被控端需要有足够的上行带宽，例如4K 60FPS一般需要50Mbps，如果要排除一些网络不稳定状态，可能还需要有1/3的冗余带宽；同理，对于串流控制端需要有足够的下行带宽，也需要大致50Mbps。我们这里可以用&lt;a href="https://www.speedtest.net/"
 target="_blank" rel="noopener"
 class="custom-link">
 speedtest&lt;span class="external-link">↗&lt;/span>&lt;/a>
-等软件进行测量。&lt;/p></description><content:encoded><![CDATA[<h2 id="网络检测">网络检测</h2>
+等软件进行测量。&lt;/p></description><content:encoded><![CDATA[<div class="admonition “tip” collapsible">
+  <div class="admonition-header">
+    
+    <span>“更新说明（2026-03-16）”</span>
+    <i class="toggle-icon fas fa-chevron-down"></i>
+  </div>
+  <div class="admonition-content">
+    <blockquote>
+<p>本文已根据实际部署与排障过程进行修订，主要更新内容包括：</p>
+<ol>
+<li>修正 FRP 服务端/客户端配置说明；</li>
+<li>补充 Sunshine 自定义端口族与多客户端并存的配置逻辑；</li>
+<li>新增 Moonlight <code>certificate mismatch</code>、<code>unexpected end of stream</code>、端口检测异常等问题的排查说明；</li>
+<li>修正部分端口开放与服务暴露建议。</li>
+</ol></blockquote>
+  </div>
+</div>
+
+
+<h2 id="网络检测">网络检测</h2>
 <h3 id="带宽">带宽</h3>
 <p>对于串流被控端需要有足够的上行带宽，例如4K 60FPS一般需要50Mbps，如果要排除一些网络不稳定状态，可能还需要有1/3的冗余带宽；同理，对于串流控制端需要有足够的下行带宽，也需要大致50Mbps。我们这里可以用<a href="https://www.speedtest.net/"
    
@@ -961,11 +996,11 @@ speedtest&lt;span class="external-link">↗&lt;/span>&lt;/a>
    speedtest<span class="external-link">↗</span></a>
 等软件进行测量。</p>
 <h3 id="延迟">延迟</h3>
-<p>对于一些高交互性，竞技性的游戏，串流进行游戏不建议，毕竟有一个服务器的往返时间差，吃力不讨好。对于一些如逆转裁判，GAL等非即时交互的游戏可以有一个比较好的体验，总而言之60ms以内的延迟都处于可接受范围内，如果高于100ms就会出现卡顿，音画不同步等问题。这边可以用ping来测试服务器时延，但是需要*2。</p>
+<p>对于一些高交互性，竞技性的游戏，串流进行游戏不建议，毕竟有一个服务器的往返时间差，吃力不讨好。对于一些如逆转裁判，GAL等非即时交互的游戏可以有一个比较好的体验，总而言之对于远程串流而言，时延越低体验越好。一般来说，60ms 以内仍可接受，超过 100ms 后，在高交互场景中更容易出现明显的输入迟滞、音画不同步等问题。这边可以用ping来测试服务器时延，但是需要*2。</p>
 <h3 id="丢包率">丢包率</h3>
 <p>如果网络质量比较差，丢包就会导致视频流，音频流不稳定，画面出现花屏，模糊，断裂，严重影响使用体验，这边也可以用ping来测量。</p>
 <h3 id="nat">NAT</h3>
-<p>NAT的层级对于我们串流方式的选择也有很大的影响，一般划分NAT为4个层级，NAT1、NAT2、NAT3、NAT4，对于想要实现NAT穿越的用户来说，需要两边的NATA和NATB要满足A+B&lt;=6。在NAT3与NAT4的环境中，内部网络的设备通过路由器共享同一个公网IP地址，外部的设备无法直接访问内网中的设备。为了让外部设备能够访问内网设备，需要通过路由器进行端口转发或者使用中继服务器；在NAT1与NAT2环境下，由于路由器允许更加自由的连接和端口映射，内网设备可以直接与外网设备之间直接建立联系，即P2P打洞，实现更加好的网络性能。<br>
+<p>NAT的层级对于我们串流方式的选择也有很大的影响，一般划分NAT为4个层级，NAT1、NAT2、NAT3、NAT4，对于想要实现NAT穿越的用户来说，NAT 类型会影响串流方案的选择。若双方网络条件较好，可以尝试点对点连接；若处于严格 NAT 或运营商网络环境下，通常更稳妥的做法是通过具备公网 IP 的中继服务器进行转发，例如使用 FRP。在NAT3与NAT4的环境中，内部网络的设备通过路由器共享同一个公网IP地址，外部的设备无法直接访问内网中的设备。为了让外部设备能够访问内网设备，需要通过路由器进行端口转发或者使用中继服务器；在NAT1与NAT2环境下，由于路由器允许更加自由的连接和端口映射，内网设备可以直接与外网设备之间直接建立联系，即P2P打洞，实现更加好的网络性能。<br>
 我们这边使用FRP进行终端流量转播来实现流量的转播。
 你可以使用一些在线网站<a href="https://mao.fan/mynat"
    
@@ -992,72 +1027,41 @@ speedtest&lt;span class="external-link">↗&lt;/span>&lt;/a>
    FRP<span class="external-link">↗</span></a>
 是一个用于内网穿透的反向代理应用，将服务器端部署在具有公网IP的机器上，客户端部署在内网或者防火墙内的机器上，通过访问暴露在服务器上的端口，反向代理到处于内网的服务。</p>
 <h3 id="frps">FRPS</h3>
-<h4 id="防火墙端口开放">防火墙端口开放</h4>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">TCP</th>
-          <th style="text-align: center">UDP</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center">7000</td>
-          <td style="text-align: center">47998</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">7001</td>
-          <td style="text-align: center">47999</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">7080</td>
-          <td style="text-align: center">48000</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">7500</td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">47984</td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">47989</td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">47990</td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">48010</td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">我们需要在购置的服务器的外部配置网站上开放FRP以及Moonlight与Sunshine的服务通讯端口。</td>
-          <td></td>
-      </tr>
-  </tbody>
-</table>
+<h4 id="sunshine-默认端口族">Sunshine 默认端口族</h4>
+<p>Sunshine 默认以 47989 为基准端口，相关端口族如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span><span style="font-weight:bold">## Sunshine 默认端口族
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">-</span> TCP
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 47984：HTTPS
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 47989：HTTP
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 47990：Web UI
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 48010：RTSP
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">-</span> UDP
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 47998：Video
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 47999：Control
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 48000：Audio
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 48002：Mic（通常未使用）
+</span></span></code></pre></div><p>Sunshine 官方文档说明，修改 port 后，其它端口会按固定偏移整体变化；Moonlight 官方文档也把 47984、47989、48010（TCP）以及 47998、47999、48000、48002、48010（UDP）列为 Sunshine 场景下需要关注的联网端口。</p>
 <h4 id="服务器端口开放">服务器端口开放</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>// 开放TCP端口
-</span></span><span style="display:flex;"><span>sudo nfw allow tcp <span style="color:#bd93f9">7000</span>
-</span></span><span style="display:flex;"><span>sudo nfw allow tcp <span style="color:#bd93f9">7001</span>
-</span></span><span style="display:flex;"><span>sudo nfw allow tcp <span style="color:#bd93f9">7080</span>
-</span></span><span style="display:flex;"><span>sudo nfw allow tcp <span style="color:#bd93f9">7500</span>
-</span></span><span style="display:flex;"><span>sudo nfw allow tcp <span style="color:#bd93f9">47984</span>
-</span></span><span style="display:flex;"><span>sudo nfw allow tcp <span style="color:#bd93f9">47989</span>
-</span></span><span style="display:flex;"><span>sudo nfw allow tcp <span style="color:#bd93f9">47990</span>
-</span></span><span style="display:flex;"><span>sudo nfw allow tcp <span style="color:#bd93f9">48010</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># FRP</span>
+</span></span><span style="display:flex;"><span>sudo ufw allow 7000/tcp
+</span></span><span style="display:flex;"><span>sudo ufw allow 7500/tcp
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>// 开放UDP端口
-</span></span><span style="display:flex;"><span>sudo nfw allow udp <span style="color:#bd93f9">47998</span>
-</span></span><span style="display:flex;"><span>sudo nfw allow udp <span style="color:#bd93f9">47999</span>
-</span></span><span style="display:flex;"><span>sudo nfw allow udp <span style="color:#bd93f9">48000</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Sunshine A（默认端口族，基础端口 47989）</span>
+</span></span><span style="display:flex;"><span>sudo ufw allow 47984/tcp
+</span></span><span style="display:flex;"><span>sudo ufw allow 47989/tcp
+</span></span><span style="display:flex;"><span>sudo ufw allow 48010/tcp
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>// 查看开放的端口
-</span></span><span style="display:flex;"><span>sudo nfw show
-</span></span></code></pre></div><p>我这边使用的是nfw查看、配置服务器系统当前的防火墙规则以及端口。</p>
+</span></span><span style="display:flex;"><span>sudo ufw allow 47998/udp
+</span></span><span style="display:flex;"><span>sudo ufw allow 47999/udp
+</span></span><span style="display:flex;"><span>sudo ufw allow 48000/udp
+</span></span><span style="display:flex;"><span>sudo ufw allow 48002/udp
+</span></span><span style="display:flex;"><span>sudo ufw allow 48010/udp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 查看规则</span>
+</span></span><span style="display:flex;"><span>sudo ufw status numbered
+</span></span></code></pre></div><p>我们需要在购置的服务器的外部配置网站上开放FRP以及Moonlight与Sunshine的服务通讯端口。</p>
 <h4 id="frpstoml">frps.toml</h4>
 <p>我们首先需要下载<a href="https://github.com/fatedier/frp/releases/tag/v0.67.0"
    
@@ -1118,6 +1122,33 @@ speedtest&lt;span class="external-link">↗&lt;/span>&lt;/a>
     
   
 
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
 
 
 
@@ -1126,20 +1157,28 @@ speedtest&lt;span class="external-link">↗&lt;/span>&lt;/a>
 
 
 
-<p><details class="custom-collapse" open>
+
+<p><details class="custom-collapse" >
   <summary markdown="span">
     <span>/usr/bin/frps/frps.toml</span>
-    <span class="line-count">8 lines</span>
+    <span class="line-count">15 lines</span>
   </summary>
   <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[common]
-</span></span><span style="display:flex;"><span>bindPort = <span style="color:#bd93f9">7000</span>
-</span></span><span style="display:flex;"><span>authentication_method = token
-</span></span><span style="display:flex;"><span>token = YOUR_TOKEN
-</span></span><span style="display:flex;"><span>dashboard_port = <span style="color:#bd93f9">7500</span>
-</span></span><span style="display:flex;"><span>dashboard_user = YOUR_ADMIN
-</span></span><span style="display:flex;"><span>dashboard_pwd = YOUR_PASSWORD
-</span></span><span style="display:flex;"><span>tansport.tcpMux = <span style="color:#ff79c6">true</span>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>bindPort = <span style="color:#bd93f9">7000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>auth.method = <span style="color:#f1fa8c">&#34;token&#34;</span>
+</span></span><span style="display:flex;"><span>auth.token = <span style="color:#f1fa8c">&#34;YOUR_TOKEN&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>webServer.addr = <span style="color:#f1fa8c">&#34;0.0.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>webServer.port = <span style="color:#bd93f9">7500</span>
+</span></span><span style="display:flex;"><span>webServer.user = <span style="color:#f1fa8c">&#34;YOUR_ADMIN&#34;</span>
+</span></span><span style="display:flex;"><span>webServer.password = <span style="color:#f1fa8c">&#34;YOUR_PASSWORD&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>transport.tcpMux = <span style="color:#ff79c6">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>allowPorts = [
+</span></span><span style="display:flex;"><span>  { start = <span style="color:#bd93f9">47984</span>, end = <span style="color:#bd93f9">48010</span> }
+</span></span><span style="display:flex;"><span>]
 </span></span></code></pre></div>
   </div>
 </details></p>
@@ -1477,6 +1516,58 @@ speedtest&lt;span class="external-link">↗&lt;/span>&lt;/a>
     
   
 
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
 
 
 
@@ -1487,57 +1578,70 @@ speedtest&lt;span class="external-link">↗&lt;/span>&lt;/a>
 
 <p><details class="custom-collapse" >
   <summary markdown="span">
-    <span>frpc.toml</span>
-    <span class="line-count">50 lines</span>
+    <span>/etc/frp/frpc.toml</span>
+    <span class="line-count">63 lines</span>
   </summary>
   <div class="content">
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[common]
-</span></span><span style="display:flex;"><span>serverAddr = <span style="color:#f1fa8c">&#34;服务器公网IP&#34;</span>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>serverAddr = <span style="color:#f1fa8c">&#34;服务器公网IP&#34;</span>
 </span></span><span style="display:flex;"><span>serverPort = <span style="color:#bd93f9">7000</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>transport.protocol = <span style="color:#f1fa8c">&#34;tcp&#34;</span>
-</span></span><span style="display:flex;"><span>transport.poolCount = <span style="color:#bd93f9">8</span>
 </span></span><span style="display:flex;"><span>auth.method = <span style="color:#f1fa8c">&#34;token&#34;</span>
 </span></span><span style="display:flex;"><span>auth.token = <span style="color:#f1fa8c">&#34;YOUR_TOKEN&#34;</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user = <span style="color:#f1fa8c">&#34;pc-a&#34;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[[proxies]]
-</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;moonlight-control-1&#34;</span>
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-https&#34;</span>
 </span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;tcp&#34;</span>
 </span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
 </span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">47984</span>
 </span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">47984</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[[proxies]]
-</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;moonlight-control-2&#34;</span>
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-http&#34;</span>
 </span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;tcp&#34;</span>
 </span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
 </span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">47989</span>
 </span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">47989</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[[proxies]]
-</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;moonlight-video-stream&#34;</span>
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-rtsp-tcp&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;tcp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">48010</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">48010</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-video&#34;</span>
 </span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
 </span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
 </span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">47998</span>
 </span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">47998</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[[proxies]]
-</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;moonlight-video-stream-2&#34;</span>
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-control&#34;</span>
 </span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
 </span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
 </span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">47999</span>
 </span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">47999</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[[proxies]]
-</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;moonlight-video-stream-3&#34;</span>
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-audio&#34;</span>
 </span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
 </span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
 </span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">48000</span>
 </span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">48000</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> [[proxies]]
-</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;port4&#34;</span>
-</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;tcp&#34;</span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-mic&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">48002</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">48002</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-rtsp-udp&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
 </span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
 </span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">48010</span>
 </span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">48010</span>
@@ -1546,7 +1650,450 @@ speedtest&lt;span class="external-link">↗&lt;/span>&lt;/a>
 </details></p>
 </p>
 <p>如果需要配置被控端自启动，linux就用service，windows就用bat，看自己使用情况。</p>
-<h2 id="sunshine--moonlight">Sunshine &amp; Moonlight</h2>
+<h2 id="多客户端情况">多客户端情况</h2>
+<p>如果只接入一台 Sunshine 主机，直接使用默认端口族即可。<br>
+如果要同时接入多台 Sunshine 主机，<code>frpc.toml</code>则需要满足以下条件：</p>
+<ol>
+<li>每台客户端使用不同的 <code>user</code>；</li>
+<li>每台客户端的代理 <code>name</code> 唯一；</li>
+<li>每台客户端占用不同的 <code>remotePort</code>；</li>
+<li>如果某台主机修改了 Sunshine 基础端口，则该主机的 <code>localPort</code> 也必须对应新的端口族。</li>
+</ol>
+<p>假设第二台 Sunshine 主机将基础端口改为 <code>48989</code>，则其本地端口族会变为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span><span style="color:#ff79c6">-</span> TCP
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 48984
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 48989
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 48990
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 49010
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">-</span> UDP
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 48998
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 48999
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 49000
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 49002
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">-</span> 49010
+</span></span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" >
+  <summary markdown="span">
+    <span>/etc/frp/frpc-b.toml</span>
+    <span class="line-count">63 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>serverAddr = <span style="color:#f1fa8c">&#34;服务器公网IP&#34;</span>
+</span></span><span style="display:flex;"><span>serverPort = <span style="color:#bd93f9">7000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>auth.method = <span style="color:#f1fa8c">&#34;token&#34;</span>
+</span></span><span style="display:flex;"><span>auth.token = <span style="color:#f1fa8c">&#34;YOUR_TOKEN&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user = <span style="color:#f1fa8c">&#34;pc-b&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-b-https&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;tcp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">48984</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">48984</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-b-http&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;tcp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">48989</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">48989</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-b-rtsp-tcp&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;tcp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">49010</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">49010</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-b-video&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">48998</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">48998</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-b-control&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">48999</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">48999</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-b-audio&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">49000</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">49000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-b-mic&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">49002</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">49002</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[proxies]]
+</span></span><span style="display:flex;"><span>name = <span style="color:#f1fa8c">&#34;sunshine-b-rtsp-udp&#34;</span>
+</span></span><span style="display:flex;"><span>type = <span style="color:#f1fa8c">&#34;udp&#34;</span>
+</span></span><span style="display:flex;"><span>localIP = <span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>localPort = <span style="color:#bd93f9">49010</span>
+</span></span><span style="display:flex;"><span>remotePort = <span style="color:#bd93f9">49010</span>
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+<h3 id="frps-端口白名单多客户端">frps 端口白名单（多客户端）</h3>
+<p>如果第二台主机使用 <code>48989</code> 这一组端口，则服务端的 <code>allowPorts</code> 和防火墙规则也需要同步增加：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+<p><details class="custom-collapse" open>
+  <summary markdown="span">
+    <span>/usr/bin/frps/frps.toml</span>
+    <span class="line-count">4 lines</span>
+  </summary>
+  <div class="content">
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>allowPorts = [
+</span></span><span style="display:flex;"><span>  { start = <span style="color:#bd93f9">47984</span>, end = <span style="color:#bd93f9">48010</span> },
+</span></span><span style="display:flex;"><span>  { start = <span style="color:#bd93f9">48984</span>, end = <span style="color:#bd93f9">49010</span> }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div>
+  </div>
+</details></p>
+
+服务端防火墙也可以写成：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ufw allow 48984/tcp
+</span></span><span style="display:flex;"><span>sudo ufw allow 48989/tcp
+</span></span><span style="display:flex;"><span>sudo ufw allow 49010/tcp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw allow 48998/udp
+</span></span><span style="display:flex;"><span>sudo ufw allow 48999/udp
+</span></span><span style="display:flex;"><span>sudo ufw allow 49000/udp
+</span></span><span style="display:flex;"><span>sudo ufw allow 49002/udp
+</span></span><span style="display:flex;"><span>sudo ufw allow 49010/udp
+</span></span></code></pre></div><h2 id="sunshine--moonlight">Sunshine &amp; Moonlight</h2>
 <p><a href="https://github.com/LizardByte/Sunshine"
    
     
@@ -1568,7 +2115,7 @@ Sunshine直接下载Release中适合自己版本并打包好的软件即可，�
    class="custom-link">  
    192.168.1.5:47990</a>
 。第一次访问需要设置用户名与密码，之后等待Moonlight端发起串流请求并在PIN选项卡中输入Moonlight给出的PIN码即可。<br>
-Moonlight需要你控制端如平板，手机，笔记本电脑等上安装，之后填入服务器的公网IP，就会返回一个PIN码，在Sunshine中输入即可建立串流。<br>
+Moonlight需要你控制端如平板，手机，笔记本电脑等上安装，之后填入服务器的公网IP，如果配置了第二台客户端，需要填入公网IP:48989，以此类推，就会返回一个PIN码，在Sunshine中输入即可建立串流。<br>
 Sunshine还需要配置自启动，这个也需要根据被控端的系统来设置。</p>
 <h2 id="参考">参考</h2>
 <p><a href="https://www.bilibili.com/opus/1097667321616400401"
