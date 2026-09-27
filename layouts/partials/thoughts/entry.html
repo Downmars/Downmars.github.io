@@ -1,0 +1,42 @@
+{{- $page := .page -}}
+{{- $single := .single -}}
+{{- $title := partial "thoughts/title.html" $page -}}
+<article class="thought-entry{{ if $single }} thought-entry-single{{ end }}" aria-label="{{ $title }}">
+  <div class="thought-date">
+    <a href="{{ $page.RelPermalink }}" aria-label="{{ $title }}">
+      <time datetime="{{ $page.Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ $page.Date.Format "2006-01-02" }}</time>
+      <span>{{ $page.Date.Format "15:04" }}</span>
+    </a>
+  </div>
+  <div class="thought-main">
+    {{- if $page.Params.title }}
+      {{- if $single }}<h1 class="thought-title">{{ $page.Params.title }}</h1>
+      {{- else }}<h2 class="thought-title"><a href="{{ $page.RelPermalink }}">{{ $page.Params.title }}</a></h2>{{ end }}
+    {{- else if $single }}<h1 class="thought-sr-only">{{ $title }}</h1>{{ end }}
+    <div class="thought-body">
+      {{- if and (not $single) (strings.Contains $page.RawContent "<!--more-->") }}
+        {{ $page.Summary }}
+        <p><a href="{{ $page.RelPermalink }}">阅读全文 →</a></p>
+      {{- else }}{{ $page.Content }}{{ end }}
+    </div>
+    {{- with $page.Params.related }}
+    <div class="thought-related">
+      {{- range . }}
+        {{- with $page.GetPage . }}
+          <a href="{{ .RelPermalink }}">关联文章：{{ .Title }} →</a>
+        {{- else }}{{ errorf "翻案集 %s 的 related 页面不存在：%s" $page.File.Path . }}{{ end }}
+      {{- end }}
+    </div>
+    {{- end }}
+    <footer class="thought-meta">
+      {{- if not $single }}<a href="{{ $page.RelPermalink }}">固定链接</a>{{ end }}
+      {{- range $page.GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+      {{- if gt $page.Lastmod.Unix $page.Date.Unix }}<span>更新于 {{ $page.Lastmod.Format "2006-01-02" }}</span>{{ end }}
+      {{- if $single }}
+        {{- with index site.Data.licenses $page.Params.license }}
+          <a href="{{ .url }}" rel="license">{{ .name }}</a>
+        {{- end }}
+      {{- end }}
+    </footer>
+  </div>
+</article>

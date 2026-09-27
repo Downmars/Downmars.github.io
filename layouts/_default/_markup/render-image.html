@@ -1,3 +1,6 @@
+{{- if eq .Page.Section "thoughts" -}}
+{{- partial "thoughts/image.html" . -}}
+{{- else -}}
  {{if .Page.Site.Params.fancybox }}
  <div class="post-img-view">
  <a data-fancybox="gallery" href="{{ .Destination | safeURL }}">
@@ -5,4 +8,4 @@
  </a>
  </div>
  {{ end }}
-
+{{- end -}}

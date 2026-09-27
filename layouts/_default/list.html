@@ -67,7 +67,7 @@
   <div class="post-info">
     <header class="entry-header">
       <h2 class="entry-hint-parent">
-        {{- .Title }}
+        {{- partial "thoughts/title.html" . }}
         {{- if .Draft }}
         <span class="entry-hint" title="Draft">
           <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
@@ -92,7 +92,7 @@
   {{/* 将cover部分移动到post-info之后 */}}
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+  <a class="entry-link" aria-label="post link to {{ partial "thoughts/title.html" . | plainify }}" href="{{ .Permalink }}"></a>
 </article>
 {{- end }}
 

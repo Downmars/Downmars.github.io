@@ -1,0 +1,10 @@
+{{- $title := .Title -}}
+{{- if and .IsPage (eq .Section "thoughts") -}}
+  {{- $title = .Params.title | default "" -}}
+  {{- if not $title -}}
+    {{- $text := .Plain | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace -}}
+    {{- $sentence := index (findRE `^[^。！？!?\n]+[。！？!?]?` $text 1 | default (slice "一则短记")) 0 -}}
+    {{- $title = printf "%s · %s" (.Date.Format "2006-01-02") ($sentence | truncate 48 | htmlUnescape) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $title -}}

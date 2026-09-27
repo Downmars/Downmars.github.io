@@ -1,4 +1,8 @@
-<a href="{{ .Destination | safeURL }}"
+{{- $destination := .Destination -}}
+{{- if eq .Page.Section "thoughts" -}}
+  {{- $destination = partial "thoughts/resource-url.html" (dict "page" .Page "destination" .Destination) -}}
+{{- end -}}
+<a href="{{ $destination | safeURL }}"
    {{ with .Title }} title="{{ . }}"{{ end }}
    {{ if strings.HasPrefix .Destination "http" }} 
        target="_blank" rel="noopener" 

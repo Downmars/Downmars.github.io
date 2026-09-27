@@ -1,0 +1,17 @@
+{{- /* Absolute URLs keep bundle resources working in the stream and in RSS. */ -}}
+{{- $destination := .destination -}}
+{{- $url := urls.Parse $destination -}}
+{{- if not (or $url.IsAbs (hasPrefix $destination "//")) -}}
+  {{- if hasPrefix $destination "/" -}}
+    {{- $destination = $destination | absURL -}}
+  {{- else -}}
+    {{- with .page.Resources.Get (strings.TrimPrefix "./" $url.Path) -}}
+      {{- $destination = .Permalink -}}
+      {{- with $url.RawQuery }}{{ $destination = printf "%s?%s" $destination . }}{{ end -}}
+      {{- with $url.Fragment }}{{ $destination = printf "%s#%s" $destination . }}{{ end -}}
+    {{- else -}}
+      {{- $destination = printf "%s%s" .page.Permalink $destination -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $destination -}}

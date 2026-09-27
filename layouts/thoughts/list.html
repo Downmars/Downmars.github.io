@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="thoughts">
+  <header class="thoughts-header">
+    <h1>{{ .Title }}</h1>
+    <div class="thoughts-intro"><p>{{ .Description }}</p>{{ with .OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}" aria-label="订阅翻案集 RSS">RSS ↗</a>{{ end }}</div>
+  </header>
+  {{- $paginator := .Paginate .RegularPages.ByDate.Reverse 10 }}
+  {{- range $paginator.Pages }}
+    {{ partial "thoughts/entry.html" (dict "page" . "single" false) }}
+  {{- else }}
+    <p class="thoughts-empty">这里还没有公开的记录。</p>
+  {{- end }}
+  {{- if gt $paginator.TotalPages 1 }}
+  <nav class="thoughts-pagination" aria-label="翻案集分页">
+    {{ with $paginator.Prev }}<a href="{{ .URL }}" rel="prev">← 更新的记录</a>{{ else }}<span></span>{{ end }}
+    <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+    {{ with $paginator.Next }}<a href="{{ .URL }}" rel="next">更早的记录 →</a>{{ else }}<span></span>{{ end }}
+  </nav>
+  {{- end }}
+</section>
+{{ partial "thoughts/gallery.html" . }}
+{{ end }}

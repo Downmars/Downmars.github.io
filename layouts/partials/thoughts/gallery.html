@@ -1,0 +1,14 @@
+<dialog class="thought-gallery" aria-label="查看图片">
+  <div class="thought-gallery-toolbar">
+    <a class="thought-gallery-original" target="_blank" rel="noopener">打开原图 ↗</a>
+    <button type="button" class="thought-gallery-close" aria-label="关闭图片">关闭 ×</button>
+  </div>
+  <img class="thought-gallery-photo" alt="">
+  <div class="thought-gallery-footer">
+    <button type="button" class="thought-gallery-prev" aria-label="上一张图片">←</button>
+    <p class="thought-gallery-caption" aria-live="polite"></p>
+    <button type="button" class="thought-gallery-next" aria-label="下一张图片">→</button>
+  </div>
+</dialog>
+{{ $js := resources.Get "js/thoughts.js" | minify | fingerprint }}
+<script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>

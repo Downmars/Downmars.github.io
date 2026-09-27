@@ -1,0 +1,2 @@
+{{- $src := partial "thoughts/resource-url.html" (dict "page" .Page "destination" .Destination) -}}
+<a class="thought-image" data-thought-image href="{{ $src | safeURL }}"><img src="{{ $src | safeURL }}" alt="{{ .PlainText }}" loading="lazy" decoding="async">{{ with .Title }}<span class="thought-caption">{{ . }}</span>{{ end }}</a>

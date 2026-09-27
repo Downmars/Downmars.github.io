@@ -2,8 +2,8 @@
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 <div id="tw-comment"></div>
 <script>
-    // 默认是暗色，根目录下的配置中的主题默认也是暗色
-    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "{{ .Site.Params.giscus.lightTheme }}" : "{{ .Site.Params.giscus.darkTheme }}";
+    // Follow the rendered theme, including the initial system preference.
+    const getStoredTheme = () => document.body.classList.contains("dark") ? "{{ .Site.Params.giscus.darkTheme }}" : "{{ .Site.Params.giscus.lightTheme }}";
     const setGiscusTheme = () => {
         const sendMessage = (message) => {
             const iframe = document.querySelector('iframe.giscus-frame');

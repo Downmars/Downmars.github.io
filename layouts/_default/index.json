@@ -1,0 +1,9 @@
+{{- $index := slice -}}
+{{- range site.RegularPages -}}
+  {{- if and (not .Params.searchHidden) (ne .Layout "archives") (ne .Layout "search") -}}
+    {{- $kind := "" -}}
+    {{- if eq .Section "thoughts" }}{{ $kind = "翻案集 · 短记" }}{{ end -}}
+    {{- $index = $index | append (dict "title" (partial "thoughts/title.html" .) "content" (.Plain | htmlUnescape) "permalink" .Permalink "summary" (.Summary | plainify | htmlUnescape) "kind" $kind) -}}
+  {{- end -}}
+{{- end -}}
+{{- $index | jsonify -}}

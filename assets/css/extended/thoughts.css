@@ -1,0 +1,62 @@
+.thoughts { max-width: 736px; margin: 32px auto 64px; }
+.thoughts-header { margin-bottom: 20px; }
+.thoughts-header h1 { font-size: 32px; font-weight: 600; letter-spacing: .06em; }
+.thoughts-intro { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; color: var(--secondary); margin-top: 12px; }
+.thoughts-intro a { flex-shrink: 0; font-size: 13px; }
+.thought-entry { display: grid; grid-template-columns: 104px minmax(0, 1fr); column-gap: 28px; padding: 36px 0; border-top: 1px solid var(--border); }
+.thought-date { padding-top: 3px; color: var(--secondary); font-size: 13px; font-variant-numeric: tabular-nums; }
+.thought-date span { display: block; margin-top: 2px; }
+.thought-main { min-width: 0; }
+.thought-title { font-size: 21px; font-weight: 600; line-height: 1.5; margin-bottom: 16px; }
+.thought-body { color: var(--content); line-height: 1.85; overflow-wrap: anywhere; }
+.thought-body > :last-child { margin-bottom: 0; }
+.thought-body p, .thought-body ul, .thought-body ol, .thought-body blockquote, .thought-body pre, .thought-body table { margin-bottom: 18px; }
+.thought-body ul, .thought-body ol { padding-inline-start: 24px; }
+.thought-body li + li { margin-top: 4px; }
+.thought-body h1, .thought-body h2, .thought-body h3, .thought-body h4 { margin: 24px 0 12px; font-size: 19px; }
+.thought-body a:not(.thought-image), .thought-related a { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--secondary); }
+.thought-body blockquote { border-inline-start: 2px solid var(--secondary); padding-inline-start: 16px; color: var(--secondary); }
+.thought-body pre { padding: 14px; background: var(--code-bg); border-radius: 6px; overflow-x: auto; }
+.thought-body pre code { white-space: pre; font-size: 14px; }
+.thought-body :not(pre) > code { padding: 2px 4px; background: var(--code-bg); border-radius: 3px; }
+.thought-body table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+.thought-body th, .thought-body td { padding: 6px 10px; border-bottom: 1px solid var(--border); text-align: start; }
+.thought-body hr { border: 0; border-top: 1px solid var(--border); }
+.thought-image { display: block; min-width: 0; }
+.thought-image img { display: block; width: auto; max-width: 100%; max-height: 460px; height: auto; border-radius: 6px; }
+.thought-caption { display: block; color: var(--secondary); font-size: 13px; line-height: 1.5; margin-top: 8px; }
+/* Place consecutive Markdown images in one paragraph to form a gallery. */
+.thought-body p:has(> .thought-image + .thought-image) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 12px; }
+.thought-body p:has(> .thought-image + .thought-image) img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.thought-related { display: grid; gap: 8px; font-size: 14px; margin-top: 20px; }
+.thought-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 20px; color: var(--secondary); font-size: 13px; }
+.thoughts a:hover { color: var(--primary); }
+.thoughts a:focus-visible, .thought-gallery :focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+.thoughts-empty { padding: 52px 0; border-top: 1px solid var(--border); color: var(--secondary); }
+.thoughts-pagination { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; border-top: 1px solid var(--border); padding-top: 24px; font-size: 14px; }
+.thoughts-pagination > :last-child { text-align: end; }
+.thoughts-pagination span { color: var(--secondary); }
+.thoughts-back { margin-bottom: 24px; font-size: 14px; color: var(--secondary); }
+.thought-entry-single { padding-top: 28px; }
+.thoughts-comments { margin: 12px 0 0 132px; padding-top: 28px; border-top: 1px solid var(--border); }
+.thought-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.thought-gallery { margin: auto; width: min(1080px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 32px); padding: 16px; border: 1px solid var(--border); border-radius: 8px; color: var(--primary); background: var(--theme); }
+.thought-gallery::backdrop { background: rgba(0, 0, 0, .8); }
+.thought-gallery-toolbar, .thought-gallery-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 14px; }
+.thought-gallery button, .thought-gallery-original { min-height: 44px; min-width: 44px; padding: 8px; cursor: pointer; border-radius: 4px; }
+.thought-gallery button:disabled { opacity: .3; cursor: default; }
+.thought-gallery-photo { width: 100%; height: auto; max-height: calc(100dvh - 200px); object-fit: contain; margin: 8px auto; }
+.thought-gallery-caption { text-align: center; overflow-wrap: anywhere; }
+.thought-gallery-open { overflow: hidden; }
+.search-kind { display: block; color: var(--secondary); font-size: 12px; font-weight: 400; margin-bottom: 4px; }
+@media (max-width: 600px) {
+  .thoughts { margin-top: 24px; }
+  .thoughts-header h1 { font-size: 28px; }
+  .thoughts-intro { font-size: 14px; gap: 12px; }
+  .thought-entry { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 28px 0; }
+  .thought-date span { display: inline; margin-inline-start: 10px; }
+  .thought-title { font-size: 20px; }
+  .thoughts-comments { margin-inline-start: 0; }
+  .thoughts-pagination { gap: 8px; font-size: 13px; }
+  .thought-gallery { padding: 8px; }
+}
