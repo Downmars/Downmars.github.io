@@ -337,7 +337,8 @@ sudo ufw allow 49010/udp
 
 ## Sunshine & Moonlight
 [Sunshine](https://github.com/LizardByte/Sunshine)和[Moonlight](https://moonlight-stream.org/)是串流的游戏流媒体服务端以及客户端，我们需要在被控电脑端配置Sunshine，在控制端配置Moonlight。
-Sunshine直接下载Release中适合自己版本并打包好的软件即可，一般打开后访问[192.168.1.5:47990](192.168.1.5:47990)。第一次访问需要设置用户名与密码，之后等待Moonlight端发起串流请求并在PIN选项卡中输入Moonlight给出的PIN码即可。  
+Sunshine直接下载Release中适合自己版本并打包好的软件即可，打开后访问管理页面，例如[https://192.168.1.5:47990/](https://192.168.1.5:47990/)；这里的`192.168.1.5`需替换为运行Sunshine的主机局域网IP。第一次访问需要设置用户名与密码，之后等待Moonlight端发起串流请求并在PIN选项卡中输入Moonlight给出的PIN码即可。
+
 Moonlight需要你控制端如平板，手机，笔记本电脑等上安装，之后填入服务器的公网IP，如果配置了第二台客户端，需要填入公网IP:48989，以此类推，就会返回一个PIN码，在Sunshine中输入即可建立串流。  
 Sunshine还需要配置自启动，这个也需要根据被控端的系统来设置。  
 

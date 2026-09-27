@@ -166,10 +166,6 @@ languages:
           name: "Search"
           url: "/search/"
           weight: 4 
-        - identifier: friends
-          name: "Friends"
-          url: "/friends/"
-          weight: 5
 
 
 pagination:

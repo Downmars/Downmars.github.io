@@ -37,7 +37,7 @@ cover:
 
 ## 什么是 duti？
 
-[duti]((https://github.com/moretension/duti))（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 `duti`，你可以设置特定文件类型、URL 协议等的默认打开方式。
+[duti](https://github.com/moretension/duti)（Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 `duti`，你可以设置特定文件类型、URL 协议等的默认打开方式。
 
 ## 安装 duti
 
