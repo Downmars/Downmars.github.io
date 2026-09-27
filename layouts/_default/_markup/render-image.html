@@ -1,11 +1,17 @@
 {{- if eq .Page.Section "thoughts" -}}
 {{- partial "thoughts/image.html" . -}}
 {{- else -}}
- {{if .Page.Site.Params.fancybox }}
- <div class="post-img-view">
- <a data-fancybox="gallery" href="{{ .Destination | safeURL }}">
- <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
- </a>
- </div>
- {{ end }}
+    {{- $fancybox := .Page.Param "fancybox.enabled" -}}
+    {{- if $fancybox -}}
+        {{- .Page.Store.Set "hasFancybox" true -}}
+    {{- end -}}
+    <div class="post-img-view">
+        {{- if $fancybox }}
+        <a data-fancybox="gallery" href="{{ .Destination | safeURL }}">
+        {{- end }}
+        <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title }}title="{{ . }}"{{ end }} />
+        {{- if $fancybox }}
+        </a>
+        {{- end }}
+    </div>
 {{- end -}}

@@ -110,10 +110,12 @@
     transition: opacity 0.3s, filter 0.3s; /* 添加 filter 过渡效果 */
 }
 
-/*???为什么我注释这里会导致目录回到原位*/
-.copy-code.:hover img {
+.copy-code:hover img {
     opacity: 1;
-    filter: invert(100%); /* 颜色翻转效果 */
+}
+
+.dark .copy-code img {
+    filter: invert(100%);
 }
 
 /*.MathJax {*/
@@ -366,4 +368,3 @@
     height: auto;            /* 按比例调整高度 */
     object-fit: contain;     /* 保持图像的原始比例 */
 }
-

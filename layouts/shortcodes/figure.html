@@ -1,15 +1,15 @@
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
-<a data-fancybox="gallery" href="{{ .Get "src" }}">
+{{- $fancybox := and (.Page.Param "fancybox.enabled") (not (.Get "link")) -}}
+{{- if $fancybox -}}
+    {{- .Page.Store.Set "hasFancybox" true -}}
+{{- end -}}
 <figure{{ if or (.Get "class") (eq (.Get "align") "center") }} class="
            {{- if eq (.Get "align") "center" }}align-center {{ end }}
            {{- with .Get "class" }}{{ . }}{{- end }}"
 {{- end -}}>
     {{- if .Get "link" -}}
         <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+    {{- else if $fancybox -}}
+        <a data-fancybox="gallery" href="{{ .Get "src" }}">
     {{- end }}
     <img loading="lazy" src="{{ .Get "src" }}{{- if eq (.Get "align") "center" }}#center{{- end }}"
          {{- if or (.Get "alt") (.Get "caption") }}
@@ -18,7 +18,7 @@
          {{- with .Get "width" }} width="{{ . }}"{{ end -}}
          {{- with .Get "height" }} height="{{ . }}"{{ end -}}
     /> <!-- Closing img tag -->
-    {{- if .Get "link" }}</a>{{ end -}}
+    {{- if or (.Get "link") $fancybox }}</a>{{ end -}}
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
         <figcaption>
             {{ with (.Get "title") -}}
@@ -35,5 +35,3 @@
         </figcaption>
     {{- end }}
 </figure>
-</a>
-

@@ -220,13 +220,6 @@
 {{- end }} 
 
 
-{{if .Page.Site.Params.fancybox }}
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-{{ end }}
-
-
 <!-- Add total page and word count time -->
 <section class="totalcount">
     {{$scratch := newScratch}}
@@ -236,4 +229,3 @@
     <!-- 发表了{{ len (where .Site.RegularPages "Section" "post") }}篇文章 ·  -->
     总计{{ div ($scratch.Get "total") 1000.0 | lang.FormatNumber 2 }}k字
 </section>
-

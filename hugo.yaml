@@ -193,9 +193,9 @@ markup:
     renderer:
       unsafe: true
   highlight:
+    noClasses: false   # Use Chroma CSS for light and dark themes
     codeFences: true
     guessSyntax: true
     lineNos: false
     style: dracula
     lineNumbersInTable: true
-

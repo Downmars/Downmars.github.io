@@ -1,0 +1,6 @@
+{{- /* Render after the page content, outside the cached footer. */ -}}
+{{- if and (.Param "fancybox.enabled") (.Store.Get "hasFancybox") -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+{{- end -}}
