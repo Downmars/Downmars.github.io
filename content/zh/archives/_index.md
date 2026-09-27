@@ -1,7 +1,7 @@
 ---
 title: "故纸堆"
 layout: "archives"
-# url: "/archives/"
+aliases: ["/zh/archives/archives/"]
+outputs: [HTML]
 summary: archives
 ---
-

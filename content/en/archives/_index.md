@@ -1,7 +1,7 @@
 ---
 title: "⏱ Archives"
 layout: "archives"
-# url: "/archives/"
+aliases: ["/en/archives/archives/"]
+outputs: [HTML]
 summary: archives
 ---
-
