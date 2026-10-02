@@ -42,13 +42,13 @@ C --&amp;gt;|Two| E[Result 2]
 &lt;span class="line-count">7 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>flowchart LR
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>A[Hard] --&amp;gt;|Text| B(Round)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>B --&amp;gt; C{Decision}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>C --&amp;gt;|One| D[Result 1]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>C --&amp;gt;|Two| E[Result 2]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flowchart LR
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">A[Hard] --&amp;gt;|Text| B(Round)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">B --&amp;gt; C{Decision}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">C --&amp;gt;|One| D[Result 1]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">C --&amp;gt;|Two| E[Result 2]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
@@ -69,17 +69,17 @@ Bob--&amp;gt;&amp;gt;John: Jolly good!
 &lt;span class="line-count">11 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sequenceDiagram
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Alice-&amp;gt;&amp;gt;John: Hello John, how are you?
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>loop HealthCheck
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> John-&amp;gt;&amp;gt;John: Fight against hypochondria
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>end
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Note right of John: Rational thoughts!
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>John--&amp;gt;&amp;gt;Alice: Great!
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>John-&amp;gt;&amp;gt;Bob: How about you?
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Bob--&amp;gt;&amp;gt;John: Jolly good!
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sequenceDiagram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Alice-&amp;gt;&amp;gt;John: Hello John, how are you?
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">loop HealthCheck
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> John-&amp;gt;&amp;gt;John: Fight against hypochondria
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">end
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Note right of John: Rational thoughts!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">John--&amp;gt;&amp;gt;Alice: Great!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">John-&amp;gt;&amp;gt;Bob: How about you?
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Bob--&amp;gt;&amp;gt;John: Jolly good!
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
@@ -99,16 +99,16 @@ Parallel 4 : des6, after des4, 1d
 &lt;span class="line-count">10 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gantt
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> section Section
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Completed :done, des1, 2014-01-06,2014-01-08
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Active :active, des2, 2014-01-07, 3d
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Parallel 1 : des3, after des1, 1d
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Parallel 2 : des4, after des1, 1d
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Parallel 3 : des5, after des3, 1d
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Parallel 4 : des6, after des4, 1d
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gantt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> section Section
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Completed :done, des1, 2014-01-06,2014-01-08
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Active :active, des2, 2014-01-07, 3d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Parallel 1 : des3, after des1, 1d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Parallel 2 : des4, after des1, 1d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Parallel 3 : des5, after des3, 1d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Parallel 4 : des6, after des4, 1d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
@@ -136,24 +136,24 @@ size()
 &lt;span class="line-count">18 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>classDiagram
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Class01 &amp;lt;|-- AveryLongClass : Cool
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt; Class01
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Class09 --&amp;gt; C2 : Where am I?
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Class09 --* C3
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Class09 --|&amp;gt; Class07
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Class07 : equals()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Class07 : Object[] elementData
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Class01 : size()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Class01 : int chimp
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Class01 : int gorilla
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>class Class10 {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&amp;lt;service&amp;gt;&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> int id
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> size()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">classDiagram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Class01 &amp;lt;|-- AveryLongClass : Cool
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt; Class01
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Class09 --&amp;gt; C2 : Where am I?
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Class09 --* C3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Class09 --|&amp;gt; Class07
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Class07 : equals()
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Class07 : Object[] elementData
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Class01 : size()
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Class01 : int chimp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Class01 : int gorilla
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">class Class10 {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;lt;&amp;lt;service&amp;gt;&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> int id
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> size()
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
@@ -172,16 +172,16 @@ Crash --&amp;gt; [*]
 &lt;span class="line-count">10 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>stateDiagram-v2
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[*] --&amp;gt; Still
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Still --&amp;gt; [*]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Still --&amp;gt; Moving
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Moving --&amp;gt; Still
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Moving --&amp;gt; Crash
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Crash --&amp;gt; [*]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">stateDiagram-v2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[*] --&amp;gt; Still
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Still --&amp;gt; [*]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Still --&amp;gt; Moving
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Moving --&amp;gt; Still
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Moving --&amp;gt; Crash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Crash --&amp;gt; [*]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
@@ -197,12 +197,12 @@ Crash --&amp;gt; [*]
 &lt;span class="line-count">6 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pie
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;#34;Dogs&amp;#34; : 386
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;#34;Cats&amp;#34; : 85.9
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;#34;Rats&amp;#34; : 15
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pie
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;#34;Dogs&amp;#34; : 386
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;#34;Cats&amp;#34; : 85.9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;#34;Rats&amp;#34; : 15
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
@@ -225,19 +225,19 @@ commit
 &lt;span class="line-count">13 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gitGraph
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> commit
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> commit
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> branch develop
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> checkout develop
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> commit
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> commit
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> checkout main
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> merge develop
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> commit
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> commit
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gitGraph
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> commit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> commit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> branch develop
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> checkout develop
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> commit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> commit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> checkout main
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> merge develop
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> commit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> commit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
@@ -263,23 +263,23 @@ section Issue1300
 &lt;span class="line-count">17 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gantt
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> title Git Issues - days since last update
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dateFormat X
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> axisFormat %s
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> section Issue19062
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 71 : 0, 71
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> section Issue19401
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 36 : 0, 36
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> section Issue193
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 34 : 0, 34
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> section Issue7441
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 9 : 0, 9
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> section Issue1300
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 5 : 0, 5
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gantt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> title Git Issues - days since last update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> dateFormat X
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> axisFormat %s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> section Issue19062
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 71 : 0, 71
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> section Issue19401
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 36 : 0, 36
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> section Issue193
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 34 : 0, 34
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> section Issue7441
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 9 : 0, 9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> section Issue1300
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 5 : 0, 5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
@@ -300,17 +300,17 @@ Sit down: 3: Me
 &lt;span class="line-count">11 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> journey
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> title My working day
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> section Go to work
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Make tea: 5: Me
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Go upstairs: 3: Me
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Do work: 1: Me, Cat
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> section Go home
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Go downstairs: 5: Me
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sit down: 3: Me
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> journey
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> title My working day
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> section Go to work
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Make tea: 5: Me
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Go upstairs: 3: Me
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Do work: 1: Me, Cat
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> section Go home
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Go downstairs: 5: Me
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Sit down: 3: Me
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
@@ -346,40 +346,40 @@ Rel(SystemC, customerA, &amp;#34;Sends e-mails to&amp;#34;)
 &lt;span class="line-count">34 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\```mermaid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>C4Context
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>title System Context diagram for Internet Banking System
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Person(customerA, &amp;#34;Banking Customer A&amp;#34;, &amp;#34;A customer of the bank, with personal bank accounts.&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Person(customerB, &amp;#34;Banking Customer B&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Person_Ext(customerC, &amp;#34;Banking Customer C&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System(SystemAA, &amp;#34;Internet Banking System&amp;#34;, &amp;#34;Allows customers to view information about their bank accounts, and make payments.&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Person(customerD, &amp;#34;Banking Customer D&amp;#34;, &amp;#34;A customer of the bank, &amp;lt;br/&amp;gt; with personal bank accounts.&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Enterprise_Boundary(b1, &amp;#34;BankBoundary&amp;#34;) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SystemDb_Ext(SystemE, &amp;#34;Mainframe Banking System&amp;#34;, &amp;#34;Stores all of the core banking information about customers, accounts, transactions, etc.&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System_Boundary(b2, &amp;#34;BankBoundary2&amp;#34;) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System(SystemA, &amp;#34;Banking System A&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System(SystemB, &amp;#34;Banking System B&amp;#34;, &amp;#34;A system of the bank, with personal bank accounts.&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System_Ext(SystemC, &amp;#34;E-mail system&amp;#34;, &amp;#34;The internal Microsoft Exchange e-mail system.&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SystemDb(SystemD, &amp;#34;Banking System D Database&amp;#34;, &amp;#34;A system of the bank, with personal bank accounts.&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Boundary(b3, &amp;#34;BankBoundary3&amp;#34;, &amp;#34;boundary&amp;#34;) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SystemQueue(SystemF, &amp;#34;Banking System F Queue&amp;#34;, &amp;#34;A system of the bank, with personal bank accounts.&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SystemQueue_Ext(SystemG, &amp;#34;Banking System G Queue&amp;#34;, &amp;#34;A system of the bank, with personal bank accounts.&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>BiRel(customerA, SystemAA, &amp;#34;Uses&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>BiRel(SystemAA, SystemE, &amp;#34;Uses&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Rel(SystemAA, SystemC, &amp;#34;Sends e-mails&amp;#34;, &amp;#34;SMTP&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Rel(SystemC, customerA, &amp;#34;Sends e-mails to&amp;#34;)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>\```
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">\```mermaid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">C4Context
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">title System Context diagram for Internet Banking System
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Person(customerA, &amp;#34;Banking Customer A&amp;#34;, &amp;#34;A customer of the bank, with personal bank accounts.&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Person(customerB, &amp;#34;Banking Customer B&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Person_Ext(customerC, &amp;#34;Banking Customer C&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">System(SystemAA, &amp;#34;Internet Banking System&amp;#34;, &amp;#34;Allows customers to view information about their bank accounts, and make payments.&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Person(customerD, &amp;#34;Banking Customer D&amp;#34;, &amp;#34;A customer of the bank, &amp;lt;br/&amp;gt; with personal bank accounts.&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Enterprise_Boundary(b1, &amp;#34;BankBoundary&amp;#34;) {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> SystemDb_Ext(SystemE, &amp;#34;Mainframe Banking System&amp;#34;, &amp;#34;Stores all of the core banking information about customers, accounts, transactions, etc.&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> System_Boundary(b2, &amp;#34;BankBoundary2&amp;#34;) {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> System(SystemA, &amp;#34;Banking System A&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> System(SystemB, &amp;#34;Banking System B&amp;#34;, &amp;#34;A system of the bank, with personal bank accounts.&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> System_Ext(SystemC, &amp;#34;E-mail system&amp;#34;, &amp;#34;The internal Microsoft Exchange e-mail system.&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> SystemDb(SystemD, &amp;#34;Banking System D Database&amp;#34;, &amp;#34;A system of the bank, with personal bank accounts.&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Boundary(b3, &amp;#34;BankBoundary3&amp;#34;, &amp;#34;boundary&amp;#34;) {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> SystemQueue(SystemF, &amp;#34;Banking System F Queue&amp;#34;, &amp;#34;A system of the bank, with personal bank accounts.&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> SystemQueue_Ext(SystemG, &amp;#34;Banking System G Queue&amp;#34;, &amp;#34;A system of the bank, with personal bank accounts.&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">BiRel(customerA, SystemAA, &amp;#34;Uses&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">BiRel(SystemAA, SystemE, &amp;#34;Uses&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Rel(SystemAA, SystemC, &amp;#34;Sends e-mails&amp;#34;, &amp;#34;SMTP&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Rel(SystemC, customerA, &amp;#34;Sends e-mails to&amp;#34;)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\```
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p></content:encoded></item></channel></rss>

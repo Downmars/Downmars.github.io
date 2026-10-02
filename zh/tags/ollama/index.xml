@@ -46,13 +46,13 @@ class="custom-link">
 &lt;h2 id="实施步骤">实施步骤&lt;/h2>
 &lt;h3 id="使用-fofa-查找-ollama-实例">使用 Fofa 查找 Ollama 实例&lt;/h3>
 &lt;p>首先，你需要通过搜索引擎如 Fofa 来查找暴露了 Ollama 服务的公网 IP 地址。你可以使用以下搜索语句：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>app=&amp;#34;Ollama&amp;#34; &amp;amp;&amp;amp; is_domain=false
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">app=&amp;#34;Ollama&amp;#34; &amp;amp;&amp;amp; is_domain=false
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个查询帮助你定位那些运行在端口 11434 上的 Ollama 实例。这些实例通常没有做过多的访问限制，只要你知道地址，就能连接到它们。&lt;/p>
 &lt;h3 id="导出并验证可用的服务">导出并验证可用的服务&lt;/h3>
 &lt;p>找到目标服务器后，你可以导出相关数据，并使用批量访问脚本进行验证。你可以自己编写脚本，也可以使用 Burp Suite 等工具进行暴力破解，检查哪些服务器开放了能够使用的接口。&lt;/p>
 &lt;h3 id="查看正在运行的模型">查看正在运行的模型&lt;/h3>
 &lt;p>一旦成功连接到服务器，你可以通过发送 GET 请求来查看服务器上运行的模型。具体地址为：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>URL:/api/ps
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">URL:/api/ps
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>该接口会返回服务器当前运行的所有模型的信息。如果你看到 DeepSeek 模型的名称，并且标明了参数数量（如 70B、32B），那么说明这个模型可以访问。&lt;/p>
 &lt;h3 id="选择合适的-ai-软件进行交互">选择合适的 AI 软件进行交互&lt;/h3>
 &lt;p>确认服务器上运行的模型后，你可以选择适合的 AI 软件来调用 Ollama 提供的 API，与模型进行交互。例如，70B 版本的模型适合处理大规模的计算任务，而 32B 版本则适合轻量级应用。&lt;/p>
@@ -120,53 +120,53 @@ class="custom-link">
 论文链接&lt;span class="external-link">↗&lt;/span>&lt;/a>&lt;/small>&lt;/span>
 （深度求索）是中国人工智能公司深度求索（DeepSeek Inc.）开发的一系列开源大语言模型（LLM），专注于高效推理和低成本部署。其中的DeepSeek-R1是其第一代推理模型，在推理任务上的表现与OpenAI-o1相当，同时为了支持研究社区，DeepSeek开源了DeepSeek-R1以及基于Qwen2.5和Llama3蒸馏出来的共记7个模型。&lt;/p>
 &lt;h2 id="安装ollama">安装Ollama&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ sudo pacman -S ollama
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ sudo pacman -S ollama
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>官方推荐的方式为如下：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ curl -fsSL https://ollama.com/install.sh | sh
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ curl -fsSL https://ollama.com/install.sh &lt;span class="p">|&lt;/span> sh
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="下拉deepseek模型">下拉DeepSeek模型&lt;/h2>
 &lt;p>Ollama现在已经将deepseek模型接入官方库中，我们只需要通过以下命令拉取模型即可：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ ollama pull deepseek-r1:14b
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ollama pull deepseek-r1:14b
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="通过ollama启动deepseek">通过Ollama启动DeepSeek&lt;/h2>
 &lt;p>经过上述部分，我们已经可以尝试本机运行DeepSeek了。通过以下命令启动Ollama服务：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ ollama server
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ollama server
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在启动Ollama服务过后，我们即可使用以下命令来尝试DeepSeek了：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ ollama run deepseek-r1:14b
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ollama run deepseek-r1:14b
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行示例如下：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&amp;gt;&amp;gt;&amp;gt; which is greater? 9.11 or 9.9
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;think&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>First, I observe that both numbers have the same whole number part, which is 9.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Next, I compare their decimal parts: 0.11 and 0.90.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Since 0.11 is less than 0.90, it follows that 9.11 is less than 9.9.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/think&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>To determine which number is greater between **9.11** and **9.9**, let&amp;#39;s compare them step
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>by step.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4">### Step 1: Understand the Numbers&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- **9.11** can be written as &lt;span style="color:#f1fa8c">\(&lt;/span>&lt;span style="color:#bd93f9">9&lt;/span> + &lt;span style="color:#f1fa8c">\f&lt;/span>rac&lt;span style="color:#ff79c6">{&lt;/span>11&lt;span style="color:#ff79c6">}{&lt;/span>100&lt;span style="color:#ff79c6">}&lt;/span>&lt;span style="color:#f1fa8c">\)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- **9.9** can be written as &lt;span style="color:#f1fa8c">\(&lt;/span>&lt;span style="color:#bd93f9">9&lt;/span> + &lt;span style="color:#f1fa8c">\f&lt;/span>rac&lt;span style="color:#ff79c6">{&lt;/span>9&lt;span style="color:#ff79c6">}{&lt;/span>10&lt;span style="color:#ff79c6">}&lt;/span>&lt;span style="color:#f1fa8c">\)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4">### Step 2: Compare the Decimal Parts&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- The decimal part of **9.11** is **0.11**
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- The decimal part of **9.9** is **0.90**
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Now, compare **0.11** and **0.90**:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f1fa8c">\[&lt;/span> 0.11 &amp;lt; 0.90 &lt;span style="color:#f1fa8c">\]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4">### Step 3: Conclusion&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Since the decimal part of **9.11** is less than that of **9.9**, it follows that:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f1fa8c">\[&lt;/span> 9.11 &amp;lt; 9.9 &lt;span style="color:#f1fa8c">\]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Therefore, **9.9** is greater than **9.11**.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f1fa8c">\[&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f1fa8c">\b&lt;/span>oxed&lt;span style="color:#ff79c6">{&lt;/span>9.9&lt;span style="color:#ff79c6">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f1fa8c">\]&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&amp;gt;&amp;gt;&amp;gt; which is greater? 9.11 or 9.9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;lt;think&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">First, I observe that both numbers have the same whole number part, which is 9.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Next, I compare their decimal parts: 0.11 and 0.90.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Since 0.11 is less than 0.90, it follows that 9.11 is less than 9.9.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;lt;/think&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">To determine which number is greater between **9.11** and **9.9**, let&lt;span class="err">&amp;#39;&lt;/span>s compare them step
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">by step.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### Step 1: Understand the Numbers&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- **9.11** can be written as &lt;span class="se">\(&lt;/span>&lt;span class="m">9&lt;/span> + &lt;span class="se">\f&lt;/span>rac&lt;span class="o">{&lt;/span>11&lt;span class="o">}{&lt;/span>100&lt;span class="o">}&lt;/span>&lt;span class="se">\)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- **9.9** can be written as &lt;span class="se">\(&lt;/span>&lt;span class="m">9&lt;/span> + &lt;span class="se">\f&lt;/span>rac&lt;span class="o">{&lt;/span>9&lt;span class="o">}{&lt;/span>10&lt;span class="o">}&lt;/span>&lt;span class="se">\)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### Step 2: Compare the Decimal Parts&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- The decimal part of **9.11** is **0.11**
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- The decimal part of **9.9** is **0.90**
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Now, compare **0.11** and **0.90**:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">\[&lt;/span> 0.11 &amp;lt; 0.90 &lt;span class="se">\]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### Step 3: Conclusion&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Since the decimal part of **9.11** is less than that of **9.9**, it follows that:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">\[&lt;/span> 9.11 &amp;lt; 9.9 &lt;span class="se">\]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Therefore, **9.9** is greater than **9.11**.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">\[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">\b&lt;/span>oxed&lt;span class="o">{&lt;/span>9.9&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">\]&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="ollama-server-自启动">Ollama Server 自启动&lt;/h2>
 &lt;p>为了在开机时自启 Ollama Server，我们可以使用 systemd 来管理自动启动：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ sudo vim /etc/systemd/system/ollama-server.service
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ sudo vim /etc/systemd/system/ollama-server.service
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>我们在其中填入以下内容：&lt;br>
 &lt;p>&lt;details class="custom-collapse" open>
 &lt;summary markdown="span">
@@ -174,32 +174,32 @@ class="custom-link">
 &lt;span class="line-count">12 lines&lt;/span>
 &lt;/summary>
 &lt;div class="content">
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">[&lt;/span>Unit&lt;span style="color:#ff79c6">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">Description&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>Ollama Server
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">After&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>network.target
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">[&lt;/span>Service&lt;span style="color:#ff79c6">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">ExecStart&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>ollama serve
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">Restart&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>on-failure
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">RestartSec&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#bd93f9">5&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">Environment&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">HOME&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>/home/&amp;lt;your home name&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">[&lt;/span>Install&lt;span style="color:#ff79c6">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">WantedBy&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>multi-user.target
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>Unit&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">Description&lt;/span>&lt;span class="o">=&lt;/span>Ollama Server
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">After&lt;/span>&lt;span class="o">=&lt;/span>network.target
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>Service&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ExecStart&lt;/span>&lt;span class="o">=&lt;/span>ollama serve
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">Restart&lt;/span>&lt;span class="o">=&lt;/span>on-failure
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">RestartSec&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">5&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">Environment&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">HOME&lt;/span>&lt;span class="o">=&lt;/span>/home/&amp;lt;your home name&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>Install&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">WantedBy&lt;/span>&lt;span class="o">=&lt;/span>multi-user.target
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/details>&lt;/p>
 创建完服务文件后，通过以下指令来完成 systemd 配置：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 重新加载 systemd 配置&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo systemctl daemon-reload
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 下次开机后，启动开机自启&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo systemctl &lt;span style="color:#8be9fd;font-style:italic">enable&lt;/span> ollama-server.service
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 立刻启动服务&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo systemctl start ollama-server.service
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 查看服务状态&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo systemctl status ollama-server.service
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 重新加载 systemd 配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ sudo systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 下次开机后，启动开机自启&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ sudo systemctl &lt;span class="nb">enable&lt;/span> ollama-server.service
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 立刻启动服务&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ sudo systemctl start ollama-server.service
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看服务状态&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ sudo systemctl status ollama-server.service
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="通过open-webui-调用本地的deepseek-api">通过Open-webui 调用本地的DeepSeek api&lt;/h2>
 &lt;p>TODO&lt;/p></content:encoded></item></channel></rss>

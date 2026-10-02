@@ -19,77 +19,77 @@ Linux下用rm误删除文件的三种恢复方法&lt;span class="external-link">
 ，索性就写一份使用教程。&lt;/p>
 &lt;h2 id="安装gtrash">安装Gtrash&lt;/h2>
 &lt;p>由于我使用的是Archlinux，我这边使用AUR进行安装：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ yay -S gtrash-bin
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ yay -S gtrash-bin
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="使用方法">使用方法&lt;/h2>
 &lt;h3 id="删除文件">删除文件&lt;/h3>
 &lt;p>使用&lt;code>put&lt;/code>指令将文件移动到垃圾箱中，删除目录时默认不需要&lt;code>-r&lt;/code>选项。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ &lt;span style="color:#8be9fd;font-style:italic">cd&lt;/span> &lt;span style="color:#ff79c6">&amp;amp;&amp;amp;&lt;/span> mkdir dir &lt;span style="color:#ff79c6">&amp;amp;&amp;amp;&lt;/span> touch file1 file2
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gtrash put dir file1 file2
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ &lt;span class="nb">cd&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> mkdir dir &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> touch file1 file2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gtrash put dir file1 file2
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="查看垃圾箱摘要">查看垃圾箱摘要&lt;/h3>
 &lt;p>使用 &lt;code>summary&lt;/code> 子命令查看垃圾箱的信息，包括项目数量和总大小。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ gtrash summary
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">[&lt;/span>/home/user/.local/share/Trash&lt;span style="color:#ff79c6">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>item: &lt;span style="color:#bd93f9">3&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>size: 4.1 kB
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ gtrash summary
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>/home/user/.local/share/Trash&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">item: &lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">size: 4.1 kB
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="查找垃圾箱中的文件">查找垃圾箱中的文件&lt;/h3>
 &lt;p>使用 &lt;code>find&lt;/code> 子命令列出垃圾箱中的文件。
 &lt;code>Path&lt;/code> 字段显示文件的原始路径，而不是垃圾箱中的路径。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ gtrash find
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Date Path
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2024-01-01 00:00:00 /home/user/dir
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2024-01-01 00:00:00 /home/user/file1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2024-01-01 00:00:00 /home/user/file2
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ gtrash find
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Date Path
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2024-01-01 00:00:00 /home/user/dir
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2024-01-01 00:00:00 /home/user/file1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2024-01-01 00:00:00 /home/user/file2
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以通过命令行参数传递字符串查询，使用正则表达式搜索文件。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ gtrash find file1 dir
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Date Path
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2024-01-01 00:00:00 /home/user/dir
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2024-01-01 00:00:00 /home/user/file1
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ gtrash find file1 dir
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Date Path
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2024-01-01 00:00:00 /home/user/dir
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2024-01-01 00:00:00 /home/user/file1
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="恢复文件">恢复文件&lt;/h3>
 &lt;p>有多种方法可以恢复文件。
 使用 &lt;code>restore&lt;/code> 子命令以交互式 TUI 恢复文件。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ gtrash restore
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ gtrash restore
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在 TUI 中，可以选择多个文件进行恢复。
 按 &lt;code>?&lt;/code> 查看详细操作说明。
 使用 &lt;code>j&lt;/code>、&lt;code>k&lt;/code> 或方向键导航。
 按 &lt;code>l&lt;/code>、右箭头键或空格键将文件移动到右侧表格。&lt;/p>
 &lt;p>按 &lt;code>Enter&lt;/code> 选择文件后，会显示所选文件列表和确认提示。
 按 &lt;code>y&lt;/code> 确认恢复。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ gtrash restore
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Date Path
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2024-01-01 00:00:00 /home/user/dir
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2024-01-01 00:00:00 /home/user/file1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Selected &lt;span style="color:#bd93f9">2&lt;/span> trashed files
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Are you sure you want to restore? yes/no
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ gtrash restore
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Date Path
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2024-01-01 00:00:00 /home/user/dir
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2024-01-01 00:00:00 /home/user/file1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Selected &lt;span class="m">2&lt;/span> trashed files
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Are you sure you want to restore? yes/no
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="永久删除文件">永久删除文件&lt;/h3>
 &lt;p>使用 &lt;code>find&lt;/code> 子命令的 &lt;code>--rm&lt;/code> 选项永久删除垃圾箱中的文件。
 此操作不可逆，类似于 &lt;code>rm&lt;/code>，文件无法恢复。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 删除特定文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gtrash find file1 --rm
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 删除所有文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gtrash find --rm
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 删除特定文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gtrash find file1 --rm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 删除所有文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gtrash find --rm
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="工作原理">工作原理&lt;/h2>
 &lt;p>&lt;code>gtrash&lt;/code> 遵循 FreeDesktop.org 规范。&lt;/p>
 &lt;p>它的主要功能类似于 &lt;code>mv&lt;/code>，但通过记录元信息并自动将文件移动到外部文件系统的垃圾箱来扩展功能。&lt;/p>
 &lt;p>文件在主文件系统中被移动到以下路径：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 标准路径&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">$HOME&lt;/span>/.local/share/Trash
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 如果设置了 $XDG_DATA_HOME&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">$XDG_DATA_HOME&lt;/span>/Trash
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 标准路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$HOME&lt;/span>/.local/share/Trash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 如果设置了 $XDG_DATA_HOME&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$XDG_DATA_HOME&lt;/span>/Trash
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>文件被移动到 &lt;code>files&lt;/code> 目录，而元数据存储在 &lt;code>info&lt;/code> 目录中。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ gtrash put file1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 记录元信息&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ cat ~/.local/share/Trash/info/file1.trashinfo
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">[&lt;/span>Trash Info&lt;span style="color:#ff79c6">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">Path&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>/home/user/file1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">DeletionDate&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>2024-01-01T00:00:00
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 实际文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ ls ~/.local/share/Trash/files/file1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/home/user/.local/share/Trash/files/file1
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ gtrash put file1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 记录元信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ cat ~/.local/share/Trash/info/file1.trashinfo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>Trash Info&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">Path&lt;/span>&lt;span class="o">=&lt;/span>/home/user/file1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">DeletionDate&lt;/span>&lt;span class="o">=&lt;/span>2024-01-01T00:00:00
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 实际文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ls ~/.local/share/Trash/files/file1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/home/user/.local/share/Trash/files/file1
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="常见问题">常见问题&lt;/h2>
 &lt;h3 id="gtrash-和-rm-有什么区别">&lt;code>gtrash&lt;/code> 和 &lt;code>rm&lt;/code> 有什么区别？&lt;/h3>
 &lt;p>&lt;code>rm&lt;/code> 使用 &lt;code>unlink&lt;/code> 系统调用，文件删除后不可恢复。
@@ -101,19 +101,19 @@ Linux下用rm误删除文件的三种恢复方法&lt;span class="external-link">
 &lt;h2 id="技巧">技巧&lt;/h2>
 &lt;h3 id="shell-集成">Shell 集成&lt;/h3>
 &lt;p>&lt;code>gtrash&lt;/code> 支持 &lt;code>bash&lt;/code>、&lt;code>zsh&lt;/code>、&lt;code>fish&lt;/code> 的自动补全。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>gtrash completion bash --help
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gtrash completion zsh --help
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gtrash completion fish --help
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">gtrash completion bash --help
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gtrash completion zsh --help
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gtrash completion fish --help
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="按大小和日期清理垃圾箱">按大小和日期清理垃圾箱&lt;/h3>
 &lt;p>按日期清理：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 删除超过 7 天的文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gtrash prune --day &lt;span style="color:#bd93f9">7&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 删除超过 7 天的文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gtrash prune --day &lt;span class="m">7&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>按大小清理：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 删除大于 10MB 的文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gtrash find --size-large 10mb --rm
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 删除小于 1GB 的文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gtrash prune --size 5GB
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 删除大于 10MB 的文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gtrash find --size-large 10mb --rm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 删除小于 1GB 的文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gtrash prune --size 5GB
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置">配置&lt;/h2>
 &lt;p>某些行为可以通过设置环境变量来调整。
 参考 &lt;a href="#%e9%85%8d%e7%bd%ae"

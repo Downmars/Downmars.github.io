@@ -21,42 +21,42 @@ Github&lt;span class="external-link">↗&lt;/span>&lt;/a>
 &lt;h1 id="hugo安装及基础配置">Hugo安装及基础配置&lt;/h1>
 &lt;h2 id="hugo安装">Hugo安装&lt;/h2>
 &lt;p>我是用的是archlinux，所以直接用pacman安装：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo pacman -S hugo
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo pacman -S hugo
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装完之后，可以通过以下命令查看版本：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo version
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">hugo version
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="hugo初始化">Hugo初始化&lt;/h2>
 &lt;p>通过上述命令安装hugo程序后，可以在选定的目录下通过&lt;code>hugo new site $YOUR_SITE_NAME&lt;/code>创建你的博客目录：&lt;/p>
 &lt;blockquote>
 &lt;p>如果不特殊申明，本文接下来的命令行操作都是在&lt;code>$YOUR_SITE_NAME&lt;/code>目录下进行的。&lt;/p>&lt;/blockquote>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>myArch% hugo new site DHugo
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Congratulations! Your new Hugo site was created in /home/dm/Test/DHugo.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Just a few more steps...
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>1. Change the current directory to /home/dm/Test/DHugo.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2. Create or install a theme:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - Create a new theme with the &lt;span style="color:#8be9fd;font-style:italic">command&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - Or, install a theme from https://themes.gohugo.io/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>3. Edit hugo.toml, setting the &lt;span style="color:#f1fa8c">&amp;#34;theme&amp;#34;&lt;/span> property to the theme name.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>4. Create new content with the &lt;span style="color:#8be9fd;font-style:italic">command&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;hugo new content &amp;lt;SECTIONNAME&amp;gt;/&amp;lt;FILENAME&amp;gt;.&amp;lt;FORMAT&amp;gt;&amp;#34;&lt;/span>.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>5. Start the embedded web server with the &lt;span style="color:#8be9fd;font-style:italic">command&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;hugo server --buildDrafts&amp;#34;&lt;/span>.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>See documentation at https://gohugo.io/.
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">myArch% hugo new site DHugo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Congratulations! Your new Hugo site was created in /home/dm/Test/DHugo.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Just a few more steps...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">1. Change the current directory to /home/dm/Test/DHugo.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2. Create or install a theme:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Create a new theme with the &lt;span class="nb">command&lt;/span> &lt;span class="s2">&amp;#34;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - Or, install a theme from https://themes.gohugo.io/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3. Edit hugo.toml, setting the &lt;span class="s2">&amp;#34;theme&amp;#34;&lt;/span> property to the theme name.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">4. Create new content with the &lt;span class="nb">command&lt;/span> &lt;span class="s2">&amp;#34;hugo new content &amp;lt;SECTIONNAME&amp;gt;/&amp;lt;FILENAME&amp;gt;.&amp;lt;FORMAT&amp;gt;&amp;#34;&lt;/span>.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">5. Start the embedded web server with the &lt;span class="nb">command&lt;/span> &lt;span class="s2">&amp;#34;hugo server --buildDrafts&amp;#34;&lt;/span>.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">See documentation at https://gohugo.io/.
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以使用&lt;code>tree&lt;/code>指令对我们创建的博客目录进行查看&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>myArch% tree
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── archetypes
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│   └── default.md &lt;span style="color:#6272a4"># 博客模板文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── assets &lt;span style="color:#6272a4"># 存放静态资源文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── content &lt;span style="color:#6272a4"># 存放博客文章&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── data &lt;span style="color:#6272a4"># 存放数据文件 &lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── hugo.toml &lt;span style="color:#6272a4"># 博客配置文件，可以修改为hugo.yaml，支持JSON、YAML、TOML三种不同配置文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── i18n &lt;span style="color:#6272a4"># 多语言配置&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── layouts &lt;span style="color:#6272a4"># 存放布局配置文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── static &lt;span style="color:#6272a4"># 存放静态资源文件，图片、css、js等&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── themes &lt;span style="color:#6272a4"># 存放不同主题&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#bd93f9">9&lt;/span> directories, &lt;span style="color:#bd93f9">2&lt;/span> files
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">myArch% tree
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── archetypes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── default.md &lt;span class="c1"># 博客模板文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── assets &lt;span class="c1"># 存放静态资源文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── content &lt;span class="c1"># 存放博客文章&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── data &lt;span class="c1"># 存放数据文件 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── hugo.toml &lt;span class="c1"># 博客配置文件，可以修改为hugo.yaml，支持JSON、YAML、TOML三种不同配置文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── i18n &lt;span class="c1"># 多语言配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── layouts &lt;span class="c1"># 存放布局配置文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── static &lt;span class="c1"># 存放静态资源文件，图片、css、js等&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── themes &lt;span class="c1"># 存放不同主题&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">9&lt;/span> directories, &lt;span class="m">2&lt;/span> files
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置主题">配置主题&lt;/h2>
 &lt;p>我们在此处的主题选择&lt;a href="https://github.com/adityatelange/hugo-PaperMod"
 target="_blank" rel="noopener"
@@ -72,27 +72,27 @@ https://themes.gohugo.io/&lt;span class="external-link">↗&lt;/span>&lt;/a>
 &lt;/ul>
 &lt;p>在此处，官方推荐将我们选择的主题&lt;code>fork&lt;/code>一个到自己的账户，并使用&lt;code>git submodule&lt;/code>进行仓库的链接，这样以便后续主题的单独维护，避免当自己对主题进行修改之后，后续版本管理和更新会与原先主题产生冲突。&lt;/p>
 &lt;p>当然了，我并没有&lt;code>fork&lt;/code>一个主题并进行修改，我们通常是将&lt;code>themes/$THEME/&lt;/code>对应目录下的文件拷贝一份到我们的项目目录&lt;code>$YOUR_SITE_NAME&lt;/code>中对应的文件夹下，相对目录需要相同，以便我们复制的文件可以覆盖他的默认配置。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git init
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>之后在hugo.yaml中添加新的一行启用新主题：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">theme&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;PaperMod&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>同时为了后续的部署到&lt;code>Github&lt;/code>我们需要在&lt;code>config.toml&lt;/code>中添加&lt;code>baseURL&lt;/code>配置：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">baseURL&lt;/span>: &amp;#34;https://downmars.github.io“
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="新建博客">新建博客&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">theme&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;PaperMod&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>同时为了后续的部署到&lt;code>Github&lt;/code>我们需要在&lt;code>config.toml&lt;/code>中添加&lt;code>baseURL&lt;/code>配置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">baseURL&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">&amp;#34;https://downmars.github.io“&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="新建博客">新建博客&lt;/h2>
 &lt;p>我们可以使用&lt;code>hugo new path/to/your.md&lt;/code>来创建你的第一个博客啦！&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo new posts/test.md
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-markdown" data-lang="markdown">&lt;span style="display:flex;">&lt;span>---
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>title: &amp;#34;Test&amp;#34;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>date: 2022-10-21T19:00:43+08:00
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>draft: true
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>---
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">hugo new posts/test.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">---
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">title: &amp;#34;Test&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">date: 2022-10-21T19:00:43+08:00
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">draft: true
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">---
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个命令会在&lt;code>content&lt;/code>目录下创建&lt;code>posts&lt;/code>目录，并在生成&lt;code>posts/test.md&lt;/code>，博文使用&lt;code>Markdown&lt;/code>语法完成，我们用默认模板生成的博客是草稿状态，可以将&lt;code>draft&lt;/code>设置为&lt;code>false&lt;/code>，这样文章就可以发表了。&lt;/p>
 &lt;p>我们接下来就可以使用&lt;code>hugo server&lt;/code>进行本地预览了，通过访问&lt;a href="http://localhost:1313/"
 target="_blank" rel="noopener"
 class="custom-link">
 http://localhost:1313/&lt;span class="external-link">↗&lt;/span>&lt;/a>
 可以在本地预览我们创建的博客了。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo server --disableFastRender
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">hugo server --disableFastRender
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>但是我们现在只能够本地预览，如果想要发布到&lt;code>Github Pages&lt;/code>，还需要借助&lt;code>Action&lt;/code>来完成。&lt;/p>
 &lt;h1 id="github-action自动化部署">Github Action自动化部署&lt;/h1>
 &lt;p>&lt;code>Github Pages&lt;/code> 本质上是一个静态网站托管系统，你可以使用它为你的每一个仓库制作一个静态网页入口，我可以借助&lt;code>Action&lt;/code>来完成部署界面。&lt;/p>
@@ -103,45 +103,45 @@ http://localhost:1313/&lt;span class="external-link">↗&lt;/span>&lt;/a>
 &lt;/ul>
 &lt;h2 id="创建ciyml文件">创建ci.yml文件&lt;/h2>
 &lt;p>&lt;code>Github&lt;/code>进行自动化部署需要一个&lt;code>ci.yml&lt;/code>文件，位于&lt;code>.github/workflows/ci.yaml&lt;/code>，步骤如下：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir .github/workflows
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>touch .github/workflows/ci.yml
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">name&lt;/span>: Deploy Hugo site
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">on&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">push&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">branches&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - main
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">workflow_dispatch&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">permissions&lt;/span>: &lt;span style="color:#6272a4"># 添加这个权限配置&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">contents&lt;/span>: write
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">jobs&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">deploy&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">runs-on&lt;/span>: ubuntu-latest
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">steps&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff79c6">uses&lt;/span>: actions/checkout@v3
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">with&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">submodules&lt;/span>: &lt;span style="color:#ff79c6">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff79c6">name&lt;/span>: Setup Hugo
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">uses&lt;/span>: peaceiris/actions-hugo@v2
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">with&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">hugo-version&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;latest&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff79c6">name&lt;/span>: Build
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">run&lt;/span>: hugo --minify
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ff79c6">name&lt;/span>: Deploy
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">uses&lt;/span>: peaceiris/actions-gh-pages@v3
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">with&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">github_token&lt;/span>: ${{ secrets.GITHUB_TOKEN }} &lt;span style="color:#6272a4"># 使用默认令牌&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">publish_dir&lt;/span>: ./public
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="使用gh-pages部署网页">使用gh-pages部署网页&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git remote add origin https://github.com/jianzhnie/jianzhnie.github.io.git &lt;span style="color:#6272a4"># 将本地目录链接到远程服务器的代码仓库&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add .
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="color:#f1fa8c">&amp;#34;WOW！&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git push origin main
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir .github/workflows
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">touch .github/workflows/ci.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Deploy Hugo site&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">on&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">push&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">branches&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">main&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">workflow_dispatch&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">permissions&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 添加这个权限配置&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">contents&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">write&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">jobs&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">deploy&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">runs-on&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ubuntu-latest&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">steps&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">actions/checkout@v3&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">submodules&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Setup Hugo&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">peaceiris/actions-hugo@v2&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">hugo-version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;latest&amp;#39;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Build&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">run&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">hugo --minify&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Deploy&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">peaceiris/actions-gh-pages@v3&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">github_token&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">${{ secrets.GITHUB_TOKEN }} &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 使用默认令牌&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">publish_dir&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">./public&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="使用gh-pages部署网页">使用gh-pages部署网页&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git remote add origin https://github.com/jianzhnie/jianzhnie.github.io.git &lt;span class="c1"># 将本地目录链接到远程服务器的代码仓库&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s2">&amp;#34;WOW！&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push origin main
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>此时，我们的博客就已经部署到了&lt;code>Github Pages&lt;/code>上了，可以通过&lt;code>https://[你的github账号名].github.io&lt;/code>来访问你的博客了。&lt;/p>
 &lt;blockquote>
 &lt;p>我一开始创建的时候会在我的博客网址看不见我的网页，后来查询之后得知需要在&lt;code>Downmars.github.io/Settings/pages/Branch&lt;/code> 将分支切换为&lt;code>gh-pages&lt;/code>即可&lt;/p>&lt;/blockquote></content:encoded></item></channel></rss>

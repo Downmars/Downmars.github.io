@@ -48,33 +48,33 @@ class="custom-link">
 。&lt;/p>
 &lt;p>gPhoto2 运行在多个类 Unix 操作系统上，包括 Linux、FreeBSD、NetBSD、MacOS X 等。主要的 Linux 发行版（如 Debian GNU/Linux、Ubuntu、Gentoo、Fedora、openSUSE、Mandriva 等）都提供了 gPhoto。&lt;br>
 我们使用以下命令下载gPhoto2：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ sudo pacman -S gphoto2
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ sudo pacman -S gphoto2
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>gPhoto2提供了很多有趣的功能，这让我们能够通过命令行查看相机(运行前记得开机，不然我的Nikon30是读取不到的)：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 显示相机中所有文件夹的列表&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --list-folders
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 显示相机存储中所有文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --list-files
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 下载相机中的所有文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --get-all-files
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 显示相机配置信息&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --list-config
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 显示相机中所有文件夹的列表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --list-folders
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 显示相机存储中所有文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --list-files
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 下载相机中的所有文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --get-all-files
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 显示相机配置信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --list-config
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>由于我的相机中设置了间隔拍摄创建新文件夹，导致多个文件夹同时传输时会出现文件名重复，可以根据文件夹路径和文件名为每个文件生成唯一的名称：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ gphoto2 --get-all-files --filename&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;%F/%f&amp;#34;&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ gphoto2 --get-all-files --filename&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;%F/%f&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>此外，gPhoto2还提供了控制相机的功能：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 捕捉单张图片&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --capture-image
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 捕捉视频&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --capture-movie&lt;span style="color:#ff79c6">=&lt;/span>SECONDS
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 使用长时间曝光（如 --bulb 模式）拍摄&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --bulb&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#bd93f9">10&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 使用 --capture-preview 启用相机的实时预览功能&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --capture-preview
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 使用 --show-preview 显示实时预览图像&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --show-preview
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 触发拍照（模拟按下快门按钮）&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --trigger-capture
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4"># 修改相机的配置参数，例如 ISO 或曝光时间&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ gphoto2 --set-config&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">iso&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#bd93f9">400&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 捕捉单张图片&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --capture-image
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 捕捉视频&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --capture-movie&lt;span class="o">=&lt;/span>SECONDS
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用长时间曝光（如 --bulb 模式）拍摄&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --bulb&lt;span class="o">=&lt;/span>&lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用 --capture-preview 启用相机的实时预览功能&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --capture-preview
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用 --show-preview 显示实时预览图像&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --show-preview
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 触发拍照（模拟按下快门按钮）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --trigger-capture
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 修改相机的配置参数，例如 ISO 或曝光时间&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ gphoto2 --set-config&lt;span class="o">=&lt;/span>&lt;span class="nv">iso&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">400&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>更多功能可以参考于&lt;a href="http://www.gphoto.org/doc/manual/ref-gphoto2-cli.html#cli-examples"
 target="_blank" rel="noopener"
 class="custom-link">

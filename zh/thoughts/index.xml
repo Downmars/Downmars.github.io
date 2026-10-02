@@ -5,7 +5,7 @@ ArchWiki 的《文明 VI》排障记录&lt;span class="external-link">↗&lt;/sp
 也提到这个报错和相同的启动参数。&lt;/p>
 &lt;p>但能进游戏还不等于能玩。版权说明页的 Continue 按钮看得见却点不动。我试过把游戏分辨率从 1368×768 调到虚拟显示器的 2560×1440，也试过把 SUNSHINE 显示器的缩放从 160% 临时改成 100%，按钮依然没有反应。临时越过版权页后，后面的 2K 条款页按钮同样点不动。至少在这次排查中，单独调整分辨率或缩放都没有解决鼠标输入的问题。&lt;/p>
 &lt;p>最后把 Steam 的《文明 VI》启动选项设为：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>gamescope -W 2560 -H 1440 -w 2560 -h 1440 -f -- env SDL_VIDEODRIVER=x11 %command%
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">gamescope -W 2560 -H 1440 -w 2560 -h 1440 -f -- env SDL_VIDEODRIVER=x11 %command%
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重新启动后，2K 条款页收到了点击，主菜单里的“单人游戏”也能正常打开。这是我在 2560×1440 虚拟显示器上验证过的设置；换成其他屏幕时，命令里的宽高需要按实际分辨率调整。&lt;a href="https://github.com/ValveSoftware/gamescope/blob/master/README.md"
 target="_blank" rel="noopener"
 class="custom-link">

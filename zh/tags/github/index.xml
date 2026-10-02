@@ -28,10 +28,10 @@ class="custom-link">
 Github&lt;span class="external-link">↗&lt;/span>&lt;/a>
 并点击右上角 → 选择 &amp;ldquo;New repository&amp;rdquo;&lt;/li>
 &lt;li>填写仓库信息：
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">Repository name&lt;/span>: blog-images &lt;span style="color:#6272a4"># 推荐名称&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">Description&lt;/span>: Blog Image Hosting
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">Public/Private&lt;/span>: Public ✔️
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">Repository name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">blog-images &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 推荐名称&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">Description&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Blog Image Hosting&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">Public/Private&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Public ✔️ &lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
 &lt;li>点击 &amp;ldquo;Create repository&amp;rdquo;&lt;/li>
 &lt;/ol>
 &lt;h3 id="生成访问令牌">生成访问令牌&lt;/h3>
@@ -39,11 +39,11 @@ Github&lt;span class="external-link">↗&lt;/span>&lt;/a>
 &lt;li>点击右上角头像 → Settings → Developer settings → Personal access tokens → Tokens (classic)&lt;/li>
 &lt;li>点击 &amp;ldquo;Generate new token&amp;rdquo; → &amp;ldquo;Generate new token (classic)&amp;rdquo;&lt;/li>
 &lt;li>配置权限：
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">Note&lt;/span>: PicGo-upload
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">Expiration&lt;/span>: &lt;span style="color:#ff79c6">No&lt;/span> expiration &lt;span style="color:#6272a4"># 长期有效&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">Select scopes&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ✔️ repo (全部仓库权限)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">Note&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">PicGo-upload&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">Expiration&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">No&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">expiration &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 长期有效&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">Select scopes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="l">✔️ repo (全部仓库权限)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
 &lt;/ol>
 &lt;div class="admonition warning ">
 &lt;div class="admonition-header">
@@ -64,26 +64,24 @@ PicGo仓库&lt;span class="external-link">↗&lt;/span>&lt;/a>
 &lt;ol>
 &lt;li>打开PicGo → 图床设置 → GitHub图床&lt;/li>
 &lt;li>填写配置：
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">图床配置名&lt;/span>: Github_images_hosting
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">设定仓库名&lt;/span>: yourname/blog-images &lt;span style="color:#6272a4"># 替换为实际用户名/仓库&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">设定分支名&lt;/span>: main
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">设定Token&lt;/span>: 粘贴生成的令牌
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">存储路径&lt;/span>: blog/ &lt;span style="color:#6272a4"># 可选分类目录&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">自定义域名&lt;/span>: &lt;span style="color:#6272a4"># 我这里没有配置CDN加速，所以这里空置即可&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">图床配置名&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Github_images_hosting&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">设定仓库名&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">yourname/blog-images &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 替换为实际用户名/仓库&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">设定分支名&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">main&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">设定Token&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">粘贴生成的令牌&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">存储路径&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">blog/ &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 可选分类目录&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">自定义域名&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 我这里没有配置CDN加速，所以这里空置即可&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
 &lt;/ol>
 &lt;p>此时就可以使用这个工具来上传图片了，下方图片为图床返回链接测试，更多设置请查看&lt;a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here"
 target="_blank" rel="noopener"
 class="custom-link">
 官方文档&lt;span class="external-link">↗&lt;/span>&lt;/a>
 。&lt;/p>
-&lt;p>
-&lt;div class="post-img-view">
+&lt;p>&lt;div class="post-img-view">
 &lt;a data-fancybox="gallery" href="https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg">
 &lt;img src="https://raw.githubusercontent.com/Downmars/images-PicGo/main/img/miku.jpg" alt="miku" />
 &lt;/a>
-&lt;/div>
-&lt;/p>
+&lt;/div>&lt;/p>
 &lt;h3 id="安装插件">安装插件&lt;/h3>
 &lt;h4 id="自动水印">自动水印&lt;/h4>
 &lt;h4 id="自动压缩">自动压缩&lt;/h4></content:encoded></item></channel></rss>

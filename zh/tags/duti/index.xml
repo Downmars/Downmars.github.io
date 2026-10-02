@@ -2,37 +2,38 @@
 &lt;/p></description><content:encoded>&lt;p>macOS 系统中，文件的默认打开方式通常通过图形界面设置。然而，对于需要批量管理或精确控制的用户而言，使用命令行工具 &lt;strong>duti&lt;/strong> 是一个高效的选择。&lt;span class="sidenote-number">&lt;small class="sidenote">原项目由 Andrew Mortensen 创建，发布于 2008 年，现已开源至 GitHub 并持续可用。&lt;/small>&lt;/span>
 &lt;/p>
 &lt;h2 id="什么是-duti">什么是 duti？&lt;/h2>
-&lt;p>&lt;a href="%28https://github.com/moretension/duti%29"
+&lt;p>&lt;a href="https://github.com/moretension/duti"
+target="_blank" rel="noopener"
 class="custom-link">
-duti&lt;/a>
+duti&lt;span class="external-link">↗&lt;/span>&lt;/a>
 （Do Utility）是一个开源的命令行工具，专门用于配置 macOS 系统中文件类型与应用程序之间的关联。通过 &lt;code>duti&lt;/code>，你可以设置特定文件类型、URL 协议等的默认打开方式。&lt;/p>
 &lt;h2 id="安装-duti">安装 duti&lt;/h2>
 &lt;p>首先确保已安装 Homebrew，如果没有可以先运行：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>/bin/bash -c &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&lt;span style="color:#ff79c6">)&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">/bin/bash -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后使用以下命令安装 duti：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>brew install duti
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install duti
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="使用duti设置默认应用程序">使用duti设置默认应用程序&lt;/h2>
 &lt;h3 id="获取应用程序的-bundle-identifier">获取应用程序的 Bundle Identifier&lt;/h3>
 &lt;p>在设置默认应用前，需要知道目标应用的 Bundle Identifier。可使用以下命令获取：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mdls -name kMDItemCFBundleIdentifier -r /Applications/应用程序名称.app
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mdls -name kMDItemCFBundleIdentifier -r /Applications/应用程序名称.app
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>例如：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mdls -name kMDItemCFBundleIdentifier -r /Applications/Sublime&lt;span style="color:#f1fa8c">\ &lt;/span>Text.app
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mdls -name kMDItemCFBundleIdentifier -r /Applications/Sublime&lt;span class="se">\ &lt;/span>Text.app
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>输出示例：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>com.sublimetext.3
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">com.sublimetext.3
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="获取文件类型的-uti">获取文件类型的 UTI&lt;/h3>
 &lt;p>UTI（Uniform Type Identifier）用于标识文件类型。使用以下命令可获取：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mdls -name kMDItemContentType -r 文件路径
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mdls -name kMDItemContentType -r 文件路径
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>例如：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mdls -name kMDItemContentType -r example.md
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mdls -name kMDItemContentType -r example.md
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>输出示例：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>net.daringfireball.markdown
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">net.daringfireball.markdown
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="使用-duti-设置默认应用程序">使用 duti 设置默认应用程序&lt;/h3>
 &lt;p>设置命令格式如下：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>duti -s &amp;lt;BundleID&amp;gt; &amp;lt;UTI或扩展名&amp;gt; all
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">duti -s &amp;lt;BundleID&amp;gt; &amp;lt;UTI或扩展名&amp;gt; all
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>示例：将 .md 文件默认设置为 Sublime Text 打开：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>duti -s com.sublimetext.3 net.daringfireball.markdown all
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">duti -s com.sublimetext.3 net.daringfireball.markdown all
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>示例：将 .txt 文件默认使用 Sublime Text 打开：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>duti -s com.sublimetext.3 .txt all
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">duti -s com.sublimetext.3 .txt all
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="批量设置默认应用程序">批量设置默认应用程序&lt;/h3>
 &lt;p>可以创建配置文件批量设置，示例如下：&lt;/p>
 &lt;h4 id="创建设置文件如-duti">创建设置文件（如 ~/.duti）：&lt;/h4>
@@ -45,17 +46,17 @@ com.sublimetext.3 net.daringfireball.markdown all&lt;/p>
 &lt;ul>
 &lt;li>设置 HTML 默认由 Safari 打开：&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>duti -s com.apple.Safari public.html all
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">duti -s com.apple.Safari public.html all
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>使用 echo 管道设置 Word 文档默认打开方式：&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;com.apple.TextEdit com.microsoft.word.doc all&amp;#39;&lt;/span> | duti
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;com.apple.TextEdit com.microsoft.word.doc all&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> duti
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>设置 Finder 为默认 FTP 处理器：&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>duti -s com.apple.Finder ftp
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">duti -s com.apple.Finder ftp
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>查询某文件扩展的默认应用：&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>duti -x jpg
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">duti -x jpg
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></content:encoded></item></channel></rss>
