@@ -1,4 +1,76 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Nikon on DLog</title><link>https://downmars.github.io/zh/tags/nikon/</link><description>Recent content in Nikon on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Sun, 16 Feb 2025 20:04:56 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/nikon/index.xml" rel="self" type="application/rss+xml"/><item><title>使用gPhoto2在Archlinux上进行Nikon相机的操控</title><link>https://downmars.github.io/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</link><pubDate>Sun, 16 Feb 2025 20:04:56 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Nikon on DLog</title><link>https://downmars.github.io/zh/tags/nikon/</link><description>Recent content in Nikon on DLog</description><generator>Hugo -- 0.145.0</generator><language>zh-CN</language><lastBuildDate>Mon, 19 Oct 2026 14:13:10 +0800</lastBuildDate><atom:link href="https://downmars.github.io/zh/tags/nikon/index.xml" rel="self" type="application/rss+xml"/><item><title>徒步时怎么带 Z30 和 Osmo Nano</title><link>https://downmars.github.io/zh/posts/hiking-camera-system/</link><pubDate>Mon, 19 Oct 2026 11:27:00 +0800</pubDate><guid>https://downmars.github.io/zh/posts/hiking-camera-system/</guid><description>Z30 以 16–50mm 为主、50–250mm 为辅；Osmo Nano 用泰迅夹具在右肩和帽檐之间整体移动，每次换位置后通过监视器检查画面。</description><content:encoded>&lt;p>最近在考虑徒步时怎么带相机。背包是 Hikelite 32，Z30 用来拍照，Osmo Nano 用来录路上的视频。想要的效果是：看到想拍的东西，能直接拿起 Z30；想把拿相机拍照的过程也录下来，就把 Nano 连着夹具移到帽子上，不用再腾一只手拍视频。&lt;/p>
+&lt;p>现在打算这样放：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>位置&lt;/th>
+&lt;th>放什么&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>背包左肩&lt;/td>
+&lt;td>Z30，平时装 16–50mm，用 F38 V2 快挂&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>背包右肩&lt;/td>
+&lt;td>Nano 加泰迅夹具，暂定夹在这里录平时走路的视频&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>帽檐&lt;/td>
+&lt;td>需要头部视角时，把右肩的 Nano 和夹具一起移过来&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>腰包&lt;/td>
+&lt;td>Nano 的图传模块，作为监视器检查画面，也用来遥控和补电&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>配件优先找国产、淘宝能买到的。Z30 的快挂先选小隼 F38 V2，Nano 的帽夹决定用泰迅。右肩也暂定用这只泰迅夹具，实际能不能夹稳 Hikelite 的肩带，装上后再试。&lt;/p>
+&lt;h2 id="z30-主要用-165050250-需要时再换">Z30 主要用 16–50，50–250 需要时再换&lt;/h2>
+&lt;p>Z30 打算以 16–50mm 为主，平时就装着它挂在身上。50–250mm 作为补充，放在包里，需要拍远处的东西时再换上。&lt;/p>
+&lt;p>我还是倾向于把它放在左肩。主要图的是拿相机方便，拍完能直接挂回去。腰挂也考虑过，但徒步还要坐下、蹲下、上台阶，我不想每次抬腿都得留意相机的位置。腰部先留给背包腰带和腰包，胸前也暂时不加一套大胸挂。&lt;/p>
+&lt;p>快挂先选小隼 F38 肩带快挂 V2。这里要注意买包含底座和相机快装板的套件：底座固定在肩带上，板装在 Z30 底部，只买底座是装不上相机的。&lt;a href="https://www.ulanzi.com/products/f38-camera-backpack-clip-f38b3803"
+target="_blank" rel="noopener"
+class="custom-link">
+F38 V2 产品页&lt;span class="external-link">↗&lt;/span>&lt;/a>
+&lt;/p>
+&lt;p>官方给出的肩带适配上限是宽 80mm、厚 20mm。实际安装前还是要量一下 Hikelite 的肩带，背包装好东西后，再看相机挂在哪个高度比较合适：手能顺利取下来，胸带不挡着，走路时也别一直碰身体。保险绳准备配一根短的，留够拿起相机的长度就行。&lt;/p>
+&lt;p>换上 50–250 后还要单独看看会不会晃、镜头会不会顶到身体。平时用 16–50 合适，不代表换了长焦也可以不管。&lt;/p>
+&lt;h2 id="nano-连着泰迅夹具一起移动">Nano 连着泰迅夹具一起移动&lt;/h2>
+&lt;p>Nano 的帽夹已经决定用泰迅，右肩也暂定用同一只。平时夹在右肩，想换成头部视角，就把相机和夹具一起取下来，夹到帽檐上；拍完再整套移回右肩。&lt;/p>
+&lt;p>这样换位置时，Nano 可以一直留在夹具上，不用先把主相机拆下来，也不用给两个位置各装一个底座。F38 只给 Z30 用，Nano 这边就用这套泰迅夹具。&lt;/p>
+&lt;p>不过每次重新夹上去，位置和角度都可能变，不能指望移过去就刚好拍得合适。每次切换后，都要拿出图传模块当监视器看一下：右肩有没有被衣领挡住，帽檐有没有入镜，正常平视时是不是拍进了太多地面。需要的话调整俯仰，确认画面合适了再拍。&lt;/p>
+&lt;p>图传模块就放在腰包里，换位置后拿出来检查画面，休息时再用它补电。&lt;a href="https://dl.djicdn.com/downloads/Osmo_Nano/20251124/Osmo_Nano_User_Manual_zh-cn.pdf"
+target="_blank" rel="noopener"
+class="custom-link">
+Osmo Nano 使用手册&lt;span class="external-link">↗&lt;/span>&lt;/a>
+&lt;/p>
+&lt;h2 id="选泰迅也要考虑帽檐上的重量">选泰迅，也要考虑帽檐上的重量&lt;/h2>
+&lt;p>头戴这部分，我想用帽子代替头带，先拿硬帽檐的棒球帽来搭配泰迅夹具。装上后还要看看，低头、转头时帽子会不会被带着动。&lt;/p>
+&lt;p>泰迅 S3-HMH-05-TDJ 标注重 41.3g，加上 Nano 主相机的 52g，就是 93.3g，夹子本身都快赶上相机重了。这是选它时要接受的重量，夹在帽檐前面会不会往下坠、走路时会不会晃，还得试戴。&lt;a href="https://www.telesinstore.com/products/magnetic-pivot-clip-for-osmo-nano"
+target="_blank" rel="noopener"
+class="custom-link">
+泰迅规格&lt;span class="external-link">↗&lt;/span>&lt;/a>
+、&lt;a href="https://www.dji.com/nano/specs"
+target="_blank" rel="noopener"
+class="custom-link">
+Nano 参数&lt;span class="external-link">↗&lt;/span>&lt;/a>
+&lt;/p>
+&lt;p>但也不能只挑轻的。STARTRC 12220011 在裸机固定和俯仰调节上不符合这次的要求；厂家写的“360°旋转”说的是横竖拍切换，不能当成上下俯仰。Sunnylife ON-J064 又是包裹式的，取出相机更麻烦。这两款就先不选了。&lt;a href="https://www.startrc.com/startrc-nano-magnetic-clip-mount-360-rotating-wearable-holder.html"
+target="_blank" rel="noopener"
+class="custom-link">
+STARTRC 产品说明&lt;span class="external-link">↗&lt;/span>&lt;/a>
+&lt;/p>
+&lt;p>冷帽和头巾就没那么好处理了。按它们的结构来看，即使夹子夹住了，软面料也可能被相机拉着走，最后镜头越来越朝下。换轻一点的夹子只能减轻负担，解决不了帽子或头巾本身不稳的问题。戴这些的时候，先让 Nano 留在右肩；以后确实需要长时间拍头部视角，再考虑加独立头带。&lt;/p>
+&lt;h2 id="还要背着走一段">还要背着走一段&lt;/h2>
+&lt;p>这套目前还是搭配打算，得把背包装到平时的重量，再挂上相机试。先用 Z30 加 16–50 走一段、取放几次，再换 50–250 看看区别。Nano 这边主要看泰迅夹具能不能夹稳肩带，以及夹到帽檐上以后，帽子会不会往下滑。监视器里构图合适以后，也要录一小段回看，看看走动时夹具会不会滑、角度会不会慢慢变。&lt;/p>
+&lt;p>休息时再把 Nano 主相机从夹具上取下来，装回图传模块补电。&lt;/p>
+&lt;p>录像也没打算一路开到底，遇到想留的路段再录。休息补电时顺便看一下存储：Nano 录在主相机的内置存储里，图传模块里的 microSD 卡只能用来导出素材，不能直接往卡里录像。&lt;a href="https://www.dji.com/nano/faq"
+target="_blank" rel="noopener"
+class="custom-link">
+DJI 存储说明&lt;span class="external-link">↗&lt;/span>&lt;/a>
+&lt;/p></content:encoded></item><item><title>使用gPhoto2在Archlinux上进行Nikon相机的操控</title><link>https://downmars.github.io/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</link><pubDate>Sun, 16 Feb 2025 20:04:56 +0800</pubDate><guid>https://downmars.github.io/zh/posts/2025_02_16-how_to_connect_nikon_in_archlinux/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>这两天给爸妈拍了一些照片准备导出，正好在linux环境下，我于是打算研究一下如何在linux环境下传输相机的一些数据，顺便为相机记录做一个开头。&lt;/p></description><content:encoded>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>这两天给爸妈拍了一些照片准备导出，正好在linux环境下，我于是打算研究一下如何在linux环境下传输相机的一些数据，顺便为相机记录做一个开头。&lt;/p>
 &lt;h2 id="msc-or-mtp">MSC or MTP&lt;/h2>
